@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://7wuop4abysij"]
+
+[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://Prefabs/shaders/skyplus.gdshader" id="1_xm72y"]
+
+[resource]
+shader = ExtResource("1_xm72y")
+shader_parameter/sky_color = Color(0.2, 0.5, 0.9, 1)
+shader_parameter/horizon_color = Color(0.5, 0.8, 1, 1)
+shader_parameter/horizon_blur = 0.1
+shader_parameter/sun_color = Color(1, 1, 0.8, 1)
+shader_parameter/sun_size = 0.05
+shader_parameter/sun_blur = 0.01
+shader_parameter/cloud_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_edge_sharpness = 0.1
+shader_parameter/cloud_scale = 2.0
+shader_parameter/cloud_speed = 0.02
