@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bmfjf7vn45idq"]
+
+[ext_resource type="Script" uid="uid://qacxpxu81d0o" path="res://scripts/Food/Scripts/apple.gd" id="1_6damo"]
+
+[node name="Apple" type="Node" unique_id=1499037531]
+script = ExtResource("1_6damo")
