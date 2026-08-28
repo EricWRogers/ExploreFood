@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cyeodjsypiubu"]
+
+[ext_resource type="Script" uid="uid://fgp3cj3mnqb" path="res://scripts/test_scripts/ingredient_test_spawn.gd" id="1_gc8p1"]
+
+[node name="IngredientSpawnTest" type="Node3D" unique_id=636737734]
+script = ExtResource("1_gc8p1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1340677444]
+transform = Transform3D(1, 0, 0, 0, 0.970629, 0.24058124, 0, -0.24058124, 0.970629, 0, 1.762747, 5.28095)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=59323225]
+transform = Transform3D(1.3041791, 0, 0, 0, 1, 0, 0, 0, 1, -0.06368065, -1, -0.13143921)
+use_collision = true
+size = Vector3(17.488281, 1, 12.877869)
+
+[node name="spawn_point" type="Marker3D" parent="." unique_id=146827106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6543567, 0)
