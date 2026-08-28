@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 		speed = SPRINTSPEED
 	else:
 		speed = WALKSPEED
-
+	if Input.is_action_just_pressed("Pause"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
@@ -41,8 +42,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = 0.0
+			velocity.z = 0.0
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)

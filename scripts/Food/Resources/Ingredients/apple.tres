@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ingredient_resource" format=3 uid="uid://bx81pni3hcvhp"]
+
+[ext_resource type="Script" uid="uid://by7txjbi8ri6b" path="res://scripts/Food/Scripts/ingredient_resource.gd" id="1_6qfjl"]
+
+[resource]
+script = ExtResource("1_6qfjl")
+name = "apple"
+flavor_text = "red delicious."
+metadata/_custom_type_script = "uid://by7txjbi8ri6b"
