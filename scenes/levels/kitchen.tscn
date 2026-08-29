@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://pa70wv8ei3mv"]
+
+[ext_resource type="PackedScene" uid="uid://fdtx7weq1ytk" path="res://Prefabs/PlayerController.tscn" id="1_p86jp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
+albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_klsck"]
+size = Vector3(4.797516, 0.9176636, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q026u"]
+albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
+size = Vector3(4.8078003, 0.9243164, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q026u"]
+size = Vector3(1.1860352, 0.90734863, 1.0411377)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1ff7"]
+albedo_color = Color(0.5449743, 0.54497427, 0.54497427, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmpmc"]
+size = Vector3(1.1855469, 0.9111328, 1.045044)
+
+[node name="Kitchen" type="Node3D" unique_id=115598229]
+
+[node name="CharacterBody3D" parent="." unique_id=1731430436 instance=ExtResource("1_p86jp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0212789, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=472061484]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2013175216]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_klsck")
+
+[node name="KitchenItem" type="StaticBody3D" parent="." unique_id=1751525550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5543966, 0.50430644, -7.546567)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem" unique_id=2034597457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0901794, -0.041168213, 0)
+mesh = SubResource("BoxMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem" unique_id=448925759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
+shape = SubResource("BoxShape3D_6xqmx")
+
+[node name="KitchenItem2" type="StaticBody3D" parent="." unique_id=326218408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4456034, 0.50430644, -7.546567)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem2" unique_id=1766783043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0901794, -0.041168213, 0)
+mesh = SubResource("BoxMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem2" unique_id=1622971881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
+shape = SubResource("BoxShape3D_6xqmx")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=821538341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7388624, 0.513542, -7.547062)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1105971164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09301758, -0.046325684, 0.020568848)
+mesh = SubResource("BoxMesh_q026u")
+surface_material_override/0 = SubResource("StandardMaterial3D_k1ff7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1565020774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09277344, -0.044433594, 0.022521973)
+shape = SubResource("BoxShape3D_xmpmc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
+transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)
