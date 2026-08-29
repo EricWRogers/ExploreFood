@@ -35,3 +35,6 @@ shape = SubResource("SphereShape3D_viy58")
 
 [node name="Node3D" parent="." index="5" unique_id=1982560729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0375543, 0)
+
+[node name="Label3D" parent="Node3D" index="0" unique_id=1542478267]
+no_depth_test = true

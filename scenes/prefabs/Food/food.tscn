@@ -7,6 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
 
 [node name="Food" type="RigidBody3D" unique_id=1169599723]
+collision_layer = 513
 freeze = true
 script = ExtResource("1_ydt1i")
 
@@ -19,6 +20,7 @@ shape = SubResource("SphereShape3D_6xqmx")
 [node name="Node3D" type="Node3D" parent="." unique_id=1982560729]
 
 [node name="Label3D" type="Label3D" parent="Node3D" unique_id=1542478267]
+visible = false
 billboard = 1
 outline_modulate = Color(0.14767182, 0.14767179, 0.14767179, 1)
 text = "[E]"

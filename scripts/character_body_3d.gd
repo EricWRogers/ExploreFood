@@ -13,11 +13,14 @@ var tBob = 0.0
 const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
 
+@onready var raycast = $Head/Camera3D/RayCast3D
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
 
 var hotbar = []
+var current_target: Node = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -26,7 +29,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -67,6 +70,17 @@ func _physics_process(delta: float) -> void:
 	var targetFOV = BASE_FOV + FOV_CHANGE * (clamp(velocity.length(), 0.5, speed * 2))
 	camera.fov = lerp(camera.fov, targetFOV, delta * 5.0)
 	
+	if raycast.is_colliding():
+		var new_target = raycast.get_collider()
+		if current_target and current_target != new_target:
+			_exit_target()
+		if current_target != new_target:
+			current_target = new_target
+			_enter_target()
+	else:
+		if current_target:
+			_exit_target()
+	
 	move_and_slide()
 
 func HeadBob(time) -> Vector3:
@@ -74,3 +88,12 @@ func HeadBob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ/2) * BOB_AMP
 	return pos
+	
+func _enter_target():
+	if current_target.has_method("on_looked_at"):
+		current_target.on_looked_at()
+
+func _exit_target():
+	if current_target.has_method("on_looked_away"):
+		current_target.on_looked_away()
+	current_target = null
