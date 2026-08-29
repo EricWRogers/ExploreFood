@@ -33,6 +33,12 @@ size = Vector3(1.345459, 0.9111328, 1.2324066)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
 
+[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
+transparency = 1
+albedo_color = Color(0.16078432, 0.77254903, 0.95686275, 0.8)
+
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 
 [node name="CharacterBody3D" parent="." unique_id=1731430436 groups=["Player"] instance=ExtResource("1_p86jp")]
@@ -100,3 +106,10 @@ script = ExtResource("2_lg3sj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door/Area3D" unique_id=1938751722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
 shape = SubResource("BoxShape3D_8ojr3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="door" unique_id=1337769628]
+transform = Transform3D(3.9318023, 0, 0, 0, 5.355978, 0, 0, 0, 0.79081064, 0, 1.9260583, 0)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
+
+[connection signal="body_entered" from="door/Area3D" to="door/Area3D" method="_on_body_entered"]
