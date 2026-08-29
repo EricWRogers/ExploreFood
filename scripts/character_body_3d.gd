@@ -1,10 +1,17 @@
 extends CharacterBody3D
 
 var speed
-const WALKSPEED = 5.0
-const SPRINTSPEED = 12.0
+const WALK_SPEED = 5.0
+const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
+
+const BOB_FREQ = 2.0
+const BOB_AMP = 0.08
+var tBob = 0.0
+
+const BASE_FOV = 75.0 # we can make this a var that the player can choose
+const FOV_CHANGE = 1.5
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -30,9 +37,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	if Input.is_action_pressed("Sprint"):
-		speed = SPRINTSPEED
+		speed = SPRINT_SPEED
 	else:
-		speed = WALKSPEED
+		speed = WALK_SPEED
 	if Input.is_action_just_pressed("Pause"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Get the input direction and handle the movement/deceleration.
@@ -53,5 +60,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-
+	
+	tBob += delta * velocity.length() * float(is_on_floor())
+	camera.transform.origin = HeadBob(tBob)
+	
+	var targetFOV = BASE_FOV + FOV_CHANGE * (clamp(velocity.length(), 0.5, speed * 2))
+	camera.fov = lerp(camera.fov, targetFOV, delta * 5.0)
+	
 	move_and_slide()
+
+func HeadBob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ/2) * BOB_AMP
+	return pos
