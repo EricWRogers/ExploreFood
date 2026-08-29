@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://kuy5nk16rekr" path="res://scripts/character_body_3d.gd" id="1_cokxn"]
 [ext_resource type="PackedScene" uid="uid://cr33uf2tu8dlc" path="res://Prefabs/characters/player/killer_bean_sproject_2.tscn" id="2_lfbm7"]
-[ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://Prefabs/UI/item_icons/waffle_icon.png" id="3_2o36n"]
 [ext_resource type="Shader" uid="uid://dfxnfoqqcdpw6" path="res://Prefabs/blacktowhite.gdshader" id="3_a6j2n"]
 [ext_resource type="Texture2D" uid="uid://bdp7kevxt62w4" path="res://Prefabs/UI/square-rounded-icon.png" id="4_cebs7"]
-[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://Prefabs/UI/item_icons/butterfrog_icon.png" id="6_l87wn"]
-[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://Prefabs/UI/item_icons/terry_icon.png" id="7_l87wn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
 height = 3.1015625
@@ -24,6 +21,19 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 shadow_color = Color(0, 0, 0, 0)
 shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0.8, 0.8, 0.8, 0.14117648)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.78, 0.78, 0.78, 0.13333334)
+shadow_size = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cebs7"]
 shader = ExtResource("3_a6j2n")
@@ -74,15 +84,15 @@ theme_override_constants/margin_bottom = 63
 [node name="Start" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=386888154]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=985428522]
+[node name="Slot1" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=985428522]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer" unique_id=134963597]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot1" unique_id=134963597]
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer/Panel" unique_id=2024232672]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel" unique_id=2024232672]
 texture_filter = 3
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 1
@@ -97,11 +107,27 @@ offset_right = 66.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_2o36n")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer" unique_id=957196195]
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel" unique_id=336166093]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel/Selected1" unique_id=751461381]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot1" unique_id=957196195]
 material = SubResource("ShaderMaterial_cebs7")
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -110,7 +136,7 @@ texture = ExtResource("4_cebs7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer/TextureRect2" unique_id=2106484667]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot1/TextureRect2" unique_id=2106484667]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,15 +151,15 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1954312905]
+[node name="Slot2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1954312905]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2" unique_id=840764611]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot2" unique_id=840764611]
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2/Panel" unique_id=1717381585]
+[node name="Item2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel" unique_id=1717381585]
 texture_filter = 3
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 1
@@ -148,11 +174,27 @@ offset_right = 66.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_l87wn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2" unique_id=446606069]
+[node name="Selected2" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel" unique_id=1209631847]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel/Selected2" unique_id=1027746046]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot2" unique_id=446606069]
 material = SubResource("ShaderMaterial_cebs7")
 layout_mode = 2
 size_flags_vertical = 3
@@ -160,7 +202,7 @@ texture = ExtResource("4_cebs7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2/TextureRect" unique_id=396798855]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot2/TextureRect" unique_id=396798855]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -175,15 +217,15 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1421288693]
+[node name="Slot3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1421288693]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3" unique_id=83725377]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot3" unique_id=83725377]
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3/Panel" unique_id=1595524295]
+[node name="Item3" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel" unique_id=1595524295]
 texture_filter = 3
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 1
@@ -198,11 +240,27 @@ offset_right = 66.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_l87wn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3" unique_id=2460322]
+[node name="Selected3" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel" unique_id=1057301628]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel/Selected3" unique_id=641927097]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot3" unique_id=2460322]
 material = SubResource("ShaderMaterial_cebs7")
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -211,7 +269,7 @@ texture = ExtResource("4_cebs7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3/TextureRect" unique_id=1008671970]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot3/TextureRect" unique_id=1008671970]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

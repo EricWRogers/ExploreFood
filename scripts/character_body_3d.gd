@@ -18,9 +18,13 @@ const FOV_CHANGE = 1.5
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
+@onready var selected_1: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot1/Panel/Selected1
+@onready var selected_2: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot2/Panel/Selected2
+@onready var selected_3: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot3/Panel/Selected3
 
 var hotbar = []
 var current_target: Node = null
+var current_slot = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -45,6 +49,12 @@ func _physics_process(delta: float) -> void:
 		speed = WALK_SPEED
 	if Input.is_action_just_pressed("Pause"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("slot1"):
+		update_slots(1)
+	elif Input.is_action_just_pressed("slot2"):
+		update_slots(2)
+	elif Input.is_action_just_pressed("slot3"):
+		update_slots(3)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
@@ -97,3 +107,28 @@ func _exit_target():
 	if current_target.has_method("on_looked_away"):
 		current_target.on_looked_away()
 	current_target = null
+	
+func update_slots(slot):
+	if slot != current_slot:
+		current_slot = slot
+		#equip new item
+	elif slot == current_slot:
+		current_slot = 0
+		#unequip current item
+	match current_slot:
+		1:
+			selected_1.show()
+			selected_2.hide()
+			selected_3.hide()
+		2:
+			selected_2.show()
+			selected_1.hide()
+			selected_3.hide()
+		3:
+			selected_1.hide()
+			selected_2.hide()
+			selected_3.show()
+		0:
+			selected_1.hide()
+			selected_2.hide()
+			selected_3.hide()
