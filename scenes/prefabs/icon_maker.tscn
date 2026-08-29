@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://dfavhfdampvvr"]
+
+[ext_resource type="Script" uid="uid://cpb71tt0cld68" path="res://scripts/icon_maker.gd" id="1_swcni"]
+[ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="2_3y7a6"]
+[ext_resource type="Shader" uid="uid://dujc3wor7usvv" path="res://Prefabs/shaders/outline.gdshader" id="3_3y7a6"]
+[ext_resource type="ArrayMesh" uid="uid://bvuxfjiisdp5e" path="res://Prefabs/foods/butterwaffles/waffle.obj" id="4_swcni"]
+[ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://Prefabs/foods/butterwaffles/waffle.png" id="5_7dskf"]
+[ext_resource type="Shader" uid="uid://bytsavm1w3ptc" path="res://Prefabs/shaders/goodoutline.gdshader" id="6_r11d8"]
+[ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://Prefabs/foods/butterwaffles/frogbutt.obj" id="7_rafff"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://Prefabs/foods/butterwaffles/butte.png" id="8_hv2mb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
+load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjux8"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dskf"]
+load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r11d8"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_7dskf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rafff"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv2mb"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mgeb"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7wjp"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjqqh"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0c2d"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqv37"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtgtr"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1bwb"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imc7b"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14y1n"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jqcv"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c23sl"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y7a6"]
+render_priority = 0
+shader = ExtResource("3_3y7a6")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_sharpness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld7tm"]
+next_pass = SubResource("ShaderMaterial_3y7a6")
+transparency = 4
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.039215688)
+albedo_texture = SubResource("CompressedTexture2D_c23sl")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tpkq0"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_ma1e4"]
+code = "shader_type spatial;
+render_mode unshaded, blend_mix, cull_disabled;
+
+uniform float speed = .5; //How fast the bubbles move
+uniform sampler2D gradient : source_color; //The gradient texture used to color the bubbles; if it's repeated, it should start and end with the same color
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec2 grid_vec = vec2(2.0, 2.0); //How to repeat the gradient
+uniform vec2 grid_bubbles = vec2(20.0, 10.0); //How many bubbles; can also make them oval
+uniform float bubble_alpha : hint_range(0.0, 1.0) = 1.0; //Overall transparency of the bubbles
+
+vec2 random(vec2 uv) {
+	return vec2(fract(sin(dot(uv.xy,
+		vec2(12.9898,78.233))) * 43758.5453123));
+}
+
+float worley(vec2 uv, float columns, float rows) {
+	vec2 index_uv = floor(vec2(uv.x * columns, uv.y * rows));
+	vec2 fract_uv = fract(vec2(uv.x * columns, uv.y * rows));
+
+	float minimum_dist = 1.0;
+
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			vec2 neighbor = vec2(float(x), float(y));
+			vec2 point = random(index_uv + neighbor);
+			point = vec2( cos(TIME * point.x * speed), sin(TIME * point.y * speed) ) * 0.5 + 0.5;
+			vec2 diff = neighbor + point - fract_uv;
+			float dist = length(diff);
+			minimum_dist = min(minimum_dist, dist);
+		}
+	}
+
+	return minimum_dist;
+}
+
+vec2 grid(vec2 uv, float columns, float rows){
+	return fract(vec2(uv.x * columns, uv.y * rows));
+}
+
+void fragment() {
+	vec2 repeat = grid(UV, grid_vec.x, grid_vec.y);
+	float w = worley(UV, grid_bubbles.x, grid_bubbles.y);
+	vec4 multi_color = texture(gradient, vec2(repeat.y, w));
+
+	ALBEDO = mix(vec3(w) * multi_color.rgb * 3.0, background_color.rgb, smoothstep(0.4, 0.5, w * 1.5));
+	ALPHA = (1.0 - smoothstep(0.4, 0.5, w * 1.5)) * bubble_alpha;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_rormb"]
+colors = PackedColorArray(1, 0, 0, 1, 0.2833333, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ptjc"]
+gradient = SubResource("Gradient_rormb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nni16"]
+render_priority = 0
+shader = SubResource("Shader_ma1e4")
+shader_parameter/speed = 2.83
+shader_parameter/gradient = SubResource("GradientTexture1D_2ptjc")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/grid_vec = Vector2(2, 2)
+shader_parameter/grid_bubbles = Vector2(20, 10)
+shader_parameter/bubble_alpha = 0.0810000038475
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtms1"]
+next_pass = SubResource("ShaderMaterial_nni16")
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = SubResource("CompressedTexture2D_tpkq0")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g0650"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpeop"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.2901961)
+albedo_texture = SubResource("CompressedTexture2D_g0650")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnd2o"]
+render_priority = 0
+shader = ExtResource("6_r11d8")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/size = 1.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c23sl"]
+next_pass = SubResource("ShaderMaterial_vnd2o")
+shading_mode = 0
+albedo_texture = ExtResource("5_7dskf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dskf"]
+render_priority = 0
+shader = ExtResource("6_r11d8")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/size = 1.02999999932944
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpkq0"]
+next_pass = SubResource("ShaderMaterial_7dskf")
+shading_mode = 0
+albedo_texture = ExtResource("8_hv2mb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ma1e4"]
+next_pass = SubResource("ShaderMaterial_7dskf")
+shading_mode = 0
+albedo_texture = ExtResource("8_hv2mb")
+
+[node name="IconMaker" type="SubViewport" unique_id=1215882865]
+transparent_bg = true
+size = Vector2i(264, 264)
+render_target_update_mode = 4
+script = ExtResource("1_swcni")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1932887130]
+transform = Transform3D(-0.9812849, -0.13304794, 0.13920541, 0, 0.7229143, 0.69093776, -0.19256142, 0.67800677, -0.7093849, 0.48261234, 1.4334306, -1.2777394)
+fov = 61.7
+
+[node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_3y7a6")]
+transform = Transform3D(0.9500829, -0.31175834, -0.0122207645, 0.30754462, 0.94239795, -0.13153985, 0.052525464, 0.121215336, 0.9912356, 0.4215476, 0, -0.15827799)
+visible = false
+
+[node name="Terry" parent="Terry" index="0" unique_id=1819333420]
+surface_material_override/0 = SubResource("StandardMaterial3D_vjux8")
+surface_material_override/1 = SubResource("StandardMaterial3D_r11d8")
+surface_material_override/2 = SubResource("StandardMaterial3D_rafff")
+surface_material_override/3 = SubResource("StandardMaterial3D_hv2mb")
+surface_material_override/4 = SubResource("StandardMaterial3D_5mgeb")
+surface_material_override/5 = SubResource("StandardMaterial3D_o7wjp")
+surface_material_override/6 = SubResource("StandardMaterial3D_gjqqh")
+surface_material_override/7 = SubResource("StandardMaterial3D_y0c2d")
+surface_material_override/8 = SubResource("StandardMaterial3D_oqv37")
+surface_material_override/9 = SubResource("StandardMaterial3D_gtgtr")
+surface_material_override/10 = SubResource("StandardMaterial3D_t1bwb")
+surface_material_override/11 = SubResource("StandardMaterial3D_imc7b")
+surface_material_override/12 = SubResource("StandardMaterial3D_14y1n")
+surface_material_override/13 = SubResource("StandardMaterial3D_1jqcv")
+
+[node name="Egg" parent="Terry" index="1" unique_id=1855054390]
+surface_material_override/0 = SubResource("StandardMaterial3D_ld7tm")
+
+[node name="Egg2" parent="Terry" index="2" unique_id=1074423397]
+surface_material_override/0 = SubResource("StandardMaterial3D_gtms1")
+
+[node name="Egg3" parent="Terry" index="3" unique_id=430693704]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_cpeop")
+
+[node name="Waffle" type="MeshInstance3D" parent="." unique_id=186059504]
+visible = false
+mesh = ExtResource("4_swcni")
+surface_material_override/0 = SubResource("StandardMaterial3D_c23sl")
+
+[node name="Frogbutt" type="MeshInstance3D" parent="." unique_id=1659182354]
+transform = Transform3D(0.69069105, 0.20376801, 0.69384754, 0.023149492, 0.9527576, -0.30284843, -0.7227794, 0.22523697, 0.65334404, 0, 0, 0)
+mesh = ExtResource("7_rafff")
+surface_material_override/0 = SubResource("StandardMaterial3D_tpkq0")
+surface_material_override/1 = SubResource("StandardMaterial3D_ma1e4")
+
+[editable path="Terry"]

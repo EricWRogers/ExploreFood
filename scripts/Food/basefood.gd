@@ -42,3 +42,10 @@ func RollSpawn():
 	else: 
 		print("Terry Died.")
 		queue_free()
+		
+
+func on_looked_at():
+	$Node3D/Label3D.show()
+	
+func on_looked_away():
+	$Node3D/Label3D.hide()
