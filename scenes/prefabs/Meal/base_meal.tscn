@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2rqvns1x25my"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6xqmx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klsck"]
+
+[node name="BaseMeal" type="Node3D" unique_id=1554097360]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=12225848]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1675912402]
+mesh = SubResource("PlaceholderMesh_6xqmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1195127627]
+shape = SubResource("SphereShape3D_klsck")

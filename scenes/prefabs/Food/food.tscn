@@ -6,7 +6,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
 
-[node name="Food" type="Node3D" unique_id=737182758]
+[node name="BaseFood" type="Node3D" unique_id=737182758]
 script = ExtResource("1_ydt1i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=376125766]

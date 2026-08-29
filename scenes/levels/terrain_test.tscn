@@ -10,7 +10,7 @@
 [ext_resource type="Shader" uid="uid://dvgvrqwb4k2s8" path="res://Prefabs/shaders/pixel.gdshader" id="8_v7lih"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://Prefabs/shaders/water.gdshader" id="9_l0ptr"]
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="10_v7lih"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Ingredients/terry_food.tscn" id="11_885wc"]
+[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="11_885wc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")

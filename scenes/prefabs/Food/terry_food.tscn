@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsw7givxakx7k"]
 
-[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Ingredients/food.tscn" id="1_viy58"]
+[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Food/food.tscn" id="1_viy58"]
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="2_rbi6i"]
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_3j5kh"]
