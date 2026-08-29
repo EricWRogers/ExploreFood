@@ -7,7 +7,7 @@ var loading_screen: PackedScene = preload("uid://d1l0ij7271ank")
 var loaded_resource: PackedScene
 var scene_path: String
 var progress: Array = []
-var use_sub_threads: bool = true
+var use_sub_threads: bool = true #faster load times
 
 func _ready() -> void:
 	set_process(false)
@@ -42,6 +42,7 @@ func _proccess(_data: float) -> void:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
 			get_tree().change_scene_to_packed(loaded_resource)
 			load_finished.emit()
+			set_process(false)
 		
 		
 		
