@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://64gd2rjmrdd3"]
+
+[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Ingredients/food.tscn" id="1_263la"]
+[ext_resource type="ArrayMesh" uid="uid://bvuxfjiisdp5e" path="res://Prefabs/foods/butterwaffles/waffle.obj" id="2_2t41x"]
+[ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://Prefabs/foods/butterwaffles/waffle.png" id="3_x0co7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpm7d"]
+albedo_texture = ExtResource("3_x0co7")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mx4fs"]
+height = 0.21618652
+radius = 1.0029297
+
+[node name="WafflePad" unique_id=1169599723 instance=ExtResource("1_263la")]
+food_name = "Waffle Pad"
+flavor_text = "It's soggy"
+rarity_level = 0.6
+category = 2
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
+mesh = ExtResource("2_2t41x")
+surface_material_override/0 = SubResource("StandardMaterial3D_fpm7d")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1691151157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105651855, 0)
+shape = SubResource("CylinderShape3D_mx4fs")

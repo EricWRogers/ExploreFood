@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 class_name BaseFood
 
 enum FoodType {
