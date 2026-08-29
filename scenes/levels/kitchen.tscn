@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pa70wv8ei3mv"]
 
 [ext_resource type="PackedScene" uid="uid://fdtx7weq1ytk" path="res://Prefabs/PlayerController.tscn" id="1_p86jp"]
+[ext_resource type="Script" uid="uid://bxjoynl6lc11p" path="res://scenes/levels/door_to_level.gd" id="2_lg3sj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 
@@ -29,9 +30,12 @@ size = Vector3(1.345459, 0.9111328, 1.2324066)
 
 [sub_resource type="Environment" id="Environment_p86jp"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
+size = Vector3(4.5620117, 4.1798096, 1.0251465)
+
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 
-[node name="CharacterBody3D" parent="." unique_id=1731430436 instance=ExtResource("1_p86jp")]
+[node name="CharacterBody3D" parent="." unique_id=1731430436 groups=["Player"] instance=ExtResource("1_p86jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0212789, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
@@ -86,3 +90,13 @@ environment = SubResource("Environment_p86jp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
 transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)
+
+[node name="door" type="Node3D" parent="." unique_id=910491766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80431557, 6.992864)
+
+[node name="Area3D" type="Area3D" parent="door" unique_id=966391317]
+script = ExtResource("2_lg3sj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/Area3D" unique_id=1938751722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
+shape = SubResource("BoxShape3D_8ojr3")

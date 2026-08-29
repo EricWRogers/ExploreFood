@@ -66,11 +66,7 @@ transparency = 1
 albedo_color = Color(0, 0, 0, 0.2901961)
 albedo_texture = SubResource("CompressedTexture2D_g5170")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6g1ex"]
-radius = 0.53086245
-
-[node name="Terry" type="RigidBody3D" unique_id=150516399]
-collision_layer = 17
+[node name="Terry" type="Node3D" unique_id=100476314]
 
 [node name="Terry" type="MeshInstance3D" parent="." unique_id=1819333420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15982836, 0)
@@ -104,7 +100,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hkvlh")
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0, 0)
 mesh = ExtResource("3_kttuv")
 surface_material_override/0 = SubResource("StandardMaterial3D_awxga")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1517297010]
-transform = Transform3D(2.03, 0, 0, 0, 2.03, 0, 0, 0, 2.03, 0, 1.0849823, 0)
-shape = SubResource("SphereShape3D_6g1ex")

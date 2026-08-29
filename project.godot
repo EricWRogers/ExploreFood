@@ -31,6 +31,10 @@ window/stretch/aspect="keep_width"
 
 enabled=PackedStringArray("res://addons/MarchingSquaresTerrain/plugin.cfg")
 
+[global_group]
+
+Player="for the player"
+
 [input]
 
 Jump={

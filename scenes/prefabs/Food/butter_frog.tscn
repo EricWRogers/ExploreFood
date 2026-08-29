@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cuudja02uqggj"]
+
+[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Ingredients/food.tscn" id="1_e7amy"]
+[ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://Prefabs/foods/butterwaffles/frogbutt.obj" id="2_speix"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://Prefabs/foods/butterwaffles/butte.png" id="3_1ydtn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7amy"]
+albedo_texture = ExtResource("3_1ydtn")
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_refk3"]
+albedo_texture = ExtResource("3_1ydtn")
+roughness = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ydtn"]
+radius = 0.43603516
+height = 1.4306641
+
+[node name="ButterFrog" unique_id=1169599723 instance=ExtResource("1_e7amy")]
+food_name = "Butter Frog"
+flavor_text = "It has a low melting point."
+rarity_level = 0.4
+category = 4
+flavor = 4
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
+mesh = ExtResource("2_speix")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7amy")
+surface_material_override/1 = SubResource("StandardMaterial3D_refk3")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1691151157]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.056152344, 0.30160028, 0)
+shape = SubResource("CapsuleShape3D_1ydtn")
