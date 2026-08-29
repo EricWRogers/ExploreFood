@@ -325,9 +325,9 @@ roughness = 0.17
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6g1ex"]
 render_priority = 0
 shader = ExtResource("9_l0ptr")
-shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
+shader_parameter/absorption_color = Color(1, 0.98333335, 0, 1)
 shader_parameter/fresnel_radius = 2.0
-shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
+shader_parameter/fresnel_color = Color(0.72, 0, 0.57600015, 1)
 shader_parameter/roughness = 0.15
 shader_parameter/specular = 0.25
 shader_parameter/depth_distance = 25.0
@@ -364,6 +364,20 @@ shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 script = ExtResource("1_bdps2")
 data_directory = "res://scenes/levels/terrain_test_TerrainData/MarchingSquaresTerrain_80c243e3"
 _storage_initialized = true
+animation_fps = 1
+grass_size = Vector2(0.8, 0.8)
+texture_albedo_1 = Color(1, 0.7385254, 0.40234375, 1)
+texture_albedo_2 = Color(1, 0.3254902, 0.38431373, 1)
+texture_albedo_3 = Color(0.99607843, 0.19215687, 0.29411766, 1)
+texture_albedo_4 = Color(0.62890625, 0.62890625, 0.62890625, 1)
+texture_albedo_5 = Color(0.71875, 0.71875, 0.71875, 1)
+texture_albedo_6 = Color(0.6640625, 0.6640625, 0.6640625, 1)
+texture_scale_4 = 1.1
+texture_scale_5 = 0.7
+texture_scale_6 = 1.4000000000000001
+texture_scale_11 = 1.1
+texture_scale_13 = 0.9
+texture_scale_14 = 0.9
 metadata/_custom_type_script = "uid://cddg1xr5hye1d"
 
 [node name="Chunk (-1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=821320883 node_paths=PackedStringArray("terrain_system")]
@@ -580,6 +594,6 @@ surface_material_override/4 = SubResource("StandardMaterial3D_0dw6x")
 surface_material_override/5 = SubResource("StandardMaterial3D_kp3qp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1273085842]
-transform = Transform3D(273.69427, 0, 0, 0, 1, 0, 0, 0, 678.56805, -81.68875, 0, 0)
+transform = Transform3D(273.69427, 0, 0, 0, 1, 0, 0, 0, 220.29225, -81.68875, 0, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
