@@ -1,6 +1,24 @@
 [gd_scene format=3 uid="uid://bmfjf7vn45idq"]
 
-[ext_resource type="Script" uid="uid://qacxpxu81d0o" path="res://scripts/Food/Scripts/apple.gd" id="1_6damo"]
+[ext_resource type="Script" uid="uid://qacxpxu81d0o" path="res://scripts/Food/apple.gd" id="1_6damo"]
+[ext_resource type="Resource" uid="uid://bx81pni3hcvhp" path="res://Resources/Ingredients/apple.tres" id="2_ahuyq"]
 
-[node name="Apple" type="Node" unique_id=1499037531]
+[sub_resource type="SphereMesh" id="SphereMesh_gc8p1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rgxi"]
+albedo_color = Color(0.73191327, 0.25633684, 0.23851332, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
+
+[node name="Apple" type="Node3D" unique_id=737182758]
 script = ExtResource("1_6damo")
+ing_stats = ExtResource("2_ahuyq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=376125766]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1146662064]
+mesh = SubResource("SphereMesh_gc8p1")
+surface_material_override/0 = SubResource("StandardMaterial3D_5rgxi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1691151157]
+shape = SubResource("SphereShape3D_6xqmx")
