@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctw5repar03jl"
-path="res://.godot/imported/KillerBeanSproject.fbx-703584bed4363b4810b66969b980512b.scn"
+uid="uid://fwjsclvrchq2"
+path="res://.godot/imported/KillerBeanSproject2.fbx-c467c8cc1eee13ee8dd23ca9f0ac87a6.scn"
 
 [deps]
 
-source_file="res://Prefabs/characters/player/model/KillerBeanSproject.fbx"
-dest_files=["res://.godot/imported/KillerBeanSproject.fbx-703584bed4363b4810b66969b980512b.scn"]
+source_file="res://Prefabs/characters/player/KillerBeanSproject2.fbx"
+dest_files=["res://.godot/imported/KillerBeanSproject2.fbx-c467c8cc1eee13ee8dd23ca9f0ac87a6.scn"]
 
 [params]
 

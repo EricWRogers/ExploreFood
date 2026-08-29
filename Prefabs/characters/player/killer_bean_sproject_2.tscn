@@ -1,0 +1,320 @@
+[gd_scene format=3 uid="uid://cr33uf2tu8dlc"]
+
+[ext_resource type="PackedScene" uid="uid://fwjsclvrchq2" path="res://Prefabs/characters/player/KillerBeanSproject2.fbx" id="1_ffn5n"]
+[ext_resource type="Texture2D" uid="uid://blg2l5uh0clyh" path="res://Prefabs/characters/player/textures/Kimple.png" id="2_sh04p"]
+[ext_resource type="Script" uid="uid://bdgvfumfywrmg" path="res://Prefabs/characters/player/scripts/killer_bean_anim_controller.gd" id="2_w2xjc"]
+[ext_resource type="Shader" uid="uid://csu6a73lfs32y" path="res://Prefabs/shaders/celshade.gdshader" id="3_w2xjc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mh5cs"]
+render_priority = 0
+shader = ExtResource("3_w2xjc")
+shader_parameter/colour = ExtResource("2_sh04p")
+shader_parameter/light_direction = Vector3(0, 0, 0)
+shader_parameter/shadow_threshold = 0.694000032965
+shader_parameter/shadow_darkness = 0.6870000326325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dx2kh"]
+next_pass = SubResource("ShaderMaterial_mh5cs")
+albedo_texture = ExtResource("2_sh04p")
+metallic_specular = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3opuo"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_3o3jl"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D colour : source_color;
+uniform vec3 light_direction;
+uniform float shadow_threshold : hint_range(0.0, 1.0) = 0.2;
+uniform float shadow_darkness : hint_range(0.0, 1.0) = 0.25;
+
+void vertex() {
+	
+}
+
+vec3 euler_rotation(vec3 input, vec3 rotation) {
+	vec3 matrix[3];
+		
+		vec3 result = input - light_direction;
+		
+		float aa = cos(rotation.x);
+		float ab = cos(rotation.y);
+		float ac = cos(rotation.z);
+		float ba = sin(rotation.x);
+		float bb = sin(rotation.y);
+		float bc = sin(rotation.z);
+		float ca = aa * ac;
+		float cb = aa * bc;
+		float da = ba * ac;
+		float db = ba * bc;
+		
+		matrix[0].x = ab * ac;
+		matrix[1].x = bb * da - cb;
+		matrix[2].x = bb * ca + db;
+		matrix[0].y = ab * bc;
+		matrix[1].y = bb * db + ca;
+		matrix[2].y = bb * cb - da;
+		matrix[0].z = -bb;
+		matrix[1].z = ab * ba;
+		matrix[2].z = ab * aa;
+		
+		vec3 tmp = result;
+		
+		result.x = matrix[0][0] * tmp.x + matrix[1][0] * tmp.y + matrix[2][0] * tmp.z;
+		result.y = matrix[0][1] * tmp.x + matrix[1][1] * tmp.y + matrix[2][1] * tmp.z;
+		result.z = matrix[0][2] * tmp.x + matrix[1][2] * tmp.y + matrix[2][2] * tmp.z;
+		
+		return result;
+}
+
+vec3 get_sun_direction(vec3 pos) {
+	vec3 blue = vec3(0.00000, 0.00000, 1.00000);
+	vec3 diff = pos - blue;
+	vec3 loc = pos - diff;
+	vec3 dir = light_direction;
+
+	vec3 result = euler_rotation(loc, dir);
+	
+	return normalize(result);
+}
+
+void fragment() {
+	vec4 tex_col = texture(colour, UV);
+
+	vec3 result = tex_col.rgb;
+
+	vec3 world_normals = normalize((INV_VIEW_MATRIX * vec4(NORMAL.xyz, 0.0)).xyz);
+	vec3 sun_direction = get_sun_direction(NODE_POSITION_WORLD);
+	float shading = dot(world_normals, sun_direction);
+	float cel;
+	
+	if (shading < shadow_threshold) {
+		cel = 1.0;
+	} else {
+		cel = 0.0;
+	}
+
+	cel = (cel * -1.0) + 1.0;
+	cel = clamp(cel + shadow_darkness, 0.0, 1.0);
+
+	result *= cel;
+
+	ALBEDO = result;
+}
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w0jfj"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xufv1"]
+render_priority = 0
+shader = SubResource("Shader_3o3jl")
+shader_parameter/colour = SubResource("CompressedTexture2D_w0jfj")
+shader_parameter/light_direction = Vector3(0, 0, 0)
+shader_parameter/shadow_threshold = 0.694000032965
+shader_parameter/shadow_darkness = 0.6870000326325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20mj1"]
+next_pass = SubResource("ShaderMaterial_xufv1")
+albedo_texture = SubResource("CompressedTexture2D_3opuo")
+metallic_specular = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ccqv3"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y8x42"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v8k7"]
+render_priority = 0
+shader = ExtResource("3_w2xjc")
+shader_parameter/colour = SubResource("CompressedTexture2D_y8x42")
+shader_parameter/light_direction = Vector3(0, 0, 0)
+shader_parameter/shadow_threshold = 0.694000032965
+shader_parameter/shadow_darkness = 0.6870000326325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn1gr"]
+next_pass = SubResource("ShaderMaterial_7v8k7")
+albedo_texture = SubResource("CompressedTexture2D_ccqv3")
+metallic_specular = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8kehk"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sygxl"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noha8"]
+render_priority = 0
+shader = ExtResource("3_w2xjc")
+shader_parameter/colour = SubResource("CompressedTexture2D_sygxl")
+shader_parameter/light_direction = Vector3(0, 0, 0)
+shader_parameter/shadow_threshold = 0.694000032965
+shader_parameter/shadow_darkness = 0.6870000326325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4tos"]
+next_pass = SubResource("ShaderMaterial_noha8")
+albedo_texture = SubResource("CompressedTexture2D_8kehk")
+metallic_specular = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41mhd"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ttusc"]
+load_path = "res://.godot/imported/Kimple.png-44da93e1b1673604e507228c6be90e5c.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb6us"]
+render_priority = 0
+shader = ExtResource("3_w2xjc")
+shader_parameter/colour = SubResource("CompressedTexture2D_ttusc")
+shader_parameter/light_direction = Vector3(0, 0, 0)
+shader_parameter/shadow_threshold = 0.694000032965
+shader_parameter/shadow_darkness = 0.6870000326325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcasy"]
+next_pass = SubResource("ShaderMaterial_lb6us")
+albedo_texture = SubResource("CompressedTexture2D_41mhd")
+metallic_specular = 0.0
+
+[node name="KillerBeanSproject2" unique_id=1222725279 instance=ExtResource("1_ffn5n")]
+script = ExtResource("2_w2xjc")
+
+[node name="pTorus1" parent="." index="2" unique_id=514665865]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_dx2kh")
+
+[node name="pSphere14" parent="group1" parent_id_path=PackedInt32Array(754431297) index="0" unique_id=1549666217]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere13" parent="group1" parent_id_path=PackedInt32Array(754431297) index="1" unique_id=960310012]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere12" parent="group1" parent_id_path=PackedInt32Array(754431297) index="2" unique_id=1712444682]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere11" parent="group1" parent_id_path=PackedInt32Array(754431297) index="3" unique_id=871675352]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere10" parent="group1" parent_id_path=PackedInt32Array(754431297) index="4" unique_id=401765998]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere9" parent="group1" parent_id_path=PackedInt32Array(754431297) index="5" unique_id=532187055]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere8" parent="group1" parent_id_path=PackedInt32Array(754431297) index="6" unique_id=1161882017]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere7" parent="group1" parent_id_path=PackedInt32Array(754431297) index="7" unique_id=355424139]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere6" parent="group1" parent_id_path=PackedInt32Array(754431297) index="8" unique_id=84653856]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere5" parent="group1" parent_id_path=PackedInt32Array(754431297) index="9" unique_id=1788821368]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere4" parent="group1" parent_id_path=PackedInt32Array(754431297) index="10" unique_id=1384364943]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere3" parent="group1" parent_id_path=PackedInt32Array(754431297) index="11" unique_id=1894919261]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere2" parent="group1" parent_id_path=PackedInt32Array(754431297) index="12" unique_id=419547992]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
+
+[node name="pSphere18" parent="group2" parent_id_path=PackedInt32Array(182330847) index="0" unique_id=484490175]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
+
+[node name="pSphere17" parent="group2" parent_id_path=PackedInt32Array(182330847) index="1" unique_id=104652058]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
+
+[node name="pSphere16" parent="group2" parent_id_path=PackedInt32Array(182330847) index="2" unique_id=2112136174]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
+
+[node name="pSphere15" parent="group2" parent_id_path=PackedInt32Array(182330847) index="3" unique_id=260753470]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
+
+[node name="pSphere182" parent="group3" parent_id_path=PackedInt32Array(1986995007) index="0" unique_id=1448267034]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
+
+[node name="pSphere172" parent="group3" parent_id_path=PackedInt32Array(1986995007) index="1" unique_id=2094630713]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
+
+[node name="pSphere162" parent="group3" parent_id_path=PackedInt32Array(1986995007) index="2" unique_id=1881563685]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
+
+[node name="pSphere152" parent="group3" parent_id_path=PackedInt32Array(1986995007) index="3" unique_id=1659598657]
+layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
+
+[node name="Skeleton3D" parent="." index="6" unique_id=157837752]
+bones/2/position = Vector3(-0.016127527, -0.00018402275, -0.00078450044)
+bones/2/rotation = Quaternion(0.0019709144, -0.022833256, 0.08597533, 0.9960337)
+bones/3/position = Vector3(-0.023837008, -0.0002849903, -0.0003614204)
+bones/3/rotation = Quaternion(0.011109655, -0.10620267, 0.069914654, 0.99182135)
+bones/4/position = Vector3(-0.020492828, -4.970132e-05, -0.00028823843)
+bones/4/rotation = Quaternion(-0.047414, 0.9790262, 0.053406682, 0.19080715)
+bones/5/rotation = Quaternion(-0.0009090793, 0.9810452, -0.004740034, -0.19371909)
+bones/6/rotation = Quaternion(-4.2035173e-10, 0, 0, 1)
+bones/7/rotation = Quaternion(-0.004706213, 0.16009293, 0.0010704714, 0.9870902)
+bones/8/rotation = Quaternion(0, 0, -1.1139521e-10, 1)
+bones/9/rotation = Quaternion(-0.004736609, 0.19005722, 0.0009267596, 0.9817612)
+bones/10/rotation = Quaternion(0, 0, 6.4979855e-11, 1)
+bones/11/rotation = Quaternion(-0.0047545214, 0.21003616, 0.0008299858, 0.97768176)
+bones/12/rotation = Quaternion(0, 0, -4.582971e-10, 1)
+bones/13/position = Vector3(0.015628539, -0.00018185625, -0.00063706265)
+bones/13/rotation = Quaternion(1, 6.776008e-06, 3.552627e-05, 2.457195e-05)
+bones/14/position = Vector3(0.023935406, 0.00030002766, 0.0003129515)
+bones/14/rotation = Quaternion(-1.9263762e-05, -4.56776e-06, -1.9812927e-05, 1)
+bones/15/position = Vector3(0.024125097, 3.5011588e-05, 0.0002262038)
+bones/15/rotation = Quaternion(-0.00089918304, 0.9810452, -0.0047419877, 0.19371901)
+bones/16/rotation = Quaternion(-0.0009090793, 0.9810452, -0.0047400338, -0.19371907)
+bones/18/rotation = Quaternion(-0.004706213, 0.16009292, 0.0010704712, 0.9870902)
+bones/20/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
+bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
+
+[node name="pCube2" parent="Skeleton3D" index="0" unique_id=917086110]
+surface_material_override/0 = SubResource("StandardMaterial3D_pcasy")
+
+[node name="R_shoulder_handle" parent="." index="7" unique_id=517125031]
+transform = Transform3D(0.98411846, -0.17165536, -0.045223016, 0.1714744, 0.9851571, -0.007879732, 0.04590437, 4.656613e-10, 0.99894583, -0.016274668, 0.034500763, 0.0006733593)
+
+[node name="R_forearm_handle" parent="R_shoulder_handle" index="0" unique_id=829576860]
+transform = Transform3D(0.96755373, -0.14129311, -0.20946573, 0.1365517, 0.98994154, -0.037002828, 0.21258709, 0.007199326, 0.9771155, -0.023935407, -2.220446e-16, -2.264855e-16)
+
+[node name="R_hand_handle" parent="R_shoulder_handle/R_forearm_handle" index="0" unique_id=1165150646]
+transform = Transform3D(0.99349266, -0.11336738, 0.010963555, 0.11389628, 0.9888792, -0.09563274, 9.313226e-10, 0.09625913, 0.9953563, -0.019824792, 1.7763568e-17, -5.7731595e-17)
+
+[node name="L_shoulder_handle" parent="." index="8" unique_id=171920479]
+transform = Transform3D(1, 5.737975e-09, 2.9613277e-08, -5.7379745e-09, 1, -2.0590907e-08, -2.9613277e-08, 2.0590907e-08, 1, 0.015455847, 0.034500763, 0.0006733593)
+
+[node name="L_forearm_handle" parent="L_shoulder_handle" index="0" unique_id=35417362]
+transform = Transform3D(1, 1.6581998e-08, -3.8528003e-09, -1.6581998e-08, 1, -1.6122083e-08, 3.8528e-09, 1.6122083e-08, 1, 0.0239354, -7.6383345e-16, 6.217249e-17)
+
+[node name="L_hand_handle" parent="L_shoulder_handle/L_forearm_handle" index="0" unique_id=193654531]
+transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
+
+[node name="AnimationPlayer" parent="." index="9" unique_id=775639239]
+speed_scale = 5.0
