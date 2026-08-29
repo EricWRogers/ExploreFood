@@ -2,12 +2,14 @@ extends CharacterBody3D
 
 var speed
 const WALKSPEED = 5.0
-const SPRINTSPEED = 7.0
+const SPRINTSPEED = 12.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
+
 
 
 func _ready():
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("Sprint"):
+	if Input.is_action_pressed("Sprint"):
 		speed = SPRINTSPEED
 	else:
 		speed = WALKSPEED
@@ -41,7 +43,11 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			killer_bean_sproject_2.update_anims()
+			killer_bean_sproject_2.moving = true
 		else:
+			killer_bean_sproject_2.update_anims()
+			killer_bean_sproject_2.moving = false
 			velocity.x = 0.0
 			velocity.z = 0.0
 	else:
