@@ -4,7 +4,7 @@ class_name SaverNode extends Node
 
 const SAVER_NODE_GROUP: String = "saver_node" #group name of the nodes
 
-@export var things_to_save:Array[String] = [] #what were saveing
+@export var things_to_save:Array[String] = [] #what were saving
 var suggested_properties: Array[String] = [] #hold all proporties  can save
 
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +36,7 @@ func get_save_dict() -> Dictionary: #get the stuff for the dict
 	var parent = get_parent()
 	var node_data = {}
 	for prop in things_to_save:
-		print("Saveing property: ", prop)
+		print("Saving property: ", prop)
 		if prop in parent:
 			node_data[prop] = parent.get(prop)
 	return node_data

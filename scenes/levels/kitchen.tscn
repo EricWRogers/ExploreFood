@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://pa70wv8ei3mv"]
 
+[ext_resource type="Script" uid="uid://4efguk5dmknw" path="res://scripts/RoomScripts/saver_node.gd" id="1_o37it"]
 [ext_resource type="PackedScene" uid="uid://fdtx7weq1ytk" path="res://Prefabs/PlayerController.tscn" id="1_p86jp"]
 [ext_resource type="Script" uid="uid://bxjoynl6lc11p" path="res://scenes/levels/door_to_level.gd" id="2_lg3sj"]
 
@@ -40,6 +41,8 @@ transparency = 1
 albedo_color = Color(0.16078432, 0.77254903, 0.95686275, 0.8)
 
 [node name="Kitchen" type="Node3D" unique_id=115598229]
+script = ExtResource("1_o37it")
+things_to_save = Array[String]([""])
 
 [node name="CharacterBody3D" parent="." unique_id=1731430436 groups=["Player"] instance=ExtResource("1_p86jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0212789, 0)
