@@ -25,7 +25,7 @@ enum FlavorType {
 @export var rarity_level : int = 1
 @export var category : FoodType
 @export var flavor : FlavorType
-@export var model : Mesh
+@export var model : ArrayMesh
 @export var mat : Material
 
 # flavor profile

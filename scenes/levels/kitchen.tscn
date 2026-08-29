@@ -27,6 +27,8 @@ albedo_color = Color(0.5449743, 0.54497427, 0.54497427, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmpmc"]
 size = Vector3(1.1855469, 0.9111328, 1.045044)
 
+[sub_resource type="Environment" id="Environment_p86jp"]
+
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 
 [node name="CharacterBody3D" parent="." unique_id=1731430436 instance=ExtResource("1_p86jp")]
@@ -80,6 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09277344, -0.044433594, 0.
 shape = SubResource("BoxShape3D_xmpmc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
+environment = SubResource("Environment_p86jp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
 transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dsw7givxakx7k"]
+
+[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Ingredients/food.tscn" id="1_viy58"]
+[ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="2_rbi6i"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_3j5kh"]
+
+[node name="TerryFood" unique_id=737182758 instance=ExtResource("1_viy58")]
+food_name = "Terry"
+flavor_text = "Abandoned by Mama."
+rarity_level = 0.1
+category = 6
+flavor = 4
+
+[node name="Terry" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713871, 0)
+
+[node name="MeshInstance3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="1" unique_id=1146662064]
+visible = false
+mesh = SubResource("PlaceholderMesh_3j5kh")
+
+[node name="CollisionShape3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="2" unique_id=1691151157]
+visible = false
+disabled = true
