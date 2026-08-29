@@ -5,6 +5,11 @@
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_3j5kh"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_viy58"]
+radius = 1.0970064
+
 [node name="TerryFood" unique_id=737182758 instance=ExtResource("1_viy58")]
 food_name = "Terry"
 flavor_text = "Abandoned by Mama."
@@ -12,13 +17,18 @@ rarity_level = 0.1
 category = 6
 flavor = 4
 
-[node name="Terry" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
+[node name="StaticBody3D#Terry" parent="." index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713871, 0)
 
-[node name="MeshInstance3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="1" unique_id=1146662064]
+[node name="StaticBody3D#MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=1146662064]
 visible = false
 mesh = SubResource("PlaceholderMesh_3j5kh")
 
-[node name="CollisionShape3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(376125766) index="2" unique_id=1691151157]
+[node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1691151157]
 visible = false
+shape = SubResource("SphereShape3D_6xqmx")
 disabled = true
+
+[node name="CollisionShape3D" parent="." index="4" unique_id=1691151157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33267367, 0)
+shape = SubResource("SphereShape3D_viy58")

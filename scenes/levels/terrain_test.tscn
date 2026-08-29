@@ -608,9 +608,12 @@ freeze = true
 
 [node name="TerryFood" parent="FoodEnablerTerry" unique_id=737182758 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.284551, 0, 4.876914)
+rarity_level = 0.9
 
 [node name="TerryFood2" parent="FoodEnablerTerry" unique_id=1455508290 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.47517, 0, -16.635096)
+rarity_level = 0.9
 
 [node name="TerryFood3" parent="FoodEnablerTerry" unique_id=996940590 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.304768, 0, 0)
+rarity_level = 0.9

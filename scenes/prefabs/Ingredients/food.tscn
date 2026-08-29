@@ -6,13 +6,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
 
-[node name="Food" type="Node3D" unique_id=737182758]
+[node name="Food" type="RigidBody3D" unique_id=1169599723]
+freeze = true
 script = ExtResource("1_ydt1i")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=376125766]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1146662064]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146662064]
 mesh = SubResource("PlaceholderMesh_h8hiw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1691151157]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1691151157]
 shape = SubResource("SphereShape3D_6xqmx")
