@@ -1,24 +1,220 @@
 [gd_scene format=3 uid="uid://fdtx7weq1ytk"]
 
-[ext_resource type="Script" uid="uid://ullai81sj3p8" path="res://scripts/character_body_3d.gd" id="1_cokxn"]
+[ext_resource type="Script" uid="uid://kuy5nk16rekr" path="res://scripts/character_body_3d.gd" id="1_cokxn"]
 [ext_resource type="PackedScene" uid="uid://cr33uf2tu8dlc" path="res://Prefabs/characters/player/killer_bean_sproject_2.tscn" id="2_lfbm7"]
+[ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://Prefabs/UI/item_icons/waffle_icon.png" id="3_2o36n"]
+[ext_resource type="Shader" uid="uid://dfxnfoqqcdpw6" path="res://Prefabs/blacktowhite.gdshader" id="3_a6j2n"]
+[ext_resource type="Texture2D" uid="uid://bdp7kevxt62w4" path="res://Prefabs/UI/square-rounded-icon.png" id="4_cebs7"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://Prefabs/UI/item_icons/butterfrog_icon.png" id="6_l87wn"]
+[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://Prefabs/UI/item_icons/terry_icon.png" id="7_l87wn"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b6nve"]
-points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
+height = 3.1015625
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 0.6901961)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cebs7"]
+shader = ExtResource("3_a6j2n")
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436]
+floor_max_angle = 1.314233
 script = ExtResource("1_cokxn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1565848370]
-shape = SubResource("ConvexPolygonShape3D_b6nve")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49416733, 0)
+shape = SubResource("CapsuleShape3D_fxx43")
 
 [node name="Head" type="Node3D" parent="." unique_id=2053960824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5481422, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1917950583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41463578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41463566)
 cull_mask = 1048571
 fov = 100.0
 
 [node name="KillerBeanSproject2" parent="Head" unique_id=1222725279 instance=ExtResource("2_lfbm7")]
 transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252249867]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1643842672]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -421.0
+offset_top = -236.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 63
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=386888154]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=985428522]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer" unique_id=134963597]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer/Panel" unique_id=2024232672]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2o36n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer" unique_id=957196195]
+material = SubResource("ShaderMaterial_cebs7")
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer/TextureRect2" unique_id=2106484667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1954312905]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2" unique_id=840764611]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2/Panel" unique_id=1717381585]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_l87wn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2" unique_id=446606069]
+material = SubResource("ShaderMaterial_cebs7")
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer2/TextureRect" unique_id=396798855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1421288693]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3" unique_id=83725377]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3/Panel" unique_id=1595524295]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l87wn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3" unique_id=2460322]
+material = SubResource("ShaderMaterial_cebs7")
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/VBoxContainer3/TextureRect" unique_id=1008671970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

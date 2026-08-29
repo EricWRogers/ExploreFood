@@ -3,7 +3,7 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 12.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
 
 const BOB_FREQ = 2.0
@@ -17,7 +17,7 @@ const FOV_CHANGE = 1.5
 @onready var camera = $Head/Camera3D
 @onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
 
-
+var hotbar = []
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -31,7 +31,7 @@ func _unhandled_input(event):
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * 3 * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():

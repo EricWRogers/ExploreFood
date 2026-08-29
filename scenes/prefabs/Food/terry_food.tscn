@@ -32,3 +32,6 @@ disabled = true
 [node name="CollisionShape3D" parent="." index="4" unique_id=1691151157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33267367, 0)
 shape = SubResource("SphereShape3D_viy58")
+
+[node name="Node3D" parent="." index="5" unique_id=1982560729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0375543, 0)
