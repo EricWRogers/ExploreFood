@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://odxf33hgn7yt" path="res://Prefabs/environment_pieces/nest/initialShadingGroup-Color.png" id="7_l0ptr"]
 [ext_resource type="Shader" uid="uid://dvgvrqwb4k2s8" path="res://Prefabs/shaders/pixel.gdshader" id="8_v7lih"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://Prefabs/shaders/water.gdshader" id="9_l0ptr"]
+[ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="10_v7lih"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
@@ -374,7 +375,7 @@ texture_albedo_5 = Color(0.71875, 0.71875, 0.71875, 1)
 texture_albedo_6 = Color(0.6640625, 0.6640625, 0.6640625, 1)
 texture_scale_4 = 1.1
 texture_scale_5 = 0.7
-texture_scale_6 = 1.4000000000000001
+texture_scale_6 = 1.4
 texture_scale_11 = 1.1
 texture_scale_13 = 0.9
 texture_scale_14 = 0.9
@@ -593,7 +594,11 @@ surface_material_override/3 = SubResource("StandardMaterial3D_0xy2e")
 surface_material_override/4 = SubResource("StandardMaterial3D_0dw6x")
 surface_material_override/5 = SubResource("StandardMaterial3D_kp3qp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1273085842]
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1273085842]
 transform = Transform3D(273.69427, 0, 0, 0, 1, 0, 0, 0, 220.29225, -81.68875, 0, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
+
+[node name="Terry" parent="." unique_id=150516399 instance=ExtResource("10_v7lih")]
+transform = Transform3D(0.088338576, -0.02439034, -0.99579185, 0.04703643, 0.9986871, -0.020288527, 0.9949793, -0.045046236, 0.08936984, 59.78425, 27.300919, 45.69298)
+freeze = true
