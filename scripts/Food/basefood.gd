@@ -49,3 +49,6 @@ func on_looked_at():
 	
 func on_looked_away():
 	$Node3D/Label3D.hide()
+
+func get_took():
+	queue_free()

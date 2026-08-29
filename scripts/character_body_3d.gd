@@ -90,6 +90,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		if current_target:
 			_exit_target()
+	if Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() < 2:
+		if current_target.has_method("get_took"):
+			current_target.get_took()
+		
 	
 	move_and_slide()
 
