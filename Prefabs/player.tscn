@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fdtx7weq1ytk" path="res://Prefabs/PlayerController.tscn" id="1_y6xdh"]
 
-[node name="Player" type="Node3D" unique_id=1723867934]
+[node name="Player" type="Node3D" unique_id=1723867934 groups=["Player"]]
 
-[node name="CharacterBody3D" parent="." unique_id=1731430436 instance=ExtResource("1_y6xdh")]
+[node name="CharacterBody3D" parent="." unique_id=1731430436 groups=["Player"] instance=ExtResource("1_y6xdh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0915632, 0)

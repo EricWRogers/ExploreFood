@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="11_885wc"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="12_fxx43"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/RoomScripts/floor_boundary.gd" id="13_hvl47"]
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="15_cibvw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
@@ -701,4 +702,8 @@ script = ExtResource("13_hvl47")
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -35.983513, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_q026u")
 
+[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
+transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, -39.215473, 1.2035608, -6.7239914)
+
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]

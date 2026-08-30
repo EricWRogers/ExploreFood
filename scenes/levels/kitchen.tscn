@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://pa70wv8ei3mv"]
 
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/RoomScripts/Level.gd" id="1_ojraw"]
-[ext_resource type="PackedScene" uid="uid://fdtx7weq1ytk" path="res://Prefabs/PlayerController.tscn" id="1_p86jp"]
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://Prefabs/player.tscn" id="2_ojraw"]
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="3_ojraw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 
@@ -30,21 +31,11 @@ size = Vector3(1.345459, 0.9111328, 1.2324066)
 
 [sub_resource type="Environment" id="Environment_p86jp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
-size = Vector3(4.5620117, 4.1798096, 1.0251465)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
-transparency = 1
-albedo_color = Color(0.16078432, 0.77254903, 0.95686275, 0.8)
-
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 script = ExtResource("1_ojraw")
 level_name = "kitchen"
 
-[node name="CharacterBody3D" parent="." unique_id=1731430436 groups=["Player"] instance=ExtResource("1_p86jp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0212789, 0)
+[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
 
@@ -99,19 +90,8 @@ environment = SubResource("Environment_p86jp")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
 transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)
 
-[node name="door" type="Node3D" parent="." unique_id=910491766]
+[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.095158, 0.80431557, 0.04398775)
 
-[node name="Area3D" type="Area3D" parent="door" unique_id=966391317]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door/Area3D" unique_id=1938751722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
-shape = SubResource("BoxShape3D_8ojr3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door" unique_id=1337769628]
-transform = Transform3D(3.9318023, 0, 0, 0, 5.355978, 0, 0, 0, 0.79081064, 0, 1.9260583, 0)
-mesh = SubResource("BoxMesh_6xqmx")
-surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
-
-[connection signal="body_entered" from="door/Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="door/Area3D" to="door/Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
