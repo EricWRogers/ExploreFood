@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsw7givxakx7k"]
 
 [ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Food/food.tscn" id="1_viy58"]
+[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://Prefabs/UI/item_icons/terry_icon.png" id="2_kq814"]
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="2_rbi6i"]
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_3j5kh"]
@@ -12,6 +13,7 @@ radius = 1.0970064
 
 [node name="TerryFood" unique_id=737182758 instance=ExtResource("1_viy58")]
 food_name = "Terry"
+icon = ExtResource("2_kq814")
 flavor_text = "Abandoned by Mama."
 rarity_level = 0.1
 category = 6

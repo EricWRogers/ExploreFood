@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Food/food.tscn" id="1_263la"]
 [ext_resource type="ArrayMesh" uid="uid://bvuxfjiisdp5e" path="res://Prefabs/foods/butterwaffles/waffle.obj" id="2_2t41x"]
+[ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://Prefabs/UI/item_icons/waffle_icon.png" id="2_d0as7"]
 [ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://Prefabs/foods/butterwaffles/waffle.png" id="3_x0co7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpm7d"]
@@ -13,6 +14,7 @@ radius = 1.0029297
 
 [node name="WafflePad" unique_id=1169599723 instance=ExtResource("1_263la")]
 food_name = "Waffle Pad"
+icon = ExtResource("2_d0as7")
 flavor_text = "It's soggy"
 rarity_level = 0.6
 category = 2

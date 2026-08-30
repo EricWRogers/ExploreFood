@@ -90,11 +90,26 @@ func _physics_process(delta: float) -> void:
 	else:
 		if current_target:
 			_exit_target()
-	if Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() < 2:
+	if Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() < 3:
 		if current_target.has_method("get_took"):
+			var target_scene: PackedScene
+			target_scene = load(current_target.scene_file_path)
 			current_target.get_took()
+			if Manager.slot1 == null:
+				Manager.slot1 = target_scene
+				$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = current_target.icon
+				Manager.inventory.append(target_scene)
+			elif Manager.slot2 == null:
+				Manager.slot2 = target_scene
+				$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = current_target.icon
+				Manager.inventory.append(target_scene)
+			elif Manager.slot3 == null:
+				Manager.slot3 = target_scene
+				$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = current_target.icon
+				Manager.inventory.append(target_scene)
 		
 	
+
 	move_and_slide()
 
 func HeadBob(time) -> Vector3:
