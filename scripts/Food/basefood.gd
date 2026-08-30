@@ -37,12 +37,8 @@ func _ready():
 func RollSpawn():
 	var random = randf()
 	
-	if random <= rarity_level:
-		print("I am terry and I survived.")
-	else: 
-		print("Terry Died.")
+	if random >= rarity_level:
 		queue_free()
-		
 
 func on_looked_at():
 	$Node3D/Label3D.show()

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="10_v7lih"]
 [ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="11_885wc"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="12_fxx43"]
+[ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/RoomScripts/floor_boundary.gd" id="13_hvl47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
@@ -361,6 +362,8 @@ shader_parameter/scroll_offset = Vector2(0.1, -0.3)
 shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q026u"]
+
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
 
 [node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=16417450]
@@ -621,3 +624,13 @@ rarity_level = 0.9
 [node name="WafflePad" parent="FoodEnablerTerry" unique_id=1169599723 instance=ExtResource("12_fxx43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.248093, -0.2109356, -40.8686)
 rarity_level = 1.0
+
+[node name="WaterFloor" type="Area3D" parent="." unique_id=270011674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.324411, 0)
+script = ExtResource("13_hvl47")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -35.983513, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_q026u")
+
+[connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
