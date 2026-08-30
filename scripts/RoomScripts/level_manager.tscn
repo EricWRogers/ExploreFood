@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bhtjqqne537hh"]
+
+[ext_resource type="PackedScene" uid="uid://pa70wv8ei3mv" path="res://scenes/levels/kitchen.tscn" id="1_27gbg"]
+[ext_resource type="Script" uid="uid://dxevjnm3htr8j" path="res://scripts/RoomScripts/level_manager.gd" id="1_mnhan"]
+
+[node name="LevelManager" type="Node" unique_id=2118240317]
+script = ExtResource("1_mnhan")
+
+[node name="Kitchen" parent="." unique_id=115598229 instance=ExtResource("1_27gbg")]

@@ -46,8 +46,3 @@ func apply_save_dict(node_data: Dictionary) -> void: #put the stuff in the dict
 	for prop in node_data:
 		if prop in parent:
 			parent.set(prop, node_data[prop])
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

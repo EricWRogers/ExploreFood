@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c6e1k24uvewn0"]
 
+[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/RoomScripts/Level.gd" id="1_6dgx5"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_bdps2"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_o5ppf"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
@@ -365,6 +366,8 @@ shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q026u"]
 
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
+script = ExtResource("1_6dgx5")
+level_name = "terrain_test"
 
 [node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=16417450]
 script = ExtResource("1_bdps2")
