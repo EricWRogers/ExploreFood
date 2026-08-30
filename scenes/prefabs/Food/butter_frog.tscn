@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuudja02uqggj"]
 
 [ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Food/food.tscn" id="1_e7amy"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://Prefabs/UI/item_icons/butterfrog_icon.png" id="2_6qrjq"]
 [ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://Prefabs/foods/butterwaffles/frogbutt.obj" id="2_speix"]
 [ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://Prefabs/foods/butterwaffles/butte.png" id="3_1ydtn"]
 
@@ -18,6 +19,7 @@ height = 1.4306641
 
 [node name="ButterFrog" unique_id=1169599723 instance=ExtResource("1_e7amy")]
 food_name = "Butter Frog"
+icon = ExtResource("2_6qrjq")
 flavor_text = "It has a low melting point."
 rarity_level = 0.4
 category = 4
