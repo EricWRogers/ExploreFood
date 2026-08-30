@@ -55,6 +55,8 @@ func _physics_process(delta: float) -> void:
 		update_slots(2)
 	elif Input.is_action_just_pressed("slot3"):
 		update_slots(3)
+	if Input.is_action_just_pressed("dropthrow"):
+		dropthrow()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
@@ -166,3 +168,16 @@ func update_slots(slot):
 			selected_1.hide()
 			selected_2.hide()
 			selected_3.hide()
+			
+func dropthrow():
+	if current_slot == 0:
+		return
+	match current_slot:
+		1:
+			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
+		2:
+			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
+		3:
+			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
+		0:
+			pass

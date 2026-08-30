@@ -61,6 +61,9 @@ collision_mask = 512
 hit_from_inside = true
 collide_with_areas = true
 
+[node name="FoodSpawn" type="Marker3D" parent="Head/Camera3D" unique_id=836658789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2482054)
+
 [node name="KillerBeanSproject2" parent="Head" unique_id=1222725279 instance=ExtResource("2_lfbm7")]
 transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
 
