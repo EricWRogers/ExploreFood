@@ -1,7 +1,7 @@
 extends Node3D
 
-var holding = false
 var moving = false
+var hold_setter = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,13 +12,36 @@ func _process(delta: float) -> void:
 	pass
 
 func update_anims():
-	if holding == true:
-		hold()
+	#print(str(Manager.holding, ": manager holding"))
+	#print(str(hold_setter, ": hold setter"))
+	#print(str(moving, ": moving"))
+	if Manager.holding == true:
+		if hold_setter == false:
+			hold_setter = true
+			hold()
 		return
+	hold_setter = false
 	if moving == true:
 		run()
 	else:
 		idle()
+		
+func update_held_item(id):
+	reset_held()
+	match id:
+		0:
+			reset_held()
+		1:
+			$Skeleton3D/BoneAttachment3D/Terry.show()
+		2:
+			$Skeleton3D/BoneAttachment3D/Waffle.show()
+		3:
+			$Skeleton3D/BoneAttachment3D/Frogbutt.show()
+		
+func reset_held():
+	$Skeleton3D/BoneAttachment3D/Frogbutt.hide()
+	$Skeleton3D/BoneAttachment3D/Terry.hide()
+	$Skeleton3D/BoneAttachment3D/Waffle.hide()
 
 func hold():
 	$AnimationPlayer.play("Hold")

@@ -107,8 +107,9 @@ func _physics_process(delta: float) -> void:
 				Manager.slot3 = target_scene
 				$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = current_target.icon
 				Manager.inventory.append(target_scene)
-		
-	
+	elif Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() >= 3:
+		if current_target.has_method("get_took"):
+			current_target.get_rolled()
 
 	move_and_slide()
 
@@ -134,6 +135,20 @@ func update_slots(slot):
 	elif slot == current_slot:
 		current_slot = 0
 		#unequip current item
+	var slot_check
+	if current_slot != 0:
+		slot_check = Manager.get("slot" + str(current_slot))
+	if slot_check != null and current_slot != 0:
+		Manager.holding = true
+		var instance = slot_check.instantiate()
+		var id = instance.id
+		killer_bean_sproject_2.update_held_item(id)
+		killer_bean_sproject_2.hold_setter = false
+		killer_bean_sproject_2.update_anims()
+	else:
+		killer_bean_sproject_2.update_held_item(0)
+		Manager.holding = false
+		killer_bean_sproject_2.update_anims()
 	match current_slot:
 		1:
 			selected_1.show()
