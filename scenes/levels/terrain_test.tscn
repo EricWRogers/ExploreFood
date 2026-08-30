@@ -625,8 +625,73 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.304768, 0, 0)
 rarity_level = 0.9
 
 [node name="WafflePad" parent="FoodEnablerTerry" unique_id=1169599723 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.248093, -0.2109356, -40.8686)
-rarity_level = 1.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.926037, -0.16294026, -43.633102)
+
+[node name="WafflePad2" parent="FoodEnablerTerry" unique_id=327291941 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.590844, -0.16294026, -53.113754)
+
+[node name="WafflePad3" parent="FoodEnablerTerry" unique_id=604893148 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.680507, -0.16294026, -47.303917)
+
+[node name="WafflePad4" parent="FoodEnablerTerry" unique_id=1111980156 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.706024, -0.16294026, -13.102459)
+
+[node name="WafflePad5" parent="FoodEnablerTerry" unique_id=8485151 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.14482, -0.16294026, -10.391956)
+
+[node name="WafflePad6" parent="FoodEnablerTerry" unique_id=680614844 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.931114, -0.16294026, -17.489313)
+
+[node name="WafflePad7" parent="FoodEnablerTerry" unique_id=503638909 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.298473, -0.16294026, -14.957203)
+
+[node name="WafflePad8" parent="FoodEnablerTerry" unique_id=1695159908 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.971058, -0.16294026, -35.51701)
+
+[node name="WafflePad9" parent="FoodEnablerTerry" unique_id=948683477 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.971058, -0.20769191, -38.340607)
+
+[node name="WafflePad10" parent="FoodEnablerTerry" unique_id=1219060481 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8484201, -0.1756103, -71.296616)
+
+[node name="WafflePad11" parent="FoodEnablerTerry" unique_id=2074679055 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1903772, -0.1756103, -70.20794)
+
+[node name="WafflePad12" parent="FoodEnablerTerry" unique_id=2073222877 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.061325, -0.1756103, -39.25981)
+
+[node name="WafflePad13" parent="FoodEnablerTerry" unique_id=1486930911 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9366, -0.1756103, -38.739258)
+
+[node name="WafflePad14" parent="FoodEnablerTerry" unique_id=382203470 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.86288, -0.1756103, -25.962101)
+
+[node name="WafflePad15" parent="FoodEnablerTerry" unique_id=1123905603 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.416466, -0.17561221, -4.628525)
+
+[node name="WafflePad16" parent="FoodEnablerTerry" unique_id=2048133315 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.970085, -0.17561221, 2.2334166)
+
+[node name="WafflePad17" parent="FoodEnablerTerry" unique_id=494041522 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.3631, -0.17561221, -0.18106937)
+
+[node name="WafflePad18" parent="FoodEnablerTerry" unique_id=2042256888 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.07192, -0.17561221, 17.128796)
+
+[node name="WafflePad19" parent="FoodEnablerTerry" unique_id=617817865 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.085594, -0.17561221, 25.234465)
+
+[node name="WafflePad20" parent="FoodEnablerTerry" unique_id=2024369116 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.886528, -0.17561221, 31.099817)
+
+[node name="WafflePad21" parent="FoodEnablerTerry" unique_id=469168244 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.815994, -0.17561221, 39.51001)
+
+[node name="WafflePad22" parent="FoodEnablerTerry" unique_id=445458703 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.594093, -0.17561221, 37.0188)
+
+[node name="WafflePad23" parent="FoodEnablerTerry" unique_id=6837746 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.599674, -0.17561412, 45.405685)
 
 [node name="WaterFloor" type="Area3D" parent="." unique_id=270011674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.324411, 0)
