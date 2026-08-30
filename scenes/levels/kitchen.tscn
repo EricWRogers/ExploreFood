@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/RoomScripts/Level.gd" id="1_ojraw"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://Prefabs/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="3_ojraw"]
+[ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/prefabs/Stove.tscn" id="4_o37it"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 
@@ -20,15 +21,6 @@ albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
 size = Vector3(4.8078003, 0.9243164, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_q026u"]
-size = Vector3(1.1860352, 0.90734863, 1.0411377)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1ff7"]
-albedo_color = Color(0.5449743, 0.54497427, 0.54497427, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xmpmc"]
-size = Vector3(1.345459, 0.9111328, 1.2324066)
-
 [sub_resource type="Environment" id="Environment_p86jp"]
 
 [node name="Kitchen" type="Node3D" unique_id=115598229]
@@ -36,6 +28,7 @@ script = ExtResource("1_ojraw")
 level_name = "kitchen"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
+transform = Transform3D(0.6101532, 0, -0.7922835, 0, 1, 0, 0.7922835, 0, 0.6101532, -2.891315, 0, 2.7615323)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
 
@@ -49,7 +42,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_klsck")
 
 [node name="KitchenItem" type="StaticBody3D" parent="." unique_id=1751525550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5543966, 0.50430644, -7.546567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4802449, 0.50430644, -7.546567)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem" unique_id=2034597457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.275372, -0.05555415, 0.0015096664)
@@ -72,18 +65,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
 shape = SubResource("BoxShape3D_6xqmx")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=821538341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7388624, 0.513542, -7.547062)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1105971164]
-transform = Transform3D(1.0838518, 0, 0, 0, 1, 0, 0, 0, 1.1155739, -0.09301758, -0.046325684, 0.020568848)
-mesh = SubResource("BoxMesh_q026u")
-surface_material_override/0 = SubResource("StandardMaterial3D_k1ff7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1565020774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083618164, -0.044433594, 0.016563416)
-shape = SubResource("BoxShape3D_xmpmc")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -92,6 +73,9 @@ transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.095158, 0.80431557, 0.04398775)
+
+[node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 0.5100987, -7.4601088)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]

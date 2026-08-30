@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ccjolq6yl5xle"]
 
+[ext_resource type="Script" uid="uid://yvbge8cnq421" path="res://scripts/Food/RecipeManager.gd" id="1_kdyym"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_klsck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
@@ -8,7 +10,8 @@
 height = 2.3417969
 radius = 0.84033203
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=1286557195]
+[node name="Stove" type="StaticBody3D" unique_id=1286557195]
+script = ExtResource("1_kdyym")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1158553417]
 mesh = SubResource("BoxMesh_klsck")
@@ -21,3 +24,5 @@ shape = SubResource("BoxShape3D_klsck")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1933259084]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6729763, 0)
 shape = SubResource("CylinderShape3D_6xqmx")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

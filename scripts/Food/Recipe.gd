@@ -1,6 +1,5 @@
-extends Resource
-class_name Recipe
+class_name Recipe extends Resource
 
-@export var name: String
-@export var ingredients : Dictionary[ingredient_resource, int]
-@export var product : Meal
+@export var recipe_name: String
+@export var ingredients : Dictionary[Manager.FoodType, int]
+@export var product : PackedScene
