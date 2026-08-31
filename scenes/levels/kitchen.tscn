@@ -21,6 +21,11 @@ albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
 size = Vector3(4.8078003, 0.9243164, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
+size = Vector3(2.7417297, 1.0291748, 1.8994141)
+
 [sub_resource type="Environment" id="Environment_p86jp"]
 
 [node name="Kitchen" type="Node3D" unique_id=115598229]
@@ -65,11 +70,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
 shape = SubResource("BoxShape3D_6xqmx")
 
+[node name="Table" type="StaticBody3D" parent="." unique_id=1998093064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.133089, 0.523394, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table" unique_id=990354335]
+transform = Transform3D(2.716239, 0, 0, 0, 1.0529244, 0, 0, 0, 1.905, 0, 0, 0)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=1711830315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013275146, 0.014587402, -0.0034179688)
+shape = SubResource("BoxShape3D_klsck")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
-transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)
+transform = Transform3D(-0.6837663, -0.51379037, -0.51815385, -0.45327017, -0.25741777, 0.8533947, -0.5718479, 0.8183861, -0.05687225, 0, 7.943308, 0)
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
 transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.42583537, 11.095158, 0.80431557, -4.8979096)
@@ -77,5 +94,8 @@ transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 1.5400779, 0.10557747)
 
-[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1234284931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 1.7, 0)
+
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]

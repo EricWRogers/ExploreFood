@@ -10,7 +10,7 @@ var food_types : Array
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("create_icon"):
 		find_recipe()
 
@@ -29,23 +29,32 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func find_recipe():
 	var current_recipe
-	var chosen
+	var chosen_recipe
+	
 	for item in recipes: 
 		for i_types in food_types: 
 			if i_types in item.ingredients:
 				current_recipe = item
-				print(current_recipe)
+				#print(current_recipe)
 			else:
 				current_recipe = null
 			continue
 		if current_recipe:
-			print(current_recipe)
-			print("make chicken")
-			chosen = current_recipe
-			return chosen
+			print("make meal")
+			chosen_recipe = current_recipe
 		else:
 			print("dubious")
-			chosen = "Dubious"
-			return chosen
-		
-	return chosen
+			chosen_recipe = recipes[0] #dubious food
+	
+	print("current recipe: ", current_recipe)
+	
+	#spawn chosen food
+	print(chosen_recipe.product) 
+	var current_scene = get_tree().current_scene
+	var recipe_spawn = chosen_recipe.product.instantiate()
+	current_scene.add_child(recipe_spawn)
+	recipe_spawn.position = Vector3(-4.1,1.7,0)
+	
+	#empty list
+	food_types = []
+	#return chosen_recipe

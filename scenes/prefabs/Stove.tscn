@@ -15,7 +15,7 @@ radius = 2.2929688
 
 [node name="Pot" type="StaticBody3D" unique_id=1286557195]
 script = ExtResource("1_kdyym")
-recipes = [ExtResource("2_ftv3t"), ExtResource("3_i1pkh")]
+recipes = Array[Resource]([ExtResource("3_i1pkh"), ExtResource("2_ftv3t")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1158553417]
 transform = Transform3D(-1, 1.5099582e-07, -1.509958e-07, 1.509958e-07, 1, 8.742278e-08, 1.5099582e-07, 8.7422755e-08, -1, 0, -1.4735782, 0)

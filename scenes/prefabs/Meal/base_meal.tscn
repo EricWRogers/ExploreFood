@@ -1,15 +1,39 @@
 [gd_scene format=3 uid="uid://c2rqvns1x25my"]
 
+[ext_resource type="Script" uid="uid://depb7mr6v735r" path="res://scripts/Food/BaseMeal.gd" id="1_aflix"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://Prefabs/UI/square-rounded-icon_white.png" id="2_jq832"]
+
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6xqmx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klsck"]
 
-[node name="BaseMeal" type="Node3D" unique_id=1554097360]
+[node name="BaseMeal" type="RigidBody3D" unique_id=1546410034]
+script = ExtResource("1_aflix")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=12225848]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1675912402]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1675912402]
 mesh = SubResource("PlaceholderMesh_6xqmx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1195127627]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1195127627]
 shape = SubResource("SphereShape3D_klsck")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1476605985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9191061, 0)
+visible = false
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=447019848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10539091, 0)
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "E"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=1877435745]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0997715, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("2_jq832")
