@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-#var cheesecake : Array #array of food types
+@export var lvl_manager: Node
 @export var recipes : Array[Resource]
 var food_types : Array
 
@@ -8,7 +8,7 @@ var food_types : Array
 #list of current foods in array
 
 func _ready() -> void:
-	pass
+	lvl_manager = $"../.."
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("create_icon"):
@@ -50,11 +50,11 @@ func find_recipe():
 	
 	#spawn chosen food
 	print(chosen_recipe.product) 
-	var current_scene = get_tree().current_scene
+	var current_scene = lvl_manager.current_level
 	var recipe_spawn = chosen_recipe.product.instantiate()
 	current_scene.add_child(recipe_spawn)
 	recipe_spawn.position = Vector3(-4.1,1.7,0)
 	
-	#empty list
+	#empty list for next batch
 	food_types = []
-	#return chosen_recipe
+	return

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_ra8g3")
 recipe_name = "Chicken and Waffle"
-ingredients = Array[int]([7, 5, 4])
+ingredients = Array[int]([7, 2, 4])
 product = ExtResource("1_fno60")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
