@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/RoomScripts/floor_boundary.gd" id="13_hvl47"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="15_cibvw"]
 [ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/prefabs/willow_tree.tscn" id="16_qlq6c"]
+[ext_resource type="Script" uid="uid://dsrxs0x5n2c1l" path="res://scripts/dough_babies_movment.gd" id="17_837e2"]
+[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/prefabs/Food/dough_baby.tscn" id="18_15qdo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_837e2"]
 load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
@@ -375,6 +377,21 @@ shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q026u"]
+
+[sub_resource type="Curve3D" id="Curve3D_0xy2e"]
+_data = {
+"points": PackedVector3Array(-1.1240635, 0, 1.1266613, 1.1240635, 0, -1.1266613, 25.104456, 0, -19.600464, -2.5839348, 0, -2.512394, 2.5839348, 0, 2.512394, 31.83414, 0.00012207031, -19.473488, 1.4864025, 0, -1.3806458, -1.4864025, 0, 1.3806458, 31.643686, 0, -12.870778, 3.6045208, 0, 2.8951845, -3.6045208, 0, -2.8951845, 24.913996, 0, -12.973456),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_837e2"]
+closed = true
+_data = {
+"points": PackedVector3Array(-1.5566788, 0, 2.977005, 1.5566788, 0, -2.977005, 37.343994, 17.086748, 88.786476, -2.1790276, 0, -2.164894, 2.1790276, 0, 2.164894, 44.490566, 17.598866, 88.569916, 1.123558, 0, -2.6521606, -1.123558, 0, 2.6521606, 44.81541, 17.224735, 94.90437, 0.55480576, 0, 0.8113785, -0.55480576, 0, -0.8113785, 37.93954, 17.417845, 94.850235),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
 script = ExtResource("1_6dgx5")
@@ -736,6 +753,30 @@ transform = Transform3D(0.8197799, 0, -0.57267845, 0, 1, 0, 0.57267845, 0, 0.819
 
 [node name="WillowTree6" parent="." unique_id=1811031424 instance=ExtResource("16_qlq6c")]
 transform = Transform3D(0.8543047, 0, 0.51977223, 0, 1, 0, -0.51977223, 0, 0.8543047, -143.55373, 0, 66.698)
+
+[node name="DoughBabies" type="Node3D" parent="." unique_id=448392506]
+script = ExtResource("17_837e2")
+
+[node name="Path1" type="Path3D" parent="DoughBabies" unique_id=1806668872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5280428, 0)
+curve = SubResource("Curve3D_0xy2e")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="DoughBabies/Path1" unique_id=1495259812]
+transform = Transform3D(0.33284327, -2.0474394e-05, -0.94297504, -6.8019567e-06, 0.9999984, -2.4113218e-05, 0.9429726, 1.4440197e-05, 0.33284417, 26.83415, 3.3168937e-05, -20.648031)
+progress = 2.0380058
+
+[node name="DoughBaby" parent="DoughBabies/Path1/PathFollow3D" unique_id=204738622 instance=ExtResource("18_15qdo")]
+
+[node name="Path2" type="Path3D" parent="DoughBabies" unique_id=647348227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.250412, 0)
+curve = SubResource("Curve3D_837e2")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="DoughBabies/Path2" unique_id=336131471]
+transform = Transform3D(0.8861448, 1.2898126e-07, -0.46336642, -1.455509e-07, 0.9999769, -7.1052944e-15, 0.46336597, 6.744443e-08, 0.88614565, 37.343998, 17.086742, 88.78648)
+progress = 29.621658
+
+[node name="DoughBaby" parent="DoughBabies/Path2/PathFollow3D" unique_id=1843188911 instance=ExtResource("18_15qdo")]
+transform = Transform3D(0.88616574, 0, 0.4633769, 0, 1, 0, -0.4633769, 0, 0.88616574, 0, 0, 0)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
