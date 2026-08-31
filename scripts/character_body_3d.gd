@@ -14,6 +14,8 @@ const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
 
 @onready var raycast = $Head/Camera3D/RayCast3D
+@onready var food_spawn: Marker3D = $Head/Camera3D/FoodSpawn
+
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -174,7 +176,18 @@ func dropthrow():
 		return
 	match current_slot:
 		1:
+			if Manager.slot1 == null:
+				return
 			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
+			var drop = Manager.slot1.instantiate()
+			var current_scene = get_tree().current_scene
+			drop.rarity_level = 1
+			current_scene.add_child(drop)
+			drop.freeze = false
+			drop.global_position = food_spawn.global_position
+			Manager.inventory.pop_front()
+			print(Manager.slot1)
+			Manager.slot1 = null
 		2:
 			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
 		3:
