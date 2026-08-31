@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bxew2y8rvup63"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpmr4pmukbcaf" path="res://Prefabs/environment_pieces/willowtree/willowtreeface.obj" id="1_ubnur"]
+[ext_resource type="Texture2D" uid="uid://bflmocjyiboae" path="res://Prefabs/environment_pieces/willowtree/eyepupilcolor.png" id="2_lo2pw"]
+[ext_resource type="Texture2D" uid="uid://byoddexfsmqit" path="res://Prefabs/environment_pieces/willowtree/eyelid2color.png" id="3_jwp3e"]
+[ext_resource type="Texture2D" uid="uid://qsgp15l87kuw" path="res://Prefabs/environment_pieces/willowtree/barkcolor.png" id="4_woq81"]
+[ext_resource type="Texture2D" uid="uid://3aey0a4mr67n" path="res://Prefabs/environment_pieces/willowtree/eyewhitecolor.png" id="5_36yok"]
+[ext_resource type="Texture2D" uid="uid://qpsvm1fruy7f" path="res://Prefabs/environment_pieces/willowtree/eyelidcolor.png" id="6_g4vpt"]
+[ext_resource type="Material" uid="uid://dqh5ha16w26gv" path="res://Prefabs/environment_pieces/willowtree/new_standard_material_3d.tres" id="7_ubnur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amb4k"]
+albedo_texture = ExtResource("2_lo2pw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhpge"]
+albedo_texture = ExtResource("3_jwp3e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmm6b"]
+albedo_texture = ExtResource("4_woq81")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6on4g"]
+albedo_texture = ExtResource("5_36yok")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy1w0"]
+albedo_texture = ExtResource("2_lo2pw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdgmp"]
+albedo_texture = ExtResource("3_jwp3e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f46x0"]
+albedo_texture = ExtResource("6_g4vpt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g36p7"]
+albedo_texture = ExtResource("5_36yok")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pulf4"]
+albedo_texture = ExtResource("4_woq81")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvvgx"]
+albedo_texture = ExtResource("4_woq81")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpfbr"]
+albedo_texture = ExtResource("4_woq81")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yquhu"]
+albedo_texture = ExtResource("4_woq81")
+
+[node name="WillowTree" type="Node3D" unique_id=33723002]
+
+[node name="Willowtreeface" type="MeshInstance3D" parent="." unique_id=1066924636]
+mesh = ExtResource("1_ubnur")
+surface_material_override/0 = SubResource("StandardMaterial3D_amb4k")
+surface_material_override/1 = SubResource("StandardMaterial3D_uhpge")
+surface_material_override/2 = SubResource("StandardMaterial3D_gmm6b")
+surface_material_override/3 = SubResource("StandardMaterial3D_6on4g")
+surface_material_override/4 = SubResource("StandardMaterial3D_vy1w0")
+surface_material_override/5 = SubResource("StandardMaterial3D_xdgmp")
+surface_material_override/6 = SubResource("StandardMaterial3D_f46x0")
+surface_material_override/7 = SubResource("StandardMaterial3D_g36p7")
+surface_material_override/8 = SubResource("StandardMaterial3D_pulf4")
+surface_material_override/9 = SubResource("StandardMaterial3D_uvvgx")
+surface_material_override/10 = SubResource("StandardMaterial3D_rpfbr")
+surface_material_override/11 = SubResource("StandardMaterial3D_yquhu")
+surface_material_override/12 = ExtResource("7_ubnur")

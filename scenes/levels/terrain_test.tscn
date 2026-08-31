@@ -15,10 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="12_fxx43"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/RoomScripts/floor_boundary.gd" id="13_hvl47"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="15_cibvw"]
+[ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/prefabs/willow_tree.tscn" id="16_qlq6c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_837e2"]
+load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0iuo"]
+load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
-shader_parameter/sky_color = Color(1, 0.44, 0.44, 1)
+shader_parameter/sky_color = Color(1, 0.69, 0.69, 1)
 shader_parameter/horizon_color = Color(1, 0.5, 0.5, 1)
 shader_parameter/horizon_blur = 0.11200000532
 shader_parameter/sun_color = Color(0.99, 0.95, 1, 1)
@@ -35,6 +42,9 @@ sky_material = SubResource("ShaderMaterial_7ufli")
 [sub_resource type="Environment" id="Environment_lg1c5"]
 background_mode = 2
 sky = SubResource("Sky_ij18k")
+glow_enabled = true
+glow_bloom = 0.1
+adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y6xdh"]
 render_priority = 0
@@ -376,15 +386,19 @@ data_directory = "res://scenes/levels/terrain_test_TerrainData/MarchingSquaresTe
 _storage_initialized = true
 animation_fps = 1
 grass_size = Vector2(0.8, 0.8)
-texture_albedo_1 = Color(1, 0.7385254, 0.40234375, 1)
+grass_sprite_tex_1 = SubResource("CompressedTexture2D_837e2")
+grass_sprite_tex_4 = SubResource("CompressedTexture2D_x0iuo")
+texture_albedo_1 = Color(1, 0.72617644, 0.4235294, 1)
 texture_albedo_2 = Color(1, 0.3254902, 0.38431373, 1)
 texture_albedo_3 = Color(0.99607843, 0.19215687, 0.29411766, 1)
-texture_albedo_4 = Color(0.62890625, 0.62890625, 0.62890625, 1)
+texture_albedo_4 = Color(0.759375, 0.40816405, 0.40816405, 1)
 texture_albedo_5 = Color(0.71875, 0.71875, 0.71875, 1)
-texture_albedo_6 = Color(0.6640625, 0.6640625, 0.6640625, 1)
-texture_scale_4 = 1.1
-texture_scale_5 = 0.7
-texture_scale_6 = 1.4
+texture_albedo_6 = Color(0.965625, 0.7906055, 0.8529561, 1)
+texture_scale_1 = 0.9
+texture_scale_4 = 1.2000000000000002
+texture_scale_5 = 0.7999999999999999
+texture_scale_6 = 1.3
+texture_scale_7 = 1.1
 texture_scale_11 = 1.1
 texture_scale_13 = 0.9
 texture_scale_14 = 0.9
@@ -588,7 +602,7 @@ script = ExtResource("3_s745a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3860283, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
-transform = Transform3D(1, 0, 0, 0, -0.914439, 0.4047237, 0, -0.4047237, -0.914439, 0, 76.32601, -88.96426)
+transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297952523]
 environment = SubResource("Environment_lg1c5")
@@ -704,6 +718,24 @@ shape = SubResource("WorldBoundaryShape3D_q026u")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
 transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, -39.215473, 1.2035608, -6.7239914)
+
+[node name="WillowTree" parent="." unique_id=33723002 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(0.9056104, 0, -0.42411065, 0, 1, 0, 0.42411065, 0, 0.9056104, -73.417206, 0, -50.61367)
+
+[node name="WillowTree2" parent="." unique_id=1952574857 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(0.5386241, 0, -0.84254605, 0, 1, 0, 0.84254605, 0, 0.5386241, -88.83849, 0, -23.837528)
+
+[node name="WillowTree3" parent="." unique_id=206320130 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(0.501156, 0, 0.8653568, 0, 1, 0, -0.8653568, 0, 0.501156, 0.33769608, 0, -79.48337)
+
+[node name="WillowTree4" parent="." unique_id=2029563646 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(-0.12242449, 0, -0.99247766, 0, 1, 0, 0.99247766, 0, -0.12242449, -22.169718, 0, -77.13224)
+
+[node name="WillowTree5" parent="." unique_id=1028815480 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(0.8197799, 0, -0.57267845, 0, 1, 0, 0.57267845, 0, 0.8197799, -139.68835, 0, 47.067886)
+
+[node name="WillowTree6" parent="." unique_id=1811031424 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(0.8543047, 0, 0.51977223, 0, 1, 0, -0.51977223, 0, 0.8543047, -143.55373, 0, 66.698)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
