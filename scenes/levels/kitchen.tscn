@@ -42,7 +42,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_klsck")
 
 [node name="KitchenItem" type="StaticBody3D" parent="." unique_id=1751525550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4802449, 0.50430644, -7.546567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2319531, 0.50430644, -9.266022)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem" unique_id=2034597457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.275372, -0.05555415, 0.0015096664)
@@ -54,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
 shape = SubResource("BoxShape3D_6xqmx")
 
 [node name="KitchenItem2" type="StaticBody3D" parent="." unique_id=326218408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4456034, 0.50430644, -7.546567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8463454, 0.50430644, -9.347161)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem2" unique_id=1766783043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9294546, -0.041168213, 0)
@@ -72,10 +72,10 @@ environment = SubResource("Environment_p86jp")
 transform = Transform3D(-0.98974437, -0.08042361, -0.1180602, -0.08568105, -0.32707736, 0.9411052, -0.1143019, 0.94156915, 0.31683215, 0, 7.943308, 0)
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.095158, 0.80431557, 0.04398775)
+transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.42583537, 11.095158, 0.80431557, -4.8979096)
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 0.5100987, -7.4601088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 0.5100987, 0.10557747)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]

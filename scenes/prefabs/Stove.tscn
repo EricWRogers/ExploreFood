@@ -2,27 +2,32 @@
 
 [ext_resource type="Script" uid="uid://yvbge8cnq421" path="res://scripts/Food/RecipeManager.gd" id="1_kdyym"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_klsck"]
+[sub_resource type="SphereMesh" id="SphereMesh_o37it"]
+is_hemisphere = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pjiih"]
+height = 1.5410156
+radius = 3.8007813
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6xqmx"]
-height = 2.3417969
-radius = 0.84033203
+height = 4.175049
+radius = 3.7514648
 
-[node name="Stove" type="StaticBody3D" unique_id=1286557195]
+[node name="Pot" type="StaticBody3D" unique_id=1286557195]
 script = ExtResource("1_kdyym")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1158553417]
-mesh = SubResource("BoxMesh_klsck")
+transform = Transform3D(-8, 1.509958e-07, 0, -1.2079664e-06, -1, 0, 0, 0, 8, 0, 0.50463223, 0)
+mesh = SubResource("SphereMesh_o37it")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2140663202]
-shape = SubResource("BoxShape3D_klsck")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22949266, 0)
+shape = SubResource("CylinderShape3D_pjiih")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1797385503]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1933259084]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6729763, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4533718, 0)
 shape = SubResource("CylinderShape3D_6xqmx")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
