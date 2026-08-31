@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://be70reqeecewm"]
+
+[ext_resource type="ArrayMesh" uid="uid://b1fsykp0g6vnn" path="res://Prefabs/foods/DoughBaby/DoughBaby.obj" id="1_l4gp6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtwna"]
+albedo_color = Color(0.8115353, 0.52164364, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtwna"]
+
+[node name="DoughBaby" type="Node3D" unique_id=204738622]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1069736448]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=247206209]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.2851925, -1.3542506, -1.4155788)
+material_override = SubResource("StandardMaterial3D_gtwna")
+mesh = ExtResource("1_l4gp6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=193634790]
+shape = SubResource("BoxShape3D_gtwna")

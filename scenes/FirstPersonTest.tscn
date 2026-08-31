@@ -23,6 +23,14 @@ albedo_color = Color(0, 1, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6nve"]
 albedo_color = Color(0, 0, 1, 1)
 
+[sub_resource type="Curve3D" id="Curve3D_k6u4x"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -25.352278, 0.24987793, -10.947639, -1.6634007, 0, -2.8987603, 1.6634007, 0, 2.8987603, -19.41385, 0.24987793, -10.77298, 0, 0, 0, 0, 0, 0, -19.501183, 0.24987793, 0.17063761, 0, 0, 0, 0, 0, 0, -25.424927, 0.24987793, 0.41809702),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="FirstPersonTest" type="Node3D" unique_id=1317290939]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1504494659]
@@ -110,3 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.589477, 2.0390646, 5.203515
 material_override = SubResource("StandardMaterial3D_b6nve")
 use_collision = true
 size = Vector3(2.5, 0.5, 2.5)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=999708909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.40953, 0, 0)
+curve = SubResource("Curve3D_k6u4x")
