@@ -28,7 +28,7 @@ script = ExtResource("1_ojraw")
 level_name = "kitchen"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
-transform = Transform3D(0.6101532, 0, -0.7922835, 0, 1, 0, 0.7922835, 0, 0.6101532, -2.891315, 0, 2.7615323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.6052794)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
 
@@ -77,5 +77,5 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.0
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 0.5100987, -7.4601088)
 
-[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
