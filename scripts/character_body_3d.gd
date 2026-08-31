@@ -14,6 +14,8 @@ const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
 
 @onready var raycast = $Head/Camera3D/RayCast3D
+@onready var food_spawn: Marker3D = $Head/Camera3D/FoodSpawn
+
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -28,6 +30,15 @@ var current_slot = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Manager.slot1 != null:
+		var get_slot = Manager.slot1.instantiate()
+		$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = get_slot.icon
+	if Manager.slot2 != null:
+		var get_slot = Manager.slot2.instantiate()
+		$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = get_slot.icon
+	if Manager.slot3 != null:
+		var get_slot = Manager.slot3.instantiate()
+		$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = get_slot.icon
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -174,10 +185,49 @@ func dropthrow():
 		return
 	match current_slot:
 		1:
+			if Manager.slot1 == null:
+				return
 			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
+			var drop = Manager.slot1.instantiate()
+			var current_scene = get_tree().current_scene
+			drop.rarity_level = 1
+			current_scene.add_child(drop)
+			drop.freeze = false
+			drop.global_position = food_spawn.global_position
+			Manager.inventory.pop_front()
+			Manager.slot1 = null
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
 		2:
+			if Manager.slot2 == null:
+				return
 			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
+			var drop = Manager.slot2.instantiate()
+			var current_scene = get_tree().current_scene
+			drop.rarity_level = 1
+			current_scene.add_child(drop)
+			drop.freeze = false
+			drop.global_position = food_spawn.global_position
+			Manager.inventory.pop_front()
+			Manager.slot2 = null
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
 		3:
+			if Manager.slot3 == null:
+				return
 			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
+			var drop = Manager.slot3.instantiate()
+			var current_scene = get_tree().current_scene
+			drop.rarity_level = 1
+			current_scene.add_child(drop)
+			drop.freeze = false
+			drop.global_position = food_spawn.global_position
+			Manager.inventory.pop_front()
+			Manager.slot3 = null
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
 		0:
 			pass
