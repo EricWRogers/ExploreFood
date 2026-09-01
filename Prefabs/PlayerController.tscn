@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bdp7kevxt62w4" path="res://Prefabs/UI/square-rounded-icon.png" id="4_cebs7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
-height = 3.1015625
+height = 3.315918
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
 bg_color = Color(1, 1, 1, 0)
@@ -43,7 +43,7 @@ floor_max_angle = 1.314233
 script = ExtResource("1_cokxn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1565848370]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49416733, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.60134506, 0)
 shape = SubResource("CapsuleShape3D_fxx43")
 
 [node name="Head" type="Node3D" parent="." unique_id=2053960824]

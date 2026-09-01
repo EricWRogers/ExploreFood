@@ -843,6 +843,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ccqv3")
 
 [node name="WafflesChicken" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" index="3" unique_id=338543260]
 transform = Transform3D(0.009763073, -0.00040674547, -0.005265665, 0.0037484327, 0.008329912, 0.006306539, 0.0037204805, -0.007325127, 0.007463975, 2.3175031e-05, 0.01574666, -8.627772e-05)
+visible = false
 mesh = ExtResource("10_ccqv3")
 surface_material_override/0 = SubResource("StandardMaterial3D_8kehk")
 surface_material_override/1 = SubResource("StandardMaterial3D_sygxl")
