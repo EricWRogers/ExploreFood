@@ -94,6 +94,9 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5h0bk"]
+radius = 0.67103606
+
 [node name="MysteryMeat" unique_id=1169599723 instance=ExtResource("1_fgxyh")]
 food_name = "Mystery Meat"
 icon = ExtResource("2_0ffux")
@@ -106,3 +109,6 @@ id = 8
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 material_overlay = SubResource("ShaderMaterial_glbkg")
 mesh = ExtResource("3_0ffux")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1691151157]
+shape = SubResource("SphereShape3D_5h0bk")
