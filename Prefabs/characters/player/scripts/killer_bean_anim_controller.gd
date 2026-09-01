@@ -40,7 +40,13 @@ func update_held_item(id):
 		4:
 			$Skeleton3D/BoneAttachment3D/WafflesChicken.show()
 		5:
-			$Skeleton3D/BoneAttachment3D/TearBaby.show()
+			$Skeleton3D/BoneAttachment3D/Bebeh.show()
+		6:
+			$Skeleton3D/BoneAttachment3D/MeatPockets.show()
+		7:
+			$Skeleton3D/BoneAttachment3D/DoughBebeh.show()
+		8:
+			$Skeleton3D/BoneAttachment3D/MeatBall.show()
 		
 func reset_held():
 	$Skeleton3D/BoneAttachment3D/Frogbutt.hide()
@@ -48,6 +54,9 @@ func reset_held():
 	$Skeleton3D/BoneAttachment3D/Waffle.hide()
 	$Skeleton3D/BoneAttachment3D/WafflesChicken.hide()
 	$Skeleton3D/BoneAttachment3D/Bebeh.hide()
+	$Skeleton3D/BoneAttachment3D/MeatPockets.hide()
+	$Skeleton3D/BoneAttachment3D/DoughBebeh.hide()
+	$Skeleton3D/BoneAttachment3D/MeatBall.hide()
 
 func hold():
 	$AnimationPlayer.play("Hold")
