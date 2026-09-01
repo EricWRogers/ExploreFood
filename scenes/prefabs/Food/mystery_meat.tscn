@@ -99,7 +99,7 @@ food_name = "Mystery Meat"
 icon = ExtResource("2_0ffux")
 flavor_text = "Iunno"
 rarity_level = 0.68
-category = 8
+category = 7
 flavor = 6
 id = 8
 

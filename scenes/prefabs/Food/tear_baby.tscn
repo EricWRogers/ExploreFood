@@ -108,7 +108,7 @@ food_name = "Wah"
 icon = ExtResource("2_fstlp")
 flavor_text = "I jus borned."
 rarity_level = 0.25
-category = 5
+category = 1
 rand_spin = false
 id = 5
 
