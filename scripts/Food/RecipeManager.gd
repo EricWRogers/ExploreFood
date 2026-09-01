@@ -42,7 +42,6 @@ func find_recipe():
 		else:
 			print("you made shit")
 			chosen_recipe = recipes[-1]
-			break
 		
 		#if current_recipe:
 			#print("make meal")
