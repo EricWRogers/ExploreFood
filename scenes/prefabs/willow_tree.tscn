@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3aey0a4mr67n" path="res://Prefabs/environment_pieces/willowtree/eyewhitecolor.png" id="5_36yok"]
 [ext_resource type="Texture2D" uid="uid://qpsvm1fruy7f" path="res://Prefabs/environment_pieces/willowtree/eyelidcolor.png" id="6_g4vpt"]
 [ext_resource type="Material" uid="uid://dqh5ha16w26gv" path="res://Prefabs/environment_pieces/willowtree/new_standard_material_3d.tres" id="7_ubnur"]
+[ext_resource type="PackedScene" uid="uid://h28gv01dvguc" path="res://scenes/prefabs/Food/tear_baby.tscn" id="8_lo2pw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amb4k"]
 albedo_texture = ExtResource("2_lo2pw")
@@ -44,6 +45,10 @@ albedo_texture = ExtResource("4_woq81")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yquhu"]
 albedo_texture = ExtResource("4_woq81")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
+height = 15.63501
+radius = 1.6899414
+
 [node name="WillowTree" type="Node3D" unique_id=33723002]
 
 [node name="Willowtreeface" type="MeshInstance3D" parent="." unique_id=1066924636]
@@ -61,3 +66,15 @@ surface_material_override/9 = SubResource("StandardMaterial3D_uvvgx")
 surface_material_override/10 = SubResource("StandardMaterial3D_rpfbr")
 surface_material_override/11 = SubResource("StandardMaterial3D_yquhu")
 surface_material_override/12 = ExtResource("7_ubnur")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=878162790]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1687963009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32590342, 6.817505, 0)
+shape = SubResource("CylinderShape3D_lg1c5")
+
+[node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("8_lo2pw")]
+transform = Transform3D(0.20109345, -1.1353619e-08, -0.9795721, -0.44843507, 0.8890623, -0.0920579, 0.87090063, 0.45778665, 0.17878458, 1.658797, 2.6616786, -1.7880185)
+
+[node name="TearBaby2" parent="." unique_id=731904649 instance=ExtResource("8_lo2pw")]
+transform = Transform3D(-0.2470739, 0.12330615, -0.96111923, 0.26697528, 0.96214384, 0.05480654, 0.9314929, -0.2430538, -0.27064025, 1.0091777, 2.4909098, 2.0288668)

@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://Prefabs/foods/butterwaffles/frogbutt.obj" id="7_rafff"]
 [ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://Prefabs/foods/butterwaffles/butte.png" id="8_hv2mb"]
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/prefabs/Meal/chicken_and_waffle.tscn" id="9_hv2mb"]
+[ext_resource type="PackedScene" uid="uid://h28gv01dvguc" path="res://scenes/prefabs/Food/tear_baby.tscn" id="10_5mgeb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
 load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
@@ -213,8 +214,8 @@ render_target_update_mode = 4
 script = ExtResource("1_swcni")
 
 [node name="IconCamera" type="Camera3D" parent="." unique_id=1932887130]
-transform = Transform3D(-0.7181007, -0.5143119, 0.46884394, 0, 0.6736852, 0.7390185, -0.6959392, 0.53068966, -0.48377383, 2.0656514, 2.7578015, -2.1478682)
-fov = 61.7
+transform = Transform3D(-0.7193763, -0.49508947, 0.48722097, -0.038337618, 0.72865, 0.6838125, -0.69356185, 0.47323954, -0.543154, 1.7723908, 2.9534125, -1.812936)
+fov = 40.998955
 
 [node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_3y7a6")]
 transform = Transform3D(0.9500829, -0.31175834, -0.0122207645, 0.30754462, 0.94239795, -0.13153985, 0.052525464, 0.121215336, 0.9912356, 0.4215476, 0, -0.15827799)
@@ -259,6 +260,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tpkq0")
 surface_material_override/1 = SubResource("StandardMaterial3D_ma1e4")
 
 [node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("9_hv2mb")]
+visible = false
 freeze = true
 
 [node name="MeshInstance3D2" parent="Chicken_And_Waffle" index="4" unique_id=1833457883]
@@ -266,6 +268,9 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1609639744]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.8007002, 0)
+
+[node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("10_5mgeb")]
+transform = Transform3D(0.9326758, -0.111685626, -0.34299007, -0.0011053754, 0.9499701, -0.3123384, 0.36071408, 0.29168957, 0.8858908, 0.60516787, 0.3856827, -0.7184336)
 
 [editable path="Terry"]
 [editable path="Chicken_And_Waffle"]

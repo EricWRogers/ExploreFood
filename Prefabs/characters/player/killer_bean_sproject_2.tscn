@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="7_3o3jl"]
 [ext_resource type="ArrayMesh" uid="uid://bvuxfjiisdp5e" path="res://Prefabs/foods/butterwaffles/waffle.obj" id="8_xufv1"]
 [ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://Prefabs/foods/butterwaffles/waffle.png" id="9_20mj1"]
-[ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/prefabs/Meal/chicken_and_waffle.tscn" id="10_20mj1"]
+[ext_resource type="ArrayMesh" uid="uid://hewt2prktu3i" path="res://scenes/prefabs/Meal/chimkenandwaffles.obj" id="10_ccqv3"]
+[ext_resource type="ArrayMesh" uid="uid://i4hhyo4gcrlo" path="res://Prefabs/foods/butterwaffles/tear.obj" id="11_ccqv3"]
+[ext_resource type="Texture2D" uid="uid://c6kglufxlk7ax" path="res://scenes/prefabs/Meal/chicken_and_waffle/initialShadingGroup-Color.png" id="11_y8x42"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mh5cs"]
 render_priority = 0
@@ -196,6 +198,503 @@ roughness = 0.0
 albedo_texture = ExtResource("9_20mj1")
 roughness = 0.41
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jn1gr"]
+load_path = "res://.godot/imported/initialShadingGroup-Color.png-57e5a71d6648da3dc42900a7ce32b48c.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_7v8k7"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn1gr"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_7v8k7")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("11_y8x42")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_8kehk"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sygxl"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jn1gr")
+shader = SubResource("Shader_8kehk")
+shader_parameter/outline_width = 0.034000001615
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8kehk"]
+next_pass = SubResource("ShaderMaterial_sygxl")
+albedo_texture = SubResource("CompressedTexture2D_jn1gr")
+roughness = 0.35
+
+[sub_resource type="Shader" id="Shader_y8x42"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kehk"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_y8x42")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("9_20mj1")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_sygxl"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noybp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8kehk")
+shader = SubResource("Shader_sygxl")
+shader_parameter/outline_width = 0.03600000171
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(2.6522467, 2.5444698, 2.4212966, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 5.5770002174075
+shader_parameter/rim_intensity = 0.9290000441275
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sygxl"]
+next_pass = SubResource("ShaderMaterial_noybp")
+albedo_texture = ExtResource("9_20mj1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rur5g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8kehk")
+shader = SubResource("Shader_sygxl")
+shader_parameter/outline_width = 0.03600000171
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(2.6522467, 2.5444698, 2.4212966, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 5.5770002174075
+shader_parameter/rim_intensity = 0.9290000441275
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noha8"]
+next_pass = SubResource("ShaderMaterial_rur5g")
+albedo_texture = ExtResource("9_20mj1")
+
+[sub_resource type="Shader" id="Shader_x1yht"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5blt5"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_x1yht")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("5_3opuo")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_2n2o1"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tk7u3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5blt5")
+shader = SubResource("Shader_2n2o1")
+shader_parameter/outline_width = 0.03600000171
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(2.6522467, 2.5444698, 2.4212966, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 5.5770002174075
+shader_parameter/rim_intensity = 0.9290000441275
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41mhd"]
+next_pass = SubResource("ShaderMaterial_tk7u3")
+albedo_texture = ExtResource("5_3opuo")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lb6us"]
+load_path = "res://.godot/imported/initialShadingGroup-Color.png-57e5a71d6648da3dc42900a7ce32b48c.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_noha8"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s4tos"]
+load_path = "res://.godot/imported/initialShadingGroup-Color.png-57e5a71d6648da3dc42900a7ce32b48c.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41mhd"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_noha8")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = SubResource("CompressedTexture2D_s4tos")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_ttusc"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcasy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_41mhd")
+shader = SubResource("Shader_ttusc")
+shader_parameter/outline_width = 0.03600000171
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(2.6522467, 2.5444698, 2.4212966, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 5.5770002174075
+shader_parameter/rim_intensity = 0.9290000441275
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noybp"]
+next_pass = SubResource("ShaderMaterial_pcasy")
+albedo_texture = SubResource("CompressedTexture2D_lb6us")
+roughness = 0.35
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7v8k7"]
+load_path = "res://.godot/imported/dropletbebeh.png-00ee4e6f4c4f9d4f959d5bce1c77d9d5.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_jn1gr"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_noha8"]
+load_path = "res://.godot/imported/dropletbebeh.png-00ee4e6f4c4f9d4f959d5bce1c77d9d5.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4tos"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_jn1gr")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = SubResource("CompressedTexture2D_noha8")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_41mhd"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttusc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_s4tos")
+shader = SubResource("Shader_41mhd")
+shader_parameter/outline_width = 0.0310000014725
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb6us"]
+next_pass = SubResource("ShaderMaterial_ttusc")
+albedo_texture = SubResource("CompressedTexture2D_7v8k7")
+
 [node name="KillerBeanSproject2" unique_id=1222725279 instance=ExtResource("1_ffn5n")]
 script = ExtResource("2_w2xjc")
 
@@ -289,35 +788,39 @@ surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
 
 [node name="Skeleton3D" parent="." index="6" unique_id=759723123]
 bones/2/position = Vector3(-0.016127527, -0.00018402275, -0.00078450044)
-bones/2/rotation = Quaternion(0.0019709144, -0.022833256, 0.08597533, 0.9960337)
+bones/2/rotation = Quaternion(0.048704557, -0.10478987, 0.41865882, 0.9007618)
 bones/3/position = Vector3(-0.023837008, -0.0002849903, -0.0003614204)
-bones/3/rotation = Quaternion(0.011109655, -0.10620267, 0.069914654, 0.99182135)
+bones/3/rotation = Quaternion(0.1930367, -0.47695056, 0.30587408, 0.8010593)
 bones/4/position = Vector3(-0.020492828, -4.970132e-05, -0.00028823843)
-bones/4/rotation = Quaternion(-0.047414, 0.9790262, 0.053406682, 0.19080715)
-bones/5/rotation = Quaternion(-0.0009090793, 0.9810452, -0.004740034, -0.19371909)
-bones/6/rotation = Quaternion(-4.2035173e-10, 0, 0, 1)
-bones/7/rotation = Quaternion(-0.004706213, 0.16009293, 0.0010704714, 0.9870902)
-bones/8/rotation = Quaternion(0, 0, -1.1139521e-10, 1)
-bones/9/rotation = Quaternion(-0.004736609, 0.19005722, 0.0009267596, 0.9817612)
-bones/10/rotation = Quaternion(0, 0, 6.4979855e-11, 1)
-bones/11/rotation = Quaternion(-0.0047545214, 0.21003616, 0.0008299858, 0.97768176)
-bones/12/rotation = Quaternion(0, 0, -4.582971e-10, 1)
+bones/4/rotation = Quaternion(-0.2267928, 0.92708945, 0.27550864, 0.114739604)
+bones/5/rotation = Quaternion(0.073595464, 0.9075546, 0.37258127, -0.17919713)
+bones/6/rotation = Quaternion(-0.007973879, 0, 0, 0.99996823)
+bones/7/rotation = Quaternion(-0.071479954, 0.14332658, -0.4134183, 0.89634454)
+bones/8/rotation = Quaternion(0, 0, 0.2154155, 0.9765225)
+bones/9/rotation = Quaternion(-0.08368843, 0.17070566, -0.40922877, 0.8924056)
+bones/10/rotation = Quaternion(0, 0, -0.12631202, 0.99199057)
+bones/11/rotation = Quaternion(-0.09684056, 0.18643951, -0.43016508, 0.87796366)
+bones/12/rotation = Quaternion(0, 0, -0.015610451, 0.99987817)
 bones/13/position = Vector3(0.015628539, -0.00018185625, -0.00063706265)
-bones/13/rotation = Quaternion(1, 6.776008e-06, 3.552627e-05, 2.457195e-05)
+bones/13/rotation = Quaternion(0.68857884, -0.34238508, -0.49238512, -0.40766224)
 bones/14/position = Vector3(0.023935406, 0.00030002766, 0.0003129515)
-bones/14/rotation = Quaternion(-1.9263762e-05, -4.56776e-06, -1.9812927e-05, 1)
+bones/14/rotation = Quaternion(0.29099268, 0.19139907, 0.30168593, 0.8875107)
 bones/15/position = Vector3(0.024125097, 3.5011588e-05, 0.0002262038)
-bones/15/rotation = Quaternion(-0.00089918304, 0.9810452, -0.0047419877, 0.19371901)
-bones/16/rotation = Quaternion(-0.0009090793, 0.9810452, -0.0047400338, -0.19371907)
-bones/18/rotation = Quaternion(-0.004706213, 0.16009292, 0.0010704712, 0.9870902)
-bones/20/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
-bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
+bones/15/rotation = Quaternion(-0.17853191, 0.9646641, 0.030415043, 0.19137523)
+bones/16/rotation = Quaternion(0.04982901, 0.94808185, 0.25221595, -0.18720303)
+bones/17/rotation = Quaternion(-0.2718129, 0, 0, 0.96235013)
+bones/18/rotation = Quaternion(-0.037426826, 0.15572773, -0.20131512, 0.9663438)
+bones/19/rotation = Quaternion(0, 0, -0.339539, 0.940592)
+bones/20/rotation = Quaternion(-0.068701096, 0.17726909, -0.33098355, 0.9242866)
+bones/21/rotation = Quaternion(0, 0, -0.43571198, 0.90008616)
+bones/22/rotation = Quaternion(-0.08260876, 0.19316722, -0.36321855, 0.90770835)
+bones/23/rotation = Quaternion(0, 0, -0.45665342, 0.8896447)
 
 [node name="pCube2" parent="Skeleton3D" index="0" unique_id=1962591841]
 surface_material_override/0 = SubResource("StandardMaterial3D_pcasy")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=1481971334]
-transform = Transform3D(-0.9976705, 7.334887e-05, 0.06821951, -6.719679e-05, -0.9999999, 9.2475675e-05, 0.06821951, 8.767191e-05, 0.99767053, 0.07721382, 0.034317255, -0.0018660375)
+transform = Transform3D(0.8508804, -0.47064897, -0.23343539, 0.068211496, 0.539545, -0.83918905, 0.5209125, 0.6981266, 0.491192, 0.0069228318, 0.01890559, -0.053362053)
 bone_name = "L_pointer"
 bone_idx = 18
 
@@ -338,37 +841,38 @@ visible = false
 mesh = ExtResource("8_xufv1")
 surface_material_override/0 = SubResource("StandardMaterial3D_ccqv3")
 
-[node name="Chicken_And_Waffle" parent="Skeleton3D/BoneAttachment3D" index="3" unique_id=1554097360 instance=ExtResource("10_20mj1")]
-transform = Transform3D(0.014237094, -0.00046661164, 0.0046997666, -0.003074127, 0.010416153, 0.010346693, -0.0035854154, -0.010783616, 0.009790748, -0.0060259253, 0.010306481, 0.0035583675)
-visible = false
-freeze = true
+[node name="WafflesChicken" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" index="3" unique_id=338543260]
+transform = Transform3D(0.009763073, -0.00040674547, -0.005265665, 0.0037484327, 0.008329912, 0.006306539, 0.0037204805, -0.007325127, 0.007463975, 2.3175031e-05, 0.01574666, -8.627772e-05)
+mesh = ExtResource("10_ccqv3")
+surface_material_override/0 = SubResource("StandardMaterial3D_8kehk")
+surface_material_override/1 = SubResource("StandardMaterial3D_sygxl")
+surface_material_override/2 = SubResource("StandardMaterial3D_noha8")
+surface_material_override/3 = SubResource("StandardMaterial3D_41mhd")
+surface_material_override/4 = SubResource("StandardMaterial3D_noybp")
 
-[node name="Node3D" parent="Skeleton3D/BoneAttachment3D/Chicken_And_Waffle" index="2" unique_id=1476605985]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.2307396, 0)
+[node name="Bebeh" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" index="4" unique_id=1120488971]
+transform = Transform3D(-0.013599503, -0.0019007453, -0.014541, 0.014241929, 0.0030156206, -0.013713988, 0.0034958469, -0.019679766, -0.00069703325, -0.003068231, 0.0104998015, 0.02185127)
 visible = false
-
-[node name="MeshInstance3D2" parent="Skeleton3D/BoneAttachment3D/Chicken_And_Waffle" index="4" unique_id=1833457883]
-visible = false
+mesh = ExtResource("11_ccqv3")
+surface_material_override/0 = SubResource("StandardMaterial3D_lb6us")
 
 [node name="R_shoulder_handle" parent="." index="7" unique_id=1040388189]
-transform = Transform3D(0.98411846, -0.17165536, -0.045223016, 0.1714744, 0.9851571, -0.007879732, 0.04590437, 4.656613e-10, 0.99894583, -0.016274668, 0.034500763, 0.0006733593)
+transform = Transform3D(0.6274876, -0.76443124, -0.14800023, 0.7440162, 0.6447053, -0.1754848, 0.22956254, -7.450581e-09, 0.97329396, -0.016274668, 0.034500763, 0.0006733593)
 
 [node name="R_forearm_handle" parent="R_shoulder_handle" index="0" unique_id=719831183]
-transform = Transform3D(0.9675537, -0.14129311, -0.20946571, 0.1365517, 0.9899415, -0.037002828, 0.21258707, 0.0071993256, 0.97711545, -0.023935407, -2.220446e-16, -2.264855e-16)
+transform = Transform3D(0.35791838, -0.6741843, -0.6460414, 0.30590856, 0.7383556, -0.6010412, 0.8822211, 0.017494079, 0.47050986, -0.023935407, -2.220446e-16, -2.264855e-16)
 
 [node name="R_hand_handle" parent="R_shoulder_handle/R_forearm_handle" index="0" unique_id=830029251]
-transform = Transform3D(0.99349254, -0.11336738, 0.010963555, 0.113896266, 0.9888792, -0.09563274, 9.3132246e-10, 0.09625913, 0.9953563, -0.019824792, 1.7763568e-17, -5.7731595e-17)
+transform = Transform3D(0.83878124, -0.48134845, 0.25445917, 0.5444683, 0.74154186, -0.3920074, 2.9802319e-08, 0.4673535, 0.8840706, -0.019824792, 1.7763568e-17, -5.7731595e-17)
 
 [node name="L_shoulder_handle" parent="." index="8" unique_id=1771447419]
-transform = Transform3D(1, 5.737975e-09, 2.9613274e-08, -5.7379745e-09, 1, -2.0590905e-08, -2.9613277e-08, 2.0590907e-08, 0.9999999, 0.015455847, 0.034500763, 0.0006733593)
+transform = Transform3D(0.28065872, 0.8729719, 0.39893705, -0.07006463, 0.433168, -0.8985857, -0.9572469, 0.22424456, 0.1827368, 0.015455847, 0.034500763, 0.0006733593)
 
 [node name="L_forearm_handle" parent="L_shoulder_handle" index="0" unique_id=158042125]
-transform = Transform3D(1, 1.6581996e-08, -3.8528003e-09, -1.6581998e-08, 0.9999999, -1.6122083e-08, 3.8528e-09, 1.6122081e-08, 1, 0.0239354, -7.6383345e-16, 6.217249e-17)
+transform = Transform3D(0.744704, 0.4241075, -0.5153142, -0.6468904, 0.64861757, -0.4010335, 0.16416058, 0.632003, 0.7573793, 0.0239354, -7.6383345e-16, 6.217249e-17)
 
 [node name="L_hand_handle" parent="L_shoulder_handle/L_forearm_handle" index="0" unique_id=630928028]
-transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
+transform = Transform3D(0.9344273, 0.3561539, 0, -0.3561539, 0.9344273, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
 
 [node name="AnimationPlayer" parent="." index="9" unique_id=601969375]
 speed_scale = 5.0
-
-[editable path="Skeleton3D/BoneAttachment3D/Chicken_And_Waffle"]
