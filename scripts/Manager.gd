@@ -16,7 +16,6 @@ enum FoodType {
 	GRAIN,
 	PASTA,
 	DAIRY,
-	LIQUID,
 	CHEESE,
 	EGG,
 	MEAT,

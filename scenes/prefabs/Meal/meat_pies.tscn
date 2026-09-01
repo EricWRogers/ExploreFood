@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c4x3b2qfdxqw1"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/prefabs/Meal/base_meal.tscn" id="1_4mhcc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n0yje"]
+
+[node name="Meat_Pies" unique_id=1546410034 instance=ExtResource("1_4mhcc")]
+meal_name = "Meat Pies"
+flavor_text = "Delicious meat pies with a side of tear sauce"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n0yje")
+
+[node name="Node3D" parent="." index="2" unique_id=1476605985]
+visible = true

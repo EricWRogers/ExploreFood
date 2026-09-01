@@ -763,7 +763,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.666, 2.11, 96.378)
 curve = SubResource("Curve3D_0xy2e")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="DoughBabies/Path1" unique_id=1495259812]
-transform = Transform3D(-0.6288079, -0.014824959, -0.77739584, -0.0077793044, 0.99983114, -0.012775908, 0.7774895, -0.0019859583, -0.62886, 18.364037, 0.022503806, -14.017693)
+transform = Transform3D(-0.6288079, -0.014824957, -0.77739584, -0.0077793044, 0.99983096, -0.012775908, 0.7774895, -0.0019859578, -0.62886, 18.364037, 0.022503806, -14.017693)
 progress = 2.0380058
 
 [node name="DoughBaby" parent="DoughBabies/Path1/PathFollow3D" unique_id=204738622 instance=ExtResource("18_15qdo")]
