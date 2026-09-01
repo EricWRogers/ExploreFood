@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h28gv01dvguc"]
 
 [ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/prefabs/Food/food.tscn" id="1_ulir2"]
-[ext_resource type="Texture2D" uid="uid://bbdqiesd6h5st" path="res://Prefabs/UI/item_icons/output_icon.png" id="2_fstlp"]
+[ext_resource type="Texture2D" uid="uid://bbdqiesd6h5st" path="res://Prefabs/UI/item_icons/droplet_icon.png" id="2_fstlp"]
 [ext_resource type="Script" uid="uid://ihdpo1ui5c32" path="res://scripts/tear_baby.gd" id="2_i2m2j"]
 [ext_resource type="ArrayMesh" uid="uid://i4hhyo4gcrlo" path="res://Prefabs/foods/butterwaffles/tear.obj" id="2_y3oem"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://Prefabs/foods/butterwaffles/dropletbebeh.png" id="3_fstlp"]
