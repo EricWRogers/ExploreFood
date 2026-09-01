@@ -30,31 +30,40 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func find_recipe():
 	var current_recipe
 	var chosen_recipe
-	
-	for item in recipes: 
-		for i_types in food_types: 
-			if i_types in item.ingredients:
-				current_recipe = item
-				#print(current_recipe)
-			else:
-				current_recipe = null
-			continue
-		if current_recipe:
-			print("make meal")
-			chosen_recipe = current_recipe
+	for recipe in recipes: # All Recipes in Array
+		food_types.sort()
+		recipe.ingredients.sort()
+		#print(str("FOOD TYPES: ", food_types))
+		#print(str("RECIPE CALLS FOR: ", recipe.ingredients))
+		if food_types == recipe.ingredients:
+			print("hello you won")
+			chosen_recipe = recipe
+			break
 		else:
-			print("dubious")
-			chosen_recipe = recipes[0] #dubious food
+			print("you made shit")
+			chosen_recipe = recipes[-1]
+			break
+		
+		#if current_recipe:
+			#print("make meal")
+			#chosen_recipe = current_recipe
+		#else:
+			#print("dubious")
+			#chosen_recipe = recipes[0] #dubious food
 	
 	print("current recipe: ", current_recipe)
 	
 	#spawn chosen food
-	print(chosen_recipe.product) 
+	#print(chosen_recipe.product) 
+	
 	var current_scene = lvl_manager.current_level
-	var recipe_spawn = chosen_recipe.product.instantiate()
+	var recipe_spawn = null
+	recipe_spawn = chosen_recipe.product.instantiate()
 	current_scene.add_child(recipe_spawn)
 	recipe_spawn.position = Vector3(-4.1,1.7,0)
 	
 	#empty list for next batch
-	food_types = []
+	food_types.clear()
+	current_recipe = null
+	chosen_recipe = null
 	return

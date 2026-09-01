@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://Prefabs/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="3_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/prefabs/Stove.tscn" id="4_o37it"]
+[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="5_wjjaa"]
+[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="6_6uclb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 
@@ -97,5 +99,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 1.5400779, 0.10557
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1234284931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 1.7, 0)
 
-[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
+[node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("5_wjjaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.475906, 1.8443866, 0)
+rarity_level = 1.0
+
+[node name="ButterFrog" parent="WafflePad" index="3" unique_id=97841650]
+rarity_level = 1.0
+
+[node name="TerryFood" parent="." unique_id=737182758 instance=ExtResource("6_6uclb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.886906, 0, 0)
+rarity_level = 1.0
+
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
+
+[editable path="WafflePad"]

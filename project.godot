@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ExploreFood"
-run/main_scene="uid://c6e1k24uvewn0"
+run/main_scene="uid://bhtjqqne537hh"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=160
 config/icon="res://icon.svg"
