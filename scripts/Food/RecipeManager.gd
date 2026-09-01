@@ -33,8 +33,8 @@ func find_recipe():
 	for recipe in recipes: # All Recipes in Array
 		food_types.sort()
 		recipe.ingredients.sort()
-		#print(str("FOOD TYPES: ", food_types))
-		#print(str("RECIPE CALLS FOR: ", recipe.ingredients))
+		print(str("FOOD TYPES: ", food_types))
+		print(str("RECIPE CALLS FOR: ", recipe.ingredients))
 		if food_types == recipe.ingredients:
 			print("hello you won")
 			chosen_recipe = recipe

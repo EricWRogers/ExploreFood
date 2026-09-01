@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://yvbge8cnq421" path="res://scripts/Food/RecipeManager.gd" id="1_kdyym"]
 [ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://Resources/Chicken_And_Waffle_Recipe.tres" id="2_ftv3t"]
 [ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://Resources/dubious_food.tres" id="3_i1pkh"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://Resources/Meat_Pies.tres" id="3_i8vbu"]
 [ext_resource type="ArrayMesh" uid="uid://bni0tu1cfy3d2" path="res://Prefabs/environment_pieces/Cauldron.obj" id="4_i1pkh"]
 [ext_resource type="PackedScene" uid="uid://eybgtuef400c" path="res://Prefabs/Fire/sparks.tscn" id="5_xieq7"]
 [ext_resource type="PackedScene" uid="uid://bjcqqlyy5bxex" path="res://Prefabs/Fire/fire.tscn" id="6_i8vbu"]
@@ -513,7 +514,7 @@ alpha_curve = SubResource("CurveTexture_4lcgr")
 
 [node name="Pot" type="StaticBody3D" unique_id=1286557195]
 script = ExtResource("1_kdyym")
-recipes = Array[Resource]([ExtResource("2_ftv3t"), ExtResource("3_i1pkh")])
+recipes = Array[Resource]([ExtResource("2_ftv3t"), ExtResource("3_i8vbu"), ExtResource("3_i1pkh")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1158553417]
 transform = Transform3D(-1, 1.5099582e-07, -1.509958e-07, 1.509958e-07, 1, 8.742278e-08, 1.5099582e-07, 8.7422755e-08, -1, 0, -1.4735782, 0)

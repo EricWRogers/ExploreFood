@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_5m0m5")
 recipe_name = "Meat Pies with Tear Sauce"
-ingredients = Array[int]([1, 7, 2])
+ingredients = Array[int]([8, 5, 2])
 product = ExtResource("1_1138b")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
