@@ -1,5 +1,6 @@
 extends Node
 
+signal scene_change
 
 var currently_held_food
 var holding = false

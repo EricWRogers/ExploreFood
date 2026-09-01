@@ -38,7 +38,7 @@ shadow_size = 3
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cebs7"]
 shader = ExtResource("3_a6j2n")
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436 groups=["Player"]]
 floor_max_angle = 1.314233
 script = ExtResource("1_cokxn")
 
