@@ -462,6 +462,7 @@ collision_layer = 513
 mass = 0.4
 meal_name = "Chicken and Waffle"
 flavor_text = "A beloved southern style meal combining sweet and savory flavors."
+id = 2
 icon = ExtResource("2_6ygfl")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]

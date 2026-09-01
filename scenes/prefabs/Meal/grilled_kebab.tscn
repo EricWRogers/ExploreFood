@@ -7,6 +7,7 @@
 [node name="Grilled_Kebab" unique_id=1546410034 instance=ExtResource("1_320ea")]
 meal_name = "Grilled Kebab"
 flavor_text = "Charred Meat and vegetables on a stick"
+id = 3
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
 transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0, 0, 0)
