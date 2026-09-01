@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/prefabs/willow_tree.tscn" id="16_qlq6c"]
 [ext_resource type="Script" uid="uid://dsrxs0x5n2c1l" path="res://scripts/dough_babies_movment.gd" id="17_837e2"]
 [ext_resource type="PackedScene" uid="uid://bgmokqbti6o6w" path="res://scenes/levels/doughbabypathing.tscn" id="18_837e2"]
+[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://Prefabs/environment_pieces/ClownTree/clown_tree.tscn" id="19_15qdo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_837e2"]
 load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
@@ -747,6 +748,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.77245, 0.48222995, 82.9538
 
 [node name="Path2" parent="DoughBabies" unique_id=1715370717 instance=ExtResource("18_837e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.72391, 16.91233, 101.49252)
+
+[node name="Clown_Tree_Parent" type="Node3D" parent="." unique_id=1624988003]
+
+[node name="Clown_Tree" parent="Clown_Tree_Parent" unique_id=1282798476 instance=ExtResource("19_15qdo")]
+transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 21.974411, 4.9229126, 24.891283)
+
+[node name="Clown_Tree2" parent="Clown_Tree_Parent" unique_id=785913860 instance=ExtResource("19_15qdo")]
+transform = Transform3D(-1.3421636, 0, -2.9302433, 0, 3.223, 0, 2.9302433, 0, -1.3421636, 55.296524, 13.636468, 68.94885)
+
+[node name="Clown_Tree3" parent="Clown_Tree_Parent" unique_id=135535713 instance=ExtResource("19_15qdo")]
+transform = Transform3D(0.6417587, -0.16811849, 1.9502517, 0.0054090293, 2.052533, 0.17515554, -1.9574771, -0.04944594, 0.63987386, 8.46096, 7.2642517, 31.387285)
+
+[node name="Clown_Tree4" parent="Clown_Tree_Parent" unique_id=5725708 instance=ExtResource("19_15qdo")]
+transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 28.51075, 14.791597, 66.34465)
+
+[node name="Clown_Tree5" parent="Clown_Tree_Parent" unique_id=1189931779 instance=ExtResource("19_15qdo")]
+transform = Transform3D(1.5790735, 0.13281631, -0.78853434, -0.11882467, 1.7650096, 0.0593369, 0.79076374, 0, 1.583538, 55.703854, 16.597366, 78.91567)
+
+[node name="Clown_Tree6" parent="Clown_Tree_Parent" unique_id=1269843588 instance=ExtResource("19_15qdo")]
+transform = Transform3D(0.9126877, 0, 1.8579291, 0, 2.07, 0, -1.8579291, 0, 0.9126877, -26.835533, 14.416067, 38.338905)
+
+[node name="Clown_Tree7" parent="Clown_Tree_Parent" unique_id=592623447 instance=ExtResource("19_15qdo")]
+transform = Transform3D(1.0235666, 0, -0.45465523, 0, 1.12, 0, 0.45465523, 0, 1.0235666, -33.807037, 14.416067, 31.976349)
+
+[node name="Clown_Tree8" parent="Clown_Tree_Parent" unique_id=1211396304 instance=ExtResource("19_15qdo")]
+transform = Transform3D(0.23433793, 0, -1.0952103, 0, 1.12, 0, 1.0952103, 0, 0.23433793, -19.648827, 16.39653, 48.27775)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
