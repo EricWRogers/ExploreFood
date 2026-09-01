@@ -2,7 +2,8 @@ class_name base_meal extends RigidBody3D
 
 @export var meal_name: String
 @export var flavor_text: String
-@export var id : int = 0
+@export var id : int = 4
+var rarity_level = 1
 
 @export var icon : Texture2D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D

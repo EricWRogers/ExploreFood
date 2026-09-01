@@ -37,11 +37,14 @@ func update_held_item(id):
 			$Skeleton3D/BoneAttachment3D/Waffle.show()
 		3:
 			$Skeleton3D/BoneAttachment3D/Frogbutt.show()
+		4:
+			$Skeleton3D/BoneAttachment3D/Chicken_And_Waffle.show()
 		
 func reset_held():
 	$Skeleton3D/BoneAttachment3D/Frogbutt.hide()
 	$Skeleton3D/BoneAttachment3D/Terry.hide()
 	$Skeleton3D/BoneAttachment3D/Waffle.hide()
+	$Skeleton3D/BoneAttachment3D/Chicken_And_Waffle.hide()
 
 func hold():
 	$AnimationPlayer.play("Hold")

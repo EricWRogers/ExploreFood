@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 
 func save_icon() -> void:
 	await RenderingServer.frame_post_draw
+	print("Active camera for this viewport: ", get_camera_3d())
 	var texture = get_texture()
 	var image = texture.get_image()
 	var err = image.save_png("res://Prefabs/UI/item_icons/output_icon.png")

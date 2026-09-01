@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bytsavm1w3ptc" path="res://Prefabs/shaders/goodoutline.gdshader" id="6_r11d8"]
 [ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://Prefabs/foods/butterwaffles/frogbutt.obj" id="7_rafff"]
 [ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://Prefabs/foods/butterwaffles/butte.png" id="8_hv2mb"]
+[ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/prefabs/Meal/chicken_and_waffle.tscn" id="9_hv2mb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
 load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
@@ -211,8 +212,8 @@ size = Vector2i(264, 264)
 render_target_update_mode = 4
 script = ExtResource("1_swcni")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1932887130]
-transform = Transform3D(-0.9812849, -0.13304794, 0.13920541, 0, 0.7229143, 0.69093776, -0.19256142, 0.67800677, -0.7093849, 0.48261234, 1.4334306, -1.2777394)
+[node name="IconCamera" type="Camera3D" parent="." unique_id=1932887130]
+transform = Transform3D(-0.7181007, -0.5143119, 0.46884394, 0, 0.6736852, 0.7390185, -0.6959392, 0.53068966, -0.48377383, 2.0656514, 2.7578015, -2.1478682)
 fov = 61.7
 
 [node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_3y7a6")]
@@ -252,8 +253,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c23sl")
 
 [node name="Frogbutt" type="MeshInstance3D" parent="." unique_id=1659182354]
 transform = Transform3D(0.69069105, 0.20376801, 0.69384754, 0.023149492, 0.9527576, -0.30284843, -0.7227794, 0.22523697, 0.65334404, 0, 0, 0)
+visible = false
 mesh = ExtResource("7_rafff")
 surface_material_override/0 = SubResource("StandardMaterial3D_tpkq0")
 surface_material_override/1 = SubResource("StandardMaterial3D_ma1e4")
 
+[node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("9_hv2mb")]
+freeze = true
+
+[node name="MeshInstance3D2" parent="Chicken_And_Waffle" index="4" unique_id=1833457883]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1609639744]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.8007002, 0)
+
 [editable path="Terry"]
+[editable path="Chicken_And_Waffle"]

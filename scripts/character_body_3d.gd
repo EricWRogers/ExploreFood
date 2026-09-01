@@ -199,6 +199,7 @@ func dropthrow():
 			killer_bean_sproject_2.update_held_item(0)
 			Manager.holding = false
 			killer_bean_sproject_2.update_anims()
+			update_slots(0)
 		2:
 			if Manager.slot2 == null:
 				return
@@ -214,6 +215,7 @@ func dropthrow():
 			killer_bean_sproject_2.update_held_item(0)
 			Manager.holding = false
 			killer_bean_sproject_2.update_anims()
+			update_slots(0)
 		3:
 			if Manager.slot3 == null:
 				return
@@ -229,5 +231,6 @@ func dropthrow():
 			killer_bean_sproject_2.update_held_item(0)
 			Manager.holding = false
 			killer_bean_sproject_2.update_anims()
+			update_slots(0)
 		0:
 			pass
