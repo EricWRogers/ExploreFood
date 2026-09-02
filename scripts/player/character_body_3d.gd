@@ -13,6 +13,10 @@ var tBob = 0.0
 const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
 
+var canJump = true;
+@export var coyoteTime = 0.1;
+@onready var coyote_timer: Timer = $CoyoteTimer
+
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var food_spawn: Marker3D = $Head/Camera3D/FoodSpawn
 
@@ -49,11 +53,19 @@ func _unhandled_input(event):
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		if canJump:
+			if(coyote_timer.is_stopped()):
+				coyote_timer.start(coyoteTime)
 		velocity += get_gravity() * 3 * delta
+	else:
+		canJump = true;
+		coyote_timer.stop()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and canJump:
 		velocity.y = JUMP_VELOCITY
+		canJump = false;
+
 	if Input.is_action_pressed("Sprint"):
 		speed = SPRINT_SPEED
 	else:
@@ -89,9 +101,13 @@ func _physics_process(delta: float) -> void:
 	
 	tBob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = HeadBob(tBob)
-	
-	var targetFOV = BASE_FOV + FOV_CHANGE * (clamp(velocity.length(), 0.5, speed * 2))
+
+	var forward_speed = -velocity.dot(head.global_transform.basis.z)
+	forward_speed = max(forward_speed, 0.0)
+
+	var targetFOV = BASE_FOV + FOV_CHANGE * clamp(forward_speed, 0.5, speed * 2)
 	camera.fov = lerp(camera.fov, targetFOV, delta * 5.0)
+
 	
 	if raycast.is_colliding():
 		var new_target = raycast.get_collider()
@@ -234,3 +250,6 @@ func dropthrow():
 			update_slots(0)
 		0:
 			pass
+
+func CoyoteTimeout():
+	canJump = false;
