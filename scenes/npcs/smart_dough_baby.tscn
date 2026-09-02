@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://n1o37yxx1bik"]
+
+[ext_resource type="Script" uid="uid://dar1ylbiyxcw3" path="res://scripts/npcs/smart_dough_baby.gd" id="1_gblxh"]
+[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="1_ti3ub"]
+
+[sub_resource type="Animation" id="Animation_gblxh"]
+resource_name = "Frolic"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/DoughBaby:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/DoughBaby:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5235988), Vector3(0, 0, 0), Vector3(0, 0, -0.5235988), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2otj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/DoughBaby:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/DoughBaby:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7853982, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb7b8"]
+_data = {
+&"Frolic": SubResource("Animation_gblxh"),
+&"RESET": SubResource("Animation_2otj3")
+}
+
+[sub_resource type="Curve3D" id="Curve3D_gblxh"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 2.9371924, 0, 0, -2.9371924, 4.0055265, 0, 0.0240081, 3.0125055, 0, 0, -3.0125055, 0, 0, -0.011146545, 0, -3.992665, -0.075312614, 0, -2.9874005, 0.075312614, 0, 2.9874005, -3.9776115, 0, -0.0010964214, -3.0125055, 0, 0.05020809, 3.0125055, 0, -0.05020809, -0.036250114, 0, 4.0406814),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtwna"]
+
+[node name="SmartDoughBaby" type="Node3D" unique_id=1579345735]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1537142996]
+libraries/ = SubResource("AnimationLibrary_tb7b8")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=888206596]
+curve = SubResource("Curve3D_gblxh")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=50399268]
+transform = Transform3D(0.9999965, 0, 0, 0, 1, 0, 0, 0, 0.9999965, 4.0055265, 0, 0.0240081)
+
+[node name="DoughBabyParent" type="CharacterBody3D" parent="Path3D/PathFollow3D" unique_id=1829391208]
+transform = Transform3D(1.0000031, 0, 0, 0, 1, 0, 0, 0, 1.0000031, 0, 0, 0)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_gblxh")
+
+[node name="DoughBaby" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1672482069 instance=ExtResource("1_ti3ub")]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0)
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1188184490]
+shape = SubResource("BoxShape3D_gtwna")

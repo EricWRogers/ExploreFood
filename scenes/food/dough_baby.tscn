@@ -59,7 +59,6 @@ void fragment() {
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bkkqb"]
-load_path = "res://.godot/imported/standardSurface3SG-Color.png-fc6da1d1d61e5cf247b5bcc2a575c5de.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkkqb"]
 resource_local_to_scene = true
