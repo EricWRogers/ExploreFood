@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bgmokqbti6o6w"]
+
+[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="1_tlr3t"]
+
+[sub_resource type="Curve3D" id="Curve3D_0xy2e"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 1.96, 0, 0, 0.952, 0, -0.479, -4.079, 0, 2.5, 4.079, 0, -2.5, 6.384167, 0, -0.37385023, 1.935, 0, 2.952, -1.935, 0, -2.952, 8.845, 0, -7.2, 3.2337632, -0.27575994, -0.5342436, -3.234, 0, 0.534, 3.36, 0, -10.495, 0.702, 0, -2.24, -0.702, 0, 2.24, -2.89, 0, -5.975, -1.355, 0, -1.106, 1.355, 0, 1.106, -2.735, 0, -2.175),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Path1" type="Path3D" unique_id=1301071299]
+curve = SubResource("Curve3D_0xy2e")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=1983817210]
+transform = Transform3D(-4.3711196e-08, 0, -0.9999964, 0, 0.99999565, 0, 0.9999956, 0, -4.3711232e-08, 0.952, 0, -0.479)
+
+[node name="DoughBaby" parent="PathFollow3D" unique_id=204738622 instance=ExtResource("1_tlr3t")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1.0151063, 0)
+freeze = true

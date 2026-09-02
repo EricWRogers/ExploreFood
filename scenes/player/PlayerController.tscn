@@ -1,0 +1,288 @@
+[gd_scene format=3 uid="uid://fdtx7weq1ytk"]
+
+[ext_resource type="Script" uid="uid://kuy5nk16rekr" path="res://scripts/player/character_body_3d.gd" id="1_cokxn"]
+[ext_resource type="PackedScene" uid="uid://cr33uf2tu8dlc" path="res://scenes/player/killer_bean_sproject_2.tscn" id="2_lfbm7"]
+[ext_resource type="Shader" uid="uid://dfxnfoqqcdpw6" path="res://assets/shaders/blacktowhite.gdshader" id="3_a6j2n"]
+[ext_resource type="Texture2D" uid="uid://bdp7kevxt62w4" path="res://assets/ui/ui_assets/square-rounded-icon.png" id="4_cebs7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
+height = 3.315918
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 0.6901961)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0.8, 0.8, 0.8, 0.14117648)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.78, 0.78, 0.78, 0.13333334)
+shadow_size = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cebs7"]
+shader = ExtResource("3_a6j2n")
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436 groups=["Player"]]
+floor_max_angle = 1.314233
+script = ExtResource("1_cokxn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1565848370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.60134506, 0)
+shape = SubResource("CapsuleShape3D_fxx43")
+
+[node name="Head" type="Node3D" parent="." unique_id=2053960824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5481422, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1917950583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41463566)
+cull_mask = 1048571
+fov = 100.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=2052499547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.41463566)
+target_position = Vector3(0, 0, -4)
+collision_mask = 512
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="FoodSpawn" type="Marker3D" parent="Head/Camera3D" unique_id=836658789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2482054)
+
+[node name="KillerBeanSproject2" parent="Head" unique_id=1222725279 instance=ExtResource("2_lfbm7")]
+transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252249867]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1643842672]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -421.0
+offset_top = -236.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_constants/margin_top = 43
+theme_override_constants/margin_right = 37
+theme_override_constants/margin_bottom = 63
+
+[node name="Start" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=386888154]
+layout_mode = 2
+
+[node name="Slot1" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=985428522]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot1" unique_id=134963597]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel" unique_id=2024232672]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel" unique_id=336166093]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot1/Panel/Selected1" unique_id=751461381]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot1" unique_id=957196195]
+material = SubResource("ShaderMaterial_cebs7")
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot1/TextureRect2" unique_id=2106484667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1954312905]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot2" unique_id=840764611]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="Item2" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel" unique_id=1717381585]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Selected2" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel" unique_id=1209631847]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot2/Panel/Selected2" unique_id=1027746046]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot2" unique_id=446606069]
+material = SubResource("ShaderMaterial_cebs7")
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot2/TextureRect" unique_id=396798855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Start" unique_id=1421288693]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot3" unique_id=83725377]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="Item3" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel" unique_id=1595524295]
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -66.0
+offset_right = 66.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Selected3" type="MarginContainer" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel" unique_id=1057301628]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Start/Slot3/Panel/Selected3" unique_id=641927097]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/Start/Slot3" unique_id=2460322]
+material = SubResource("ShaderMaterial_cebs7")
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cebs7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Start/Slot3/TextureRect" unique_id=1008671970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+theme_override_colors/font_outline_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

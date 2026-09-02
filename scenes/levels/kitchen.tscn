@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://pa70wv8ei3mv"]
 
-[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/RoomScripts/Level.gd" id="1_ojraw"]
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://Prefabs/player.tscn" id="2_ojraw"]
-[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="3_ojraw"]
-[ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/prefabs/Stove.tscn" id="4_o37it"]
-[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="5_wjjaa"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="6_6uclb"]
+[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_ojraw"]
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
+[ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
+[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="5_wjjaa"]
+[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/food/terry_food.tscn" id="6_6uclb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 
@@ -154,8 +154,8 @@ rarity_level = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.886906, 0, 0)
 rarity_level = 1.0
 
-[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 
 [editable path="Stove"]
 [editable path="Stove/Fire"]

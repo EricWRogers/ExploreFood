@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dqh5ha16w26gv"]
+
+[ext_resource type="Texture2D" uid="uid://c1hqceahl3xt7" path="res://assets/textures/WillowLeaves.png" id="1_0e3g1"]
+[ext_resource type="Shader" uid="uid://jqd5w3d2s5qe" path="res://assets/shaders/simple_tree_sway.gdshader" id="2_42nlf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubnur"]
+render_priority = 0
+shader = ExtResource("2_42nlf")
+shader_parameter/albedo_texture = ExtResource("1_0e3g1")
+shader_parameter/uv_scale = Vector2(2.1, 2.1)
+shader_parameter/alpha_scissor_threshold = 0.0770000036575
+shader_parameter/brightness = 0.362000017195
+shader_parameter/sway_speed = 1.110000052725
+shader_parameter/sway_strength = 0.02000000095
+shader_parameter/sway_direction_rads = -3.14100003242493
+shader_parameter/base_height = 0.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_ubnur")
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.8569273, 0.8569273, 0.8569273, 0)
+albedo_texture = ExtResource("1_0e3g1")
+uv1_scale = Vector3(2.1, 2.1, 2.1)
+texture_filter = 2

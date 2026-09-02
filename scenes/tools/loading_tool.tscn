@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://fkma0qsckgfc"]
+
+[ext_resource type="Script" uid="uid://dr1huvo4m6a0r" path="res://scripts/tools/loading_tool.gd" id="1_0c71u"]
+[ext_resource type="PackedScene" uid="uid://fwjsclvrchq2" path="res://scenes/player/KillerBeanSproject2.fbx" id="1_3r3my"]
+
+[node name="LoadingTool" type="SubViewport" unique_id=767609049]
+transparent_bg = true
+render_target_update_mode = 4
+script = ExtResource("1_0c71u")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1978684535]
+transform = Transform3D(0.6136235, -0.4375066, 0.6573083, 0, 0.8324587, 0.5540872, -0.78959876, -0.340001, 0.51081616, 0.09958629, 0.117348656, -0.28380132)
+
+[node name="KillerBeanSproject2" parent="." unique_id=1685111460 instance=ExtResource("1_3r3my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.38376957)
+
+[node name="Skeleton3D" parent="KillerBeanSproject2" index="6" unique_id=759723123]
+bones/2/position = Vector3(-0.01616541, -0.00020359342, -0.00073980377)
+bones/2/rotation = Quaternion(-0.023978569, 0.62217087, 0.26909426, 0.73479027)
+bones/3/position = Vector3(-0.02367935, -0.0003001041, -0.00026534163)
+bones/3/rotation = Quaternion(-7.663952e-10, -0.37444326, 8.6368623e-10, 0.92724985)
+bones/4/rotation = Quaternion(-0.00090907916, 0.9810452, -0.0047400333, 0.19371907)
+bones/5/rotation = Quaternion(-0.0009090793, 0.9810452, -0.0047400338, -0.19371907)
+bones/7/rotation = Quaternion(-0.004706213, 0.16009292, 0.0010704712, 0.9870902)
+bones/9/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
+bones/11/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
+bones/13/position = Vector3(0.015769023, -0.00039966166, -0.0006447294)
+bones/13/rotation = Quaternion(0.7429808, -0.57078123, -0.20344247, -0.28425258)
+bones/14/position = Vector3(0.02378022, 0.0003000212, 0.00020501089)
+bones/14/rotation = Quaternion(1.0053298e-16, -0.57105166, 4.700052e-24, 0.82091415)
+bones/15/position = Vector3(0.02412509, 0.00024883694, 2.4667097e-06)
+bones/15/rotation = Quaternion(-0.06998796, 0.9147436, -0.35456496, 0.18063664)
+bones/16/rotation = Quaternion(-0.0009090793, 0.9810452, -0.0047400338, -0.19371907)
+bones/18/rotation = Quaternion(-0.004706213, 0.16009292, 0.0010704712, 0.9870902)
+bones/20/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
+bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
+
+[node name="R_shoulder_handle" parent="KillerBeanSproject2" index="7" unique_id=1040388189]
+transform = Transform3D(0.080983356, -0.42529324, 0.9014252, 0.3656181, 0.8540266, 0.3700837, -0.9272352, 0.29960677, 0.22465684, -0.016274668, 0.034500763, 0.0006733593)
+
+[node name="R_forearm_handle" parent="KillerBeanSproject2/R_shoulder_handle" index="0" unique_id=719831183]
+transform = Transform3D(0.71958447, -2.4662328e-10, -0.69440496, 5.270131e-10, 1, 1.9096519e-10, 0.69440496, -5.033761e-10, 0.71958447, -0.023935407, -2.220446e-16, -2.264855e-16)
+
+[node name="R_hand_handle" parent="KillerBeanSproject2/R_shoulder_handle/R_forearm_handle" index="0" unique_id=830029251]
+transform = Transform3D(1, 0, 0, 0, 1, -3.6543626e-10, 0, 3.6543626e-10, 1, -0.019824792, 1.7763568e-17, -5.7731595e-17)
+
+[node name="L_shoulder_handle" parent="KillerBeanSproject2" index="8" unique_id=1771447419]
+transform = Transform3D(0.26563993, 0.96381706, -0.022184372, -0.73250073, 0.18681851, -0.65463084, -0.62679994, 0.19014616, 0.75562316, 0.015455847, 0.034500763, 0.0006733593)
+
+[node name="L_forearm_handle" parent="KillerBeanSproject2/L_shoulder_handle" index="0" unique_id=158042125]
+transform = Transform3D(0.34780002, 0, 0.9375687, 0, 1, 0, -0.9375687, 0, 0.34780002, 0.0239354, -7.6383345e-16, 6.217249e-17)
+
+[node name="L_hand_handle" parent="KillerBeanSproject2/L_shoulder_handle/L_forearm_handle" index="0" unique_id=630928028]
+transform = Transform3D(1, 0, 0, 0, 0.7452418, 0.6667943, 0, -0.6667943, 0.7452418, 0.024824267, -2.264855e-16, -8.881784e-18)
+
+[node name="Timer" type="Timer" parent="." unique_id=414278905]
+wait_time = 3.3329999999999997
+one_shot = true
+
+[connection signal="animation_finished" from="KillerBeanSproject2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="KillerBeanSproject2"]

@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://c4x3b2qfdxqw1"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_pvgv0"]
+[ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="2_8ycpn"]
+[ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="3_y0b2a"]
+[ext_resource type="ArrayMesh" uid="uid://ctp44ue7u40la" path="res://assets/models/MeatPocketSauce.obj" id="4_x3xps"]
+[ext_resource type="Shader" uid="uid://dh7eg01t2x70" path="res://assets/shaders/shinebright.gdshader" id="5_vei8t"]
+
+[sub_resource type="Shader" id="Shader_281ht"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5olq5"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_281ht")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("3_y0b2a")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_f2rqh"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ig54"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5olq5")
+shader = SubResource("Shader_f2rqh")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="Gradient" id="Gradient_yj2f0"]
+offsets = PackedFloat32Array(0, 0.38671875, 1)
+colors = PackedColorArray(1, 0.6, 0, 0.13333334, 1, 0.80366665, 0.38, 0.15294118, 1, 0.81, 0.39999998, 0.10980392)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvufb"]
+gradient = SubResource("Gradient_yj2f0")
+fill_from = Vector2(0, 0.99759614)
+fill_to = Vector2(0.46394232, 0.6370192)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a840u"]
+render_priority = -128
+shader = ExtResource("5_vei8t")
+shader_parameter/pixelation = Vector2(300, 300)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture2D_qvufb")
+shader_parameter/spread = 0.35700001625898004
+shader_parameter/size = 0.3750000653125001
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 16.0
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = 0.5
+shader_parameter/core_intensity = 1.0
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1fh7"]
+render_priority = -10
+next_pass = SubResource("ShaderMaterial_a840u")
+transparency = 1
+depth_test = 1
+albedo_color = Color(1, 1, 1, 0)
+ao_light_affect = 0.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_f6p87"]
+material = SubResource("StandardMaterial3D_x1fh7")
+size = Vector2(4, 4)
+
+[node name="Meat_Pies" unique_id=1546410034 instance=ExtResource("1_pvgv0")]
+collision_layer = 513
+freeze = true
+meal_name = "Meat Pies"
+flavor_text = "Delicious meat pies with a side of tear sauce"
+id = 6
+icon = ExtResource("2_8ycpn")
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_0ig54")
+mesh = ExtResource("4_x3xps")
+
+[node name="Node3D" parent="." index="2" unique_id=1476605985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2399864, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3" unique_id=1019942401]
+transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0.11556661, 0.18228924, 0)
+mesh = SubResource("QuadMesh_f6p87")

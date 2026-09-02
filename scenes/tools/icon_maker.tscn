@@ -1,0 +1,384 @@
+[gd_scene format=3 uid="uid://dfavhfdampvvr"]
+
+[ext_resource type="Script" uid="uid://cpb71tt0cld68" path="res://scripts/tools/icon_maker.gd" id="1_f21od"]
+[ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://scenes/npcs/terry.tscn" id="2_a50sx"]
+[ext_resource type="Shader" uid="uid://dujc3wor7usvv" path="res://assets/shaders/outline.gdshader" id="3_5fn40"]
+[ext_resource type="ArrayMesh" uid="uid://bvuxfjiisdp5e" path="res://assets/models/waffle.obj" id="4_ejd08"]
+[ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://assets/textures/waffle.png" id="5_xk22l"]
+[ext_resource type="Shader" uid="uid://bytsavm1w3ptc" path="res://assets/shaders/goodoutline.gdshader" id="6_pp0c1"]
+[ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://assets/models/frogbutt.obj" id="7_hixj3"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://assets/textures/butte.png" id="8_47tt1"]
+[ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="9_gllfw"]
+[ext_resource type="PackedScene" uid="uid://h28gv01dvguc" path="res://scenes/food/tear_baby.tscn" id="10_iq28d"]
+[ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="11_u7hdq"]
+[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="12_77w0k"]
+[ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="13_kap76"]
+[ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="14_qm5qq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
+load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjux8"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dskf"]
+load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r11d8"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_7dskf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rafff"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv2mb"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mgeb"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7wjp"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjqqh"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0c2d"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqv37"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtgtr"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1bwb"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imc7b"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14y1n"]
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jqcv"]
+render_priority = 4
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_swcni")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c23sl"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y7a6"]
+render_priority = 0
+shader = ExtResource("3_5fn40")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_sharpness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld7tm"]
+next_pass = SubResource("ShaderMaterial_3y7a6")
+transparency = 4
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.039215688)
+albedo_texture = SubResource("CompressedTexture2D_c23sl")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tpkq0"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_ma1e4"]
+code = "shader_type spatial;
+render_mode unshaded, blend_mix, cull_disabled;
+
+uniform float speed = .5; //How fast the bubbles move
+uniform sampler2D gradient : source_color; //The gradient texture used to color the bubbles; if it's repeated, it should start and end with the same color
+uniform vec4 background_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec2 grid_vec = vec2(2.0, 2.0); //How to repeat the gradient
+uniform vec2 grid_bubbles = vec2(20.0, 10.0); //How many bubbles; can also make them oval
+uniform float bubble_alpha : hint_range(0.0, 1.0) = 1.0; //Overall transparency of the bubbles
+
+vec2 random(vec2 uv) {
+	return vec2(fract(sin(dot(uv.xy,
+		vec2(12.9898,78.233))) * 43758.5453123));
+}
+
+float worley(vec2 uv, float columns, float rows) {
+	vec2 index_uv = floor(vec2(uv.x * columns, uv.y * rows));
+	vec2 fract_uv = fract(vec2(uv.x * columns, uv.y * rows));
+
+	float minimum_dist = 1.0;
+
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			vec2 neighbor = vec2(float(x), float(y));
+			vec2 point = random(index_uv + neighbor);
+			point = vec2( cos(TIME * point.x * speed), sin(TIME * point.y * speed) ) * 0.5 + 0.5;
+			vec2 diff = neighbor + point - fract_uv;
+			float dist = length(diff);
+			minimum_dist = min(minimum_dist, dist);
+		}
+	}
+
+	return minimum_dist;
+}
+
+vec2 grid(vec2 uv, float columns, float rows){
+	return fract(vec2(uv.x * columns, uv.y * rows));
+}
+
+void fragment() {
+	vec2 repeat = grid(UV, grid_vec.x, grid_vec.y);
+	float w = worley(UV, grid_bubbles.x, grid_bubbles.y);
+	vec4 multi_color = texture(gradient, vec2(repeat.y, w));
+
+	ALBEDO = mix(vec3(w) * multi_color.rgb * 3.0, background_color.rgb, smoothstep(0.4, 0.5, w * 1.5));
+	ALPHA = (1.0 - smoothstep(0.4, 0.5, w * 1.5)) * bubble_alpha;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_rormb"]
+colors = PackedColorArray(1, 0, 0, 1, 0.2833333, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ptjc"]
+gradient = SubResource("Gradient_rormb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nni16"]
+render_priority = 0
+shader = SubResource("Shader_ma1e4")
+shader_parameter/speed = 2.83
+shader_parameter/gradient = SubResource("GradientTexture1D_2ptjc")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/grid_vec = Vector2(2, 2)
+shader_parameter/grid_bubbles = Vector2(20, 10)
+shader_parameter/bubble_alpha = 0.0810000038475
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtms1"]
+next_pass = SubResource("ShaderMaterial_nni16")
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = SubResource("CompressedTexture2D_tpkq0")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g0650"]
+load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpeop"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.2901961)
+albedo_texture = SubResource("CompressedTexture2D_g0650")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnd2o"]
+render_priority = 0
+shader = ExtResource("6_pp0c1")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/size = 1.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c23sl"]
+next_pass = SubResource("ShaderMaterial_vnd2o")
+shading_mode = 0
+albedo_texture = ExtResource("5_xk22l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dskf"]
+render_priority = 0
+shader = ExtResource("6_pp0c1")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/size = 1.02999999932944
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpkq0"]
+next_pass = SubResource("ShaderMaterial_7dskf")
+shading_mode = 0
+albedo_texture = ExtResource("8_47tt1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ma1e4"]
+next_pass = SubResource("ShaderMaterial_7dskf")
+shading_mode = 0
+albedo_texture = ExtResource("8_47tt1")
+
+[sub_resource type="Shader" id="Shader_t1bwb"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imc7b"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_t1bwb")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("13_kap76")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_14y1n"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jqcv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_imc7b")
+shader = SubResource("Shader_14y1n")
+shader_parameter/outline_width = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[node name="IconMaker" type="SubViewport" unique_id=1215882865]
+transparent_bg = true
+size = Vector2i(264, 264)
+render_target_update_mode = 4
+script = ExtResource("1_f21od")
+
+[node name="IconCamera" type="Camera3D" parent="." unique_id=1932887130]
+transform = Transform3D(0.8793591, 0.3759665, -0.2921931, -0.08494702, 0.7276697, 0.68064743, 0.46852067, -0.5737126, 0.6718202, -0.7357956, 1.6922911, 1.5866184)
+fov = 59.841953
+
+[node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_a50sx")]
+transform = Transform3D(0.9500829, -0.31175834, -0.0122207645, 0.30754462, 0.94239795, -0.13153985, 0.052525464, 0.121215336, 0.9912356, 0.4215476, 0, -0.15827799)
+visible = false
+
+[node name="Terry" parent="Terry" index="0" unique_id=1819333420]
+surface_material_override/0 = SubResource("StandardMaterial3D_vjux8")
+surface_material_override/1 = SubResource("StandardMaterial3D_r11d8")
+surface_material_override/2 = SubResource("StandardMaterial3D_rafff")
+surface_material_override/3 = SubResource("StandardMaterial3D_hv2mb")
+surface_material_override/4 = SubResource("StandardMaterial3D_5mgeb")
+surface_material_override/5 = SubResource("StandardMaterial3D_o7wjp")
+surface_material_override/6 = SubResource("StandardMaterial3D_gjqqh")
+surface_material_override/7 = SubResource("StandardMaterial3D_y0c2d")
+surface_material_override/8 = SubResource("StandardMaterial3D_oqv37")
+surface_material_override/9 = SubResource("StandardMaterial3D_gtgtr")
+surface_material_override/10 = SubResource("StandardMaterial3D_t1bwb")
+surface_material_override/11 = SubResource("StandardMaterial3D_imc7b")
+surface_material_override/12 = SubResource("StandardMaterial3D_14y1n")
+surface_material_override/13 = SubResource("StandardMaterial3D_1jqcv")
+
+[node name="Egg" parent="Terry" index="1" unique_id=1855054390]
+surface_material_override/0 = SubResource("StandardMaterial3D_ld7tm")
+
+[node name="Egg2" parent="Terry" index="2" unique_id=1074423397]
+surface_material_override/0 = SubResource("StandardMaterial3D_gtms1")
+
+[node name="Egg3" parent="Terry" index="3" unique_id=430693704]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_cpeop")
+
+[node name="Waffle" type="MeshInstance3D" parent="." unique_id=186059504]
+visible = false
+mesh = ExtResource("4_ejd08")
+surface_material_override/0 = SubResource("StandardMaterial3D_c23sl")
+
+[node name="Frogbutt" type="MeshInstance3D" parent="." unique_id=1659182354]
+transform = Transform3D(0.69069105, 0.20376801, 0.69384754, 0.023149492, 0.9527576, -0.30284843, -0.7227794, 0.22523697, 0.65334404, 0, 0, 0)
+visible = false
+mesh = ExtResource("7_hixj3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tpkq0")
+surface_material_override/1 = SubResource("StandardMaterial3D_ma1e4")
+
+[node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("9_gllfw")]
+visible = false
+freeze = true
+
+[node name="MeshInstance3D2" parent="Chicken_And_Waffle" index="4" unique_id=1833457883]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1609639744]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.8007002, 0)
+
+[node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("10_iq28d")]
+transform = Transform3D(0.9326758, -0.111685626, -0.34299007, -0.0011053754, 0.9499701, -0.3123384, 0.36071408, 0.29168957, 0.8858908, 0.60516787, 0.3856827, -0.7184336)
+visible = false
+
+[node name="Meat_Pies" parent="." unique_id=1546410034 instance=ExtResource("11_u7hdq")]
+visible = false
+
+[node name="DoughBaby" parent="." unique_id=1672482069 instance=ExtResource("12_77w0k")]
+transform = Transform3D(0.89189285, -0.14649212, -0.42786378, 0.41800612, 0.6281473, 0.6562789, 0.17262173, -0.7641801, 0.62147456, 0, 0.6431353, 0)
+visible = false
+freeze = true
+rarity_level = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408608886]
+material_overlay = SubResource("ShaderMaterial_1jqcv")
+mesh = ExtResource("14_qm5qq")
+
+[editable path="Terry"]
+[editable path="Chicken_And_Waffle"]
+[editable path="Meat_Pies"]

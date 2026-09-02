@@ -32,6 +32,15 @@ window/stretch/aspect="keep_width"
 
 enabled=PackedStringArray("res://addons/MarchingSquaresTerrain/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange",
+"res://assets/": "red",
+"res://scenes/": "blue",
+"res://scripts/": "green"
+}
+
 [global_group]
 
 Player="for the player"
