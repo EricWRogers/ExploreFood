@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dshpelnsl3c1r"]
+
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_bhq4y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q4by1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrn6j"]
+albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
+size = Vector3(48.495377, 1, 27.499878)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_klsck"]
+
+[node name="NpcSandbox" type="Node3D" unique_id=155629050]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=99016071]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=771988535]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 12.945347, 0, 0, 0)
+mesh = SubResource("PlaneMesh_q4by1")
+surface_material_override/0 = SubResource("StandardMaterial3D_jrn6j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=197515703]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.01524353, -0.97983813, 15.809448)
+shape = SubResource("BoxShape3D_6xqmx")
+
+[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_bhq4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.413726)
+
+[node name="NPC" type="Node3D" parent="." unique_id=1895725985]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC" unique_id=1602416036]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.445055, 3.2382498, -29.172865)
+mesh = SubResource("CapsuleMesh_klsck")
