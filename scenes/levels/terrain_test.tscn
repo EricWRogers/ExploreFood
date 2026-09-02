@@ -76,8 +76,16 @@ shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q026u"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
+size = Vector3(1, 1, 4.087158)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ptr"]
+albedo_color = Color(0.40018785, 0.44672376, 0.5220287, 0.50200003)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
+size = Vector3(7.546921, 1, 28.261478)
+
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5599823, -13.053062, 10.2677765)
 script = ExtResource("1_6dgx5")
 level_name = "terrain_test"
 
@@ -90,47 +98,49 @@ transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.343
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297952523]
 environment = SubResource("Environment_lg1c5")
 
-[node name="Water" type="MeshInstance3D" parent="." unique_id=1273085842]
+[node name="WaterParent" type="Node3D" parent="." unique_id=769287535]
+
+[node name="Water" type="MeshInstance3D" parent="WaterParent" unique_id=1273085842]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water3" type="MeshInstance3D" parent="." unique_id=1204227364]
+[node name="Water3" type="MeshInstance3D" parent="WaterParent" unique_id=1204227364]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water2" type="MeshInstance3D" parent="." unique_id=485782989]
+[node name="Water2" type="MeshInstance3D" parent="WaterParent" unique_id=485782989]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water4" type="MeshInstance3D" parent="." unique_id=1934553856]
+[node name="Water4" type="MeshInstance3D" parent="WaterParent" unique_id=1934553856]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, -440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water5" type="MeshInstance3D" parent="." unique_id=2050622143]
+[node name="Water5" type="MeshInstance3D" parent="WaterParent" unique_id=2050622143]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, -440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water6" type="MeshInstance3D" parent="." unique_id=988973522]
+[node name="Water6" type="MeshInstance3D" parent="WaterParent" unique_id=988973522]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, -440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water7" type="MeshInstance3D" parent="." unique_id=1966672374]
+[node name="Water7" type="MeshInstance3D" parent="WaterParent" unique_id=1966672374]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, 440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water8" type="MeshInstance3D" parent="." unique_id=1731615751]
+[node name="Water8" type="MeshInstance3D" parent="WaterParent" unique_id=1731615751]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, 440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Water9" type="MeshInstance3D" parent="." unique_id=862480566]
+[node name="Water9" type="MeshInstance3D" parent="WaterParent" unique_id=862480566]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
@@ -140,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -64.9537, 0)
 script = ExtResource("13_hvl47")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -35.983513, 0, 0)
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -35.983513, 56.186607, 0)
 shape = SubResource("WorldBoundaryShape3D_q026u")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
@@ -470,6 +480,42 @@ chunk_coords = Vector2i(0, -1)
 [node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -1)" unique_id=1167237574]
 cast_shadow = 0
 script = ExtResource("3_s745a")
+
+[node name="TempBridge" type="StaticBody3D" parent="." unique_id=1448610521]
+transform = Transform3D(0.6042247, 0, -0.79681396, 0, 1, 0, 0.79681396, 0, 0.6042247, 24.620518, -3.752327, -20.767673)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge" unique_id=1041464625]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge" unique_id=1432451036]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
+
+[node name="TempBridge2" type="StaticBody3D" parent="." unique_id=2019388492]
+transform = Transform3D(0.71852773, 0, -0.6954984, 0, 1, 0, 0.6954984, 0, 0.71852773, 47.00537, -3.752327, 68.79562)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge2" unique_id=995567880]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge2" unique_id=2055451737]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
+
+[node name="TempBridge3" type="StaticBody3D" parent="." unique_id=887330641]
+transform = Transform3D(0.7500558, 0, 0.6613747, 0, 1, 0, -0.6613747, 0, 0.7500558, -34.965775, -3.752327, -28.234026)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge3" unique_id=1949342488]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge3" unique_id=1655783393]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
