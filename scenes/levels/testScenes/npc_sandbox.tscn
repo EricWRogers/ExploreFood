@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dshpelnsl3c1r"]
 
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_bhq4y"]
+[ext_resource type="Script" uid="uid://bnms2klpopprq" path="res://scripts/dialogue/npc_dialogue.gd" id="2_q4by1"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="3_jrn6j"]
+
+[sub_resource type="Environment" id="Environment_klsck"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q4by1"]
 
@@ -16,9 +20,17 @@ size = Vector3(20.032291, 1, 12.905388)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
 radius = 0.57177734
-height = 3.269287
+height = 1.7894897
 
 [node name="NpcSandbox" type="Node3D" unique_id=155629050]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207185413]
+environment = SubResource("Environment_klsck")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1111187967]
+transform = Transform3D(0.37037277, 0.6707125, -0.6426265, 0.22462934, 0.6066206, 0.7625963, 0.9013133, -0.4267977, 0.074014045, 0, 6.8409815, 0)
+light_color = Color(0.78274935, 0.8406308, 1, 1)
+sky_mode = 1
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=99016071]
 
@@ -42,13 +54,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.413726)
 
 [node name="Greater_NPC" type="Node3D" parent="." unique_id=1895725985]
 transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
+script = ExtResource("2_q4by1")
+lines = Array[String](["Test test test test test!", "Line 2!", "Line 3!", "Get out of my face!", ""])
+ui_position = Vector2(0, 15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Greater_NPC" unique_id=1602416036]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, -0.13842964, -0.9310992, 0.49421883)
 mesh = SubResource("CapsuleMesh_klsck")
 
 [node name="Area3D" type="Area3D" parent="Greater_NPC" unique_id=713029440]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greater_NPC/Area3D" unique_id=173959563]
-transform = Transform3D(-4.3531486e-07, -9.958843, 0.9063258, 9.999999, -8.34465e-07, 0, 5.9604645e-08, 0.90633017, 9.958844, 0.06686236, 1.4415972, 15.831889)
+transform = Transform3D(-4.3531486e-07, -9.958843, 0.9063258, 9.999999, -8.34465e-07, 0, 5.9604645e-08, 0.90633017, 9.958844, 0.016107798, 1.4415979, 15.836508)
 shape = SubResource("CapsuleShape3D_q026u")
+
+[node name="InteractUI" parent="Greater_NPC" unique_id=2022474363 instance=ExtResource("3_jrn6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.081074715, 15.113139)
+
+[node name="Marker3D" type="Marker3D" parent="Greater_NPC" unique_id=423985602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3765488, 15.12333)
+
+[connection signal="body_entered" from="Greater_NPC/Area3D" to="Greater_NPC" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Greater_NPC/Area3D" to="Greater_NPC" method="_on_area_3d_body_exited"]

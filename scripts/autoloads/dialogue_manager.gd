@@ -6,14 +6,16 @@ var dialogue_lines : Array[String] = []
 var current_line_index = 0
 
 var text_box
-var text_box_position: Vector3
+var text_box_position: Vector2
 
 var is_dialogue_active = false
 var can_advance_line = false
 
-func start_dialogue(position: Vector3, lines: Array[String]):
+func start_dialogue(position: Vector2, lines: Array[String]):
 	if is_dialogue_active:
 		return
+	
+	print("dialogue activated")
 	
 	dialogue_lines = lines
 	text_box_position = position
@@ -27,6 +29,7 @@ func show_text_box():
 	get_tree().root.add_child(text_box)
 	text_box.global_position = text_box_position
 	text_box.display_text(dialogue_lines[current_line_index])
+	print(current_line_index)
 	can_advance_line = false
 
 func on_text_box_finished_displaying():

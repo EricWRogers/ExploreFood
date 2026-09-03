@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://333pj70unbrb"]
+
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="1_3pwp2"]
+
+[node name="Node3D" type="Node3D" unique_id=2022474363]
+
+[node name="Label3D" type="Label3D" parent="." unique_id=320691622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10539091, 0)
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "E"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=310031951]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0997715, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("1_3pwp2")

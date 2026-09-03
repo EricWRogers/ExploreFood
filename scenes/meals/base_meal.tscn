@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2rqvns1x25my"]
 
 [ext_resource type="Script" uid="uid://depb7mr6v735r" path="res://scripts/foods/BaseMeal.gd" id="1_aflix"]
-[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="2_jq832"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="2_cqgsd"]
 
 [sub_resource type="Shader" id="Shader_jq832"]
 code = "shader_type spatial;
@@ -105,24 +105,5 @@ mesh = SubResource("PlaceholderMesh_6xqmx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1195127627]
 shape = SubResource("SphereShape3D_klsck")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1476605985]
+[node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("2_cqgsd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9191061, 0)
-visible = false
-
-[node name="Label3D" type="Label3D" parent="Node3D" unique_id=447019848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10539091, 0)
-billboard = 1
-no_depth_test = true
-render_priority = 100
-outline_render_priority = 100
-modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
-outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
-text = "E"
-font_size = 52
-
-[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=1877435745]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0997715, -0.008809596)
-billboard = 1
-no_depth_test = true
-render_priority = 75
-texture = ExtResource("2_jq832")
