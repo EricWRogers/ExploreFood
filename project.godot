@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 SceneLoader="*uid://civopi1uaqjgm"
 Manager="*uid://bjr5b12cf4cru"
+DialogueManager="*uid://bl2apitv64di7"
 
 [display]
 
