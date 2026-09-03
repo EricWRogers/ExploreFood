@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="4_gba4x"]
 [ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="9_l0ptr"]
+[ext_resource type="PackedScene" uid="uid://d2lxclnqmsnyo" path="res://scenes/npcs/worm_monster/worm_enemy.tscn" id="10_v7lih"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="13_hvl47"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="15_cibvw"]
 
@@ -516,6 +517,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge3" unique_id=1655783393]
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
 shape = SubResource("BoxShape3D_q026u")
+
+[node name="WormEnemy" parent="." unique_id=1050930802 instance=ExtResource("10_v7lih")]
+transform = Transform3D(80.267944, 0, -151.52231, 0, 171.46999, 0, 151.52231, 0, 80.267944, 133.9191, -5.0414886, -25.901302)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
