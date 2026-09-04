@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b3t7ekvqikw6j"]
+
+[ext_resource type="Script" uid="uid://dc2jamv2jipfx" path="res://scripts/cooking_games_scriptss/Smashing_hand_move.gd" id="1_c4amv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10q2y"]
+size = Vector2(275, 404)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ojr3"]
+size = Vector2(303, 438)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ojr3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vnd2o"]
+
+[node name="CookingGameSmash" type="Node2D" unique_id=141780099]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1215667355]
+position = Vector2(393, 0)
+script = ExtResource("1_c4amv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=677354742]
+position = Vector2(8, 215)
+shape = SubResource("RectangleShape2D_10q2y")
+
+[node name="ColorRect2" type="ColorRect" parent="CharacterBody2D" unique_id=2060569666]
+offset_left = -130.0
+offset_top = 1.0
+offset_right = 151.0
+offset_bottom = 427.0
+color = Color(0.15686275, 0.15686275, 0.57254905, 1)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=174979832]
+position = Vector2(-133, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=481656563]
+position = Vector2(141.5, 209)
+shape = SubResource("RectangleShape2D_8ojr3")
+
+[node name="Wall_left" type="StaticBody2D" parent="." unique_id=93383078]
+physics_material_override = SubResource("PhysicsMaterial_8ojr3")
+
+[node name="ColorRect" type="ColorRect" parent="Wall_left" unique_id=2125230929]
+offset_left = -278.0
+offset_top = -42.0
+offset_right = 3.0
+offset_bottom = 1120.0
+color = Color(0.34117648, 0.15686275, 0.23529412, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall_left" unique_id=914929327]
+position = Vector2(-138.5, 534)
+shape = SubResource("RectangleShape2D_10q2y")
+
+[node name="Wall_right" type="StaticBody2D" parent="." unique_id=621004491]
+position = Vector2(2193, 4)
+physics_material_override = SubResource("PhysicsMaterial_vnd2o")
+
+[node name="ColorRect" type="ColorRect" parent="Wall_right" unique_id=351984011]
+offset_left = -278.0
+offset_top = -42.0
+offset_right = 3.0
+offset_bottom = 1120.0
+color = Color(0.34117648, 0.15686275, 0.23529412, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall_right" unique_id=2145616208]
+position = Vector2(-138, 531)
+shape = SubResource("RectangleShape2D_10q2y")
