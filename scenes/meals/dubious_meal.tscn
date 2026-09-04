@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bhby6k1eae2li"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_ylmdr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dcj5b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6puc"]
+albedo_color = Color(0.34969997, 0.39, 0.14819999, 1)
+
+[node name="DubiousMeal" unique_id=1546410034 instance=ExtResource("1_ylmdr")]
+meal_name = "Dubious meal"
+flavor_text = "Ewwww. What the hell is this?"
+id = 0
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(1, 0, 0, 0, 0.076318376, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_dcj5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_w6puc")

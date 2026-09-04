@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://cuudja02uqggj"]
+
+[ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/food/food.tscn" id="1_e7amy"]
+[ext_resource type="Script" uid="uid://c1d2ofxcm8i16" path="res://scripts/foods/butter_frog.gd" id="2_6qrjq"]
+[ext_resource type="ArrayMesh" uid="uid://cqfbb4cxk1hba" path="res://assets/models/frogbutt.obj" id="2_speix"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://assets/textures/butte.png" id="3_1ydtn"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="3_pb1db"]
+
+[sub_resource type="Shader" id="Shader_6qrjq"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pb1db"]
+load_path = "res://.godot/imported/butte.png-aa1461db198b9356535c146c0cf0584e.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ohet"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_6qrjq")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = SubResource("CompressedTexture2D_pb1db")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_mhppq"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy4qw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1ohet")
+shader = SubResource("Shader_mhppq")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7amy"]
+albedo_texture = ExtResource("3_1ydtn")
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_refk3"]
+albedo_texture = ExtResource("3_1ydtn")
+roughness = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ydtn"]
+radius = 0.43603516
+height = 1.4306641
+
+[node name="ButterFrog" unique_id=1169599723 instance=ExtResource("1_e7amy")]
+script = ExtResource("2_6qrjq")
+food_name = "Butter Frog"
+icon = ExtResource("3_pb1db")
+flavor_text = "Melts on your tongue"
+rarity_level = 0.2
+category = 4
+flavor = 4
+id = 3
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
+material_overlay = SubResource("ShaderMaterial_dy4qw")
+mesh = ExtResource("2_speix")
+surface_material_override/0 = SubResource("StandardMaterial3D_e7amy")
+surface_material_override/1 = SubResource("StandardMaterial3D_refk3")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1691151157]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.056152344, 0.30160028, 0)
+shape = SubResource("CapsuleShape3D_1ydtn")
+
+[node name="Node3D" parent="." index="2" unique_id=1982560729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9191061, 0)
+
+[node name="Label3D" parent="Node3D" index="0" unique_id=1542478267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10539091, 0)
+
+[node name="Sprite3D" parent="Node3D" index="1" unique_id=1250237871]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0997715, -0.008809596)

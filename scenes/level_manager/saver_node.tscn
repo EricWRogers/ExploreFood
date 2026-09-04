@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c5cot4v5axyjo"]
+
+[ext_resource type="Script" uid="uid://4efguk5dmknw" path="res://scripts/level_manager/saver_node.gd" id="1_t1g5b"]
+
+[node name="SaverNode" type="Node" unique_id=1905945391]
+script = ExtResource("1_t1g5b")

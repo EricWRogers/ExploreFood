@@ -1,0 +1,328 @@
+[gd_scene format=3 uid="uid://d0wydojwq4x66"]
+
+[ext_resource type="Texture2D" uid="uid://bp8kpucwsfu8k" path="res://assets/ui/cook_book/cookbookhalf.png" id="1_77y3f"]
+[ext_resource type="Script" uid="uid://dmc1ujxnawc7j" path="res://scripts/ui/cook_book.gd" id="1_egu8v"]
+[ext_resource type="Texture2D" uid="uid://cat20alwqhplv" path="res://assets/ui/cook_book/cookbookrings.png" id="2_4v0pc"]
+[ext_resource type="Texture2D" uid="uid://cl6urqvdnmce8" path="res://assets/ui/cook_book/ingredientIcon.png" id="2_13kyx"]
+[ext_resource type="Texture2D" uid="uid://j2xx8sxtwmqs" path="res://assets/ui/cook_book/mealIcon.png" id="3_13kyx"]
+[ext_resource type="FontFile" uid="uid://c5hhpp72h517l" path="res://assets/fonts/CsAristonStitchedRegularDemo-lx3MX.otf" id="4_rfbjl"]
+[ext_resource type="Texture2D" uid="uid://cv6hpg4p3hk6k" path="res://assets/ui/cook_book/screenshots/TerryScreenshot.png" id="5_60ewy"]
+[ext_resource type="Texture2D" uid="uid://ddihlr66icrp" path="res://assets/ui/cook_book/cookbookimagesnag.png" id="6_egu8v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(0.21066046, 0.63313186, 0.48795038, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbjl"]
+bg_color = Color(0.63, 0.20789999, 0.20789999, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0.45, 0.39802498, 0.30149996, 1)
+shadow_size = 9
+
+[node name="CookBook" type="CanvasLayer" unique_id=1270549682]
+script = ExtResource("1_egu8v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1543322469]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.0
+offset_top = -540.0
+offset_right = 773.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=849406922]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -1560
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1468685567]
+custom_minimum_size = Vector2(1546, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_77y3f")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1859756151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -1447
+theme_override_constants/margin_top = 109
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=1808915866]
+layout_mode = 2
+
+[node name="Ingredients" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=991465202]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients" unique_id=1322205845]
+modulate = Color(1, 1, 1, 0.7254902)
+custom_minimum_size = Vector2(3.71, 133.295)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.148148
+offset_right = 46.148148
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_13kyx")
+expand_mode = 3
+
+[node name="Tab1" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients" unique_id=1358552808]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Food" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1317246487]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rfbjl")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1287666369]
+modulate = Color(1, 1, 1, 0.7254902)
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_13kyx")
+expand_mode = 3
+
+[node name="Tab2" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1630519373]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 122.0
+offset_top = 77.0
+offset_right = 733.0
+offset_bottom = 968.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel" unique_id=690782536]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=653273307]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer" unique_id=162489530]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21176471, 0.6313726, 0.4862745, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 45
+text = "Ingredient"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=1917745939]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21176471, 0.6313726, 0.4862745, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 86
+text = "Man Eater Bird"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=2082094503]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="Screenshot" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel" unique_id=198498266]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_60ewy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1887211587]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 100.0
+grow_vertical = 0
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_bottom = -7
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer" unique_id=1194407458]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1045431024]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer2" unique_id=1715602018]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+flip_v = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=1922705107]
+layout_mode = 2
+theme_override_constants/separation = -221
+
+[node name="Flavor" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/HBoxContainer" unique_id=1296333417]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.71, 0.32186663, 0.14199999, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 38
+text = "Sweet flavor"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Family" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/HBoxContainer" unique_id=1215799113]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.40947998, 0.58, 0.2146, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 38
+text = "Egg family"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=518543843]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 32
+text = "This bird is known to bite the heads off anything that comes near"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Location" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=1349084805]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.265, 0.53, 0.50791657, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 32
+text = "found at high altitudes"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=905952231]
+custom_minimum_size = Vector2(1546, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_77y3f")
+expand_mode = 1
+flip_h = true
+
+[node name="InformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2" unique_id=793023966]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 812.0
+offset_top = 77.0
+offset_right = 1423.0
+offset_bottom = 968.0
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer" unique_id=1636565068]
+texture_filter = 3
+custom_minimum_size = Vector2(81.02, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_4v0pc")
+expand_mode = 1
+
+[node name="CloseBook" type="Button" parent="." unique_id=690384402]
+offset_right = 162.0
+offset_bottom = 156.0
+text = "GO THE FUCK AWAY"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab1" to="." method="_on_tab_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food/Tab2" to="." method="_on_tab_2_pressed"]

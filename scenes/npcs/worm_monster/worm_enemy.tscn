@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://d2lxclnqmsnyo"]
+
+[ext_resource type="PackedScene" uid="uid://c5nx3fu1otijn" path="res://scenes/npcs/worm_monster/yum_chomp.tscn" id="1_hi7tb"]
+[ext_resource type="Script" uid="uid://66fapa7sggq5" path="res://scripts/npcs/worm_monster/worm_enemy.gd" id="1_o88e3"]
+[ext_resource type="ArrayMesh" uid="uid://byf6o4d8ofub7" path="res://assets/npcs/worm_monster/WormDeathLure.obj" id="2_ij8xo"]
+[ext_resource type="Texture2D" uid="uid://c3b51pxr57igh" path="res://assets/npcs/worm_monster/luretex.png" id="3_o88e3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lg1c5"]
+
+[sub_resource type="Animation" id="Animation_kv4mp"]
+resource_name = "Devour"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WormHandle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.258816, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.21969458, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jvey6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WormHandle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ij8xo"]
+_data = {
+&"Devour": SubResource("Animation_kv4mp"),
+&"RESET": SubResource("Animation_jvey6")
+}
+
+[sub_resource type="Shader" id="Shader_weuix"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4juyf"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_weuix")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("3_o88e3")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_860te"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k064r"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4juyf")
+shader = SubResource("Shader_860te")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6r80"]
+next_pass = SubResource("ShaderMaterial_k064r")
+albedo_texture = ExtResource("3_o88e3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8jnf"]
+albedo_color = Color(5.3924317, 3.843399, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
+height = 0.52378845
+radius = 0.014160156
+
+[node name="WormEnemy" type="Node3D" unique_id=1050930802]
+script = ExtResource("1_o88e3")
+
+[node name="WormHandle" type="Node3D" parent="." unique_id=1384185524]
+transform = Transform3D(4.005, 0, 0, 0, 4.005, 0, 0, 0, 4.005, 0, 0, 0)
+
+[node name="YumChomp" parent="WormHandle" unique_id=1353511948 instance=ExtResource("1_hi7tb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01977861, 0)
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=175053812]
+visible = false
+mesh = SubResource("PlaneMesh_lg1c5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2111997909]
+libraries/ = SubResource("AnimationLibrary_ij8xo")
+speed_scale = 0.4
+
+[node name="WormDeathLure" type="MeshInstance3D" parent="." unique_id=758274098]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+mesh = ExtResource("2_ij8xo")
+surface_material_override/0 = SubResource("StandardMaterial3D_a6r80")
+surface_material_override/1 = SubResource("StandardMaterial3D_a8jnf")
+surface_material_override/2 = SubResource("ShaderMaterial_k064r")
+surface_material_override/3 = SubResource("ShaderMaterial_k064r")
+surface_material_override/4 = SubResource("ShaderMaterial_k064r")
+surface_material_override/5 = SubResource("ShaderMaterial_k064r")
+surface_material_override/6 = SubResource("ShaderMaterial_k064r")
+surface_material_override/7 = SubResource("ShaderMaterial_k064r")
+surface_material_override/8 = SubResource("ShaderMaterial_k064r")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1503332423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=1612315992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22924042, 0)
+shape = SubResource("CylinderShape3D_lg1c5")
+
+[node name="Timer" type="Timer" parent="." unique_id=1563468751]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

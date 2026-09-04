@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bmfjf7vn45idq"]
+
+[ext_resource type="Script" uid="uid://cwj6beeqfhd1b" path="res://scripts/foods/basefood.gd" id="1_ydt1i"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="2_7c8jp"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_h8hiw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
+
+[node name="Food" type="RigidBody3D" unique_id=1169599723]
+collision_layer = 513
+freeze = true
+script = ExtResource("1_ydt1i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146662064]
+mesh = SubResource("PlaceholderMesh_h8hiw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1691151157]
+shape = SubResource("SphereShape3D_6xqmx")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1982560729]
+visible = false
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=1542478267]
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "E"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=1250237871]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("2_7c8jp")

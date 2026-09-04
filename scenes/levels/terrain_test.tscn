@@ -1,42 +1,33 @@
 [gd_scene format=3 uid="uid://c6e1k24uvewn0"]
 
-[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/RoomScripts/Level.gd" id="1_6dgx5"]
+[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_6dgx5"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_bdps2"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_o5ppf"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://Prefabs/player.tscn" id="4_gba4x"]
-[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://Prefabs/shaders/skyplus.gdshader" id="5_o5ppf"]
-[ext_resource type="ArrayMesh" uid="uid://d3opv6iq3vaew" path="res://Prefabs/environment_pieces/nest/nest.obj" id="6_b7rar"]
-[ext_resource type="Texture2D" uid="uid://odxf33hgn7yt" path="res://Prefabs/environment_pieces/nest/initialShadingGroup-Color.png" id="7_l0ptr"]
-[ext_resource type="Shader" uid="uid://dvgvrqwb4k2s8" path="res://Prefabs/shaders/pixel.gdshader" id="8_v7lih"]
-[ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://Prefabs/shaders/water.gdshader" id="9_l0ptr"]
-[ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://Prefabs/foods/terry/terry.tscn" id="10_v7lih"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/prefabs/Food/terry_food.tscn" id="11_885wc"]
-[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/prefabs/Food/waffle_pad.tscn" id="12_fxx43"]
-[ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/RoomScripts/floor_boundary.gd" id="13_hvl47"]
-[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/prefabs/portal.tscn" id="15_cibvw"]
-[ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/prefabs/willow_tree.tscn" id="16_qlq6c"]
-[ext_resource type="Script" uid="uid://dsrxs0x5n2c1l" path="res://scripts/dough_babies_movment.gd" id="17_837e2"]
-[ext_resource type="PackedScene" uid="uid://bgmokqbti6o6w" path="res://scenes/levels/doughbabypathing.tscn" id="18_837e2"]
-[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://Prefabs/environment_pieces/ClownTree/clown_tree.tscn" id="19_15qdo"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_837e2"]
-load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0iuo"]
-load_path = "res://.godot/imported/grass_leaf_sprite.png-019dffb0f5761dc01ab007d69d2f79d3.s3tc.ctex"
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="4_gba4x"]
+[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
+[ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="9_l0ptr"]
+[ext_resource type="PackedScene" uid="uid://d2lxclnqmsnyo" path="res://scenes/npcs/worm_monster/worm_enemy.tscn" id="10_v7lih"]
+[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="11_885wc"]
+[ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/scenes_assets/willow_tree.tscn" id="12_fxx43"]
+[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="13_6dgx5"]
+[ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="13_hvl47"]
+[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="14_cibvw"]
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="15_cibvw"]
+[ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="15_qlq6c"]
+[ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="16_qlq6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
-shader_parameter/sky_color = Color(1, 0.69, 0.69, 1)
-shader_parameter/horizon_color = Color(1, 0.5, 0.5, 1)
-shader_parameter/horizon_blur = 0.11200000532
-shader_parameter/sun_color = Color(0.99, 0.95, 1, 1)
+shader_parameter/sky_color = Color(0.25839996, 0.51756, 0.76, 1)
+shader_parameter/horizon_color = Color(0.40392157, 0.7529412, 0.8156863, 1)
+shader_parameter/horizon_blur = 0.026000001235
+shader_parameter/sun_color = Color(1, 0.64, 0.64, 1)
 shader_parameter/sun_size = 0.46700002148398
 shader_parameter/sun_blur = 0.01
-shader_parameter/cloud_color = Color(1, 0.91800004, 0.59000003, 1)
+shader_parameter/cloud_color = Color(1, 0.38431373, 0.43137255, 1)
 shader_parameter/cloud_edge_sharpness = 0.0400000019
-shader_parameter/cloud_scale = 3.19300014840762
+shader_parameter/cloud_scale = 1.20700005407262
 shader_parameter/cloud_speed = 0.0750000035625
 
 [sub_resource type="Sky" id="Sky_ij18k"]
@@ -47,306 +38,19 @@ background_mode = 2
 sky = SubResource("Sky_ij18k")
 glow_enabled = true
 glow_bloom = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0055
+volumetric_fog_albedo = Color(0.7, 0.6, 1, 1)
 adjustment_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6xdh"]
-render_priority = 0
-shader = ExtResource("8_v7lih")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.999999977648
-shader_parameter/highlight_strength = 0.38999999128272
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_885wc"]
-next_pass = SubResource("ShaderMaterial_y6xdh")
-albedo_texture = ExtResource("7_l0ptr")
-metallic_specular = 0.52
-roughness = 0.17
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxx43"]
-load_path = "res://.godot/imported/initialShadingGroup-Color.png-80a4314eec4709c465552b728ee57d2b.s3tc.ctex"
-
-[sub_resource type="Shader" id="Shader_hvl47"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-// MIT License. Made by Leo Peltola
-// Inspired by https://threejs.org/examples/webgl_postprocessing_pixel.html
-
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest;
-
-uniform bool shadows_enabled = true;
-uniform bool highlights_enabled = true;
-uniform float shadow_strength : hint_range(0.0, 1.0, 0.01) = 0.4;
-uniform float highlight_strength : hint_range(0.0, 1.0, 0.01) = 0.1;
-uniform vec3 highlight_color : source_color = vec3(1.);
-uniform vec3 shadow_color : source_color = vec3(0.0);
-
-varying mat4 model_view_matrix;
-
-
-float getDepth(vec2 screen_uv, sampler2D depth_texture, mat4 inv_projection_matrix){
-//	Credit: https://godotshaders.com/shader/depth-modulated-pixel-outline-in-screen-space/
-	float raw_depth = texture(depth_texture, screen_uv)[0];
-	vec3 normalized_device_coordinates = vec3(screen_uv * 2.0 - 1.0, raw_depth);
-    vec4 view_space = inv_projection_matrix * vec4(normalized_device_coordinates, 1.0);	
-	view_space.xyz /= view_space.w;	
-	return -view_space.z;
-}
-
-vec3 getPos(float depth, mat4 mvm, mat4 ipm, vec2 suv, mat4 wm, mat4 icm){
-  vec4 pos = inverse(mvm) * ipm * vec4((suv * 2.0 - 1.0), depth * 2.0 - 1.0, 1.0);
-  pos.xyz /= (pos.w+0.0001*(1.-abs(sign(pos.w))));
-  return (pos*icm).xyz+wm[3].xyz;
-}
-
-float normalIndicator(vec3 normalEdgeBias, vec3 baseNormal, vec3 newNormal, float depth_diff){
-	// Credit: https://threejs.org/examples/webgl_postprocessing_pixel.html
-	float normalDiff = dot(baseNormal - newNormal, normalEdgeBias);
-	float normalIndicator = clamp(smoothstep(-.01, .01, normalDiff), 0.0, 1.0);
-	float depthIndicator = clamp(sign(depth_diff * .25 + .0025), 0.0, 1.0);
-	return (1.0 - dot(baseNormal, newNormal)) * depthIndicator * normalIndicator;
-}
-
-void vertex(){
-    model_view_matrix = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
-}
-
-void fragment() {
-	vec2 e = vec2(1./VIEWPORT_SIZE.xy);
-	
-//	Shadows
-	float depth_diff = 0.0;
-	float neg_depth_diff = .5;
-	if (shadows_enabled) {
-		float depth = getDepth(SCREEN_UV, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float du = getDepth(SCREEN_UV+vec2(0., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dr = getDepth(SCREEN_UV+vec2(1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dd = getDepth(SCREEN_UV+vec2(0., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dl = getDepth(SCREEN_UV+vec2(-1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		depth_diff += clamp(du - depth, 0., 1.);
-		depth_diff += clamp(dd - depth, 0., 1.);
-		depth_diff += clamp(dr - depth, 0., 1.);
-		depth_diff += clamp(dl - depth, 0., 1.);
-		neg_depth_diff += depth - du;
-		neg_depth_diff += depth - dd;
-		neg_depth_diff += depth - dr;
-		neg_depth_diff += depth - dl;
-		neg_depth_diff = clamp(neg_depth_diff, 0., 1.);
-		neg_depth_diff = clamp(smoothstep(0.5, 0.5, neg_depth_diff)*10., 0., 1.);
-		depth_diff = smoothstep(0.2, 0.3, depth_diff);
-//		ALBEDO = vec3(neg_depth_diff);
-	}
-	
-//	Highlights
-	float normal_diff = 0.;
-	if (highlights_enabled) {
-		vec3 normal = texture(NORMAL_TEXTURE, SCREEN_UV).rgb * 2.0 - 1.0;
-		vec3 nu = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(0., -1.)*e).rgb * 2.0 - 1.0;
-		vec3 nr = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(1., 0.)*e).rgb * 2.0 - 1.0;
-		vec3 nd = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(0., 1.)*e).rgb * 2.0 - 1.0;
-		vec3 nl = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(-1., 0.)*e).rgb * 2.0 - 1.0;
-		vec3 normal_edge_bias = (vec3(1., 1., 1.));
-		normal_diff += normalIndicator(normal_edge_bias, normal, nu, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nr, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nd, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nl, depth_diff);
-		normal_diff = smoothstep(0.2, 0.8, normal_diff);
-		normal_diff = clamp(normal_diff-neg_depth_diff, 0., 1.);
-//		ALBEDO = vec3(normal_diff);
-	}
-	
-
-	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
-	vec3 final_highlight_color = mix(original_color, highlight_color, highlight_strength);
-	vec3 final_shadow_color = mix(original_color, shadow_color, shadow_strength);
-	vec3 final = original_color;
-	if (highlights_enabled) {
-		final = mix(final, final_highlight_color, normal_diff);
-	}
-	if (shadows_enabled) {
-		final = mix(final, final_shadow_color, depth_diff);
-	}
-	ALBEDO = final;
-
-	float alpha_mask = depth_diff * float(shadows_enabled) + normal_diff * float(highlights_enabled);
-	ALPHA = clamp((alpha_mask) * 5., 0., 1.);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dgx5"]
-render_priority = 0
-shader = SubResource("Shader_hvl47")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.999999977648
-shader_parameter/highlight_strength = 0.38999999128272
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cibvw"]
-next_pass = SubResource("ShaderMaterial_6dgx5")
-albedo_texture = SubResource("CompressedTexture2D_fxx43")
-metallic_specular = 0.52
-roughness = 0.17
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlq6c"]
-load_path = "res://.godot/imported/initialShadingGroup-Color.png-80a4314eec4709c465552b728ee57d2b.s3tc.ctex"
-
-[sub_resource type="Shader" id="Shader_x0iuo"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-// MIT License. Made by Leo Peltola
-// Inspired by https://threejs.org/examples/webgl_postprocessing_pixel.html
-
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest;
-
-uniform bool shadows_enabled = true;
-uniform bool highlights_enabled = true;
-uniform float shadow_strength : hint_range(0.0, 1.0, 0.01) = 0.4;
-uniform float highlight_strength : hint_range(0.0, 1.0, 0.01) = 0.1;
-uniform vec3 highlight_color : source_color = vec3(1.);
-uniform vec3 shadow_color : source_color = vec3(0.0);
-
-varying mat4 model_view_matrix;
-
-
-float getDepth(vec2 screen_uv, sampler2D depth_texture, mat4 inv_projection_matrix){
-//	Credit: https://godotshaders.com/shader/depth-modulated-pixel-outline-in-screen-space/
-	float raw_depth = texture(depth_texture, screen_uv)[0];
-	vec3 normalized_device_coordinates = vec3(screen_uv * 2.0 - 1.0, raw_depth);
-    vec4 view_space = inv_projection_matrix * vec4(normalized_device_coordinates, 1.0);	
-	view_space.xyz /= view_space.w;	
-	return -view_space.z;
-}
-
-vec3 getPos(float depth, mat4 mvm, mat4 ipm, vec2 suv, mat4 wm, mat4 icm){
-  vec4 pos = inverse(mvm) * ipm * vec4((suv * 2.0 - 1.0), depth * 2.0 - 1.0, 1.0);
-  pos.xyz /= (pos.w+0.0001*(1.-abs(sign(pos.w))));
-  return (pos*icm).xyz+wm[3].xyz;
-}
-
-float normalIndicator(vec3 normalEdgeBias, vec3 baseNormal, vec3 newNormal, float depth_diff){
-	// Credit: https://threejs.org/examples/webgl_postprocessing_pixel.html
-	float normalDiff = dot(baseNormal - newNormal, normalEdgeBias);
-	float normalIndicator = clamp(smoothstep(-.01, .01, normalDiff), 0.0, 1.0);
-	float depthIndicator = clamp(sign(depth_diff * .25 + .0025), 0.0, 1.0);
-	return (1.0 - dot(baseNormal, newNormal)) * depthIndicator * normalIndicator;
-}
-
-void vertex(){
-    model_view_matrix = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
-}
-
-void fragment() {
-	vec2 e = vec2(1./VIEWPORT_SIZE.xy);
-	
-//	Shadows
-	float depth_diff = 0.0;
-	float neg_depth_diff = .5;
-	if (shadows_enabled) {
-		float depth = getDepth(SCREEN_UV, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float du = getDepth(SCREEN_UV+vec2(0., -1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dr = getDepth(SCREEN_UV+vec2(1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dd = getDepth(SCREEN_UV+vec2(0., 1.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		float dl = getDepth(SCREEN_UV+vec2(-1., 0.)*e, DEPTH_TEXTURE, INV_PROJECTION_MATRIX);
-		depth_diff += clamp(du - depth, 0., 1.);
-		depth_diff += clamp(dd - depth, 0., 1.);
-		depth_diff += clamp(dr - depth, 0., 1.);
-		depth_diff += clamp(dl - depth, 0., 1.);
-		neg_depth_diff += depth - du;
-		neg_depth_diff += depth - dd;
-		neg_depth_diff += depth - dr;
-		neg_depth_diff += depth - dl;
-		neg_depth_diff = clamp(neg_depth_diff, 0., 1.);
-		neg_depth_diff = clamp(smoothstep(0.5, 0.5, neg_depth_diff)*10., 0., 1.);
-		depth_diff = smoothstep(0.2, 0.3, depth_diff);
-//		ALBEDO = vec3(neg_depth_diff);
-	}
-	
-//	Highlights
-	float normal_diff = 0.;
-	if (highlights_enabled) {
-		vec3 normal = texture(NORMAL_TEXTURE, SCREEN_UV).rgb * 2.0 - 1.0;
-		vec3 nu = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(0., -1.)*e).rgb * 2.0 - 1.0;
-		vec3 nr = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(1., 0.)*e).rgb * 2.0 - 1.0;
-		vec3 nd = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(0., 1.)*e).rgb * 2.0 - 1.0;
-		vec3 nl = texture(NORMAL_TEXTURE, SCREEN_UV+vec2(-1., 0.)*e).rgb * 2.0 - 1.0;
-		vec3 normal_edge_bias = (vec3(1., 1., 1.));
-		normal_diff += normalIndicator(normal_edge_bias, normal, nu, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nr, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nd, depth_diff);
-		normal_diff += normalIndicator(normal_edge_bias, normal, nl, depth_diff);
-		normal_diff = smoothstep(0.2, 0.8, normal_diff);
-		normal_diff = clamp(normal_diff-neg_depth_diff, 0., 1.);
-//		ALBEDO = vec3(normal_diff);
-	}
-	
-
-	vec3 original_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
-	vec3 final_highlight_color = mix(original_color, highlight_color, highlight_strength);
-	vec3 final_shadow_color = mix(original_color, shadow_color, shadow_strength);
-	vec3 final = original_color;
-	if (highlights_enabled) {
-		final = mix(final, final_highlight_color, normal_diff);
-	}
-	if (shadows_enabled) {
-		final = mix(final, final_shadow_color, depth_diff);
-	}
-	ALBEDO = final;
-
-	float alpha_mask = depth_diff * float(shadows_enabled) + normal_diff * float(highlights_enabled);
-	ALPHA = clamp((alpha_mask) * 5., 0., 1.);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_837e2"]
-render_priority = 0
-shader = SubResource("Shader_x0iuo")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.999999977648
-shader_parameter/highlight_strength = 0.38999999128272
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15qdo"]
-next_pass = SubResource("ShaderMaterial_837e2")
-albedo_texture = SubResource("CompressedTexture2D_qlq6c")
-metallic_specular = 0.52
-roughness = 0.17
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xy2e"]
-next_pass = SubResource("ShaderMaterial_y6xdh")
-albedo_texture = ExtResource("7_l0ptr")
-metallic_specular = 0.52
-roughness = 0.17
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dw6x"]
-next_pass = SubResource("ShaderMaterial_y6xdh")
-albedo_texture = ExtResource("7_l0ptr")
-metallic_specular = 0.52
-roughness = 0.17
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp3qp"]
-next_pass = SubResource("ShaderMaterial_y6xdh")
-albedo_texture = ExtResource("7_l0ptr")
-metallic_specular = 0.52
-roughness = 0.17
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lg1c5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6g1ex"]
 render_priority = 0
 shader = ExtResource("9_l0ptr")
-shader_parameter/absorption_color = Color(1, 0.98333335, 0, 1)
+shader_parameter/absorption_color = Color(0, 1, 1, 1)
 shader_parameter/fresnel_radius = 2.0
-shader_parameter/fresnel_color = Color(0.72, 0, 0.57600015, 1)
+shader_parameter/fresnel_color = Color(0, 0.6599999, 0.72, 1)
 shader_parameter/roughness = 0.15
 shader_parameter/specular = 0.25
 shader_parameter/depth_distance = 25.0
@@ -377,232 +81,23 @@ shader_parameter/scroll_offset = Vector2(0.1, -0.3)
 shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q026u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qlq6c"]
+size = Vector3(32.985107, 0.068359375, 34.398743)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
+size = Vector3(1, 1, 4.087158)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ptr"]
+albedo_color = Color(0.40018785, 0.44672376, 0.5220287, 0.50200003)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
+size = Vector3(7.546921, 1, 28.261478)
 
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
 script = ExtResource("1_6dgx5")
 level_name = "terrain_test"
 
-[node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=16417450]
-script = ExtResource("1_bdps2")
-data_directory = "res://scenes/levels/terrain_test_TerrainData/MarchingSquaresTerrain_80c243e3"
-_storage_initialized = true
-animation_fps = 1
-grass_size = Vector2(0.8, 0.8)
-grass_sprite_tex_1 = SubResource("CompressedTexture2D_837e2")
-grass_sprite_tex_4 = SubResource("CompressedTexture2D_x0iuo")
-texture_albedo_1 = Color(1, 0.72617644, 0.4235294, 1)
-texture_albedo_2 = Color(1, 0.3254902, 0.38431373, 1)
-texture_albedo_3 = Color(0.99607843, 0.19215687, 0.29411766, 1)
-texture_albedo_4 = Color(0.759375, 0.40816405, 0.40816405, 1)
-texture_albedo_5 = Color(0.71875, 0.71875, 0.71875, 1)
-texture_albedo_6 = Color(0.965625, 0.7906055, 0.8529561, 1)
-texture_scale_1 = 0.9
-texture_scale_4 = 1.2000000000000002
-texture_scale_5 = 0.7999999999999999
-texture_scale_6 = 1.3
-texture_scale_7 = 1.1
-texture_scale_11 = 1.1
-texture_scale_13 = 0.9
-texture_scale_14 = 0.9
-metadata/_custom_type_script = "uid://cddg1xr5hye1d"
-
-[node name="Chunk (-1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=821320883 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-1, -1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -1)" unique_id=479801427]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-1, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=971803775 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-1, 0)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 0)" unique_id=1912303198]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (0, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=183760902 node_paths=PackedStringArray("terrain_system")]
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 0)" unique_id=1665758409]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (0, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1784929621 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(0, -1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -1)" unique_id=2102398673]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-2, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=192941832 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-2, -1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, -1)" unique_id=1653300012]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-1, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1831925870 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -128)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-1, -2)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -2)" unique_id=1705442599]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=922332535 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(1, -1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, -1)" unique_id=1926739328]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (1, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=158918043 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(1, 0)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, 0)" unique_id=1389063768]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (1, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=124020499 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(1, 1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, 1)" unique_id=1363636979]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (0, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1093625476 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(0, 1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 1)" unique_id=10375368]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (1, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1481737889 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -128)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(1, -2)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, -2)" unique_id=419909722]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (0, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=633396746 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(0, -2)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -2)" unique_id=44920925]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-2, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1171191370 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-2, -2)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, -2)" unique_id=785648073]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-1, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1822145198 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-1, 1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 1)" unique_id=405789795]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-2, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1171185732 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-2, 0)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, 0)" unique_id=1026086384]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-2, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=905385035 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-2, 1)
-merge_mode = 3
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, 1)" unique_id=1066545234]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-3, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1174341422 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 64)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-3, 1)
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, 1)" unique_id=1941577423]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
-[node name="Chunk (-3, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=111067318 node_paths=PackedStringArray("terrain_system")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 0)
-script = ExtResource("2_o5ppf")
-terrain_system = NodePath("..")
-chunk_coords = Vector2i(-3, 0)
-
-[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, 0)" unique_id=742108760]
-cast_shadow = 0
-script = ExtResource("3_s745a")
-
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("4_gba4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3860283, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
@@ -610,170 +105,582 @@ transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.343
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297952523]
 environment = SubResource("Environment_lg1c5")
 
-[node name="Nest" type="MeshInstance3D" parent="." unique_id=348042879]
-transform = Transform3D(0.94195306, -0.32906407, 0.066644, 0.32438874, 0.94317216, 0.072100386, -0.0865824, -0.046296656, 0.9951684, 59.93264, 27.444199, 45.65478)
-mesh = ExtResource("6_b7rar")
-surface_material_override/0 = SubResource("StandardMaterial3D_885wc")
-surface_material_override/1 = SubResource("StandardMaterial3D_cibvw")
-surface_material_override/2 = SubResource("StandardMaterial3D_15qdo")
-surface_material_override/3 = SubResource("StandardMaterial3D_0xy2e")
-surface_material_override/4 = SubResource("StandardMaterial3D_0dw6x")
-surface_material_override/5 = SubResource("StandardMaterial3D_kp3qp")
+[node name="WaterParent" type="Node3D" parent="." unique_id=769287535]
 
-[node name="Water" type="MeshInstance3D" parent="." unique_id=1273085842]
-transform = Transform3D(273.69427, 0, 0, 0, 1, 0, 0, 0, 220.29225, -81.68875, 0, 0)
+[node name="Water" type="MeshInstance3D" parent="WaterParent" unique_id=1273085842]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, 0)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="FoodEnablerTerry" type="Node3D" parent="." unique_id=18081227]
+[node name="Water3" type="MeshInstance3D" parent="WaterParent" unique_id=1204227364]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, 0)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="Terry" parent="FoodEnablerTerry" unique_id=150516399 instance=ExtResource("10_v7lih")]
-transform = Transform3D(0.088338576, -0.02439034, -0.99579185, 0.04703643, 0.9986871, -0.020288527, 0.9949793, -0.045046236, 0.08936984, 59.78425, 27.300919, 45.69298)
+[node name="Water2" type="MeshInstance3D" parent="WaterParent" unique_id=485782989]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 0)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="TerryFood" parent="FoodEnablerTerry" unique_id=737182758 instance=ExtResource("11_885wc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.284551, 0, 4.876914)
-rarity_level = 0.9
+[node name="Water4" type="MeshInstance3D" parent="WaterParent" unique_id=1934553856]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, -440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="TerryFood2" parent="FoodEnablerTerry" unique_id=1455508290 instance=ExtResource("11_885wc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.47517, 0, -16.635096)
-rarity_level = 0.9
+[node name="Water5" type="MeshInstance3D" parent="WaterParent" unique_id=2050622143]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, -440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="TerryFood3" parent="FoodEnablerTerry" unique_id=996940590 instance=ExtResource("11_885wc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.304768, 0, 0)
-rarity_level = 0.9
+[node name="Water6" type="MeshInstance3D" parent="WaterParent" unique_id=988973522]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, -440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="WafflePad" parent="FoodEnablerTerry" unique_id=1169599723 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.926037, -0.16294026, -43.633102)
+[node name="Water7" type="MeshInstance3D" parent="WaterParent" unique_id=1966672374]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -3.6051636, 440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="WafflePad2" parent="FoodEnablerTerry" unique_id=327291941 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.590844, -0.16294026, -53.113754)
+[node name="Water8" type="MeshInstance3D" parent="WaterParent" unique_id=1731615751]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, -440, -3.605, 440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="WafflePad3" parent="FoodEnablerTerry" unique_id=604893148 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.680507, -0.16294026, -47.303917)
-
-[node name="WafflePad4" parent="FoodEnablerTerry" unique_id=1111980156 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.706024, -0.16294026, -13.102459)
-
-[node name="WafflePad5" parent="FoodEnablerTerry" unique_id=8485151 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.14482, -0.16294026, -10.391956)
-
-[node name="WafflePad6" parent="FoodEnablerTerry" unique_id=680614844 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.931114, -0.16294026, -17.489313)
-
-[node name="WafflePad7" parent="FoodEnablerTerry" unique_id=503638909 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.298473, -0.16294026, -14.957203)
-
-[node name="WafflePad8" parent="FoodEnablerTerry" unique_id=1695159908 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.971058, -0.16294026, -35.51701)
-
-[node name="WafflePad9" parent="FoodEnablerTerry" unique_id=948683477 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.971058, -0.20769191, -38.340607)
-
-[node name="WafflePad10" parent="FoodEnablerTerry" unique_id=1219060481 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8484201, -0.1756103, -71.296616)
-
-[node name="WafflePad11" parent="FoodEnablerTerry" unique_id=2074679055 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1903772, -0.1756103, -70.20794)
-
-[node name="WafflePad12" parent="FoodEnablerTerry" unique_id=2073222877 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.061325, -0.1756103, -39.25981)
-
-[node name="WafflePad13" parent="FoodEnablerTerry" unique_id=1486930911 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9366, -0.1756103, -38.739258)
-
-[node name="WafflePad14" parent="FoodEnablerTerry" unique_id=382203470 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.86288, -0.1756103, -25.962101)
-
-[node name="WafflePad15" parent="FoodEnablerTerry" unique_id=1123905603 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.416466, -0.17561221, -4.628525)
-
-[node name="WafflePad16" parent="FoodEnablerTerry" unique_id=2048133315 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.970085, -0.17561221, 2.2334166)
-
-[node name="WafflePad17" parent="FoodEnablerTerry" unique_id=494041522 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.3631, -0.17561221, -0.18106937)
-
-[node name="WafflePad18" parent="FoodEnablerTerry" unique_id=2042256888 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.07192, -0.17561221, 17.128796)
-
-[node name="WafflePad19" parent="FoodEnablerTerry" unique_id=617817865 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.085594, -0.17561221, 25.234465)
-
-[node name="WafflePad20" parent="FoodEnablerTerry" unique_id=2024369116 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.886528, -0.17561221, 31.099817)
-
-[node name="WafflePad21" parent="FoodEnablerTerry" unique_id=469168244 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.815994, -0.17561221, 39.51001)
-
-[node name="WafflePad22" parent="FoodEnablerTerry" unique_id=445458703 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.594093, -0.17561221, 37.0188)
-
-[node name="WafflePad23" parent="FoodEnablerTerry" unique_id=6837746 instance=ExtResource("12_fxx43")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.599674, -0.17561412, 45.405685)
+[node name="Water9" type="MeshInstance3D" parent="WaterParent" unique_id=862480566]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 440)
+mesh = SubResource("PlaneMesh_lg1c5")
+surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
 [node name="WaterFloor" type="Area3D" parent="." unique_id=270011674]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.324411, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
 script = ExtResource("13_hvl47")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
-transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, -35.983513, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_q026u")
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
+shape = SubResource("BoxShape3D_qlq6c")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
-transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, -39.215473, 1.2035608, -6.7239914)
+transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, 5.520287, 0.49479103, 0)
 
-[node name="WillowTree" parent="." unique_id=33723002 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(0.9056104, 0, -0.42411065, 0, 1, 0, 0.42411065, 0, 0.9056104, -73.417206, 0, -50.61367)
+[node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=102113253]
+script = ExtResource("1_bdps2")
+data_directory = "res://scenes/levels/terrain_test_TerrainData/MarchingSquaresTerrain_dbcf3610"
+_storage_initialized = true
+texture_albedo_1 = Color(0.2616211, 0.40692753, 0.59375, 1)
+metadata/_custom_type_script = "uid://cddg1xr5hye1d"
 
-[node name="WillowTree2" parent="." unique_id=1952574857 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(0.5386241, 0, -0.84254605, 0, 1, 0, 0.84254605, 0, 0.5386241, -88.83849, 0, -23.837528)
+[node name="Chunk (-1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1885466300 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, -1)
 
-[node name="WillowTree3" parent="." unique_id=206320130 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(0.501156, 0, 0.8653568, 0, 1, 0, -0.8653568, 0, 0.501156, 0.33769608, 0, -79.48337)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -1)" unique_id=2093237599]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="WillowTree4" parent="." unique_id=2029563646 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(-0.12242449, 0, -0.99247766, 0, 1, 0, 0.99247766, 0, -0.12242449, -22.169718, 0, -77.13224)
+[node name="Chunk (-1, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1772979703 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, 0)
 
-[node name="WillowTree5" parent="." unique_id=1028815480 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(0.8197799, 0, -0.57267845, 0, 1, 0, 0.57267845, 0, 0.8197799, -139.68835, 0, 47.067886)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 0)" unique_id=1824568012]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="WillowTree6" parent="." unique_id=1811031424 instance=ExtResource("16_qlq6c")]
-transform = Transform3D(0.8543047, 0, 0.51977223, 0, 1, 0, -0.51977223, 0, 0.8543047, -143.55373, 0, 66.698)
+[node name="Chunk (0, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=838147022 node_paths=PackedStringArray("terrain_system")]
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
 
-[node name="DoughBabies" type="Node3D" parent="." unique_id=448392506]
-script = ExtResource("17_837e2")
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 0)" unique_id=1075196554]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Path1" parent="DoughBabies" unique_id=1301071299 instance=ExtResource("18_837e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.77245, 0.48222995, 82.95389)
+[node name="Chunk (1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=610763286 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, -1)
 
-[node name="Path2" parent="DoughBabies" unique_id=1715370717 instance=ExtResource("18_837e2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.72391, 16.91233, 101.49252)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, -1)" unique_id=134006074]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Clown_Tree_Parent" type="Node3D" parent="." unique_id=1624988003]
+[node name="Chunk (1, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=690575839 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, 0)
 
-[node name="Clown_Tree" parent="Clown_Tree_Parent" unique_id=1282798476 instance=ExtResource("19_15qdo")]
-transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 21.974411, 4.9229126, 24.891283)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, 0)" unique_id=579912104]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Clown_Tree2" parent="Clown_Tree_Parent" unique_id=785913860 instance=ExtResource("19_15qdo")]
-transform = Transform3D(-1.3421636, 0, -2.9302433, 0, 3.223, 0, 2.9302433, 0, -1.3421636, 55.296524, 13.636468, 68.94885)
+[node name="Chunk (1, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1638583124 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, 1)
 
-[node name="Clown_Tree3" parent="Clown_Tree_Parent" unique_id=135535713 instance=ExtResource("19_15qdo")]
-transform = Transform3D(0.6417587, -0.16811849, 1.9502517, 0.0054090293, 2.052533, 0.17515554, -1.9574771, -0.04944594, 0.63987386, 8.46096, 7.2642517, 31.387285)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, 1)" unique_id=963530399]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Clown_Tree4" parent="Clown_Tree_Parent" unique_id=5725708 instance=ExtResource("19_15qdo")]
-transform = Transform3D(1.77, 0, 0, 0, 1.77, 0, 0, 0, 1.77, 28.51075, 14.791597, 66.34465)
+[node name="Chunk (0, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1024515178 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, 1)
 
-[node name="Clown_Tree5" parent="Clown_Tree_Parent" unique_id=1189931779 instance=ExtResource("19_15qdo")]
-transform = Transform3D(1.5790735, 0.13281631, -0.78853434, -0.11882467, 1.7650096, 0.0593369, 0.79076374, 0, 1.583538, 55.703854, 16.597366, 78.91567)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 1)" unique_id=1608751878]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Clown_Tree6" parent="Clown_Tree_Parent" unique_id=1269843588 instance=ExtResource("19_15qdo")]
-transform = Transform3D(0.9126877, 0, 1.8579291, 0, 2.07, 0, -1.8579291, 0, 0.9126877, -26.835533, 14.416067, 38.338905)
+[node name="Chunk (-1, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=32814857 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, 1)
 
-[node name="Clown_Tree7" parent="Clown_Tree_Parent" unique_id=592623447 instance=ExtResource("19_15qdo")]
-transform = Transform3D(1.0235666, 0, -0.45465523, 0, 1.12, 0, 0.45465523, 0, 1.0235666, -33.807037, 14.416067, 31.976349)
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 1)" unique_id=1011230703]
+cast_shadow = 0
+script = ExtResource("3_s745a")
 
-[node name="Clown_Tree8" parent="Clown_Tree_Parent" unique_id=1211396304 instance=ExtResource("19_15qdo")]
-transform = Transform3D(0.23433793, 0, -1.0952103, 0, 1.12, 0, 1.0952103, 0, 0.23433793, -19.648827, 16.39653, 48.27775)
+[node name="Chunk (-2, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1409540836 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, 1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, 1)" unique_id=387985900]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-2, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1346437652 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, 0)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, 0)" unique_id=994265481]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-2, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=326527363 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, -1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, -1)" unique_id=905064683]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-2, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1812511550 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, -2)" unique_id=497152863]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-1, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1859705636 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -2)" unique_id=1055675260]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (0, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1971739794 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -2)" unique_id=619572975]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (1, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=467571917 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, -2)" unique_id=514919585]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-3, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=2053455692 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 0)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-3, 0)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, 0)" unique_id=2031959515]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-3, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1562571215 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-3, -1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, -1)" unique_id=437465726]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-1, 2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=2095307752 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, 2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 2)" unique_id=2102918865]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (0, 2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1430121070 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, 2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 2)" unique_id=1655449875]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (2, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1270050198 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(2, 0)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (2, 0)" unique_id=876645379]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (2, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=882038603 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(2, -1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (2, -1)" unique_id=96772291]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-1, -3)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=729101744 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -192)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, -3)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -3)" unique_id=1498522874]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (0, -3)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=781862530 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, -3)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -3)" unique_id=1054098236]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (2, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=918756620 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(2, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (2, -2)" unique_id=590902532]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (1, -3)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=652847479 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -192)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, -3)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, -3)" unique_id=1746033609]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (2, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=396226857 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(2, 1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (2, 1)" unique_id=67093085]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (1, 2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=807979313 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(1, 2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (1, 2)" unique_id=1730139184]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-2, 2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=333637679 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, 2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, 2)" unique_id=1604402596]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-3, 1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=664513172 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, 64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-3, 1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, 1)" unique_id=77495720]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-3, -2)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1630743356 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, -128)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-3, -2)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-3, -2)" unique_id=105567969]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (-2, -3)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1548396274 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -192)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-2, -3)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-2, -3)" unique_id=1336282745]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="Chunk (0, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=366878001 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+script = ExtResource("2_o5ppf")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, -1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -1)" unique_id=1167237574]
+cast_shadow = 0
+script = ExtResource("3_s745a")
+
+[node name="TempBridge" type="StaticBody3D" parent="." unique_id=1448610521]
+transform = Transform3D(0.6042247, 0, -0.79681396, 0, 1, 0, 0.79681396, 0, 0.6042247, 24.620518, -3.752327, -20.767673)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge" unique_id=1041464625]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge" unique_id=1432451036]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
+
+[node name="TempBridge2" type="StaticBody3D" parent="." unique_id=2019388492]
+transform = Transform3D(0.71852773, 0, -0.6954984, 0, 1, 0, 0.6954984, 0, 0.71852773, 47.00537, -3.752327, 68.79562)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge2" unique_id=995567880]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge2" unique_id=2055451737]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
+
+[node name="TempBridge3" type="StaticBody3D" parent="." unique_id=887330641]
+transform = Transform3D(0.7500558, 0, 0.6613747, 0, 1, 0, -0.6613747, 0, 0.7500558, -34.965775, -3.752327, -28.234026)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempBridge3" unique_id=1949342488]
+transform = Transform3D(7.5, 0, 0, 0, 1, 0, 0, 0, 7, 0, -0.3781767, -3.082098)
+mesh = SubResource("BoxMesh_6xqmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ptr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempBridge3" unique_id=1655783393]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624256, -0.3664075, -2.9550896)
+shape = SubResource("BoxShape3D_q026u")
+
+[node name="WormEnemy" parent="." unique_id=1050930802 instance=ExtResource("10_v7lih")]
+transform = Transform3D(80.267944, 0, -151.52231, 0, 171.46999, 0, 151.52231, 0, 80.267944, 133.9191, -5.0414886, -25.901302)
+
+[node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.73379, -3.8158453, 15.11434)
+
+[node name="WafflePad2" parent="." unique_id=1510018945 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.86831, -3.8158453, 24.321259)
+
+[node name="WafflePad3" parent="." unique_id=605675886 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.486565, -3.8158453, 19.012522)
+
+[node name="WafflePad4" parent="." unique_id=391425877 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.97192, -3.8158472, 47.782608)
+
+[node name="WafflePad5" parent="." unique_id=899483979 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.12473, -3.8158472, 51.59352)
+
+[node name="WafflePad6" parent="." unique_id=744375050 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.58718, -3.8158472, 60.06667)
+
+[node name="WafflePad7" parent="." unique_id=1453695106 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1151, -3.8158472, 48.315903)
+
+[node name="WafflePad8" parent="." unique_id=1199857541 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.10176, -3.8158472, 35.533077)
+
+[node name="WafflePad9" parent="." unique_id=1138399272 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.98067, -3.8158472, 68.403145)
+
+[node name="WafflePad10" parent="." unique_id=1405749190 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.98067, -3.8158472, 68.403145)
+
+[node name="WafflePad11" parent="." unique_id=1559103289 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.25198, -3.8158433, 87.45702)
+
+[node name="WafflePad12" parent="." unique_id=257876374 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.679565, -3.8158472, 106.919106)
+
+[node name="WafflePad13" parent="." unique_id=91596445 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.61285, -3.8158472, 98.39494)
+
+[node name="WafflePad14" parent="." unique_id=300831040 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8769, -3.8158472, 104.35861)
+
+[node name="WafflePad15" parent="." unique_id=1683026904 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.29881, -3.8158472, 43.98826)
+
+[node name="WafflePad16" parent="." unique_id=217291632 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.73094, -3.815851, 21.717766)
+
+[node name="WafflePad17" parent="." unique_id=1786220077 instance=ExtResource("11_885wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.26578, -3.815851, -1.8166656)
+
+[node name="WillowTree" parent="." unique_id=33723002 instance=ExtResource("12_fxx43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.042347, 0, -9.129433)
+
+[node name="WillowTree2" parent="." unique_id=1322752412 instance=ExtResource("12_fxx43")]
+transform = Transform3D(0.95682865, 0, -0.2906526, 0, 1, 0, 0.2906526, 0, 0.95682865, -55.146023, 1.9073486e-06, -47.833553)
+
+[node name="WillowTree3" parent="." unique_id=22881592 instance=ExtResource("12_fxx43")]
+transform = Transform3D(0.63657594, 0, -0.77121407, 0, 1, 0, 0.77121407, 0, 0.63657594, -22.572912, -3.7366433, -54.73557)
+
+[node name="WillowTree4" parent="." unique_id=1117564056 instance=ExtResource("12_fxx43")]
+transform = Transform3D(-0.3651492, 0, -0.93094903, 0, 1, 0, 0.93094903, 0, -0.3651492, 25.620092, -0.42651224, -54.73557)
+
+[node name="WillowTree5" parent="." unique_id=1973195396 instance=ExtResource("12_fxx43")]
+transform = Transform3D(-0.8703327, 0, -0.49246427, 0, 1, 0, 0.49246427, 0, -0.8703327, 40.399986, -0.42651224, -42.255875)
+
+[node name="WillowTree6" parent="." unique_id=691554072 instance=ExtResource("12_fxx43")]
+transform = Transform3D(-0.8703327, 0, -0.49246427, 0, 1, 0, 0.49246427, 0, -0.8703327, 49.14453, -3.8724322, 33.97816)
+
+[node name="WillowTree7" parent="." unique_id=1793865368 instance=ExtResource("12_fxx43")]
+transform = Transform3D(-0.365526, 0, 0.93080115, 0, 1, 0, -0.93080115, 0, -0.365526, 7.9720902, -3.8724322, 69.82292)
+
+[node name="WillowTree8" parent="." unique_id=1721540727 instance=ExtResource("12_fxx43")]
+transform = Transform3D(0.3897273, 0, 0.9209303, 0, 1, 0, -0.9209303, 0, 0.3897273, -15.904072, -3.8724332, 68.97881)
+
+[node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.007263303, 0, -0.99997365, 0, 1, 0, 0.99997365, 0, 0.007263303, -39.959023, -0.077121496, 89.92405)
+
+[node name="Clown_Tree2" parent="." unique_id=396329984 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.7274696, 0, -0.68613994, 0, 1, 0, 0.68613994, 0, 0.7274696, -26.402134, -0.0771234, 85.01107)
+
+[node name="Clown_Tree3" parent="." unique_id=1975724889 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.98619497, 0, 0.16558859, 0, 1, 0, -0.16558859, 0, 0.98619497, -51.482613, -0.0771234, 74.16131)
+
+[node name="Clown_Tree4" parent="." unique_id=266198964 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.007924497, 0, -0.99996865, 0, 1, 0, 0.99996865, 0, 0.007924497, -34.80114, -0.0771234, 67.5742)
+
+[node name="Clown_Tree5" parent="." unique_id=1612982620 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.7274696, 0, -0.68613994, 0, 1, 0, 0.68613994, 0, 0.7274696, -39.63177, -0.0771234, 57.517982)
+
+[node name="Clown_Tree6" parent="." unique_id=1799981626 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.9819514, 0, 0.18913367, 0, 1, 0, -0.18913367, 0, 0.9819514, -53.047287, -0.0771234, 57.80812)
+
+[node name="Clown_Tree7" parent="." unique_id=165459327 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.99999607, 0, 0.0028042793, 0, 1, 0, -0.0028042793, 0, 0.99999607, -52.24057, -0.07712531, 51.019905)
+
+[node name="Clown_Tree8" parent="." unique_id=474090883 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.7274696, 0, -0.68613994, 0, 1, 0, 0.68613994, 0, 0.7274696, -65.83824, -0.07712531, 71.649605)
+
+[node name="Clown_Tree9" parent="." unique_id=266406801 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(-0.1914666, 0, -0.9814992, 0, 1, 0, 0.9814992, 0, -0.1914666, -66.679214, -0.07712531, 58.766605)
+
+[node name="Clown_Tree10" parent="." unique_id=1791176458 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(-0.30610207, 0, -0.9519987, 0, 1, 0, 0.9519987, 0, -0.30610207, -66.782684, -0.07712531, 35.511208)
+
+[node name="Clown_Tree11" parent="." unique_id=1380778524 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(-0.38093075, -0.0031430402, -0.92459816, 0.0018792814, 0.9999895, -0.0041735694, 0.9246017, -0.0033274128, -0.3809209, -70.8161, -0.07712531, 40.120747)
+
+[node name="Clown_Tree12" parent="." unique_id=1040666276 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.7274696, 0, -0.68613994, 0, 1, 0, 0.68613994, 0, 0.7274696, -85.96911, -0.07712531, 61.5604)
+
+[node name="Clown_Tree13" parent="." unique_id=1048266310 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.93701136, 0, 0.349299, 0, 1, 0, -0.349299, 0, 0.93701136, -84.68941, -0.07712531, 49.08594)
+
+[node name="Clown_Tree14" parent="." unique_id=1774248864 instance=ExtResource("13_6dgx5")]
+transform = Transform3D(0.7274696, 0, -0.68613994, 0, 1, 0, 0.68613994, 0, 0.7274696, -80.00234, -0.0771234, 79.440895)
+
+[node name="DoughBaby" parent="." unique_id=1672482069 instance=ExtResource("14_cibvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.429787, 1.459552, -54.2347)
+rand_spin = true
+
+[node name="DoughBaby2" parent="." unique_id=1102191450 instance=ExtResource("14_cibvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.3364, 1.459552, -63.580585)
+rand_spin = true
+
+[node name="DoughBaby3" parent="." unique_id=965365485 instance=ExtResource("14_cibvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.717926, 1.459552, -60.4664)
+rand_spin = true
+
+[node name="DoughBaby4" parent="." unique_id=532909439 instance=ExtResource("14_cibvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.462967, 1.4595516, -54.103676)
+rand_spin = true
+
+[node name="DoughBaby5" parent="." unique_id=1546144838 instance=ExtResource("14_cibvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.251938, 1.459552, -47.908844)
+rand_spin = true
+
+[node name="SmartDoughBaby" parent="." unique_id=1579345735 instance=ExtResource("15_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.268486, 0.9052093, -46.353115)
+
+[node name="Nest" parent="." unique_id=2116521288 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.954435, 23.748594, 96.669266)
+
+[node name="Nest2" parent="." unique_id=61359586 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.95158, 21.886747, -42.280804)
+
+[node name="Nest3" parent="." unique_id=1035966393 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.73589, 82.96884, -121.418564)
+
+[node name="Nest4" parent="." unique_id=1081625475 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.214497, 82.96884, -118.35835)
+
+[node name="Nest5" parent="." unique_id=1537150748 instance=ExtResource("16_qlq6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.07292, 82.96884, -119.254814)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
