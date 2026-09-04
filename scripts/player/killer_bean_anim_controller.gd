@@ -47,6 +47,8 @@ func update_held_item(id):
 			$Skeleton3D/BoneAttachment3D/DoughBebeh.show()
 		8:
 			$Skeleton3D/BoneAttachment3D/MeatBall.show()
+		9:
+			pass
 		
 func reset_held():
 	$Skeleton3D/BoneAttachment3D/Frogbutt.hide()

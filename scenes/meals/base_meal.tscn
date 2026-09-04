@@ -97,6 +97,7 @@ shader_parameter/rim_intensity = 2.0
 
 [node name="BaseMeal" type="RigidBody3D" unique_id=1546410034]
 script = ExtResource("1_aflix")
+type = "meal"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1675912402]
 material_overlay = SubResource("ShaderMaterial_ndxo7")

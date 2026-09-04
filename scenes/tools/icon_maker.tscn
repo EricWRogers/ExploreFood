@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="12_77w0k"]
 [ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="13_kap76"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="14_qm5qq"]
+[ext_resource type="PackedScene" uid="uid://d13rs5g0a2u0r" path="res://scenes/food/bagel/bagel_top.tscn" id="15_ejd08"]
+[ext_resource type="PackedScene" uid="uid://32c24t457nbx" path="res://scenes/food/bagel/bagel_start.tscn" id="16_xk22l"]
+[ext_resource type="PackedScene" uid="uid://bg30cyd7f3v1o" path="res://scenes/food/bagel/bagel_spread_piece.tscn" id="17_pp0c1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
 load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
@@ -300,6 +303,13 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_47tt1"]
+resource_local_to_scene = true
+top_radius = 0.35742188
+bottom_radius = 0.35742188
+height = 0.076
+cap_bottom = false
+
 [node name="IconMaker" type="SubViewport" unique_id=1215882865]
 transparent_bg = true
 size = Vector2i(264, 264)
@@ -307,7 +317,7 @@ render_target_update_mode = 4
 script = ExtResource("1_f21od")
 
 [node name="IconCamera" type="Camera3D" parent="." unique_id=1932887130]
-transform = Transform3D(0.8793591, 0.3759665, -0.2921931, -0.08494702, 0.7276697, 0.68064743, 0.46852067, -0.5737126, 0.6718202, -0.7357956, 1.6922911, 1.5866184)
+transform = Transform3D(0.78421366, 0.35549548, -0.5085587, 0, 0.819607, 0.57292616, 0.620491, -0.44929656, 0.64274704, -0.52306455, 0.5475653, 0.6767484)
 fov = 59.841953
 
 [node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_a50sx")]
@@ -376,9 +386,26 @@ freeze = true
 rarity_level = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408608886]
+visible = false
 material_overlay = SubResource("ShaderMaterial_1jqcv")
 mesh = ExtResource("14_qm5qq")
+
+[node name="BagelTop" parent="." unique_id=541640571 instance=ExtResource("15_ejd08")]
+
+[node name="BagelStart" parent="BagelTop" unique_id=989785034 instance=ExtResource("16_xk22l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0823496, 0)
+
+[node name="Node3D" parent="BagelTop/BagelStart" index="1" unique_id=322777136]
+visible = false
+
+[node name="SpreadPiece" parent="BagelTop/BagelStart" unique_id=1728940416 instance=ExtResource("17_pp0c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010835677, 0)
+
+[node name="MeshInstance3D" parent="BagelTop/BagelStart/SpreadPiece" index="0" unique_id=363521579]
+mesh = SubResource("CylinderMesh_47tt1")
 
 [editable path="Terry"]
 [editable path="Chicken_And_Waffle"]
 [editable path="Meat_Pies"]
+[editable path="BagelTop/BagelStart"]
+[editable path="BagelTop/BagelStart/SpreadPiece"]

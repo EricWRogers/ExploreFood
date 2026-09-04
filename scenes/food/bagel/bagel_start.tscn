@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://mr7isaiwtos2" path="res://assets/models/Bagel.obj" id="1_udo6y"]
 [ext_resource type="Script" uid="uid://c6riarl80h3rb" path="res://scripts/foods/bagel_scripts/bagel_handling.gd" id="1_ycxnp"]
+[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/output_icon.png" id="2_orowf"]
 [ext_resource type="Texture2D" uid="uid://da7g55kv4gf78" path="res://assets/textures/bagel/BagelTex.png" id="2_wifrk"]
 [ext_resource type="Material" uid="uid://cxahwrc2ceujd" path="res://assets/materials/LinesHoverBagel.tres" id="2_ycxnp"]
 [ext_resource type="Texture2D" uid="uid://dqd05ivafmv3n" path="res://assets/textures/bagel/BagelRough.png" id="3_f48ei"]
@@ -56,6 +57,9 @@ radius = 0.3564453
 collision_layer = 513
 freeze = true
 script = ExtResource("1_ycxnp")
+icon = ExtResource("2_orowf")
+id = 9
+type = "bagel"
 
 [node name="Bagel" type="MeshInstance3D" parent="." unique_id=1617375910]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)

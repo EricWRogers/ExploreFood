@@ -3,6 +3,7 @@ extends Node3D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
 @onready var texture_pass := overlay.next_pass as ShaderMaterial
+
 func change_color(color):
 	var gradient = (
 	(overlay)

@@ -2,6 +2,9 @@ extends Node3D
 
 const BAGEL_SPREAD_PIECE = preload("uid://bg30cyd7f3v1o")
 const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
+@export var icon : Texture2D
+@export var id : int
+@export var type : String
 
 @onready var mesh_instance_3d: MeshInstance3D = $Bagel
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
@@ -10,6 +13,7 @@ const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
 
 var current_top
 var thickness_of_spread = 0.076
+var held = false
 
 func _ready() -> void:
 	current_top = self.global_position
@@ -32,15 +36,23 @@ func add_top():
 	show()
 
 func on_looked_at():
+	if held:
+		return
 	moving_lines_pass.set_shader_parameter("transparency", 0.411)
 	$Node3D.show()
 	
 func on_looked_away():
 	moving_lines_pass.set_shader_parameter("transparency", 0.0)
 	$Node3D.hide()
+	
+func _process(delta: float) -> void:
+	if held:
+		self.global_position = Manager.player_hold.global_position
 
 func get_took():
-	pass
+	self.freeze = true
+	#Manager.currently_held_bagel = self
+	held = true
 	#queue_free()
 	
 func get_rolled():

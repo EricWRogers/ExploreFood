@@ -10,6 +10,7 @@ class_name BaseFood
 @export var rand_spin : bool = true
 @export var id : int = 0
 @export var color : Color
+@export var type : String
 
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial

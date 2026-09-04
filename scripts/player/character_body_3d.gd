@@ -33,6 +33,7 @@ var current_target: Node = null
 var current_slot = 0
 
 func _ready():
+	Manager.player_hold = $Head/KillerBeanSproject2/ItemHoldSpawn
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Manager.slot1 != null:
 		var get_slot = Manager.slot1.instantiate()
@@ -125,17 +126,26 @@ func _physics_process(delta: float) -> void:
 			target_scene = load(current_target.scene_file_path)
 			current_target.get_took()
 			if Manager.slot1 == null:
+				if Manager.bagel_mode:
+					Manager.slotb1 = current_target
 				Manager.slot1 = target_scene
 				$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = current_target.icon
 				Manager.inventory.append(target_scene)
+				update_slots(1)
 			elif Manager.slot2 == null:
+				if Manager.bagel_mode:
+					Manager.slotb2 = current_target
 				Manager.slot2 = target_scene
 				$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = current_target.icon
 				Manager.inventory.append(target_scene)
+				update_slots(2)
 			elif Manager.slot3 == null:
+				if Manager.bagel_mode:
+					Manager.slotb3 = current_target
 				Manager.slot3 = target_scene
 				$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = current_target.icon
 				Manager.inventory.append(target_scene)
+				update_slots(3)
 	elif Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() >= 3:
 		if current_target.has_method("get_took"):
 			current_target.get_rolled()
@@ -178,16 +188,28 @@ func update_slots(slot):
 		killer_bean_sproject_2.update_held_item(0)
 		Manager.holding = false
 		killer_bean_sproject_2.update_anims()
+	if Manager.slotb1:
+		Manager.slotb1.hide()
+	if Manager.slotb2:
+		Manager.slotb2.hide()
+	if Manager.slotb3:
+		Manager.slotb3.hide()
 	match current_slot:
 		1:
+			if Manager.slotb1:
+				Manager.slotb1.show()
 			selected_1.show()
 			selected_2.hide()
 			selected_3.hide()
 		2:
+			if Manager.slotb2:
+				Manager.slotb2.show()
 			selected_2.show()
 			selected_1.hide()
 			selected_3.hide()
 		3:
+			if Manager.slotb3:
+				Manager.slotb3.show()
 			selected_1.hide()
 			selected_2.hide()
 			selected_3.show()
@@ -205,6 +227,20 @@ func dropthrow():
 				return
 			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
 			var drop = Manager.slot1.instantiate()
+			if drop.type == "bagel":
+				#drop.freeze = false
+				#drop.held = false
+				#drop.global_position = food_spawn.global_position
+				Manager.slotb1.held = false
+				Manager.slotb1.freeze = false
+				Manager.slotb1.show()
+				Manager.inventory.pop_front()
+				Manager.slot1 = null
+				killer_bean_sproject_2.update_held_item(0)
+				Manager.holding = false
+				killer_bean_sproject_2.update_anims()
+				update_slots(0)
+				return
 			var current_scene = get_tree().current_scene
 			drop.rarity_level = 1
 			current_scene.add_child(drop)
@@ -221,6 +257,19 @@ func dropthrow():
 				return
 			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
 			var drop = Manager.slot2.instantiate()
+			if drop.type == "bagel":
+				drop.freeze = false
+				drop.global_position = food_spawn.global_position
+				Manager.slotb2.held = false
+				Manager.slotb2.freeze = false
+				Manager.slotb2.show()
+				Manager.inventory.pop_front()
+				Manager.slot2 = null
+				killer_bean_sproject_2.update_held_item(0)
+				Manager.holding = false
+				killer_bean_sproject_2.update_anims()
+				update_slots(0)
+				return
 			var current_scene = get_tree().current_scene
 			drop.rarity_level = 1
 			current_scene.add_child(drop)
@@ -237,6 +286,19 @@ func dropthrow():
 				return
 			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
 			var drop = Manager.slot3.instantiate()
+			if drop.type == "bagel":
+				drop.freeze = false
+				Manager.slotb3.held = false
+				Manager.slotb3.freeze = false
+				Manager.slotb3.show()
+				drop.global_position = food_spawn.global_position
+				Manager.inventory.pop_front()
+				Manager.slot3 = null
+				killer_bean_sproject_2.update_held_item(0)
+				Manager.holding = false
+				killer_bean_sproject_2.update_anims()
+				update_slots(0)
+				return
 			var current_scene = get_tree().current_scene
 			drop.rarity_level = 1
 			current_scene.add_child(drop)
