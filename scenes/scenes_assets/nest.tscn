@@ -110,4 +110,4 @@ surface_material_override/5 = SubResource("StandardMaterial3D_u0q0s")
 
 [node name="TerryFood" parent="." unique_id=737182758 instance=ExtResource("3_6rmlv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0091771, 0)
-rarity_level = 0.3
+rarity_level = 0.5

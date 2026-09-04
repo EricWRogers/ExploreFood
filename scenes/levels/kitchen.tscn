@@ -4,135 +4,33 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
-[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="5_wjjaa"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/food/terry_food.tscn" id="6_6uclb"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
-albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_klsck"]
-size = Vector3(4.797516, 0.9176636, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q026u"]
-albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
-size = Vector3(4.8078003, 0.9243164, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6xqmx"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
-size = Vector3(2.7417297, 1.0291748, 1.8994141)
+[ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
+[ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
+[ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
 
 [sub_resource type="Environment" id="Environment_p86jp"]
+fog_enabled = true
 
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 script = ExtResource("1_ojraw")
 level_name = "kitchen"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.6052794)
-
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1284009152]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=472061484]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("PlaneMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2013175216]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_klsck")
-
-[node name="KitchenItem" type="StaticBody3D" parent="." unique_id=1751525550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2319531, 0.50430644, -9.266022)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem" unique_id=2034597457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.275372, -0.05555415, 0.0015096664)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem" unique_id=448925759]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="KitchenItem2" type="StaticBody3D" parent="." unique_id=326218408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8463454, 0.50430644, -9.347161)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem2" unique_id=1766783043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9294546, -0.041168213, 0)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem2" unique_id=1622971881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="KitchenItem3" type="StaticBody3D" parent="." unique_id=1897550148]
-transform = Transform3D(0.32807118, 0, 0.36973953, 0, 1, 0, -0.13055243, 0, 0.92913544, 2.3418884, 0.50430644, 2.9132082)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem3" unique_id=1815015959]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9294546, -0.041168213, 0)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem3" unique_id=215716240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="KitchenItem4" type="StaticBody3D" parent="." unique_id=1616554415]
-transform = Transform3D(0.32807118, 0, 0.36973953, 0, 1, 0, -0.13055243, 0, 0.92913544, 2.3418884, 1.3765203, 2.9132082)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem4" unique_id=73909930]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9294546, -0.041168213, 0)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem4" unique_id=885353692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="KitchenItem5" type="StaticBody3D" parent="." unique_id=1500923776]
-transform = Transform3D(0.32807118, 0, 0.36973953, 0, 1, 0, -0.13055243, 0, 0.92913544, 2.6456647, 0.41753912, 3.6765816)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="KitchenItem5" unique_id=1225341184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9294546, -0.041168213, 0)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenItem5" unique_id=1769047767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0867004, -0.037841797, 0)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="Table" type="StaticBody3D" parent="." unique_id=1998093064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.133089, 0.523394, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table" unique_id=990354335]
-transform = Transform3D(2.716239, 0, 0, 0, 1.0529244, 0, 0, 0, 1.905, 0, 0, 0)
-mesh = SubResource("BoxMesh_6xqmx")
-surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=1711830315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013275146, 0.014587402, -0.0034179688)
-shape = SubResource("BoxShape3D_klsck")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1112363541]
 transform = Transform3D(-0.68376625, -0.51379037, -0.5181537, -0.4532701, -0.25741777, 0.8533946, -0.57184786, 0.818386, -0.056872223, -4.513735, 13.75199, 0)
-light_color = Color(0.45, 0.40499997, 0.40499997, 1)
+light_color = Color(0.90957165, 0.82487935, 0.6563413, 1)
 sky_mode = 1
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
 transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.42583537, 11.095158, 0.80431557, -4.8979096)
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6340504, 2.3203037, 0.10557747)
+transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 1.3046513, 0.9595978, 1.1404219)
 
 [node name="OmniLight3D" parent="Stove" index="7" unique_id=43503502]
 light_color = Color(1.2502502, 0.9976544, 0.8172288, 1)
@@ -143,20 +41,53 @@ omni_range = 16.078493
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1234284931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 1.7, 0)
 
-[node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("5_wjjaa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.475906, 1.8443866, 0)
-rarity_level = 1.0
+[node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=146004448]
+script = ExtResource("5_6uclb")
+data_directory = "res://scenes/levels/kitchen_TerrainData/MarchingSquaresTerrain_45025f0d"
+_storage_initialized = true
+texture_albedo_1 = Color(0.875, 0.56601566, 0.67029774, 1)
+metadata/_custom_type_script = "uid://cddg1xr5hye1d"
 
-[node name="ButterFrog" parent="WafflePad" index="3" unique_id=97841650]
-rarity_level = 1.0
+[node name="Chunk (-1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=298786175 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
+script = ExtResource("6_qf1a7")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, -1)
 
-[node name="TerryFood" parent="." unique_id=737182758 instance=ExtResource("6_6uclb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.886906, 0, 0)
-rarity_level = 1.0
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, -1)" unique_id=1008723659]
+cast_shadow = 0
+script = ExtResource("7_3bk5l")
+
+[node name="Chunk (0, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=1802659862 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
+script = ExtResource("6_qf1a7")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(0, -1)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, -1)" unique_id=192667533]
+cast_shadow = 0
+script = ExtResource("7_3bk5l")
+
+[node name="Chunk (0, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=865953524 node_paths=PackedStringArray("terrain_system")]
+script = ExtResource("6_qf1a7")
+terrain_system = NodePath("..")
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (0, 0)" unique_id=1816348006]
+cast_shadow = 0
+script = ExtResource("7_3bk5l")
+
+[node name="Chunk (-1, 0)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=167660108 node_paths=PackedStringArray("terrain_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
+script = ExtResource("6_qf1a7")
+terrain_system = NodePath("..")
+chunk_coords = Vector2i(-1, 0)
+
+[node name="GrassPlanter" type="MultiMeshInstance3D" parent="MarchingSquaresTerrain/Chunk (-1, 0)" unique_id=787158097]
+cast_shadow = 0
+script = ExtResource("7_3bk5l")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 
 [editable path="Stove"]
 [editable path="Stove/Fire"]
-[editable path="WafflePad"]

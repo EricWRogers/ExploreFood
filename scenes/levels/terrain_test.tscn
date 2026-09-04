@@ -98,7 +98,6 @@ script = ExtResource("1_6dgx5")
 level_name = "terrain_test"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("4_gba4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.51688, 84.44996, -117.05591)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
