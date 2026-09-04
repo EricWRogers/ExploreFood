@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d13rs5g0a2u0r"]
+
+[ext_resource type="ArrayMesh" uid="uid://mr7isaiwtos2" path="res://assets/models/Bagel.obj" id="1_38ecl"]
+[ext_resource type="Texture2D" uid="uid://da7g55kv4gf78" path="res://assets/textures/bagel/BagelTex.png" id="2_rhe0f"]
+[ext_resource type="Texture2D" uid="uid://dqd05ivafmv3n" path="res://assets/textures/bagel/BagelRough.png" id="3_r6tjo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycxnp"]
+albedo_texture = ExtResource("2_rhe0f")
+roughness_texture = ExtResource("3_r6tjo")
+
+[node name="BagelTop" type="Node3D" unique_id=541640571]
+
+[node name="Bagel2" type="MeshInstance3D" parent="." unique_id=1679164509]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0, 0)
+mesh = ExtResource("1_38ecl")
+surface_material_override/0 = SubResource("StandardMaterial3D_ycxnp")
