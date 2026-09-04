@@ -1,8 +1,46 @@
 [gd_scene format=3 uid="uid://d13rs5g0a2u0r"]
 
 [ext_resource type="ArrayMesh" uid="uid://mr7isaiwtos2" path="res://assets/models/Bagel.obj" id="1_38ecl"]
+[ext_resource type="Material" uid="uid://cxahwrc2ceujd" path="res://assets/materials/LinesHoverBagel.tres" id="1_rhe0f"]
 [ext_resource type="Texture2D" uid="uid://da7g55kv4gf78" path="res://assets/textures/bagel/BagelTex.png" id="2_rhe0f"]
 [ext_resource type="Texture2D" uid="uid://dqd05ivafmv3n" path="res://assets/textures/bagel/BagelRough.png" id="3_r6tjo"]
+
+[sub_resource type="Shader" id="Shader_f48ei"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38ecl"]
+render_priority = 0
+next_pass = ExtResource("1_rhe0f")
+shader = SubResource("Shader_f48ei")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycxnp"]
 albedo_texture = ExtResource("2_rhe0f")
@@ -12,5 +50,6 @@ roughness_texture = ExtResource("3_r6tjo")
 
 [node name="Bagel2" type="MeshInstance3D" parent="." unique_id=1679164509]
 transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_38ecl")
 mesh = ExtResource("1_38ecl")
 surface_material_override/0 = SubResource("StandardMaterial3D_ycxnp")
