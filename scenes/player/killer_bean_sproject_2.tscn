@@ -975,95 +975,95 @@ shader_parameter/rim_intensity = 2.0
 [node name="KillerBeanSproject2" unique_id=1222725279 instance=ExtResource("1_ffn5n")]
 script = ExtResource("2_w2xjc")
 
-[node name="pTorus1" parent="." index="2" unique_id=704143539]
+[node name="pTorus1" parent="." index="2" unique_id=1387311676]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_dx2kh")
 
-[node name="pSphere14" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="0" unique_id=643127200]
+[node name="pSphere14" parent="group1" parent_id_path=PackedInt32Array(942065573) index="0" unique_id=1337428248]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere13" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="1" unique_id=980764552]
+[node name="pSphere13" parent="group1" parent_id_path=PackedInt32Array(942065573) index="1" unique_id=723292601]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere12" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="2" unique_id=1619138157]
+[node name="pSphere12" parent="group1" parent_id_path=PackedInt32Array(942065573) index="2" unique_id=2026033638]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere11" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="3" unique_id=1570242827]
+[node name="pSphere11" parent="group1" parent_id_path=PackedInt32Array(942065573) index="3" unique_id=56072417]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere10" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="4" unique_id=1413426753]
+[node name="pSphere10" parent="group1" parent_id_path=PackedInt32Array(942065573) index="4" unique_id=1563862700]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere9" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="5" unique_id=158281760]
+[node name="pSphere9" parent="group1" parent_id_path=PackedInt32Array(942065573) index="5" unique_id=781325807]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere8" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="6" unique_id=27636081]
+[node name="pSphere8" parent="group1" parent_id_path=PackedInt32Array(942065573) index="6" unique_id=395181324]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere7" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="7" unique_id=129283486]
+[node name="pSphere7" parent="group1" parent_id_path=PackedInt32Array(942065573) index="7" unique_id=775058308]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere6" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="8" unique_id=854066452]
+[node name="pSphere6" parent="group1" parent_id_path=PackedInt32Array(942065573) index="8" unique_id=1836796822]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere5" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="9" unique_id=374518344]
+[node name="pSphere5" parent="group1" parent_id_path=PackedInt32Array(942065573) index="9" unique_id=365709673]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere4" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="10" unique_id=2137321179]
+[node name="pSphere4" parent="group1" parent_id_path=PackedInt32Array(942065573) index="10" unique_id=425457540]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere3" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="11" unique_id=2038833972]
+[node name="pSphere3" parent="group1" parent_id_path=PackedInt32Array(942065573) index="11" unique_id=1703210462]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere2" parent="group1" parent_id_path=PackedInt32Array(1794543301) index="12" unique_id=1029141272]
+[node name="pSphere2" parent="group1" parent_id_path=PackedInt32Array(942065573) index="12" unique_id=2140352]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_20mj1")
 
-[node name="pSphere18" parent="group2" parent_id_path=PackedInt32Array(786938786) index="0" unique_id=1309546794]
+[node name="pSphere18" parent="group2" parent_id_path=PackedInt32Array(1980612131) index="0" unique_id=695834737]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
 
-[node name="pSphere17" parent="group2" parent_id_path=PackedInt32Array(786938786) index="1" unique_id=485919550]
+[node name="pSphere17" parent="group2" parent_id_path=PackedInt32Array(1980612131) index="1" unique_id=1292033674]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
 
-[node name="pSphere16" parent="group2" parent_id_path=PackedInt32Array(786938786) index="2" unique_id=1476500958]
+[node name="pSphere16" parent="group2" parent_id_path=PackedInt32Array(1980612131) index="2" unique_id=59694117]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
 
-[node name="pSphere15" parent="group2" parent_id_path=PackedInt32Array(786938786) index="3" unique_id=2059229903]
+[node name="pSphere15" parent="group2" parent_id_path=PackedInt32Array(1980612131) index="3" unique_id=1183461468]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_jn1gr")
 
-[node name="pSphere182" parent="group3" parent_id_path=PackedInt32Array(111142298) index="0" unique_id=1274956856]
+[node name="pSphere182" parent="group3" parent_id_path=PackedInt32Array(333151123) index="0" unique_id=205540620]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
 
-[node name="pSphere172" parent="group3" parent_id_path=PackedInt32Array(111142298) index="1" unique_id=1133931967]
+[node name="pSphere172" parent="group3" parent_id_path=PackedInt32Array(333151123) index="1" unique_id=1202023594]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
 
-[node name="pSphere162" parent="group3" parent_id_path=PackedInt32Array(111142298) index="2" unique_id=1428385492]
+[node name="pSphere162" parent="group3" parent_id_path=PackedInt32Array(333151123) index="2" unique_id=940042815]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
 
-[node name="pSphere152" parent="group3" parent_id_path=PackedInt32Array(111142298) index="3" unique_id=1153094808]
+[node name="pSphere152" parent="group3" parent_id_path=PackedInt32Array(333151123) index="3" unique_id=873867046]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_s4tos")
 
-[node name="Skeleton3D" parent="." index="6" unique_id=759723123]
+[node name="Skeleton3D" parent="." index="6" unique_id=705481250]
 bones/2/position = Vector3(-0.016127527, -0.00018402275, -0.00078450044)
 bones/2/rotation = Quaternion(0.048704557, -0.10478987, 0.41865882, 0.9007618)
 bones/3/position = Vector3(-0.023837008, -0.0002849903, -0.0003614204)
@@ -1093,7 +1093,7 @@ bones/21/rotation = Quaternion(0, 0, -0.43571198, 0.90008616)
 bones/22/rotation = Quaternion(-0.08260876, 0.19316722, -0.36321855, 0.90770835)
 bones/23/rotation = Quaternion(0, 0, -0.45665342, 0.8896447)
 
-[node name="pCube2" parent="Skeleton3D" index="0" unique_id=1962591841]
+[node name="pCube2" parent="Skeleton3D" index="0" unique_id=956768337]
 surface_material_override/0 = SubResource("StandardMaterial3D_pcasy")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=1481971334]
@@ -1141,7 +1141,7 @@ material_overlay = SubResource("ShaderMaterial_x1yht")
 mesh = ExtResource("14_8kehk")
 
 [node name="DoughBebeh" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" index="6" unique_id=1882634700]
-transform = Transform3D(0.0136327725, 0.0082410835, -0.0014940675, 0.0039843163, -0.003870735, 0.015004768, 0.007367017, -0.013156829, -0.0053502377, -0.09079243, -0.02805598, -0.0010114722)
+transform = Transform3D(0.014064798, 0.0068807583, -0.0032919308, 0.0062520076, -0.0064434735, 0.0132436585, 0.0043696766, -0.0129281515, -0.008352789, -0.090792425, -0.028055985, -0.0010114722)
 visible = false
 material_overlay = SubResource("ShaderMaterial_2n2o1")
 mesh = ExtResource("15_8kehk")
@@ -1153,23 +1153,23 @@ visible = false
 material_overlay = SubResource("ShaderMaterial_j87nr")
 mesh = ExtResource("17_s4tos")
 
-[node name="R_shoulder_handle" parent="." index="7" unique_id=1040388189]
+[node name="R_shoulder_handle" parent="." index="7" unique_id=110011602]
 transform = Transform3D(0.62748766, -0.76443124, -0.14800023, 0.74401623, 0.6447053, -0.1754848, 0.22956255, -7.450581e-09, 0.97329396, -0.016274668, 0.034500763, 0.0006733593)
 
-[node name="R_forearm_handle" parent="R_shoulder_handle" index="0" unique_id=719831183]
+[node name="R_forearm_handle" parent="R_shoulder_handle" index="0" unique_id=829931328]
 transform = Transform3D(0.35791838, -0.6741843, -0.6460414, 0.30590856, 0.7383555, -0.6010412, 0.8822211, 0.017494077, 0.47050986, -0.023935407, -2.220446e-16, -2.264855e-16)
 
-[node name="R_hand_handle" parent="R_shoulder_handle/R_forearm_handle" index="0" unique_id=830029251]
+[node name="R_hand_handle" parent="R_shoulder_handle/R_forearm_handle" index="0" unique_id=536996029]
 transform = Transform3D(0.8387812, -0.48134845, 0.25445917, 0.5444682, 0.74154186, -0.3920074, 2.9802317e-08, 0.4673535, 0.8840706, -0.019824792, 1.7763568e-17, -5.7731595e-17)
 
-[node name="L_shoulder_handle" parent="." index="8" unique_id=1771447419]
+[node name="L_shoulder_handle" parent="." index="8" unique_id=760118543]
 transform = Transform3D(0.28065872, 0.8729719, 0.39893705, -0.07006463, 0.433168, -0.8985856, -0.9572469, 0.22424456, 0.18273678, 0.015455847, 0.034500763, 0.0006733593)
 
-[node name="L_forearm_handle" parent="L_shoulder_handle" index="0" unique_id=158042125]
+[node name="L_forearm_handle" parent="L_shoulder_handle" index="0" unique_id=1575142463]
 transform = Transform3D(0.744704, 0.4241075, -0.5153142, -0.6468904, 0.64861757, -0.4010335, 0.16416058, 0.632003, 0.7573793, 0.0239354, -7.6383345e-16, 6.217249e-17)
 
-[node name="L_hand_handle" parent="L_shoulder_handle/L_forearm_handle" index="0" unique_id=630928028]
+[node name="L_hand_handle" parent="L_shoulder_handle/L_forearm_handle" index="0" unique_id=528917810]
 transform = Transform3D(0.9344273, 0.3561539, 0, -0.3561539, 0.9344273, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
 
-[node name="AnimationPlayer" parent="." index="9" unique_id=601969375]
+[node name="AnimationPlayer" parent="." index="9" unique_id=508355473]
 speed_scale = 5.0
