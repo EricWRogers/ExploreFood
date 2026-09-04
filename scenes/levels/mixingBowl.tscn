@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c44o1xvqhgmg4"]
+
+[ext_resource type="Script" uid="uid://borys8uh2nadq" path="res://scripts/Mixing_Bowl.gd" id="1_ictms"]
+[ext_resource type="Texture2D" uid="uid://bcteto12x3ndi" path="res://icon.svg" id="2_ccmht"]
+
+[node name="MixingBowl" type="Node2D" unique_id=1462886102]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=820147795]
+script = ExtResource("1_ictms")
+
+[node name="Back" type="Sprite2D" parent="Node2D" unique_id=1877012276]
+position = Vector2(605, 397)
+texture = ExtResource("2_ccmht")
+
+[node name="knob" type="Marker2D" parent="Node2D" unique_id=78694652]
+position = Vector2(605, 397.00006)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="knob" type="Sprite2D" parent="Node2D/knob" unique_id=1007693946]
+position = Vector2(6200001, -100006.11)
+scale = Vector2(100000.01, 15625.017)
+texture = ExtResource("2_ccmht")
+
+[node name="knobPoint" type="Marker2D" parent="Node2D/knob" unique_id=224899232]
+position = Vector2(12400002, -100006.11)
+scale = Vector2(100000.01, 15625.017)
+
+[node name="middlePoint" type="Marker2D" parent="Node2D" unique_id=452314388]
+position = Vector2(703, 221)
+
+[node name="Button" type="Button" parent="." unique_id=1833540709]
+offset_left = 1007.0
+offset_top = 357.0
+offset_right = 1138.0
+offset_bottom = 460.0
+text = "buttin"
+
+[connection signal="pressed" from="Button" to="Node2D" method="_on_button_pressed"]

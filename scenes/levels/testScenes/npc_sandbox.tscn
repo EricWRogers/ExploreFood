@@ -8,9 +8,15 @@
 albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
-size = Vector3(48.495377, 1, 27.499878)
+size = Vector3(20.032291, 1, 12.905388)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_klsck"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
+radius = 0.57177734
+height = 3.269287
 
 [node name="NpcSandbox" type="Node3D" unique_id=155629050]
 
@@ -22,14 +28,27 @@ mesh = SubResource("PlaneMesh_q4by1")
 surface_material_override/0 = SubResource("StandardMaterial3D_jrn6j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=197515703]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.01524353, -0.97983813, 15.809448)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.028850555, -0.97983813, 0.016990662)
 shape = SubResource("BoxShape3D_6xqmx")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=704765003]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12.89515)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=2032628984]
+shape = SubResource("WorldBoundaryShape3D_klsck")
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_bhq4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.413726)
 
-[node name="NPC" type="Node3D" parent="." unique_id=1895725985]
+[node name="Greater_NPC" type="Node3D" parent="." unique_id=1895725985]
+transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC" unique_id=1602416036]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.445055, 3.2382498, -29.172865)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Greater_NPC" unique_id=1602416036]
+transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_klsck")
+
+[node name="Area3D" type="Area3D" parent="Greater_NPC" unique_id=713029440]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greater_NPC/Area3D" unique_id=173959563]
+transform = Transform3D(-4.3531486e-07, -9.958843, 0.9063258, 9.999999, -8.34465e-07, 0, 5.9604645e-08, 0.90633017, 9.958844, 0.06686236, 1.4415972, 15.831889)
+shape = SubResource("CapsuleShape3D_q026u")

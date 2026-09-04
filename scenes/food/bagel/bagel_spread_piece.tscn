@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bg30cyd7f3v1o"]
+
+[ext_resource type="Script" uid="uid://cak2oxhlse8d3" path="res://scripts/foods/bagel_scripts/bagel_spread_piece.gd" id="1_groqs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udo6y"]
+resource_local_to_scene = true
+albedo_color = Color(0.5256366, 0.71, 0.4402, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lg1c5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_udo6y")
+top_radius = 0.35742188
+bottom_radius = 0.35742188
+height = 0.076
+cap_bottom = false
+
+[node name="SpreadPiece" type="Node3D" unique_id=1728940416]
+script = ExtResource("1_groqs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=363521579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038, 0)
+mesh = SubResource("CylinderMesh_lg1c5")
+
+[node name="AttachPnt" type="Node3D" parent="." unique_id=1061753531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038, 0)

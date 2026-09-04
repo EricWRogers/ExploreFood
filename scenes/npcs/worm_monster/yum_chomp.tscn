@@ -2,11 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cacfov0k7afu7" path="res://assets/npcs/worm_monster/YumChomp.fbx" id="1_0p4vk"]
 [ext_resource type="Texture2D" uid="uid://cxnko4pwyx2ta" path="res://assets/npcs/worm_monster/wormtex.png" id="2_jfw2j"]
+[ext_resource type="Script" uid="uid://bjrswf3rpd87x" path="res://scripts/npcs/worm_monster/yum_chomp_controller.gd" id="2_st7wl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st7wl"]
 albedo_texture = ExtResource("2_jfw2j")
 
 [node name="YumChomp" unique_id=1353511948 instance=ExtResource("1_0p4vk")]
+script = ExtResource("2_st7wl")
 
 [node name="Skeleton3D" parent="." index="0" unique_id=1033683174]
 bones/1/rotation = Quaternion(-0.4346075, 0.33368632, 0.828819, 0.11326535)
@@ -15,23 +17,25 @@ bones/3/rotation = Quaternion(0.9986369, 0.04206351, -0.0013106674, -0.030876718
 bones/4/rotation = Quaternion(-0.020979125, -0.21096723, 0.0075179483, 0.97723913)
 bones/5/position = Vector3(0.0063686604, 0.00048349018, -0.004175873)
 bones/5/rotation = Quaternion(-0.020726267, 0.04336935, -0.030705705, 0.998372)
-bones/6/rotation = Quaternion(-0.5537932, 0.059079677, 0.008355766, 0.8305136)
-bones/11/rotation = Quaternion(0.72814256, 0.3937075, -0.32527143, 0.45716667)
+bones/6/rotation = Quaternion(-0.38351205, -0.40572876, -0.65759635, 0.50583583)
+bones/11/rotation = Quaternion(0.06641581, 0.8181694, -0.5683025, -0.05674591)
 
 [node name="Worm3" parent="Skeleton3D" index="0" unique_id=758734885]
 surface_material_override/0 = SubResource("StandardMaterial3D_st7wl")
 
 [node name="Bottom_Jaw_CTL" parent="Main_CTL/Spine_02_CTL/Spine_03_CTL/Spine_04_CTL/Head_Pivot_CTL/Jaw_Pivot_CTL" parent_id_path=PackedInt32Array(380570871) index="0" unique_id=2056619032]
-transform = Transform3D(0.7843129, 0.62036526, 0, -0.62036526, 0.7843129, 0, 0, 0, 1, -0.0026800225, -0.004381047, 0.00030441472)
+transform = Transform3D(0.21190356, -0.9772904, 0, 0.9772904, 0.21190356, 0, 0, 0, 1, -0.0026800225, -0.004381047, 0.00030441472)
 
 [node name="Top_Jaw_CTL" parent="Main_CTL/Spine_02_CTL/Spine_03_CTL/Spine_04_CTL/Head_Pivot_CTL/Jaw_Pivot_CTL" parent_id_path=PackedInt32Array(380570871) index="1" unique_id=911882034]
-transform = Transform3D(0.8528177, -0.5222087, 0, 0.5222087, 0.8528177, 0, 0, 0, 1, 0.0028324993, -0.004635383, 3.9698258e-05)
+transform = Transform3D(0.26982203, 0.96291023, 0, -0.96291023, 0.26982203, 0, 0, 0, 1, 0.0028324993, -0.004635383, 3.9698258e-05)
 
 [node name="Top_Jaw_IK" parent="Main_CTL/Spine_02_CTL/Spine_03_CTL/Spine_04_CTL/Head_Pivot_CTL" parent_id_path=PackedInt32Array(1295258097) index="1" unique_id=596632954]
-transform = Transform3D(0.41359147, -0.25325584, 0, 0.25325584, 0.41359147, 0, 0, 0, 0.48497054, -0.0027996758, 0.005358383, -7.519171e-05)
+transform = Transform3D(0.13085575, 0.46698314, 0, -0.46698314, 0.13085575, 0, 0, 0, 0.48497054, 0.0075240396, 0.0028171625, -7.519171e-05)
 
 [node name="Bottom_Jaw_IK" parent="Main_CTL/Spine_02_CTL/Spine_03_CTL/Spine_04_CTL/Head_Pivot_CTL" parent_id_path=PackedInt32Array(1295258097) index="2" unique_id=1138155825]
-transform = Transform3D(0.38036868, 0.3008589, 0, -0.3008589, 0.38036868, 0, 0, 0, 0.48497054, 0.0033939409, 0.0048556183, -7.51917e-05)
+transform = Transform3D(0.102767006, -0.47395712, 0, 0.47395712, 0.102767006, 0, 0, 0, 0.48497054, -0.007407527, 0.0024978984, -7.51917e-05)
 
 [node name="AnimationPlayer" parent="." index="4" unique_id=1184730691]
 speed_scale = 2.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
