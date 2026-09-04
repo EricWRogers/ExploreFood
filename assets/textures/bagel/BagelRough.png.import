@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v2jd0t5715nt"
-path.s3tc="res://.godot/imported/SHINYbutte.png-b372e1e792e55a2275484d11ddbb9034.s3tc.ctex"
+uid="uid://dqd05ivafmv3n"
+path.s3tc="res://.godot/imported/BagelRough.png-970e23175ffebd67e4c5fdfd7a182f65.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/SHINYbutte.png"
-dest_files=["res://.godot/imported/SHINYbutte.png-b372e1e792e55a2275484d11ddbb9034.s3tc.ctex"]
+source_file="res://assets/textures/bagel/BagelRough.png"
+dest_files=["res://.godot/imported/BagelRough.png-970e23175ffebd67e4c5fdfd7a182f65.s3tc.ctex"]
 
 [params]
 

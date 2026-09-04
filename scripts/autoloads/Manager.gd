@@ -33,3 +33,12 @@ enum FlavorType {
 	LIKE_NOTHING_ELSE,
 	DISGUSTING
 }
+
+enum PrepType {
+	SOLID,
+	LIQUID,
+	POWDER,
+	CHOPPED,
+	MIXED,
+	FRIED
+}

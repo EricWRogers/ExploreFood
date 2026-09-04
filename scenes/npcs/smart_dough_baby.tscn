@@ -6,6 +6,7 @@
 [sub_resource type="Animation" id="Animation_gblxh"]
 resource_name = "Frolic"
 length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,3 +99,19 @@ freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1188184490]
 shape = SubResource("BoxShape3D_gtwna")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1039065726]
+
+[node name="EscapePoints" type="Node3D" parent="." unique_id=190882520]
+
+[node name="RunningPoint1" type="Node3D" parent="EscapePoints" unique_id=382057756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+
+[node name="RunningPoint2" type="Node3D" parent="EscapePoints" unique_id=1490350114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="RunningPoint3" type="Node3D" parent="EscapePoints" unique_id=894653971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="RunningPoint4" type="Node3D" parent="EscapePoints" unique_id=1964689271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)

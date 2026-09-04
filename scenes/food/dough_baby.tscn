@@ -125,6 +125,7 @@ rarity_level = 0.9
 category = 2
 rand_spin = false
 id = 7
+color = Color(0.89411765, 0.7294118, 0.58431375, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=735458286]
 libraries/ = SubResource("AnimationLibrary_tegep")

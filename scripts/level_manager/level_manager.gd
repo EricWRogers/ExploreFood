@@ -1,6 +1,7 @@
 extends Node
 
 @onready var current_level = $Kitchen
+@export var CalebMode : bool = false
 var to_go
 var scene_switch_setter = false
 

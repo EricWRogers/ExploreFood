@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cre785hnke81i"
+path="res://.godot/imported/BagelCounter.obj-e6cccaa49f4b2e104d5729999d1d5940.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BagelCounter.obj-e6cccaa49f4b2e104d5729999d1d5940.mesh"]
+
+source_file="res://assets/models/BagelCounter.obj"
+dest_files=["res://.godot/imported/BagelCounter.obj-e6cccaa49f4b2e104d5729999d1d5940.mesh", "res://.godot/imported/BagelCounter.obj-e6cccaa49f4b2e104d5729999d1d5940.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
