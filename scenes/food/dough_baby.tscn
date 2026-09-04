@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b1fsykp0g6vnn" path="res://assets/models/DoughBaby.obj" id="1_l4gp6"]
 [ext_resource type="Script" uid="uid://cwj6beeqfhd1b" path="res://scripts/foods/basefood.gd" id="1_tegep"]
 [ext_resource type="Texture2D" uid="uid://dsdv8bvnvjdpi" path="res://assets/ui/item_icons/doughbabyicon.png" id="2_bkkqb"]
+[ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="3_21aiw"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="4_bkkqb"]
 
 [sub_resource type="Animation" id="Animation_l4gp6"]
@@ -58,8 +59,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bkkqb"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkkqb"]
 resource_local_to_scene = true
 render_priority = 1
@@ -70,7 +69,7 @@ shader_parameter/angle = 20.0
 shader_parameter/line_count = 20.0
 shader_parameter/speed = 1.015
 shader_parameter/blur = 0.0
-shader_parameter/mesh_texture = SubResource("CompressedTexture2D_bkkqb")
+shader_parameter/mesh_texture = ExtResource("3_21aiw")
 shader_parameter/transparency = 0.0
 
 [sub_resource type="Shader" id="Shader_6pri2"]
