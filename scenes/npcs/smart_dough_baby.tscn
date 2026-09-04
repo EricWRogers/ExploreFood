@@ -6,6 +6,7 @@
 [sub_resource type="Animation" id="Animation_gblxh"]
 resource_name = "Frolic"
 length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,3 +99,5 @@ freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1188184490]
 shape = SubResource("BoxShape3D_gtwna")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1039065726]
