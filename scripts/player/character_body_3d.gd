@@ -234,8 +234,11 @@ func dropthrow():
 				Manager.slotb1.held = false
 				Manager.slotb1.freeze = false
 				Manager.slotb1.show()
-				Manager.inventory.pop_front()
+				Manager.slotb1.set_collision_layer_value(10, true)
+				Manager.slotb1 = null
 				Manager.slot1 = null
+				Manager.inventory.pop_front()
+			
 				killer_bean_sproject_2.update_held_item(0)
 				Manager.holding = false
 				killer_bean_sproject_2.update_anims()
@@ -263,8 +266,11 @@ func dropthrow():
 				Manager.slotb2.held = false
 				Manager.slotb2.freeze = false
 				Manager.slotb2.show()
-				Manager.inventory.pop_front()
+				Manager.slotb2.set_collision_layer_value(10, true)
+				Manager.slotb2 = null
 				Manager.slot2 = null
+				Manager.inventory.pop_front()
+			
 				killer_bean_sproject_2.update_held_item(0)
 				Manager.holding = false
 				killer_bean_sproject_2.update_anims()
@@ -291,9 +297,11 @@ func dropthrow():
 				Manager.slotb3.held = false
 				Manager.slotb3.freeze = false
 				Manager.slotb3.show()
+				Manager.slotb3.set_collision_layer_value(10, true)
+				Manager.slotb3 = null
+				Manager.slot3 = null
 				drop.global_position = food_spawn.global_position
 				Manager.inventory.pop_front()
-				Manager.slot3 = null
 				killer_bean_sproject_2.update_held_item(0)
 				Manager.holding = false
 				killer_bean_sproject_2.update_anims()

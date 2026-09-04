@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 const BAGEL_SPREAD_PIECE = preload("uid://bg30cyd7f3v1o")
 const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 		self.global_position = Manager.player_hold.global_position
 
 func get_took():
+	self.set_collision_layer_value(10, false)
 	self.freeze = true
 	#Manager.currently_held_bagel = self
 	held = true
