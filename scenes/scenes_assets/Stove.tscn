@@ -1045,6 +1045,7 @@ one_shot = true
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1562393550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4368858, 0)
+visible = false
 
 [node name="Label3D" type="Label3D" parent="Node3D" unique_id=715197038]
 billboard = 1
