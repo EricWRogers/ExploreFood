@@ -110,6 +110,7 @@ rarity_level = 0.1
 category = 7
 flavor = 4
 id = 1
+color = Color(0.18039216, 0.13333334, 0.19607843, 1)
 
 [node name="StaticBody3D#Terry" parent="." index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713871, 0)

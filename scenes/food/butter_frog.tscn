@@ -119,6 +119,7 @@ rarity_level = 0.2
 category = 4
 flavor = 4
 id = 3
+color = Color(1, 0.8745098, 0.58431375, 1)
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 material_overlay = SubResource("ShaderMaterial_dy4qw")
