@@ -11,16 +11,19 @@ var text_box_position: Vector2
 var is_dialogue_active = false
 var can_advance_line = false
 
+var _is_audrey: bool
+
 func _ready() -> void:
 	print("Yes, I see the dialogue manager")
 
-func start_dialogue(lines: Array[String]):
+func start_dialogue(lines: Array[String], is_audrey: bool):
 	if is_dialogue_active:
 		return
 	
 	print("dialogue activated")
 	
 	dialogue_lines = lines
+	_is_audrey = is_audrey
 	#text_box_position = position
 	show_text_box()
 	is_dialogue_active = true
@@ -33,9 +36,8 @@ func show_text_box():
 	#text_box.global_position = text_box_position
 	text_box.display_text(dialogue_lines[current_line_index])
 	
-	print("The text box is real! ", text_box.transform)
-	
 	print("current line index: ", current_line_index)
+	
 	can_advance_line = false
 
 func on_text_box_finished_displaying():
@@ -53,6 +55,11 @@ func _process(_delta):
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			current_line_index = 0
+			if (_is_audrey):
+				_give_quest()
 			return
 		else:
 			show_text_box()
+
+func _give_quest():
+	print("quest given!")

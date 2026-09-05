@@ -2,6 +2,7 @@ extends Node
 
 @export var lines: Array[String] = []
 @export var ui_position: Vector2
+@export var is_audrey: bool
 @onready var interact_ui: Node3D = $InteractUI
 @onready var marker_3d: Marker3D = $Marker3D
 
@@ -14,7 +15,7 @@ func _process(_delta):
 	if(Input.is_action_just_pressed("Interact")):
 		if interact_ui:
 			interact_ui.hide()
-			DialogueManager.start_dialogue(lines)
+			DialogueManager.start_dialogue(lines, is_audrey)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

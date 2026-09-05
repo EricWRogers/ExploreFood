@@ -57,6 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.995
 script = ExtResource("2_q4by1")
 lines = Array[String](["Test test test test test!", "Line 2!", "Line 3!", "Get out of my face!"])
 ui_position = Vector2(0, 15)
+is_audrey = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Greater_NPC" unique_id=1602416036]
 transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, -0.13842964, -0.9310992, 0.49421883)

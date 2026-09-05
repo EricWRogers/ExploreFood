@@ -41,6 +41,7 @@ func _display_letter():
 	
 	letter_index += 1
 	if letter_index >= text.length():
+		print(text)
 		finished_displaying.emit()
 		return
 	
