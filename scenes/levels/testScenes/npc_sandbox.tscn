@@ -50,12 +50,12 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 shape = SubResource("WorldBoundaryShape3D_klsck")
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_bhq4y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.413726)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6104536)
 
 [node name="Greater_NPC" type="Node3D" parent="." unique_id=1895725985]
 transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
 script = ExtResource("2_q4by1")
-lines = Array[String](["Test test test test test!", "Line 2!", "Line 3!", "Get out of my face!", ""])
+lines = Array[String](["Test test test test test!", "Line 2!", "Line 3!", "Get out of my face!"])
 ui_position = Vector2(0, 15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Greater_NPC" unique_id=1602416036]

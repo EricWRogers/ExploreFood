@@ -1,7 +1,9 @@
-extends MarginContainer
+extends CanvasLayer
 
-@onready var label: Label = $MarginContainer/Label
-@onready var timer: Timer = $Timer
+@onready var container: MarginContainer = $MarginContainer
+@onready var label: Label = $MarginContainer/MarginContainer2/Label
+@onready var timer: Timer = $MarginContainer/Timer
+
 
 const MAX_WIDTH = 256
 
@@ -18,18 +20,18 @@ func display_text(text_to_display: String):
 	text = text_to_display
 	label.text = text_to_display
 	
-	await resized
-	custom_maximum_size.x = min(size.x, MAX_WIDTH)
+	await container.resized
+	container.custom_maximum_size.x = min(container.size.x, MAX_WIDTH)
 	
-	if size.x > MAX_WIDTH:
+	if container.size.x > MAX_WIDTH:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		await resized # wait for x resize
-		await resized # wait for y resize
-		custom_maximum_size.y = size.y
+		await container.resized # wait for x resize
+		await container.resized # wait for y resize
+		container.custom_maximum_size.y = container.size.y
 		
 	
-	global_position.x -= size.x / 2
-	global_position.y -= (size.y + 24)*scale.y
+	container.position.x -= container.size.x / 2
+	container.position.y -= (container.size.y + 24)*container.scale.y
 	
 	label.text = ""
 	_display_letter()
