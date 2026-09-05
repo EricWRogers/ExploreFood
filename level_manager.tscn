@@ -6,7 +6,6 @@
 
 [node name="LevelManager" type="Node" unique_id=2118240317]
 script = ExtResource("1_mnhan")
-CalebMode = true
 
 [node name="Kitchen" parent="." unique_id=115598229 instance=ExtResource("1_27gbg")]
 

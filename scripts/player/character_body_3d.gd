@@ -37,6 +37,7 @@ var current_target: Node = null
 var current_slot = 0
 
 func _ready():
+	Manager.player = self
 	if Manager.bagel_mode and not in_kitchen:
 		$HungerTick.start()
 	else:
@@ -139,6 +140,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		if current_target:
 			_exit_target()
+	if Input.is_action_just_pressed("place_bagel") and current_target:
+		if current_target.has_method("add_to_counter"):
+			current_target.add_to_counter("bagel")
 	if Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() < 3:
 		if current_target.has_method("get_took"):
 			var target_scene: PackedScene
@@ -209,33 +213,43 @@ func update_slots(slot):
 		killer_bean_sproject_2.update_anims()
 	if Manager.slotb1:
 		Manager.slotb1.hide()
+		Manager.currently_held_bagel = null
 	if Manager.slotb2:
 		Manager.slotb2.hide()
+		Manager.currently_held_bagel = null
 	if Manager.slotb3:
 		Manager.slotb3.hide()
+		Manager.currently_held_bagel = null
 	match current_slot:
 		1:
 			if Manager.slotb1:
 				Manager.slotb1.show()
+				Manager.currently_held_bagel = Manager.slotb1
 			selected_1.show()
 			selected_2.hide()
 			selected_3.hide()
+			Manager.current_slot = 1
 		2:
 			if Manager.slotb2:
 				Manager.slotb2.show()
+				Manager.currently_held_bagel = Manager.slotb2
 			selected_2.show()
 			selected_1.hide()
 			selected_3.hide()
+			Manager.current_slot = 2
 		3:
 			if Manager.slotb3:
 				Manager.slotb3.show()
+				Manager.currently_held_bagel = Manager.slotb3
 			selected_1.hide()
 			selected_2.hide()
 			selected_3.show()
+			Manager.current_slot = 3
 		0:
 			selected_1.hide()
 			selected_2.hide()
 			selected_3.hide()
+			Manager.current_slot = 0
 			
 func dropthrow():
 	if current_slot == 0:

@@ -92,3 +92,24 @@ texture = ExtResource("5_f48ei")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1752309722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06538391, 0)
 shape = SubResource("CylinderShape3D_x1fh7")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=1694522590]
+
+[node name="Price" type="Label3D" parent="Node3D2" unique_id=1121719589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83083475, 0)
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(1, 0.8333334, 0, 1)
+outline_modulate = Color(0.77, 0.5261667, 0, 1)
+text = "$0"
+font_size = 52
+
+[node name="PriceUI" type="Sprite3D" parent="Node3D2" unique_id=1757500666]
+transform = Transform3D(0.23, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.83277524, -0.008809596)
+modulate = Color(0, 0, 0, 0.62352943)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("5_f48ei")

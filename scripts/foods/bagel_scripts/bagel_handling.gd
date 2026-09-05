@@ -9,6 +9,7 @@ const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
 @export var id : int
 @export var type : String
 
+var in_sale = false
 @onready var mesh_instance_3d: MeshInstance3D = $Bagel
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
 @onready var moving_lines_pass := overlay.next_pass as ShaderMaterial
@@ -33,7 +34,8 @@ func add_spread(color):
 	$CollisionShape3D.shape.height += thickness_of_spread
 	$CollisionShape3D.position.y += thickness_of_spread / 2
 	$Node3D.position.y += thickness_of_spread
-	print(str("current_top", current_top))
+	$Node3D2.position.y += thickness_of_spread
+	#print(str("current_top", current_top))
 	mesh_children.append(bagel_spread.get_child(0))
 	
 func add_top():
@@ -45,6 +47,8 @@ func add_top():
 	set_shaders()
 
 func on_looked_at():
+	if in_sale:
+		return
 	if held:
 		return
 	mesh_instance_3d.set_instance_shader_parameter("transparency", 0.411)
@@ -55,10 +59,16 @@ func on_looked_away():
 	$Node3D.hide()
 	
 func _process(delta: float) -> void:
+	if in_sale:
+		self.set_collision_layer_value(10, false)
 	if held:
 		self.global_position = Manager.player_hold.global_position
 
 func get_took():
+	print(in_sale)
+	print("PICKINGUP")
+	if in_sale == true:
+		return
 	self.set_collision_layer_value(10, false)
 	self.freeze = true
 	#Manager.currently_held_bagel = self
