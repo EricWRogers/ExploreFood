@@ -64,7 +64,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 func update_cash():
-	$CanvasLayer/MarginContainer6/Money.text = str(Manager.money)
+	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
 	
 func _physics_process(delta: float) -> void:
 	if Manager.bagel_mode and in_kitchen == true:

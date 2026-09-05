@@ -8,6 +8,7 @@ const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
 @export var icon : Texture2D
 @export var id : int
 @export var type : String
+var price
 
 var in_sale = false
 @onready var mesh_instance_3d: MeshInstance3D = $Bagel
@@ -20,6 +21,7 @@ var thickness_of_spread = 0.076
 var held = false
 
 func _ready() -> void:
+	$Node3D2/Price.text = str("$", price)
 	current_top = self.global_position
 	
 func set_shaders():

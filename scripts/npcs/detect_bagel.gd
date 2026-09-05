@@ -10,6 +10,7 @@ func selected_something():
 	self.set_collision_layer_value(11, false)
 	$"..".hands_full = true
 func carry_bagel():
+	$"..".holding()
 	$"../Timer".start()
 	Manager.money += bagel_value
 	Manager.player.update_cash()
@@ -21,3 +22,4 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	my_bagel.queue_free()
+	$"..".walking()

@@ -8,6 +8,7 @@ const BAGEL_START = preload("uid://32c24t457nbx")
 var food_types : Array
 var cooking = false
 var bagel_mode = false
+var current_value = 0
 
 #list of all recipes
 #list of current foods in array
@@ -32,6 +33,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		if bagel_mode:
 			food_types.append(body.color)
+			current_value += body.value
 		else:
 			food_types.append(body.category)
 		update_held_item(body.id)
@@ -96,6 +98,7 @@ func find_recipe():
 func construct_bagel():
 	var bagel_bottom = BAGEL_START.instantiate()
 	var current_scene = lvl_manager.current_level
+	bagel_bottom.price = current_value
 	current_scene.add_child(bagel_bottom)
 	for item in food_types:
 		bagel_bottom.add_spread(item)
@@ -103,6 +106,7 @@ func construct_bagel():
 	food_types.clear()
 	bagel_bottom.global_position = self.global_position
 	bagel_bottom.global_position.y += 1.0
+	current_value = 0
 	
 func update_held_item(id):
 	match id:

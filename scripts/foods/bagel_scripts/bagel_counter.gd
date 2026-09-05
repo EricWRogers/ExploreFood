@@ -67,6 +67,7 @@ func _on_bagel_detect_body_entered(body: Node3D) -> void:
 		else:
 			body.selected_something()
 			body.my_bagel = item
+			body.bagel_value = item.price
 			body.carry_bagel()
 			print(item)
 			

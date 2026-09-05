@@ -7,9 +7,6 @@
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
-[ext_resource type="PackedScene" uid="uid://h28gv01dvguc" path="res://scenes/food/tear_baby.tscn" id="8_3bk5l"]
-[ext_resource type="PackedScene" uid="uid://bh6j3fag6cvkt" path="res://scenes/food/mystery_meat.tscn" id="9_7mbwf"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/food/terry_food.tscn" id="10_7mbwf"]
 [ext_resource type="PackedScene" uid="uid://cfwu3yt6xntfb" path="res://scenes/scenes_assets/bagel_counter.tscn" id="11_yajmd"]
 [ext_resource type="Texture2D" uid="uid://2nri623cj753" path="res://assets/textures/tXqdIqWh.jpg" id="12_5cnqg"]
 
@@ -165,81 +162,6 @@ chunk_coords = Vector2i(-1, 3)
 cast_shadow = 0
 script = ExtResource("7_3bk5l")
 
-[node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("8_3bk5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9597573, 1.074034, 0)
-rarity_level = 1.0
-type = ""
-
-[node name="MysteryMeat" parent="." unique_id=1827375919 instance=ExtResource("9_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.163024, 1.1494279, -1.9600338)
-rarity_level = 1.0
-type = ""
-
-[node name="TerryFood" parent="." unique_id=737182758 instance=ExtResource("10_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.677964, 1.715601, 0)
-rarity_level = 1.0
-type = ""
-
-[node name="TearBaby2" parent="." unique_id=1372553434 instance=ExtResource("8_3bk5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, 0)
-rarity_level = 1.0
-type = ""
-
-[node name="MysteryMeat2" parent="." unique_id=2145719821 instance=ExtResource("9_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, -1.9600338)
-rarity_level = 1.0
-type = ""
-
-[node name="TerryFood2" parent="." unique_id=316138854 instance=ExtResource("10_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, 0)
-rarity_level = 1.0
-type = ""
-
-[node name="TearBaby3" parent="." unique_id=426481097 instance=ExtResource("8_3bk5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, -3.9273343)
-rarity_level = 1.0
-type = ""
-
-[node name="MysteryMeat3" parent="." unique_id=900264509 instance=ExtResource("9_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, -5.887368)
-rarity_level = 1.0
-type = ""
-
-[node name="TerryFood3" parent="." unique_id=306514829 instance=ExtResource("10_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, -3.9273343)
-rarity_level = 1.0
-type = ""
-
-[node name="TearBaby4" parent="." unique_id=1624433091 instance=ExtResource("8_3bk5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, 3.755991)
-rarity_level = 1.0
-type = ""
-
-[node name="MysteryMeat4" parent="." unique_id=795083845 instance=ExtResource("9_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, 1.7959571)
-rarity_level = 1.0
-type = ""
-
-[node name="TerryFood4" parent="." unique_id=377105325 instance=ExtResource("10_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, 3.755991)
-rarity_level = 1.0
-type = ""
-
-[node name="TearBaby5" parent="." unique_id=1548305773 instance=ExtResource("8_3bk5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.639394, 1.074034, 3.755991)
-rarity_level = 1.0
-type = ""
-
-[node name="MysteryMeat5" parent="." unique_id=1022170414 instance=ExtResource("9_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.842661, 1.1494279, 1.7959571)
-rarity_level = 1.0
-type = ""
-
-[node name="TerryFood5" parent="." unique_id=942855899 instance=ExtResource("10_7mbwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.357601, 1.715601, 3.755991)
-rarity_level = 1.0
-type = ""
-
 [node name="BagelCounter" parent="." unique_id=1127601907 instance=ExtResource("11_yajmd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7647076, 0.9038143, 28.986948)
 
@@ -265,8 +187,8 @@ autostart = true
 transform = Transform3D(-1.615, 0, -2.438582e-07, 0, 1.615, 0, 2.438582e-07, 0, -1.615, 0.052194595, 8.109903, 27.720207)
 texture = ExtResource("12_5cnqg")
 
-[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="SpawnNPC" to="." method="_on_spawn_npc_timeout"]
 
 [editable path="Player"]

@@ -6,6 +6,7 @@ var hands_full = false
 var eagerness = 0.1
 
 func _ready() -> void:
+	walking()
 	var mat = $NPCBean/pTorus1.get_surface_override_material(0)
 	mat.albedo_color = colors.pick_random()
 	$NPCBean/pTorus1.set_surface_override_material(0, mat)
