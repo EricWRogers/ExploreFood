@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy84wwxmj3ptx"
-path.s3tc="res://.godot/imported/CounterTex.png-da39e4a240570c295c45642b5f9670ce.s3tc.ctex"
+uid="uid://dtuvc3ic32nxy"
+path.s3tc="res://.godot/imported/NPCPlayerSkin.png-848048201db1cb1c2995c3d4b6253aba.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/bagel/CounterTex.png"
-dest_files=["res://.godot/imported/CounterTex.png-da39e4a240570c295c45642b5f9670ce.s3tc.ctex"]
+source_file="res://assets/npcs/npc_bagel/NPCPlayerSkin.png"
+dest_files=["res://.godot/imported/NPCPlayerSkin.png-848048201db1cb1c2995c3d4b6253aba.s3tc.ctex"]
 
 [params]
 

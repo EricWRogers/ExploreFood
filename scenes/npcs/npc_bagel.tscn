@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://3v4r25oasxwu"]
+
+[ext_resource type="PackedScene" uid="uid://p31lug8u62e6" path="res://scenes/npcs/npc_bean.tscn" id="1_8dljf"]
+[ext_resource type="Script" uid="uid://cgeyvj4kj62ut" path="res://scripts/npcs/npc_bagel.gd" id="1_ok8k6"]
+[ext_resource type="Texture2D" uid="uid://dtuvc3ic32nxy" path="res://assets/npcs/npc_bagel/NPCPlayerSkin.png" id="5_krsai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok8k6"]
+resource_local_to_scene = true
+albedo_color = Color(0.71, 0.71, 0.71, 1)
+albedo_texture = ExtResource("5_krsai")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts06u"]
+albedo_texture = ExtResource("5_krsai")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krsai"]
+albedo_texture = ExtResource("5_krsai")
+
+[node name="NPC_Bagel" type="PathFollow3D" unique_id=1347201108]
+script = ExtResource("1_ok8k6")
+colors = Array[Color]([Color(0.71, 0.312045, 0.2911, 1), Color(0.3034, 0.39810994, 0.82, 1), Color(0.77499, 0.3397, 0.79, 1), Color(0.56134, 0.78, 0.3276, 1), Color(1, 0.75666666, 0.26999998, 1), Color(0.30419996, 0.78, 0.55796, 1), Color(1, 0.39999998, 0.27999997, 1)])
+
+[node name="NPCBean" parent="." unique_id=1608658501 instance=ExtResource("1_8dljf")]
+transform = Transform3D(52.97, 0, 0, 0, 52.97, 0, 0, 0, 52.97, 0, -0.0026565194, 0)
+
+[node name="pTorus1" parent="NPCBean" index="2" unique_id=1387311676]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="pSphere14" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="0" unique_id=1337428248]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere13" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="1" unique_id=723292601]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere12" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="2" unique_id=2026033638]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere11" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="3" unique_id=56072417]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere10" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="4" unique_id=1563862700]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere9" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="5" unique_id=781325807]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere8" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="6" unique_id=395181324]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere7" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="7" unique_id=775058308]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere6" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="8" unique_id=1836796822]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere5" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="9" unique_id=365709673]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere4" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="10" unique_id=425457540]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere3" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="11" unique_id=1703210462]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere2" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 942065573) index="12" unique_id=2140352]
+surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
+
+[node name="pSphere18" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 1980612131) index="0" unique_id=695834737]
+surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
+
+[node name="pSphere17" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 1980612131) index="1" unique_id=1292033674]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="pSphere16" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 1980612131) index="2" unique_id=59694117]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="pSphere15" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 1980612131) index="3" unique_id=1183461468]
+surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
+
+[node name="pSphere182" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 333151123) index="0" unique_id=205540620]
+surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
+
+[node name="pSphere172" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 333151123) index="1" unique_id=1202023594]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="pSphere162" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 333151123) index="2" unique_id=940042815]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="pSphere152" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 333151123) index="3" unique_id=873867046]
+surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
+
+[node name="Skeleton3D" parent="NPCBean" index="6" unique_id=705481250]
+bones/2/position = Vector3(-0.016127527, -0.00018402275, -0.00078450044)
+bones/2/rotation = Quaternion(0.048704557, -0.10478987, 0.41865882, 0.9007618)
+bones/3/position = Vector3(-0.023837008, -0.0002849903, -0.0003614204)
+bones/3/rotation = Quaternion(0.1930367, -0.47695056, 0.30587408, 0.8010593)
+bones/4/position = Vector3(-0.020492828, -4.970132e-05, -0.00028823843)
+bones/4/rotation = Quaternion(-0.2267928, 0.92708945, 0.27550864, 0.114739604)
+bones/5/rotation = Quaternion(0.073595464, 0.9075546, 0.37258127, -0.17919713)
+bones/6/rotation = Quaternion(-0.007973879, 0, 0, 0.99996823)
+bones/7/rotation = Quaternion(-0.071479954, 0.14332658, -0.4134183, 0.89634454)
+bones/8/rotation = Quaternion(0, 0, 0.2154155, 0.9765225)
+bones/9/rotation = Quaternion(-0.08368843, 0.17070566, -0.40922877, 0.8924056)
+bones/10/rotation = Quaternion(0, 0, -0.12631202, 0.99199057)
+bones/11/rotation = Quaternion(-0.09684056, 0.18643951, -0.43016508, 0.87796366)
+bones/12/rotation = Quaternion(0, 0, -0.015610451, 0.99987817)
+bones/13/position = Vector3(0.015628539, -0.00018185625, -0.00063706265)
+bones/13/rotation = Quaternion(0.68857884, -0.34238508, -0.49238512, -0.40766224)
+bones/14/position = Vector3(0.023935406, 0.00030002766, 0.0003129515)
+bones/14/rotation = Quaternion(0.29099268, 0.19139907, 0.30168593, 0.8875107)
+bones/15/position = Vector3(0.024125097, 3.5011588e-05, 0.0002262038)
+bones/15/rotation = Quaternion(-0.17853191, 0.9646641, 0.030415043, 0.19137523)
+bones/16/rotation = Quaternion(0.04982901, 0.94808185, 0.25221595, -0.18720303)
+bones/17/rotation = Quaternion(-0.2718129, 0, 0, 0.96235013)
+bones/18/rotation = Quaternion(-0.037426826, 0.15572773, -0.20131512, 0.9663438)
+bones/19/rotation = Quaternion(0, 0, -0.339539, 0.940592)
+bones/20/rotation = Quaternion(-0.068701096, 0.17726909, -0.33098355, 0.9242866)
+bones/21/rotation = Quaternion(0, 0, -0.43571198, 0.90008616)
+bones/22/rotation = Quaternion(-0.08260876, 0.19316722, -0.36321855, 0.90770835)
+bones/23/rotation = Quaternion(0, 0, -0.45665342, 0.8896447)
+
+[node name="pCube2" parent="NPCBean/Skeleton3D" index="0" unique_id=956768337]
+surface_material_override/0 = SubResource("StandardMaterial3D_ok8k6")
+
+[node name="R_shoulder_handle" parent="NPCBean" index="7" unique_id=110011602]
+transform = Transform3D(0.6274877, -0.76443124, -0.14800023, 0.7440163, 0.6447053, -0.1754848, 0.22956258, -7.450581e-09, 0.97329396, -0.016274668, 0.034500763, 0.0006733593)
+
+[node name="R_forearm_handle" parent="NPCBean/R_shoulder_handle" index="0" unique_id=829931328]
+transform = Transform3D(0.35791844, -0.6741845, -0.6460416, 0.30590862, 0.73835576, -0.6010413, 0.8822213, 0.017494082, 0.47050998, -0.023935407, -2.220446e-16, -2.264855e-16)
+
+[node name="R_hand_handle" parent="NPCBean/R_shoulder_handle/R_forearm_handle" index="0" unique_id=536996029]
+transform = Transform3D(0.83878136, -0.48134845, 0.25445917, 0.54446834, 0.74154186, -0.3920074, 2.9802322e-08, 0.4673535, 0.8840706, -0.019824792, 1.7763568e-17, -5.7731595e-17)
+
+[node name="L_shoulder_handle" parent="NPCBean" index="8" unique_id=760118543]
+transform = Transform3D(0.28065872, 0.8729719, 0.3989371, -0.07006463, 0.433168, -0.8985858, -0.9572469, 0.22424456, 0.18273681, 0.015455847, 0.034500763, 0.0006733593)
+
+[node name="L_forearm_handle" parent="NPCBean/L_shoulder_handle" index="0" unique_id=1575142463]
+transform = Transform3D(0.744704, 0.42410755, -0.5153142, -0.6468904, 0.6486176, -0.4010335, 0.16416058, 0.63200307, 0.7573793, 0.0239354, -7.6383345e-16, 6.217249e-17)
+
+[node name="L_hand_handle" parent="NPCBean/L_shoulder_handle/L_forearm_handle" index="0" unique_id=528917810]
+transform = Transform3D(0.9344273, 0.3561539, 0, -0.3561539, 0.9344273, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
+
+[node name="AnimationPlayer" parent="NPCBean" index="9" unique_id=508355473]
+speed_scale = 2.0
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=176754386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10894823, 0.5407345, -1.3872917)
+
+[editable path="NPCBean"]

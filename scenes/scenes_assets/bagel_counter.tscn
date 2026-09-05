@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cfwu3yt6xntfb"]
+
+[ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="1_82nx4"]
+[ext_resource type="Texture2D" uid="uid://dy84wwxmj3ptx" path="res://assets/textures/bagel/CounterTex.png" id="2_203rg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd6so"]
+albedo_texture = ExtResource("2_203rg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o561u"]
+albedo_texture = ExtResource("2_203rg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uyrc"]
+albedo_texture = ExtResource("2_203rg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3ad2"]
+transparency = 1
+albedo_color = Color(0.76, 1, 0.96800005, 0.30588236)
+roughness = 0.12
+clearcoat = 0.21
+
+[node name="BagelCounter" type="Node3D" unique_id=1127601907]
+
+[node name="BagelCounter" type="MeshInstance3D" parent="." unique_id=568963773]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+mesh = ExtResource("1_82nx4")
+surface_material_override/0 = SubResource("StandardMaterial3D_vd6so")
+surface_material_override/1 = SubResource("StandardMaterial3D_o561u")
+surface_material_override/2 = SubResource("StandardMaterial3D_5uyrc")
+surface_material_override/3 = SubResource("StandardMaterial3D_u3ad2")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=2031733070]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -1.941268, 0.16197622, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="." unique_id=11289947]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -1.1717397, 0.16197622, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="." unique_id=658897363]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -0.40337217, 0.16197622, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="." unique_id=1451972131]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 0.38443327, 0.16197622, 0)
+
+[node name="Marker3D5" type="Marker3D" parent="." unique_id=855922421]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 1.1539615, 0.16197622, 0)
+
+[node name="Marker3D6" type="Marker3D" parent="." unique_id=131804750]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 1.9223291, 0.16197622, 0)
+
+[node name="Marker3D7" type="Marker3D" parent="." unique_id=227778296]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -1.941268, -0.40425253, 0)
+
+[node name="Marker3D8" type="Marker3D" parent="." unique_id=2125391883]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -1.1717397, -0.40425253, 0)
+
+[node name="Marker3D9" type="Marker3D" parent="." unique_id=801444345]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, -0.40337217, -0.40425253, 0)
+
+[node name="Marker3D10" type="Marker3D" parent="." unique_id=47944390]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 0.38443327, -0.40425253, 0)
+
+[node name="Marker3D11" type="Marker3D" parent="." unique_id=1932121812]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 1.1539615, -0.40425253, 0)
+
+[node name="Marker3D12" type="Marker3D" parent="." unique_id=172230114]
+transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 1.9223291, -0.40425253, 0)

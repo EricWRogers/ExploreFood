@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://p31lug8u62e6"]
+
+[ext_resource type="PackedScene" uid="uid://fwjsclvrchq2" path="res://scenes/player/KillerBeanSproject2.fbx" id="1_07ubs"]
+
+[node name="NPCBean" unique_id=1608658501 instance=ExtResource("1_07ubs")]
