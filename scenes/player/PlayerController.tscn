@@ -8,6 +8,9 @@
 [ext_resource type="Shader" uid="uid://jytfqwvloln3" path="res://assets/shaders/Squiggle.gdshader" id="6_60odj"]
 [ext_resource type="Texture2D" uid="uid://dg233iu50au05" path="res://assets/ui/ui_assets/youdied.png" id="6_anuhh"]
 [ext_resource type="FontFile" uid="uid://c4sng3tmqix43" path="res://assets/fonts/Pencilant Script.otf" id="8_tfrk6"]
+[ext_resource type="Shader" uid="uid://cddajxpwjdmap" path="res://assets/shaders/linesBar.gdshader" id="9_wtdo7"]
+[ext_resource type="Script" uid="uid://ceixdfgs15viu" path="res://scripts/ui/hunger_bar.gd" id="10_jsc2v"]
+[ext_resource type="Texture2D" uid="uid://cfpxmmkc23j5r" path="res://assets/ui/ui_assets/stomach.png" id="11_lk8tp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
 height = 3.315918
@@ -93,6 +96,48 @@ shader_parameter/scale = Vector2(1, 1)
 shader_parameter/strength = 0.205
 shader_parameter/fps = 6.0
 shader_parameter/noise = SubResource("NoiseTexture2D_wtdo7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g1ex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtdo7"]
+shader = ExtResource("9_wtdo7")
+shader_parameter/line_color = Color(1, 0.81666666, 0, 1)
+shader_parameter/spacing = 11.945
+shader_parameter/thickness = 2.935
+shader_parameter/hatch_angle = 45.0
+shader_parameter/jitter_freq = 18.0
+shader_parameter/jitter_amp = 0.008
+shader_parameter/node_size = Vector2(600, 65)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfrk6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsc2v"]
+bg_color = Color(1, 0.8156863, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.8156863, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1fh7"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="Animation" id="Animation_60odj"]
 resource_name = "Appear"
@@ -270,11 +315,11 @@ transform = Transform3D(-0.9976705, 7.334887e-05, 0.06821951, -6.719679e-05, -0.
 active = false
 
 [node name="Physical Bone main" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2043989485]
-transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.0007411118)
+transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.00074111216)
 collision_layer = 2
 collision_mask = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.436549e-05, 0.000340892, 0.280938)
-body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111175)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.436712e-05, 0.00034090132, 0.280938)
+body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.0007411121)
 bone_name = "main"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone main" unique_id=2145911635]
@@ -282,12 +327,12 @@ transform = Transform3D(1.0000025, 4.898757e-07, -7.4505806e-08, -5.662441e-07, 
 shape = SubResource("CapsuleShape3D_6ev1f")
 
 [node name="Physical Bone ribcage" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=515706595]
-transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374819, 0.034741156, 0.0010656099)
+transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374823, 0.034741156, 0.0010656099)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002091676, -5.6956065e-05, 0.23354876)
-body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202111, -9.0607864e-05, -0.00039225002)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020917412, -5.6957462e-05, 0.2335489)
+body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202116, -9.0607864e-05, -0.00039225002)
 bone_name = "ribcage"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -298,12 +343,12 @@ transform = Transform3D(0.9636213, 0.16192971, -0.2126687, 0.22820352, -0.084074
 shape = SubResource("CapsuleShape3D_08ru5")
 
 [node name="Physical Bone R_shoulder" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1566338530]
-transform = Transform3D(0.0019740753, -0.0063986415, 0.03451824, 0.00034334944, 0.034574635, 0.006389459, -0.035104606, -2.1655851e-05, 0.0020035952, -0.028050294, 0.032472797, -8.692214e-06)
+transform = Transform3D(0.0019740753, -0.0063986415, 0.03451824, 0.00034334962, 0.034574635, 0.006389459, -0.035104606, -2.1655655e-05, 0.0020035952, -0.028050294, 0.032472797, -8.692214e-06)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1688555e-07, -1.0345485e-06, 0.3404013)
-body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -4.0202073e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2504053e-06, 0.00039294106, -0.011967659, -0.00012930064, -0.00013378286)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1688555e-07, -1.0345265e-06, 0.3404013)
+body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -3.8164805e-09, 0.0351597, 0.00037995446, -0.035159543, -4.250209e-06, 0.00039294106, -0.011967659, -0.00012930064, -0.00013378286)
 bone_name = "R_shoulder"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -314,12 +359,12 @@ transform = Transform3D(0.32195434, 0.027684554, -0.94635034, 0.8035644, 0.52056
 shape = SubResource("CapsuleShape3D_anuhh")
 
 [node name="Physical Bone R_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=256072554]
-transform = Transform3D(0.00052035786, -0.034812022, -0.004919424, 0.033488084, -0.00100747, 0.010671547, -0.010706359, -0.0048431912, 0.033140093, -0.029571198, 0.013725072, -0.014683644)
+transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029571202, 0.013725063, -0.014683653)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400483, 0.21708958, 0.55594194)
-body_offset = Transform3D(0.0077229906, -0.033548538, 0.0071553853, 0.031683292, 0.009787507, 0.011692826, -0.013148109, 0.00387929, 0.03237942, 0.000802774, -0.018890835, -0.014583178)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400483, 0.21708944, 0.5559421)
+body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080276653, -0.01889084, -0.014583185)
 bone_name = "R_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -350,8 +395,8 @@ transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36631346, 0.33516338, 0.77017635)
-body_offset = Transform3D(0.006827213, -0.03295914, 0.010170168, -0.028861754, -0.011135752, -0.016713548, 0.018887479, -0.0051027588, -0.02921598, 0.005714774, 0.0060322266, 0.031130452)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36631346, 0.3351634, 0.7701763)
+body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.005714774, 0.0060322266, 0.031130452)
 bone_name = "L_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -415,7 +460,7 @@ grow_vertical = 0
 pivot_offset_ratio = Vector2(1, 1)
 theme_override_constants/margin_top = 43
 theme_override_constants/margin_right = 37
-theme_override_constants/margin_bottom = 63
+theme_override_constants/margin_bottom = 37
 
 [node name="Start" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=386888154]
 layout_mode = 2
@@ -663,11 +708,95 @@ theme_override_fonts/font = ExtResource("8_tfrk6")
 theme_override_font_sizes/font_size = 57
 text = "Press [SPACE] to reset"
 
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer" unique_id=1779194063]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_bottom = 46
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer4" unique_id=1001930975]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer4/VBoxContainer" unique_id=723171830]
+custom_minimum_size = Vector2(600, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer4/VBoxContainer/Control" unique_id=1998931393]
+custom_minimum_size = Vector2(600, 55)
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 65.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer" unique_id=241462902]
+custom_minimum_size = Vector2(600, 55)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_styles/fill = SubResource("StyleBoxEmpty_6g1ex")
+value = 20.0
+
+[node name="HungerBar" type="ProgressBar" parent="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer" unique_id=1608723611]
+material = SubResource("ShaderMaterial_wtdo7")
+custom_minimum_size = Vector2(600, 55)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_tfrk6")
+value = 100.0
+script = ExtResource("10_jsc2v")
+
+[node name="TextureProgressBar3" type="ProgressBar" parent="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer" unique_id=502022027]
+custom_minimum_size = Vector2(600, 55)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_tfrk6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jsc2v")
+value = 100.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer" unique_id=1514392285]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
+
+[node name="MarginContainer5" type="MarginContainer" parent="CanvasLayer" unique_id=640034432]
+offset_left = 320.0
+offset_top = 912.5
+offset_right = 360.0
+offset_bottom = 1070.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 118
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer5" unique_id=897144734]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("11_lk8tp")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=206606960]
 
 [node name="Death" type="AnimationPlayer" parent="." unique_id=2141587185]
 libraries/ = SubResource("AnimationLibrary_wtdo7")
 
+[node name="HungerTick" type="Timer" parent="." unique_id=2073927308]
+wait_time = 2.0
+
+[connection signal="value_changed" from="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar" to="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar" method="_on_value_changed"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="CoyoteTimeout"]
+[connection signal="timeout" from="HungerTick" to="." method="_on_hunger_tick_timeout"]
 
 [editable path="Head/RagdollGuy"]

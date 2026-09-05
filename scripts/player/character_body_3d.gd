@@ -5,6 +5,8 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
+var hunger = 100
+var hunger_reduction_rate = 5
 
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
@@ -15,6 +17,7 @@ const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
 
 var canJump = true;
+@export var in_kitchen : bool = false
 @export var coyoteTime = 0.1;
 @onready var coyote_timer: Timer = $CoyoteTimer
 
@@ -34,6 +37,11 @@ var current_target: Node = null
 var current_slot = 0
 
 func _ready():
+	if Manager.bagel_mode and not in_kitchen:
+		$HungerTick.start()
+	else:
+		$CanvasLayer/MarginContainer4.hide()
+		$CanvasLayer/MarginContainer5.hide()
 	$Head/Camera3D.make_current()
 	Manager.player_hold = $Head/KillerBeanSproject2/ItemHoldSpawn
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -346,4 +354,8 @@ func death():
 	$Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D.active = true
 	$Head/RagdollGuy.show()
 	$Head/RagdollGuy.fall()
-	
+
+
+func _on_hunger_tick_timeout() -> void:
+	hunger -= hunger_reduction_rate
+	$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
