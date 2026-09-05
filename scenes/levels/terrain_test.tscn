@@ -98,6 +98,7 @@ script = ExtResource("1_6dgx5")
 level_name = "terrain_test"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("4_gba4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.355896, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
@@ -529,54 +530,71 @@ transform = Transform3D(80.267944, 0, -151.52231, 0, 171.46999, 0, 151.52231, 0,
 
 [node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.73379, -3.8158453, 15.11434)
+type = ""
 
 [node name="WafflePad2" parent="." unique_id=1510018945 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.86831, -3.8158453, 24.321259)
+type = ""
 
 [node name="WafflePad3" parent="." unique_id=605675886 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.486565, -3.8158453, 19.012522)
+type = ""
 
 [node name="WafflePad4" parent="." unique_id=391425877 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.97192, -3.8158472, 47.782608)
+type = ""
 
 [node name="WafflePad5" parent="." unique_id=899483979 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.12473, -3.8158472, 51.59352)
+type = ""
 
 [node name="WafflePad6" parent="." unique_id=744375050 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.58718, -3.8158472, 60.06667)
+type = ""
 
 [node name="WafflePad7" parent="." unique_id=1453695106 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.1151, -3.8158472, 48.315903)
+type = ""
 
 [node name="WafflePad8" parent="." unique_id=1199857541 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.10176, -3.8158472, 35.533077)
+type = ""
 
 [node name="WafflePad9" parent="." unique_id=1138399272 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.98067, -3.8158472, 68.403145)
+type = ""
 
 [node name="WafflePad10" parent="." unique_id=1405749190 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.98067, -3.8158472, 68.403145)
+type = ""
 
 [node name="WafflePad11" parent="." unique_id=1559103289 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.25198, -3.8158433, 87.45702)
+type = ""
 
 [node name="WafflePad12" parent="." unique_id=257876374 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.679565, -3.8158472, 106.919106)
+type = ""
 
 [node name="WafflePad13" parent="." unique_id=91596445 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.61285, -3.8158472, 98.39494)
+type = ""
 
 [node name="WafflePad14" parent="." unique_id=300831040 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8769, -3.8158472, 104.35861)
+type = ""
 
 [node name="WafflePad15" parent="." unique_id=1683026904 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.29881, -3.8158472, 43.98826)
+type = ""
 
 [node name="WafflePad16" parent="." unique_id=217291632 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.73094, -3.815851, 21.717766)
+type = ""
 
 [node name="WafflePad17" parent="." unique_id=1786220077 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.26578, -3.815851, -1.8166656)
+type = ""
 
 [node name="WillowTree" parent="." unique_id=33723002 instance=ExtResource("12_fxx43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.042347, 0, -9.129433)

@@ -21,6 +21,9 @@ level_name = "kitchen"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+in_kitchen = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -92,65 +95,81 @@ script = ExtResource("7_3bk5l")
 [node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("8_3bk5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9597573, 1.074034, 0)
 rarity_level = 1.0
+type = ""
 
 [node name="MysteryMeat" parent="." unique_id=1827375919 instance=ExtResource("9_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.163024, 1.1494279, -1.9600338)
 rarity_level = 1.0
+type = ""
 
 [node name="TerryFood" parent="." unique_id=737182758 instance=ExtResource("10_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.677964, 1.715601, 0)
 rarity_level = 1.0
+type = ""
 
 [node name="TearBaby2" parent="." unique_id=1372553434 instance=ExtResource("8_3bk5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, 0)
 rarity_level = 1.0
+type = ""
 
 [node name="MysteryMeat2" parent="." unique_id=2145719821 instance=ExtResource("9_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, -1.9600338)
 rarity_level = 1.0
+type = ""
 
 [node name="TerryFood2" parent="." unique_id=316138854 instance=ExtResource("10_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, 0)
 rarity_level = 1.0
+type = ""
 
 [node name="TearBaby3" parent="." unique_id=426481097 instance=ExtResource("8_3bk5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, -3.9273343)
 rarity_level = 1.0
+type = ""
 
 [node name="MysteryMeat3" parent="." unique_id=900264509 instance=ExtResource("9_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, -5.887368)
 rarity_level = 1.0
+type = ""
 
 [node name="TerryFood3" parent="." unique_id=306514829 instance=ExtResource("10_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, -3.9273343)
 rarity_level = 1.0
+type = ""
 
 [node name="TearBaby4" parent="." unique_id=1624433091 instance=ExtResource("8_3bk5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.45609, 1.074034, 3.755991)
 rarity_level = 1.0
+type = ""
 
 [node name="MysteryMeat4" parent="." unique_id=795083845 instance=ExtResource("9_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.659357, 1.1494279, 1.7959571)
 rarity_level = 1.0
+type = ""
 
 [node name="TerryFood4" parent="." unique_id=377105325 instance=ExtResource("10_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.174297, 1.715601, 3.755991)
 rarity_level = 1.0
+type = ""
 
 [node name="TearBaby5" parent="." unique_id=1548305773 instance=ExtResource("8_3bk5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.639394, 1.074034, 3.755991)
 rarity_level = 1.0
+type = ""
 
 [node name="MysteryMeat5" parent="." unique_id=1022170414 instance=ExtResource("9_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.842661, 1.1494279, 1.7959571)
 rarity_level = 1.0
+type = ""
 
 [node name="TerryFood5" parent="." unique_id=942855899 instance=ExtResource("10_7mbwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.357601, 1.715601, 3.755991)
 rarity_level = 1.0
+type = ""
 
 [connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 
+[editable path="Player"]
 [editable path="Stove"]
 [editable path="Stove/Fire"]
