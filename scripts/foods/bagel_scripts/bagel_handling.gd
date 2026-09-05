@@ -1,5 +1,8 @@
 extends RigidBody3D
 
+@onready var mesh_children: Array[MeshInstance3D] = []
+var shared_material: ShaderMaterial
+
 const BAGEL_SPREAD_PIECE = preload("uid://bg30cyd7f3v1o")
 const BAGEL_TOP = preload("uid://d13rs5g0a2u0r")
 @export var icon : Texture2D
@@ -17,6 +20,9 @@ var held = false
 
 func _ready() -> void:
 	current_top = self.global_position
+	
+func set_shaders():
+	pass
 
 func add_spread(color):
 	var bagel_spread = BAGEL_SPREAD_PIECE.instantiate()
@@ -28,21 +34,24 @@ func add_spread(color):
 	$CollisionShape3D.position.y += thickness_of_spread / 2
 	$Node3D.position.y += thickness_of_spread
 	print(str("current_top", current_top))
+	mesh_children.append(bagel_spread.get_child(0))
 	
 func add_top():
 	var bagel_top = BAGEL_TOP.instantiate()
 	add_child(bagel_top)
 	bagel_top.global_position = current_top
 	show()
+	mesh_children.append(bagel_top.get_child(0))
+	set_shaders()
 
 func on_looked_at():
 	if held:
 		return
-	moving_lines_pass.set_shader_parameter("transparency", 0.411)
+	mesh_instance_3d.set_instance_shader_parameter("transparency", 0.411)
 	$Node3D.show()
 	
 func on_looked_away():
-	moving_lines_pass.set_shader_parameter("transparency", 0.0)
+	mesh_instance_3d.set_instance_shader_parameter("transparency", 0.0)
 	$Node3D.hide()
 	
 func _process(delta: float) -> void:
