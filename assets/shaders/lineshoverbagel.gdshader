@@ -9,7 +9,7 @@ uniform float angle = 20.0;
 uniform float line_count = 20.0;
 uniform float speed = 10.0;
 uniform float blur : hint_range(0.0, 2.0, 0.01);
-uniform float transparency : hint_range(0.0, 1.0) = 1.0;
+instance uniform float transparency : hint_range(0, 1) = 0.0;
 
 vec2 rotate(vec2 uv, float rotation_angle) {
     float radians_angle = radians(rotation_angle);

@@ -11,7 +11,7 @@ func save_icon() -> void:
 	print("Active camera for this viewport: ", get_camera_3d())
 	var texture = get_texture()
 	var image = texture.get_image()
-	var err = image.save_png("res://Prefabs/UI/item_icons/output_icon.png")
+	var err = image.save_png("res://assets/ui/item_icons/output_icon.png")
 	if err == OK:
 		print("Icon saved successfully!")
 	else:

@@ -11,6 +11,7 @@
 collision_layer = 513
 freeze = true
 script = ExtResource("1_ydt1i")
+type = "food"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1146662064]
 mesh = SubResource("PlaceholderMesh_h8hiw")

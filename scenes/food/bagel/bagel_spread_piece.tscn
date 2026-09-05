@@ -2,20 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cak2oxhlse8d3" path="res://scripts/foods/bagel_scripts/bagel_spread_piece.gd" id="1_groqs"]
 [ext_resource type="Material" uid="uid://cxahwrc2ceujd" path="res://assets/materials/LinesHoverBagel.tres" id="2_sr5yx"]
-[ext_resource type="Shader" uid="uid://btldwuay0oieu" path="res://assets/shaders/texturesetbagel.gdshader" id="3_p8s8e"]
-
-[sub_resource type="Gradient" id="Gradient_1q5ri"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_r6tjo"]
-gradient = SubResource("Gradient_1q5ri")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhe0f"]
-render_priority = 0
-next_pass = ExtResource("2_sr5yx")
-shader = ExtResource("3_p8s8e")
-shader_parameter/mesh_texture = SubResource("GradientTexture1D_r6tjo")
 
 [sub_resource type="Shader" id="Shader_f48ei"]
 code = "shader_type spatial;
@@ -43,9 +29,10 @@ void fragment() {
 	EMISSION = rim_light_color.rgb * rim * rim_intensity;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_groqs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1q5ri"]
+resource_local_to_scene = true
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_rhe0f")
+next_pass = ExtResource("2_sr5yx")
 shader = SubResource("Shader_f48ei")
 shader_parameter/outline_width = 0.010000000475
 shader_parameter/outline_color = Color(0, 0, 0, 1)
@@ -54,17 +41,27 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udo6y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_groqs"]
 resource_local_to_scene = true
-albedo_color = Color(0.5256366, 0.71, 0.4402, 1)
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1q5ri")
+shader = SubResource("Shader_f48ei")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lg1c5"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_udo6y")
 top_radius = 0.35742188
 bottom_radius = 0.35742188
 height = 0.076
 cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orowf"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="SpreadPiece" type="Node3D" unique_id=1728940416]
 script = ExtResource("1_groqs")
@@ -73,6 +70,7 @@ script = ExtResource("1_groqs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038, 0)
 material_overlay = SubResource("ShaderMaterial_groqs")
 mesh = SubResource("CylinderMesh_lg1c5")
+surface_material_override/0 = SubResource("StandardMaterial3D_orowf")
 
 [node name="AttachPnt" type="Node3D" parent="." unique_id=1061753531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038, 0)

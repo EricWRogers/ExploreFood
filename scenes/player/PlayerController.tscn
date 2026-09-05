@@ -67,6 +67,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2482054)
 [node name="KillerBeanSproject2" parent="Head" unique_id=1222725279 instance=ExtResource("2_lfbm7")]
 transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
 
+[node name="ItemHoldSpawn" type="Marker3D" parent="Head/KillerBeanSproject2" unique_id=366973280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018261252, -0.042149857)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252249867]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1643842672]

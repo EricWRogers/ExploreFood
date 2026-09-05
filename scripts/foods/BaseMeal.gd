@@ -4,7 +4,7 @@ class_name base_meal extends RigidBody3D
 @export var flavor_text: String
 @export var id : int = 4
 var rarity_level = 1
-
+@export var type : String
 @export var icon : Texture2D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 #@onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
