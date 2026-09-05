@@ -8,7 +8,7 @@ var end_point = Vector2()
 #time for slam
 var time = 0
 var timeDirection = 1
-var moveDuration = 0.4
+var moveDuration = 0.3
 
 func _ready():
 	var screenSize = get_viewport().get_visible_rect().size
@@ -26,6 +26,8 @@ func _physics_process(delta: float):
 		velocity.x = speed
 	elif Input.is_action_pressed("Back"): #needs more tweeking
 		#smash the fist down
+		start_point.x = position.x #set start point
+		end_point.x = position.x
 		if(time > moveDuration or time < 0):
 			timeDirection *= -1
 		time += delta * timeDirection
