@@ -10,6 +10,7 @@ var player_hold
 var currently_held_bagel
 var bagel_mode
 var player
+var money : int
 
 var slot1
 var slot2

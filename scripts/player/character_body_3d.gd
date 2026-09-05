@@ -63,9 +63,12 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
+func update_cash():
+	$CanvasLayer/MarginContainer6/Money.text = str(Manager.money)
 	
 func _physics_process(delta: float) -> void:
+	if Manager.bagel_mode and in_kitchen == true:
+		$CanvasLayer/MarginContainer6.show()
 	if not alive:
 		if Input.is_action_just_pressed("Jump"):
 			get_tree().current_scene.start_loading("terrain_test")
