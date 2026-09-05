@@ -1,15 +1,119 @@
 [gd_scene format=3 uid="uid://cfwu3yt6xntfb"]
 
 [ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="1_82nx4"]
+[ext_resource type="Script" uid="uid://n3f6bk133x5i" path="res://scripts/foods/bagel_scripts/bagel_counter.gd" id="1_203rg"]
 [ext_resource type="Texture2D" uid="uid://dy84wwxmj3ptx" path="res://assets/textures/bagel/CounterTex.png" id="2_203rg"]
+[ext_resource type="Texture2D" uid="uid://c6v1b07sq3dm6" path="res://assets/ui/ui_assets/right-click-of-the-mouse.png" id="4_o561u"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="5_5uyrc"]
+
+[sub_resource type="Shader" id="Shader_x2rmb"]
+code = "shader_type spatial;
+
+render_mode unshaded, blend_mix;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0.01);
+uniform float transparency : hint_range(0.0, 1.0) = 1.0;
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+
+    mat2 rotation_matrix = mat2(
+        vec2(cos_angle, -sin_angle),
+        vec2(sin_angle, cos_angle)
+    );
+
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(
+        -TIME * speed +
+        uv.y * -line_count / 2.0
+    );
+}
+
+void fragment() {
+    vec2 uv = rotate(UV, angle);
+
+    float g = stripe(uv);
+
+    vec3 stripe_col = mix(
+        color_one,
+        color_two,
+        smoothstep(0.0, blur, g)
+    );
+
+    ALBEDO = stripe_col;
+    ALPHA = transparency;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36hk5"]
+resource_local_to_scene = true
+render_priority = 2
+shader = SubResource("Shader_x2rmb")
+shader_parameter/color_one = Color(1, 0.48000002, 0.48000002, 1)
+shader_parameter/color_two = Color(1, 0.7293333, 0.44, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 6.8
+shader_parameter/blur = 0.0
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_o561u"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uyrc"]
+render_priority = 0
+shader = SubResource("Shader_o561u")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd6so"]
+next_pass = SubResource("ShaderMaterial_5uyrc")
 albedo_texture = ExtResource("2_203rg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o561u"]
+next_pass = SubResource("ShaderMaterial_5uyrc")
 albedo_texture = ExtResource("2_203rg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uyrc"]
+next_pass = SubResource("ShaderMaterial_5uyrc")
 albedo_texture = ExtResource("2_203rg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3ad2"]
@@ -18,10 +122,16 @@ albedo_color = Color(0.76, 1, 0.96800005, 0.30588236)
 roughness = 0.12
 clearcoat = 0.21
 
-[node name="BagelCounter" type="Node3D" unique_id=1127601907]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
+size = Vector3(4.9748535, 1.2536621, 1.1337891)
+
+[node name="BagelCounter" type="StaticBody3D" unique_id=137819221]
+collision_layer = 1025
+script = ExtResource("1_203rg")
 
 [node name="BagelCounter" type="MeshInstance3D" parent="." unique_id=568963773]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_36hk5")
 mesh = ExtResource("1_82nx4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vd6so")
 surface_material_override/1 = SubResource("StandardMaterial3D_o561u")
@@ -63,3 +173,26 @@ transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9
 
 [node name="Marker3D12" type="Marker3D" parent="." unique_id=172230114]
 transform = Transform3D(1, 0, 0, 0, -0.9226248, 0.38569856, 0, -0.38569856, -0.9226248, 1.9223291, -0.40425253, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=957871103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030517578, -0.022338867, -0.016113281)
+shape = SubResource("BoxShape3D_lg1c5")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1470020037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8413739, 0)
+visible = false
+
+[node name="Label3D" type="Sprite3D" parent="Node3D" unique_id=108108044]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0, 0.0056055784, 0)
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+billboard = 1
+no_depth_test = true
+render_priority = 100
+texture = ExtResource("4_o561u")
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=642345610]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("5_5uyrc")
