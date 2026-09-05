@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://p31lug8u62e6" path="res://scenes/npcs/npc_bean.tscn" id="1_8dljf"]
 [ext_resource type="Script" uid="uid://cgeyvj4kj62ut" path="res://scripts/npcs/npc_bagel.gd" id="1_ok8k6"]
+[ext_resource type="Script" uid="uid://qskcxdfrq2r1" path="res://scripts/npcs/detect_bagel.gd" id="4_ts06u"]
 [ext_resource type="Texture2D" uid="uid://dtuvc3ic32nxy" path="res://assets/npcs/npc_bagel/NPCPlayerSkin.png" id="5_krsai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok8k6"]
@@ -14,6 +15,10 @@ albedo_texture = ExtResource("5_krsai")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krsai"]
 albedo_texture = ExtResource("5_krsai")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lg1c5"]
+radius = 1.300293
+height = 5.147461
 
 [node name="NPC_Bagel" type="PathFollow3D" unique_id=1347201108]
 script = ExtResource("1_ok8k6")
@@ -144,5 +149,19 @@ speed_scale = 2.0
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=176754386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10894823, 0.5407345, -1.3872917)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=597717305]
+collision_layer = 1025
+script = ExtResource("4_ts06u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1454546677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5737305, 0)
+shape = SubResource("CapsuleShape3D_lg1c5")
+
+[node name="Timer" type="Timer" parent="." unique_id=559588632]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="StaticBody3D" method="_on_timer_timeout"]
 
 [editable path="NPCBean"]

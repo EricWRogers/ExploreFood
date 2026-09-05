@@ -1,6 +1,7 @@
 extends PathFollow3D
 
 @export var colors: Array[Color]
+var hands_full = false
 
 var eagerness = 0.1
 

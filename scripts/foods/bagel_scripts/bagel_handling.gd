@@ -63,6 +63,9 @@ func _process(delta: float) -> void:
 		self.set_collision_layer_value(10, false)
 	if held:
 		self.global_position = Manager.player_hold.global_position
+		$Node3D2.hide()
+	else:
+		$Node3D2.show()
 
 func get_took():
 	print(in_sale)

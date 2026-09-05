@@ -125,6 +125,9 @@ clearcoat = 0.21
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
 size = Vector3(4.9748535, 1.2536621, 1.1337891)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o561u"]
+size = Vector3(5.623657, 2.4726563, 4.4500732)
+
 [node name="BagelCounter" type="StaticBody3D" unique_id=137819221]
 collision_layer = 1025
 script = ExtResource("1_203rg")
@@ -196,3 +199,12 @@ billboard = 1
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("5_5uyrc")
+
+[node name="BagelDetect" type="Area3D" parent="." unique_id=1281285195]
+collision_mask = 1025
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BagelDetect" unique_id=638341732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0569458, 0.7363281, 1.2702672)
+shape = SubResource("BoxShape3D_o561u")
+
+[connection signal="body_entered" from="BagelDetect" to="." method="_on_bagel_detect_body_entered"]

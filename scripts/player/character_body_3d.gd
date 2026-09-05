@@ -225,6 +225,7 @@ func update_slots(slot):
 			if Manager.slotb1:
 				Manager.slotb1.show()
 				Manager.currently_held_bagel = Manager.slotb1
+				print(Manager.currently_held_bagel)
 			selected_1.show()
 			selected_2.hide()
 			selected_3.hide()
@@ -233,6 +234,7 @@ func update_slots(slot):
 			if Manager.slotb2:
 				Manager.slotb2.show()
 				Manager.currently_held_bagel = Manager.slotb2
+				print(Manager.currently_held_bagel)
 			selected_2.show()
 			selected_1.hide()
 			selected_3.hide()
@@ -241,6 +243,7 @@ func update_slots(slot):
 			if Manager.slotb3:
 				Manager.slotb3.show()
 				Manager.currently_held_bagel = Manager.slotb3
+				print(Manager.currently_held_bagel)
 			selected_1.hide()
 			selected_2.hide()
 			selected_3.show()
@@ -250,6 +253,8 @@ func update_slots(slot):
 			selected_2.hide()
 			selected_3.hide()
 			Manager.current_slot = 0
+			Manager.currently_held_bagel = null
+			print(Manager.currently_held_bagel)
 			
 func dropthrow():
 	if current_slot == 0:
