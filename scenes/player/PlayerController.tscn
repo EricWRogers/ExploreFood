@@ -2,11 +2,43 @@
 
 [ext_resource type="Script" uid="uid://kuy5nk16rekr" path="res://scripts/player/character_body_3d.gd" id="1_cokxn"]
 [ext_resource type="PackedScene" uid="uid://cr33uf2tu8dlc" path="res://scenes/player/killer_bean_sproject_2.tscn" id="2_lfbm7"]
+[ext_resource type="Script" uid="uid://tkrd74ga5k7c" path="res://scripts/player/ragdollscript.gd" id="3_08ru5"]
 [ext_resource type="Shader" uid="uid://dfxnfoqqcdpw6" path="res://assets/shaders/blacktowhite.gdshader" id="3_a6j2n"]
 [ext_resource type="Texture2D" uid="uid://bdp7kevxt62w4" path="res://assets/ui/ui_assets/square-rounded-icon.png" id="4_cebs7"]
+[ext_resource type="Shader" uid="uid://jytfqwvloln3" path="res://assets/shaders/Squiggle.gdshader" id="6_60odj"]
+[ext_resource type="Texture2D" uid="uid://dg233iu50au05" path="res://assets/ui/ui_assets/youdied.png" id="6_anuhh"]
+[ext_resource type="FontFile" uid="uid://c4sng3tmqix43" path="res://assets/fonts/Pencilant Script.otf" id="8_tfrk6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
 height = 3.315918
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6ev1f"]
+radius = 0.4609375
+height = 2.366901
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_08ru5"]
+radius = 0.14404297
+height = 0.69636923
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_anuhh"]
+radius = 0.11767578
+height = 0.5703393
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_60odj"]
+radius = 0.19970703
+height = 0.63683105
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpgqn"]
+radius = 0.15917969
+height = 0.834565
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qcp1l"]
+radius = 0.13134766
+height = 0.7963519
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4ghg"]
+radius = 0.15136719
+height = 0.48254395
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
 bg_color = Color(1, 1, 1, 0)
@@ -37,6 +69,139 @@ shadow_size = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cebs7"]
 shader = ExtResource("3_a6j2n")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tfrk6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_60odj"]
+noise = SubResource("FastNoiseLite_tfrk6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anuhh"]
+shader = ExtResource("6_60odj")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.16
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_60odj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jsc2v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wtdo7"]
+noise = SubResource("FastNoiseLite_jsc2v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfrk6"]
+shader = ExtResource("6_60odj")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.205
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_wtdo7")
+
+[sub_resource type="Animation" id="Animation_60odj"]
+resource_name = "Appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(0.4352755, 1),
+"update": 0,
+"values": [Vector2(0.71, 0.71), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer2/YouDied:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.23, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MarginContainer/Start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.61),
+"transitions": PackedFloat32Array(1.8660663, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/MarginContainer3/Label:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.47, 2),
+"transitions": PackedFloat32Array(2.219139, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tfrk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.71, 0.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer2/YouDied:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MarginContainer/Start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/MarginContainer3/Label:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wtdo7"]
+_data = {
+&"Appear": SubResource("Animation_60odj"),
+&"RESET": SubResource("Animation_tfrk6")
+}
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436 groups=["Player"]]
 floor_max_angle = 1.314233
@@ -69,6 +234,171 @@ transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
 
 [node name="ItemHoldSpawn" type="Marker3D" parent="Head/KillerBeanSproject2" unique_id=366973280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018261252, -0.042149857)
+
+[node name="RagdollGuy" parent="Head" unique_id=1170644129 instance=ExtResource("2_lfbm7")]
+transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
+script = ExtResource("3_08ru5")
+
+[node name="Skeleton3D" parent="Head/RagdollGuy" index="6" unique_id=705481250]
+bones/2/rotation = Quaternion(0.0019709144, -0.022833256, 0.08597533, 0.9960337)
+bones/3/rotation = Quaternion(0.011109655, -0.10620267, 0.069914654, 0.99182135)
+bones/4/rotation = Quaternion(-0.047414, 0.9790262, 0.053406682, 0.19080715)
+bones/5/rotation = Quaternion(-0.0009090793, 0.9810452, -0.004740034, -0.19371909)
+bones/6/rotation = Quaternion(-4.2035173e-10, 0, 0, 1)
+bones/7/rotation = Quaternion(-0.004706213, 0.16009293, 0.0010704714, 0.9870902)
+bones/8/rotation = Quaternion(0, 0, -1.1139521e-10, 1)
+bones/9/rotation = Quaternion(-0.004736609, 0.19005722, 0.0009267596, 0.9817612)
+bones/10/rotation = Quaternion(0, 0, 6.4979855e-11, 1)
+bones/11/rotation = Quaternion(-0.0047545214, 0.21003616, 0.0008299858, 0.97768176)
+bones/12/rotation = Quaternion(0, 0, -4.582971e-10, 1)
+bones/13/rotation = Quaternion(1, 6.776008e-06, 3.552627e-05, 2.457195e-05)
+bones/14/rotation = Quaternion(-1.9263762e-05, -4.56776e-06, -1.9812927e-05, 1)
+bones/15/rotation = Quaternion(-0.00089918304, 0.9810452, -0.0047419877, 0.19371901)
+bones/16/rotation = Quaternion(-0.0009090793, 0.9810452, -0.0047400338, -0.19371907)
+bones/17/rotation = Quaternion(0, 0, 0, 1)
+bones/18/rotation = Quaternion(-0.004706213, 0.16009292, 0.0010704712, 0.9870902)
+bones/19/rotation = Quaternion(0, 0, 0, 1)
+bones/20/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
+bones/21/rotation = Quaternion(0, 0, 0, 1)
+bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
+bones/23/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="BoneAttachment3D" parent="Head/RagdollGuy/Skeleton3D" index="1" unique_id=1481971334]
+transform = Transform3D(-0.9976705, 7.334887e-05, 0.06821951, -6.719679e-05, -0.9999999, 9.2475675e-05, 0.06821951, 8.767191e-05, 0.99767053, 0.07721382, 0.034317255, -0.0018660375)
+
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="Head/RagdollGuy/Skeleton3D" index="2" unique_id=1742551553]
+active = false
+
+[node name="Physical Bone main" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2043989485]
+transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.0007411118)
+collision_layer = 2
+collision_mask = 3
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.436549e-05, 0.000340892, 0.280938)
+body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111175)
+bone_name = "main"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone main" unique_id=2145911635]
+transform = Transform3D(1.0000025, 4.898757e-07, -7.4505806e-08, -5.662441e-07, -3.7252903e-08, 1.0000029, 5.0477684e-07, -1, 9.3877316e-07, 8.115312e-07, 0.051166657, -0.15711051)
+shape = SubResource("CapsuleShape3D_6ev1f")
+
+[node name="Physical Bone ribcage" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=515706595]
+transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374819, 0.034741156, 0.0010656099)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002091676, -5.6956065e-05, 0.23354876)
+body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202111, -9.0607864e-05, -0.00039225002)
+bone_name = "ribcage"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone ribcage" unique_id=117949619]
+transform = Transform3D(0.9636213, 0.16192971, -0.2126687, 0.22820352, -0.084074266, 0.9699926, 0.13918833, -0.9832218, -0.117967606, 0.050517853, -0.04319763, -0.507795)
+shape = SubResource("CapsuleShape3D_08ru5")
+
+[node name="Physical Bone R_shoulder" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1566338530]
+transform = Transform3D(0.0019740753, -0.0063986415, 0.03451824, 0.00034334944, 0.034574635, 0.006389459, -0.035104606, -2.1655851e-05, 0.0020035952, -0.028050294, 0.032472797, -8.692214e-06)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1688555e-07, -1.0345485e-06, 0.3404013)
+body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -4.0202073e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2504053e-06, 0.00039294106, -0.011967659, -0.00012930064, -0.00013378286)
+bone_name = "R_shoulder"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone R_shoulder" unique_id=1227060303]
+transform = Transform3D(0.32195434, 0.027684554, -0.94635034, 0.8035644, 0.52056754, 0.28860638, 0.5006292, -0.85337156, 0.14535266, -0.075896844, 0.58459103, -0.4677959)
+shape = SubResource("CapsuleShape3D_anuhh")
+
+[node name="Physical Bone R_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=256072554]
+transform = Transform3D(0.00052035786, -0.034812022, -0.004919424, 0.033488084, -0.00100747, 0.010671547, -0.010706359, -0.0048431912, 0.033140093, -0.029571198, 0.013725072, -0.014683644)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400483, 0.21708958, 0.55594194)
+body_offset = Transform3D(0.0077229906, -0.033548538, 0.0071553853, 0.031683292, 0.009787507, 0.011692826, -0.013148109, 0.00387929, 0.03237942, 0.000802774, -0.018890835, -0.014583178)
+bone_name = "R_forearm"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone R_forearm" unique_id=1379026050]
+transform = Transform3D(0.895568, 0.29895136, 0.32952404, 0.37666467, -0.9036331, -0.20388947, 0.2368158, 0.30671698, -0.9218693, 0.05767864, 1.0931597, 0.31364042)
+shape = SubResource("CapsuleShape3D_60odj")
+
+[node name="Physical Bone L_shoulder" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=189867189]
+transform = Transform3D(-0.00039047102, -0.00037934908, -0.03515753, -1.7337684e-06, -0.0351597, 0.00037939168, -0.035159577, 5.9467043e-06, 0.00039042963, 0.027423576, 0.034520764, 0.00068785425)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1213124e-06, 1.3957717e-07, 0.34040332)
+body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.01196773, 0.00012929694, 0.00013379968)
+bone_name = "L_shoulder"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone L_shoulder" unique_id=350888549]
+transform = Transform3D(0.90218157, -0.42604768, 0.06746767, -0.4290984, -0.87043065, 0.24130411, -0.044081885, -0.24665281, -0.96810156, -0.1772083, -0.33292717, 0.22038756)
+shape = SubResource("CapsuleShape3D_xpgqn")
+
+[node name="Physical Bone L_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=162760682]
+transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045108285, 0.028315537, -0.030620009)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36631346, 0.33516338, 0.77017635)
+body_offset = Transform3D(0.006827213, -0.03295914, 0.010170168, -0.028861754, -0.011135752, -0.016713548, 0.018887479, -0.0051027588, -0.02921598, 0.005714774, 0.0060322266, 0.031130452)
+bone_name = "L_forearm"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone L_forearm" unique_id=69062929]
+transform = Transform3D(0.6589751, 0.19765995, 0.72571373, 0.28265703, -0.9592011, 0.0045831054, 0.6970152, 0.20210934, -0.68797255, -0.28812933, -0.14768767, 0.94353455)
+shape = SubResource("CapsuleShape3D_qcp1l")
+
+[node name="Physical Bone L_hand" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2021430158]
+transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.061631538, 0.021755122, 0.014966876)
+collision_layer = 2
+collision_mask = 3
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194193, -0.05945555, -0.33873513)
+body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988536, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779544, 0.012703492, 0.012749653)
+bone_name = "L_hand"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone L_hand" unique_id=2048956605]
+transform = Transform3D(0.9084783, -0.37763646, 0.17900734, 0.17536227, 0.7332768, 0.6569245, -0.37934148, -0.56541437, 0.7323943, 0.621963, -0.40910208, -0.10856974)
+shape = SubResource("CapsuleShape3D_g4ghg")
+
+[node name="R_shoulder_handle" parent="Head/RagdollGuy" index="7" unique_id=110011602]
+transform = Transform3D(0.98411846, -0.17165536, -0.045223016, 0.1714744, 0.9851571, -0.007879732, 0.04590437, 4.656613e-10, 0.99894583, -0.016274668, 0.034500763, 0.0006733593)
+
+[node name="R_forearm_handle" parent="Head/RagdollGuy/R_shoulder_handle" index="0" unique_id=829931328]
+transform = Transform3D(0.9675536, -0.14129308, -0.2094657, 0.13655168, 0.9899413, -0.037002824, 0.21258706, 0.007199324, 0.97711533, -0.023935407, -2.220446e-16, -2.264855e-16)
+
+[node name="R_hand_handle" parent="Head/RagdollGuy/R_shoulder_handle/R_forearm_handle" index="0" unique_id=536996029]
+transform = Transform3D(0.9934924, -0.11336738, 0.010963555, 0.11389625, 0.9888792, -0.09563274, 9.3132235e-10, 0.09625913, 0.9953563, -0.019824792, 1.7763568e-17, -5.7731595e-17)
+
+[node name="L_shoulder_handle" parent="Head/RagdollGuy" index="8" unique_id=760118543]
+transform = Transform3D(1, 5.737975e-09, 2.9613272e-08, -5.7379745e-09, 1, -2.0590903e-08, -2.9613277e-08, 2.0590907e-08, 0.9999998, 0.015455847, 0.034500763, 0.0006733593)
+
+[node name="L_forearm_handle" parent="Head/RagdollGuy/L_shoulder_handle" index="0" unique_id=1575142463]
+transform = Transform3D(1, 1.6581996e-08, -3.8528003e-09, -1.6581998e-08, 0.9999999, -1.6122083e-08, 3.8528e-09, 1.6122081e-08, 1, 0.0239354, -7.6383345e-16, 6.217249e-17)
+
+[node name="L_hand_handle" parent="Head/RagdollGuy/L_shoulder_handle/L_forearm_handle" index="0" unique_id=528917810]
+transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
+
+[node name="3rdPerson" type="Camera3D" parent="Head" unique_id=380403917]
+transform = Transform3D(1, 0, 0, 0, 0.96506035, 0.26202768, 0, -0.26202768, 0.96506035, 0, 2.806454, 7.9200816)
+cull_mask = 1048571
+fov = 60.7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252249867]
 
@@ -290,6 +620,54 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer" unique_id=1957957337]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -497.5
+offset_right = 497.5
+offset_bottom = 695.0
+grow_horizontal = 2
+scale = Vector2(0.71, 0.71)
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_constants/margin_top = 180
+
+[node name="YouDied" type="TextureRect" parent="CanvasLayer/MarginContainer2" unique_id=1760953723]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_anuhh")
+custom_minimum_size = Vector2(995, 695)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_anuhh")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer" unique_id=1939963444]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -105.0
+offset_right = 248.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 31
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer3" unique_id=176057092]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_tfrk6")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_tfrk6")
+theme_override_font_sizes/font_size = 57
+text = "Press [SPACE] to reset"
+
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=206606960]
 
+[node name="Death" type="AnimationPlayer" parent="." unique_id=2141587185]
+libraries/ = SubResource("AnimationLibrary_wtdo7")
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="CoyoteTimeout"]
+
+[editable path="Head/RagdollGuy"]
