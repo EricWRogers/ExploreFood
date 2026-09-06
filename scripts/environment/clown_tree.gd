@@ -34,7 +34,9 @@ func _process(delta: float) -> void:
 			
 		has_checked_noses = true
 
-	var speed = player.velocity.length()
+	var speed = 1.0
+	if player != null:
+		speed = player.velocity.length()
 
 	var target_scale = 1.0
 	
