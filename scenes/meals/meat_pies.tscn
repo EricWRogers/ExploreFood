@@ -145,9 +145,6 @@ transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0, 0, 0)
 material_overlay = SubResource("ShaderMaterial_0ig54")
 mesh = ExtResource("4_x3xps")
 
-[node name="Node3D" parent="." index="2" unique_id=1476605985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2399864, 0)
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3" unique_id=1019942401]
 transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0.11556661, 0.18228924, 0)
 mesh = SubResource("QuadMesh_f6p87")

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-signal loading_screen_ready
+#signal loading_screen_ready
+
 @export var animation_player: AnimationPlayer
 
 func play_in():

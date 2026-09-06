@@ -54,13 +54,17 @@ func on_looked_at():
 	if held:
 		return
 	mesh_instance_3d.set_instance_shader_parameter("transparency", 0.411)
-	$Node3D.show()
+	if ($InteractUI == null):
+		return
+	$InteractUI.show()
 	
 func on_looked_away():
 	mesh_instance_3d.set_instance_shader_parameter("transparency", 0.0)
-	$Node3D.hide()
+	if ($InteractUI == null):
+		return
+	$InteractUI.hide()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if in_sale:
 		self.set_collision_layer_value(10, false)
 	if held:

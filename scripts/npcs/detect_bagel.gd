@@ -14,7 +14,7 @@ func carry_bagel():
 	$"../Timer".start()
 	Manager.money += bagel_value
 	Manager.player.update_cash()
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if my_bagel:
 		my_bagel.global_position = $"../Marker3D".global_position
 		my_bagel.global_rotation = Vector3(0,0,0)

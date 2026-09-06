@@ -3,7 +3,7 @@ extends StaticBody3D
 @export var lvl_manager: Node
 @export var recipes : Array[Resource]
 const BAGEL_START = preload("uid://32c24t457nbx")
-@onready var node_3d: Node3D = $Node3D
+@onready var cook_pointer_UItip: Node3D = $Node3D
 
 var food_types : Array
 var cooking = false
@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("RollSpawn"):
-		node_3d.show()
+		cook_pointer_UItip.show()
 		
 		if bagel_mode:
 			food_types.append(body.color)
@@ -43,7 +43,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	#if item in area is an ingredient
 	
 func start_cooking():
-	node_3d.hide()
+	cook_pointer_UItip.hide()
 	if cooking == true:
 		return
 	if food_types.is_empty():
@@ -68,7 +68,7 @@ func find_recipe():
 			chosen_recipe = recipe
 			break
 		else:
-			print("you made shit")
+			print("you made dubious")
 			chosen_recipe = recipes[-1]
 		
 		#if current_recipe:
@@ -78,7 +78,7 @@ func find_recipe():
 			#print("dubious")
 			#chosen_recipe = recipes[0] #dubious food
 	
-	print("current recipe: ", current_recipe)
+	#print("current recipe: ", current_recipe)
 	
 	#spawn chosen food
 	#print(chosen_recipe.product) 

@@ -7,9 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="5_5cnqg"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
+[ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="5_flhss"]
+[ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="6_dxa70"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
+[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/Grilled_Kebabs.tres" id="7_wiuov"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="8_dvf7r"]
+[ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://scripts/resources/dubious_food.tres" id="9_gt1jg"]
 [ext_resource type="PackedScene" uid="uid://cfwu3yt6xntfb" path="res://scenes/scenes_assets/bagel_counter.tscn" id="11_yajmd"]
 [ext_resource type="Texture2D" uid="uid://2nri623cj753" path="res://assets/textures/tXqdIqWh.jpg" id="12_5cnqg"]
 
@@ -234,6 +239,7 @@ transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 1.3046513, 0.9595978, 1.1404219)
+recipes = Array[Resource]([ExtResource("5_flhss"), ExtResource("6_dxa70"), ExtResource("7_wiuov"), ExtResource("8_dvf7r"), ExtResource("9_gt1jg")])
 
 [node name="OmniLight3D" parent="Stove" index="9" unique_id=43503502]
 light_color = Color(1.2502502, 0.9976544, 0.8172288, 1)

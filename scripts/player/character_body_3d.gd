@@ -6,7 +6,7 @@ const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
 var hunger = 100
-var hunger_reduction_rate = 5
+@export var hunger_reduction_rate = 5
 
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08

@@ -108,7 +108,7 @@ func state_frolic(delta: float) -> void:
 		change_state(State.WATCH)
 
 
-func state_watch(delta: float) -> void:
+func state_watch(_delta: float) -> void:
 	if distance_to_player_squared > watch_distance ** 2:
 		change_state(State.FROLIC)
 	elif distance_to_player_squared < stranger_danger ** 2:
@@ -129,7 +129,7 @@ func state_watch(delta: float) -> void:
 		move_and_slide()
 
 
-func state_run(delta: float) -> void:
+func state_run(_delta: float) -> void:
 	if distance_to_player_squared > watch_distance ** 2:
 		change_state(State.FROLIC)
 	elif distance_to_player_squared > stranger_danger ** 2:

@@ -19,5 +19,5 @@ func walking():
 func holding():
 	$NPCBean/AnimationPlayer.play("Hold")
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	progress += eagerness

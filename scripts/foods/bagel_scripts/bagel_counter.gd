@@ -9,7 +9,7 @@ var counter = [null, null, null, null, null, null, null, null, null, null, null,
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
-func add_to_counter(item):
+func add_to_counter(item): #item is never used. Probably safe to remove -Nate
 	var held_bagel_reference = null
 	if not Manager.currently_held_bagel:
 		return
@@ -50,11 +50,11 @@ func remove_first_item():
 	
 func on_looked_at():
 	overlay.set_shader_parameter("transparency", 0.1)
-	$Node3D.show()
+	$InteractUI.show()
 	
 func on_looked_away():
 	overlay.set_shader_parameter("transparency", 0.0)
-	$Node3D.hide()
+	$InteractUI.hide()
 
 
 func _on_bagel_detect_body_entered(body: Node3D) -> void:
