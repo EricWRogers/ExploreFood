@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://b7bn8ouwgdbyi"]
+
+[ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="1_vqkf1"]
+
+[resource]
+script = ExtResource("1_vqkf1")
+dialogue_lines = Array[String](["Yes... Yes, yes, yes! This is splendid! Simply Splendid!", "I am pleased darling. Seriandipidy."])
+metadata/_custom_type_script = "uid://dsel8rx3fee7a"

@@ -13,6 +13,8 @@ var player
 var money : int = 0
 var recipe_book
 
+var current_quest_item : PackedScene
+
 var slot1
 var slot2
 var slot3

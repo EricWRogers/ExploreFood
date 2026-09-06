@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://bcfig0tge7q1u"]
+
+[ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="1_ca7t4"]
+[ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="1_e65l5"]
+
+[resource]
+script = ExtResource("1_e65l5")
+dialogue_lines = Array[String](["Hello little darling.", "Goodness I am absolutely famished. I think I need something scrumptious to eat or I'll.. I'll DIE!", "Bring me a delicacy darling. I'm thinking something meaty and hardy.", "And if you let me down... well...", "Kisses!"])
+QuestItem = ExtResource("1_ca7t4")
+metadata/_custom_type_script = "uid://dsel8rx3fee7a"

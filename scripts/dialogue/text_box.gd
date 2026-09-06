@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var timer: Timer = $MarginContainer/Timer
 
 
-const MAX_WIDTH = 256
+const MAX_WIDTH = 10000
 
 var text = ""
 var letter_index = 0
