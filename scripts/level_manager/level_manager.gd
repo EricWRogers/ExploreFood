@@ -24,8 +24,13 @@ func _handle_level_change(current_level_name: String):
 	match current_level_name: 
 		"kitchen":
 			next_level_name = "terrain_test"
+		"kitchen2":
+			next_level_name = "terrain_test" #change this to the second level once it gets made
 		"terrain_test":
 			next_level_name = "kitchen"
+		_:
+			print("Error: Unidentified Level. Check str Level Name.")
+			return
 	var temp = load("res://scenes/levels/"+ next_level_name + ".tscn") #creates packed scene
 	next_level = temp.instantiate()
 	call_deferred("add_child", next_level)

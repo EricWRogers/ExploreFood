@@ -70,18 +70,6 @@ func find_recipe():
 		else:
 			print("you made dubious")
 			chosen_recipe = recipes[-1]
-		
-		#if current_recipe:
-			#print("make meal")
-			#chosen_recipe = current_recipe
-		#else:
-			#print("dubious")
-			#chosen_recipe = recipes[0] #dubious food
-	
-	#print("current recipe: ", current_recipe)
-	
-	#spawn chosen food
-	#print(chosen_recipe.product) 
 	
 	var current_scene = lvl_manager.current_level
 	var recipe_spawn = null

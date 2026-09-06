@@ -333,7 +333,10 @@ light_color = Color(0.90957165, 0.82487935, 0.6563413, 1)
 sky_mode = 1
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
-transform = Transform3D(-0.42583537, 0, 0.90480065, 0, 1, 0, -0.90480065, 0, -0.42583537, 11.095158, 0.80431557, -4.8979096)
+transform = Transform3D(-0.5010247, 0, 0.8654331, 0, 1, 0, -0.8654331, 0, -0.5010247, 11.095158, 0.80431557, -4.8979096)
+
+[node name="Portal2" parent="." unique_id=1873248786 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.55828077, 0, 0.8296521, 0, 1, 0, -0.8296521, 0, 0.55828077, -11.821763, 0.6885147, -6.054302)
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
 transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 1.3046513, 0.9595978, 1.1404219)
@@ -491,8 +494,8 @@ transform = Transform3D(-1.615, 0, -2.438582e-07, 0, 1.615, 0, 2.438582e-07, 0, 
 visible = false
 texture = ExtResource("12_5cnqg")
 
-[connection signal="body_entered" from="Portal" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
 [connection signal="timeout" from="SpawnNPC" to="." method="_on_spawn_npc_timeout"]
 
 [editable path="Player"]
