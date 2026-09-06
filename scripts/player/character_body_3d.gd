@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
 var hunger = 100
 @export var hunger_reduction_rate = 5
+var time_tick = 2
 
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
@@ -37,12 +38,12 @@ var current_target: Node = null
 var current_slot = 0
 
 func _ready():
-	Manager.player = self
+	$CanvasLayer/MarginContainer4.hide()
+	$CanvasLayer/MarginContainer5.hide()
 	if Manager.bagel_mode and not in_kitchen:
-		$HungerTick.start()
-	else:
-		$CanvasLayer/MarginContainer4.hide()
-		$CanvasLayer/MarginContainer5.hide()
+		$CanvasLayer/MarginContainer4.show()
+		$CanvasLayer/MarginContainer5.show()
+	Manager.player = self
 	$Head/Camera3D.make_current()
 	Manager.player_hold = $Head/KillerBeanSproject2/ItemHoldSpawn
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -55,6 +56,12 @@ func _ready():
 	if Manager.slot3 != null:
 		var get_slot = Manager.slot3.instantiate()
 		$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = get_slot.icon
+
+
+func start_hunger():
+	if Manager.bagel_mode and not in_kitchen:
+		$HungerTick.start()
+	
 
 func _unhandled_input(event):
 	if not alive:
@@ -380,4 +387,5 @@ func death():
 
 func _on_hunger_tick_timeout() -> void:
 	hunger -= hunger_reduction_rate
+	$HungerTick.wait_time = 2
 	$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)

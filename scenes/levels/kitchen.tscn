@@ -223,9 +223,6 @@ level_name = "kitchen"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 
-[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
-in_kitchen = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -247,27 +244,13 @@ light_energy = 11.716
 light_indirect_energy = 9.294
 omni_range = 16.078493
 
-[node name="MeatBall" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="0" unique_id=874318806]
-visible = true
-
 [node name="DoughBebeh" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="1" unique_id=1089217948]
 transform = Transform3D(0.72042876, 0.312785, -0.08513523, 0.16165486, -0.16681488, 0.75507665, 0.28098074, -0.70600164, -0.21612844, 1.3433124, -0.72274816, 1.1020545)
-visible = true
 material_overlay = SubResource("ShaderMaterial_dxa70")
 mesh = ExtResource("6_ypotk")
 
 [node name="Bebeh" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="2" unique_id=1460066308]
-visible = true
 surface_material_override/0 = SubResource("StandardMaterial3D_ewv05")
-
-[node name="Waffle" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="3" unique_id=709968151]
-visible = true
-
-[node name="Terry" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="4" unique_id=100476314]
-visible = true
-
-[node name="Frogbutt" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="5" unique_id=1364905038]
-visible = true
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1234284931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 1.7, 0)

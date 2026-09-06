@@ -10,3 +10,8 @@ func play_in():
 	
 func play_out():
 	$AnimationPlayer.play("LoadScreenIn")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "LoadScreenIn":
+		Manager.player.start_hunger()

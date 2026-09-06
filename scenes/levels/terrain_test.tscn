@@ -100,6 +100,9 @@ level_name = "terrain_test"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("4_gba4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.355896, 0)
 
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+in_kitchen = false
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
 
@@ -702,3 +705,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.07292, 82.96884, -119.2548
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+
+[editable path="Player"]

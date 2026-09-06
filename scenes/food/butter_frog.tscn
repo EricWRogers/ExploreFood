@@ -45,9 +45,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pb1db"]
-load_path = "res://.godot/imported/butte.png-aa1461db198b9356535c146c0cf0584e.s3tc.ctex"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ohet"]
 resource_local_to_scene = true
 render_priority = 1
@@ -58,7 +55,7 @@ shader_parameter/angle = 20.0
 shader_parameter/line_count = 20.0
 shader_parameter/speed = 1.015
 shader_parameter/blur = 0.0
-shader_parameter/mesh_texture = SubResource("CompressedTexture2D_pb1db")
+shader_parameter/mesh_texture = ExtResource("3_1ydtn")
 shader_parameter/transparency = 0.0
 
 [sub_resource type="Shader" id="Shader_mhppq"]

@@ -46,9 +46,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qa74t"]
-load_path = "res://.godot/imported/waffle.png-33d4869c9d79a81ca96578fc2dd48284.s3tc.ctex"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2tun6"]
 resource_local_to_scene = true
 render_priority = 1
@@ -59,7 +56,7 @@ shader_parameter/angle = 20.0
 shader_parameter/line_count = 20.0
 shader_parameter/speed = 1.015
 shader_parameter/blur = 0.0
-shader_parameter/mesh_texture = SubResource("CompressedTexture2D_qa74t")
+shader_parameter/mesh_texture = ExtResource("3_x0co7")
 shader_parameter/transparency = 0.0
 
 [sub_resource type="Shader" id="Shader_2tun6"]
