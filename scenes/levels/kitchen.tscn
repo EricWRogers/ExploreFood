@@ -4,14 +4,201 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
+[ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="5_5cnqg"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
+[ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
+[ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
 [ext_resource type="PackedScene" uid="uid://cfwu3yt6xntfb" path="res://scenes/scenes_assets/bagel_counter.tscn" id="11_yajmd"]
 [ext_resource type="Texture2D" uid="uid://2nri623cj753" path="res://assets/textures/tXqdIqWh.jpg" id="12_5cnqg"]
 
 [sub_resource type="Environment" id="Environment_p86jp"]
 fog_enabled = true
+
+[sub_resource type="Shader" id="Shader_taj0c"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewv05"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_taj0c")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("5_5cnqg")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_flhss"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxa70"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ewv05")
+shader = SubResource("Shader_flhss")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yajmd"]
+
+[sub_resource type="Shader" id="Shader_5cnqg"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypotk"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_5cnqg")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("5_7mbwf")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_cfgay"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_taj0c"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ypotk")
+shader = SubResource("Shader_cfgay")
+shader_parameter/outline_width = 0.0310000014725
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewv05"]
+next_pass = SubResource("ShaderMaterial_taj0c")
+albedo_texture = SubResource("CompressedTexture2D_yajmd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
 size = Vector3(10.663208, 2.0327148, 1.2301636)
@@ -53,6 +240,28 @@ light_color = Color(1.2502502, 0.9976544, 0.8172288, 1)
 light_energy = 11.716
 light_indirect_energy = 9.294
 omni_range = 16.078493
+
+[node name="MeatBall" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="0" unique_id=874318806]
+visible = true
+
+[node name="DoughBebeh" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="1" unique_id=1089217948]
+transform = Transform3D(0.72042876, 0.312785, -0.08513523, 0.16165486, -0.16681488, 0.75507665, 0.28098074, -0.70600164, -0.21612844, 1.3433124, -0.72274816, 1.1020545)
+visible = true
+material_overlay = SubResource("ShaderMaterial_dxa70")
+mesh = ExtResource("6_ypotk")
+
+[node name="Bebeh" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="2" unique_id=1460066308]
+visible = true
+surface_material_override/0 = SubResource("StandardMaterial3D_ewv05")
+
+[node name="Waffle" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="3" unique_id=709968151]
+visible = true
+
+[node name="Terry" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="4" unique_id=100476314]
+visible = true
+
+[node name="Frogbutt" parent="Stove/FoodRot" parent_id_path=PackedInt32Array(1286557195, 1031278590) index="5" unique_id=1364905038]
+visible = true
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1234284931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 1.7, 0)

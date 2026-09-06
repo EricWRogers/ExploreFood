@@ -34,7 +34,6 @@ albedo_color = Color(1, 1, 1, 0.08627451)
 albedo_texture = ExtResource("4_nl8f4")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_71mpx"]
-load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
 
 [sub_resource type="Gradient" id="Gradient_may4l"]
 colors = PackedColorArray(1, 0, 0, 1, 0.2833333, 0, 1, 1)
@@ -59,7 +58,6 @@ albedo_color = Color(1, 1, 1, 0)
 albedo_texture = SubResource("CompressedTexture2D_71mpx")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g5170"]
-load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awxga"]
 transparency = 1
