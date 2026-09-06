@@ -37,12 +37,15 @@ func _process(delta: float) -> void:
 	var speed = player.velocity.length()
 
 	var target_scale = 1.0
+	
 
 	if speed > 5.0 and global_position.distance_squared_to(player.global_position) < too_close_distance_squared:
 		target_scale = 10.0
 	for nose in noses:
 		if nose != null:
 			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta * 2.0)
+			if nose.scale.length() >= target_scale * 0.99:
+					explode(nose)
 
 
 func get_clown_nose(mask: StaticBody3D) -> RigidBody3D:
@@ -51,3 +54,13 @@ func get_clown_nose(mask: StaticBody3D) -> RigidBody3D:
 			return child
 	
 	return null
+
+func explode(nose: RigidBody3D) -> void:
+	print("BOOM")
+
+	var explosion = nose.get_node("Explosion")
+	explosion.reparent(get_tree().current_scene)
+	explosion.explode()
+
+	noses.erase(nose)
+	nose.queue_free()

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtnfe788cdn0k" path="res://assets/ui/item_icons/MeatBall.png" id="2_0ffux"]
 [ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="2_08qj6"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="3_0ffux"]
+[ext_resource type="PackedScene" uid="uid://b8vmbssge6uwi" path="res://assets/particles_effects/Explosion/Explosion.tscn" id="5_sxh68"]
 
 [sub_resource type="Shader" id="Shader_7ygjy"]
 code = "shader_type spatial;
@@ -114,3 +115,5 @@ mesh = ExtResource("3_0ffux")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1691151157]
 shape = SubResource("SphereShape3D_5h0bk")
+
+[node name="Explosion" parent="." index="3" unique_id=1763558788 instance=ExtResource("5_sxh68")]
