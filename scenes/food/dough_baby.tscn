@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://be70reqeecewm"]
 
-[ext_resource type="ArrayMesh" uid="uid://b1fsykp0g6vnn" path="res://assets/models/DoughBaby.obj" id="1_l4gp6"]
 [ext_resource type="Script" uid="uid://cwj6beeqfhd1b" path="res://scripts/foods/basefood.gd" id="1_tegep"]
 [ext_resource type="Texture2D" uid="uid://dsdv8bvnvjdpi" path="res://assets/ui/item_icons/doughbabyicon.png" id="2_bkkqb"]
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="3_21aiw"]
+[ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="4_21aiw"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="4_bkkqb"]
 
 [sub_resource type="Animation" id="Animation_l4gp6"]
@@ -133,9 +133,9 @@ libraries/ = SubResource("AnimationLibrary_tegep")
 autoplay = &"hoppy"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=247206209]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -4.2851925, -1.3542506, -1.4155788)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.0834384, -1.0557007, 0)
 material_overlay = SubResource("ShaderMaterial_2vuoy")
-mesh = ExtResource("1_l4gp6")
+mesh = ExtResource("4_21aiw")
 surface_material_override/0 = SubResource("StandardMaterial3D_fno60")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=193634790]
