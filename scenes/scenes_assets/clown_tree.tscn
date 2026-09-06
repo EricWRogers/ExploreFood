@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnk4gsayng8kr"]
 
 [ext_resource type="ArrayMesh" uid="uid://smwv8juix3b4" path="res://assets/models/ClownTree.obj" id="1_06bpm"]
+[ext_resource type="Script" uid="uid://coigvlcbpx5h6" path="res://scripts/environment/clown_tree.gd" id="1_dtrys"]
 [ext_resource type="Texture2D" uid="uid://dolv4vycg3p47" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Bark_BaseColor.png" id="2_2yi7y"]
 [ext_resource type="Texture2D" uid="uid://dqmcvplm7pp7c" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Bark_Height.png" id="3_y66ht"]
 [ext_resource type="Texture2D" uid="uid://dfk1kxumqgo58" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Bark_Normal.png" id="4_3kqdk"]
@@ -32,6 +33,7 @@ height = 2.239746
 radius = 0.23339844
 
 [node name="Clown_Tree" type="Node3D" unique_id=1282798476]
+script = ExtResource("1_dtrys")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1445180745]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.057627678, 0, 0.097798824)
