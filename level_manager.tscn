@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://pa70wv8ei3mv" path="res://scenes/levels/kitchen.tscn" id="1_27gbg"]
 [ext_resource type="Script" uid="uid://dxevjnm3htr8j" path="res://scripts/level_manager/level_manager.gd" id="1_mnhan"]
 [ext_resource type="PackedScene" uid="uid://d1l0ij7271ank" path="res://scenes/level_manager/loading_screen.tscn" id="3_5774q"]
+[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="4_k1abw"]
 
 [node name="LevelManager" type="Node" unique_id=2118240317]
 script = ExtResource("1_mnhan")
-CalebMode = true
 
 [node name="Kitchen" parent="." unique_id=115598229 instance=ExtResource("1_27gbg")]
 
@@ -14,6 +14,8 @@ CalebMode = true
 
 [node name="Timer" type="Timer" parent="." unique_id=49514619]
 wait_time = 0.5
+
+[node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("4_k1abw")]
 
 [connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

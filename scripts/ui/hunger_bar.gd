@@ -21,7 +21,7 @@ func _on_value_changed(value: float) -> void:
 	var ratio = (value - min_value) / (max_value - min_value)
 	var fill_size = Vector2(size.x * ratio, size.y)
 	var middle = fill_size.x / 2
-	print(middle)
+	#print(middle)
 	$"../../../../../MarginContainer5".global_position.x = middle + 20
 	material.set_shader_parameter("node_size", fill_size)
-	print($"../../../../../MarginContainer5".position)
+	#print($"../../../../../MarginContainer5".position)

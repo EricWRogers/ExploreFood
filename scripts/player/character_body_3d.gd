@@ -36,6 +36,7 @@ var canJump = true;
 var hotbar = []
 var current_target: Node = null
 var current_slot = 0
+var recipe_open = false
 
 func _ready():
 	$CanvasLayer/MarginContainer4.hide()
@@ -64,6 +65,8 @@ func start_hunger():
 	
 
 func _unhandled_input(event):
+	if recipe_open:
+		return
 	if not alive:
 		return
 	if event is InputEventMouseMotion:
@@ -82,6 +85,16 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("instant_death_button"):
 		death()
+	if Input.is_action_just_pressed("recipe_book"):
+		if recipe_open:
+			Manager.recipe_book.disappear()
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Manager.recipe_book.appear()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		recipe_open = !recipe_open
+	if recipe_open:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		if canJump:

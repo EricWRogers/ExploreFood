@@ -11,6 +11,7 @@ var currently_held_bagel
 var bagel_mode
 var player
 var money : int = 0
+var recipe_book
 
 var slot1
 var slot2
