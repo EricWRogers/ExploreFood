@@ -262,3 +262,5 @@ theme_override_colors/font_outline_color = Color(0.40146014, 0.40146014, 0.40146
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 67
 text = "Loading..."
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
