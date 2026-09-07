@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="3_w2cx6"]
 [ext_resource type="Resource" uid="uid://bcfig0tge7q1u" path="res://scripts/resources/dialogue/testDia.tres" id="4_64yaq"]
 [ext_resource type="Resource" uid="uid://hrb6cte5xt1s" path="res://scripts/resources/dialogue/testDia_FailQuest.tres" id="5_6h4kx"]
+[ext_resource type="Resource" uid="uid://c757vrkq8ux22" path="res://scripts/resources/dialogue/testDia1.tres" id="5_ara64"]
 [ext_resource type="Resource" uid="uid://b7bn8ouwgdbyi" path="res://scripts/resources/dialogue/testDia_PassQuest.tres" id="6_rbr8a"]
 [ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="8_6h4kx"]
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="9_rbr8a"]
@@ -75,8 +76,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6104536)
 [node name="Big_Boss_NPC" type="Node3D" parent="." unique_id=1895725985]
 transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
 script = ExtResource("2_q4by1")
-dialogue_tree = Array[ExtResource("3_w2cx6")]([ExtResource("4_64yaq"), ExtResource("6_rbr8a"), ExtResource("5_6h4kx")])
 ui_position = Vector2(0, 15)
+dialogue_tree = Array[ExtResource("3_w2cx6")]([ExtResource("4_64yaq"), ExtResource("5_ara64"), ExtResource("6_rbr8a"), ExtResource("5_6h4kx")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Big_Boss_NPC" unique_id=1602416036]
 transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, -0.13842964, -0.9310992, 0.49421883)

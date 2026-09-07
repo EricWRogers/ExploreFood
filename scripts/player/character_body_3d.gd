@@ -1,7 +1,7 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
-var speed
-const WALK_SPEED = 5.0
+var speed 
+const WALK_SPEED = 7.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
@@ -61,6 +61,11 @@ func _ready():
 	if Manager.slot3 != null:
 		var get_slot = Manager.slot3.instantiate()
 		$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = get_slot.icon
+	
+	#signals that freeze player movement when talking.
+	if (DialogueManager):
+		DialogueManager.freeze_player.connect(_on_freeze_player)
+		DialogueManager.unfreeze_player.connect(_on_unfreeze_player)
 
 
 func start_hunger():
@@ -486,3 +491,11 @@ func _on_hunger_tick_timeout() -> void:
 	hunger -= hunger_reduction_rate
 	$HungerTick.wait_time = 2
 	$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
+
+func _on_freeze_player():
+	print("Freeze")
+	set_physics_process(false)
+
+func _on_unfreeze_player():
+	print("unfreeze")
+	set_physics_process(true)

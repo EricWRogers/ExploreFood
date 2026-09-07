@@ -415,73 +415,73 @@ transform = Transform3D(28.44, 0, 0, 0, 28.44, 0, 0, 0, 28.44, 0, -1.5375524, 0)
 visible = false
 script = ExtResource("3_08ru5")
 
-[node name="pTorus1" parent="Head/RagdollGuy" index="2" unique_id=1644631449]
+[node name="pTorus1" parent="Head/RagdollGuy" index="2" unique_id=1159824665]
 surface_material_override/0 = SubResource("StandardMaterial3D_klk5f")
 
-[node name="pSphere14" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="0" unique_id=202870008]
+[node name="pSphere14" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="0" unique_id=738015435]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere13" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="1" unique_id=270046251]
+[node name="pSphere13" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="1" unique_id=329988581]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere12" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="2" unique_id=1076289744]
+[node name="pSphere12" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="2" unique_id=1180760859]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere11" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="3" unique_id=69724562]
+[node name="pSphere11" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="3" unique_id=92923299]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere10" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="4" unique_id=283819409]
+[node name="pSphere10" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="4" unique_id=157368506]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere9" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="5" unique_id=1194959119]
+[node name="pSphere9" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="5" unique_id=1023550978]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere8" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="6" unique_id=141551052]
+[node name="pSphere8" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="6" unique_id=512021732]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere7" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="7" unique_id=1566449741]
+[node name="pSphere7" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="7" unique_id=1757314261]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere6" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="8" unique_id=817018191]
+[node name="pSphere6" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="8" unique_id=663349005]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere5" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="9" unique_id=588656882]
+[node name="pSphere5" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="9" unique_id=525516265]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere4" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="10" unique_id=2094542738]
+[node name="pSphere4" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="10" unique_id=1628408891]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere3" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="11" unique_id=716287825]
+[node name="pSphere3" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="11" unique_id=173655079]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere2" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 308341689) index="12" unique_id=706984794]
+[node name="pSphere2" parent="Head/RagdollGuy/group1" parent_id_path=PackedInt32Array(1170644129, 1398845158) index="12" unique_id=1470391802]
 surface_material_override/0 = SubResource("StandardMaterial3D_jlpny")
 
-[node name="pSphere18" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 731438036) index="0" unique_id=529361893]
+[node name="pSphere18" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 278429394) index="0" unique_id=1059902479]
 surface_material_override/0 = SubResource("StandardMaterial3D_444fp")
 
-[node name="pSphere17" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 731438036) index="1" unique_id=1643531221]
+[node name="pSphere17" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 278429394) index="1" unique_id=1357683391]
 surface_material_override/0 = SubResource("StandardMaterial3D_444fp")
 
-[node name="pSphere16" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 731438036) index="2" unique_id=1436144436]
+[node name="pSphere16" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 278429394) index="2" unique_id=1138957077]
 surface_material_override/0 = SubResource("StandardMaterial3D_444fp")
 
-[node name="pSphere15" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 731438036) index="3" unique_id=917448861]
+[node name="pSphere15" parent="Head/RagdollGuy/group2" parent_id_path=PackedInt32Array(1170644129, 278429394) index="3" unique_id=458457189]
 surface_material_override/0 = SubResource("StandardMaterial3D_444fp")
 
-[node name="pSphere182" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1887380960) index="0" unique_id=518853093]
+[node name="pSphere182" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1754780633) index="0" unique_id=965279751]
 surface_material_override/0 = SubResource("StandardMaterial3D_4vr2v")
 
-[node name="pSphere172" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1887380960) index="1" unique_id=1522705810]
+[node name="pSphere172" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1754780633) index="1" unique_id=344252746]
 surface_material_override/0 = SubResource("StandardMaterial3D_4vr2v")
 
-[node name="pSphere162" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1887380960) index="2" unique_id=1736505122]
+[node name="pSphere162" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1754780633) index="2" unique_id=79052241]
 surface_material_override/0 = SubResource("StandardMaterial3D_4vr2v")
 
-[node name="pSphere152" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1887380960) index="3" unique_id=462576411]
+[node name="pSphere152" parent="Head/RagdollGuy/group3" parent_id_path=PackedInt32Array(1170644129, 1754780633) index="3" unique_id=381182203]
 surface_material_override/0 = SubResource("StandardMaterial3D_4vr2v")
 
-[node name="Skeleton3D" parent="Head/RagdollGuy" index="6" unique_id=1124568602]
+[node name="Skeleton3D" parent="Head/RagdollGuy" index="6" unique_id=830886139]
 bones/2/rotation = Quaternion(0.0019709144, -0.022833256, 0.08597533, 0.9960337)
 bones/3/rotation = Quaternion(0.011109655, -0.10620267, 0.069914654, 0.99182135)
 bones/4/rotation = Quaternion(-0.047414, 0.9790262, 0.053406682, 0.19080715)
@@ -512,11 +512,11 @@ transform = Transform3D(-0.9976705, 7.334887e-05, 0.06821951, -6.719679e-05, -0.
 active = false
 
 [node name="Physical Bone main" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2043989485]
-transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.00074111624)
+transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.0007411165)
 collision_layer = 2
 collision_mask = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4385513e-05, 0.0003410168, 0.28093803)
-body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111624)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4386444e-05, 0.00034102425, 0.28093803)
+body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111647)
 bone_name = "main"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone main" unique_id=2145911635]
@@ -524,12 +524,12 @@ transform = Transform3D(1.0000025, 4.898757e-07, -7.4505806e-08, -5.662441e-07, 
 shape = SubResource("CapsuleShape3D_6ev1f")
 
 [node name="Physical Bone ribcage" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=515706595]
-transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.00837487, 0.034741156, 0.0010656099)
+transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374873, 0.034741156, 0.0010656099)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020923838, -5.6972363e-05, 0.2335502)
-body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202163, -9.0607864e-05, -0.00039225002)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002092421, -5.6973295e-05, 0.2335503)
+body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202165, -9.0607864e-05, -0.00039225002)
 bone_name = "ribcage"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -556,12 +556,12 @@ transform = Transform3D(0.32195434, 0.027684554, -0.94635034, 0.8035644, 0.52056
 shape = SubResource("CapsuleShape3D_anuhh")
 
 [node name="Physical Bone R_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029571204, 0.013725039, -0.014683739)
+transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029571202, 0.013725039, -0.014683744)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400483, 0.21708901, 0.55594456)
-body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.000802733, -0.018890865, -0.014583266)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3240048, 0.21708903, 0.5559447)
+body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.000802733, -0.018890865, -0.01458327)
 bone_name = "R_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -619,22 +619,22 @@ joint_constraints/impulse_clamp = 0.0
 transform = Transform3D(0.9084783, -0.37763646, 0.17900734, 0.17536227, 0.7332768, 0.6569245, -0.37934148, -0.56541437, 0.7323943, 0.621963, -0.40910208, -0.10856974)
 shape = SubResource("CapsuleShape3D_g4ghg")
 
-[node name="R_shoulder_handle" parent="Head/RagdollGuy" index="7" unique_id=1821997497]
+[node name="R_shoulder_handle" parent="Head/RagdollGuy" index="7" unique_id=1485447841]
 transform = Transform3D(0.98411846, -0.17165536, -0.045223016, 0.1714744, 0.9851571, -0.007879732, 0.04590437, 4.656613e-10, 0.99894583, -0.016274668, 0.034500763, 0.0006733593)
 
-[node name="R_forearm_handle" parent="Head/RagdollGuy/R_shoulder_handle" index="0" unique_id=2039080598]
+[node name="R_forearm_handle" parent="Head/RagdollGuy/R_shoulder_handle" index="0" unique_id=1992459754]
 transform = Transform3D(0.9675536, -0.14129308, -0.2094657, 0.13655168, 0.9899413, -0.037002824, 0.21258706, 0.007199324, 0.97711533, -0.023935407, -2.220446e-16, -2.264855e-16)
 
-[node name="R_hand_handle" parent="Head/RagdollGuy/R_shoulder_handle/R_forearm_handle" index="0" unique_id=1166414526]
+[node name="R_hand_handle" parent="Head/RagdollGuy/R_shoulder_handle/R_forearm_handle" index="0" unique_id=1142752506]
 transform = Transform3D(0.9934924, -0.11336738, 0.010963555, 0.11389625, 0.9888792, -0.09563274, 9.3132235e-10, 0.09625913, 0.9953563, -0.019824792, 1.7763568e-17, -5.7731595e-17)
 
-[node name="L_shoulder_handle" parent="Head/RagdollGuy" index="8" unique_id=1473714515]
+[node name="L_shoulder_handle" parent="Head/RagdollGuy" index="8" unique_id=807922742]
 transform = Transform3D(1, 5.737975e-09, 2.9613272e-08, -5.7379745e-09, 1, -2.0590903e-08, -2.9613277e-08, 2.0590907e-08, 0.9999998, 0.015455847, 0.034500763, 0.0006733593)
 
-[node name="L_forearm_handle" parent="Head/RagdollGuy/L_shoulder_handle" index="0" unique_id=6995195]
+[node name="L_forearm_handle" parent="Head/RagdollGuy/L_shoulder_handle" index="0" unique_id=1411106709]
 transform = Transform3D(1, 1.6581996e-08, -3.8528003e-09, -1.6581998e-08, 0.9999999, -1.6122083e-08, 3.8528e-09, 1.6122081e-08, 1, 0.0239354, -7.6383345e-16, 6.217249e-17)
 
-[node name="L_hand_handle" parent="Head/RagdollGuy/L_shoulder_handle/L_forearm_handle" index="0" unique_id=944561157]
+[node name="L_hand_handle" parent="Head/RagdollGuy/L_shoulder_handle/L_forearm_handle" index="0" unique_id=304984011]
 transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
 
 [node name="3rdPerson" type="Camera3D" parent="Head" unique_id=380403917]

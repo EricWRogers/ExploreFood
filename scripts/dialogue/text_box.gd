@@ -42,7 +42,7 @@ func _display_letter():
 	letter_index += 1
 	if letter_index >= text.length():
 		#print(text)
-		finished_displaying.emit()
+		finished_displaying.emit() #emits signal to dialogue manager
 		return
 	
 	match text[letter_index]:

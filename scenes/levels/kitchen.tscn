@@ -134,7 +134,7 @@ fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4bqr"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -153,7 +153,7 @@ shader_parameter/mesh_aspect_ratio = 1.0
 shader_parameter/vortex_effect_radius = 0.5499999877064
 shader_parameter/twist_strength = 1.30000001937156
 shader_parameter/pulsation_speed = 0.7
-shader_parameter/breath_magnitude = 0.054999980144110006
+shader_parameter/breath_magnitude = 0.05499998014411
 shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
 shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
@@ -393,7 +393,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
+surface_material_override/0 = SubResource("ShaderMaterial_o4bqr")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)

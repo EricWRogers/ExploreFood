@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://c757vrkq8ux22"]
+
+[ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="1_ieom1"]
+
+[resource]
+script = ExtResource("1_ieom1")
+dialogue_lines = Array[String](["Well? I'm still waiting!", "Have you already forgot what I asked? Ugh.", "I want a meat pie! That's all I need!"])
+metadata/_custom_type_script = "uid://dsel8rx3fee7a"
