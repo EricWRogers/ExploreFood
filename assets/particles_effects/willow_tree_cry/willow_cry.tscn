@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dvaodwsr52hmm"]
+
+[ext_resource type="Script" uid="uid://dc1hefux2y6pg" path="res://assets/particles_effects/willow_tree_cry/willow_cry.gd" id="1_ckxr2"]
+
+[sub_resource type="Curve" id="Curve_l5gts"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7045455, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_85xmi"]
+curve = SubResource("Curve_l5gts")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ckxr2"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+scale_min = 0.25
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_85xmi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtwna"]
+albedo_color = Color(0.14815915, 0.16931102, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.69411767, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ptafj"]
+material = SubResource("StandardMaterial3D_gtwna")
+top_radius = 0.1
+bottom_radius = 0.0
+height = 0.5
+
+[node name="WillowCry" type="Node3D" unique_id=80433651]
+script = ExtResource("1_ckxr2")
+
+[node name="Tears" type="GPUParticles3D" parent="." unique_id=448361997]
+emitting = false
+lifetime = 0.5
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ckxr2")
+draw_pass_1 = SubResource("CylinderMesh_ptafj")
