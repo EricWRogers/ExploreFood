@@ -13,6 +13,7 @@
 [ext_resource type="Shader" uid="uid://cddajxpwjdmap" path="res://assets/shaders/linesBar.gdshader" id="9_wtdo7"]
 [ext_resource type="Script" uid="uid://ceixdfgs15viu" path="res://scripts/ui/hunger_bar.gd" id="10_jsc2v"]
 [ext_resource type="Texture2D" uid="uid://cfpxmmkc23j5r" path="res://assets/ui/ui_assets/stomach.png" id="11_lk8tp"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="14_qcp1l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
 height = 3.315918
@@ -379,7 +380,6 @@ _data = {
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1731430436 groups=["Player"]]
 floor_max_angle = 1.314233
 script = ExtResource("1_cokxn")
-hunger_reduction_rate = 1
 in_kitchen = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1565848370]
@@ -512,11 +512,11 @@ transform = Transform3D(-0.9976705, 7.334887e-05, 0.06821951, -6.719679e-05, -0.
 active = false
 
 [node name="Physical Bone main" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2043989485]
-transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.000741116)
+transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.00074111624)
 collision_layer = 2
 collision_mask = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4384116e-05, 0.00034100935, 0.28093803)
-body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111595)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4385513e-05, 0.0003410168, 0.28093803)
+body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074111624)
 bone_name = "main"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone main" unique_id=2145911635]
@@ -524,12 +524,12 @@ transform = Transform3D(1.0000025, 4.898757e-07, -7.4505806e-08, -5.662441e-07, 
 shape = SubResource("CapsuleShape3D_6ev1f")
 
 [node name="Physical Bone ribcage" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=515706595]
-transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374867, 0.034741156, 0.0010656099)
+transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.00837487, 0.034741156, 0.0010656099)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020923465, -5.6971432e-05, 0.23355013)
-body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.00820216, -9.0607864e-05, -0.00039225002)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020923838, -5.6972363e-05, 0.2335502)
+body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202163, -9.0607864e-05, -0.00039225002)
 bone_name = "ribcage"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -556,12 +556,12 @@ transform = Transform3D(0.32195434, 0.027684554, -0.94635034, 0.8035644, 0.52056
 shape = SubResource("CapsuleShape3D_anuhh")
 
 [node name="Physical Bone R_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029571202, 0.013725039, -0.014683733)
+transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029571204, 0.013725039, -0.014683739)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3240049, 0.21708909, 0.55594444)
-body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080273673, -0.018890865, -0.01458326)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400483, 0.21708901, 0.55594456)
+body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.000802733, -0.018890865, -0.014583266)
 bone_name = "R_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -588,12 +588,12 @@ transform = Transform3D(0.90218157, -0.42604768, 0.06746767, -0.4290984, -0.8704
 shape = SubResource("CapsuleShape3D_xpgqn")
 
 [node name="Physical Bone L_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045108285, 0.028315537, -0.030620009)
+transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.045108285, 0.028315537, -0.030620009)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36631346, 0.3351634, 0.7701763)
-body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.005714774, 0.0060322266, 0.031130452)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36631346, 0.33516335, 0.7701763)
+body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.005714774, 0.0060322266, 0.031130452)
 bone_name = "L_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -604,12 +604,12 @@ transform = Transform3D(0.6589751, 0.19765995, 0.72571373, 0.28265703, -0.959201
 shape = SubResource("CapsuleShape3D_qcp1l")
 
 [node name="Physical Bone L_hand" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2021430158]
-transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.061631538, 0.021755122, 0.014966876)
+transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.061631538, 0.021755122, 0.014966876)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194193, -0.05945555, -0.33873513)
-body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988536, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779544, 0.012703492, 0.012749653)
+body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988534, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779544, 0.012703492, 0.012749653)
 bone_name = "L_hand"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -1013,6 +1013,35 @@ theme_override_constants/margin_left = 10
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.28235295)
 text = "Food Explore - Prototype Build 1 - Experimental Changes"
+
+[node name="MarginContainer8" type="MarginContainer" parent="CanvasLayer" unique_id=121895346]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -62.5
+offset_right = 62.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 364
+theme_override_constants/margin_top = -270
+theme_override_constants/margin_right = 12
+
+[node name="ConsumeBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer8" unique_id=1371588704]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.01
+fill_mode = 4
+nine_patch_stretch = true
+stretch_margin_left = 125
+stretch_margin_top = 125
+texture_progress = ExtResource("14_qcp1l")
+tint_under = Color(0.21, 0.21, 0.21, 1)
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=206606960]
 

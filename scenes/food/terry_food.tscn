@@ -48,7 +48,6 @@ void fragment() {
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5yct1"]
-load_path = "res://.godot/imported/butte.png-aa1461db198b9356535c146c0cf0584e.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f6hnp"]
 render_priority = 0
@@ -112,6 +111,7 @@ flavor = 4
 id = 1
 color = Color(0.18039216, 0.13333334, 0.19607843, 1)
 value = 60
+hunger_restore = 60
 
 [node name="StaticBody3D#Terry" parent="." index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713871, 0)

@@ -12,6 +12,7 @@ class_name BaseFood
 @export var color : Color
 @export var type : String
 @export var value : int
+@export var hunger_restore : int
 
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial

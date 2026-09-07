@@ -13,6 +13,7 @@ const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var tBob = 0.0
 var alive = true
+var consume_speed = 0.08
 
 const BASE_FOV = 75.0 # we can make this a var that the player can choose
 const FOV_CHANGE = 1.5
@@ -28,6 +29,8 @@ var canJump = true;
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var consume_bar: TextureProgressBar = $CanvasLayer/MarginContainer8/ConsumeBar
+
 @onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
 @onready var selected_1: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot1/Panel/Selected1
 @onready var selected_2: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot2/Panel/Selected2
@@ -39,9 +42,10 @@ var current_slot = 0
 var recipe_open = false
 
 func _ready():
+	update_cash()
 	$CanvasLayer/MarginContainer4.hide()
 	$CanvasLayer/MarginContainer5.hide()
-	if Manager.bagel_mode and not in_kitchen:
+	if not in_kitchen:
 		$CanvasLayer/MarginContainer4.show()
 		$CanvasLayer/MarginContainer5.show()
 	Manager.player = self
@@ -60,7 +64,7 @@ func _ready():
 
 
 func start_hunger():
-	if Manager.bagel_mode and not in_kitchen:
+	if not in_kitchen:
 		$HungerTick.start()
 	
 
@@ -77,7 +81,7 @@ func update_cash():
 	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
 	
 func _physics_process(delta: float) -> void:
-	if Manager.bagel_mode and in_kitchen == true:
+	if in_kitchen == true:
 		$CanvasLayer/MarginContainer6.show()
 	if not alive:
 		if Input.is_action_just_pressed("Jump"):
@@ -95,6 +99,37 @@ func _physics_process(delta: float) -> void:
 		recipe_open = !recipe_open
 	if recipe_open:
 		return
+	if Input.is_action_pressed("consume"):
+		var allow = true
+		match current_slot:
+			1:
+				if Manager.slot1 == null:
+					allow = false
+			2:
+				if Manager.slot2 == null:
+					allow = false
+			3:
+				if Manager.slot3 == null:
+					allow = false
+			0:
+				allow = false
+		if allow:
+			consume_bar.show()
+			print(current_slot)
+			if current_slot == 0:
+				pass
+			elif consume_bar.value >= 100:
+				consume_speed = 0.08
+				consume_bar.value = 0
+				consume_held()
+			else:
+				consume_bar.value += consume_speed
+				consume_speed += 0.05
+	else:
+		consume_bar.hide()
+		consume_bar.value = 0
+		consume_speed = 0.08
+		
 	# Add the gravity.
 	if not is_on_floor():
 		if canJump:
@@ -278,6 +313,55 @@ func update_slots(slot):
 			Manager.current_slot = 0
 			Manager.currently_held_bagel = null
 			print(Manager.currently_held_bagel)
+			
+func consume_held():
+	if current_slot == 0:
+		return
+	match current_slot:
+		1:
+			if Manager.slot1 == null:
+				return
+			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
+			var drop = Manager.slot1.instantiate()
+			hunger += drop.hunger_restore
+			Manager.slot1 = null
+			Manager.inventory.pop_front()
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
+			update_slots(0)
+			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
+			return
+		2:
+			if Manager.slot2 == null:
+				return
+			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
+			var drop = Manager.slot2.instantiate()
+			hunger += drop.hunger_restore
+			Manager.slot2 = null
+			Manager.inventory.pop_front()
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
+			update_slots(0)
+			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
+			return
+		3:
+			if Manager.slot3 == null:
+				return
+			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
+			var drop = Manager.slot3.instantiate()
+			hunger += drop.hunger_restore
+			Manager.slot3 = null
+			Manager.inventory.pop_front()
+			killer_bean_sproject_2.update_held_item(0)
+			Manager.holding = false
+			killer_bean_sproject_2.update_anims()
+			update_slots(0)
+			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
+			return
+		0:
+			pass
 			
 func dropthrow():
 	if current_slot == 0:
