@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ccbkmljv57hvp"]
 
+[ext_resource type="Script" uid="uid://uwvsyq3knpxl" path="res://scripts/level_manager/portal.gd" id="1_3ycjd"]
 [ext_resource type="ArrayMesh" uid="uid://dtsinnldfr10f" path="res://assets/models/portalframe.obj" id="1_70wcr"]
 [ext_resource type="Texture2D" uid="uid://brinr1yhpxbw4" path="res://assets/textures/portalframetex.png" id="2_bv86l"]
 [ext_resource type="ArrayMesh" uid="uid://cafrci4rpyba7" path="res://assets/models/portalmesh.obj" id="3_pkwh0"]
@@ -20,6 +21,7 @@ albedo_texture = ExtResource("2_bv86l")
 roughness = 0.86
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5tiua"]
+resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("4_3ycjd")
 shader_parameter/albedo_texture = ExtResource("5_57is3")
@@ -32,7 +34,7 @@ shader_parameter/ripple_strength = 1.0
 shader_parameter/ripple_speed = 8.0
 shader_parameter/ripple_frequency = 45.325
 shader_parameter/ripple_amplitude = -0.215
-shader_parameter/portal_tint = Color(1, 1, 1, 1)
+shader_parameter/portal_tint = Color(1.1008143, 1.1008143, 1.1008143, 1)
 shader_parameter/mesh_aspect_ratio = 1.0
 shader_parameter/vortex_effect_radius = 0.5499999877064
 shader_parameter/twist_strength = 1.30000001937156
@@ -45,6 +47,7 @@ shader_parameter/edge_softness = 0.08499999810008001
 
 [node name="Portal" type="Area3D" unique_id=220733343]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_3ycjd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1121464066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
@@ -67,9 +70,10 @@ mesh = ExtResource("3_pkwh0")
 surface_material_override/0 = SubResource("ShaderMaterial_5tiua")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1644803749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7756527e-08, 0, -0.406222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7756527e-08, 2.788978, -0.406222)
 light_color = Color(0.19, 0.75699985, 1, 1)
-light_energy = 6.822
-light_indirect_energy = 3.533
+light_energy = 1.778
+omni_range = 5.359
+omni_attenuation = -0.167
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
