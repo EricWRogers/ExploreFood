@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 7.0
 const JUMP_VELOCITY = 4.5
 
 @onready var animation_player: AnimationPlayer = $"../../../AnimationPlayer"
 @onready var path_follow_3d: PathFollow3D = $".."
+@onready var path_3d: Path3D = $"../.."
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var smart_dough_baby: Node3D = $"../../.."
 @onready var running_point_1: Node3D = $"../../../EscapePoints/RunningPoint1"
@@ -39,13 +40,15 @@ func _ready() -> void:
 		push_error("NO PLAYER FOUND")
 		return
 	
-
+	path_follow_3d.progress_ratio = randf()
+	
 	change_state(State.FROLIC)
 
 
 func _physics_process(delta: float) -> void:
+	#have to get player in update cuz level changing shenanigans
 	if player == null:
-		return
+		player = get_tree().get_first_node_in_group("Player").get_child(0)
 
 	distance_to_player_squared = global_position.distance_squared_to(player.global_position)
 
@@ -64,7 +67,7 @@ func _physics_process(delta: float) -> void:
 func change_state(new_state: State) -> void:
 	if current_state == new_state:
 		return
-
+	
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
@@ -74,6 +77,9 @@ func enter_state(state: State) -> void:
 	match state:
 		State.FROLIC:
 			animation_player.play("Frolic")
+
+			path_3d.global_position = global_position + Vector3(4.0, 0, 0)
+
 			reparent(path_follow_3d)
 
 		State.WATCH:
