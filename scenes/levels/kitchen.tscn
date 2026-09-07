@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_ojraw"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
-[ext_resource type="Texture2D" uid="uid://kj7v1mbhal20" path="res://assets/test_images/liminal.jpg" id="4_n2d62"]
 [ext_resource type="Texture2D" uid="uid://btnegyl7ryf5c" path="res://assets/test_images/glaggles.jpg" id="4_o4bqr"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="5_5cnqg"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
 [ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="5_flhss"]
 [ext_resource type="Texture2D" uid="uid://bqkt7iar2synd" path="res://assets/test_images/infinite.jpg" id="5_nov5u"]
+[ext_resource type="Texture2D" uid="uid://bpp0op3unwu35" path="res://assets/test_images/Screenshot 2026-09-07 144053.png" id="5_r7waf"]
 [ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="6_dxa70"]
 [ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="6_e1f4p"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
@@ -136,7 +136,7 @@ fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k55bu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7waf"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -381,7 +381,9 @@ image_of_world = ExtResource("4_o4bqr")
 
 [node name="Portal2" parent="." unique_id=1873248786 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -9.467512, 0.68851566, -22.889229)
-image_of_world = ExtResource("4_n2d62")
+image_of_world = ExtResource("5_r7waf")
+light_color = Color(0.7490196, 0.56078434, 0.6666667, 1)
+active = true
 
 [node name="Portal4" parent="." unique_id=1266386831 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.36355, 0.68851566, -16.911064)
@@ -396,7 +398,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_k55bu")
+surface_material_override/0 = SubResource("ShaderMaterial_r7waf")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
