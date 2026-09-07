@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://ceixdfgs15viu" path="res://scripts/ui/hunger_bar.gd" id="10_jsc2v"]
 [ext_resource type="Texture2D" uid="uid://cfpxmmkc23j5r" path="res://assets/ui/ui_assets/stomach.png" id="11_lk8tp"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="14_qcp1l"]
+[ext_resource type="Script" uid="uid://civofu0rs2t2w" path="res://scripts/tools/god_mode.gd" id="15_g4ghg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxx43"]
 height = 3.315918
@@ -1050,6 +1051,9 @@ libraries/ = SubResource("AnimationLibrary_wtdo7")
 
 [node name="HungerTick" type="Timer" parent="." unique_id=2073927308]
 wait_time = 2.0
+
+[node name="GodMode" type="Camera3D" parent="." unique_id=1148478621]
+script = ExtResource("15_g4ghg")
 
 [connection signal="value_changed" from="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar" to="CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar" method="_on_value_changed"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="CoyoteTimeout"]

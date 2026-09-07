@@ -40,6 +40,7 @@ var hotbar = []
 var current_target: Node = null
 var current_slot = 0
 var recipe_open = false
+var free_cam = false
 
 func _ready():
 	update_cash()
@@ -85,6 +86,18 @@ func _unhandled_input(event):
 func update_cash():
 	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("free_cam"):
+		free_cam = !free_cam
+		if free_cam == true:
+			$GodMode.make_current()
+			$GodMode.active = true
+			alive = false
+			$CanvasLayer.hide()
+		else:
+			$CanvasLayer.show()
+			$GodMode.active = false
+			alive = true
+			$Head/Camera3D.make_current()
 	if Input.is_action_just_pressed("hunger_disable"):
 		$HungerTick.stop()
 		$CanvasLayer/MarginContainer4.hide()
