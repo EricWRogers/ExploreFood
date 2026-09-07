@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bbnhogt13fhib"]
+
+[ext_resource type="Script" uid="uid://bnms2klpopprq" path="res://scripts/dialogue/npc_dialogue.gd" id="1_2i7oy"]
+[ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="2_whkwm"]
+[ext_resource type="Resource" uid="uid://bcfig0tge7q1u" path="res://scripts/resources/dialogue/testDia.tres" id="3_l08ym"]
+[ext_resource type="Resource" uid="uid://c757vrkq8ux22" path="res://scripts/resources/dialogue/testDia1.tres" id="4_wbtbd"]
+[ext_resource type="Resource" uid="uid://b7bn8ouwgdbyi" path="res://scripts/resources/dialogue/testDia_PassQuest.tres" id="5_720kh"]
+[ext_resource type="Resource" uid="uid://hrb6cte5xt1s" path="res://scripts/resources/dialogue/testDia_FailQuest.tres" id="6_pa3ns"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="7_us053"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_klsck"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
+radius = 2.519043
+height = 7.830078
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
+radius = 0.5761719
+height = 1.2595215
+
+[node name="Big_Boss_NPC" type="Node3D" unique_id=1095072558]
+script = ExtResource("1_2i7oy")
+ui_position = Vector2(0, 15)
+dialogue_tree = Array[ExtResource("2_whkwm")]([ExtResource("3_l08ym"), ExtResource("4_wbtbd"), ExtResource("5_720kh"), ExtResource("6_pa3ns")])
+
+[node name="BossStaticBody" type="StaticBody3D" parent="." unique_id=1818451369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.737523, -0.43121666)
+
+[node name="BossMeshInstance" type="MeshInstance3D" parent="BossStaticBody" unique_id=1181235594]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_klsck")
+
+[node name="BossCollisionShape" type="CollisionShape3D" parent="BossStaticBody" unique_id=253932136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036621094, -2.9802322e-08)
+shape = SubResource("CapsuleShape3D_klsck")
+
+[node name="BossDialogueArea" type="Area3D" parent="." unique_id=1359091874]
+
+[node name="DialogueCollisionShape" type="CollisionShape3D" parent="BossDialogueArea" unique_id=618379208]
+transform = Transform3D(9.999999, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, 5.660562, 2.5134277)
+shape = SubResource("CapsuleShape3D_q026u")
+
+[node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("7_us053")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9891746, 5.828334)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1656615007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3765488, 15.12333)
+
+[connection signal="body_entered" from="BossDialogueArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="BossDialogueArea" to="." method="_on_area_3d_body_exited"]

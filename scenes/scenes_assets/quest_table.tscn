@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dne5ekn0yh2r7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xmpmc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0grx"]
+albedo_color = Color(0.6022632, 0.31718436, 0.2128453, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k1ff7"]
+height = 0.93237305
+radius = 2.4907227
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
+height = 2.1359863
+radius = 2.7128906
+
+[node name="QuestTable" type="StaticBody3D" unique_id=1570142438]
+
+[node name="TableMesh" type="MeshInstance3D" parent="." unique_id=1295382332]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xmpmc")
+surface_material_override/0 = SubResource("StandardMaterial3D_f0grx")
+
+[node name="TableCollisionShape" type="CollisionShape3D" parent="." unique_id=177960399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015686274, 0)
+shape = SubResource("CylinderShape3D_k1ff7")
+
+[node name="TableArea" type="Area3D" parent="." unique_id=538780410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5242748, 0)
+
+[node name="TableAreaCollisionShape" type="CollisionShape3D" parent="TableArea" unique_id=1635647829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.038208, 0)
+shape = SubResource("CylinderShape3D_klsck")

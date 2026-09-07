@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bhtekauaavar0" path="res://assets/test_images/healeveryone.jpg" id="13_22rdp"]
 [ext_resource type="Texture2D" uid="uid://b5u1kl1sts101" path="res://assets/test_images/myfavorite.jpg" id="14_njsh3"]
 [ext_resource type="Texture2D" uid="uid://djoyr33lscll1" path="res://assets/test_images/worm.png" id="15_551tx"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/big_boss_npc.tscn" id="30_eubmf"]
+[ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="31_r7waf"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -134,7 +136,7 @@ fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4bqr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k55bu"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -374,6 +376,7 @@ sky_mode = 1
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
 transform = Transform3D(-1.155, 0, -1.7440014e-07, 0, 1.155, 0, 1.7440014e-07, 0, -1.155, 2.3208523, -0.3219167, -26.720089)
+visible = false
 image_of_world = ExtResource("4_o4bqr")
 
 [node name="Portal2" parent="." unique_id=1873248786 instance=ExtResource("3_ojraw")]
@@ -393,10 +396,11 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_o4bqr")
+surface_material_override/0 = SubResource("ShaderMaterial_k55bu")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
+visible = false
 image_of_world = ExtResource("8_55au0")
 
 [node name="Portal7" parent="." unique_id=1175452412 instance=ExtResource("3_ojraw")]
@@ -570,6 +574,14 @@ autostart = true
 transform = Transform3D(-1.615, 0, -2.438582e-07, 0, 1.615, 0, 2.438582e-07, 0, -1.615, 0.052194595, 8.109903, 27.720207)
 visible = false
 texture = ExtResource("12_5cnqg")
+
+[node name="Boss_NPC_STuff" type="Node3D" parent="." unique_id=1975686843]
+transform = Transform3D(0.99595344, 0, 0.08987079, 0, 1, 0, -0.08987079, 0, 0.99595344, 6.13457, -1.664156, -23.902882)
+
+[node name="Big_Boss_NPC" parent="Boss_NPC_STuff" unique_id=1095072558 instance=ExtResource("30_eubmf")]
+
+[node name="QuestTable" parent="Boss_NPC_STuff" unique_id=1570142438 instance=ExtResource("31_r7waf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.741831, 2.408317, 4.551607)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
