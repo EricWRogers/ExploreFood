@@ -8,8 +8,9 @@ var has_checked_noses: bool = false
 
 var noses = []
 var og_nose_scale
-var too_close_distance_squared = 10.0 ** 2
+var too_close_distance_squared = 15.0 ** 2
 var player_speed = 1.0
+var speed_limit = 10.0
 
 var player
 
@@ -42,11 +43,11 @@ func _process(delta: float) -> void:
 	var target_scale = 1.0
 	
 
-	if player_speed > 5.0 and global_position.distance_squared_to(player.global_position) < too_close_distance_squared:
-		target_scale = 10.0
+	if player_speed > speed_limit and global_position.distance_squared_to(player.global_position) < too_close_distance_squared:
+		target_scale = 15.0
 	for nose in noses:
 		if nose != null:
-			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta * 2.0)
+			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta)
 			if nose.scale.length() >= target_scale * 0.99:
 					explode(nose)
 
