@@ -75,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6104536)
 [node name="Big_Boss_NPC" type="Node3D" parent="." unique_id=1895725985]
 transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
 script = ExtResource("2_q4by1")
-dialogue_tree = Array[ExtResource("3_w2cx6")]([ExtResource("4_64yaq"), ExtResource("5_6h4kx"), ExtResource("6_rbr8a")])
+dialogue_tree = Array[ExtResource("3_w2cx6")]([ExtResource("4_64yaq"), ExtResource("6_rbr8a"), ExtResource("5_6h4kx")])
 ui_position = Vector2(0, 15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Big_Boss_NPC" unique_id=1602416036]

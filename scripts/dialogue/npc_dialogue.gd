@@ -1,10 +1,10 @@
 extends Node
 
 @export var dialogue_tree : Array[Dialogue] = []
-@export var dialogue_tree_index : int
+@export var dialogue_tree_index : = 0
 
 var lines: Array[String] = []
-var quest_item: PackedScene
+var quest_item: String
 @export var ui_position: Vector2
 @onready var interact_ui: Node3D = $InteractUI
 var isInRange: bool
@@ -23,8 +23,8 @@ func _process(_delta):
 		isDialogueSelected = true
 		
 		#get data from resource
-		lines = dialogue_tree[0].dialogue_lines
-		quest_item = dialogue_tree[0].QuestItem
+		lines = dialogue_tree[dialogue_tree_index].dialogue_lines
+		quest_item = dialogue_tree[dialogue_tree_index].QuestItem
 		
 		DialogueManager.start_dialogue(lines, quest_item)
 
@@ -43,17 +43,14 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_table_area_body_entered(body: Node3D) -> void:
-	if (Manager.current_quest_item == null):
+	if (Manager.current_quest_item == ""): #if quest is null, nothing happens
 		return
-			
-	#print("body detected: ", body)
 	
-	if body.has_method("get_rolled"):
-		#print("i can tell this is a meal")
-		print("body data: ", body.scene_file_path)
-		print("manager quest data: ", Manager.current_quest_item.to_string())
-		
-		if (body.scene_file_path == Manager.current_quest_item.to_string()):
+	if body.has_method("get_rolled"): #check that item is food
+		if (body.name == Manager.current_quest_item):
 			print("correct! Scrumptious!")
+			dialogue_tree_index = 1 #pass
 		else:
 			print("Wrong wrong wrong! Horrible.")
+			dialogue_tree_index = 2 #fail
+		body.queue_free()

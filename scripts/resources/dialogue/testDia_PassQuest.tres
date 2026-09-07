@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_vqkf1")
-dialogue_lines = Array[String](["Yes... Yes, yes, yes! This is splendid! Simply Splendid!", "I am pleased darling. Seriandipidy."])
+dialogue_lines = Array[String](["Yes... Yes, yes, yes! This is splendid! Simply Splendid!", "This is exactly what I needed! Serandipidy."])
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

@@ -3,14 +3,12 @@ extends Node
 @onready var text_box_scene = preload("uid://c6oge8t8wu2ag") #text_box.tscn
 
 var dialogue_lines : Array[String] = []
-#@export var dialogue_tree : Array[Dialogue] = []
-#@export var dialogue_tree_index : int
 var current_line_index = 0
 var text_box
 var text_box_position: Vector2
 var is_dialogue_active = false
 var can_advance_line = false
-var quest: PackedScene
+var quest: String
 
 
 func _ready() -> void:
@@ -30,20 +28,19 @@ func _process(_delta):
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			current_line_index = 0
-			if (quest != null):
+			if (quest != ""):
 				_give_quest()
 			return
 		else:
 			show_text_box()
 
-func start_dialogue(lines: Array[String], quest_item: PackedScene):
+func start_dialogue(lines: Array[String], quest_item: String):
 	if is_dialogue_active:
 		return
 	
 	#print(lines)
 	dialogue_lines = lines
 	quest = quest_item
-	#text_box_position = position
 	show_text_box()
 	is_dialogue_active = true
 

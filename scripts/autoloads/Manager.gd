@@ -13,7 +13,7 @@ var player
 var money : int = 0
 var recipe_book
 
-@export var current_quest_item : PackedScene
+@export var current_quest_item : String
 
 var slot1
 var slot2

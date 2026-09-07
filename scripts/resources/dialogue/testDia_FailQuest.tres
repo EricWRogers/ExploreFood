@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_ly00m")
-dialogue_lines = Array[String](["Oh no this simply won't do.", "You've dissapointed me greatly sweetheart. Try again."])
+dialogue_lines = Array[String](["This is horrid! I didn't ask for this!", "You've dissapointed me greatly. Try again."])
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"
