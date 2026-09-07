@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_e65l5")
-dialogue_lines = Array[String](["Hello little darling.", "Goodness I am absolutely famished. I think I need something scrumptious to eat or I'll.. I'll DIE!", "Bring me a delicacy darling. I'm thinking something meaty and hardy.", "And if you let me down... well...", "Kisses!"])
+dialogue_lines = Array[String](["Hi.", "I'm hungry.", "Feed me!", "I want a meat pie! That's all I need!", "Put it on the table infront of me, and I'll eat it right up!"])
 QuestItem = ExtResource("1_ca7t4")
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"
