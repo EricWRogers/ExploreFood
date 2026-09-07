@@ -84,8 +84,11 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 func update_cash():
 	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
-	
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("hunger_disable"):
+		$HungerTick.stop()
+		$CanvasLayer/MarginContainer4.hide()
+		$CanvasLayer/MarginContainer5.hide()
 	if in_kitchen == true:
 		$CanvasLayer/MarginContainer6.show()
 	if not alive:
