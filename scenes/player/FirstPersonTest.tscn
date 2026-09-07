@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_k6u4x"]
 [ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="2_3jwtl"]
 [ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="3_vytmb"]
+[ext_resource type="PackedScene" uid="uid://bxew2y8rvup63" path="res://scenes/scenes_assets/willow_tree.tscn" id="4_87byc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b6nve"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -124,7 +125,10 @@ use_collision = true
 size = Vector3(50, 0.5, 50)
 
 [node name="SmartDoughBaby" parent="NavigationRegion3D" unique_id=1579345735 instance=ExtResource("2_3jwtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6776557, 1.2282834, -15.641167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9371991, 1.2282834, -15.641167)
 
 [node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("3_vytmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.191599, 0.25, 8.110418)
+
+[node name="WillowTree" parent="." unique_id=33723002 instance=ExtResource("4_87byc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.021145, 0.602075, -11.923013)

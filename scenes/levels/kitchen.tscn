@@ -3,20 +3,32 @@
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_ojraw"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
+[ext_resource type="Texture2D" uid="uid://kj7v1mbhal20" path="res://assets/test_images/liminal.jpg" id="4_n2d62"]
+[ext_resource type="Texture2D" uid="uid://btnegyl7ryf5c" path="res://assets/test_images/glaggles.jpg" id="4_o4bqr"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="5_5cnqg"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
 [ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="5_flhss"]
+[ext_resource type="Texture2D" uid="uid://bqkt7iar2synd" path="res://assets/test_images/infinite.jpg" id="5_nov5u"]
 [ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="6_dxa70"]
+[ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="6_e1f4p"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
+[ext_resource type="Texture2D" uid="uid://cehk4jcniwyv3" path="res://assets/test_images/adventuretime.jpg" id="7_gxv72"]
 [ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/Grilled_Kebabs.tres" id="7_wiuov"]
+[ext_resource type="Texture2D" uid="uid://ben2eu1r2lqln" path="res://assets/test_images/pibble.jpeg" id="8_55au0"]
 [ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="8_dvf7r"]
+[ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="9_eubmf"]
 [ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://scripts/resources/dubious_food.tres" id="9_gt1jg"]
+[ext_resource type="Texture2D" uid="uid://cr0l3f34l0dhe" path="res://assets/ui/cook_book/screenshots/FrogScreenshot.png" id="10_r7waf"]
 [ext_resource type="PackedScene" uid="uid://cfwu3yt6xntfb" path="res://scenes/scenes_assets/bagel_counter.tscn" id="11_yajmd"]
 [ext_resource type="Texture2D" uid="uid://2nri623cj753" path="res://assets/textures/tXqdIqWh.jpg" id="12_5cnqg"]
+[ext_resource type="Texture2D" uid="uid://deo7lcuuuufjj" path="res://assets/test_images/galaxypusheen.jpg" id="12_k55bu"]
+[ext_resource type="Texture2D" uid="uid://bhtekauaavar0" path="res://assets/test_images/healeveryone.jpg" id="13_22rdp"]
+[ext_resource type="Texture2D" uid="uid://b5u1kl1sts101" path="res://assets/test_images/myfavorite.jpg" id="14_njsh3"]
+[ext_resource type="Texture2D" uid="uid://djoyr33lscll1" path="res://assets/test_images/worm.png" id="15_551tx"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -121,6 +133,31 @@ fog_enabled = true
 fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
+resource_local_to_scene = true
+render_priority = 4
+shader = ExtResource("9_eubmf")
+shader_parameter/albedo_texture = ExtResource("10_r7waf")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_rotation_degrees = 90.000004275
+shader_parameter/distort_on_rotate = false
+shader_parameter/mesh_opacity = 0.638000030305
+shader_parameter/ripple_strength = 1.0
+shader_parameter/ripple_speed = 8.0
+shader_parameter/ripple_frequency = 45.325
+shader_parameter/ripple_amplitude = -0.215
+shader_parameter/portal_tint = Color(1.1008143, 1.1008143, 1.1008143, 1)
+shader_parameter/mesh_aspect_ratio = 1.0
+shader_parameter/vortex_effect_radius = 0.5499999877064
+shader_parameter/twist_strength = 1.30000001937156
+shader_parameter/pulsation_speed = 0.7
+shader_parameter/breath_magnitude = 0.054999980144110006
+shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
+shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
+shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
+shader_parameter/edge_softness = 0.08499999810008001
 
 [sub_resource type="Shader" id="Shader_taj0c"]
 code = "shader_type spatial;
@@ -324,6 +361,9 @@ level_name = "kitchen"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -333,13 +373,50 @@ light_color = Color(0.90957165, 0.82487935, 0.6563413, 1)
 sky_mode = 1
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
-transform = Transform3D(-0.5010247, 0, 0.8654331, 0, 1, 0, -0.8654331, 0, -0.5010247, 11.095158, 0.80431557, -4.8979096)
+transform = Transform3D(-1.155, 0, -1.7440014e-07, 0, 1.155, 0, 1.7440014e-07, 0, -1.155, 2.3208523, -0.3219167, -26.720089)
+image_of_world = ExtResource("4_o4bqr")
 
 [node name="Portal2" parent="." unique_id=1873248786 instance=ExtResource("3_ojraw")]
-transform = Transform3D(0.55828077, 0, 0.8296521, 0, 1, 0, -0.8296521, 0, 0.55828077, -11.821763, 0.6885147, -6.054302)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -9.467512, 0.68851566, -22.889229)
+image_of_world = ExtResource("4_n2d62")
+
+[node name="Portal4" parent="." unique_id=1266386831 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.36355, 0.68851566, -16.911064)
+image_of_world = ExtResource("5_nov5u")
+
+[node name="Portal5" parent="." unique_id=959289496 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, -2.3019638)
+image_of_world = ExtResource("6_e1f4p")
+
+[node name="Portal6" parent="." unique_id=646386318 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, 4.417756)
+image_of_world = ExtResource("7_gxv72")
+
+[node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
+surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
+
+[node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
+image_of_world = ExtResource("8_55au0")
+
+[node name="Portal7" parent="." unique_id=1175452412 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 25.011509, 0.68851566, -19.086956)
+image_of_world = ExtResource("12_k55bu")
+
+[node name="Portal8" parent="." unique_id=578150193 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-5.9604645e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -5.9604645e-08, 30.589691, 0.6885147, -4.484145)
+image_of_world = ExtResource("13_22rdp")
+
+[node name="Portal9" parent="." unique_id=1065501329 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-5.9604645e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -5.9604645e-08, 30.589691, 0.6885147, 4.022868)
+image_of_world = ExtResource("14_njsh3")
+
+[node name="Portal10" parent="." unique_id=1469533015 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, 26.632425, 0.6885147, 13.828989)
+image_of_world = ExtResource("15_551tx")
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
-transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 1.3046513, 0.9595978, 1.1404219)
+transform = Transform3D(-1.13649605e-07, 0, 2.6, 0, 2.6, 0, -2.6, 0, -1.13649605e-07, 1.3046513, 0.9595978, 1.1404219)
 recipes = Array[Resource]([ExtResource("5_flhss"), ExtResource("6_dxa70"), ExtResource("7_wiuov"), ExtResource("8_dvf7r"), ExtResource("9_gt1jg")])
 
 [node name="OmniLight3D" parent="Stove" index="9" unique_id=43503502]
@@ -496,8 +573,17 @@ texture = ExtResource("12_5cnqg")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal4" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal5" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal6" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal3" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal7" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal8" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal9" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal10" to="." method="_on_portal_2_body_entered"]
 [connection signal="timeout" from="SpawnNPC" to="." method="_on_spawn_npc_timeout"]
 
 [editable path="Player"]
+[editable path="Portal6"]
 [editable path="Stove"]
 [editable path="Stove/Fire"]

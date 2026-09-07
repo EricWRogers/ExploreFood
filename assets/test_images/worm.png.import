@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr0l3f34l0dhe"
-path.s3tc="res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
+uid="uid://djoyr33lscll1"
+path.s3tc="res://.godot/imported/worm.png-8775937fee2869134976ce4745ed1e39.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ui/cook_book/screenshots/FrogScreenshot.png"
-dest_files=["res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"]
+source_file="res://assets/test_images/worm.png"
+dest_files=["res://.godot/imported/worm.png-8775937fee2869134976ce4745ed1e39.s3tc.ctex"]
 
 [params]
 
