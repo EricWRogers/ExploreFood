@@ -324,6 +324,9 @@ level_name = "kitchen"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -333,13 +336,37 @@ light_color = Color(0.90957165, 0.82487935, 0.6563413, 1)
 sky_mode = 1
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("3_ojraw")]
-transform = Transform3D(-0.5010247, 0, 0.8654331, 0, 1, 0, -0.8654331, 0, -0.5010247, 11.095158, 0.80431557, -4.8979096)
+transform = Transform3D(-1.155, 0, -1.7440014e-07, 0, 1.155, 0, 1.7440014e-07, 0, -1.155, 2.3208523, -0.3219167, -26.720089)
 
 [node name="Portal2" parent="." unique_id=1873248786 instance=ExtResource("3_ojraw")]
-transform = Transform3D(0.55828077, 0, 0.8296521, 0, 1, 0, -0.8296521, 0, 0.55828077, -11.821763, 0.6885147, -6.054302)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -9.467512, 0.68851566, -22.889229)
+
+[node name="Portal4" parent="." unique_id=1266386831 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.36355, 0.68851566, -16.911064)
+
+[node name="Portal5" parent="." unique_id=959289496 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, -2.3019638)
+
+[node name="Portal6" parent="." unique_id=646386318 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, 4.417756)
+
+[node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
+
+[node name="Portal7" parent="." unique_id=1175452412 instance=ExtResource("3_ojraw")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 25.011509, 0.68851566, -19.086956)
+
+[node name="Portal8" parent="." unique_id=578150193 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-5.9604645e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -5.9604645e-08, 30.589691, 0.6885147, -4.484145)
+
+[node name="Portal9" parent="." unique_id=1065501329 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-5.9604645e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -5.9604645e-08, 30.589691, 0.6885147, 4.022868)
+
+[node name="Portal10" parent="." unique_id=1469533015 instance=ExtResource("3_ojraw")]
+transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, 26.632425, 0.6885147, 13.828989)
 
 [node name="Stove" parent="." unique_id=1286557195 instance=ExtResource("4_o37it")]
-transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 1.3046513, 0.9595978, 1.1404219)
+transform = Transform3D(-1.13649605e-07, 0, 2.6, 0, 2.6, 0, -2.6, 0, -1.13649605e-07, 1.3046513, 0.9595978, 1.1404219)
 recipes = Array[Resource]([ExtResource("5_flhss"), ExtResource("6_dxa70"), ExtResource("7_wiuov"), ExtResource("8_dvf7r"), ExtResource("9_gt1jg")])
 
 [node name="OmniLight3D" parent="Stove" index="9" unique_id=43503502]
@@ -496,6 +523,14 @@ texture = ExtResource("12_5cnqg")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal4" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal5" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal6" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal3" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal7" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal8" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal9" to="." method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Portal10" to="." method="_on_portal_2_body_entered"]
 [connection signal="timeout" from="SpawnNPC" to="." method="_on_spawn_npc_timeout"]
 
 [editable path="Player"]

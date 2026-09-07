@@ -1,5 +1,11 @@
 [gd_scene format=3 uid="uid://ccbkmljv57hvp"]
 
+[ext_resource type="ArrayMesh" uid="uid://dtsinnldfr10f" path="res://assets/models/portalframe.obj" id="1_70wcr"]
+[ext_resource type="Texture2D" uid="uid://brinr1yhpxbw4" path="res://assets/textures/portalframetex.png" id="2_bv86l"]
+[ext_resource type="ArrayMesh" uid="uid://cafrci4rpyba7" path="res://assets/models/portalmesh.obj" id="3_pkwh0"]
+[ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="4_3ycjd"]
+[ext_resource type="Texture2D" uid="uid://cr0l3f34l0dhe" path="res://assets/ui/cook_book/screenshots/FrogScreenshot.png" id="5_57is3"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
 
@@ -8,6 +14,34 @@ size = Vector3(4.5620117, 4.1798096, 1.0251465)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
 transparency = 1
 albedo_color = Color(0.16078432, 0.77254903, 0.95686275, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4itmh"]
+albedo_texture = ExtResource("2_bv86l")
+roughness = 0.86
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tiua"]
+render_priority = 4
+shader = ExtResource("4_3ycjd")
+shader_parameter/albedo_texture = ExtResource("5_57is3")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_rotation_degrees = 90.000004275
+shader_parameter/distort_on_rotate = false
+shader_parameter/mesh_opacity = 0.638000030305
+shader_parameter/ripple_strength = 1.0
+shader_parameter/ripple_speed = 8.0
+shader_parameter/ripple_frequency = 45.325
+shader_parameter/ripple_amplitude = -0.215
+shader_parameter/portal_tint = Color(1, 1, 1, 1)
+shader_parameter/mesh_aspect_ratio = 1.0
+shader_parameter/vortex_effect_radius = 0.5499999877064
+shader_parameter/twist_strength = 1.30000001937156
+shader_parameter/pulsation_speed = 0.7
+shader_parameter/breath_magnitude = 0.054999980144110006
+shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
+shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
+shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
+shader_parameter/edge_softness = 0.08499999810008001
 
 [node name="Portal" type="Area3D" unique_id=220733343]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -18,7 +52,24 @@ shape = SubResource("BoxShape3D_8ojr3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1016654920]
 transform = Transform3D(3.9318023, 0, 0, 0, 5.355978, 0, 0, 0, 0.79081064, 0, 1.9260583, 0)
+visible = false
 mesh = SubResource("BoxMesh_6xqmx")
 surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
+
+[node name="Portalframe" type="MeshInstance3D" parent="." unique_id=34904202]
+transform = Transform3D(-3.4531997e-08, 0, -0.79, 0, 0.79, 0, 0.79, 0, -3.4531997e-08, 0, 0, 0)
+mesh = ExtResource("1_70wcr")
+surface_material_override/0 = SubResource("StandardMaterial3D_4itmh")
+
+[node name="Portalmesh" type="MeshInstance3D" parent="." unique_id=206617557]
+transform = Transform3D(6.153079e-08, 0, 0.815, 0, 0.815, 0, -0.815, 0, 6.153079e-08, 0, 0, 0)
+mesh = ExtResource("3_pkwh0")
+surface_material_override/0 = SubResource("ShaderMaterial_5tiua")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1644803749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7756527e-08, 0, -0.406222)
+light_color = Color(0.19, 0.75699985, 1, 1)
+light_energy = 6.822
+light_indirect_energy = 3.533
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
