@@ -71,7 +71,7 @@ var items = {
 			"flavor": "Salty Flavor",
 			"family": "Sauce Family",
 			"desc": "Is it tears or tree sap? Regardless it makes for a delicious dipping sauce.",
-			"found": "Secreted from Weeping Willows"
+			"found": "Secreted from Weeping Willows after presenting the tree with an item."
 		},
 		"meatball": {
 			"icon": "res://assets/ui/cook_book/screenshots/MeatBallScreenshot.png",
@@ -80,7 +80,7 @@ var items = {
 			"flavor": "Umami Flavor",
 			"family": "Meat Family",
 			"desc": "This meat will explode if you approach too suddenly. It is unsure what animal meat it is. Is it plant-based?",
-			"found": "Grows out of Joker Fronds when they bloom."
+			"found": "Grows out of Joker Fronds when they bloom. Will explode if approached brazenly."
 		},
 		"chknandwaffles": {
 			"icon": "res://assets/ui/cook_book/screenshots/TerryScreenshot.png",
@@ -89,7 +89,7 @@ var items = {
 			"flavor": "",
 			"family": "",
 			"desc": "A classic, popularized on a small planet known as earth.",
-			"found": "1 Bird + 1 Waffle + 1 Butter",
+			"found": "1 Bird + ??? + 1 Butter",
 		},
 		"meatpocket": {
 			"icon": "res://assets/ui/cook_book/screenshots/TerryScreenshot.png",
@@ -98,7 +98,7 @@ var items = {
 			"flavor": "",
 			"family": "",
 			"desc": "Each bite is a juicy explosion that reminds you of better days. However, The sauce is a little unnerving.",
-			"found": "1 Dough + 1 Meat + 1 Sauce"
+			"found": "1 Dough + ??? + 1 Sauce"
 		},
 	}
 }
