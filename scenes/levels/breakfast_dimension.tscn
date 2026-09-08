@@ -1117,6 +1117,7 @@ environment = SubResource("Environment_japl0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
 
 [node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.480339, 2.0915623, 2.8218918)
 in_kitchen = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580697229]
