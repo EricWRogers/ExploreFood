@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_e65l5")
-dialogue_lines = Array[String](["My pathetic chef.", "Im sooo big and hungry. Can you get me a Meat Pie?", "If you don't know how to make one, try pressing [TAB]", "Did you just try to press [TAB]? IDIOT! Wait till after I let you go.", "And heres a place you can get the ingredients.", "You can sell food and ingredients over there, but don't take too long on my meat pie!", "Once it is cooked, place it on that table. Why are you still here? Begone! "])
+dialogue_lines = Array[String](["My pathetic chef.", "Im sooo big and hungry. Can you get me a Meat Pie?", "If you don't know how to make one, try pressing [TAB]", "Did you just try to press [TAB]? IDIOT! Wait till after I let you go.", "Heres a place you can get the ingredients.", "You can sell food and ingredients over there, but don't take too long on my meat pie!", "Once it is cooked, place it on that table. Why are you still here? Begone! "])
 QuestItem = "Meat_Pies"
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

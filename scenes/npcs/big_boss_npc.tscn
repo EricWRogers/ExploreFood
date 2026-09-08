@@ -1400,9 +1400,6 @@ shape = SubResource("CapsuleShape3D_q026u")
 [node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("7_us053")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9891746, 5.828334)
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1656615007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3765488, 15.12333)
-
 [node name="NPCBean" type="Node3D" parent="." unique_id=1608658501]
 transform = Transform3D(-109.575, 0, -1.6545364e-05, 0, 109.575, 0, 1.6545364e-05, 0, -109.575, 0, 1.2696829, 0.09501958)
 
