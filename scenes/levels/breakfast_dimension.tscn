@@ -441,7 +441,7 @@ albedo_color = Color(0.95, 0.81161666, 0.73149997, 0.7647059)
 [sub_resource type="SphereMesh" id="SphereMesh_lqdem"]
 material = SubResource("StandardMaterial3D_qvufb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3e7d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h20bm"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("11_pl4bu")
@@ -1108,7 +1108,7 @@ active = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2638502, 0)
 
 [node name="Portalmesh" parent="Portal" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_h3e7d")
+surface_material_override/0 = SubResource("ShaderMaterial_h20bm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695138948]
 environment = SubResource("Environment_japl0")
@@ -1375,6 +1375,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.99078, 79.94357, 413.9593
 [node name="Nest12" parent="Terrys" unique_id=723383986 instance=ExtResource("13_w8t0d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.12058, 79.94357, 410.44406)
 
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 
 [editable path="Portal"]

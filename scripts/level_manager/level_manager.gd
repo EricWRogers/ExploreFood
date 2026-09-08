@@ -28,6 +28,8 @@ func _handle_level_change(current_level_name: String):
 			next_level_name = "breakfast_dimension" #change this to the second level once it gets made
 		"terrain_test":
 			next_level_name = "kitchen"
+		"breakfast_dimension":
+			next_level_name = "kitchen"
 		_:
 			print("Error: Unidentified Level. Check str Level Name.")
 			return

@@ -82,11 +82,11 @@ func _give_quest():
 
 #for Caleb
 func _line_check():
-	if current_tree_index == 1 and current_line_index == 5:
+	if (current_tree_index == 0 and current_line_index == 5):
 		Manager.kitchen.showmeat()
-	if current_tree_index == 1 and current_line_index == 4:
+	if (current_tree_index == 0 and current_line_index == 4):
 		Manager.kitchen.showsell()
-	#if current_tree_index == 2 and current_line_index == 1:
-		#Manager.kitchen.showwaffle()
+	if (current_tree_index == 2 and current_line_index == 1):
+		Manager.kitchen.showwaffle()
 	else:
 		pass
