@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="8_japl0"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="9_174kf"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="10_174kf"]
+[ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="10_mwv6q"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="12_6qkhe"]
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="13_w8t0d"]
 
@@ -1069,6 +1070,8 @@ draw_pass_1 = SubResource("SphereMesh_lqdem")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("8_japl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.912804, -0.21836281, 91.68236)
+image_of_world = ExtResource("10_mwv6q")
+light_color = Color(0.5882353, 0.57254905, 0.5411765, 1)
 active = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695138948]
