@@ -15,3 +15,6 @@ func _ready() -> void:
 		$OmniLight3D.hide()
 	$OmniLight3D.light_color = light_color
 	mat.set_shader_parameter("albedo_texture", image_of_world)
+
+func unlock():
+	$AnimationPlayer.play("unlock")

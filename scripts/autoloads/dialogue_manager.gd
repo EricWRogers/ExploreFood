@@ -86,3 +86,7 @@ func _line_check():
 		Manager.kitchen.showmeat()
 	if current_tree_index == 1 and current_line_index == 4:
 		Manager.kitchen.showsell()
+	#if current_tree_index == 2 and current_line_index == 1:
+		#Manager.kitchen.showwaffle()
+	else:
+		pass

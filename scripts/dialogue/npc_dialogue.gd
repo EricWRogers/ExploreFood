@@ -58,6 +58,7 @@ func _on_table_area_body_entered(body: Node3D) -> void:
 			print("correct! Scrumptious!")
 			dialogue_tree_index = 2 #pass
 			Manager.current_quest_item = ""
+			Manager.kitchen.showwaffle()
 		else:										#fail quest
 			print("Wrong wrong wrong! Horrible.")
 			dialogue_tree_index = 3 #fail

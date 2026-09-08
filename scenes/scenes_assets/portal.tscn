@@ -4,8 +4,6 @@
 [ext_resource type="ArrayMesh" uid="uid://dtsinnldfr10f" path="res://assets/models/portalframe.obj" id="1_70wcr"]
 [ext_resource type="Texture2D" uid="uid://brinr1yhpxbw4" path="res://assets/textures/portalframetex.png" id="2_bv86l"]
 [ext_resource type="ArrayMesh" uid="uid://cafrci4rpyba7" path="res://assets/models/portalmesh.obj" id="3_pkwh0"]
-[ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="4_3ycjd"]
-[ext_resource type="Texture2D" uid="uid://cr0l3f34l0dhe" path="res://assets/ui/cook_book/screenshots/FrogScreenshot.png" id="5_57is3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
@@ -20,11 +18,141 @@ albedo_color = Color(0.16078432, 0.77254903, 0.95686275, 0.8)
 albedo_texture = ExtResource("2_bv86l")
 roughness = 0.86
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tiua"]
+[sub_resource type="Shader" id="Shader_asdy7"]
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled, blend_mix;
+
+uniform sampler2D albedo_texture : source_color, filter_linear_mipmap_anisotropic;
+
+// --- Texture transform (scale/rotate/offset the base image before the portal effect) ---
+uniform vec2 uv_scale = vec2(1.0, 1.0);
+uniform vec2 uv_offset = vec2(0.0, 0.0);
+uniform float uv_rotation_degrees : hint_range(0.0, 360.0) = 0.0;
+uniform bool distort_on_rotate = false;
+
+// --- Mesh opacity ---
+uniform float mesh_opacity : hint_range(0.0, 1.0) = 1.0;
+
+// --- Ripple (vertex-based water bulge) ---
+uniform float ripple_strength : hint_range(0.0, 1.0) = 0.0;
+uniform float ripple_speed = 1.5;
+uniform float ripple_frequency = 8.0;
+uniform float ripple_amplitude = 0.05;
+
+// --- Portal vortex/twist ---
+uniform vec4 portal_tint : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float mesh_aspect_ratio = 1.0; // width / height of the mesh face, for a non-square plane
+uniform float vortex_effect_radius : hint_range(0.01, 1.0, 0.01) = 0.5;
+uniform float twist_strength : hint_range(0.0, 30.0, 0.1) = 8.0;
+uniform float pulsation_speed : hint_range(0.0, 5.0, 0.01) = 0.7;
+uniform float breath_magnitude : hint_range(-0.3, 0.3, 0.005) = 0.05;
+uniform float overall_rotation_speed : hint_range(-2.0, 2.0, 0.01) = 0.25;
+uniform float texture_scroll_speed_x : hint_range(-1.0, 1.0, 0.01) = 0.08;
+uniform float texture_scroll_speed_y : hint_range(-1.0, 1.0, 0.01) = 0.03;
+uniform float edge_softness : hint_range(0.01, 0.5, 0.005) = 0.1;
+
+varying vec2 base_uv;
+
+mat2 rotate(float angle) {
+	float s = sin(angle);
+	float c = cos(angle);
+	return mat2(vec2(c, -s), vec2(s, c));
+}
+
+void vertex() {
+	vec2 centered_uv = UV - 0.5;
+
+	float rad = radians(uv_rotation_degrees);
+	mat2 base_rot = rotate(rad);
+
+	if (distort_on_rotate) {
+		centered_uv = base_rot * (centered_uv / uv_scale);
+	} else {
+		centered_uv = (base_rot * centered_uv) / uv_scale;
+	}
+
+	base_uv = centered_uv + 0.5 + uv_offset;
+	UV = base_uv;
+
+	// Ripple: vertex-space water bulge along the normal
+	float t = TIME * ripple_speed;
+	vec2 p = VERTEX.xy;
+	float wave =
+		sin(p.x * ripple_frequency + t) * 0.5 +
+		sin(p.y * ripple_frequency * 1.3 - t * 1.2) * 0.3 +
+		sin((p.x + p.y) * ripple_frequency * 0.7 + t * 0.8) * 0.2;
+
+	VERTEX += NORMAL * wave * ripple_amplitude * ripple_strength;
+}
+
+void fragment() {
+	vec2 uv = base_uv - 0.5;
+
+	// Aspect correction so the vortex stays circular on non-square planes
+	if (mesh_aspect_ratio > 1.0) {
+		uv.x *= mesh_aspect_ratio;
+	} else if (mesh_aspect_ratio < 1.0) {
+		uv.y /= mesh_aspect_ratio;
+	}
+
+	float time_progress = sin(TIME * pulsation_speed);
+
+	// Overall constant rotation of the whole portal
+	if (overall_rotation_speed != 0.0) {
+		uv = rotate(TIME * overall_rotation_speed) * uv;
+	}
+
+	float distance_from_center = length(uv);
+
+	// Vortex/twist: rotation amount falls off with radius and pulses over time
+	float twist_spatial_factor = smoothstep(0.0, vortex_effect_radius, vortex_effect_radius - distance_from_center);
+	float current_animated_twist = twist_strength * time_progress;
+	float twist_angle = twist_spatial_factor * current_animated_twist;
+
+	if (distance_from_center < vortex_effect_radius) {
+		uv = rotate(twist_angle) * uv;
+	}
+
+	// Breathing: pulsating shrink/expand
+	float breath_value = breath_magnitude * time_progress;
+	if (distance_from_center > 0.0001) {
+		float new_radial_distance = max(0.0, distance_from_center + breath_value);
+		uv *= (new_radial_distance / distance_from_center);
+	}
+
+	// Scroll the texture underneath the distortion
+	vec2 texture_scroll_speed = vec2(texture_scroll_speed_x, texture_scroll_speed_y);
+	vec2 final_uv = uv + TIME * texture_scroll_speed;
+
+	// Revert aspect correction, then de-center back to 0-1 UV space
+	if (mesh_aspect_ratio > 1.0) {
+		final_uv.x /= mesh_aspect_ratio;
+	} else if (mesh_aspect_ratio < 1.0) {
+		final_uv.y *= mesh_aspect_ratio;
+	}
+	final_uv += 0.5;
+
+	// Soft-edged portal falloff
+	float alpha = smoothstep(vortex_effect_radius, vortex_effect_radius - edge_softness, distance_from_center);
+
+	vec4 tex = texture(albedo_texture, fract(final_uv));
+
+	ALBEDO = tex.rgb * portal_tint.rgb;
+	ALPHA = tex.a * portal_tint.a * alpha * mesh_opacity;
+
+	if (base_uv.x < 0.0 || base_uv.x > 1.0 || base_uv.y < 0.0 || base_uv.y > 1.0) {
+		ALPHA = 0.0;
+	}
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pkwh0"]
+load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ycjd"]
 resource_local_to_scene = true
 render_priority = 4
-shader = ExtResource("4_3ycjd")
-shader_parameter/albedo_texture = ExtResource("5_57is3")
+shader = SubResource("Shader_asdy7")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_pkwh0")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_rotation_degrees = 90.000004275
@@ -44,6 +172,186 @@ shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
 shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.08499999810008001
+
+[sub_resource type="Animation" id="Animation_57is3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portalmesh:surface_material_override/0:shader_parameter/vortex_effect_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5499999877064]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portalmesh:surface_material_override/0:shader_parameter/edge_softness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08499999810008001]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.778]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Portalmesh:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_sy41e"]
+resource_name = "unlock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portalmesh:surface_material_override/0:shader_parameter/vortex_effect_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5499999877064]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portalmesh:surface_material_override/0:shader_parameter/edge_softness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08499999810008001]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.778]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Portalmesh:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sh1c"]
+_data = {
+&"RESET": SubResource("Animation_57is3"),
+&"unlock": SubResource("Animation_sy41e")
+}
 
 [node name="Portal" type="Area3D" unique_id=220733343]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -67,7 +375,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4itmh")
 [node name="Portalmesh" type="MeshInstance3D" parent="." unique_id=206617557]
 transform = Transform3D(6.153079e-08, 0, 0.815, 0, 0.815, 0, -0.815, 0, 6.153079e-08, 0, 0, 0)
 mesh = ExtResource("3_pkwh0")
-surface_material_override/0 = SubResource("ShaderMaterial_5tiua")
+surface_material_override/0 = SubResource("ShaderMaterial_3ycjd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1644803749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7756527e-08, 2.788978, -0.406222)
@@ -75,5 +383,8 @@ light_color = Color(0.19, 0.75699985, 1, 1)
 light_energy = 1.778
 omni_range = 5.359
 omni_attenuation = -0.167
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1595874575]
+libraries/ = SubResource("AnimationLibrary_2sh1c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

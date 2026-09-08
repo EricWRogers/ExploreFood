@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://wpxcy0vqvk23"]
 
+[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_h20bm"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_ubfwv"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_4gaw2"]
 [ext_resource type="Texture2D" uid="uid://cxvnfgy865wsk" path="res://addons/MarchingSquaresTerrain/resources/plugin_materials/grass_leaf_sprite.png" id="2_kebx2"]
@@ -12,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="9_174kf"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="10_174kf"]
 [ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="10_mwv6q"]
+[ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="11_pl4bu"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="12_6qkhe"]
+[ext_resource type="Texture2D" uid="uid://cr0l3f34l0dhe" path="res://assets/ui/cook_book/screenshots/FrogScreenshot.png" id="12_h20bm"]
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="13_w8t0d"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ubfwv"]
@@ -438,6 +441,31 @@ albedo_color = Color(0.95, 0.81161666, 0.73149997, 0.7647059)
 [sub_resource type="SphereMesh" id="SphereMesh_lqdem"]
 material = SubResource("StandardMaterial3D_qvufb")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3e7d"]
+resource_local_to_scene = true
+render_priority = 4
+shader = ExtResource("11_pl4bu")
+shader_parameter/albedo_texture = ExtResource("12_h20bm")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_rotation_degrees = 90.000004275
+shader_parameter/distort_on_rotate = false
+shader_parameter/mesh_opacity = 0.638000030305
+shader_parameter/ripple_strength = 1.0
+shader_parameter/ripple_speed = 8.0
+shader_parameter/ripple_frequency = 45.325
+shader_parameter/ripple_amplitude = -0.215
+shader_parameter/portal_tint = Color(1.1008143, 1.1008143, 1.1008143, 1)
+shader_parameter/mesh_aspect_ratio = 1.0
+shader_parameter/vortex_effect_radius = 0.5499999877064
+shader_parameter/twist_strength = 1.30000001937156
+shader_parameter/pulsation_speed = 0.7
+shader_parameter/breath_magnitude = 0.05499998014411
+shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
+shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
+shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
+shader_parameter/edge_softness = 0.08499999810008001
+
 [sub_resource type="Shader" id="Shader_japl0"]
 code = "shader_type sky;
 
@@ -544,6 +572,8 @@ adjustment_saturation = 1.26
 size = Vector3(32.985107, 0.068359375, 34.398743)
 
 [node name="BreakfastDimension" type="Node3D" unique_id=2044646444]
+script = ExtResource("1_h20bm")
+level_name = "breakfast_dimension"
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=844075959]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -1.473671, 373.18396)
@@ -1074,6 +1104,12 @@ image_of_world = ExtResource("10_mwv6q")
 light_color = Color(0.5882353, 0.57254905, 0.5411765, 1)
 active = true
 
+[node name="CollisionShape3D" parent="Portal" index="0" unique_id=1121464066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2638502, 0)
+
+[node name="Portalmesh" parent="Portal" index="3" unique_id=206617557]
+surface_material_override/0 = SubResource("ShaderMaterial_h3e7d")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695138948]
 environment = SubResource("Environment_japl0")
 
@@ -1341,4 +1377,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.12058, 79.94357, 410.4440
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 
+[editable path="Portal"]
 [editable path="Player"]

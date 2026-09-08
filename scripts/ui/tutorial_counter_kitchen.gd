@@ -2,6 +2,10 @@ extends Node3D
 
 func _ready() -> void:
 	Manager.kitchen = self
+	if Manager.kitchen_tut > 0:
+		$"../Portal2".unlock()
+		if Manager.breakfast_unlocked == true:
+			$"../Portal4".unlock()
 	Manager.kitchen_tut += 1
 	if Manager.kitchen_tut == 2 or Manager.kitchen_tut == 3:
 		$"../SellingTutorial".show()

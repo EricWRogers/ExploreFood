@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_vqkf1")
-dialogue_lines = Array[String](["Yes... Yes, yes, yes! This is splendid! Simply Splendid!", "This is exactly what I needed! Serandipidy."])
+dialogue_lines = Array[String](["Yes... Yes, yes, yes! This is splendid! Simply Splendid!", "This is exactly what I needed! Serandipidy.", "Heres a new portal for you. This one is tougher than the last.", "If the Dimensional Drain is too much for you, you might want to buy an upgrade."])
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

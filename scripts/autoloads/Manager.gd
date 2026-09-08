@@ -15,6 +15,7 @@ var recipe_book
 var kitchen_tut = 0
 var level_1_tut = 0
 var kitchen
+var breakfast_unlocked = false
 
 @export var current_quest_item : String
 
