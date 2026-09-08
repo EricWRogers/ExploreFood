@@ -464,6 +464,7 @@ meal_name = "Chicken and Waffle"
 flavor_text = "A beloved southern style meal combining sweet and savory flavors."
 icon = ExtResource("2_5rdle")
 value = 100
+hunger_restore = 240
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
 transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0, 0.012703538, 0)

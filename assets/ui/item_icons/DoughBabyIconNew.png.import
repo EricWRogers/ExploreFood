@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmqi2bed8i6o6"
-path="res://.godot/imported/output_icon.png-6d8b1a9d0c17ed82872b1ae2f23dbb35.ctex"
+path="res://.godot/imported/DoughBabyIconNew.png-b3c59d8463595b38f0d3c895c753fb67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/item_icons/output_icon.png"
-dest_files=["res://.godot/imported/output_icon.png-6d8b1a9d0c17ed82872b1ae2f23dbb35.ctex"]
+source_file="res://assets/ui/item_icons/DoughBabyIconNew.png"
+dest_files=["res://.godot/imported/DoughBabyIconNew.png-b3c59d8463595b38f0d3c895c753fb67.ctex"]
 
 [params]
 

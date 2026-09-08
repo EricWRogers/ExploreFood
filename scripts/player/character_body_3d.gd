@@ -7,7 +7,7 @@ const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
 #var belly = 100
 var hunger = 100
-@export var hunger_reduction_rate = 5
+@export var hunger_reduction_rate = 2.5
 var time_tick = 2
 
 const BOB_FREQ = 2.0
