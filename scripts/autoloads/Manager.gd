@@ -14,6 +14,7 @@ var money : int = 0
 var recipe_book
 var kitchen_tut = 0
 var level_1_tut = 0
+var kitchen
 
 @export var current_quest_item : String
 

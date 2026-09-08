@@ -82,5 +82,7 @@ func _give_quest():
 
 #for Caleb
 func _line_check():
-	print("Tree index: ", current_tree_index)
-	print("Line index: ", current_line_index)
+	if current_tree_index == 1 and current_line_index == 5:
+		Manager.kitchen.showmeat()
+	if current_tree_index == 1 and current_line_index == 4:
+		Manager.kitchen.showsell()
