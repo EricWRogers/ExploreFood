@@ -30,7 +30,7 @@ func _process(_delta):
 		quest_item = dialogue_tree[dialogue_tree_index].QuestItem #get quest item name
 		dialogue_tree_index = 1 #switch from quest activation dialogue to quest reminder dialogue
 		
-		DialogueManager.start_dialogue(lines, quest_item)
+		DialogueManager.start_dialogue(lines, quest_item, dialogue_tree_index)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
