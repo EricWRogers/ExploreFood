@@ -15,6 +15,7 @@ var isDialogueSelected: bool
 
 
 func _ready() -> void:
+	$NPCBean/AnimationPlayer.play("Hold")
 	interact_ui.hide()
 	isDialogueSelected = false
 

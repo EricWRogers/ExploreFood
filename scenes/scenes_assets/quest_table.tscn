@@ -3,7 +3,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_xmpmc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0grx"]
-albedo_color = Color(0.6022632, 0.31718436, 0.2128453, 1)
+albedo_color = Color(0.42, 0.21979998, 0.147, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k1ff7"]
 height = 0.93237305
