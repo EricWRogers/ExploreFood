@@ -115,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("belly_expansion"):
 		if Manager.money >= 50:
 			Manager.money -= 50
+			update_cash()
 			Manager.belly += 50
 	if Input.is_action_just_pressed("recipe_book"):
 		if recipe_open:

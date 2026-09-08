@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://c757vrkq8ux22" path="res://scripts/resources/dialogue/testDia1.tres" id="4_wbtbd"]
 [ext_resource type="Resource" uid="uid://b7bn8ouwgdbyi" path="res://scripts/resources/dialogue/testDia_PassQuest.tres" id="5_720kh"]
 [ext_resource type="Resource" uid="uid://hrb6cte5xt1s" path="res://scripts/resources/dialogue/testDia_FailQuest.tres" id="6_pa3ns"]
-[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="7_us053"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/ui/InteractUI.tscn" id="7_us053"]
 [ext_resource type="Texture2D" uid="uid://dtuvc3ic32nxy" path="res://assets/npcs/npc_bagel/NPCPlayerSkin.png" id="9_wbtbd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_klsck"]

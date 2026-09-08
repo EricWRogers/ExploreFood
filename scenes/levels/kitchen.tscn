@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="31_r7waf"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="32_k55bu"]
 [ext_resource type="Script" uid="uid://cofymd23xiktd" path="res://scripts/ui/tutorial_counter_kitchen.gd" id="33_22rdp"]
+[ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="34_njsh3"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -268,7 +269,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njsh3"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22rdp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_551tx"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_22rdp")
@@ -423,7 +424,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_551tx"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_njsh3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_njsh3")
@@ -448,7 +449,7 @@ shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.499999988824
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_551tx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_180ue"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -2539,9 +2540,9 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.126946e-07, 5.678337e-0
 body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -3.6418575e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2499796e-06, 0.00039294083, -0.011967659, -0.00012935698, -0.00013378263)
 
 [node name="Physical Bone R_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="3" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029570967, 0.013724931, -0.014683716)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709603, 0.55594593)
-body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.00080293417, -0.018891048, -0.014583297)
+transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029570967, 0.013724931, -0.014683716)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709602, 0.555946)
+body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080293417, -0.018891048, -0.014583297)
 
 [node name="Physical Bone L_shoulder" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="4" unique_id=189867189]
 transform = Transform3D(-0.00039047102, -0.00037934908, -0.03515753, -1.7337684e-06, -0.0351597, 0.00037939168, -0.035159577, 5.9467043e-06, 0.00039042963, 0.02742362, 0.034520764, 0.00068785995)
@@ -2549,14 +2550,14 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e
 body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
 
 [node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.045109868, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36632258, 0.3352055, 0.77016366)
-body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057163537, 0.006032221, 0.03113047)
+transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045110106, 0.02831554, -0.030620016)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36632374, 0.3352111, 0.770162)
+body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.0057165623, 0.006032221, 0.03113047)
 
 [node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
-transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
+transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194234, -0.05945587, -0.33873647)
-body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988534, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
+body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988536, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
@@ -2578,7 +2579,7 @@ image_of_world = ExtResource("5_r7waf")
 light_color = Color(0.7490196, 0.56078434, 0.6666667, 1)
 
 [node name="Portalmesh" parent="Portal2" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_22rdp")
+surface_material_override/0 = SubResource("ShaderMaterial_551tx")
 
 [node name="OmniLight3D" parent="Portal2" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2589,7 +2590,7 @@ image_of_world = ExtResource("6_r7waf")
 light_color = Color(1, 0.63529414, 0.2509804, 1)
 
 [node name="Portalmesh" parent="Portal4" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_njsh3")
+surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
 
 [node name="OmniLight3D" parent="Portal4" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2603,7 +2604,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_551tx")
+surface_material_override/0 = SubResource("ShaderMaterial_180ue")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
@@ -3191,6 +3192,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NPCBean" unique_id=496224788]
 libraries/ = SubResource("AnimationLibrary_q4ayx")
+
+[node name="Meat_Pies" parent="." unique_id=1546410034 instance=ExtResource("34_njsh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.762297, 1.4594707, 0)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_body_entered"]
