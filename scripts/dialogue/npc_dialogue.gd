@@ -2,7 +2,6 @@ extends Node
 
 #UI stuff
 @onready var interact_ui: Node3D = $InteractUI
-@export var ui_position: Vector2
 
 #dialogue stuff
 @export var dialogue_tree : Array[Dialogue] = []
@@ -50,8 +49,9 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 #quest manager. Might make into its own script?
 func _on_table_area_body_entered(body: Node3D) -> void:
 	if (Manager.current_quest_item == ""): #if quest is null, nothing happens
+		print("quest item null")
 		return
-	
+	print("body found")
 	if body.has_method("get_rolled"): #check that item is food
 		if (body.name == Manager.current_quest_item): #pass quest
 			print("correct! Scrumptious!")

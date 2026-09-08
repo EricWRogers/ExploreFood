@@ -20,7 +20,6 @@ height = 1.2595215
 
 [node name="Big_Boss_NPC" type="Node3D" unique_id=1095072558]
 script = ExtResource("1_2i7oy")
-ui_position = Vector2(0, 15)
 dialogue_tree = Array[ExtResource("2_whkwm")]([ExtResource("3_l08ym"), ExtResource("4_wbtbd"), ExtResource("5_720kh"), ExtResource("6_pa3ns")])
 
 [node name="BossStaticBody" type="StaticBody3D" parent="." unique_id=1818451369]

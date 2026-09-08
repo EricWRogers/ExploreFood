@@ -60,7 +60,7 @@ func start_dialogue(lines: Array[String], quest_item: String):
 func show_text_box(): 
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(on_text_box_finished_displaying)
-	get_tree().root.add_child(text_box)
+	get_tree().current_scene.add_child(text_box)
 	
 	text_box.display_text(dialogue_lines[current_line_index])
 	#print("current line index: ", current_line_index)
