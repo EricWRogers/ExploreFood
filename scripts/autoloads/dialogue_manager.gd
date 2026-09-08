@@ -88,5 +88,6 @@ func _line_check():
 		Manager.kitchen.showsell()
 	if (current_tree_index == 2 and current_line_index == 2):
 		Manager.kitchen.showwaffle()
+		Manager.breakfast_unlocked = true
 	else:
 		pass
