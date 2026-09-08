@@ -7,6 +7,7 @@ var rarity_level = 1
 @export var type : String
 @export var icon : Texture2D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@export var value : int
 #@onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
 #@onready var next_pass := overlay.next_pass as ShaderMaterial
 

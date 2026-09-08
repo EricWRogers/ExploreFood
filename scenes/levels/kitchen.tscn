@@ -9,11 +9,11 @@
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
 [ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="5_flhss"]
-[ext_resource type="Texture2D" uid="uid://bqkt7iar2synd" path="res://assets/test_images/infinite.jpg" id="5_nov5u"]
 [ext_resource type="Texture2D" uid="uid://bpp0op3unwu35" path="res://assets/test_images/Screenshot 2026-09-07 144053.png" id="5_r7waf"]
 [ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="6_dxa70"]
 [ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="6_e1f4p"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
+[ext_resource type="Texture2D" uid="uid://bplfwfpwu16oa" path="res://assets/test_images/Screenshot 2026-09-07 180430.png" id="6_r7waf"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
 [ext_resource type="Texture2D" uid="uid://cehk4jcniwyv3" path="res://assets/test_images/adventuretime.jpg" id="7_gxv72"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://djoyr33lscll1" path="res://assets/test_images/worm.png" id="15_551tx"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/big_boss_npc.tscn" id="30_eubmf"]
 [ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="31_r7waf"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="32_k55bu"]
+[ext_resource type="Script" uid="uid://cofymd23xiktd" path="res://scripts/ui/tutorial_counter_kitchen.gd" id="33_22rdp"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -136,7 +138,7 @@ fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7waf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22rdp"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -356,6 +358,101 @@ _data = {
 }
 point_count = 28
 
+[sub_resource type="Animation" id="Animation_22rdp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selling:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaffleDimension:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeatPieDimension:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+
+[sub_resource type="Animation" id="Animation_njsh3"]
+resource_name = "meatdim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeatPieDimension:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [75.0, 39.8]
+}
+
+[sub_resource type="Animation" id="Animation_551tx"]
+resource_name = "sell"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selling:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5176324, 1),
+"update": 0,
+"values": [75.0, 50.5]
+}
+
+[sub_resource type="Animation" id="Animation_ov0qq"]
+resource_name = "waffledim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaffleDimension:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.39229217, 1),
+"update": 0,
+"values": [75.0, 46.9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_180ue"]
+_data = {
+&"RESET": SubResource("Animation_22rdp"),
+&"meatdim": SubResource("Animation_njsh3"),
+&"sell": SubResource("Animation_551tx"),
+&"waffledim": SubResource("Animation_ov0qq")
+}
+
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 script = ExtResource("1_ojraw")
 level_name = "kitchen"
@@ -387,7 +484,9 @@ active = true
 
 [node name="Portal4" parent="." unique_id=1266386831 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.36355, 0.68851566, -16.911064)
-image_of_world = ExtResource("5_nov5u")
+image_of_world = ExtResource("6_r7waf")
+light_color = Color(1, 0.63529414, 0.2509804, 1)
+active = true
 
 [node name="Portal5" parent="." unique_id=959289496 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, -2.3019638)
@@ -398,7 +497,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_r7waf")
+surface_material_override/0 = SubResource("ShaderMaterial_22rdp")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
@@ -583,7 +682,47 @@ transform = Transform3D(0.99595344, 0, 0.08987079, 0, 1, 0, -0.08987079, 0, 0.99
 [node name="Big_Boss_NPC" parent="Boss_NPC_STuff" unique_id=1095072558 instance=ExtResource("30_eubmf")]
 
 [node name="QuestTable" parent="Boss_NPC_STuff" unique_id=1570142438 instance=ExtResource("31_r7waf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.741831, 2.408317, 4.551607)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20022, 2.408317, 3.956564)
+
+[node name="SellingTutorial" type="Node3D" parent="." unique_id=1406317527]
+transform = Transform3D(-0.9575703, 0.090253554, -0.27370313, 0, 0.94969934, 0.31316322, 0.28819978, 0.29987577, -0.9094039, 6.257166, 3.3081322, 28.417873)
+visible = false
+
+[node name="Label3D" type="Label3D" parent="SellingTutorial" unique_id=1864865278]
+visible = false
+billboard = 1
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.5315801, 0.37900507, 0.200766, 1)
+outline_modulate = Color(0.53333336, 0.38039216, 0.2, 1)
+text = "Place food and ingredients
+ here to sell"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="SellingTutorial" unique_id=1966061355]
+transform = Transform3D(1.09, 0, 0, 0, 0.224, 0, 0, 0, 0.137, 0, 0.0015291125, -0.008809596)
+visible = false
+modulate = Color(0.8960314, 0.8886272, 0.73411757, 1)
+billboard = 1
+render_priority = 75
+texture = ExtResource("32_k55bu")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="Tutorial_Counter_Kitchen" type="Node3D" parent="." unique_id=337758989]
+script = ExtResource("33_22rdp")
+
+[node name="MeatPieDimension" type="Camera3D" parent="." unique_id=1307241214]
+transform = Transform3D(0.82656354, -0.034359667, 0.5617937, 0, 0.998135, 0.061046574, -0.56284344, -0.050458875, 0.8250219, -1.9434509, 3.5834513, -10.461334)
+
+[node name="WaffleDimension" type="Camera3D" parent="." unique_id=1863389231]
+transform = Transform3D(0.6427478, -0.06010427, 0.76371646, 0, 0.99691755, 0.07845713, -0.7660779, -0.05042815, 0.64076656, -7.083252, 3.5145168, -7.658737)
+
+[node name="Selling" type="Camera3D" parent="." unique_id=769506597]
+transform = Transform3D(-0.9997609, -0.000477039, -0.021860415, 0, 0.999762, -0.021816853, 0.02186562, -0.021811636, -0.999523, 1.0514951, 2.7829874, 17.899948)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=628559878]
+libraries/ = SubResource("AnimationLibrary_180ue")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
