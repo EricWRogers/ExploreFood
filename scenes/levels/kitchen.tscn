@@ -358,6 +358,101 @@ _data = {
 }
 point_count = 28
 
+[sub_resource type="Animation" id="Animation_22rdp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selling:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaffleDimension:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeatPieDimension:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+
+[sub_resource type="Animation" id="Animation_njsh3"]
+resource_name = "meatdim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeatPieDimension:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [75.0, 39.8]
+}
+
+[sub_resource type="Animation" id="Animation_551tx"]
+resource_name = "sell"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Selling:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.5176324, 1),
+"update": 0,
+"values": [75.0, 50.5]
+}
+
+[sub_resource type="Animation" id="Animation_ov0qq"]
+resource_name = "waffledim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaffleDimension:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.39229217, 1),
+"update": 0,
+"values": [75.0, 46.9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_180ue"]
+_data = {
+&"RESET": SubResource("Animation_22rdp"),
+&"meatdim": SubResource("Animation_njsh3"),
+&"sell": SubResource("Animation_551tx"),
+&"waffledim": SubResource("Animation_ov0qq")
+}
+
 [node name="Kitchen" type="Node3D" unique_id=115598229]
 script = ExtResource("1_ojraw")
 level_name = "kitchen"
@@ -594,6 +689,7 @@ transform = Transform3D(-0.9575703, 0.090253554, -0.27370313, 0, 0.94969934, 0.3
 visible = false
 
 [node name="Label3D" type="Label3D" parent="SellingTutorial" unique_id=1864865278]
+visible = false
 billboard = 1
 render_priority = 100
 outline_render_priority = 100
@@ -605,6 +701,7 @@ font_size = 52
 
 [node name="Sprite3D" type="Sprite3D" parent="SellingTutorial" unique_id=1966061355]
 transform = Transform3D(1.09, 0, 0, 0, 0.224, 0, 0, 0, 0.137, 0, 0.0015291125, -0.008809596)
+visible = false
 modulate = Color(0.8960314, 0.8886272, 0.73411757, 1)
 billboard = 1
 render_priority = 75
@@ -614,6 +711,18 @@ region_rect = Rect2(0, 0, 512, 512)
 
 [node name="Tutorial_Counter_Kitchen" type="Node3D" parent="." unique_id=337758989]
 script = ExtResource("33_22rdp")
+
+[node name="MeatPieDimension" type="Camera3D" parent="." unique_id=1307241214]
+transform = Transform3D(0.82656354, -0.034359667, 0.5617937, 0, 0.998135, 0.061046574, -0.56284344, -0.050458875, 0.8250219, -1.9434509, 3.5834513, -10.461334)
+
+[node name="WaffleDimension" type="Camera3D" parent="." unique_id=1863389231]
+transform = Transform3D(0.6427478, -0.06010427, 0.76371646, 0, 0.99691755, 0.07845713, -0.7660779, -0.05042815, 0.64076656, -7.083252, 3.5145168, -7.658737)
+
+[node name="Selling" type="Camera3D" parent="." unique_id=769506597]
+transform = Transform3D(-0.9997609, -0.000477039, -0.021860415, 0, 0.999762, -0.021816853, 0.02186562, -0.021811636, -0.999523, 1.0514951, 2.7829874, 17.899948)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=628559878]
+libraries/ = SubResource("AnimationLibrary_180ue")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
