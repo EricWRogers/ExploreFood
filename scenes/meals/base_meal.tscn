@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2rqvns1x25my"]
 
 [ext_resource type="Script" uid="uid://depb7mr6v735r" path="res://scripts/foods/BaseMeal.gd" id="1_aflix"]
-[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="2_cqgsd"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/ui/InteractUI.tscn" id="2_cqgsd"]
 
 [sub_resource type="Shader" id="Shader_jq832"]
 code = "shader_type spatial;

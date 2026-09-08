@@ -10,6 +10,7 @@ var counter = [null, null, null, null, null, null, null, null, null, null, null,
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
 func add_to_counter(item): #item is never used. Probably safe to remove -Nate
+	return
 	var held_bagel_reference = null
 	if not Manager.currently_held_bagel:
 		return
@@ -49,10 +50,12 @@ func remove_first_item():
 		return null
 	
 func on_looked_at():
+	return
 	overlay.set_shader_parameter("transparency", 0.1)
 	$InteractUI.show()
 	
 func on_looked_away():
+	return
 	overlay.set_shader_parameter("transparency", 0.0)
 	$InteractUI.hide()
 

@@ -39,6 +39,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		update_held_item(body.id)
 		body.queue_free()
 		print(food_types)
+	if body.has_method("start_hunger"):
+		$Funny.show()
 		
 	#if item in area is an ingredient
 	
