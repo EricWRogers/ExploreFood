@@ -9,11 +9,11 @@
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="5_6uclb"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="5_7mbwf"]
 [ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="5_flhss"]
-[ext_resource type="Texture2D" uid="uid://bqkt7iar2synd" path="res://assets/test_images/infinite.jpg" id="5_nov5u"]
 [ext_resource type="Texture2D" uid="uid://bpp0op3unwu35" path="res://assets/test_images/Screenshot 2026-09-07 144053.png" id="5_r7waf"]
 [ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="6_dxa70"]
 [ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="6_e1f4p"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="6_qf1a7"]
+[ext_resource type="Texture2D" uid="uid://bplfwfpwu16oa" path="res://assets/test_images/Screenshot 2026-09-07 180430.png" id="6_r7waf"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
 [ext_resource type="Texture2D" uid="uid://cehk4jcniwyv3" path="res://assets/test_images/adventuretime.jpg" id="7_gxv72"]
@@ -136,7 +136,7 @@ fog_light_color = Color(0.61, 0.61, 0.61, 1)
 adjustment_enabled = true
 adjustment_brightness = 1.38
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7waf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k55bu"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -387,7 +387,9 @@ active = true
 
 [node name="Portal4" parent="." unique_id=1266386831 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -17.36355, 0.68851566, -16.911064)
-image_of_world = ExtResource("5_nov5u")
+image_of_world = ExtResource("6_r7waf")
+light_color = Color(1, 0.63529414, 0.2509804, 1)
+active = true
 
 [node name="Portal5" parent="." unique_id=959289496 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022, 0.68851566, -2.3019638)
@@ -398,7 +400,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_r7waf")
+surface_material_override/0 = SubResource("ShaderMaterial_k55bu")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
