@@ -9,6 +9,8 @@ func _ready() -> void:
 	current_level.connect("level_changed", Callable(self, "start_loading"))
 	if CalebMode:
 		Manager.bagel_mode = true
+
+	
 func start_loading(level):
 	$LoadingScreen.play_in()
 	to_go = level

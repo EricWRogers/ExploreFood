@@ -24,16 +24,16 @@ func _process(_delta):
 	!isDialogueSelected &&
 	isInRange):
 		interact_ui.hide()
-		isDialogueSelected = true
-		
-		#get data from dialogue resource
-		lines = dialogue_tree[dialogue_tree_index].dialogue_lines #get string array
-		quest_item = dialogue_tree[dialogue_tree_index].QuestItem #get quest item name
-		
-		DialogueManager.start_dialogue(lines, quest_item, dialogue_tree_index)
-		
+		_call_dialogue()
 		dialogue_tree_index = 1 #switch from quest activation dialogue to quest reminder dialogue
 
+func _call_dialogue():
+	isDialogueSelected = true
+	#get data from dialogue resource
+	lines = dialogue_tree[dialogue_tree_index].dialogue_lines #get string array
+	quest_item = dialogue_tree[dialogue_tree_index].QuestItem #get quest item name
+	
+	DialogueManager.start_dialogue(lines, quest_item, dialogue_tree_index)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
@@ -63,4 +63,6 @@ func _on_table_area_body_entered(body: Node3D) -> void:
 		else:										#fail quest
 			print("Wrong wrong wrong! Horrible.")
 			dialogue_tree_index = 3 #fail
+			
+		_call_dialogue()
 		body.queue_free()
