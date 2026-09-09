@@ -14,10 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="12_77w0k"]
 [ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="13_kap76"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="14_qm5qq"]
-[ext_resource type="PackedScene" uid="uid://d13rs5g0a2u0r" path="res://scenes/food/bagel/bagel_top.tscn" id="15_ejd08"]
-[ext_resource type="PackedScene" uid="uid://32c24t457nbx" path="res://scenes/food/bagel/bagel_start.tscn" id="16_xk22l"]
-[ext_resource type="PackedScene" uid="uid://bg30cyd7f3v1o" path="res://scenes/food/bagel/bagel_spread_piece.tscn" id="17_pp0c1"]
-[ext_resource type="Material" uid="uid://cxahwrc2ceujd" path="res://assets/materials/LinesHoverBagel.tres" id="18_xk22l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
 
@@ -299,68 +295,6 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xk22l"]
-resource_local_to_scene = true
-height = 0.1302185
-radius = 0.3564453
-
-[sub_resource type="Shader" id="Shader_f48ei"]
-code = "shader_type spatial;
-render_mode cull_front, unshaded, depth_draw_always;
-
-uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
-uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
-uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
-uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
-uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
-uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
-
-varying vec3 world_normal;
-
-void vertex() {
-	VERTEX += NORMAL * outline_width;
-	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
-}
-
-void fragment() {
-	vec3 light_dir = normalize(light_direction);
-	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
-
-	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
-	EMISSION = rim_light_color.rgb * rim * rim_intensity;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp0c1"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = ExtResource("18_xk22l")
-shader = SubResource("Shader_f48ei")
-shader_parameter/outline_width = 0.010000000475
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
-shader_parameter/light_direction = Vector3(1, 1, 0)
-shader_parameter/rim_sharpness = 8.0
-shader_parameter/rim_intensity = 2.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hixj3"]
-resource_local_to_scene = true
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_pp0c1")
-shader = SubResource("Shader_f48ei")
-shader_parameter/outline_width = 0.010000000475
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
-shader_parameter/light_direction = Vector3(1, 1, 0)
-shader_parameter/rim_sharpness = 8.0
-shader_parameter/rim_intensity = 2.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_47tt1"]
-resource_local_to_scene = true
-top_radius = 0.35742188
-bottom_radius = 0.35742188
-height = 0.076
-cap_bottom = false
-
 [node name="IconMaker" type="SubViewport" unique_id=1215882865]
 transparent_bg = true
 size = Vector2i(264, 264)
@@ -440,27 +374,6 @@ visible = false
 material_overlay = SubResource("ShaderMaterial_1jqcv")
 mesh = ExtResource("14_qm5qq")
 
-[node name="BagelTop" parent="." unique_id=541640571 instance=ExtResource("15_ejd08")]
-visible = false
-
-[node name="BagelStart" parent="BagelTop" unique_id=989785034 instance=ExtResource("16_xk22l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0823496, 0)
-
-[node name="Node3D" parent="BagelTop/BagelStart" index="1" unique_id=322777136]
-visible = false
-
-[node name="CollisionShape3D" parent="BagelTop/BagelStart" index="2" unique_id=1752309722]
-shape = SubResource("CylinderShape3D_xk22l")
-
-[node name="SpreadPiece" parent="BagelTop/BagelStart" unique_id=1728940416 instance=ExtResource("17_pp0c1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010835677, 0)
-
-[node name="MeshInstance3D" parent="BagelTop/BagelStart/SpreadPiece" index="0" unique_id=363521579]
-material_overlay = SubResource("ShaderMaterial_hixj3")
-mesh = SubResource("CylinderMesh_47tt1")
-
 [editable path="Terry"]
 [editable path="Chicken_And_Waffle"]
 [editable path="Meat_Pies"]
-[editable path="BagelTop/BagelStart"]
-[editable path="BagelTop/BagelStart/SpreadPiece"]

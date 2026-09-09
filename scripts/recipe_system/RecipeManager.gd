@@ -2,7 +2,6 @@ extends StaticBody3D
 
 @export var lvl_manager: Node
 @export var recipes : Array[Resource]
-const BAGEL_START = preload("uid://32c24t457nbx")
 @onready var cook_pointer_UItip: Node3D = $Node3D
 
 var food_types : Array
@@ -86,17 +85,17 @@ func find_recipe():
 	return
 	
 func construct_bagel():
-	var bagel_bottom = BAGEL_START.instantiate()
-	var current_scene = lvl_manager.current_level
-	bagel_bottom.price = current_value
-	current_scene.add_child(bagel_bottom)
-	for item in food_types:
-		bagel_bottom.add_spread(item)
-	bagel_bottom.add_top()
-	food_types.clear()
-	bagel_bottom.global_position = self.global_position
-	bagel_bottom.global_position.y += 1.0
-	current_value = 0
+	pass
+	#var current_scene = lvl_manager.current_level
+	#bagel_bottom.price = current_value
+	#current_scene.add_child(bagel_bottom)
+	#for item in food_types:
+		#bagel_bottom.add_spread(item)
+	#bagel_bottom.add_top()
+	#food_types.clear()
+	#bagel_bottom.global_position = self.global_position
+	#bagel_bottom.global_position.y += 1.0
+	#current_value = 0
 	
 func update_held_item(id):
 	match id:

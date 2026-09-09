@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfwu3yt6xntfb"]
 
 [ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="1_82nx4"]
-[ext_resource type="Script" uid="uid://n3f6bk133x5i" path="res://scripts/foods/bagel_scripts/bagel_counter.gd" id="1_203rg"]
+[ext_resource type="Script" uid="uid://op3e6bcmiirf" path="res://scripts/Deprecated/bagel_counter.gd" id="1_o561u"]
 [ext_resource type="Texture2D" uid="uid://dy84wwxmj3ptx" path="res://assets/textures/bagel/CounterTex.png" id="2_203rg"]
 [ext_resource type="Texture2D" uid="uid://c6v1b07sq3dm6" path="res://assets/ui/ui_assets/right-click-of-the-mouse.png" id="4_o561u"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="5_5uyrc"]
@@ -130,7 +130,7 @@ size = Vector3(5.623657, 2.4726563, 4.4500732)
 
 [node name="BagelCounter" type="StaticBody3D" unique_id=137819221]
 collision_layer = 1025
-script = ExtResource("1_203rg")
+script = ExtResource("1_o561u")
 
 [node name="BagelCounter" type="MeshInstance3D" parent="." unique_id=568963773]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
