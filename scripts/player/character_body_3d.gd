@@ -36,7 +36,9 @@ var canJump = true;
 @onready var selected_1: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot1/Panel/Selected1
 @onready var selected_2: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot2/Panel/Selected2
 @onready var selected_3: MarginContainer = $CanvasLayer/MarginContainer/Start/Slot3/Panel/Selected3
+@onready var item_hold_spawn: Marker3D = $Head/KillerBeanSproject2/ItemHoldSpawn
 
+var selected_object: Node = null
 var hotbar = []
 var current_target: Node = null
 var current_slot = 0
@@ -88,9 +90,10 @@ func _unhandled_input(event):
 func update_cash():
 	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
 func _physics_process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("free_cam"):
 		free_cam = !free_cam
-		if free_cam == true:
+		if free_cam:
 			$GodMode.make_current()
 			$GodMode.active = true
 			alive = false
@@ -100,23 +103,28 @@ func _physics_process(delta: float) -> void:
 			$GodMode.active = false
 			alive = true
 			$Head/Camera3D.make_current()
+
 	if Input.is_action_just_pressed("hunger_disable"):
 		$HungerTick.stop()
 		$CanvasLayer/MarginContainer4.hide()
 		$CanvasLayer/MarginContainer5.hide()
-	if in_kitchen == true:
+
+	if in_kitchen:
 		$CanvasLayer/MarginContainer6.show()
+
 	if not alive:
 		if Input.is_action_just_pressed("Jump"):
 			get_tree().current_scene.start_loading("terrain_test")
 		return
+
 	if Input.is_action_just_pressed("instant_death_button"):
 		death()
-	if Input.is_action_just_pressed("belly_expansion"):
-		if Manager.money >= 50:
-			Manager.money -= 50
-			update_cash()
-			Manager.belly += 50
+
+	if Input.is_action_just_pressed("belly_expansion") and Manager.money >= 50:
+		Manager.money -= 50
+		update_cash()
+		Manager.belly += 50
+
 	if Input.is_action_just_pressed("recipe_book"):
 		if recipe_open:
 			Manager.recipe_book.disappear()
@@ -125,28 +133,18 @@ func _physics_process(delta: float) -> void:
 			Manager.recipe_book.appear()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		recipe_open = !recipe_open
+
 	if recipe_open:
 		return
+
+	# Consume held item
 	if Input.is_action_pressed("consume"):
-		var allow = true
-		match current_slot:
-			1:
-				if Manager.slot1 == null:
-					allow = false
-			2:
-				if Manager.slot2 == null:
-					allow = false
-			3:
-				if Manager.slot3 == null:
-					allow = false
-			0:
-				allow = false
-		if allow:
+		var slot = Manager.get("slot%d" % current_slot) if current_slot else null
+
+		if slot:
 			consume_bar.show()
-			print(current_slot)
-			if current_slot == 0:
-				pass
-			elif consume_bar.value >= 100:
+
+			if consume_bar.value >= 100:
 				consume_speed = 0.08
 				consume_bar.value = 0
 				consume_held()
@@ -157,109 +155,115 @@ func _physics_process(delta: float) -> void:
 		consume_bar.hide()
 		consume_bar.value = 0
 		consume_speed = 0.08
-		
-	# Add the gravity.
+
+	# Gravity
 	if not is_on_floor():
-		if canJump:
-			if(coyote_timer.is_stopped()):
-				coyote_timer.start(coyoteTime)
+		if canJump and coyote_timer.is_stopped():
+			coyote_timer.start(coyoteTime)
 		velocity += get_gravity() * 3 * delta
 	else:
-		canJump = true;
+		canJump = true
 		coyote_timer.stop()
 
-	# Handle jump.
+	# Jump
 	if Input.is_action_just_pressed("Jump") and canJump:
 		velocity.y = JUMP_VELOCITY
-		canJump = false;
+		canJump = false
 
-	if Input.is_action_pressed("Sprint"):
-		speed = SPRINT_SPEED
-	else:
-		speed = WALK_SPEED
+	# Sprint
+	speed = SPRINT_SPEED if Input.is_action_pressed("Sprint") else WALK_SPEED
+
 	if Input.is_action_just_pressed("Pause"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	# Inventory slots
 	if Input.is_action_just_pressed("slot1"):
 		update_slots(1)
 	elif Input.is_action_just_pressed("slot2"):
 		update_slots(2)
 	elif Input.is_action_just_pressed("slot3"):
 		update_slots(3)
+
 	if Input.is_action_just_pressed("dropthrow"):
 		dropthrow()
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
+	# Movement
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
 	if is_on_floor():
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
-			killer_bean_sproject_2.update_anims()
-			killer_bean_sproject_2.moving = true
+			#killer_bean_sproject_2.update_anims()
+			#killer_bean_sproject_2.moving = true
 		else:
-			killer_bean_sproject_2.update_anims()
-			killer_bean_sproject_2.moving = false
+			#killer_bean_sproject_2.update_anims()
+			#killer_bean_sproject_2.moving = false
 			velocity.x = 0.0
 			velocity.z = 0.0
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-	
+
+	# Head bob
 	tBob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = HeadBob(tBob)
 
-	var forward_speed = -velocity.dot(head.global_transform.basis.z)
+	# FOV
+	var forward_speed := -velocity.dot(head.global_transform.basis.z)
 	forward_speed = max(forward_speed, 0.0)
 
 	var targetFOV = BASE_FOV + FOV_CHANGE * clamp(forward_speed, 0.5, speed * 2)
 	camera.fov = lerp(camera.fov, targetFOV, delta * 5.0)
 
-	
+	# Target detection
 	if raycast.is_colliding():
 		var new_target = raycast.get_collider()
+
 		if current_target and current_target != new_target:
 			_exit_target()
+
 		if current_target != new_target:
 			current_target = new_target
 			_enter_target()
 	else:
 		if current_target:
 			_exit_target()
-	if Input.is_action_just_pressed("place_bagel") and current_target:
-		if current_target.has_method("add_to_counter"):
-			current_target.add_to_counter("bagel")
-	if Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() < 3:
-		if current_target.has_method("get_took"):
-			var target_scene: PackedScene
-			target_scene = load(current_target.scene_file_path)
-			current_target.get_took()
-			if Manager.slot1 == null:
-				if Manager.bagel_mode:
-					Manager.slotb1 = current_target
-				Manager.slot1 = target_scene
-				$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = current_target.icon
-				Manager.inventory.append(target_scene)
-				update_slots(1)
-			elif Manager.slot2 == null:
-				if Manager.bagel_mode:
-					Manager.slotb2 = current_target
-				Manager.slot2 = target_scene
-				$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = current_target.icon
-				Manager.inventory.append(target_scene)
-				update_slots(2)
-			elif Manager.slot3 == null:
-				if Manager.bagel_mode:
-					Manager.slotb3 = current_target
-				Manager.slot3 = target_scene
-				$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = current_target.icon
-				Manager.inventory.append(target_scene)
-				update_slots(3)
-	elif Input.is_action_just_pressed("Interact") and current_target and Manager.inventory.size() >= 3:
-		if current_target.has_method("get_took"):
-			current_target.get_rolled()
+
+	# Pick up item
+	if Input.is_action_just_pressed("Interact") and current_target:
+		pickup_food()
 
 	move_and_slide()
+
+func pickup_food() -> void:
+	if not current_target.has_method("get_took"):
+		return
+
+	if Manager.inventory.size() >= 3:
+		current_target.get_rolled()
+		return
+
+	var food_scene: PackedScene = load(current_target.scene_file_path)
+
+	current_target.get_took()
+
+	for i in range(1, 4):
+		if Manager.get("slot%d" % i) == null:
+			Manager.set("slot%d" % i, food_scene)
+
+			get_node(
+				"CanvasLayer/MarginContainer/Start/Slot%d/Panel/Item%d" % [i, i]
+			).texture = current_target.icon
+
+			Manager.inventory.append(food_scene)
+			update_slots(i)
+
+			# Unlock the corresponding recipe/ingredient.
+			update_held_item(current_target.id)
+
+			return
 
 func HeadBob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -276,223 +280,125 @@ func _exit_target():
 		current_target.on_looked_away()
 	current_target = null
 	
-func update_slots(slot):
-	if slot != current_slot:
-		current_slot = slot
-		#equip new item
-	elif slot == current_slot:
+func update_slots(slot: int) -> void:
+	# Toggle the current slot.
+	if slot == current_slot:
 		current_slot = 0
-		#unequip current item
-	var slot_check
-	if current_slot != 0:
-		slot_check = Manager.get("slot" + str(current_slot))
-	if slot_check != null and current_slot != 0:
-		Manager.holding = true
-		var instance = slot_check.instantiate()
-		var id = instance.id
-		killer_bean_sproject_2.update_held_item(id)
-		killer_bean_sproject_2.hold_setter = false
-		killer_bean_sproject_2.update_anims()
 	else:
-		killer_bean_sproject_2.update_held_item(0)
+		current_slot = slot
+
+	# Hide indicators.
+	selected_1.hide()
+	selected_2.hide()
+	selected_3.hide()
+
+	# Delete currently held object.
+	if is_instance_valid(selected_object):
+		selected_object.queue_free()
+		selected_object = null
+
+	# Nothing selected.
+	if current_slot == 0:
 		Manager.holding = false
-		killer_bean_sproject_2.update_anims()
-	if Manager.slotb1:
-		Manager.slotb1.hide()
-		Manager.currently_held_bagel = null
-	if Manager.slotb2:
-		Manager.slotb2.hide()
-		Manager.currently_held_bagel = null
-	if Manager.slotb3:
-		Manager.slotb3.hide()
-		Manager.currently_held_bagel = null
+		Manager.current_slot = 0
+		return
+
+	# Get food scene.
+	var food_scene: PackedScene = Manager.get("slot%d" % current_slot)
+
+	if food_scene == null:
+		current_slot = 0
+		Manager.holding = false
+		Manager.current_slot = 0
+		return
+
+	# Create new object.
+	selected_object = food_scene.instantiate()
+	add_child(selected_object)
+
+	selected_object.position = Vector3.FORWARD
+	selected_object.scale = Vector3(0.5, 0.5, 0.5)
+	selected_object.freeze = true
+	selected_object.collision_layer = 2
+	selected_object.collision_mask = 2
+
+	Manager.holding = true
+	Manager.current_slot = current_slot
+
+	# Show indicator.
 	match current_slot:
 		1:
-			if Manager.slotb1:
-				Manager.slotb1.show()
-				Manager.currently_held_bagel = Manager.slotb1
-				print(Manager.currently_held_bagel)
 			selected_1.show()
-			selected_2.hide()
-			selected_3.hide()
-			Manager.current_slot = 1
 		2:
-			if Manager.slotb2:
-				Manager.slotb2.show()
-				Manager.currently_held_bagel = Manager.slotb2
-				print(Manager.currently_held_bagel)
 			selected_2.show()
-			selected_1.hide()
-			selected_3.hide()
-			Manager.current_slot = 2
 		3:
-			if Manager.slotb3:
-				Manager.slotb3.show()
-				Manager.currently_held_bagel = Manager.slotb3
-				print(Manager.currently_held_bagel)
-			selected_1.hide()
-			selected_2.hide()
 			selected_3.show()
-			Manager.current_slot = 3
-		0:
-			selected_1.hide()
-			selected_2.hide()
-			selected_3.hide()
-			Manager.current_slot = 0
-			Manager.currently_held_bagel = null
-			print(Manager.currently_held_bagel)
+
+
+
 			
-func consume_held():
+func consume_held() -> void:
 	if current_slot == 0:
 		return
-	match current_slot:
-		1:
-			if Manager.slot1 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
-			var drop = Manager.slot1.instantiate()
-			hunger += drop.hunger_restore
-			Manager.slot1 = null
-			Manager.inventory.pop_front()
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
-			return
-		2:
-			if Manager.slot2 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
-			var drop = Manager.slot2.instantiate()
-			hunger += drop.hunger_restore
-			Manager.slot2 = null
-			Manager.inventory.pop_front()
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
-			return
-		3:
-			if Manager.slot3 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
-			var drop = Manager.slot3.instantiate()
-			hunger += drop.hunger_restore
-			Manager.slot3 = null
-			Manager.inventory.pop_front()
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-			$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
-			return
-		0:
-			pass
+
+	var slot = Manager.get("slot%d" % current_slot)
+	if slot == null:
+		return
+
+	var item_texture = get_node(
+		"CanvasLayer/MarginContainer/Start/Slot%d/Panel/Item%d" % [current_slot, current_slot]
+	)
+	item_texture.texture = null
+
+	var item = slot.instantiate()
+	hunger += item.hunger_restore
+
+	Manager.set("slot%d" % current_slot, null)
+	Manager.inventory.pop_front()
+
+	#killer_bean_sproject_2.update_held_item(0)
+	Manager.holding = false
+	#killer_bean_sproject_2.update_anims()
+	update_slots(0)
+
+	$CanvasLayer/MarginContainer4/VBoxContainer/Control/MarginContainer/HungerBar.set_hunger(hunger)
+
 			
-func dropthrow():
+func dropthrow() -> void:
 	if current_slot == 0:
 		return
-	match current_slot:
-		1:
-			if Manager.slot1 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot1/Panel/Item1.texture = null
-			var drop = Manager.slot1.instantiate()
-			if drop.type == "bagel":
-				#drop.freeze = false
-				#drop.held = false
-				#drop.global_position = food_spawn.global_position
-				Manager.slotb1.held = false
-				Manager.slotb1.freeze = false
-				Manager.slotb1.show()
-				Manager.slotb1.set_collision_layer_value(10, true)
-				Manager.slotb1 = null
-				Manager.slot1 = null
-				Manager.inventory.pop_front()
-			
-				killer_bean_sproject_2.update_held_item(0)
-				Manager.holding = false
-				killer_bean_sproject_2.update_anims()
-				update_slots(0)
-				return
-			var current_scene = get_tree().current_scene
-			drop.rarity_level = 1
-			current_scene.add_child(drop)
-			drop.freeze = false
-			drop.global_position = food_spawn.global_position
-			Manager.inventory.pop_front()
-			Manager.slot1 = null
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-		2:
-			if Manager.slot2 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot2/Panel/Item2.texture = null
-			var drop = Manager.slot2.instantiate()
-			if drop.type == "bagel":
-				drop.freeze = false
-				drop.global_position = food_spawn.global_position
-				Manager.slotb2.held = false
-				Manager.slotb2.freeze = false
-				Manager.slotb2.show()
-				Manager.slotb2.set_collision_layer_value(10, true)
-				Manager.slotb2 = null
-				Manager.slot2 = null
-				Manager.inventory.pop_front()
-			
-				killer_bean_sproject_2.update_held_item(0)
-				Manager.holding = false
-				killer_bean_sproject_2.update_anims()
-				update_slots(0)
-				return
-			var current_scene = get_tree().current_scene
-			drop.rarity_level = 1
-			current_scene.add_child(drop)
-			drop.freeze = false
-			drop.global_position = food_spawn.global_position
-			Manager.inventory.pop_front()
-			Manager.slot2 = null
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-		3:
-			if Manager.slot3 == null:
-				return
-			$CanvasLayer/MarginContainer/Start/Slot3/Panel/Item3.texture = null
-			var drop = Manager.slot3.instantiate()
-			if drop.type == "bagel":
-				drop.freeze = false
-				Manager.slotb3.held = false
-				Manager.slotb3.freeze = false
-				Manager.slotb3.show()
-				Manager.slotb3.set_collision_layer_value(10, true)
-				Manager.slotb3 = null
-				Manager.slot3 = null
-				drop.global_position = food_spawn.global_position
-				Manager.inventory.pop_front()
-				killer_bean_sproject_2.update_held_item(0)
-				Manager.holding = false
-				killer_bean_sproject_2.update_anims()
-				update_slots(0)
-				return
-			var current_scene = get_tree().current_scene
-			drop.rarity_level = 1
-			current_scene.add_child(drop)
-			drop.freeze = false
-			drop.global_position = food_spawn.global_position
-			Manager.inventory.pop_front()
-			Manager.slot3 = null
-			killer_bean_sproject_2.update_held_item(0)
-			Manager.holding = false
-			killer_bean_sproject_2.update_anims()
-			update_slots(0)
-		0:
-			pass
+
+	var slot = Manager.get("slot%d" % current_slot)
+	if slot == null:
+		return
+
+	# Clear the inventory UI slot.
+	var item_texture = get_node(
+		"CanvasLayer/MarginContainer/Start/Slot%d/Panel/Item%d" % [current_slot, current_slot]
+	)
+	item_texture.texture = null
+
+	# Spawn the dropped item.
+	var drop = slot.instantiate()
+	var current_scene = get_tree().current_scene
+
+	drop.rarity_level = 1
+	current_scene.add_child(drop)
+	drop.freeze = false
+	drop.global_position = food_spawn.global_position
+
+	# Clear the inventory slot.
+	Manager.set("slot%d" % current_slot, null)
+	Manager.inventory.pop_front()
+
+	_finish_drop()
+
+
+func _finish_drop() -> void:
+	#killer_bean_sproject_2.update_held_item(0)
+	Manager.holding = false
+	#killer_bean_sproject_2.update_anims()
+	update_slots(0)
 
 func CoyoteTimeout():
 	canJump = false;
@@ -522,3 +428,34 @@ func _on_freeze_player():
 func _on_unfreeze_player():
 	print("unfreeze")
 	set_physics_process(true)
+
+func update_held_item(id):
+	match id:
+		0:
+			pass
+		1:
+			Manager.recipe_book.unlock_icons("terry")
+			Manager.recipe_book.items["ingredients"]["terry"]["unlocked"] = true
+		2:
+			Manager.recipe_book.unlock_icons("waffle")
+			Manager.recipe_book.items["ingredients"]["waffle"]["unlocked"] = true
+		3:
+			Manager.recipe_book.unlock_icons("butter")
+			Manager.recipe_book.items["ingredients"]["butter"]["unlocked"] = true
+		4:
+			Manager.recipe_book.unlock_icons("chknandwaffles")
+			Manager.recipe_book.items["ingredients"]["chknandwaffles"]["unlocked"] = true
+		5:
+			Manager.recipe_book.unlock_icons("babytear")
+			Manager.recipe_book.items["ingredients"]["babytear"]["unlocked"] = true
+		6:
+			Manager.recipe_book.unlock_icons("meatpocket")
+			Manager.recipe_book.items["ingredients"]["meatpocket"]["unlocked"] = true
+		7:
+			Manager.recipe_book.unlock_icons("doughbaby")
+			Manager.recipe_book.items["ingredients"]["doughbaby"]["unlocked"] = true
+		8:
+			Manager.recipe_book.unlock_icons("meatball")
+			Manager.recipe_book.items["ingredients"]["meatball"]["unlocked"] = true
+		9:
+			pass
