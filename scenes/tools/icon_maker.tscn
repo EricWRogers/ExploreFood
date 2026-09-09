@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://d13rs5g0a2u0r" path="res://scenes/food/bagel/bagel_top.tscn" id="15_ejd08"]
 [ext_resource type="PackedScene" uid="uid://32c24t457nbx" path="res://scenes/food/bagel/bagel_start.tscn" id="16_xk22l"]
 [ext_resource type="PackedScene" uid="uid://bg30cyd7f3v1o" path="res://scenes/food/bagel/bagel_spread_piece.tscn" id="17_pp0c1"]
+[ext_resource type="Material" uid="uid://cxahwrc2ceujd" path="res://assets/materials/LinesHoverBagel.tres" id="18_xk22l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swcni"]
-load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjux8"]
 render_priority = 4
@@ -27,7 +27,6 @@ shading_mode = 0
 albedo_texture = SubResource("CompressedTexture2D_swcni")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dskf"]
-load_path = "res://.godot/imported/TerryColor.png-f193c093a6de22294154144175204151.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r11d8"]
 render_priority = 4
@@ -87,7 +86,6 @@ shading_mode = 0
 albedo_texture = SubResource("CompressedTexture2D_swcni")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c23sl"]
-load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3y7a6"]
 render_priority = 0
@@ -103,7 +101,6 @@ albedo_color = Color(1, 1, 1, 0.039215688)
 albedo_texture = SubResource("CompressedTexture2D_c23sl")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tpkq0"]
-load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
 
 [sub_resource type="Shader" id="Shader_ma1e4"]
 code = "shader_type spatial;
@@ -179,7 +176,6 @@ albedo_color = Color(1, 1, 1, 0)
 albedo_texture = SubResource("CompressedTexture2D_tpkq0")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g0650"]
-load_path = "res://.godot/imported/EggColor.png-a2260b44eb94060f223c6408e4ded134.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpeop"]
 transparency = 1
@@ -303,6 +299,61 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xk22l"]
+resource_local_to_scene = true
+height = 0.1302185
+radius = 0.3564453
+
+[sub_resource type="Shader" id="Shader_f48ei"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp0c1"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = ExtResource("18_xk22l")
+shader = SubResource("Shader_f48ei")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hixj3"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_pp0c1")
+shader = SubResource("Shader_f48ei")
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_47tt1"]
 resource_local_to_scene = true
 top_radius = 0.35742188
@@ -317,7 +368,7 @@ render_target_update_mode = 4
 script = ExtResource("1_f21od")
 
 [node name="IconCamera" type="Camera3D" parent="." unique_id=1932887130]
-transform = Transform3D(0.78421366, 0.35549548, -0.5085587, 0, 0.819607, 0.57292616, 0.620491, -0.44929656, 0.64274704, -0.52306455, 0.5475653, 0.6767484)
+transform = Transform3D(0.9405725, 0.26834714, -0.20811881, 0, 0.6128472, 0.7902015, 0.33959326, -0.7432417, 0.5764271, -0.39526618, 2.7575445, 1.4948642)
 fov = 59.841953
 
 [node name="Terry" parent="." unique_id=100476314 instance=ExtResource("2_a50sx")]
@@ -381,7 +432,6 @@ visible = false
 
 [node name="DoughBaby" parent="." unique_id=1672482069 instance=ExtResource("12_77w0k")]
 transform = Transform3D(0.89189285, -0.14649212, -0.42786378, 0.41800612, 0.6281473, 0.6562789, 0.17262173, -0.7641801, 0.62147456, 0, 0.6431353, 0)
-visible = false
 freeze = true
 rarity_level = 1.0
 
@@ -391,6 +441,7 @@ material_overlay = SubResource("ShaderMaterial_1jqcv")
 mesh = ExtResource("14_qm5qq")
 
 [node name="BagelTop" parent="." unique_id=541640571 instance=ExtResource("15_ejd08")]
+visible = false
 
 [node name="BagelStart" parent="BagelTop" unique_id=989785034 instance=ExtResource("16_xk22l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0823496, 0)
@@ -398,10 +449,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0823496, 0)
 [node name="Node3D" parent="BagelTop/BagelStart" index="1" unique_id=322777136]
 visible = false
 
+[node name="CollisionShape3D" parent="BagelTop/BagelStart" index="2" unique_id=1752309722]
+shape = SubResource("CylinderShape3D_xk22l")
+
 [node name="SpreadPiece" parent="BagelTop/BagelStart" unique_id=1728940416 instance=ExtResource("17_pp0c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010835677, 0)
 
 [node name="MeshInstance3D" parent="BagelTop/BagelStart/SpreadPiece" index="0" unique_id=363521579]
+material_overlay = SubResource("ShaderMaterial_hixj3")
 mesh = SubResource("CylinderMesh_47tt1")
 
 [editable path="Terry"]

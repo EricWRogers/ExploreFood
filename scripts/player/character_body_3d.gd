@@ -5,8 +5,9 @@ const WALK_SPEED = 7.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
+#var belly = 100
 var hunger = 100
-@export var hunger_reduction_rate = 5
+@export var hunger_reduction_rate = 2.5
 var time_tick = 2
 
 const BOB_FREQ = 2.0
@@ -43,6 +44,7 @@ var recipe_open = false
 var free_cam = false
 
 func _ready():
+	hunger = Manager.belly
 	update_cash()
 	$CanvasLayer/MarginContainer4.hide()
 	$CanvasLayer/MarginContainer5.hide()
@@ -110,6 +112,11 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("instant_death_button"):
 		death()
+	if Input.is_action_just_pressed("belly_expansion"):
+		if Manager.money >= 50:
+			Manager.money -= 50
+			update_cash()
+			Manager.belly += 50
 	if Input.is_action_just_pressed("recipe_book"):
 		if recipe_open:
 			Manager.recipe_book.disappear()

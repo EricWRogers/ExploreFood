@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://assets/ui/item_icons/waffle_icon.png" id="10_xrowv"]
 [ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="11_l74o7"]
 [ext_resource type="Texture2D" uid="uid://bbdqiesd6h5st" path="res://assets/ui/item_icons/droplet_icon.png" id="12_uwfyn"]
-[ext_resource type="Texture2D" uid="uid://dsdv8bvnvjdpi" path="res://assets/ui/item_icons/doughbabyicon.png" id="13_6o6sm"]
 [ext_resource type="Texture2D" uid="uid://dtnfe788cdn0k" path="res://assets/ui/item_icons/MeatBall.png" id="14_2smgm"]
+[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="15_2smgm"]
 [ext_resource type="Texture2D" uid="uid://slncfheyw6j6" path="res://assets/ui/item_icons/chickenwaffleicon.png" id="15_uwfyn"]
 [ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="16_6o6sm"]
 
@@ -744,7 +744,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
-texture = ExtResource("13_6o6sm")
+texture = ExtResource("15_2smgm")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=455095692]

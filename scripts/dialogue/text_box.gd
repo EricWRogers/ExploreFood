@@ -30,7 +30,7 @@ func display_text(text_to_display: String):
 		container.custom_maximum_size.y = container.size.y
 		
 	
-	container.position.x -= container.size.x / 2
+	#container.position.x -= container.size.x / 2
 	container.position.y -= (container.size.y + 24)*container.scale.y
 	
 	label.text = ""

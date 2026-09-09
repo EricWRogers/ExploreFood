@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6oge8t8wu2ag"]
 
 [ext_resource type="Script" uid="uid://clki1r551c7n4" path="res://scripts/dialogue/text_box.gd" id="1_wscpg"]
+[ext_resource type="FontFile" uid="uid://b6w3yuubac02m" path="res://assets/fonts/THEJOURNALFONT-DEMOVERSION.ttf" id="2_o8p8f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_klsck"]
 
@@ -18,7 +19,9 @@ offset_top = -61.0
 offset_right = 8.5
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 56
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=464089568]
 layout_mode = 2
@@ -26,6 +29,8 @@ texture = SubResource("CanvasTexture_klsck")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer" unique_id=124622777]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -33,8 +38,10 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer2" unique_id=1754847049]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_o8p8f")
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="MarginContainer" unique_id=1713380486]

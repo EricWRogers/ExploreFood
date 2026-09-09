@@ -21,3 +21,11 @@ func holding():
 	
 func _physics_process(_delta: float) -> void:
 	progress += eagerness
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.has_method("get_rolled") and not hands_full:
+		Manager.money += body.value
+		Manager.player.update_cash()
+		body.queue_free()
+		hands_full = true

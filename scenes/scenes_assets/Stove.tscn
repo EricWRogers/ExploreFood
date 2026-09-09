@@ -1054,6 +1054,7 @@ one_shot = true
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1562393550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85538363, 0)
+visible = false
 
 [node name="Label3D" type="Label3D" parent="Node3D" unique_id=715197038]
 billboard = 1
@@ -1070,6 +1071,29 @@ transform = Transform3D(0.6, 0, 0, 0, 0.125, 0, 0, 0, 0.075, 0, 0.0015291125, -0
 modulate = Color(0.8960314, 0.8886272, 0.73411757, 1)
 billboard = 1
 no_depth_test = true
+render_priority = 75
+texture = ExtResource("17_n3r11")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="Funny" type="Node3D" parent="." unique_id=18298529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8780147, 0)
+visible = false
+
+[node name="Label3D" type="Label3D" parent="Funny" unique_id=2016251434]
+billboard = 1
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.5315801, 0.37900507, 0.200766, 1)
+outline_modulate = Color(0.53333336, 0.38039216, 0.2, 1)
+text = "You've messed up 
+big time.. Press K"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Funny" unique_id=497305056]
+transform = Transform3D(0.92, 0, 0, 0, 0.189, 0, 0, 0, 0.116, 0, 0.0015291125, -0.008809596)
+modulate = Color(0.8960314, 0.8886272, 0.73411757, 1)
+billboard = 1
 render_priority = 75
 texture = ExtResource("17_n3r11")
 region_enabled = true

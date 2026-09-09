@@ -139,6 +139,8 @@ meal_name = "Meat Pies"
 flavor_text = "Delicious meat pies with a side of tear sauce"
 id = 6
 icon = ExtResource("2_8ycpn")
+value = 35
+hunger_restore = 140
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
 transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0, 0, 0)

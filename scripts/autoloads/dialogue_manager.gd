@@ -13,6 +13,8 @@ var quest: String
 signal freeze_player()
 signal unfreeze_player()
 
+var current_tree_index: int
+
 func _ready() -> void:
 	pass
 	#print("Yes, I see the dialogue manager")
@@ -25,8 +27,8 @@ func _process(_delta):
 		can_advance_line
 	): 
 		text_box.queue_free()
-		
 		current_line_index += 1
+		_line_check()
 		
 		#end dialogue
 		if current_line_index >= dialogue_lines.size():
@@ -42,9 +44,11 @@ func _process(_delta):
 			show_text_box()
 
 #dialogue starts here. Method called from npc dialogue
-func start_dialogue(lines: Array[String], quest_item: String):
+func start_dialogue(lines: Array[String], quest_item: String, dialogue_tree_index: int):
 	if is_dialogue_active:
 		return
+	
+	current_tree_index = dialogue_tree_index
 	
 	#freeze player 
 	freeze_player.emit()
@@ -60,7 +64,7 @@ func start_dialogue(lines: Array[String], quest_item: String):
 func show_text_box(): 
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(on_text_box_finished_displaying)
-	get_tree().root.add_child(text_box)
+	get_tree().current_scene.add_child(text_box)
 	
 	text_box.display_text(dialogue_lines[current_line_index])
 	#print("current line index: ", current_line_index)
@@ -75,3 +79,15 @@ func _give_quest():
 	print("quest given!")
 	Manager.current_quest_item = quest
 	print("Quest item assigned: ", Manager.current_quest_item)
+
+#for Caleb
+func _line_check():
+	if (current_tree_index == 0 and current_line_index == 5):
+		Manager.kitchen.showmeat()
+	if (current_tree_index == 0 and current_line_index == 4):
+		Manager.kitchen.showsell()
+	if (current_tree_index == 2 and current_line_index == 2):
+		Manager.kitchen.showwaffle()
+		Manager.breakfast_unlocked = true
+	else:
+		pass

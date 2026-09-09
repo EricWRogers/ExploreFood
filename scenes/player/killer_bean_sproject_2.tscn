@@ -342,8 +342,6 @@ shader_parameter/rim_intensity = 0.9290000441275
 next_pass = SubResource("ShaderMaterial_tk7u3")
 albedo_texture = ExtResource("5_3opuo")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lb6us"]
-
 [sub_resource type="Shader" id="Shader_noha8"]
 code = "shader_type spatial;
 render_mode unshaded;
@@ -383,8 +381,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s4tos"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_41mhd"]
 resource_local_to_scene = true
 render_priority = 1
@@ -395,7 +391,7 @@ shader_parameter/angle = 20.0
 shader_parameter/line_count = 20.0
 shader_parameter/speed = 1.015
 shader_parameter/blur = 0.0
-shader_parameter/mesh_texture = SubResource("CompressedTexture2D_s4tos")
+shader_parameter/mesh_texture = ExtResource("11_y8x42")
 shader_parameter/transparency = 0.0
 
 [sub_resource type="Shader" id="Shader_ttusc"]
@@ -437,7 +433,6 @@ shader_parameter/rim_intensity = 0.9290000441275
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noybp"]
 next_pass = SubResource("ShaderMaterial_pcasy")
-albedo_texture = SubResource("CompressedTexture2D_lb6us")
 roughness = 0.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvf7r"]

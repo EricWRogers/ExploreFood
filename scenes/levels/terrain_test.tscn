@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="4_gba4x"]
 [ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
+[ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="7_qlq6c"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="9_l0ptr"]
 [ext_resource type="PackedScene" uid="uid://d2lxclnqmsnyo" path="res://scenes/npcs/worm_monster/worm_enemy.tscn" id="10_v7lih"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="11_885wc"]
@@ -161,9 +162,10 @@ transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="WaterFloor" type="Area3D" parent="." unique_id=270011674]
+[node name="WaterFloor" type="Area3D" parent="." unique_id=270011674 node_paths=PackedStringArray("spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
 script = ExtResource("13_hvl47")
+spawn = NodePath("../Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
@@ -171,6 +173,9 @@ shape = SubResource("BoxShape3D_qlq6c")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
 transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, 5.520287, 0.49479103, 0)
+image_of_world = ExtResource("7_qlq6c")
+light_color = Color(0.5921569, 0.57254905, 0.5411765, 1)
+active = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1756919948]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 1.9073486e-06)
@@ -707,6 +712,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.214497, 82.96884, -118.358
 
 [node name="Nest5" parent="." unique_id=1537150748 instance=ExtResource("16_qlq6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.07292, 82.96884, -119.254814)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=835759066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.447459, 0)
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]

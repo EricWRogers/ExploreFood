@@ -39,6 +39,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		update_held_item(body.id)
 		body.queue_free()
 		print(food_types)
+	if body.has_method("start_hunger"):
+		$Funny.show()
 		
 	#if item in area is an ingredient
 	
@@ -75,7 +77,7 @@ func find_recipe():
 	var recipe_spawn = null
 	recipe_spawn = chosen_recipe.product.instantiate()
 	current_scene.add_child(recipe_spawn)
-	recipe_spawn.position = Vector3(-4.1,1.7,0)
+	recipe_spawn.position = Vector3(-1,1.7,-6)
 	
 	#empty list for next batch
 	food_types.clear()

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://wpxcy0vqvk23"]
 
+[ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_h20bm"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_ubfwv"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_4gaw2"]
 [ext_resource type="Texture2D" uid="uid://cxvnfgy865wsk" path="res://addons/MarchingSquaresTerrain/resources/plugin_materials/grass_leaf_sprite.png" id="2_kebx2"]
@@ -11,8 +12,138 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="8_japl0"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="9_174kf"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="10_174kf"]
+[ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="10_mwv6q"]
+[ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="11_pl4bu"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="12_6qkhe"]
+[ext_resource type="Texture2D" uid="uid://cr0l3f34l0dhe" path="res://assets/ui/cook_book/screenshots/FrogScreenshot.png" id="12_h20bm"]
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="13_w8t0d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h20bm"]
+resource_local_to_scene = true
+render_priority = 4
+shader = ExtResource("11_pl4bu")
+shader_parameter/albedo_texture = ExtResource("12_h20bm")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_rotation_degrees = 90.000004275
+shader_parameter/distort_on_rotate = false
+shader_parameter/mesh_opacity = 0.638000030305
+shader_parameter/ripple_strength = 1.0
+shader_parameter/ripple_speed = 8.0
+shader_parameter/ripple_frequency = 45.325
+shader_parameter/ripple_amplitude = -0.215
+shader_parameter/portal_tint = Color(1.1008143, 1.1008143, 1.1008143, 1)
+shader_parameter/mesh_aspect_ratio = 1.0
+shader_parameter/vortex_effect_radius = 0.5499999877064
+shader_parameter/twist_strength = 1.30000001937156
+shader_parameter/pulsation_speed = 0.7
+shader_parameter/breath_magnitude = 0.05499998014411
+shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
+shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
+shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
+shader_parameter/edge_softness = 0.08499999810008001
+
+[sub_resource type="Shader" id="Shader_japl0"]
+code = "shader_type sky;
+
+uniform vec3 sky_color : source_color = vec3(0.2, 0.5, 0.9);
+uniform vec3 horizon_color : source_color = vec3(0.5, 0.8, 1.0);
+uniform float horizon_blur : hint_range(0.0, 1.0) = 0.1;
+
+uniform vec3 sun_color : source_color = vec3(1.0, 1.0, 0.8);
+uniform float sun_size : hint_range(0.01, 1.0) = 0.05;
+uniform float sun_blur : hint_range(0.0, 0.5) = 0.01;
+
+uniform vec3 cloud_color : source_color = vec3(1.0, 1.0, 1.0);
+uniform float cloud_edge_sharpness : hint_range(0.0, 1.0) = 0.1;
+uniform float cloud_scale : hint_range(0.1, 10.0) = 2.0;
+uniform float cloud_speed : hint_range(0.0, 0.5) = 0.02;
+
+// Integer bit-permutation hash (resistant to precision loss across all GPUs)
+float hash(vec2 p) {
+	uvec2 q = uvec2(ivec2(p));
+	q = q * uvec2(1597334677u, 3812015801u);
+	uint n = (q.x ^ q.y) * 1597334677u;
+	return float(n) * (1.0 / 4294967295.0);
+}
+
+float noise(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	// Quintic interpolation curve for smoother, non-blocky boundaries
+	vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+	
+	return mix(
+		mix(hash(i + vec2(0.0, 0.0)), hash(i + vec2(1.0, 0.0)), u.x),
+		mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
+		u.y
+	);
+}
+
+// Layered noise for cloud shapes
+float fbm(vec2 p) {
+	float value = 0.0;
+	float amplitude = 0.5;
+	for (int i = 0; i < 3; i++) {
+		value += amplitude * noise(p);
+		p *= 2.0;
+		amplitude *= 0.5;
+	}
+	return value;
+}
+
+void sky() {
+	// 1. Base Sky Gradient (Two-Tone Cel Look)
+	float sky_gradient = EYEDIR.y;
+	float horizon_mask = smoothstep(-horizon_blur, horizon_blur, sky_gradient);
+	vec3 final_sky = mix(horizon_color, sky_color, horizon_mask);
+	
+	// 2. Stylized Sun Disc
+	float sun_distance = distance(EYEDIR, LIGHT0_DIRECTION);
+	float sun_mask = smoothstep(sun_size, sun_size - sun_blur, sun_distance);
+	final_sky = mix(final_sky, sun_color, sun_mask);
+	
+	// 3. Procedural Cartoon Clouds
+	if (EYEDIR.y > 0.0) {
+		vec2 cloud_uv = EYEDIR.xz / (EYEDIR.y + 0.3);
+		
+		cloud_uv += TIME * cloud_speed;
+		cloud_uv *= cloud_scale;
+		
+		float cloud_noise = fbm(cloud_uv);
+		float cloud_mask = smoothstep(0.4, 0.4 + cloud_edge_sharpness, cloud_noise);
+		
+		cloud_mask *= smoothstep(0.0, 0.3, EYEDIR.y);
+		
+		final_sky = mix(final_sky, cloud_color, cloud_mask);
+	}
+	
+	COLOR = final_sky;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_174kf"]
+shader = SubResource("Shader_japl0")
+shader_parameter/sky_color = Color(1, 0.87333333, 0.6, 1)
+shader_parameter/horizon_color = Color(0.91, 0.43983337, 0, 1)
+shader_parameter/horizon_blur = 0.026000001235
+shader_parameter/sun_color = Color(1, 0.9573333, 0.84000003, 1)
+shader_parameter/sun_size = 0.14900000637898
+shader_parameter/sun_blur = 0.07200000342
+shader_parameter/cloud_color = Color(0.7327667, 0.89, 0.712, 1)
+shader_parameter/cloud_edge_sharpness = 0.0710000033725
+shader_parameter/cloud_scale = 4.26500019932762
+shader_parameter/cloud_speed = 0.02
+
+[sub_resource type="Sky" id="Sky_kebx2"]
+sky_material = SubResource("ShaderMaterial_174kf")
+
+[sub_resource type="Environment" id="Environment_japl0"]
+background_mode = 2
+sky = SubResource("Sky_kebx2")
+adjustment_enabled = true
+adjustment_contrast = 1.04
+adjustment_saturation = 1.26
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ubfwv"]
 
@@ -437,147 +568,281 @@ albedo_color = Color(0.95, 0.81161666, 0.73149997, 0.7647059)
 [sub_resource type="SphereMesh" id="SphereMesh_lqdem"]
 material = SubResource("StandardMaterial3D_qvufb")
 
-[sub_resource type="Shader" id="Shader_japl0"]
-code = "shader_type sky;
-
-uniform vec3 sky_color : source_color = vec3(0.2, 0.5, 0.9);
-uniform vec3 horizon_color : source_color = vec3(0.5, 0.8, 1.0);
-uniform float horizon_blur : hint_range(0.0, 1.0) = 0.1;
-
-uniform vec3 sun_color : source_color = vec3(1.0, 1.0, 0.8);
-uniform float sun_size : hint_range(0.01, 1.0) = 0.05;
-uniform float sun_blur : hint_range(0.0, 0.5) = 0.01;
-
-uniform vec3 cloud_color : source_color = vec3(1.0, 1.0, 1.0);
-uniform float cloud_edge_sharpness : hint_range(0.0, 1.0) = 0.1;
-uniform float cloud_scale : hint_range(0.1, 10.0) = 2.0;
-uniform float cloud_speed : hint_range(0.0, 0.5) = 0.02;
-
-// Integer bit-permutation hash (resistant to precision loss across all GPUs)
-float hash(vec2 p) {
-	uvec2 q = uvec2(ivec2(p));
-	q = q * uvec2(1597334677u, 3812015801u);
-	uint n = (q.x ^ q.y) * 1597334677u;
-	return float(n) * (1.0 / 4294967295.0);
-}
-
-float noise(vec2 p) {
-	vec2 i = floor(p);
-	vec2 f = fract(p);
-	// Quintic interpolation curve for smoother, non-blocky boundaries
-	vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
-	
-	return mix(
-		mix(hash(i + vec2(0.0, 0.0)), hash(i + vec2(1.0, 0.0)), u.x),
-		mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x),
-		u.y
-	);
-}
-
-// Layered noise for cloud shapes
-float fbm(vec2 p) {
-	float value = 0.0;
-	float amplitude = 0.5;
-	for (int i = 0; i < 3; i++) {
-		value += amplitude * noise(p);
-		p *= 2.0;
-		amplitude *= 0.5;
-	}
-	return value;
-}
-
-void sky() {
-	// 1. Base Sky Gradient (Two-Tone Cel Look)
-	float sky_gradient = EYEDIR.y;
-	float horizon_mask = smoothstep(-horizon_blur, horizon_blur, sky_gradient);
-	vec3 final_sky = mix(horizon_color, sky_color, horizon_mask);
-	
-	// 2. Stylized Sun Disc
-	float sun_distance = distance(EYEDIR, LIGHT0_DIRECTION);
-	float sun_mask = smoothstep(sun_size, sun_size - sun_blur, sun_distance);
-	final_sky = mix(final_sky, sun_color, sun_mask);
-	
-	// 3. Procedural Cartoon Clouds
-	if (EYEDIR.y > 0.0) {
-		vec2 cloud_uv = EYEDIR.xz / (EYEDIR.y + 0.3);
-		
-		cloud_uv += TIME * cloud_speed;
-		cloud_uv *= cloud_scale;
-		
-		float cloud_noise = fbm(cloud_uv);
-		float cloud_mask = smoothstep(0.4, 0.4 + cloud_edge_sharpness, cloud_noise);
-		
-		cloud_mask *= smoothstep(0.0, 0.3, EYEDIR.y);
-		
-		final_sky = mix(final_sky, cloud_color, cloud_mask);
-	}
-	
-	COLOR = final_sky;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_174kf"]
-shader = SubResource("Shader_japl0")
-shader_parameter/sky_color = Color(1, 0.87333333, 0.6, 1)
-shader_parameter/horizon_color = Color(0.91, 0.43983337, 0, 1)
-shader_parameter/horizon_blur = 0.026000001235
-shader_parameter/sun_color = Color(1, 0.9573333, 0.84000003, 1)
-shader_parameter/sun_size = 0.14900000637898
-shader_parameter/sun_blur = 0.07200000342
-shader_parameter/cloud_color = Color(0.7327667, 0.89, 0.712, 1)
-shader_parameter/cloud_edge_sharpness = 0.0710000033725
-shader_parameter/cloud_scale = 4.26500019932762
-shader_parameter/cloud_speed = 0.02
-
-[sub_resource type="Sky" id="Sky_kebx2"]
-sky_material = SubResource("ShaderMaterial_174kf")
-
-[sub_resource type="Environment" id="Environment_japl0"]
-background_mode = 2
-sky = SubResource("Sky_kebx2")
-adjustment_enabled = true
-adjustment_contrast = 1.04
-adjustment_saturation = 1.26
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_kebx2"]
 size = Vector3(32.985107, 0.068359375, 34.398743)
 
 [node name="BreakfastDimension" type="Node3D" unique_id=2044646444]
+script = ExtResource("1_h20bm")
+level_name = "breakfast_dimension"
 
-[node name="Water" type="MeshInstance3D" parent="." unique_id=844075959]
-transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -1.473671, 373.18396)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("8_japl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.912804, -0.21836281, 91.68236)
+image_of_world = ExtResource("10_mwv6q")
+light_color = Color(0.5882353, 0.57254905, 0.5411765, 1)
+active = true
 
-[node name="Water2" type="MeshInstance3D" parent="." unique_id=714261173]
-transform = Transform3D(24.768534, 0, 4.894304, 0, 8.945, 0, -10.545435, 0, 11.49547, 96.53392, 51.436916, 369.94968)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="CollisionShape3D" parent="Portal" index="0" unique_id=1121464066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2638502, 0)
 
-[node name="Water3" type="MeshInstance3D" parent="." unique_id=1877290261]
-transform = Transform3D(-1.0258713, 0, -11.524029, 0, 8.945, 0, 7.9742827, 0, -1.4825373, 128.18492, 51.436916, 361.18018)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="Portalmesh" parent="Portal" index="3" unique_id=206617557]
+surface_material_override/0 = SubResource("ShaderMaterial_h20bm")
 
-[node name="Water4" type="MeshInstance3D" parent="." unique_id=1254184442]
-transform = Transform3D(-2.9417202, 0, -10.813337, 0, 8.945, 0, 7.4825063, 0, -4.251224, 171.68419, 37.61358, 325.91705)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695138948]
+environment = SubResource("Environment_japl0")
 
-[node name="Water5" type="MeshInstance3D" parent="." unique_id=1747759523]
-transform = Transform3D(-2.576264, 0, -1.9547741, 0, 8.945, 0, 2.4059281, 0, -2.0931687, 167.87367, 37.61358, 315.7822)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("9_174kf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
 
-[node name="Water7" type="MeshInstance3D" parent="." unique_id=1444264107]
-transform = Transform3D(-8.075948, 0, -5.0705357, 0, 8.945, 0, 7.541987, 0, -5.4295216, 178.16565, 24.974854, 303.09653)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.480339, 2.0915623, 2.8218918)
+in_kitchen = false
 
-[node name="Water6" type="MeshInstance3D" parent="." unique_id=785143188]
-transform = Transform3D(-2.576264, 0, -3.2652366, 0, 8.945, 0, 2.405928, 0, -3.4964101, 173.37901, 37.61358, 317.30734)
-mesh = SubResource("PlaneMesh_ubfwv")
-surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580697229]
+transform = Transform3D(1, 0, 0, 0, 0.5863637, 0.8100479, 0, -0.8100479, 0.5863637, -64.17147, 82.61342, 258.65485)
+
+[node name="Respawn" type="Marker3D" parent="." unique_id=1013068401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
+
+[node name="WafflePads" type="Node3D" parent="." unique_id=1426152915]
+
+[node name="WafflePad" parent="WafflePads" unique_id=1169599723 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.61226, 48.90241, 360.71494)
+
+[node name="WafflePad2" parent="WafflePads" unique_id=48394134 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.424515, 48.90241, 362.04474)
+
+[node name="WafflePad3" parent="WafflePads" unique_id=1546105521 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.06151, 48.90241, 370.83914)
+
+[node name="WafflePad4" parent="WafflePads" unique_id=1775677757 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.479294, 48.90241, 372.2852)
+
+[node name="WafflePad5" parent="WafflePads" unique_id=594566536 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.24687, 48.90241, 367.91153)
+
+[node name="WafflePad6" parent="WafflePads" unique_id=218657975 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1024, 48.90241, 370.79547)
+
+[node name="WafflePad7" parent="WafflePads" unique_id=2073707480 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.1862, 48.90241, 362.7534)
+
+[node name="WafflePad8" parent="WafflePads" unique_id=92730230 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.79704, 48.90241, 369.79565)
+
+[node name="WafflePad9" parent="WafflePads" unique_id=365832137 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.45241, 48.90241, 358.72424)
+
+[node name="WafflePad10" parent="WafflePads" unique_id=745040477 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.90128, 48.90241, 356.677)
+
+[node name="WafflePad11" parent="WafflePads" unique_id=142772924 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.36545, 48.90241, 357.95508)
+
+[node name="WafflePad12" parent="WafflePads" unique_id=1393184048 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.48828, 48.90241, 365.60876)
+
+[node name="WafflePad13" parent="WafflePads" unique_id=936529745 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.79939, 48.90241, 363.0392)
+
+[node name="WafflePad14" parent="WafflePads" unique_id=185290704 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.40529, 35.05555, 318.08463)
+
+[node name="WafflePad21" parent="WafflePads" unique_id=169722188 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.675735, -1.6978769, 347.9818)
+
+[node name="WafflePad22" parent="WafflePads" unique_id=94930987 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.86348, -1.6978769, 349.3116)
+
+[node name="WafflePad23" parent="WafflePads" unique_id=2006438099 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.22649, -1.6978769, 358.10602)
+
+[node name="WafflePad24" parent="WafflePads" unique_id=1195004146 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.8087, -1.6978769, 359.55206)
+
+[node name="WafflePad25" parent="WafflePads" unique_id=1569844080 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.04112, -1.6978769, 355.1784)
+
+[node name="WafflePad26" parent="WafflePads" unique_id=1581392834 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.18559, -1.6978769, 358.06235)
+
+[node name="WafflePad27" parent="WafflePads" unique_id=891860543 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.10179, -1.6978769, 350.02026)
+
+[node name="WafflePad28" parent="WafflePads" unique_id=461607583 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.49095, -1.6978769, 357.06253)
+
+[node name="WafflePad30" parent="WafflePads" unique_id=711968592 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.756523, -1.6978769, 338.9402)
+
+[node name="WafflePad31" parent="WafflePads" unique_id=623457930 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.922546, -1.6978769, 345.22195)
+
+[node name="WafflePad32" parent="WafflePads" unique_id=525144267 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.799713, -1.6978769, 352.87564)
+
+[node name="WafflePad33" parent="WafflePads" unique_id=741921898 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4886, -1.6978769, 350.3061)
+
+[node name="WafflePad29" parent="WafflePads" unique_id=1256768175 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -62.675735, -1.6978769, 329.14035)
+
+[node name="WafflePad35" parent="WafflePads" unique_id=790665682 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -66.86348, -1.6978769, 330.47015)
+
+[node name="WafflePad36" parent="WafflePads" unique_id=1173611906 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -69.22649, -1.6978769, 339.26456)
+
+[node name="WafflePad37" parent="WafflePads" unique_id=2072107548 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -74.10179, -1.6978769, 331.1788)
+
+[node name="WafflePad38" parent="WafflePads" unique_id=1556076467 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -60.49095, -1.6978769, 338.22107)
+
+[node name="WafflePad39" parent="WafflePads" unique_id=2053042823 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -37.922546, -1.6978769, 326.3805)
+
+[node name="WafflePad40" parent="WafflePads" unique_id=1128537929 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -46.799713, -1.6978769, 334.03418)
+
+[node name="WafflePad41" parent="WafflePads" unique_id=2071931031 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -48.4886, -1.6978769, 331.46463)
+
+[node name="WafflePad42" parent="WafflePads" unique_id=396816838 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -23.07554, -1.6301556, 281.96506)
+
+[node name="WafflePad43" parent="WafflePads" unique_id=322935722 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -27.263285, -1.6301556, 283.29486)
+
+[node name="WafflePad44" parent="WafflePads" unique_id=1385706297 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -29.626291, -1.6301556, 292.08926)
+
+[node name="WafflePad45" parent="WafflePads" unique_id=1694372547 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -34.5016, -1.6301556, 284.0035)
+
+[node name="WafflePad46" parent="WafflePads" unique_id=1164043876 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -20.890757, -1.6301556, 291.04578)
+
+[node name="WafflePad50" parent="WafflePads" unique_id=1840979242 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 129.6936, -1.6301556, 246.93802)
+
+[node name="WafflePad57" parent="WafflePads" unique_id=907602432 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 25.90586, -1.6301556, 221.70406)
+
+[node name="WafflePad58" parent="WafflePads" unique_id=647331950 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 23.857224, -1.6301556, 226.84485)
+
+[node name="WafflePad59" parent="WafflePads" unique_id=1427716503 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 26.371359, -1.6301556, 231.84254)
+
+[node name="WafflePad60" parent="WafflePads" unique_id=408687621 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 23.980196, -1.6301556, 236.78214)
+
+[node name="WafflePad61" parent="WafflePads" unique_id=1558313165 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 26.786665, -1.6301556, 241.41243)
+
+[node name="WafflePad62" parent="WafflePads" unique_id=1389843119 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 24.52377, -1.6301556, 247.01167)
+
+[node name="WafflePad63" parent="WafflePads" unique_id=655040506 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 21.861034, -1.6301556, 252.74394)
+
+[node name="WafflePad64" parent="WafflePads" unique_id=919384738 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 32.39196, -1.6301556, 234.12811)
+
+[node name="WafflePad65" parent="WafflePads" unique_id=1346915310 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 32.276825, -1.6301556, 219.16489)
+
+[node name="WafflePad66" parent="WafflePads" unique_id=137994393 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 17.97837, -1.6301556, 223.12315)
+
+[node name="WafflePad67" parent="WafflePads" unique_id=2079252173 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -6.0823135, -1.6301556, 223.57018)
+
+[node name="WafflePad51" parent="WafflePads" unique_id=338564359 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 151.38406, -1.6301556, 213.15602)
+
+[node name="WafflePad52" parent="WafflePads" unique_id=342854378 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 148.38972, -1.6301556, 212.04474)
+
+[node name="WafflePad53" parent="WafflePads" unique_id=1944683207 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 145.7054, -1.6301556, 215.81027)
+
+[node name="WafflePad54" parent="WafflePads" unique_id=1878456884 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 135.28287, -1.6301537, 225.84628)
+
+[node name="WafflePad55" parent="WafflePads" unique_id=131064633 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 155.18835, -1.6301537, 247.99243)
+
+[node name="WafflePad56" parent="WafflePads" unique_id=299872796 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 137.08646, -1.6301537, 259.4892)
+
+[node name="WafflePad47" parent="WafflePads" unique_id=657226328 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -14.723434, -1.6301556, 304.95956)
+
+[node name="WafflePad48" parent="WafflePads" unique_id=566348583 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -7.199519, -1.6301556, 286.8589)
+
+[node name="WafflePad49" parent="WafflePads" unique_id=986931664 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -8.888408, -1.6301556, 284.28934)
+
+[node name="WafflePad34" parent="WafflePads" unique_id=409950556 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8827057, -15.544736, 305.3515)
+
+[node name="WafflePad15" parent="WafflePads" unique_id=1763039460 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.57591, 35.05555, 317.6121)
+
+[node name="WafflePad16" parent="WafflePads" unique_id=660190982 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.8697, 35.05555, 321.96826)
+
+[node name="WafflePad17" parent="WafflePads" unique_id=2117613274 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.94672, 35.05555, 324.8664)
+
+[node name="WafflePad18" parent="WafflePads" unique_id=205000700 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.10324, 22.39831, 305.67435)
+
+[node name="WafflePad19" parent="WafflePads" unique_id=1342666571 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.70726, 22.39831, 300.53772)
+
+[node name="WafflePad20" parent="WafflePads" unique_id=1906495157 instance=ExtResource("12_6qkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.32713, 22.39831, 299.6691)
+
+[node name="Terrys" type="Node3D" parent="." unique_id=1819820271]
+
+[node name="Nest" parent="Terrys" unique_id=2116521288 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.09703, 79.94357, 387.30988)
+
+[node name="Nest2" parent="Terrys" unique_id=1939318046 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.27934, 79.94357, 390.29886)
+
+[node name="Nest3" parent="Terrys" unique_id=1872649418 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.016487, 79.94357, 390.5297)
+
+[node name="Nest4" parent="Terrys" unique_id=66344886 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.94287, 79.94357, 390.5297)
+
+[node name="Nest5" parent="Terrys" unique_id=494258187 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.571144, 79.94357, 386.12106)
+
+[node name="Nest6" parent="Terrys" unique_id=1695748532 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.868935, 79.94357, 384.1878)
+
+[node name="Nest7" parent="Terrys" unique_id=522527365 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.368507, 79.94357, 387.19348)
+
+[node name="Nest8" parent="Terrys" unique_id=1413486076 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.683285, 79.94357, 385.0068)
+
+[node name="Nest9" parent="Terrys" unique_id=1103821510 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.221176, 79.94357, 377.9245)
+
+[node name="Nest10" parent="Terrys" unique_id=1102973458 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.337479, 79.94357, 417.69257)
+
+[node name="Nest11" parent="Terrys" unique_id=1978079180 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.99078, 79.94357, 413.95932)
+
+[node name="Nest12" parent="Terrys" unique_id=723383986 instance=ExtResource("13_w8t0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.12058, 79.94357, 410.44406)
 
 [node name="MarchingSquaresTerrain" type="Node3D" parent="." unique_id=1062990655]
 script = ExtResource("1_ubfwv")
@@ -989,37 +1254,74 @@ chunk_coords = Vector2i(-3, 6)
 cast_shadow = 0
 script = ExtResource("3_8e2pn")
 
-[node name="Waterfallmesh" type="MeshInstance3D" parent="." unique_id=328941173]
+[node name="WaterParent" type="Node3D" parent="." unique_id=1084471314]
+
+[node name="Water" type="MeshInstance3D" parent="WaterParent" unique_id=844075959]
+transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 0, -1.473671, 373.18396)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water2" type="MeshInstance3D" parent="WaterParent" unique_id=714261173]
+transform = Transform3D(24.768534, 0, 4.894304, 0, 8.945, 0, -10.545435, 0, 11.49547, 96.53392, 51.436916, 369.94968)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water3" type="MeshInstance3D" parent="WaterParent" unique_id=1877290261]
+transform = Transform3D(-1.0258713, 0, -11.524029, 0, 8.945, 0, 7.9742827, 0, -1.4825373, 128.18492, 51.436916, 361.18018)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water4" type="MeshInstance3D" parent="WaterParent" unique_id=1254184442]
+transform = Transform3D(-2.9417202, 0, -10.813337, 0, 8.945, 0, 7.4825063, 0, -4.251224, 171.68419, 37.61358, 325.91705)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water5" type="MeshInstance3D" parent="WaterParent" unique_id=1747759523]
+transform = Transform3D(-2.576264, 0, -1.9547741, 0, 8.945, 0, 2.4059281, 0, -2.0931687, 167.87367, 37.61358, 315.7822)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water7" type="MeshInstance3D" parent="WaterParent" unique_id=1444264107]
+transform = Transform3D(-8.075948, 0, -5.0705357, 0, 8.945, 0, 7.541987, 0, -5.4295216, 178.16565, 24.974854, 303.09653)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Water6" type="MeshInstance3D" parent="WaterParent" unique_id=785143188]
+transform = Transform3D(-2.576264, 0, -3.2652366, 0, 8.945, 0, 2.405928, 0, -3.4964101, 173.37901, 37.61358, 317.30734)
+mesh = SubResource("PlaneMesh_ubfwv")
+surface_material_override/0 = SubResource("ShaderMaterial_8e2pn")
+
+[node name="Waterfallmesh" type="MeshInstance3D" parent="WaterParent" unique_id=328941173]
 transform = Transform3D(-6.801055e-07, 0, -34.364, 0, 77.192, 0, 15.559, 0, -1.502098e-06, 146.76666, -21.105244, 232.69695)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="Waterfallmesh5" type="MeshInstance3D" parent="." unique_id=2012924811]
+[node name="Waterfallmesh5" type="MeshInstance3D" parent="WaterParent" unique_id=2012924811]
 transform = Transform3D(-14.009, 0, 2.1666388e-06, 0, 35.812, 0, -2.1153003e-06, 0, -14.349, 36.775837, 47.68668, 391.27048)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="Waterfallmesh6" type="MeshInstance3D" parent="." unique_id=368143727]
+[node name="Waterfallmesh6" type="MeshInstance3D" parent="WaterParent" unique_id=368143727]
 transform = Transform3D(-12.224071, 0, -1.9259555, 0, 30.637, 0, 0.698315, 0, -33.714035, 37.373165, 82.335106, 395.03525)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="Waterfallmesh2" type="MeshInstance3D" parent="." unique_id=1821325587]
+[node name="Waterfallmesh2" type="MeshInstance3D" parent="WaterParent" unique_id=1821325587]
 transform = Transform3D(-15.119319, 0, -6.405125, 0, 36.895, 0, 2.8683643, 0, -33.761795, 32.359024, -5.59505, 346.11014)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="Waterfallmesh3" type="MeshInstance3D" parent="." unique_id=1359888498]
+[node name="Waterfallmesh3" type="MeshInstance3D" parent="WaterParent" unique_id=1359888498]
 transform = Transform3D(-14.599589, 0, -5.3484774, 0, 7.97, 0, 2.7697637, 0, -28.192142, 33.590263, 29.951794, 362.55157)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="Waterfallmesh4" type="MeshInstance3D" parent="." unique_id=1184559993]
+[node name="Waterfallmesh4" type="MeshInstance3D" parent="WaterParent" unique_id=1184559993]
 transform = Transform3D(-18.095207, 0, -3.3387935, 0, 15.25, 0, 1.7012215, 0, -35.513393, 35.531013, 37.479935, 375.17496)
 mesh = ExtResource("4_47gnf")
 surface_material_override/0 = SubResource("ShaderMaterial_ubfwv")
 
-[node name="WaterfallParticles" type="GPUParticles3D" parent="." unique_id=32943402]
+[node name="WaterfallParticles" type="GPUParticles3D" parent="WaterParent" unique_id=32943402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.99193, -1.1248198, 231.33034)
 amount = 16
 lifetime = 0.5
@@ -1027,7 +1329,7 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="WaterfallParticles2" type="GPUParticles3D" parent="." unique_id=1160100447]
+[node name="WaterfallParticles2" type="GPUParticles3D" parent="WaterParent" unique_id=1160100447]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 34.091225, -4.174838, 351.2411)
 amount = 16
 lifetime = 0.5
@@ -1035,7 +1337,7 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="WaterfallParticles3" type="GPUParticles3D" parent="." unique_id=981271255]
+[node name="WaterfallParticles3" type="GPUParticles3D" parent="WaterParent" unique_id=981271255]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 38.302486, 25.235954, 368.79074)
 amount = 16
 lifetime = 0.5
@@ -1043,7 +1345,7 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="WaterfallParticles4" type="GPUParticles3D" parent="." unique_id=303404443]
+[node name="WaterfallParticles4" type="GPUParticles3D" parent="WaterParent" unique_id=303404443]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 36.28074, 36.66263, 383.45407)
 amount = 16
 lifetime = 0.5
@@ -1051,7 +1353,7 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="WaterfallParticles5" type="GPUParticles3D" parent="." unique_id=976443022]
+[node name="WaterfallParticles5" type="GPUParticles3D" parent="WaterParent" unique_id=976443022]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 36.28074, 48.17103, 396.19742)
 amount = 16
 lifetime = 0.5
@@ -1059,29 +1361,13 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="WaterfallParticles6" type="GPUParticles3D" parent="." unique_id=1995188124]
+[node name="WaterfallParticles6" type="GPUParticles3D" parent="WaterParent" unique_id=1995188124]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 36.28074, 80.21535, 404.2663)
 amount = 16
 lifetime = 0.5
 speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
-
-[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("8_japl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.912804, -0.21836281, 91.68236)
-active = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695138948]
-environment = SubResource("Environment_japl0")
-
-[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("9_174kf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
-
-[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
-in_kitchen = false
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=580697229]
-transform = Transform3D(1, 0, 0, 0, 0.5863637, 0.8100479, 0, -0.8100479, 0.5863637, -64.17147, 82.61342, 258.65485)
 
 [node name="WaterFloor" type="Area3D" parent="." unique_id=829605319 node_paths=PackedStringArray("spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -56.87231, 239.06342)
@@ -1092,250 +1378,8 @@ spawn = NodePath("../Respawn")
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
 shape = SubResource("BoxShape3D_kebx2")
 
-[node name="Respawn" type="Marker3D" parent="." unique_id=1013068401]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
-
-[node name="WafflePads" type="Node3D" parent="." unique_id=1426152915]
-
-[node name="WafflePad" parent="WafflePads" unique_id=1169599723 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.61226, 48.90241, 360.71494)
-
-[node name="WafflePad2" parent="WafflePads" unique_id=48394134 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.424515, 48.90241, 362.04474)
-
-[node name="WafflePad3" parent="WafflePads" unique_id=1546105521 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.06151, 48.90241, 370.83914)
-
-[node name="WafflePad4" parent="WafflePads" unique_id=1775677757 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.479294, 48.90241, 372.2852)
-
-[node name="WafflePad5" parent="WafflePads" unique_id=594566536 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.24687, 48.90241, 367.91153)
-
-[node name="WafflePad6" parent="WafflePads" unique_id=218657975 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1024, 48.90241, 370.79547)
-
-[node name="WafflePad7" parent="WafflePads" unique_id=2073707480 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.1862, 48.90241, 362.7534)
-
-[node name="WafflePad8" parent="WafflePads" unique_id=92730230 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.79704, 48.90241, 369.79565)
-
-[node name="WafflePad9" parent="WafflePads" unique_id=365832137 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.45241, 48.90241, 358.72424)
-
-[node name="WafflePad10" parent="WafflePads" unique_id=745040477 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.90128, 48.90241, 356.677)
-
-[node name="WafflePad11" parent="WafflePads" unique_id=142772924 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.36545, 48.90241, 357.95508)
-
-[node name="WafflePad12" parent="WafflePads" unique_id=1393184048 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.48828, 48.90241, 365.60876)
-
-[node name="WafflePad13" parent="WafflePads" unique_id=936529745 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.79939, 48.90241, 363.0392)
-
-[node name="WafflePad14" parent="WafflePads" unique_id=185290704 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.40529, 35.05555, 318.08463)
-
-[node name="WafflePad21" parent="WafflePads" unique_id=169722188 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.675735, -1.6978769, 347.9818)
-
-[node name="WafflePad22" parent="WafflePads" unique_id=94930987 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.86348, -1.6978769, 349.3116)
-
-[node name="WafflePad23" parent="WafflePads" unique_id=2006438099 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.22649, -1.6978769, 358.10602)
-
-[node name="WafflePad24" parent="WafflePads" unique_id=1195004146 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.8087, -1.6978769, 359.55206)
-
-[node name="WafflePad25" parent="WafflePads" unique_id=1569844080 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.04112, -1.6978769, 355.1784)
-
-[node name="WafflePad26" parent="WafflePads" unique_id=1581392834 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.18559, -1.6978769, 358.06235)
-
-[node name="WafflePad27" parent="WafflePads" unique_id=891860543 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.10179, -1.6978769, 350.02026)
-
-[node name="WafflePad28" parent="WafflePads" unique_id=461607583 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.49095, -1.6978769, 357.06253)
-
-[node name="WafflePad30" parent="WafflePads" unique_id=711968592 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.38671, -1.6978769, 343.94388)
-
-[node name="WafflePad31" parent="WafflePads" unique_id=623457930 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.922546, -1.6978769, 345.22195)
-
-[node name="WafflePad32" parent="WafflePads" unique_id=525144267 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.799713, -1.6978769, 352.87564)
-
-[node name="WafflePad33" parent="WafflePads" unique_id=741921898 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4886, -1.6978769, 350.3061)
-
-[node name="WafflePad29" parent="WafflePads" unique_id=1256768175 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -62.675735, -1.6978769, 329.14035)
-
-[node name="WafflePad35" parent="WafflePads" unique_id=790665682 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -66.86348, -1.6978769, 330.47015)
-
-[node name="WafflePad36" parent="WafflePads" unique_id=1173611906 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -69.22649, -1.6978769, 339.26456)
-
-[node name="WafflePad37" parent="WafflePads" unique_id=2072107548 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -74.10179, -1.6978769, 331.1788)
-
-[node name="WafflePad38" parent="WafflePads" unique_id=1556076467 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -60.49095, -1.6978769, 338.22107)
-
-[node name="WafflePad39" parent="WafflePads" unique_id=2053042823 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -37.922546, -1.6978769, 326.3805)
-
-[node name="WafflePad40" parent="WafflePads" unique_id=1128537929 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -46.799713, -1.6978769, 334.03418)
-
-[node name="WafflePad41" parent="WafflePads" unique_id=2071931031 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -48.4886, -1.6978769, 331.46463)
-
-[node name="WafflePad42" parent="WafflePads" unique_id=396816838 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -23.07554, -1.6301556, 281.96506)
-
-[node name="WafflePad43" parent="WafflePads" unique_id=322935722 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -27.263285, -1.6301556, 283.29486)
-
-[node name="WafflePad44" parent="WafflePads" unique_id=1385706297 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -29.626291, -1.6301556, 292.08926)
-
-[node name="WafflePad45" parent="WafflePads" unique_id=1694372547 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -34.5016, -1.6301556, 284.0035)
-
-[node name="WafflePad46" parent="WafflePads" unique_id=1164043876 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -20.890757, -1.6301556, 291.04578)
-
-[node name="WafflePad50" parent="WafflePads" unique_id=1840979242 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 129.6936, -1.6301556, 246.93802)
-
-[node name="WafflePad57" parent="WafflePads" unique_id=907602432 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 25.90586, -1.6301556, 221.70406)
-
-[node name="WafflePad58" parent="WafflePads" unique_id=647331950 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 23.857224, -1.6301556, 226.84485)
-
-[node name="WafflePad59" parent="WafflePads" unique_id=1427716503 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 26.371359, -1.6301556, 231.84254)
-
-[node name="WafflePad60" parent="WafflePads" unique_id=408687621 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 23.980196, -1.6301556, 236.78214)
-
-[node name="WafflePad61" parent="WafflePads" unique_id=1558313165 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 26.786665, -1.6301556, 241.41243)
-
-[node name="WafflePad62" parent="WafflePads" unique_id=1389843119 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 24.52377, -1.6301556, 247.01167)
-
-[node name="WafflePad63" parent="WafflePads" unique_id=655040506 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 21.861034, -1.6301556, 252.74394)
-
-[node name="WafflePad64" parent="WafflePads" unique_id=919384738 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 32.39196, -1.6301556, 234.12811)
-
-[node name="WafflePad65" parent="WafflePads" unique_id=1346915310 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 32.276825, -1.6301556, 219.16489)
-
-[node name="WafflePad66" parent="WafflePads" unique_id=137994393 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 17.97837, -1.6301556, 223.12315)
-
-[node name="WafflePad67" parent="WafflePads" unique_id=2079252173 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -6.0823135, -1.6301556, 223.57018)
-
-[node name="WafflePad51" parent="WafflePads" unique_id=338564359 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 151.38406, -1.6301556, 213.15602)
-
-[node name="WafflePad52" parent="WafflePads" unique_id=342854378 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 148.38972, -1.6301556, 212.04474)
-
-[node name="WafflePad53" parent="WafflePads" unique_id=1944683207 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 145.7054, -1.6301556, 215.81027)
-
-[node name="WafflePad54" parent="WafflePads" unique_id=1878456884 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 135.28287, -1.6301537, 225.84628)
-
-[node name="WafflePad55" parent="WafflePads" unique_id=131064633 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 155.18835, -1.6301537, 247.99243)
-
-[node name="WafflePad56" parent="WafflePads" unique_id=299872796 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, 137.08646, -1.6301537, 259.4892)
-
-[node name="WafflePad47" parent="WafflePads" unique_id=657226328 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -14.723434, -1.6301556, 304.95956)
-
-[node name="WafflePad48" parent="WafflePads" unique_id=566348583 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -7.199519, -1.6301556, 286.8589)
-
-[node name="WafflePad49" parent="WafflePads" unique_id=986931664 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(0.9983195, 0, 0.057949852, 0, 1, 0, -0.057949852, 0, 0.9983195, -8.888408, -1.6301556, 284.28934)
-
-[node name="WafflePad34" parent="WafflePads" unique_id=409950556 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8827057, -15.544736, 305.3515)
-
-[node name="WafflePad15" parent="WafflePads" unique_id=1763039460 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.57591, 35.05555, 317.6121)
-
-[node name="WafflePad16" parent="WafflePads" unique_id=660190982 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.8697, 35.05555, 321.96826)
-
-[node name="WafflePad17" parent="WafflePads" unique_id=2117613274 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.94672, 35.05555, 324.8664)
-
-[node name="WafflePad18" parent="WafflePads" unique_id=205000700 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.10324, 22.39831, 305.67435)
-
-[node name="WafflePad19" parent="WafflePads" unique_id=1342666571 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.70726, 22.39831, 300.53772)
-
-[node name="WafflePad20" parent="WafflePads" unique_id=1906495157 instance=ExtResource("12_6qkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.32713, 22.39831, 299.6691)
-
-[node name="Terrys" type="Node3D" parent="." unique_id=1819820271]
-
-[node name="Nest" parent="Terrys" unique_id=2116521288 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.09703, 79.94357, 387.30988)
-
-[node name="Nest2" parent="Terrys" unique_id=1939318046 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.27934, 79.94357, 390.29886)
-
-[node name="Nest3" parent="Terrys" unique_id=1872649418 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.016487, 79.94357, 390.5297)
-
-[node name="Nest4" parent="Terrys" unique_id=66344886 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.94287, 79.94357, 390.5297)
-
-[node name="Nest5" parent="Terrys" unique_id=494258187 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.571144, 79.94357, 386.12106)
-
-[node name="Nest6" parent="Terrys" unique_id=1695748532 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.868935, 79.94357, 384.1878)
-
-[node name="Nest7" parent="Terrys" unique_id=522527365 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.368507, 79.94357, 387.19348)
-
-[node name="Nest8" parent="Terrys" unique_id=1413486076 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.683285, 79.94357, 385.0068)
-
-[node name="Nest9" parent="Terrys" unique_id=1103821510 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.221176, 79.94357, 377.9245)
-
-[node name="Nest10" parent="Terrys" unique_id=1102973458 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.337479, 79.94357, 417.69257)
-
-[node name="Nest11" parent="Terrys" unique_id=1978079180 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.99078, 79.94357, 413.95932)
-
-[node name="Nest12" parent="Terrys" unique_id=723383986 instance=ExtResource("13_w8t0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.12058, 79.94357, 410.44406)
-
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 
+[editable path="Portal"]
 [editable path="Player"]

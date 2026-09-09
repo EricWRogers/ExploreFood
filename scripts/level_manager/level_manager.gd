@@ -9,6 +9,8 @@ func _ready() -> void:
 	current_level.connect("level_changed", Callable(self, "start_loading"))
 	if CalebMode:
 		Manager.bagel_mode = true
+
+	
 func start_loading(level):
 	$LoadingScreen.play_in()
 	to_go = level
@@ -25,8 +27,10 @@ func _handle_level_change(current_level_name: String):
 		"kitchen":
 			next_level_name = "terrain_test"
 		"kitchen2":
-			next_level_name = "terrain_test" #change this to the second level once it gets made
+			next_level_name = "breakfast_dimension" #change this to the second level once it gets made
 		"terrain_test":
+			next_level_name = "kitchen"
+		"breakfast_dimension":
 			next_level_name = "kitchen"
 		_:
 			print("Error: Unidentified Level. Check str Level Name.")
