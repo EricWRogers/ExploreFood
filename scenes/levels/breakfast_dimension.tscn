@@ -1369,21 +1369,6 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_lg1c5")
 draw_pass_1 = SubResource("SphereMesh_lqdem")
 
-[node name="Portal2" parent="." unique_id=2100373156 instance=ExtResource("8_japl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.912804, -0.21836281, 91.68236)
-image_of_world = ExtResource("10_mwv6q")
-light_color = Color(0.5882353, 0.57254905, 0.5411765, 1)
-active = true
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=923206211]
-environment = SubResource("Environment_japl0")
-
-[node name="Player2" parent="." unique_id=330044921 instance=ExtResource("9_174kf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.91105, 2.355896, 101.146194)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1904149008]
-transform = Transform3D(1, 0, 0, 0, 0.5863637, 0.8100479, 0, -0.8100479, 0.5863637, -64.17147, 82.61342, 258.65485)
-
 [node name="WaterFloor" type="Area3D" parent="." unique_id=829605319 node_paths=PackedStringArray("spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -56.87231, 239.06342)
 script = ExtResource("10_174kf")
