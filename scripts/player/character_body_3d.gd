@@ -316,11 +316,12 @@ func update_slots(slot: int) -> void:
 	selected_object = food_scene.instantiate()
 	add_child(selected_object)
 
-	selected_object.position = Vector3.FORWARD
+	selected_object.global_position = item_hold_spawn.global_position
 	selected_object.scale = Vector3(0.5, 0.5, 0.5)
 	selected_object.freeze = true
 	selected_object.collision_layer = 2
 	selected_object.collision_mask = 2
+	selected_object.reparent(item_hold_spawn)
 
 	Manager.holding = true
 	Manager.current_slot = current_slot
