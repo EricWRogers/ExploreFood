@@ -6,8 +6,8 @@ var start_point = Vector2()
 var end_point = Vector2()
 
 #time for slam
-var time = 0
-var timeDirection = 1
+var time = 0 #positon
+var timeDirection = 1 #1 = going down, -1 = going up
 var moveDuration = 0.3
 
 func _ready():
@@ -24,7 +24,7 @@ func _physics_process(delta: float):
 		velocity.x = -speed
 	elif Input.is_action_pressed("Right"):
 		velocity.x = speed
-	elif Input.is_action_pressed("Back"): #needs more tweeking
+	elif Input.is_action_pressed("Back"): #down #needs more tweeking
 		#smash the fist down
 		start_point.x = position.x #set start point
 		end_point.x = position.x

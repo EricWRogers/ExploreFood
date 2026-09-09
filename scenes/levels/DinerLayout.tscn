@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://dy7amoxc7ps52"]
+
+[ext_resource type="PackedScene" uid="uid://fwjsclvrchq2" path="res://scenes/player/KillerBeanSproject2.fbx" id="1_j7agy"]
+[ext_resource type="ArrayMesh" uid="uid://s452v33kwlah" path="res://scenes/player/KitchenFridge.obj" id="2_4fu4k"]
+[ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="3_uc6ro"]
+[ext_resource type="ArrayMesh" uid="uid://34u8y53nr4p0" path="res://assets/models/cookingpotbig.obj" id="4_ihlwq"]
+[ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="5_tsefd"]
+[ext_resource type="ArrayMesh" uid="uid://dfl6p31i6nbix" path="res://assets/models/KitchenSink.obj" id="6_ihlwq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1t4a3"]
+size = Vector3(0.099999994, 0.16, 0.08959961)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlwvo"]
+size = Vector3(0.3, 0.08, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ihlwq"]
+height = 0.10449219
+radius = 0.07
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsefd"]
+size = Vector3(0.080322266, 0.14055175, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mo7hp"]
+size = Vector3(0.14126465, 0.10416015, 0.1)
+
+[node name="DinerLayout" type="Node3D" unique_id=1685728999]
+
+[node name="KillerBeanSproject2" parent="." unique_id=648275006 instance=ExtResource("1_j7agy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59999996)
+
+[node name="floor" type="CSGCylinder3D" parent="." unique_id=801348178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124999, -0.90000004)
+radius = 1.3000001
+height = 0.1125
+sides = 20
+
+[node name="Diner_walls" type="CSGCylinder3D" parent="." unique_id=401858586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140625, -0.90000004)
+radius = 1.3000001
+height = 0.55625
+sides = 20
+
+[node name="cylinder" type="CSGCylinder3D" parent="Diner_walls" unique_id=1877064639]
+operation = 2
+radius = 1.265625
+height = 0.55625
+sides = 20
+
+[node name="Boss Hole" type="CSGBox3D" parent="Diner_walls" unique_id=641079459]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.2600001, 0, 0.19999999)
+operation = 2
+size = Vector3(0.4, 1, 1)
+
+[node name="kitchen_backwall" type="CSGBox3D" parent="." unique_id=1775747167]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.18, 0.14370282, 0.26487136)
+size = Vector3(1.3000001, 0.6, 0.5)
+
+[node name="kitchen_frontwall" type="CSGCylinder3D" parent="." unique_id=621435449]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.006, 0)
+radius = 1.0
+height = 0.054882817
+sides = 35
+
+[node name="kitchen_frontwall" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=598979960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08529053, 0.10000001)
+radius = 1.0
+height = 0.45686036
+sides = 35
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=1167451593]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.32, 0, 0.18125004, 0.05868254)
+operation = 2
+radius = 0.7
+height = 0.6625
+sides = 35
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kitchen_frontwall" unique_id=1204591523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050000012, 0.10000003, 0.6000001)
+operation = 2
+size = Vector3(2.2, 0.8, 1.7)
+
+[node name="Window" type="CSGBox3D" parent="kitchen_frontwall" unique_id=327332644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.1481544, -0.79999995)
+operation = 2
+size = Vector3(0.8, 0.2, 0.2)
+
+[node name="Kitchen_stuff" type="Node3D" parent="." unique_id=758565943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124998, 0.1)
+
+[node name="fridge" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1837896740]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.18675728, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/fridge" unique_id=1968677086]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("2_4fu4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/fridge" unique_id=677555924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5904988e-09, -0.063637696, 0.002978921)
+shape = SubResource("BoxShape3D_1t4a3")
+
+[node name="fridge2" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1428987523]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.09112007, 0.18675728, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/fridge2" unique_id=756962981]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("2_4fu4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/fridge2" unique_id=698962921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5904986e-09, -0.063637696, 0.002978921)
+shape = SubResource("BoxShape3D_1t4a3")
+
+[node name="fridge3" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1138632011]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.3, 0.18675728, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/fridge3" unique_id=1869191913]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("2_4fu4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/fridge3" unique_id=687471693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, -0.063637696, 0.0029788539)
+shape = SubResource("BoxShape3D_1t4a3")
+
+[node name="shelves" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1247134006]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.19000001, 0.33675727, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/shelves" unique_id=99062903]
+transform = Transform3D(0.06, 0, 8.881784e-16, 0, 0.06, 0, -8.881784e-16, 0, 0.06, 0, -0.083000004, 0)
+mesh = ExtResource("3_uc6ro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/shelves" unique_id=140900808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0836377, 0.002978921)
+shape = SubResource("BoxShape3D_hlwvo")
+
+[node name="shelves2" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1015971185]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.18486965, 0.33675727, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/shelves2" unique_id=1803782753]
+transform = Transform3D(0.06, 0, 8.881784e-16, 0, 0.06, 0, -8.881784e-16, 0, 0.06, 0, -0.083000004, 0)
+mesh = ExtResource("3_uc6ro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/shelves2" unique_id=1294680375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0836377, 0.002978921)
+shape = SubResource("BoxShape3D_hlwvo")
+
+[node name="shelves3" type="StaticBody3D" parent="Kitchen_stuff" unique_id=398316701]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.54720336, 0.33675727, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/shelves3" unique_id=566530388]
+transform = Transform3D(0.06, 0, 8.881784e-16, 0, 0.06, 0, -8.881784e-16, 0, 0.06, 0, -0.083000004, 0)
+mesh = ExtResource("3_uc6ro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/shelves3" unique_id=1629911827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0836377, 0.002978921)
+shape = SubResource("BoxShape3D_hlwvo")
+
+[node name="Cauldren" type="StaticBody3D" parent="Kitchen_stuff" unique_id=888219197]
+transform = Transform3D(-0.64278775, 0, 0.7660443, 0, 1, 0, -0.7660443, 0, -0.64278775, -0.44720337, 0.18675727, -0.48000002)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Cauldren" unique_id=1301142177]
+transform = Transform3D(0.06, 0, 8.881784e-16, 0, 0.06, 0, -8.881784e-16, 0, 0.06, 0, -0.083000004, 0)
+mesh = ExtResource("4_ihlwq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Cauldren" unique_id=1955241453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, -0.0836377, 0.0029789507)
+shape = SubResource("CylinderShape3D_ihlwq")
+
+[node name="Stove" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1213326087]
+transform = Transform3D(-1, 0, -1.7881393e-07, 0, 1, 0, 1.7881393e-07, 0, -1, 0.10000003, 0.18675728, -0.07999995)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Stove" unique_id=1900656358]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("5_tsefd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Stove" unique_id=1604800481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-07, -0.06976807, -0.0070210844)
+shape = SubResource("BoxShape3D_tsefd")
+
+[node name="Stove2" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1992094493]
+transform = Transform3D(-1, 0, -1.7881393e-07, 0, 1, 0, 1.7881393e-07, 0, -1, -0.39999998, 0.18675728, -0.07999995)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Stove2" unique_id=1666457234]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("5_tsefd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Stove2" unique_id=180451946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, -0.06504395, -0.0070210844)
+shape = SubResource("BoxShape3D_tsefd")
+
+[node name="Stove3" type="StaticBody3D" parent="Kitchen_stuff" unique_id=584759466]
+transform = Transform3D(-1, 0, -1.7881393e-07, 0, 1, 0, 1.7881393e-07, 0, -1, -0.32113492, 0.18675728, -0.07999995)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Stove3" unique_id=1486568227]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("5_tsefd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Stove3" unique_id=296620371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06504395, -0.0070210844)
+shape = SubResource("BoxShape3D_tsefd")
+
+[node name="Sink" type="StaticBody3D" parent="Kitchen_stuff" unique_id=709316401]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.21, 0.18675728, -0.08)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Sink" unique_id=1416329460]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.133, 0)
+mesh = ExtResource("6_ihlwq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Sink" unique_id=1015438109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009252876, -0.09155761, -0.002021078)
+shape = SubResource("BoxShape3D_mo7hp")
+
+[node name="bar stools" type="Node3D" parent="." unique_id=1468782206]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="bar stools" unique_id=736988942]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.11, -0.008, -0.85)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="bar stools" unique_id=1731733946]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.3, -0.007972717, -0.8)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="bar stools" unique_id=427432566]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.49694908, -0.007972717, -0.7012047)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="bar stools" unique_id=1655117151]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.63912195, -0.007972717, -0.56352156)
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="bar stools" unique_id=233442970]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.73939127, -0.007972717, -0.40039694)
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="bar stools" unique_id=1563340214]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.11, -0.008, -0.85)
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="bar stools" unique_id=584595240]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.3, -0.008, -0.8)
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="bar stools" unique_id=1852537955]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.497, -0.008, -0.701)
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="bar stools" unique_id=1394848099]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.639, -0.008, -0.564)
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="bar stools" unique_id=832463724]
+transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.739, -0.008, -0.4)
