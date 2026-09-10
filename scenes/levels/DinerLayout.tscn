@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dy7amoxc7ps52"]
 
-[ext_resource type="PackedScene" uid="uid://fwjsclvrchq2" path="res://scenes/player/KillerBeanSproject2.fbx" id="1_j7agy"]
 [ext_resource type="ArrayMesh" uid="uid://s452v33kwlah" path="res://scenes/player/KitchenFridge.obj" id="2_4fu4k"]
 [ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="3_uc6ro"]
 [ext_resource type="ArrayMesh" uid="uid://34u8y53nr4p0" path="res://assets/models/cookingpotbig.obj" id="4_ihlwq"]
@@ -24,9 +23,6 @@ size = Vector3(0.080322266, 0.14055175, 0.1)
 size = Vector3(0.14126465, 0.10416015, 0.1)
 
 [node name="DinerLayout" type="Node3D" unique_id=1685728999]
-
-[node name="KillerBeanSproject2" parent="." unique_id=648275006 instance=ExtResource("1_j7agy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59999996)
 
 [node name="floor" type="CSGCylinder3D" parent="." unique_id=801348178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124999, -0.90000004)
