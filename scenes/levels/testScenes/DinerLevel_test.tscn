@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://kx2prdrtck4g"]
+
+[ext_resource type="PackedScene" uid="uid://dy7amoxc7ps52" path="res://scenes/levels/DinerLayout.tscn" id="1_w7wq8"]
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_3jqfu"]
+
+[sub_resource type="Environment" id="Environment_8ojr3"]
+
+[node name="DinerLevelTest" type="Node3D" unique_id=1870153108]
+
+[node name="DinerLayout" parent="." unique_id=1685728999 instance=ExtResource("1_w7wq8")]
+transform = Transform3D(22, 0, 0, 0, 22, 0, 0, 0, 22, 0, 0, 0)
+
+[node name="floor" parent="DinerLayout" index="0" unique_id=801348178]
+use_collision = true
+
+[node name="Diner_walls" parent="DinerLayout" index="1" unique_id=401858586]
+use_collision = true
+
+[node name="Boss Hole" parent="DinerLayout/Diner_walls" index="1" unique_id=641079459]
+transform = Transform3D(0.24999999, 0, 0.43301272, 0, 0.5, 0, -0.43301272, 0, 0.24999999, 0.745, 0, -1.02)
+
+[node name="FrontDoor" parent="DinerLayout/Diner_walls" index="2" unique_id=1453596560]
+transform = Transform3D(0.05209447, 0, -0.2954423, 0, 0.29999995, 0, 0.2954423, 0, 0.05209447, -1.2600001, 0, 0.23000002)
+
+[node name="kitchen_backwall" parent="DinerLayout" index="2" unique_id=1775747167]
+use_collision = true
+
+[node name="kitchen_frontwall" parent="DinerLayout" index="3" unique_id=621435449]
+use_collision = true
+
+[node name="Kitchen_stuff" parent="DinerLayout" index="4" unique_id=758565943]
+transform = Transform3D(1, 0, 0, 0, 1.3000001, 0, 0, 0, 1, 0, -0.09624998, 0.1)
+
+[node name="CSGCylinder3D2" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="0" unique_id=736988942]
+use_collision = true
+
+[node name="CSGCylinder3D" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="1" unique_id=1731733946]
+use_collision = true
+
+[node name="CSGCylinder3D3" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="2" unique_id=427432566]
+use_collision = true
+
+[node name="CSGCylinder3D4" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="3" unique_id=1655117151]
+use_collision = true
+
+[node name="CSGCylinder3D5" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="4" unique_id=233442970]
+use_collision = true
+
+[node name="CSGCylinder3D6" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="5" unique_id=1563340214]
+use_collision = true
+
+[node name="CSGCylinder3D7" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="6" unique_id=584595240]
+use_collision = true
+
+[node name="CSGCylinder3D8" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="7" unique_id=1852537955]
+use_collision = true
+
+[node name="CSGCylinder3D9" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="8" unique_id=1394848099]
+use_collision = true
+
+[node name="CSGCylinder3D10" parent="DinerLayout/bar stools" parent_id_path=PackedInt32Array(1685728999, 1468782206) index="9" unique_id=832463724]
+use_collision = true
+
+[node name="CSGBox3D" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="0" unique_id=273067233]
+transform = Transform3D(0.065, 0, 0.112583295, 0, 0.13000001, 0, -0.112583295, 0, 0.065, 0.6454706, 0.0023803785, -1.7662785)
+use_collision = true
+size = Vector3(1.7, 0.6, 2.1000001)
+
+[node name="CSGBox3D2" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="1" unique_id=1276307304]
+use_collision = true
+
+[node name="CSGBox3D3" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="2" unique_id=1970022714]
+use_collision = true
+
+[node name="CSGBox3D4" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="3" unique_id=779131555]
+use_collision = true
+
+[node name="CSGBox3D5" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="4" unique_id=782409759]
+use_collision = true
+
+[node name="CSGBox3D6" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="5" unique_id=81397475]
+use_collision = true
+
+[node name="CSGBox3D7" parent="DinerLayout/booths" parent_id_path=PackedInt32Array(1685728999, 1681992452) index="6" unique_id=129681326]
+use_collision = true
+
+[node name="CSGBox3D" parent="DinerLayout/tables" parent_id_path=PackedInt32Array(1685728999, 455769254) index="0" unique_id=1926338321]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, -0.7, 5.9604646e-09, -1.0999999)
+use_collision = true
+
+[node name="CSGBox3D2" parent="DinerLayout/tables" parent_id_path=PackedInt32Array(1685728999, 455769254) index="1" unique_id=1110591703]
+transform = Transform3D(0.17320506, 0, 0.099999994, 0, 0.19999999, 0, -0.099999994, 0, 0.17320506, -0.37999997, 5.9604646e-09, -1.4399998)
+use_collision = true
+
+[node name="CSGBox3D3" parent="DinerLayout/tables" parent_id_path=PackedInt32Array(1685728999, 455769254) index="2" unique_id=1160942651]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0.030000046, 5.9604646e-09, -1.6999998)
+use_collision = true
+
+[node name="CSGBox3D4" parent="DinerLayout/tables" parent_id_path=PackedInt32Array(1685728999, 455769254) index="3" unique_id=723746810]
+transform = Transform3D(0.06840403, 0, -0.18793851, 0, 0.19999999, 0, 0.18793851, 0, 0.06840403, 0.63000005, 5.9604646e-09, -1.0999998)
+use_collision = true
+
+[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_3jqfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.4, -5.2000003)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1187445877]
+transform = Transform3D(0.64278764, 0.663414, 0.38302222, 0, -0.5, 0.86602545, 0.76604444, -0.5566704, -0.32139382, 13.7, 13.900001, -21.599998)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1680998563]
+environment = SubResource("Environment_8ojr3")
+
+[editable path="DinerLayout"]
