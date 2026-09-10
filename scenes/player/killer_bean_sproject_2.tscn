@@ -619,6 +619,14 @@ shader_parameter/light_direction = Vector3(1, 1, 0)
 shader_parameter/rim_sharpness = 8.0
 shader_parameter/rim_intensity = 2.0
 
+[sub_resource type="Curve" id="Curve_std77"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7231405, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_omvyw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="KillerBeanSproject2" unique_id=1222725279 instance=ExtResource("1_ffn5n")]
 script = ExtResource("2_w2xjc")
 
@@ -744,7 +752,7 @@ bones/23/rotation = Quaternion(0, 0, -0.45665342, 0.8896447)
 surface_material_override/0 = SubResource("StandardMaterial3D_dx2kh")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=1481971334]
-transform = Transform3D(0.8508804, -0.47064897, -0.23343539, 0.068211496, 0.539545, -0.83918905, 0.5209125, 0.6981266, 0.491192, 0.0069228318, 0.01890559, -0.053362053)
+transform = Transform3D(0.8508817, -0.47064868, -0.23343138, 0.06821801, 0.5395486, -0.8391864, 0.52090967, 0.698124, 0.49119866, 0.0069226995, 0.018905498, -0.053361945)
 bone_name = "L_pointer"
 bone_idx = 18
 
@@ -798,6 +806,71 @@ transform = Transform3D(0.02, 2.3283064e-09, 0, 4.656613e-10, 0.020000003, 4.656
 visible = false
 material_overlay = SubResource("ShaderMaterial_j87nr")
 mesh = ExtResource("17_s4tos")
+
+[node name="Right_Shoulder_SB" type="SpringBoneSimulator3D" parent="Skeleton3D" index="2" unique_id=942515898]
+physics_interpolation_mode = 2
+setting_count = 1
+settings/0/root_bone_name = "R_shoulder"
+settings/0/root_bone = 2
+settings/0/end_bone_name = "R_hand"
+settings/0/end_bone = 4
+settings/0/extend_end_bone = false
+settings/0/center_from = 2
+settings/0/center_bone_name = "R_shoulder"
+settings/0/center_bone = 2
+settings/0/individual_config = false
+settings/0/rotation_axis = 4
+settings/0/rotation_axis_vector = Vector3(1, 1, 0)
+settings/0/radius/value = 0.01
+settings/0/radius/damping_curve = SubResource("Curve_std77")
+settings/0/stiffness/value = 2.0
+settings/0/stiffness/damping_curve = SubResource("Curve_omvyw")
+settings/0/drag/value = 0.0
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "R_shoulder"
+settings/0/joints/0/bone = 2
+settings/0/joints/1/bone_name = "R_forearm"
+settings/0/joints/1/bone = 3
+settings/0/joints/2/bone_name = "R_hand"
+settings/0/joints/2/bone = 4
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 1
+settings/0/exclude_collisions/0 = NodePath("")
+
+[node name="Left_Shoulder_SB" type="SpringBoneSimulator3D" parent="Skeleton3D" index="3" unique_id=251260313]
+physics_interpolation_mode = 2
+setting_count = 1
+settings/0/root_bone_name = "L_shoulder"
+settings/0/root_bone = 13
+settings/0/end_bone_name = "L_hand"
+settings/0/end_bone = 15
+settings/0/extend_end_bone = false
+settings/0/center_from = 2
+settings/0/center_bone_name = "L_shoulder"
+settings/0/center_bone = 13
+settings/0/individual_config = false
+settings/0/rotation_axis = 4
+settings/0/rotation_axis_vector = Vector3(1, 1, 0)
+settings/0/radius/value = 0.01
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.0
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/joints/0/bone_name = "L_shoulder"
+settings/0/joints/0/bone = 13
+settings/0/joints/1/bone_name = "L_forearm"
+settings/0/joints/1/bone = 14
+settings/0/joints/2/bone_name = "L_hand"
+settings/0/joints/2/bone = 15
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
 
 [node name="R_shoulder_handle" parent="." index="7" unique_id=1821997497]
 transform = Transform3D(0.62748766, -0.76443124, -0.14800023, 0.74401623, 0.6447053, -0.1754848, 0.22956255, -7.450581e-09, 0.97329396, -0.016274668, 0.034500763, 0.0006733593)
