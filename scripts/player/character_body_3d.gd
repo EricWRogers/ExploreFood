@@ -311,9 +311,9 @@ func update_slots(slot: int) -> void:
 		Manager.holding = false
 		Manager.current_slot = 0
 		return
-
 	# Create new object.
 	selected_object = food_scene.instantiate()
+	selected_object.rarity_level = 1
 	add_child(selected_object)
 
 	selected_object.global_position = item_hold_spawn.global_position
