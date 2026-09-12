@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ihdpo1ui5c32" path="res://scripts/foods/tear_baby.gd" id="2_i2m2j"]
 [ext_resource type="ArrayMesh" uid="uid://i4hhyo4gcrlo" path="res://assets/models/tear.obj" id="2_y3oem"]
 [ext_resource type="Texture2D" uid="uid://m3ppcp7wjmbr" path="res://assets/textures/dropletbebeh.png" id="3_fstlp"]
+[ext_resource type="PackedScene" uid="uid://djlvadqgr3kye" path="res://scenes/food/sandwich/tear_sauce.tscn" id="4_0splx"]
 
 [sub_resource type="Shader" id="Shader_y3oem"]
 code = "shader_type spatial;
@@ -114,6 +115,7 @@ id = 5
 color = Color(0.57254905, 0.654902, 0.94509804, 1)
 value = 20
 hunger_restore = 40
+processed_ingredient = ExtResource("4_0splx")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 0, 0, 0)

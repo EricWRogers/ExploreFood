@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bmfjf7vn45idq" path="res://scenes/food/food.tscn" id="1_viy58"]
 [ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://assets/ui/item_icons/terry_icon.png" id="2_kq814"]
 [ext_resource type="PackedScene" uid="uid://bebygmp6f1qh3" path="res://scenes/npcs/terry.tscn" id="2_rbi6i"]
+[ext_resource type="PackedScene" uid="uid://d1akkoxthnsah" path="res://scenes/food/sandwich/chicken_patty.tscn" id="3_wi3hj"]
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_3j5kh"]
 
@@ -112,6 +113,7 @@ id = 1
 color = Color(0.18039216, 0.13333334, 0.19607843, 1)
 value = 60
 hunger_restore = 120
+processed_ingredient = ExtResource("3_wi3hj")
 
 [node name="StaticBody3D#Terry" parent="." index="0" unique_id=150516399 instance=ExtResource("2_rbi6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713871, 0)

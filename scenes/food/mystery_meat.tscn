@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtnfe788cdn0k" path="res://assets/ui/item_icons/MeatBall.png" id="2_0ffux"]
 [ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="2_08qj6"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="3_0ffux"]
+[ext_resource type="PackedScene" uid="uid://cfglvp4fmy4pw" path="res://scenes/food/sandwich/beef_patty.tscn" id="3_b46q7"]
 [ext_resource type="PackedScene" uid="uid://b8vmbssge6uwi" path="res://assets/particles_effects/Explosion/Explosion.tscn" id="5_sxh68"]
 
 [sub_resource type="Shader" id="Shader_7ygjy"]
@@ -109,6 +110,7 @@ id = 8
 color = Color(0.6509804, 0.11764706, 0.13333334, 1)
 value = 12
 hunger_restore = 30
+processed_ingredient = ExtResource("3_b46q7")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 material_overlay = SubResource("ShaderMaterial_glbkg")

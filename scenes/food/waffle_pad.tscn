@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bpko0c7mycrl6" path="res://scripts/foods/waffle_pad.gd" id="2_7k0oo"]
 [ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://assets/ui/item_icons/waffle_icon.png" id="2_d0as7"]
 [ext_resource type="Texture2D" uid="uid://cwj7lkobc140p" path="res://assets/textures/waffle.png" id="3_x0co7"]
+[ext_resource type="PackedScene" uid="uid://bubxghtjnvdij" path="res://scenes/food/sandwich/waffle_patty.tscn" id="4_6ym32"]
 [ext_resource type="PackedScene" uid="uid://cuudja02uqggj" path="res://scenes/food/butter_frog.tscn" id="5_7k0oo"]
 
 [sub_resource type="Shader" id="Shader_7k0oo"]
@@ -114,6 +115,7 @@ id = 2
 color = Color(0.9882353, 0.5647059, 0.25882354, 1)
 value = 4
 hunger_restore = 60
+processed_ingredient = ExtResource("4_6ym32")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 material_overlay = SubResource("ShaderMaterial_26hhq")
