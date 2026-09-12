@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dggqyvy0uhljj"]
+
+[ext_resource type="Script" uid="uid://dv8acvfewnfer" path="res://scripts/sandwich/base_sandwich_layer.gd" id="1_fua1y"]
+[ext_resource type="ArrayMesh" uid="uid://v8ef33wr8vvq" path="res://assets/models/sandwich/chickenbreast.obj" id="1_kgyhi"]
+[ext_resource type="Texture2D" uid="uid://c6kglufxlk7ax" path="res://assets/textures/initialShadingGroup-Color.png" id="2_8gxml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlq6c"]
+albedo_texture = ExtResource("2_8gxml")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
+height = 0.21243286
+radius = 0.5332031
+
+[sub_resource type="PrismMesh" id="PrismMesh_lg1c5"]
+
+[node name="BaseSandwichLayer" type="Node3D" unique_id=840359606]
+script = ExtResource("1_fua1y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1972627960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13564613, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1112215689]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("1_kgyhi")
+surface_material_override/0 = SubResource("StandardMaterial3D_qlq6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=570375411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034835815, 0)
+shape = SubResource("CylinderShape3D_lg1c5")
+
+[node name="AttchPnt" type="Marker3D" parent="StaticBody3D" unique_id=1118350893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18349794, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/AttchPnt" unique_id=770329339]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0)
+visible = false
+mesh = SubResource("PrismMesh_lg1c5")

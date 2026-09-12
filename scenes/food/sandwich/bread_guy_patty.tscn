@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://1grkdsebn7l4"]
+
+[ext_resource type="PackedScene" uid="uid://dggqyvy0uhljj" path="res://scenes/food/sandwich/base_sandwich_layer.tscn" id="1_c8ju7"]
+[ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="2_abfrr"]
+[ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="3_k816q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymhka"]
+albedo_texture = ExtResource("3_k816q")
+
+[node name="BreadGuyPatty" unique_id=840359606 instance=ExtResource("1_c8ju7")]
+
+[node name="StaticBody3D" parent="." index="0" unique_id=1972627960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20633048, 0)
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0" unique_id=1112215689]
+transform = Transform3D(0.24999999, -0.43301272, 0, -1.8927587e-08, -1.0927847e-08, 0.5, -0.43301272, -0.24999999, -2.1855694e-08, 0.46583435, 4.440892e-16, 0.32256123)
+mesh = ExtResource("2_abfrr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ymhka")

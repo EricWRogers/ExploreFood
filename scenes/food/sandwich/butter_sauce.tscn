@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dfrvxrx5yiwln"]
+
+[ext_resource type="PackedScene" uid="uid://dggqyvy0uhljj" path="res://scenes/food/sandwich/base_sandwich_layer.tscn" id="1_dlr5w"]
+[ext_resource type="ArrayMesh" uid="uid://c470bhyaeuwco" path="res://assets/models/sandwich/butterlayer.obj" id="2_nvy64"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://assets/textures/butte.png" id="3_gww8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmyxi"]
+albedo_texture = ExtResource("3_gww8e")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mms2g"]
+height = 0.11267853
+radius = 0.34423828
+
+[node name="ButterSauce" unique_id=840359606 instance=ExtResource("1_dlr5w")]
+
+[node name="StaticBody3D" parent="." index="0" unique_id=1972627960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021732122, 0)
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0" unique_id=1112215689]
+mesh = ExtResource("2_nvy64")
+surface_material_override/0 = SubResource("StandardMaterial3D_lmyxi")
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=570375411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03746414, 0)
+shape = SubResource("CylinderShape3D_mms2g")
+
+[node name="AttchPnt" parent="StaticBody3D" index="2" unique_id=1118350893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06707767, 0)

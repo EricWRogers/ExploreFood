@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dlpov84bc1bse"]
+
+[ext_resource type="ArrayMesh" uid="uid://bw30lha83cxio" path="res://assets/models/sandwich/SandwichBottom.obj" id="1_tlmig"]
+[ext_resource type="Texture2D" uid="uid://cvfitjkby57l2" path="res://assets/models/sandwich/Sandwichtoptex.png" id="2_3q7p4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g1ex"]
+albedo_texture = ExtResource("2_3q7p4")
+
+[sub_resource type="PrismMesh" id="PrismMesh_qvufb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fffu"]
+albedo_color = Color(0.84, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lg1c5"]
+top_radius = 0.0107421875
+bottom_radius = 0.0107421875
+height = 0.18608093
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1fh7"]
+albedo_color = Color(0.700843, 0.41754517, 0.28886116, 1)
+
+[node name="SandwichTop" type="Node3D" unique_id=585084133]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2025346667]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1191382083]
+mesh = ExtResource("1_tlmig")
+surface_material_override/0 = SubResource("StandardMaterial3D_6g1ex")
+
+[node name="Flag" type="MeshInstance3D" parent="StaticBody3D" unique_id=277016218]
+transform = Transform3D(1.5562935e-09, -0.13525158, 0.0015508152, -0.105, -6.9063995e-09, -1.3113416e-10, 6.301473e-09, -0.08167627, -0.0025680677, -0.07393116, 0.2621412, -0.044645853)
+mesh = SubResource("PrismMesh_qvufb")
+surface_material_override/0 = SubResource("StandardMaterial3D_0fffu")
+
+[node name="Stick" type="MeshInstance3D" parent="StaticBody3D" unique_id=1014012659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2257309, 0)
+mesh = SubResource("CylinderMesh_lg1c5")
+surface_material_override/0 = SubResource("StandardMaterial3D_x1fh7")

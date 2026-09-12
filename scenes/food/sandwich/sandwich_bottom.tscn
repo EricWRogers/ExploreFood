@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dv4r5bcwd2jap"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbubmkp8hh3rf" path="res://assets/models/sandwich/SandwichTop.obj" id="1_u8lgc"]
+[ext_resource type="Texture2D" uid="uid://b0ma57bb60n0j" path="res://assets/models/sandwich/Sandwichbottomtex.png" id="2_ptyc6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg1c5"]
+albedo_texture = ExtResource("2_ptyc6")
+
+[node name="SandwichBottom" type="Node3D" unique_id=2000620164]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2086870459]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=599032194]
+mesh = ExtResource("1_u8lgc")
+surface_material_override/0 = SubResource("StandardMaterial3D_lg1c5")
