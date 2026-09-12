@@ -2,6 +2,11 @@ extends Node
 
 @onready var current_level = $Kitchen
 @export var CalebMode : bool = false
+@export var Hunger : bool = false
+@export var HordeMechanics : bool = false
+@export var SandwichMode : bool = false
+@export var KitchenHubToggle : bool = false
+@export var CookingMinigames : bool = false
 var to_go
 var scene_switch_setter = false
 
