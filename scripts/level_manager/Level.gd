@@ -25,8 +25,6 @@ func switch():
 	emit_signal("level_changed", level_name) #emits signal to level manager
 
 func _on_spawn_npc_timeout() -> void:
-	if Manager.bagel_mode:
-		$CalebModeShield.hide()
 	if npc_spawn_tick < npc_spawn_cap:
 		npc_spawn_tick += 1
 		$SpawnNPC.wait_time = randi_range(2, 4)

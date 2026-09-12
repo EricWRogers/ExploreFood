@@ -6,15 +6,15 @@ extends StaticBody3D
 
 var food_types : Array
 var cooking = false
-var bagel_mode = false
+var sandwich_mode = false
 var current_value = 0
 
 #list of all recipes
 #list of current foods in array
 
 func _ready() -> void:
-	if get_tree().current_scene.CalebMode:
-		bagel_mode = true
+	if get_tree().current_scene.SandwichMode:
+		sandwich_mode = true
 	lvl_manager = $"../.."
 
 func _process(_delta: float) -> void:
@@ -30,8 +30,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("RollSpawn"):
 		cook_pointer_UItip.show()
 		
-		if bagel_mode:
-			food_types.append(body.color)
+		if sandwich_mode:
+			food_types.append(body.processed_ingredient)
 			current_value += body.value
 		else:
 			food_types.append(body.category)
@@ -86,6 +86,7 @@ func find_recipe():
 	
 func construct_bagel():
 	pass
+	
 	#var current_scene = lvl_manager.current_level
 	#bagel_bottom.price = current_value
 	#current_scene.add_child(bagel_bottom)
@@ -129,7 +130,7 @@ func reset_held():
 
 func _on_timer_timeout() -> void:
 	cooking = false
-	if bagel_mode:
+	if sandwich_mode:
 		construct_bagel()
 	else:
 		find_recipe()

@@ -8,7 +8,7 @@ var current_slot
 var inventory = []
 var player_hold
 var currently_held_bagel
-var bagel_mode
+var sandwich_mode
 var player
 var money : int = 0
 var recipe_book

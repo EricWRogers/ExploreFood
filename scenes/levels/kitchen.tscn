@@ -2524,7 +2524,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
 
 [node name="BoneAttachment3D" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1170644129, 1124568602) index="1" unique_id=1481971334]
-transform = Transform3D(-0.99767065, 7.3438045e-05, 0.0682174, -6.743241e-05, -0.9999998, 9.0335496e-05, 0.06821734, 8.552149e-05, 0.99767065, 0.07721382, 0.034317262, -0.0018661997)
+transform = Transform3D(-0.997672, 7.3317206e-05, 0.068196595, -6.8734866e-05, -0.9999999, 6.9539994e-05, 0.068196565, 6.468687e-05, 0.9976721, 0.07721387, 0.034317307, -0.0018649038)
 
 [node name="Physical Bone main" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="0" unique_id=2043989485]
 transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.686283e-05, 0.024982419, 0.0007411167)
@@ -2552,9 +2552,9 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e
 body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
 
 [node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.04511109, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36632916, 0.33523726, 0.7701539)
-body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057175457, 0.006032221, 0.03113047)
+transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.04511121, 0.02831554, -0.030620016)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36632997, 0.33524126, 0.7701526)
+body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057176948, 0.006032221, 0.03113047)
 
 [node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
 transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
@@ -2827,6 +2827,7 @@ region_rect = Rect2(0, 0, 512, 512)
 
 [node name="BellyExpansion" type="Node3D" parent="." unique_id=1521047943]
 transform = Transform3D(-0.9575703, 0.090253554, -0.27370313, 0, 0.94969934, 0.31316322, 0.28819978, 0.29987577, -0.9094039, 18.531857, 4.7630086, 21.149038)
+visible = false
 
 [node name="Label3D" type="Label3D" parent="BellyExpansion" unique_id=1818215320]
 billboard = 1
@@ -2865,6 +2866,7 @@ libraries/ = SubResource("AnimationLibrary_180ue")
 
 [node name="NPCBean" type="Node3D" parent="." unique_id=1608658501]
 transform = Transform3D(81.21684, 0, 42.96229, 0, 91.88, 0, -42.96229, 0, 81.21684, 14.811141, 0, 23.240175)
+visible = false
 
 [node name="pCube1" type="Node3D" parent="NPCBean" unique_id=217078067]
 
