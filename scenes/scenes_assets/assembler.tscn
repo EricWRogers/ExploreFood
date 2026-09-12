@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bq3880c8knav0"]
+
+[ext_resource type="ArrayMesh" uid="uid://bci8fivhmlx08" path="res://assets/models/sandwich/sandwichassemblystationmesh.obj" id="1_fbbyq"]
+[ext_resource type="Script" uid="uid://c745u5s63qfq1" path="res://scripts/sandwich/assembler.gd" id="1_urobl"]
+[ext_resource type="Texture2D" uid="uid://cba5sa0jhajnn" path="res://assets/models/sandwich/sandwichassemblytex.png" id="2_lbppk"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="4_8n5w8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urobl"]
+albedo_texture = ExtResource("2_lbppk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n5w8"]
+albedo_texture = ExtResource("2_lbppk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bi48"]
+albedo_texture = ExtResource("2_lbppk")
+metallic = 0.85
+roughness = 0.16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
+size = Vector3(1.9173584, 0.9667969, 1.2189941)
+
+[node name="Assembler" type="StaticBody3D" unique_id=934873719]
+collision_layer = 513
+script = ExtResource("1_urobl")
+
+[node name="Sandwichassemblystationmesh" type="MeshInstance3D" parent="." unique_id=411267695]
+mesh = ExtResource("1_fbbyq")
+surface_material_override/0 = SubResource("StandardMaterial3D_urobl")
+surface_material_override/1 = SubResource("StandardMaterial3D_8n5w8")
+surface_material_override/2 = SubResource("StandardMaterial3D_8bi48")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1206713349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012817383, 0.50878906, -0.002319336)
+shape = SubResource("BoxShape3D_lg1c5")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1259289334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4245548, 0)
+visible = false
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=503631235]
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "Use [E]"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=115506977]
+transform = Transform3D(0.255, 0, 0, 0, 0.11, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("4_8n5w8")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
