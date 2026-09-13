@@ -118,4 +118,7 @@ speed_scale = 3.0
 
 [node name="Timer" type="Timer" parent="." unique_id=2128402515]
 
+[node name="SandwichStartPnt" type="Marker3D" parent="." unique_id=1964965170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1995498, 0)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

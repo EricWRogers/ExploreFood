@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dlpov84bc1bse"]
 
+[ext_resource type="Script" uid="uid://byxabjgaosoa" path="res://scripts/sandwich/sandwich_top.gd" id="1_3q7p4"]
 [ext_resource type="ArrayMesh" uid="uid://bw30lha83cxio" path="res://assets/models/sandwich/SandwichBottom.obj" id="1_tlmig"]
 [ext_resource type="Texture2D" uid="uid://cvfitjkby57l2" path="res://assets/models/sandwich/Sandwichtoptex.png" id="2_3q7p4"]
 
@@ -20,6 +21,7 @@ height = 0.18608093
 albedo_color = Color(0.700843, 0.41754517, 0.28886116, 1)
 
 [node name="SandwichTop" type="Node3D" unique_id=585084133]
+script = ExtResource("1_3q7p4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2025346667]
 

@@ -5,6 +5,7 @@ const WALK_SPEED = 7.0
 const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
+var impulse_force = 15
 #var belly = 100
 var hunger = 100
 @export var hunger_reduction_rate = 2.5
@@ -393,6 +394,9 @@ func dropthrow() -> void:
 	current_scene.add_child(drop)
 	drop.freeze = false
 	drop.global_position = food_spawn.global_position
+	var forward_dir = -$Head/Camera3D.global_transform.basis.z
+	var impulse_vector = forward_dir * impulse_force
+	drop.apply_central_impulse(impulse_vector)
 
 	# Clear the inventory slot.
 	Manager.set("slot%d" % current_slot, null)

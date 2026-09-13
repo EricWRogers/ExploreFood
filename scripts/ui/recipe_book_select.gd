@@ -8,7 +8,6 @@ extends Button
 func _on_pressed() -> void:
 	if sandwich:
 		$"../../../../../../..".update_sandwich(flat_piece, info_to_pull)
-		
 		return
 	$"../../../../../../../..".set_info(info_to_pull)
 

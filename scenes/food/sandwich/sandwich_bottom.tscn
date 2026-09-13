@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dv4r5bcwd2jap"]
 
+[ext_resource type="Script" uid="uid://ceukonopp54f7" path="res://scripts/sandwich/sandwich_bottom.gd" id="1_ptyc6"]
 [ext_resource type="ArrayMesh" uid="uid://cbubmkp8hh3rf" path="res://assets/models/sandwich/SandwichTop.obj" id="1_u8lgc"]
 [ext_resource type="Texture2D" uid="uid://b0ma57bb60n0j" path="res://assets/models/sandwich/Sandwichbottomtex.png" id="2_ptyc6"]
 
@@ -7,6 +8,7 @@
 albedo_texture = ExtResource("2_ptyc6")
 
 [node name="SandwichBottom" type="Node3D" unique_id=2000620164]
+script = ExtResource("1_ptyc6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2086870459]
 

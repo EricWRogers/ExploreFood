@@ -25,6 +25,7 @@ var dough_count = 0
 const FLAT_SANDWICH_PIECE = preload("uid://oypgd3m7jgju")
 var cam_pos
 var current_sandwich = []
+var sandwich_contents = []
 var id_check
 var pot_saved
 var cooking = false
@@ -46,10 +47,13 @@ func snapshot():
 		
 func update_sandwich(tex, type_of):
 	current_sandwich.append(tex)
+
 	if current_sandwich.size() >= 5:
-		$MarginContainer.position.y += 62 
+		$MarginContainer.position.y += 62
+
 	var layer = FLAT_SANDWICH_PIECE.instantiate()
 	$MarginContainer/MarginContainer3/VBoxContainer.add_child(layer)
+
 	match type_of:
 		"terry":
 			id_check = 1
@@ -63,10 +67,15 @@ func update_sandwich(tex, type_of):
 			id_check = 8
 		"doughbaby":
 			id_check = 7
+
 	for item in Manager.food_in_pot:
 		var item_check = load(item).instantiate()
+
 		if item_check.id == id_check:
 			Manager.food_in_pot.erase(item)
+			sandwich_contents.append(item)
+			break
+
 	update_visual()
 	layer.texture = tex
 	
@@ -95,14 +104,14 @@ func update_visual():
 			7:
 				dough_count += 1
 				entry_button_5.show()
-		print(item_check)
+		#print(item_check)
 	terryamnt.text = str(ter_count)
 	waffleamt.text = str(waf_count)
 	butteramt.text = str(but_count)
 	tearamt.text = str(tear_count)
 	meatamt.text = str(meat_count)
 	doughamt.text = str(dough_count)
-	print(str(dough_count))
+	#print(str(dough_count))
 
 func reset():
 	entry_button.hide()
@@ -122,6 +131,7 @@ func reset_sandwich():
 	reset()
 	Manager.food_in_pot = pot_saved
 	snapshot()
+	sandwich_contents.clear()
 	for child in $MarginContainer/MarginContainer3/VBoxContainer.get_children():
 		child.queue_free()
 	current_sandwich.clear()
@@ -130,6 +140,7 @@ func assemble():
 	if pot_saved.is_empty():
 		return
 	snapshot()
+	Manager.current_assembler.recipe = sandwich_contents.duplicate()
 	Manager.current_assembler.set_collision_layer_value(10, false)
 	Manager.current_assembler.sandwich_start()
 	# you assembled create sandwich

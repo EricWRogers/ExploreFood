@@ -19,3 +19,4 @@ func update_total():
 	bar_value = (total_put_in / cost) * 100.0
 	texture_progress_bar.value = bar_value
 	cost_label.text = str("$",total_put_in,"/","$",cost)
+	
