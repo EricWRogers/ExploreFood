@@ -17,6 +17,9 @@ var level_1_tut = 0
 var kitchen
 var breakfast_unlocked = false
 var belly = 100
+var food_in_pot = []
+var assemblerui
+var current_assembler
 
 @export var current_quest_item : String
 

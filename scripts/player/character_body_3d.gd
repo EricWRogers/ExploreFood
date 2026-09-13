@@ -83,6 +83,8 @@ func _unhandled_input(event):
 		return
 	if not alive:
 		return
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
@@ -219,6 +221,7 @@ func _physics_process(delta: float) -> void:
 
 	# Target detection
 	if raycast.is_colliding():
+		
 		var new_target = raycast.get_collider()
 
 		if current_target and current_target != new_target:
@@ -233,7 +236,10 @@ func _physics_process(delta: float) -> void:
 
 	# Pick up item
 	if Input.is_action_just_pressed("Interact") and current_target:
-		pickup_food()
+		if current_target.has_method("assemble"):
+			current_target.assemble()
+		else:
+			pickup_food()
 
 	move_and_slide()
 

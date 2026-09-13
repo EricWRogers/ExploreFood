@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c745u5s63qfq1" path="res://scripts/sandwich/assembler.gd" id="1_urobl"]
 [ext_resource type="Texture2D" uid="uid://cba5sa0jhajnn" path="res://assets/models/sandwich/sandwichassemblytex.png" id="2_lbppk"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="4_8n5w8"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="5_8n5w8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urobl"]
 albedo_texture = ExtResource("2_lbppk")
@@ -18,6 +19,46 @@ roughness = 0.16
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
 size = Vector3(1.9173584, 0.9667969, 1.2189941)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_8n5w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sandwichassemblystationmesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8bi48"]
+resource_name = "assemble"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sandwichassemblystationmesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.0363549, 0.97972894, 1.0129776), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gt024"]
+_data = {
+&"RESET": SubResource("Animation_8n5w8"),
+&"assemble": SubResource("Animation_8bi48")
+}
 
 [node name="Assembler" type="StaticBody3D" unique_id=934873719]
 collision_layer = 513
@@ -44,14 +85,37 @@ render_priority = 100
 outline_render_priority = 100
 modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
 outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
-text = "Use [E]"
+text = "E"
 font_size = 52
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=115506977]
-transform = Transform3D(0.255, 0, 0, 0, 0.11, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
 billboard = 1
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("4_8n5w8")
 region_enabled = true
 region_rect = Rect2(0, 0, 512, 512)
+
+[node name="ProgressBar" type="Sprite3D" parent="." unique_id=1890551709]
+transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, 1.7031658, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_lg1c5")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1664976505]
+transparent_bg = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=603170904]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("5_8n5w8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=959335917]
+libraries/ = SubResource("AnimationLibrary_gt024")
+speed_scale = 3.0
+
+[node name="Timer" type="Timer" parent="." unique_id=2128402515]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

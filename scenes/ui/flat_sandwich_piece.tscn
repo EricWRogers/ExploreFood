@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://oypgd3m7jgju"]
+
+[ext_resource type="Texture2D" uid="uid://cfl256kcprfs5" path="res://assets/models/sandwich/tearflat.png" id="1_mvt7f"]
+
+[node name="FlatPiece" type="TextureRect" unique_id=527764966]
+texture_filter = 3
+custom_minimum_size = Vector2(500, 500)
+mouse_filter = 2
+texture = ExtResource("1_mvt7f")
+expand_mode = 1
+stretch_mode = 5

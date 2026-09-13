@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b2yne1ikxqbfh"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4xvrn221hj5l" path="res://assets/models/sandwich/moneysignage.obj" id="1_ce7bp"]
+[ext_resource type="Texture2D" uid="uid://deeg8yvtkfnmx" path="res://assets/textures/signtex.png" id="2_x55l1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1myyo"]
+albedo_texture = ExtResource("2_x55l1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0.12, 0.085200004, 0.085200004, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.12156863, 0.08627451, 0.08627451, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(0.6784314, 0.57254905, 0.2509804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Node3D" type="Node3D" unique_id=550569370]
+
+[node name="Moneysignage" type="MeshInstance3D" parent="." unique_id=542484443]
+mesh = ExtResource("1_ce7bp")
+surface_material_override/0 = SubResource("StandardMaterial3D_1myyo")
+
+[node name="Title" type="Label3D" parent="." unique_id=1890951397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4465599, 0.17564777)
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.68, 0.5729, 0.2516, 1)
+outline_modulate = Color(0.6784314, 0.57254905, 0.2509804, 1)
+text = "Assembler"
+font_size = 23
+outline_size = 1
+
+[node name="Cost" type="Label3D" parent="." unique_id=1780687824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9742011, 0.17564777)
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.68, 0.5729, 0.2516, 1)
+outline_modulate = Color(0.6784314, 0.57254905, 0.2509804, 1)
+text = "$0/$20"
+font_size = 39
+outline_size = 5
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=47411908]
+transparent_bg = true
+size = Vector2i(365, 57)
+
+[node name="TextureProgressBar" type="ProgressBar" parent="SubViewport" unique_id=173425102]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 357.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 0)
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_6g1ex")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356704659]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.2374382, 0.20461154)
+texture = SubResource("ViewportTexture_lg1c5")

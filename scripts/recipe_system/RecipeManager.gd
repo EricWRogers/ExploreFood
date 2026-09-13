@@ -18,6 +18,8 @@ func _ready() -> void:
 	lvl_manager = $"../.."
 
 func _process(_delta: float) -> void:
+	if sandwich_mode:
+		return
 	if Input.is_action_just_pressed("cook"):
 		start_cooking()
 
@@ -31,7 +33,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		cook_pointer_UItip.show()
 		
 		if sandwich_mode:
-			food_types.append(body.processed_ingredient)
+			#food_types.append(body.processed_ingredient)
+			Manager.food_in_pot.append(body.scene_file_path)
 			current_value += body.value
 		else:
 			food_types.append(body.category)

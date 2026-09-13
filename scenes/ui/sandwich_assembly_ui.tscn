@@ -1,0 +1,770 @@
+[gd_scene format=3 uid="uid://cvn3sdcwlvolg"]
+
+[ext_resource type="Texture2D" uid="uid://ddi0f8e88rruq" path="res://assets/models/sandwich/assemblyui.png" id="1_icwpr"]
+[ext_resource type="Script" uid="uid://bq01dcubavqja" path="res://scripts/ui/sandwich_assembly_ui.gd" id="1_oo1fi"]
+[ext_resource type="Texture2D" uid="uid://bp8kpucwsfu8k" path="res://assets/ui/cook_book/cookbookhalf.png" id="2_u6y2s"]
+[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://assets/ui/item_icons/terry_icon.png" id="3_yhcln"]
+[ext_resource type="Script" uid="uid://csd7edsy511ij" path="res://scripts/ui/recipe_book_select.gd" id="4_ldq5d"]
+[ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://assets/ui/item_icons/waffle_icon.png" id="5_j14t3"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="6_74tfw"]
+[ext_resource type="Texture2D" uid="uid://bbdqiesd6h5st" path="res://assets/ui/item_icons/droplet_icon.png" id="7_a47an"]
+[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="8_opvoa"]
+[ext_resource type="Texture2D" uid="uid://dtnfe788cdn0k" path="res://assets/ui/item_icons/MeatBall.png" id="9_bbqgb"]
+[ext_resource type="Texture2D" uid="uid://dih7aejmtkiiw" path="res://assets/models/sandwich/butterfrogflat.png" id="10_opvoa"]
+[ext_resource type="Texture2D" uid="uid://26lt8qpui3gf" path="res://assets/models/sandwich/chickenflat.png" id="11_u6y2s"]
+[ext_resource type="Texture2D" uid="uid://cfl256kcprfs5" path="res://assets/models/sandwich/tearflat.png" id="12_bbqgb"]
+[ext_resource type="Texture2D" uid="uid://clue3t6v18e3h" path="res://assets/models/sandwich/waffleflat.png" id="12_ldq5d"]
+[ext_resource type="Texture2D" uid="uid://di1j3scmhheqg" path="res://assets/models/sandwich/meatflat.png" id="13_j14t3"]
+[ext_resource type="Texture2D" uid="uid://reolh0hhn1tg" path="res://assets/models/sandwich/babyflat.png" id="14_51xuo"]
+[ext_resource type="Script" uid="uid://bqo17ixgg6wcr" path="res://scripts/ui/resetbutton.gd" id="17_bbqgb"]
+[ext_resource type="Script" uid="uid://cehuxjnrl1a3e" path="res://scripts/ui/assemblebutton.gd" id="17_opvoa"]
+
+[sub_resource type="Shader" id="Shader_oo1fi"]
+code = "// Original by ChaffDave : https://godotshaders.com/shader/tilt-shift-shader/
+
+shader_type canvas_item;
+
+uniform float limit: hint_range(0.0,0.5) = 0.2;
+uniform float blur: hint_range(0.0,8.0) = 2.0;
+uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
+
+void fragment(){
+	
+	if (UV.y<limit){
+
+		float blur_amount = blur * (1.0 - (SCREEN_UV.y / limit));
+		COLOR = textureLod(screen_texture, SCREEN_UV, blur_amount);
+
+	} else if (UV.y > 1.0-limit){
+
+		float blur_amount = blur * (1.0 - ((1.0 - SCREEN_UV.y) / limit));
+		COLOR = textureLod(screen_texture, SCREEN_UV, blur_amount);
+
+	} else {
+		COLOR.a = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6y2s"]
+shader = SubResource("Shader_oo1fi")
+shader_parameter/limit = 0.5
+shader_parameter/blur = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yscl"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0.50980395)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.21419998, 0.63, 0.48447004, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31x5r"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.43, 0.43, 0.43, 0.3882353)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(0.1, 0.097783335, 0.093, 0.83137256)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbqgb"]
+bg_color = Color(0.78, 0.72072, 0.6318, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.63, 0.21419998, 0.21419998, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51xuo"]
+bg_color = Color(1, 0.924, 0.81, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.17, 0.17, 0.17, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a47an"]
+bg_color = Color(0.78, 0.72072, 0.6318, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.21419998, 0.63, 0.48447004, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opvoa"]
+bg_color = Color(1, 0.924, 0.81, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.17, 0.17, 0.17, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="SandwichAssemblyUI" type="CanvasLayer" unique_id=784765384]
+script = ExtResource("1_oo1fi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1055728010]
+material = SubResource("ShaderMaterial_u6y2s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1979688898]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=906484535]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_icwpr")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer" unique_id=268977745]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 332
+theme_override_constants/margin_right = -640
+theme_override_constants/margin_bottom = 176
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer3" unique_id=1143620470]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -562
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=140969283]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/margin_left = -731
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer2" unique_id=642242421]
+custom_minimum_size = Vector2(1546, 1080)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_u6y2s")
+expand_mode = 1
+flip_h = true
+
+[node name="InformationPanel" type="Panel" parent="MarginContainer2/TextureRect2" unique_id=2123944745]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 812.0
+offset_top = 77.0
+offset_right = 1423.0
+offset_bottom = 968.0
+mouse_filter = 2
+
+[node name="CornerCover" type="ColorRect" parent="MarginContainer2/TextureRect2/InformationPanel" unique_id=1786259366]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 779.0
+offset_right = 608.0
+offset_bottom = 886.0
+color = Color(0.98039216, 0.9607843, 0.93333334, 1)
+
+[node name="Ingredients" type="FlowContainer" parent="MarginContainer2/TextureRect2/InformationPanel" unique_id=1555539586]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="EntryButton" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=691332712]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=2049459956]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=1506676868]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/Panel2" unique_id=1236452508]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="terryamnt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/Panel2/MarginContainer2" unique_id=1646170775]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="terry" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=803886370]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("3_yhcln")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=2368930]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer" unique_id=998485807 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "terry"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("11_u6y2s")
+
+[node name="EntryButton2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=844973524]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=2031189808]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=610328726]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/Panel2" unique_id=677856330]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="waffleamt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/Panel2/MarginContainer2" unique_id=462115423]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="waffle" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=307520787]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("5_j14t3")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=617161463]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer" unique_id=762629353 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "waffle"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("12_ldq5d")
+
+[node name="EntryButton3" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=1086087911]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=1756579136]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=1326932916]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/Panel2" unique_id=1498609627]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="butteramt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/Panel2/MarginContainer2" unique_id=1967716167]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="butter" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=600285795]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("6_74tfw")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=804846334]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer" unique_id=1988748954 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "butter"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("10_opvoa")
+
+[node name="EntryButton4" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=182339043]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=1326750327]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=1963835089]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/Panel2" unique_id=1628841298]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="tearamt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/Panel2/MarginContainer2" unique_id=1400206031]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="babytear" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=1914983145]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("7_a47an")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=605623202]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer" unique_id=1583464370 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "babytear"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("12_bbqgb")
+
+[node name="EntryButton5" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=1867915427]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=505191319]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=938320385]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/Panel2" unique_id=1470804171]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="doughamt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/Panel2/MarginContainer2" unique_id=182662383]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="doughbaby" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=246000506]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("8_opvoa")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=1262799419]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer" unique_id=575872423 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "doughbaby"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("14_51xuo")
+
+[node name="EntryButton6" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients" unique_id=1357606278]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=1178461698]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4yscl")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=252401309]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_31x5r")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/Panel2" unique_id=447465851]
+z_index = 5
+layout_mode = 0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_bottom = -116
+
+[node name="meatamt" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/Panel2/MarginContainer2" unique_id=1850011256]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.832, 0.52, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 45
+text = "10"
+
+[node name="meatball" type="TextureRect" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=73397002]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("9_bbqgb")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=1191836155]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer" unique_id=823491751 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("4_ldq5d")
+info_to_pull = "meatball"
+hover_target = NodePath("../..")
+sandwich = true
+flat_piece = ExtResource("13_j14t3")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel" unique_id=820390223]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/margin_top = -68
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/MarginContainer" unique_id=2079290049]
+z_index = 10
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="Label" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/MarginContainer/Panel" unique_id=531631032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.32639998, 0.96, 0.73824006, 1)
+theme_override_colors/font_outline_color = Color(0.3254902, 0.9607843, 0.7372549, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 31
+text = "Ingredients In Pot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EntryButton8" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel" unique_id=1555567649]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.5
+offset_right = 77.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8" unique_id=1607771752]
+custom_minimum_size = Vector2(153.5, 66)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bbqgb")
+
+[node name="Panel2" type="Panel" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8" unique_id=40303234]
+custom_minimum_size = Vector2(153.5, 66)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_51xuo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8" unique_id=1698621443]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer" unique_id=646773262 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(153.5, 66)
+layout_mode = 2
+script = ExtResource("17_bbqgb")
+hover_target = NodePath("../..")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8" unique_id=1504113299]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer2" unique_id=496023015]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.72, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 36
+text = "Reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EntryButton7" type="MarginContainer" parent="." unique_id=195994457]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 242.0
+offset_top = -127.0
+offset_right = 509.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="EntryButton7" unique_id=1658332540]
+custom_minimum_size = Vector2(227, 66)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a47an")
+
+[node name="Panel2" type="Panel" parent="EntryButton7" unique_id=1243797024]
+custom_minimum_size = Vector2(227, 66)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_opvoa")
+
+[node name="MarginContainer" type="MarginContainer" parent="EntryButton7" unique_id=1189479862]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="EntryButton7/MarginContainer" unique_id=1000289780 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("17_opvoa")
+hover_target = NodePath("../..")
+
+[node name="MarginContainer2" type="MarginContainer" parent="EntryButton7" unique_id=624176422]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Label" type="Label" parent="EntryButton7/MarginContainer2" unique_id=831262735]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 49
+text = "Assemble"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_pressed"]
+[connection signal="button_down" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" to="MarginContainer2/TextureRect2/InformationPanel/EntryButton8/MarginContainer/Button" method="reset_press"]
+[connection signal="button_down" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="EntryButton7/MarginContainer/Button" to="EntryButton7/MarginContainer/Button" method="assemble"]

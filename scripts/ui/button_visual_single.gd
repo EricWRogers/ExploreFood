@@ -1,29 +1,28 @@
 extends Button
+class_name ButtonVisual
 
-@export var info_to_pull : String
 @export var hover_target : Control
-@export var sandwich : bool = false
-@export var flat_piece : Texture2D
+@export var sandwich : bool 
 
 func _on_pressed() -> void:
 	if sandwich:
-		$"../../../../../../..".update_sandwich(flat_piece, info_to_pull)
-		
+		pass
 		return
-	$"../../../../../../../..".set_info(info_to_pull)
+	else:
+		pass
 
 
 func _on_mouse_entered() -> void:
 	hover_target.pivot_offset_ratio = Vector2(0.5, 0.5)
 	var tween = create_tween()
 	hover_target.modulate = Color(Color(1.512, 1.512, 1.512))
-	tween.tween_property(hover_target, "rotation_degrees", 5, 0.05)
+	tween.tween_property(hover_target, "rotation_degrees", 5, 0.02)
 
 
 func _on_mouse_exited() -> void:
 	var tween = create_tween()
 	hover_target.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	tween.tween_property(hover_target, "rotation_degrees", 0, 0.05)
+	tween.tween_property(hover_target, "rotation_degrees", 0, 0.02)
 
 
 func _on_button_down() -> void:
