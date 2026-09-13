@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2yne1ikxqbfh"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4xvrn221hj5l" path="res://assets/models/sandwich/moneysignage.obj" id="1_ce7bp"]
+[ext_resource type="Script" uid="uid://belksfpvvw874" path="res://scripts/ui/signmoney.gd" id="1_x55l1"]
 [ext_resource type="Texture2D" uid="uid://deeg8yvtkfnmx" path="res://assets/textures/signtex.png" id="2_x55l1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1myyo"]
@@ -30,15 +31,106 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Moneysignage/SubViewport")
 
-[node name="Node3D" type="Node3D" unique_id=550569370]
+[sub_resource type="Animation" id="Animation_x55l1"]
+resource_name = "Bought"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moneysignage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.7252121, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moneysignage:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.56, 0.74, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.14835298, 0.14835298, -0.061086524), Vector3(-0.20245819, -0.054105207, 0.06806784), Vector3(-0.008726646, 0.20420352, 0.12915437), Vector3(0.012217305, -0.13264503, -0.20245819), Vector3(-0.17104226, -0.15533431, 0.12217305), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moneysignage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1myyo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moneysignage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moneysignage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moneysignage:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c63ua"]
+_data = {
+&"Bought": SubResource("Animation_x55l1"),
+&"RESET": SubResource("Animation_1myyo")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
+height = 1.5141907
+radius = 0.7338867
+
+[node name="MoneySign" type="Node3D" unique_id=550569370]
+script = ExtResource("1_x55l1")
+title = "Assembler"
+cost = 10
 
 [node name="Moneysignage" type="MeshInstance3D" parent="." unique_id=542484443]
 mesh = ExtResource("1_ce7bp")
 surface_material_override/0 = SubResource("StandardMaterial3D_1myyo")
 
-[node name="Title" type="Label3D" parent="." unique_id=1890951397]
+[node name="Title" type="Label3D" parent="Moneysignage" unique_id=1890951397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4465599, 0.17564777)
 render_priority = 100
 outline_render_priority = 100
@@ -48,7 +140,7 @@ text = "Assembler"
 font_size = 23
 outline_size = 1
 
-[node name="Cost" type="Label3D" parent="." unique_id=1780687824]
+[node name="Cost" type="Label3D" parent="Moneysignage" unique_id=1780687824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9742011, 0.17564777)
 render_priority = 100
 outline_render_priority = 100
@@ -58,11 +150,11 @@ text = "$0/$20"
 font_size = 39
 outline_size = 5
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=47411908]
+[node name="SubViewport" type="SubViewport" parent="Moneysignage" unique_id=47411908]
 transparent_bg = true
 size = Vector2i(365, 57)
 
-[node name="TextureProgressBar" type="ProgressBar" parent="SubViewport" unique_id=173425102]
+[node name="TextureProgressBar" type="ProgressBar" parent="Moneysignage/SubViewport" unique_id=173425102]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 357.0
@@ -72,6 +164,15 @@ theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_6g1ex")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lg1c5")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356704659]
+[node name="Sprite3D" type="Sprite3D" parent="Moneysignage" unique_id=356704659]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 1.2374382, 0.20461154)
 texture = SubResource("ViewportTexture_lg1c5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=678326032]
+libraries/ = SubResource("AnimationLibrary_c63ua")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=73983813]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=736988021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7765045, 0)
+shape = SubResource("CylinderShape3D_lg1c5")
