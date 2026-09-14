@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3plpvx8a7yxk"]
 
 [ext_resource type="ArrayMesh" uid="uid://c6f4gba0a6lt6" path="res://assets/models/sandwich/goldencoin.obj" id="1_7cwvk"]
+[ext_resource type="Script" uid="uid://b7ybdjn15thc" path="res://scripts/sandwich/gold_coin.gd" id="1_teefd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g1ex"]
 albedo_color = Color(0.75, 0.5035, 0.24, 1)
@@ -8,15 +9,20 @@ metallic = 1.0
 roughness = 0.27
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
-height = 0.24890137
-radius = 1.0078125
+height = 0.16574097
+radius = 0.6645508
 
-[node name="GoldCoin" type="Node3D" unique_id=699060144]
+[node name="GoldCoin" type="RigidBody3D" unique_id=1105236210]
+collision_layer = 33
+collision_mask = 33
+mass = 0.1
+script = ExtResource("1_teefd")
 
 [node name="Goldencoin" type="MeshInstance3D" parent="." unique_id=1872163235]
+transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
 mesh = ExtResource("1_7cwvk")
 surface_material_override/0 = SubResource("StandardMaterial3D_6g1ex")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=33049723]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00592041, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0031280518, 0)
 shape = SubResource("CylinderShape3D_lg1c5")

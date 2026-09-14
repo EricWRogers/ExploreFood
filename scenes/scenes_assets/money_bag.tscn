@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://diredsx2k2vog"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxuik21kkuok6" path="res://assets/models/sandwich/mrmoneybagz.obj" id="1_taa7l"]
+[ext_resource type="Script" uid="uid://0eddu5fk0tnh" path="res://scripts/sandwich/money_bag.gd" id="1_wmg87"]
 [ext_resource type="Texture2D" uid="uid://deurb85b0jboj" path="res://assets/models/sandwich/moneybagtex.png" id="2_kfnvk"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="3_uleoh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uleoh"]
 albedo_texture = ExtResource("2_kfnvk")
@@ -19,8 +21,14 @@ albedo_texture = ExtResource("2_kfnvk")
 radius = 0.79146844
 
 [node name="MoneyBag" type="RigidBody3D" unique_id=554354213]
+collision_layer = 33
+collision_mask = 33
 center_of_mass_mode = 1
-angular_damp = 5.0
+contact_monitor = true
+max_contacts_reported = 8
+angular_damp = 1.0
+script = ExtResource("1_wmg87")
+type = "bag"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=702700665]
 mesh = ExtResource("1_taa7l")
@@ -32,3 +40,24 @@ surface_material_override/3 = SubResource("StandardMaterial3D_10atx")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1405868053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6786709, 0)
 shape = SubResource("SphereShape3D_6g1ex")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=602678190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0721974, 0)
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=1893171349]
+billboard = 1
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.75, 0.6975, 0.48749998, 1)
+outline_modulate = Color(0.75, 0.693125, 0.48749998, 0.36862746)
+text = "$10"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=729048508]
+transform = Transform3D(0.155, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+modulate = Color(0.27, 0.13162501, 0.0675, 0.50980395)
+billboard = 1
+render_priority = 75
+texture = ExtResource("3_uleoh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
