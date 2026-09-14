@@ -30,3 +30,6 @@ func get_took():
 	
 func get_rolled():
 	super()
+	
+func kill_frog():
+	$ButterFrog.queue_free()

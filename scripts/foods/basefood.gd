@@ -47,3 +47,6 @@ func get_took():
 	
 func get_rolled():
 	self.freeze = false
+	
+func im_food():
+	pass

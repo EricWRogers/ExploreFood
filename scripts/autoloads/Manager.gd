@@ -21,6 +21,8 @@ var food_in_pot = []
 var assemblerui
 var current_assembler
 var held_sandwich
+var collected_food = []
+var showed_sell = false
 
 @export var current_quest_item : String
 

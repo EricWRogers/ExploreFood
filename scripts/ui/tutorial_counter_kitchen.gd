@@ -1,6 +1,19 @@
 extends Node3D
 
 func _ready() -> void:
+	if !Manager.collected_food.is_empty():
+		for item in Manager.collected_food:
+			var fooditem = load(item).instantiate()
+			fooditem.rarity_level = 1
+			get_tree().current_scene.add_child(fooditem)
+			fooditem.freeze = false
+			fooditem.global_position = $"../CollectedFoodSpawn".global_position
+			if fooditem.has_method("kill_frog"):
+				fooditem.kill_frog()
+			await get_tree().create_timer(0.3).timeout
+	if !Manager.showed_sell:
+		showsell()
+		Manager.showed_sell = true
 	Manager.kitchen = self
 	if Manager.kitchen_tut > 0:
 		$"../Portal2".unlock()

@@ -34,12 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="32_k55bu"]
 [ext_resource type="Script" uid="uid://cofymd23xiktd" path="res://scripts/ui/tutorial_counter_kitchen.gd" id="33_22rdp"]
 [ext_resource type="PackedScene" uid="uid://bq3880c8knav0" path="res://scenes/scenes_assets/assembler.tscn" id="34_njsh3"]
-[ext_resource type="PackedScene" uid="uid://h28gv01dvguc" path="res://scenes/food/tear_baby.tscn" id="35_551tx"]
-[ext_resource type="PackedScene" uid="uid://dsw7givxakx7k" path="res://scenes/food/terry_food.tscn" id="36_ov0qq"]
-[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="37_180ue"]
-[ext_resource type="PackedScene" uid="uid://bh6j3fag6cvkt" path="res://scenes/food/mystery_meat.tscn" id="38_yakgj"]
-[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="39_uy4pe"]
-[ext_resource type="PackedScene" uid="uid://cuudja02uqggj" path="res://scenes/food/butter_frog.tscn" id="40_23fmp"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -2531,7 +2525,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
 
 [node name="BoneAttachment3D" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1170644129, 1124568602) index="1" unique_id=1481971334]
-transform = Transform3D(-0.99766886, 7.352955e-05, 0.06824294, -6.5776985e-05, -0.9999998, 0.000115862116, 0.06824291, 0.00011109933, 0.9976689, 0.07721376, 0.0343172, -0.0018672061)
+transform = Transform3D(-0.9976687, 7.329183e-05, 0.06824544, -6.5364875e-05, -0.9999998, 0.00011838414, 0.06824547, 0.00011364464, 0.9976687, 0.07721374, 0.034317188, -0.0018673379)
 
 [node name="Physical Bone main" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="0" unique_id=2043989485]
 transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.686283e-05, 0.024982419, 0.0007411167)
@@ -2559,9 +2553,9 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e
 body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
 
 [node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045113146, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36634052, 0.33529213, 0.77013695)
-body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.005719602, 0.006032221, 0.03113047)
+transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045113415, 0.02831554, -0.030620016)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366342, 0.33529928, 0.77013475)
+body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.0057198703, 0.006032221, 0.03113047)
 
 [node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
 transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
@@ -3225,191 +3219,8 @@ transform = Transform3D(0.99954236, 0, -0.030251354, 0, 1, 0, 0.030251354, 0, 0.
 [node name="Assembler2" parent="." unique_id=1221752161 instance=ExtResource("34_njsh3")]
 transform = Transform3D(0.7505357, 0, 0.6608301, 0, 1, 0, -0.6608301, 0, 0.7505357, 5.8798857, 0.20155632, 9.367315)
 
-[node name="TearBaby" parent="." unique_id=1169599723 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 0, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood3" parent="." unique_id=402883494 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, -4.6019406, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad" parent="." unique_id=1359377052 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, -2.2292778, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat" parent="." unique_id=1792891121 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 2.494941, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby" parent="." unique_id=1672482069 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 4.394267, 0.87002414)
-
-[node name="TearBaby2" parent="." unique_id=419211388 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 11.335534, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood4" parent="." unique_id=737182758 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, 6.7335935, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad2" parent="." unique_id=18185413 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, 9.1062565, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad2" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat2" parent="." unique_id=1088185478 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 13.830475, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby2" parent="." unique_id=1985975949 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 15.729801, 0.87002414)
-
-[node name="TearBaby3" parent="." unique_id=1318392213 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 22.443085, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood5" parent="." unique_id=1204440211 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, 17.841143, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad3" parent="." unique_id=1302125072 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, 20.213806, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad3" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat3" parent="." unique_id=655320362 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 24.938025, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby3" parent="." unique_id=24599275 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 26.83735, 0.87002414)
-
-[node name="ButterFrog" parent="." unique_id=1205933544 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 28.26457, 0.87002414)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog2" parent="." unique_id=445534172 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 29.9343, 0.87002414)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog3" parent="." unique_id=1902970991 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 31.557575, 0.87002414)
-freeze = false
-rarity_level = 1.0
-
-[node name="TearBaby4" parent="." unique_id=43081556 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 39.10712, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood6" parent="." unique_id=2062639926 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, 34.50518, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad4" parent="." unique_id=1522081794 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, 36.877842, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad4" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat4" parent="." unique_id=77021724 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 41.602062, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby4" parent="." unique_id=1076321431 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 43.50139, 0.87002414)
-
-[node name="TearBaby5" parent="." unique_id=349717286 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 50.442654, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood7" parent="." unique_id=359959910 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, 45.840714, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad5" parent="." unique_id=1869889285 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, 48.213375, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad5" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat5" parent="." unique_id=155257558 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 52.937595, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby5" parent="." unique_id=2068598012 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 54.83692, 0.87002414)
-
-[node name="TearBaby6" parent="." unique_id=704319990 instance=ExtResource("35_551tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0559201, 61.550205, 0.88917994)
-freeze = false
-rarity_level = 1.0
-
-[node name="TerryFood8" parent="." unique_id=264401733 instance=ExtResource("36_ov0qq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4169681, 56.94826, 1.0560769)
-freeze = false
-rarity_level = 1.0
-
-[node name="WafflePad6" parent="." unique_id=343249234 instance=ExtResource("37_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2078369, 59.320927, 0.6549698)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog" parent="WafflePad6" index="3" unique_id=97841650]
-rarity_level = 1.0
-
-[node name="MysteryMeat6" parent="." unique_id=1494206569 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0795152, 64.04515, 0.8248501)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby6" parent="." unique_id=2035540740 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 65.94447, 0.87002414)
-
-[node name="ButterFrog4" parent="." unique_id=349879816 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 67.37169, 0.87002414)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog5" parent="." unique_id=1236334855 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 69.04142, 0.87002414)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog6" parent="." unique_id=151553374 instance=ExtResource("40_23fmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054394, 70.664696, 0.87002414)
-freeze = false
-rarity_level = 1.0
+[node name="CollectedFoodSpawn" type="Marker3D" parent="." unique_id=46789900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.63039, -18.068527)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_body_entered"]
@@ -3434,9 +3245,3 @@ rarity_level = 1.0
 [editable path="Stove"]
 [editable path="Stove/Fire"]
 [editable path="Boss_NPC_STuff/QuestTable"]
-[editable path="WafflePad"]
-[editable path="WafflePad2"]
-[editable path="WafflePad3"]
-[editable path="WafflePad4"]
-[editable path="WafflePad5"]
-[editable path="WafflePad6"]
