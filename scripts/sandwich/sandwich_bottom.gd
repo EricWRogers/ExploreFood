@@ -1,12 +1,15 @@
-extends Node3D
+extends RigidBody3D
 
 var my_assembler : StaticBody3D
 var held = false
 var exploded = false
+var value = 0
+var holder
 
 func on_picked():
 	if Manager.held_sandwich:
 		return
+	holder = Manager.player_hold
 	Manager.held_sandwich = self
 	my_assembler.held_sandwich = null
 	my_assembler = null
@@ -28,5 +31,14 @@ func _physics_process(delta: float) -> void:
 	if !held:
 		return
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", Manager.player_hold.global_position, 0.001)
+	tween.tween_property(self, "global_position", holder.global_position, 0.001)
 	
+func get_rolled():
+	pass
+	
+func make_inactive():
+	self.set_collision_layer_value(1, false)
+	self.set_collision_mask_value(1, false)
+	self.set_collision_layer_value(12, false)
+	self.set_collision_mask_value(12, false)
+	$RayCast3D.enabled = false

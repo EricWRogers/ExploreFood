@@ -75,6 +75,7 @@ func _on_timer_timeout() -> void:
 			processed.lag_amnt = new_lag
 			processed.original_bun = sandwich_bot
 			leader_chain = processed.get_node("StaticBody3D/AttchPnt")
+			sandwich_bot.value += sandwich_piece.value
 		var sand_top = SANDWICH_TOP.instantiate()
 		get_tree().current_scene.add_child(sand_top)
 		sand_top.global_position = spawn_point

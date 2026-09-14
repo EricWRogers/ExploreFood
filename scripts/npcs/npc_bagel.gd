@@ -25,7 +25,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("get_rolled") and not hands_full:
+		body.make_inactive()
 		Manager.money += body.value
 		Manager.player.update_cash()
-		body.queue_free()
+		body.holder = $Marker3D
+		body.held = true
+		#body.queue_free()
 		hands_full = true

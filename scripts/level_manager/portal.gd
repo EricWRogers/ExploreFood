@@ -21,6 +21,7 @@ func unlock():
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.has_method("im_food"):
-		Manager.collected_food.append(body.scene_file_path)
-		body.queue_free()
+	if !in_kitchen:
+		if body.has_method("im_food"):
+			Manager.collected_food.append(body.scene_file_path)
+			body.queue_free()
