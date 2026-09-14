@@ -7,11 +7,31 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg1c5"]
 albedo_texture = ExtResource("2_ptyc6")
 
-[node name="SandwichBottom" type="Node3D" unique_id=2000620164]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lg1c5"]
+height = 0.18560791
+radius = 0.42236328
+
+[node name="SandwichBottom" type="RigidBody3D" unique_id=406328923]
+collision_layer = 2049
+collision_mask = 2049
+freeze = true
+max_contacts_reported = 8
 script = ExtResource("1_ptyc6")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2086870459]
+[node name="StaticBody3D" type="Node3D" parent="." unique_id=1949044193]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=599032194]
 mesh = ExtResource("1_u8lgc")
 surface_material_override/0 = SubResource("StandardMaterial3D_lg1c5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1087607481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.077178955, 0)
+shape = SubResource("CylinderShape3D_lg1c5")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=415746061]
+enabled = false
+target_position = Vector3(0, -0.225, 0)
+collision_mask = 65535
+hit_from_inside = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

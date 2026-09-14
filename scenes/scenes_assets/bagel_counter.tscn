@@ -129,7 +129,6 @@ size = Vector3(4.9748535, 1.2536621, 1.1337891)
 size = Vector3(5.623657, 2.4726563, 4.4500732)
 
 [node name="BagelCounter" type="StaticBody3D" unique_id=137819221]
-collision_layer = 1025
 script = ExtResource("1_o561u")
 
 [node name="BagelCounter" type="MeshInstance3D" parent="." unique_id=568963773]

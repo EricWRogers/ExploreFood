@@ -181,13 +181,28 @@ func _physics_process(delta: float) -> void:
 
 	# Inventory slots
 	if Input.is_action_just_pressed("slot1"):
+		if Manager.held_sandwich:
+			update_slots(0)
+			return
 		update_slots(1)
 	elif Input.is_action_just_pressed("slot2"):
+		if Manager.held_sandwich:
+			update_slots(0)
+			return
 		update_slots(2)
 	elif Input.is_action_just_pressed("slot3"):
+		if Manager.held_sandwich:
+			update_slots(0)
+			return
 		update_slots(3)
 
 	if Input.is_action_just_pressed("dropthrow"):
+		if Manager.held_sandwich:
+			update_slots(0)
+			Manager.held_sandwich.held = false
+			Manager.held_sandwich.freeze = false
+			Manager.held_sandwich = null
+			return
 		dropthrow()
 
 	# Movement
@@ -237,6 +252,9 @@ func _physics_process(delta: float) -> void:
 
 	# Pick up item
 	if Input.is_action_just_pressed("Interact") and current_target:
+		if Manager.held_sandwich:
+			update_slots(0)
+			return
 		if current_target.has_method("assemble"):
 			current_target.assemble()
 		else:

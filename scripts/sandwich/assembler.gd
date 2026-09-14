@@ -17,6 +17,8 @@ func on_looked_away():
 	$Node3D.hide()
 
 func assemble():
+	if Manager.held_sandwich:
+		return
 	if held_sandwich:
 		held_sandwich.on_picked()
 		held_sandwich = null
@@ -71,11 +73,15 @@ func _on_timer_timeout() -> void:
 			processed.my_leader = leader_chain
 			new_lag -= 0.03
 			processed.lag_amnt = new_lag
+			processed.original_bun = sandwich_bot
 			leader_chain = processed.get_node("StaticBody3D/AttchPnt")
 		var sand_top = SANDWICH_TOP.instantiate()
 		get_tree().current_scene.add_child(sand_top)
 		sand_top.global_position = spawn_point
 		sand_top.my_leader = leader_chain
+		sand_top.in_chain = true
 		sand_top.lag_amnt = new_lag
+		sand_top.original_bun = sandwich_bot
+		
 		
 		

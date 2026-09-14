@@ -20,9 +20,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09460294, 0)
 mesh = ExtResource("2_flsl7")
 surface_material_override/0 = SubResource("StandardMaterial3D_jgj4n")
 
-[node name="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=570375411]
+[node name="AttchPnt" parent="StaticBody3D" index="1" unique_id=1118350893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10126546, 0)
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=570375411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01663971, 0)
 shape = SubResource("CylinderShape3D_flsl7")
-
-[node name="AttchPnt" parent="StaticBody3D" index="2" unique_id=1118350893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10126546, 0)
