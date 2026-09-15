@@ -199,6 +199,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dropthrow"):
 		if Manager.held_sandwich:
 			update_slots(0)
+			Manager.held_sandwich.set_collision_layer_value(1, true)
+			Manager.held_sandwich.set_collision_mask_value(1, true)
+			if Manager.held_sandwich.has_method("absorb"):
+				Manager.held_sandwich.holder = null
+				Manager.held_sandwich.freeze = false
+				Manager.held_sandwich.set_collision_layer_value(1, true)
+				Manager.held_sandwich.set_collision_mask_value(1, true)
+				var forward_dir = -$Head/Camera3D.global_transform.basis.z
+				var impulse_vector = forward_dir * impulse_force
+				Manager.held_sandwich.apply_central_impulse(impulse_vector)
 			Manager.held_sandwich.held = false
 			Manager.held_sandwich.freeze = false
 			Manager.held_sandwich = null
@@ -257,6 +267,8 @@ func _physics_process(delta: float) -> void:
 			return
 		if current_target.has_method("assemble"):
 			current_target.assemble()
+		elif current_target.has_method("absorb"):
+			current_target.holder = $Head/KillerBeanSproject2/ItemHoldSpawn
 		else:
 			pickup_food()
 

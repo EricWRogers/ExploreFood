@@ -3,7 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://p31lug8u62e6" path="res://scenes/npcs/npc_bean.tscn" id="1_8dljf"]
 [ext_resource type="Script" uid="uid://cgeyvj4kj62ut" path="res://scripts/npcs/npc_bagel.gd" id="1_ok8k6"]
 [ext_resource type="Script" uid="uid://qskcxdfrq2r1" path="res://scripts/npcs/detect_bagel.gd" id="4_ts06u"]
+[ext_resource type="Texture2D" uid="uid://cv67callux6ok" path="res://assets/ui/ui_assets/cloudbubble.png" id="5_5dxpk"]
 [ext_resource type="Texture2D" uid="uid://dtuvc3ic32nxy" path="res://assets/npcs/npc_bagel/NPCPlayerSkin.png" id="5_krsai"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="6_wadra"]
+[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="7_50ah8"]
+[ext_resource type="Texture2D" uid="uid://d4nhempagt20r" path="res://assets/ui/ui_assets/checkmark-64.png" id="8_wadra"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7soan"]
 resource_local_to_scene = true
@@ -21,7 +25,7 @@ radius = 1.300293
 height = 5.147461
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lg1c5"]
-radius = 5.669124
+radius = 3.6741536
 
 [node name="NPC_Bagel" type="PathFollow3D" unique_id=1347201108]
 script = ExtResource("1_ok8k6")
@@ -147,7 +151,10 @@ transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.02
 speed_scale = 2.0
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=176754386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10894823, 0.5407345, -1.3872917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10894823, 1.8238411, -1.3872917)
+
+[node name="MoneySpawn" type="Marker3D" parent="." unique_id=2079304807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10894823, 1.8238411, -2.1716108)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=597717305]
 collision_layer = 1025
@@ -166,6 +173,38 @@ one_shot = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1159693715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4917517, 0)
 shape = SubResource("SphereShape3D_lg1c5")
+
+[node name="Bubble" type="Sprite3D" parent="." unique_id=140929657]
+transform = Transform3D(0.355, 0, 0, 0, 0.305, 0, 0, 0, 0.285, 0, 5.5274816, 0)
+visible = false
+billboard = 1
+texture = ExtResource("5_5dxpk")
+
+[node name="Bubble2" type="Sprite3D" parent="Bubble" unique_id=1724328583]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 1.7922509, 0, -0.69367427)
+billboard = 1
+render_priority = 1
+texture = ExtResource("6_wadra")
+
+[node name="Bubble3" type="Sprite3D" parent="Bubble" unique_id=8643616]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -1.5332499, 0, -0.69367427)
+billboard = 1
+render_priority = 1
+texture = ExtResource("7_50ah8")
+
+[node name="Success" type="Sprite3D" parent="Bubble" unique_id=1009258421]
+transform = Transform3D(7.750003, 0, 0, 0, 7.750003, 0, 0, 0, 7.7500005, 0.072033666, -0.43631554, -0.69367427)
+visible = false
+billboard = 1
+render_priority = 2
+texture = ExtResource("8_wadra")
+
+[node name="Label" type="Label3D" parent="Bubble" unique_id=1820001278]
+transform = Transform3D(2.8169017, 0, 0, 0, 3.2786887, 0, 0, 0, 3.5087721, 0.14102393, -0.1458664, -0.42530864)
+billboard = 1
+modulate = Color(0, 0, 0, 1)
+text = "+"
+font_size = 103
 
 [connection signal="timeout" from="Timer" to="StaticBody3D" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

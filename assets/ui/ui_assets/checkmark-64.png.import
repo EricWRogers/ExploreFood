@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsdv8bvnvjdpi"
-path.s3tc="res://.godot/imported/doughbabyicon.png-f0eca775d8cce972dc2ab70a48c27877.s3tc.ctex"
+uid="uid://d4nhempagt20r"
+path.s3tc="res://.godot/imported/checkmark-64.png-17a109e2c185e2eaa92892163f8d11d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ui/item_icons/doughbabyicon.png"
-dest_files=["res://.godot/imported/doughbabyicon.png-f0eca775d8cce972dc2ab70a48c27877.s3tc.ctex"]
+source_file="res://assets/ui/ui_assets/checkmark-64.png"
+dest_files=["res://.godot/imported/checkmark-64.png-17a109e2c185e2eaa92892163f8d11d1.s3tc.ctex"]
 
 [params]
 

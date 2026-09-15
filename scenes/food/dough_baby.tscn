@@ -127,7 +127,7 @@ category = 2
 rand_spin = false
 id = 7
 color = Color(0.89411765, 0.7294118, 0.58431375, 1)
-value = 7
+value = 2
 hunger_restore = 20
 processed_ingredient = ExtResource("3_a6t1n")
 

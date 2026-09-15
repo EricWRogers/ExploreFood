@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="36_yakgj"]
 [ext_resource type="PackedScene" uid="uid://bh6j3fag6cvkt" path="res://scenes/food/mystery_meat.tscn" id="37_uy4pe"]
 [ext_resource type="PackedScene" uid="uid://diredsx2k2vog" path="res://scenes/scenes_assets/money_bag.tscn" id="38_yakgj"]
+[ext_resource type="PackedScene" uid="uid://3plpvx8a7yxk" path="res://scenes/scenes_assets/gold_coin.tscn" id="39_uy4pe"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -273,7 +274,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njsh3"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yakgj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy4pe"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_22rdp")
@@ -428,7 +429,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_551tx"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy4pe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23fmp"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_njsh3")
@@ -453,7 +454,7 @@ shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.499999988824
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_23fmp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfcys"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -672,6 +673,14 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 28
+
+[sub_resource type="Curve3D" id="Curve3D_tcadu"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.9545159, 9.536743e-07, -9.21962, 0, 0, 0, 0, 0, 0, 0.5692482, 9.536743e-07, -19.152267, 0, 0, 0, 0, 0, 0, -3.0189347, 0, -30.151672, 0, 0, 0, 0, 0, 0, -1.9214625, 0, -46.555237, 0, 0, 0, 0, 0, 0, -2.5397735, 0, -51.80139, 0, 0, 0, 0, 0, 0, -4.440879, 0, -67.9316, 0, 0, 0, 0, 0, 0, -1.7528825, 0, -82.86671, 0, 0, 0, 0, 0, 0, -0.10544443, 0.049995422, -87.53322, 0, 0, 0, 0, 0, 0, -2.533679, 0.049995422, -90.8089, 0, 0, 0, 0, 0, 0, -2.4445233, 0.008747101, -100.73885, 0, 0, 0, 0, 0, 0, -1.4054108, -4.7683716e-06, -108.04659, 0, 0, 0, 0, 0, 0, 0.7456279, 0.032753944, -113.394394, 0, 0, 0, 0, 0, 0, 0.93531513, 0.044089317, -115.95511, 0, 0, 0, 0, 0, 0, -1.3949308, 0.04410267, -116.88705, 0, 0, 0, 0, 0, 0, -2.3498802, 0.04410267, -117.38593, 0, 0, 0, 0, 0, 0, -2.581355, 0.04410267, -118.04134, 0, 0, 0, 0, 0, 0, -2.817072, 0.04410267, -118.73768, 0, 0, 0, 0, 0, 0, -2.7526736, 0.09857178, -119.34346, 0, 0, 0, 0, 0, 0, -1.3323827, 0.04410267, -118.79615, 0, 0, 0, 0, 0, 0, 0.05159831, 0.043522835, -114.435455, 0, 0, 0, 0, 0, 0, 1.3798115, 3.33786e-06, -109.95328, 0, 0, 0, 0, 0, 0, 2.1113105, 1.9073486e-06, -81.54697, 0, 0, 0, 0, 0, 0, -0.18276119, 0, -28.043274, 0, 0, 0, 0, 0, 0, 2.8608751, 0, -9.043152),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 25
 
 [sub_resource type="Animation" id="Animation_22rdp"]
 length = 0.001
@@ -2529,7 +2538,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
 
 [node name="BoneAttachment3D" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1170644129, 1124568602) index="1" unique_id=1481971334]
-transform = Transform3D(-0.99767053, 7.3408475e-05, 0.06821871, -6.731134e-05, -0.9999999, 9.166915e-05, 0.06821871, 8.686073e-05, 0.99767053, 0.07721382, 0.03431726, -0.0018662438)
+transform = Transform3D(-0.99766904, 7.3321164e-05, 0.06824005, -6.576255e-05, -0.9999998, 0.00011300761, 0.06824005, 0.00010825321, 0.9976691, 0.077213764, 0.034317195, -0.0018670581)
 
 [node name="Physical Bone main" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="0" unique_id=2043989485]
 transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.686283e-05, 0.024982419, 0.0007411167)
@@ -2547,9 +2556,9 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.126946e-07, 5.678337e-0
 body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -3.6418575e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2499796e-06, 0.00039294083, -0.011967659, -0.00012935698, -0.00013378263)
 
 [node name="Physical Bone R_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="3" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029570967, 0.013724931, -0.014683716)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709602, 0.555946)
-body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080293417, -0.018891048, -0.014583297)
+transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029570967, 0.013724931, -0.014683716)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709603, 0.55594593)
+body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.00080293417, -0.018891048, -0.014583297)
 
 [node name="Physical Bone L_shoulder" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="4" unique_id=189867189]
 transform = Transform3D(-0.00039047102, -0.00037934908, -0.03515753, -1.7337684e-06, -0.0351597, 0.00037939168, -0.035159577, 5.9467043e-06, 0.00039042963, 0.02742362, 0.034520764, 0.00068785995)
@@ -2557,14 +2566,14 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e
 body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
 
 [node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.04511395, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36634496, 0.3353136, 0.77013034)
-body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.005720407, 0.006032221, 0.03113047)
+transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.045114577, 0.02831554, -0.030620016)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36634842, 0.33533022, 0.7701252)
+body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057210326, 0.006032221, 0.03113047)
 
 [node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
-transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
+transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194234, -0.05945587, -0.33873647)
-body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988536, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
+body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988534, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
@@ -2586,7 +2595,7 @@ image_of_world = ExtResource("5_r7waf")
 light_color = Color(0.7490196, 0.56078434, 0.6666667, 1)
 
 [node name="Portalmesh" parent="Portal2" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_yakgj")
+surface_material_override/0 = SubResource("ShaderMaterial_uy4pe")
 
 [node name="OmniLight3D" parent="Portal2" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2598,7 +2607,7 @@ light_color = Color(1, 0.63529414, 0.2509804, 1)
 active = true
 
 [node name="Portalmesh" parent="Portal4" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_uy4pe")
+surface_material_override/0 = SubResource("ShaderMaterial_23fmp")
 
 [node name="OmniLight3D" parent="Portal4" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2612,7 +2621,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_23fmp")
+surface_material_override/0 = SubResource("ShaderMaterial_gfcys")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
@@ -2791,6 +2800,10 @@ shape = SubResource("BoxShape3D_lg1c5")
 [node name="NPCTrailOfBagels" type="Path3D" parent="." unique_id=432471275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 148.93341)
 curve = SubResource("Curve3D_yajmd")
+
+[node name="NPCTrailOfBagels2" type="Path3D" parent="." unique_id=232500204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 148.93341)
+curve = SubResource("Curve3D_tcadu")
 
 [node name="SpawnNPC" type="Timer" parent="." unique_id=769968398]
 wait_time = 2.0
@@ -3293,6 +3306,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.45402, 4.9751444, -12.6713
 
 [node name="MoneyBag4" parent="." unique_id=920614280 instance=ExtResource("38_yakgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.45402, 5.0739126, -6.467654)
+
+[node name="GoldCoin" parent="." unique_id=1105236210 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.235222, 5.0739126, -6.467654)
+
+[node name="GoldCoin2" parent="." unique_id=1572123216 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.235222, 7.1360903, -9.154301)
+
+[node name="GoldCoin3" parent="." unique_id=1355435730 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 7.596412, -9.154301)
+
+[node name="GoldCoin4" parent="." unique_id=890135187 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 7.3508687, -7.624837)
+
+[node name="GoldCoin5" parent="." unique_id=931825446 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 8.0575285, -10.151803)
+
+[node name="GoldCoin6" parent="." unique_id=1091710920 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.048353, 8.431032, -10.133386)
+
+[node name="GoldCoin7" parent="." unique_id=1479421299 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.612608, 3.287714, -10.133386)
+
+[node name="GoldCoin8" parent="." unique_id=181610314 instance=ExtResource("39_uy4pe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.774105, 2.1261086, -10.133386)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_body_entered"]

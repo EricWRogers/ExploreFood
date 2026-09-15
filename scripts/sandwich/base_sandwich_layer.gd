@@ -4,6 +4,7 @@ var in_chain = false
 var my_leader
 var lag_amnt = 1
 var original_bun
+var id
 var impulse_force = 18
 
 func _physics_process(delta: float) -> void:

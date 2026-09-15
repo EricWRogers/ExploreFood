@@ -24,12 +24,13 @@ func switch():
 	emit_signal("level_changed", level_name) #emits signal to level manager
 
 func _on_spawn_npc_timeout() -> void:
-	if npc_spawn_tick < npc_spawn_cap:
-		npc_spawn_tick += 1
+	if Manager.current_customers < npc_spawn_cap:
+		Manager.current_customers += 1
 		$SpawnNPC.wait_time = randi_range(2, 4)
 		var npc = NPC_BAGEL.instantiate()
 		$NPCTrailOfBagels.add_child(npc)
 		npc.global_position = $NPCTrailOfBagels.global_position
 	else:
-		$SpawnNPC.one_shot = true
-		$SpawnNPC.stop()
+		pass
+		#$SpawnNPC.one_shot = true
+		#$SpawnNPC.stop()

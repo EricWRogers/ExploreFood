@@ -5,8 +5,15 @@ var held = false
 var exploded = false
 var value = 0
 var holder
+var ids = []
+
+func sandbot():
+	$RayCast3D.enabled = true
 
 func on_picked():
+	self.set_collision_layer_value(1, false)
+	self.set_collision_mask_value(1, false)
+	ids.sort()
 	if Manager.held_sandwich:
 		return
 	holder = Manager.player_hold

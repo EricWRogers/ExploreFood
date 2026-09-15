@@ -12,7 +12,8 @@ func _ready() -> void:
 				fooditem.kill_frog()
 			await get_tree().create_timer(0.3).timeout
 	if !Manager.showed_sell:
-		showsell()
+		
+		#showsell()
 		Manager.showed_sell = true
 	Manager.kitchen = self
 	if Manager.kitchen_tut > 0:

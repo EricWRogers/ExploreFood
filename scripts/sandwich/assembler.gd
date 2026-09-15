@@ -72,6 +72,8 @@ func _on_timer_timeout() -> void:
 			spawn_point = processed.get_node("StaticBody3D/AttchPnt").global_position
 			processed.my_leader = leader_chain
 			new_lag -= 0.03
+			processed.id = sandwich_piece.id
+			sandwich_bot.ids.append(sandwich_piece.id)
 			processed.lag_amnt = new_lag
 			processed.original_bun = sandwich_bot
 			leader_chain = processed.get_node("StaticBody3D/AttchPnt")

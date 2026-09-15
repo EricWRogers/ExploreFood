@@ -21,8 +21,8 @@ albedo_texture = ExtResource("2_kfnvk")
 radius = 0.79146844
 
 [node name="MoneyBag" type="RigidBody3D" unique_id=554354213]
-collision_layer = 33
-collision_mask = 33
+collision_layer = 544
+collision_mask = 32
 center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 8
@@ -60,4 +60,29 @@ billboard = 1
 render_priority = 75
 texture = ExtResource("3_uleoh")
 
+[node name="Node3D2" type="Node3D" parent="." unique_id=2020169518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4997523, 0)
+
+[node name="Label3D" type="Label3D" parent="Node3D2" unique_id=1124431157]
+billboard = 1
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.75, 0.6975, 0.48749998, 1)
+outline_modulate = Color(0.75, 0.693125, 0.48749998, 0.36862746)
+text = "E"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D2" unique_id=2071499400]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+modulate = Color(0.27, 0.13162501, 0.0675, 0.50980395)
+billboard = 1
+render_priority = 75
+texture = ExtResource("3_uleoh")
+
+[node name="Timer" type="Timer" parent="." unique_id=158563183]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

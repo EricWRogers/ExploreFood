@@ -1,5 +1,13 @@
 extends Node
 
+const BUTTERFROG_ICON = preload("uid://mgt6d08sqs17")
+const DOUGH_BABY_ICON_NEW = preload("uid://bmqi2bed8i6o6")
+const DROPLET_ICON = preload("uid://bbdqiesd6h5st")
+const MEAT_BALL = preload("uid://dtnfe788cdn0k")
+const TERRY_ICON = preload("uid://c4mrqsstnqfjk")
+const WAFFLE_ICON = preload("uid://bapm1ifqtscdd")
+
+
 signal scene_change
 
 var currently_held_food
@@ -23,6 +31,9 @@ var current_assembler
 var held_sandwich
 var collected_food = []
 var showed_sell = false
+var the_asker
+var askers_request = []
+var current_customers = 0
 
 @export var current_quest_item : String
 

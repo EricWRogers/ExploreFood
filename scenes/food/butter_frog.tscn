@@ -118,7 +118,7 @@ category = 4
 flavor = 4
 id = 3
 color = Color(1, 0.8745098, 0.58431375, 1)
-value = 18
+value = 2
 hunger_restore = 40
 processed_ingredient = ExtResource("4_02fwy")
 
