@@ -21,7 +21,6 @@ func _on_body_entered(body: Node) -> void:
 	if assessing == false:
 		if body.has_method("absorb"):
 			assessing = true
-			print("ITOUCHEDABAGANDILIKEDIT")
 			if body.type == "coin":
 				body.absorb()
 				value += 1
@@ -46,6 +45,9 @@ func on_looked_at():
 func on_looked_away():
 	#next_pass.set_shader_parameter("transparency", 0.0)
 	$Node3D2.hide()
+
+func update_price():
+	$Node3D/Label3D.text = str("$", value)
 
 
 func _on_timer_timeout() -> void:

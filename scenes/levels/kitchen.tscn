@@ -30,15 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://b5u1kl1sts101" path="res://assets/test_images/myfavorite.jpg" id="14_njsh3"]
 [ext_resource type="Texture2D" uid="uid://djoyr33lscll1" path="res://assets/test_images/worm.png" id="15_551tx"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/big_boss_npc.tscn" id="30_eubmf"]
+[ext_resource type="Texture2D" uid="uid://dtuvc3ic32nxy" path="res://assets/npcs/npc_bagel/NPCPlayerSkin.png" id="31_23fmp"]
 [ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="31_r7waf"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="32_k55bu"]
 [ext_resource type="Script" uid="uid://cofymd23xiktd" path="res://scripts/ui/tutorial_counter_kitchen.gd" id="33_22rdp"]
 [ext_resource type="PackedScene" uid="uid://bq3880c8knav0" path="res://scenes/scenes_assets/assembler.tscn" id="34_njsh3"]
-[ext_resource type="PackedScene" uid="uid://cuudja02uqggj" path="res://scenes/food/butter_frog.tscn" id="35_180ue"]
-[ext_resource type="PackedScene" uid="uid://be70reqeecewm" path="res://scenes/food/dough_baby.tscn" id="36_yakgj"]
-[ext_resource type="PackedScene" uid="uid://bh6j3fag6cvkt" path="res://scenes/food/mystery_meat.tscn" id="37_uy4pe"]
-[ext_resource type="PackedScene" uid="uid://diredsx2k2vog" path="res://scenes/scenes_assets/money_bag.tscn" id="38_yakgj"]
-[ext_resource type="PackedScene" uid="uid://3plpvx8a7yxk" path="res://scenes/scenes_assets/gold_coin.tscn" id="39_uy4pe"]
+[ext_resource type="Script" uid="uid://baf58iaawxp85" path="res://scripts/ui/kitchenunlocker.gd" id="37_180ue"]
+[ext_resource type="PackedScene" uid="uid://b2yne1ikxqbfh" path="res://scenes/scenes_assets/sign.tscn" id="41_gfcys"]
 
 [sub_resource type="Shader" id="Shader_dxa70"]
 code = "shader_type sky;
@@ -274,7 +272,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njsh3"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy4pe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_22rdp")
@@ -429,7 +427,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_551tx"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_23fmp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_180ue"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_njsh3")
@@ -454,7 +452,7 @@ shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.499999988824
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfcys"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yakgj"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -478,6 +476,9 @@ shader_parameter/overall_rotation_speed = -4.4704000057294024e-08
 shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.08499999810008001
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_180ue"]
+radius = 3.2302063
 
 [sub_resource type="Shader" id="Shader_taj0c"]
 code = "shader_type spatial;
@@ -681,6 +682,16 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy4pe"]
+resource_local_to_scene = true
+albedo_color = Color(0.89, 0.3115, 0.3115, 1)
+albedo_texture = ExtResource("31_23fmp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23fmp"]
+resource_local_to_scene = true
+albedo_color = Color(0.8901961, 0.30980393, 0.30980393, 1)
+albedo_texture = ExtResource("31_23fmp")
 
 [sub_resource type="Animation" id="Animation_22rdp"]
 length = 0.001
@@ -2538,7 +2549,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
 
 [node name="BoneAttachment3D" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1170644129, 1124568602) index="1" unique_id=1481971334]
-transform = Transform3D(-0.99766904, 7.3321164e-05, 0.06824005, -6.576255e-05, -0.9999998, 0.00011300761, 0.06824005, 0.00010825321, 0.9976691, 0.077213764, 0.034317195, -0.0018670581)
+transform = Transform3D(-0.997669, 7.3470175e-05, 0.06824142, -6.5818895e-05, -0.9999998, 0.00011436641, 0.06824142, 0.00010960456, 0.9976689, 0.07721376, 0.034317203, -0.0018671148)
 
 [node name="Physical Bone main" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="0" unique_id=2043989485]
 transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.686283e-05, 0.024982419, 0.0007411167)
@@ -2556,9 +2567,9 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.126946e-07, 5.678337e-0
 body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -3.6418575e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2499796e-06, 0.00039294083, -0.011967659, -0.00012935698, -0.00013378263)
 
 [node name="Physical Bone R_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="3" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029570967, 0.013724931, -0.014683716)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709603, 0.55594593)
-body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.00080293417, -0.018891048, -0.014583297)
+transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029570967, 0.013724931, -0.014683716)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709602, 0.555946)
+body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080293417, -0.018891048, -0.014583297)
 
 [node name="Physical Bone L_shoulder" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="4" unique_id=189867189]
 transform = Transform3D(-0.00039047102, -0.00037934908, -0.03515753, -1.7337684e-06, -0.0351597, 0.00037939168, -0.035159577, 5.9467043e-06, 0.00039042963, 0.02742362, 0.034520764, 0.00068785995)
@@ -2566,14 +2577,14 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e
 body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
 
 [node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.045114577, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36634842, 0.33533022, 0.7701252)
-body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057210326, 0.006032221, 0.03113047)
+transform = Transform3D(0.0068268473, -0.032960054, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099743, 0.029215142, 0.045115203, 0.02831554, -0.030620016)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36635187, 0.33534694, 0.77012)
+body_offset = Transform3D(0.006827213, -0.03295914, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.005102759, -0.02921598, 0.0057216585, 0.006032221, 0.03113047)
 
 [node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
-transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
+transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.01613506, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194234, -0.05945587, -0.33873647)
-body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988534, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
+body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988536, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
@@ -2595,7 +2606,7 @@ image_of_world = ExtResource("5_r7waf")
 light_color = Color(0.7490196, 0.56078434, 0.6666667, 1)
 
 [node name="Portalmesh" parent="Portal2" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_uy4pe")
+surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
 
 [node name="OmniLight3D" parent="Portal2" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2607,7 +2618,7 @@ light_color = Color(1, 0.63529414, 0.2509804, 1)
 active = true
 
 [node name="Portalmesh" parent="Portal4" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_23fmp")
+surface_material_override/0 = SubResource("ShaderMaterial_180ue")
 
 [node name="OmniLight3D" parent="Portal4" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2621,7 +2632,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_gfcys")
+surface_material_override/0 = SubResource("ShaderMaterial_yakgj")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
@@ -2653,6 +2664,10 @@ transform = Transform3D(0.99928325, -0.03785047, 2.2914939e-11, 0.037846744, 0.9
 
 [node name="PotLid" parent="Stove/StaticBody3D" index="0" unique_id=1990196724]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.99999976, -2.0954758e-09, 0, 1.2805685e-09, 0.99999994, -0.005944073, 3.2687302, 0.0044032633)
+
+[node name="CollisionShape3D2" parent="Stove/Area3D" parent_id_path=PackedInt32Array(1286557195, 1797385503) index="0" unique_id=1933259084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8867588, 0)
+shape = SubResource("SphereShape3D_180ue")
 
 [node name="OmniLight3D" parent="Stove" index="9" unique_id=43503502]
 light_color = Color(1.2502502, 0.9976544, 0.8172288, 1)
@@ -2820,8 +2835,45 @@ visible = false
 
 [node name="Big_Boss_NPC" parent="Boss_NPC_STuff" unique_id=1095072558 instance=ExtResource("30_eubmf")]
 
+[node name="BossStaticBody" parent="Boss_NPC_STuff/Big_Boss_NPC" index="0" unique_id=1818451369]
+collision_layer = 0
+collision_mask = 0
+
+[node name="BossDialogueArea" parent="Boss_NPC_STuff/Big_Boss_NPC" index="1" unique_id=1359091874]
+monitoring = false
+monitorable = false
+
+[node name="pTorus1" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean" parent_id_path=PackedInt32Array(1095072558, 1608658501) index="2" unique_id=1644631449]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
+[node name="pSphere17" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/group2" parent_id_path=PackedInt32Array(1095072558, 731438036) index="1" unique_id=1643531221]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
+[node name="pSphere19" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/group2" parent_id_path=PackedInt32Array(1095072558, 731438036) index="2" unique_id=1266444329]
+surface_material_override/0 = SubResource("StandardMaterial3D_23fmp")
+
+[node name="pSphere16" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/group2" parent_id_path=PackedInt32Array(1095072558, 731438036) index="3" unique_id=1436144436]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
+[node name="pSphere172" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/group3" parent_id_path=PackedInt32Array(1095072558, 1887380960) index="1" unique_id=1522705810]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
+[node name="pSphere162" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/group3" parent_id_path=PackedInt32Array(1095072558, 1887380960) index="2" unique_id=1736505122]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
+[node name="pCube2" parent="Boss_NPC_STuff/Big_Boss_NPC/NPCBean/Skeleton3D" parent_id_path=PackedInt32Array(1095072558, 1124568602) index="0" unique_id=764906532]
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4pe")
+
 [node name="QuestTable" parent="Boss_NPC_STuff" unique_id=1570142438 instance=ExtResource("31_r7waf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.20022, 2.408317, 3.956564)
+collision_layer = 0
+collision_mask = 0
+
+[node name="TableArea" parent="Boss_NPC_STuff/QuestTable" index="2" unique_id=538780410]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="SellingTutorial" type="Node3D" parent="." unique_id=1406317527]
 transform = Transform3D(-0.9575703, 0.090253554, -0.27370313, 0, 0.94969934, 0.31316322, 0.28819978, 0.29987577, -0.9094039, 6.257166, 3.3081322, 28.417873)
@@ -2899,7 +2951,7 @@ visible = false
 
 [node name="transform1" type="Node3D" parent="NPCBean/pSphere1" unique_id=1086019960]
 
-[node name="pTorus1" type="MeshInstance3D" parent="NPCBean" unique_id=1644631449]
+[node name="pTorus1" type="MeshInstance3D" parent="NPCBean" unique_id=1822393965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046692032, -0.013623161)
 mesh = SubResource("ArrayMesh_ck6q6")
 surface_material_override/0 = SubResource("StandardMaterial3D_njsh3")
@@ -2978,7 +3030,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008371961, 0.054822534, -0.
 mesh = SubResource("ArrayMesh_vp0c1")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
 
-[node name="pSphere17" type="MeshInstance3D" parent="NPCBean/group2" unique_id=1643531221]
+[node name="pSphere17" type="MeshInstance3D" parent="NPCBean/group2" unique_id=1418305578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068386705, 0.057743717, -0.010840914)
 mesh = SubResource("ArrayMesh_elyvy")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
@@ -2988,7 +3040,7 @@ transform = Transform3D(2.670668, 0.07010555, -0.21217558, 0.12976883, 1.5850418
 mesh = SubResource("ArrayMesh_elyvy")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
 
-[node name="pSphere16" type="MeshInstance3D" parent="NPCBean/group2" unique_id=1436144436]
+[node name="pSphere16" type="MeshInstance3D" parent="NPCBean/group2" unique_id=164109059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068386705, 0.05305815, -0.010840914)
 mesh = SubResource("ArrayMesh_1n67r")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
@@ -3015,12 +3067,12 @@ transform = Transform3D(1, 0, 5.9604645e-08, 0, 0.9999996, 0, -5.9604645e-08, 0,
 mesh = SubResource("ArrayMesh_ccw5t")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
 
-[node name="pSphere172" type="MeshInstance3D" parent="NPCBean/group3" unique_id=1522705810]
+[node name="pSphere172" type="MeshInstance3D" parent="NPCBean/group3" unique_id=1632340717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005342858, 0.05866434, -0.010816455)
 mesh = SubResource("ArrayMesh_gy5rn")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
 
-[node name="pSphere162" type="MeshInstance3D" parent="NPCBean/group3" unique_id=1736505122]
+[node name="pSphere162" type="MeshInstance3D" parent="NPCBean/group3" unique_id=729751209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005342858, 0.053978775, -0.010816455)
 mesh = SubResource("ArrayMesh_jgcd7")
 surface_material_override/0 = SubResource("StandardMaterial3D_551tx")
@@ -3200,7 +3252,7 @@ bones/23/position = Vector3(-0.00729595, 8.881784e-18, -3.331483e-09)
 bones/23/rotation = Quaternion(0, 0, 0, 1)
 bones/23/scale = Vector3(1, 1, 1)
 
-[node name="pCube2" type="MeshInstance3D" parent="NPCBean/Skeleton3D" unique_id=764906532]
+[node name="pCube2" type="MeshInstance3D" parent="NPCBean/Skeleton3D" unique_id=921625226]
 mesh = SubResource("ArrayMesh_v38rp")
 skin = SubResource("Skin_thd1q")
 skeleton = NodePath("..")
@@ -3230,106 +3282,16 @@ libraries/ = SubResource("AnimationLibrary_q4ayx")
 [node name="Assembler" parent="." unique_id=934873719 instance=ExtResource("34_njsh3")]
 transform = Transform3D(0.9672303, 0, 0.2539005, 0, 1, 0, -0.2539005, 0, 0.9672303, 3.0723336, 0.20155609, 11.076753)
 
-[node name="Assembler3" parent="." unique_id=1208171926 instance=ExtResource("34_njsh3")]
-transform = Transform3D(0.99954236, 0, -0.030251354, 0, 1, 0, 0.030251354, 0, 0.99954236, -0.163414, 0.20155632, 11.234026)
-
-[node name="Assembler2" parent="." unique_id=1221752161 instance=ExtResource("34_njsh3")]
-transform = Transform3D(0.7505357, 0, 0.6608301, 0, 1, 0, -0.6608301, 0, 0.7505357, 5.8798857, 0.20155632, 9.367315)
-
 [node name="CollectedFoodSpawn" type="Marker3D" parent="." unique_id=46789900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.63039, -18.068527)
 
-[node name="ButterFrog" parent="." unique_id=1169599723 instance=ExtResource("35_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, -3.7443519, 1.0483007)
-freeze = false
-rarity_level = 1.0
+[node name="MoneySign3" parent="." unique_id=413523551 instance=ExtResource("41_gfcys")]
+transform = Transform3D(1.1246655, 0, 1.081077, 0, 1.56, 0, -1.081077, 0, 1.1246655, -16.32257, -2.3841858e-07, -15.131057)
+title = "Portal 2"
+cost = 55
 
-[node name="DoughBaby" parent="." unique_id=1672482069 instance=ExtResource("36_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 0.83252573, 1.0483007)
-rarity_level = 1.0
-
-[node name="MysteryMeat" parent="." unique_id=14005542 instance=ExtResource("37_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, -1.609302, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog2" parent="." unique_id=2066596037 instance=ExtResource("35_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 3.0812697, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby2" parent="." unique_id=1754068191 instance=ExtResource("36_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 7.6581473, 1.0483007)
-rarity_level = 1.0
-
-[node name="MysteryMeat2" parent="." unique_id=55741909 instance=ExtResource("37_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 5.2163196, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog3" parent="." unique_id=2097174660 instance=ExtResource("35_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 9.744158, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby3" parent="." unique_id=1574457449 instance=ExtResource("36_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 14.321035, 1.0483007)
-rarity_level = 1.0
-
-[node name="MysteryMeat3" parent="." unique_id=1828197697 instance=ExtResource("37_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 11.879208, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="ButterFrog4" parent="." unique_id=305739270 instance=ExtResource("35_180ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 16.003965, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="DoughBaby4" parent="." unique_id=311231596 instance=ExtResource("36_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 20.580843, 1.0483007)
-rarity_level = 1.0
-
-[node name="MysteryMeat4" parent="." unique_id=740955530 instance=ExtResource("37_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0879464, 18.139015, 1.0483007)
-freeze = false
-rarity_level = 1.0
-
-[node name="MoneyBag" parent="." unique_id=554354213 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.371247, 2.4980323, -9.998511)
-
-[node name="MoneyBag2" parent="." unique_id=748638501 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.015721, 2.4980323, -10.056928)
-
-[node name="MoneyBag3" parent="." unique_id=1740953467 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.45402, 4.9751444, -12.67133)
-
-[node name="MoneyBag4" parent="." unique_id=920614280 instance=ExtResource("38_yakgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.45402, 5.0739126, -6.467654)
-
-[node name="GoldCoin" parent="." unique_id=1105236210 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.235222, 5.0739126, -6.467654)
-
-[node name="GoldCoin2" parent="." unique_id=1572123216 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.235222, 7.1360903, -9.154301)
-
-[node name="GoldCoin3" parent="." unique_id=1355435730 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 7.596412, -9.154301)
-
-[node name="GoldCoin4" parent="." unique_id=890135187 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 7.3508687, -7.624837)
-
-[node name="GoldCoin5" parent="." unique_id=931825446 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.876148, 8.0575285, -10.151803)
-
-[node name="GoldCoin6" parent="." unique_id=1091710920 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.048353, 8.431032, -10.133386)
-
-[node name="GoldCoin7" parent="." unique_id=1479421299 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.612608, 3.287714, -10.133386)
-
-[node name="GoldCoin8" parent="." unique_id=181610314 instance=ExtResource("39_uy4pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.774105, 2.1261086, -10.133386)
+[node name="Unlocker" type="Node3D" parent="." unique_id=566695377]
+script = ExtResource("37_180ue")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_body_entered"]
@@ -3344,6 +3306,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.774105, 2.1261086, -10.133
 [connection signal="timeout" from="SpawnNPC" to="." method="_on_spawn_npc_timeout"]
 [connection signal="body_entered" from="Boss_NPC_STuff/QuestTable/TableArea" to="Boss_NPC_STuff/Big_Boss_NPC" method="_on_table_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="Tutorial_Counter_Kitchen" method="_on_animation_player_animation_finished"]
+[connection signal="purchased" from="MoneySign3" to="Unlocker" method="_on_money_sign_3_purchased"]
 
 [editable path="Player"]
 [editable path="Player/CharacterBody3D"]
@@ -3353,4 +3316,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.774105, 2.1261086, -10.133
 [editable path="Portal6"]
 [editable path="Stove"]
 [editable path="Stove/Fire"]
+[editable path="Boss_NPC_STuff/Big_Boss_NPC"]
 [editable path="Boss_NPC_STuff/QuestTable"]

@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("RollSpawn"):
-		cook_pointer_UItip.show()
+		#cook_pointer_UItip.show()
 		
 		if sandwich_mode:
 			#food_types.append(body.processed_ingredient)

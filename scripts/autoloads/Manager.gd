@@ -34,6 +34,7 @@ var showed_sell = false
 var the_asker
 var askers_request = []
 var current_customers = 0
+var waffledimension = false
 
 @export var current_quest_item : String
 

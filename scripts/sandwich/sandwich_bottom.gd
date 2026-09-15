@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 				return
 				exploded = true
 			exploded = true
-			print("EXPLODING TIME")
 			get_tree().call_group("SandwichPiece", "explode", self)
 			queue_free()
 	if !held:

@@ -62,6 +62,7 @@ texture = ExtResource("3_uleoh")
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=2020169518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4997523, 0)
+visible = false
 
 [node name="Label3D" type="Label3D" parent="Node3D2" unique_id=1124431157]
 billboard = 1

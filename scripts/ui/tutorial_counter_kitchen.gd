@@ -1,6 +1,10 @@
 extends Node3D
 
 func _ready() -> void:
+	Manager.current_customers = 0
+	if Manager.waffledimension:
+		$"../Portal4".unlock()
+		$"../MoneySign3".queue_free()
 	if !Manager.collected_food.is_empty():
 		for item in Manager.collected_food:
 			var fooditem = load(item).instantiate()
@@ -12,8 +16,7 @@ func _ready() -> void:
 				fooditem.kill_frog()
 			await get_tree().create_timer(0.3).timeout
 	if !Manager.showed_sell:
-		
-		#showsell()
+		showsell()
 		Manager.showed_sell = true
 	Manager.kitchen = self
 	if Manager.kitchen_tut > 0:
