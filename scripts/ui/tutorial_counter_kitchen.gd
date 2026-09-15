@@ -1,6 +1,7 @@
 extends Node3D
 
 func _ready() -> void:
+	Manager.askers_request.clear()
 	Manager.current_customers = 0
 	if Manager.waffledimension:
 		$"../Portal4".unlock()
@@ -15,6 +16,7 @@ func _ready() -> void:
 			if fooditem.has_method("kill_frog"):
 				fooditem.kill_frog()
 			await get_tree().create_timer(0.3).timeout
+		Manager.collected_food.clear()
 	if !Manager.showed_sell:
 		showsell()
 		Manager.showed_sell = true
@@ -24,12 +26,12 @@ func _ready() -> void:
 		if Manager.breakfast_unlocked == true:
 			$"../Portal4".unlock()
 	Manager.kitchen_tut += 1
-	if Manager.kitchen_tut == 2 or Manager.kitchen_tut == 3:
-		$"../SellingTutorial".show()
-	elif Manager.kitchen_tut == 1:
-		pass
-	else:
-		$"../SellingTutorial".hide()
+	#if Manager.kitchen_tut == 2 or Manager.kitchen_tut == 3:
+		#$"../SellingTutorial".show()
+	#elif Manager.kitchen_tut == 1:
+		#pass
+	#else:
+		#$"../SellingTutorial".hide()
 	
 func showwaffle():
 	$"../AnimationPlayer".play("waffledim")

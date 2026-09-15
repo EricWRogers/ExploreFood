@@ -8,7 +8,8 @@ var holder
 var ids = []
 
 func sandbot():
-	$RayCast3D.enabled = true
+	get_tree().call_group("SandwichPiece", "explode", self)
+	queue_free()
 
 func on_picked():
 	self.set_collision_layer_value(1, false)
@@ -37,7 +38,8 @@ func _physics_process(delta: float) -> void:
 	if !held:
 		return
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", holder.global_position, 0.001)
+	if is_instance_valid(holder):
+		tween.tween_property(self, "global_position", holder.global_position, 0.001)
 	
 func get_rolled():
 	pass

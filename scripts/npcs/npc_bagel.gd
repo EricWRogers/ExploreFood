@@ -45,8 +45,6 @@ func _physics_process(_delta: float) -> void:
 		if Manager.the_asker == self:
 			Manager.the_asker = null
 		if my_sandwich:
-			my_sandwich.held = false
-			my_sandwich.freeze = false
 			my_sandwich.sandbot()
 		queue_free()
 	if Manager.the_asker == self:
@@ -89,7 +87,7 @@ func ask():
 				Manager.askers_request.append(5)
 			6:
 				to_change.texture = Manager.MEAT_BALL
-				Manager.askers_request.append(4)
+				Manager.askers_request.append(8)
 	Manager.askers_request.sort()
 	
 
@@ -101,7 +99,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			if Manager.askers_request == body.ids:
 				body.make_inactive()
 				#Manager.money += body.value
-				spawn_value(body.value)
+				spawn_value(body.value * 3)
 				Manager.player.update_cash()
 				body.holder = $Marker3D
 				body.held = true
@@ -110,6 +108,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 				$Bubble/Success.show()
 				satisfied = true
 				my_sandwich = body
+				Manager.askers_request.clear()
 			else:
 				return
 	if body.has_method("get_rolled") and not hands_full:

@@ -245,7 +245,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -257,7 +257,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_sy41e"]
@@ -355,6 +355,8 @@ _data = {
 
 [node name="Portal" type="Area3D" unique_id=220733343]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_3ycjd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1121464066]

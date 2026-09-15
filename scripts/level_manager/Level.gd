@@ -12,11 +12,13 @@ func _ready() -> void:
 
 func _on_portal_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		Manager.held_sandwich = null
 		emit_signal("level_changed", level_name) #emits signal to level manager
 
 #this sucks im sorry.
 func _on_portal_2_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		Manager.held_sandwich = null
 		level_name = "kitchen2"
 		emit_signal("level_changed", level_name) #emits signal to level manager
 
