@@ -38,7 +38,6 @@ data = PackedVector3Array(0, 0, 0, 2, 0, 0, 1, 0, 1, 2, 0, 0, 2, 0, 2, 1, 0, 1, 
 
 [node name="LevelManager" type="Node" unique_id=2118240317]
 script = ExtResource("1_mnhan")
-SandwichMode = true
 
 [node name="Kitchen" parent="." unique_id=115598229 instance=ExtResource("1_27gbg")]
 

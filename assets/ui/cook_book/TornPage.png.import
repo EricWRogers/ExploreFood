@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtbawswxo1mwt"
-path="res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"
+uid="uid://bnf0qmj5i6ofl"
+path="res://.godot/imported/TornPage.png-eb55a36dd5d5ac5ee3dec74b439b45d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/cook_book/cookbookhalf.png"
-dest_files=["res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"]
+source_file="res://assets/ui/cook_book/TornPage.png"
+dest_files=["res://.godot/imported/TornPage.png-eb55a36dd5d5ac5ee3dec74b439b45d2.ctex"]
 
 [params]
 

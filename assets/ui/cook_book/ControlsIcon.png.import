@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtbawswxo1mwt"
-path="res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"
+uid="uid://brxx5uhxm4mcs"
+path="res://.godot/imported/ControlsIcon.png-e7277f2074f5ff908dd3eecef35cb381.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/cook_book/cookbookhalf.png"
-dest_files=["res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"]
+source_file="res://assets/ui/cook_book/ControlsIcon.png"
+dest_files=["res://.godot/imported/ControlsIcon.png-e7277f2074f5ff908dd3eecef35cb381.ctex"]
 
 [params]
 

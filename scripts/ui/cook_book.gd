@@ -10,7 +10,7 @@ extends CanvasLayer
 @export var icons : Array[Control]
 
 var tab_set = 0
-
+var opened_amnt = 0
 
 func _ready() -> void:
 	Manager.recipe_book = self
@@ -22,6 +22,17 @@ func unlock_icons(matcher):
 	
 func appear():
 	$AnimationPlayer.play("Appear")
+	if Manager.sandwich_mode:
+		if opened_amnt > 0:
+			$TornPage.hide()
+			$Label.hide()
+		else:
+			$TornPage.show()
+			$Label.show()
+		$MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food.hide()
+		opened_amnt += 1
+	else:
+		$MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls.hide()
 	
 func disappear():
 	$AnimationPlayer.play("Dissappear")
@@ -131,6 +142,8 @@ var page_section = 1
 @onready var tab_type: Label = $MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer/TabType
 
 func _on_tab_1_pressed() -> void:
+	$TornPage.hide()
+	$Label.hide()
 	set_info("terry")
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients.show()
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals.hide()
@@ -140,9 +153,19 @@ func _on_tab_1_pressed() -> void:
 
 
 func _on_tab_2_pressed() -> void:
+	$TornPage.hide()
+	$Label.hide()
 	set_info("chknandwaffles")
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients.hide()
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals.show()
 	tab_set = 1
 	tab_type.text = "Meal"
 	tab_type.add_theme_color_override("font_color", Color("a13535"))
+
+
+func _on_tab_3_pressed() -> void:
+	$TornPage.show()
+	$Label.show()
+	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients.hide()
+	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals.show()
+	#tab_set = 1

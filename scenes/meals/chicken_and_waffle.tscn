@@ -424,7 +424,7 @@ shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 offsets = PackedFloat32Array(0, 0.38671875, 1)
 colors = PackedColorArray(1, 0.6, 0, 0.13333334, 1, 0.80366665, 0.38, 0.15294118, 1, 0.81, 0.39999998, 0.10980392)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvufb"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3yjkh"]
 gradient = SubResource("Gradient_6ygfl")
 fill_from = Vector2(0, 0.99759614)
 fill_to = Vector2(0.46394232, 0.6370192)
@@ -434,7 +434,7 @@ render_priority = -128
 shader = ExtResource("7_orjn3")
 shader_parameter/pixelation = Vector2(300, 300)
 shader_parameter/gradient_steps = 64.0
-shader_parameter/gradient = SubResource("GradientTexture2D_qvufb")
+shader_parameter/gradient = SubResource("GradientTexture2D_3yjkh")
 shader_parameter/spread = 0.35700001625898004
 shader_parameter/size = 0.3750000653125001
 shader_parameter/speed = 1.0
@@ -445,7 +445,7 @@ shader_parameter/core_intensity = 1.0
 shader_parameter/hdr = true
 shader_parameter/seed = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1fh7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46qji"]
 render_priority = -10
 next_pass = SubResource("ShaderMaterial_lqdem")
 transparency = 1
@@ -454,7 +454,7 @@ albedo_color = Color(1, 1, 1, 0)
 ao_light_affect = 0.88
 
 [sub_resource type="QuadMesh" id="QuadMesh_lg1c5"]
-material = SubResource("StandardMaterial3D_x1fh7")
+material = SubResource("StandardMaterial3D_46qji")
 size = Vector2(4, 4)
 
 [node name="Chicken_And_Waffle" unique_id=1554097360 instance=ExtResource("1_t15s0")]

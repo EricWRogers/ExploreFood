@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b830lru4acw4a" path="res://scripts/ui/cookbookitem.gd" id="1_1p6b0"]
 [ext_resource type="ArrayMesh" uid="uid://bm2mgq7jqeptq" path="res://assets/models/cookbookitem.obj" id="1_gdkad"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="3_w5kru"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg1c5"]
 albedo_color = Color(1, 0.43, 0.6294999, 1)
@@ -225,9 +226,30 @@ mesh = SubResource("QuadMesh_g77dd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1150470162]
 libraries/ = SubResource("AnimationLibrary_pnqc8")
+autoplay = &"float"
 speed_scale = 0.1
 movie_quit_on_finish = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1674296082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01550293, 0)
 shape = SubResource("CapsuleShape3D_lg1c5")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=735649188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7078419, 0)
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=674466815]
+billboard = 1
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "E"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=936859036]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.0015291125, -0.008809596)
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("3_w5kru")

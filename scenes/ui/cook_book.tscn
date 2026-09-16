@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://d0wydojwq4x66"]
 
-[ext_resource type="Texture2D" uid="uid://bp8kpucwsfu8k" path="res://assets/ui/cook_book/cookbookhalf.png" id="1_77y3f"]
 [ext_resource type="Script" uid="uid://dmc1ujxnawc7j" path="res://scripts/ui/cook_book.gd" id="1_egu8v"]
 [ext_resource type="Shader" uid="uid://etsrtome7d3o" path="res://assets/shaders/blur.gdshader" id="2_2smgm"]
 [ext_resource type="Texture2D" uid="uid://cat20alwqhplv" path="res://assets/ui/cook_book/cookbookrings.png" id="2_4v0pc"]
@@ -9,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c5hhpp72h517l" path="res://assets/fonts/CsAristonStitchedRegularDemo-lx3MX.otf" id="4_rfbjl"]
 [ext_resource type="Texture2D" uid="uid://cv6hpg4p3hk6k" path="res://assets/ui/cook_book/screenshots/TerryScreenshot.png" id="5_60ewy"]
 [ext_resource type="Texture2D" uid="uid://ddihlr66icrp" path="res://assets/ui/cook_book/cookbookimagesnag.png" id="6_egu8v"]
+[ext_resource type="Texture2D" uid="uid://brxx5uhxm4mcs" path="res://assets/ui/cook_book/ControlsIcon.png" id="6_rlj6j"]
 [ext_resource type="FontFile" uid="uid://b6w3yuubac02m" path="res://assets/fonts/THEJOURNALFONT-DEMOVERSION.ttf" id="8_ruawa"]
 [ext_resource type="Script" uid="uid://csd7edsy511ij" path="res://scripts/ui/recipe_book_select.gd" id="9_6o6sm"]
 [ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://assets/ui/item_icons/terry_icon.png" id="9_08ovd"]
@@ -19,11 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="15_2smgm"]
 [ext_resource type="Texture2D" uid="uid://slncfheyw6j6" path="res://assets/ui/item_icons/chickenwaffleicon.png" id="15_uwfyn"]
 [ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="16_6o6sm"]
+[ext_resource type="Texture2D" uid="uid://bnf0qmj5i6ofl" path="res://assets/ui/cook_book/TornPage.png" id="20_rlj6j"]
+[ext_resource type="FontFile" uid="uid://c4sng3tmqix43" path="res://assets/fonts/Pencilant Script.otf" id="21_djyhv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg1c5"]
 shader = ExtResource("2_2smgm")
 shader_parameter/limit = 0.2
 shader_parameter/blur = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2smgm"]
+load_path = "res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
 bg_color = Color(0.21066046, 0.63313186, 0.48795038, 1)
@@ -35,6 +40,14 @@ shadow_offset = Vector2(1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbjl"]
 bg_color = Color(0.63, 0.20789999, 0.20789999, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djyhv"]
+bg_color = Color(0.69, 0.48990002, 0.48990002, 1)
 corner_radius_top_left = 50
 corner_radius_bottom_left = 50
 shadow_color = Color(0.67, 0.67, 0.67, 0.6)
@@ -124,6 +137,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 2.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TornPage:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1050.74, -757.61), Vector2(1050.74, 540.38995)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(353.74, -1244.6101), Vector2(353.74, 53.389954)]
+}
 
 [sub_resource type="Animation" id="Animation_djyhv"]
 resource_name = "Dissappear"
@@ -164,6 +201,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [2.0, 0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TornPage:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1050.74, 540.39), Vector2(1050.74, -815.60986)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(353.74, 53.389893), Vector2(353.74, -1302.6101)]
+}
 
 [sub_resource type="Animation" id="Animation_rlj6j"]
 length = 0.001
@@ -203,6 +264,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TornPage:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1050.74, -757.61)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(353.74, -1244.6101)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djyhv"]
 _data = {
@@ -234,7 +319,7 @@ anchor_bottom = 0.5
 offset_left = -773.0
 offset_top = 639.0
 offset_right = 773.0
-offset_bottom = 1719.001
+offset_bottom = 1719.0012
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.74, 0.74)
@@ -252,7 +337,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("1_77y3f")
+texture = SubResource("CompressedTexture2D_2smgm")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1859756151]
@@ -330,6 +415,40 @@ texture = ExtResource("3_13kyx")
 expand_mode = 3
 
 [node name="Tab2" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controls" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=401584573]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_djyhv")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls" unique_id=119686942]
+modulate = Color(1, 1, 1, 0.7254902)
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_rlj6j")
+expand_mode = 3
+
+[node name="Tab3" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls" unique_id=1988806198]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -542,7 +661,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("1_77y3f")
+texture = SubResource("CompressedTexture2D_2smgm")
 expand_mode = 1
 flip_h = true
 
@@ -892,8 +1011,36 @@ expand_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1471187997]
 libraries/ = SubResource("AnimationLibrary_djyhv")
 
+[node name="TornPage" type="Sprite2D" parent="." unique_id=1555629561]
+visible = false
+z_index = 20
+position = Vector2(1050.74, -757.61)
+scale = Vector2(0.71, 0.835)
+texture = ExtResource("20_rlj6j")
+
+[node name="Label" type="Label" parent="." unique_id=941674345]
+visible = false
+z_index = 21
+offset_left = 353.74
+offset_top = -1244.6101
+offset_right = 1732.74
+offset_bottom = -299.6101
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("21_djyhv")
+theme_override_font_sizes/font_size = 67
+text = "If you're reading this. you found my portal. My name is Mind O' Magic. On an island as far in the multiverse I could go I have left you this cook  book. You shall take my dream and make it a reality. And whatever you do, dont sell your soul to Gut O' Gold, MY BROTHER!!
+Press E to Interact
+Press Q to throw
+Press SHIFT to run
+Press TAB to view this cook book again
+P.S. Throw as much food through that portal as you can!"
+autowrap_mode = 3
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab1" to="." method="_on_tab_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food/Tab2" to="." method="_on_tab_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls/Tab3" to="." method="_on_tab_3_pressed"]
 [connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_down"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_up"]
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_mouse_entered"]
