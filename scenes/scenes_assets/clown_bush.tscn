@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cknoha3thks4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cps61bogwrpp0" path="res://assets/models/clownbush.obj" id="1_0wvui"]
+[ext_resource type="Texture2D" uid="uid://cuwqsq28eoitu" path="res://assets/textures/ClownBush.png" id="2_bvagk"]
+[ext_resource type="Shader" uid="uid://jqd5w3d2s5qe" path="res://assets/shaders/simple_tree_sway.gdshader" id="2_pv1lc"]
+[ext_resource type="PackedScene" uid="uid://c7hhif1nwtvl7" path="res://scenes/scenes_assets/clown_mask.tscn" id="4_pv1lc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41iob"]
+render_priority = 0
+shader = ExtResource("2_pv1lc")
+shader_parameter/albedo_texture = ExtResource("2_bvagk")
+shader_parameter/uv_scale = Vector2(1.285, 1.055)
+shader_parameter/alpha_scissor_threshold = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/sway_speed = 0.3990000189525
+shader_parameter/sway_strength = 0.05600000266
+shader_parameter/sway_direction_rads = 0.46900013905007
+shader_parameter/base_height = -0.555
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pv1lc"]
+next_pass = SubResource("ShaderMaterial_41iob")
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5b0ep"]
+albedo_color = Color(0.68, 0.5168, 0.5168, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qankb"]
+
+[node name="ClownBush" type="Node3D" unique_id=1729954137]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1926677253]
+mesh = ExtResource("1_0wvui")
+surface_material_override/0 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/1 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/2 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/3 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/4 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/5 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/6 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/7 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/8 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/9 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/10 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/11 = SubResource("StandardMaterial3D_pv1lc")
+surface_material_override/12 = SubResource("StandardMaterial3D_5b0ep")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1766451923]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1397256026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49702662, 0)
+shape = SubResource("SphereShape3D_qankb")
+
+[node name="ClownMask" parent="." unique_id=1976793568 instance=ExtResource("4_pv1lc")]
+transform = Transform3D(0.98173517, -0.086183235, 0.16961223, -0.0686803, 0.67085356, 0.73840284, -0.17742297, -0.7365651, 0.65268147, 0.25357884, 0.66791797, 0.55326456)
+
+[node name="ClownMask2" parent="." unique_id=2138865498 instance=ExtResource("4_pv1lc")]
+transform = Transform3D(-0.25881904, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881904, 0.47193274, 0.302051, -0.2750783)
+
+[node name="ClownMask3" parent="." unique_id=1504653039 instance=ExtResource("4_pv1lc")]
+transform = Transform3D(-0.9959326, 0.08998559, -0.004567586, 0.08836168, 0.9853603, 0.14579834, 0.01762046, 0.14480169, -0.98930377, -0.08183934, 0.41383025, -0.5324365)
+
+[node name="ClownMask4" parent="." unique_id=1969374506 instance=ExtResource("4_pv1lc")]
+transform = Transform3D(0.02646514, 0.7316137, -0.6812055, -0.14770602, 0.6768263, 0.72117203, 0.9886772, 0.08153223, 0.12597604, -0.55462873, 0.6271003, -0.077512585)
