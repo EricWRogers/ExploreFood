@@ -1,3 +1,233 @@
 [gd_scene format=3 uid="uid://dnt8851o7yfnp"]
 
-[node name="Cookbookitem" type="Node2D" unique_id=1742132561]
+[ext_resource type="Script" uid="uid://b830lru4acw4a" path="res://scripts/ui/cookbookitem.gd" id="1_1p6b0"]
+[ext_resource type="ArrayMesh" uid="uid://bm2mgq7jqeptq" path="res://assets/models/cookbookitem.obj" id="1_gdkad"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg1c5"]
+albedo_color = Color(1, 0.43, 0.6294999, 1)
+
+[sub_resource type="Shader" id="Shader_gdkad"]
+code = "// CC0, shadecore_dev (ported to spatial/billboard)
+shader_type spatial;
+render_mode blend_mix, cull_disabled, unshaded, skip_vertex_transform, depth_draw_opaque, shadows_disabled;
+
+/** Amount of pixels on X and Y axes.
+Set this value to the item's size to achieve a perfect pixel effect.*/
+uniform vec2 pixelation = vec2(64.0, 64.0);
+
+/* Amount of colors in gradient */
+uniform float gradient_steps = 64.0;
+
+/** Color gradient for rays.*/
+uniform sampler2D gradient : source_color;
+
+/** Ray length.*/
+uniform float spread : hint_range(0.01, 0.4) = 0.33;
+
+/** Ray size.*/
+uniform float size : hint_range(-1.0, 1.0) = 0.365;
+
+/** Ray rotation speed.*/
+uniform float speed = 1.0;
+
+/** First ray group density.*/
+uniform float ray1_density : hint_range(0.0, 16.0) = 8.5;
+
+/** Second ray group density.*/
+uniform float ray2_density : hint_range(0.0, 16.0) = 8.5;
+
+/** Second ray group intensity.*/
+uniform float ray2_intensity : hint_range(-2.0, 10.0) = 0.5;
+
+/** Intensity for the center.
+Use negative values for halo effect.*/
+uniform float core_intensity : hint_range(-1.0, 1.0) = 2.0;
+
+/** Enable/disable HDR. */
+uniform bool hdr = false;
+
+/** Ray noise seed. */
+uniform float seed = 1.0;
+
+float random(vec2 uv) {
+    return fract(sin(dot(uv.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
+float noise(in vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+}
+
+void vertex() {
+    // Manual billboard: replace the modelview matrix's rotation with the camera's,
+    // keeping only this instance's translation from MODEL_MATRIX.
+    mat4 mv = VIEW_MATRIX * mat4(
+        INV_VIEW_MATRIX[0],
+        INV_VIEW_MATRIX[1],
+        INV_VIEW_MATRIX[2],
+        MODEL_MATRIX[3]
+    );
+    MODELVIEW_MATRIX = mv;
+    VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+    NORMAL = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+    vec2 pixelated_uv = floor(UV * pixelation) / pixelation;
+
+    vec2 centered_uv = (pixelated_uv - 0.5) * (1.0 - size);
+    float radius = length(centered_uv);
+    float angle = atan(centered_uv.y, centered_uv.x) + PI;
+
+    vec2 ray1 = vec2(angle * ray1_density + TIME * -speed + seed + sin(angle * 3.0), radius * 2.0);
+    vec2 ray2 = vec2(angle * ray2_density + TIME * speed * 1.5 + seed + cos(angle * 2.0), radius * 2.0);
+
+    float cut = 1.0 - smoothstep(0.33, 0.53, radius);
+    ray1 *= cut;
+    ray2 *= cut;
+
+    float rays = hdr ?
+        noise(ray1) + (noise(ray2) * ray2_intensity) :
+        clamp(noise(ray1) + (noise(ray2) * ray2_intensity), 0.0, 1.0);
+
+    rays *= smoothstep(spread, spread * 0.3, radius);
+    float core = smoothstep(0.2, 0.0, radius) * core_intensity;
+    rays += core;
+
+    vec4 gradient_color = texture(gradient, vec2(rays, 0.5));
+    vec3 shine = vec3(rays) * gradient_color.rgb;
+
+    ALBEDO = shine;
+    EMISSION = shine;
+    ALPHA = floor(rays * gradient_steps) / gradient_steps * gradient_color.a;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_1p6b0"]
+offsets = PackedFloat32Array(0, 0.38671875, 1)
+colors = PackedColorArray(1, 0.6, 0, 0.019607844, 1, 0.80366665, 0.38, 0.047058824, 1, 0.81, 0.39999998, 0.043137256)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w5kru"]
+gradient = SubResource("Gradient_1p6b0")
+fill_from = Vector2(0, 0.99759614)
+fill_to = Vector2(0.46394232, 0.6370192)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tjhs"]
+render_priority = -128
+shader = SubResource("Shader_gdkad")
+shader_parameter/pixelation = Vector2(300, 300)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture2D_w5kru")
+shader_parameter/spread = 0.35700001625898004
+shader_parameter/size = 0.3750000653125001
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 16.0
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = 0.5
+shader_parameter/core_intensity = 1.0
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0xcs"]
+render_priority = -10
+next_pass = SubResource("ShaderMaterial_2tjhs")
+transparency = 1
+depth_test = 1
+albedo_color = Color(1, 1, 1, 0)
+ao_light_affect = 0.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_g77dd"]
+material = SubResource("StandardMaterial3D_e0xcs")
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_i8yqb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0268847, -0.5484202, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.155, 0.138)]
+}
+
+[sub_resource type="Animation" id="Animation_871ah"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.0268847, -0.5484202, 0), Vector3(1.0262536, 5.735152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.11, 0.39, 0.69, 0.93),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.155, 0.138), Vector3(0, -0.015, 0.138), Vector3(0, 0.171, 0.138), Vector3(0, 0.082, 0.138)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnqc8"]
+_data = {
+&"RESET": SubResource("Animation_i8yqb"),
+&"float": SubResource("Animation_871ah")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lg1c5"]
+radius = 0.6118164
+height = 1.4128418
+
+[node name="Cookbookitem" type="StaticBody3D" unique_id=1670656635]
+script = ExtResource("1_1p6b0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2099809047]
+transform = Transform3D(0.8533491, -0.44610572, -0.26978663, 0, 0.51748705, -0.855691, 0.5213397, 0.7302032, 0.44159722, 0, 0.155, 0.138)
+mesh = ExtResource("1_gdkad")
+surface_material_override/0 = SubResource("StandardMaterial3D_lg1c5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=604702733]
+transform = Transform3D(-0.6741597, -5.200506e-09, 0.18086678, -0.1547289, 0.3614431, -0.5767338, -0.09365765, -0.5971289, -0.3490979, -0.14737818, 0.10606133, 0.02434571)
+mesh = SubResource("QuadMesh_g77dd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1150470162]
+libraries/ = SubResource("AnimationLibrary_pnqc8")
+speed_scale = 0.1
+movie_quit_on_finish = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1674296082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01550293, 0)
+shape = SubResource("CapsuleShape3D_lg1c5")
