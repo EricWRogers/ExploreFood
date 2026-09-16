@@ -1,7 +1,7 @@
 extends Node3D
 
 func _ready() -> void:
-	Manager.askers_request.clear()
+	#Manager.askers_request.clear()
 	Manager.current_customers = 0
 	if Manager.waffledimension:
 		$"../Portal4".unlock()

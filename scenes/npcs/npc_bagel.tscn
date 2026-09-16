@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="7_50ah8"]
 [ext_resource type="Texture2D" uid="uid://d4nhempagt20r" path="res://assets/ui/ui_assets/checkmark-64.png" id="8_wadra"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7soan"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wadra"]
 resource_local_to_scene = true
 albedo_color = Color(0.71, 0.71, 0.71, 1)
 albedo_texture = ExtResource("5_krsai")
@@ -35,7 +35,7 @@ colors = Array[Color]([Color(0.71, 0.312045, 0.2911, 1), Color(0.3034, 0.3981099
 transform = Transform3D(52.97, 0, 0, 0, 52.97, 0, 0, 0, 52.97, 0, -0.0026565194, 0)
 
 [node name="pTorus1" parent="NPCBean" index="2" unique_id=1644631449]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="pSphere14" parent="NPCBean/group1" parent_id_path=PackedInt32Array(1608658501, 308341689) index="0" unique_id=202870008]
 surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
@@ -80,10 +80,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ts06u")
 surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
 
 [node name="pSphere17" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 731438036) index="1" unique_id=1643531221]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="pSphere16" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 731438036) index="2" unique_id=1436144436]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="pSphere15" parent="NPCBean/group2" parent_id_path=PackedInt32Array(1608658501, 731438036) index="3" unique_id=917448861]
 surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
@@ -92,10 +92,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
 surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
 
 [node name="pSphere172" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 1887380960) index="1" unique_id=1522705810]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="pSphere162" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 1887380960) index="2" unique_id=1736505122]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="pSphere152" parent="NPCBean/group3" parent_id_path=PackedInt32Array(1608658501, 1887380960) index="3" unique_id=462576411]
 surface_material_override/0 = SubResource("StandardMaterial3D_krsai")
@@ -127,7 +127,7 @@ bones/20/rotation = Quaternion(-0.004736609, 0.1900572, 0.0009267593, 0.9817612)
 bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768176)
 
 [node name="pCube2" parent="NPCBean/Skeleton3D" index="0" unique_id=764906532]
-surface_material_override/0 = SubResource("StandardMaterial3D_7soan")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadra")
 
 [node name="R_shoulder_handle" parent="NPCBean" index="7" unique_id=1821997497]
 transform = Transform3D(0.98411846, -0.17165536, -0.045223016, 0.1714744, 0.9851571, -0.007879732, 0.04590437, 4.656613e-10, 0.99894583, -0.016274668, 0.034500763, 0.0006733593)
