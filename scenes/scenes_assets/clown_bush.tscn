@@ -9,13 +9,13 @@
 render_priority = 0
 shader = ExtResource("2_pv1lc")
 shader_parameter/albedo_texture = ExtResource("2_bvagk")
-shader_parameter/uv_scale = Vector2(1.285, 1.055)
-shader_parameter/alpha_scissor_threshold = 1.0
+shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/alpha_scissor_threshold = 0.0030000001425
 shader_parameter/brightness = 1.0
 shader_parameter/sway_speed = 0.3990000189525
 shader_parameter/sway_strength = 0.05600000266
 shader_parameter/sway_direction_rads = 0.46900013905007
-shader_parameter/base_height = -0.555
+shader_parameter/base_height = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pv1lc"]
 next_pass = SubResource("ShaderMaterial_41iob")
