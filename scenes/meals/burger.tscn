@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://dotd1uouxgu3q"]
 
-[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_p448s"]
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_320ea"]
+[ext_resource type="ArrayMesh" uid="uid://o85tlpe1vdrp" path="res://assets/models/burger.obj" id="2_qopjw"]
+[ext_resource type="Texture2D" uid="uid://cvfitjkby57l2" path="res://assets/models/sandwich/Sandwichtoptex.png" id="3_qr0ep"]
+[ext_resource type="Texture2D" uid="uid://b0ma57bb60n0j" path="res://assets/models/sandwich/Sandwichbottomtex.png" id="4_i221w"]
+[ext_resource type="Texture2D" uid="uid://bjtr158o2dt2e" path="res://assets/models/sandwich/burger.png" id="5_agrwd"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_3dlbf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ki7"]
+albedo_texture = ExtResource("3_qr0ep")
 
-[node name="Burger" unique_id=1546410034 instance=ExtResource("1_p448s")]
-meal_name = "Burger"
-flavor_text = "Simple burger is all you need"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo513"]
+albedo_texture = ExtResource("4_i221w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gova"]
+albedo_texture = ExtResource("5_agrwd")
+
+[node name="Grilled_Kebab" unique_id=1546410034 instance=ExtResource("1_320ea")]
+meal_name = "Grilled Kebab"
+flavor_text = "Charred Meat and vegetables on a stick"
 id = 3
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3dlbf")
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+material_overlay = null
+mesh = ExtResource("2_qopjw")
+surface_material_override/0 = SubResource("StandardMaterial3D_01ki7")
+surface_material_override/1 = SubResource("StandardMaterial3D_vo513")
+surface_material_override/2 = SubResource("StandardMaterial3D_5gova")
