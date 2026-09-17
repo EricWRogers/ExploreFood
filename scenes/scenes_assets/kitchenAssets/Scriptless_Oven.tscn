@@ -8,7 +8,8 @@ albedo_color = Color(0.57600003, 0.6, 0.6, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_oowas"]
 size = Vector3(0.7631836, 0.7592163, 0.91238403)
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=2124001694]
+[node name="ScriptlessOven" type="StaticBody3D" unique_id=2124001694]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=284187068]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.5, 0, 0, 0)
