@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dwgtdofjav3o4"]
+
+[ext_resource type="Script" uid="uid://cu0nilvtbwmnp" path="res://scripts/sandwich/wind_vortex_particles.gd" id="1_n2tiu"]
+
+[node name="Vortex" type="Node3D" unique_id=1618572457]
+script = ExtResource("1_n2tiu")
