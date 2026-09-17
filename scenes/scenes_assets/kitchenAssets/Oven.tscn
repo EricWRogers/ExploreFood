@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
+
+[ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
+[ext_resource type="Script" uid="uid://dwi65xkuatthr" path="res://scripts/recipe_system/recipe_solver.gd" id="1_nppts"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
+albedo_color = Color(0.52, 0.5936666, 0.65, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
+size = Vector3(0.7631836, 0.7592163, 0.91238403)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=408695707]
+script = ExtResource("1_nppts")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1227565413]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.5, 0, 0, 0)
+mesh = ExtResource("1_knho3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=102896497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207031, 0.37905884, 0.011917114)
+shape = SubResource("BoxShape3D_q026u")

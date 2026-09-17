@@ -23,11 +23,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cook"):
 		start_cooking()
 
-#sort through all the foods in current food array
-#for each food in food array, whittle down list of recipes
-#when only one recipe is left, instansiate product from that recipe
-#if no recipe is found, make disgusting food
-
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("RollSpawn"):
 		#cook_pointer_UItip.show()
@@ -45,7 +40,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		$Funny.show()
 		
 	#if item in area is an ingredient
-	
+
+#cook pot animation
 func start_cooking():
 	cook_pointer_UItip.hide()
 	if cooking == true:
@@ -59,8 +55,11 @@ func start_cooking():
 	$Cooking.play("Cooking")
 	pass
 
+#sort through all the foods in current food array
+#for each food in food array, whittle down list of recipes
+#when only one recipe is left, instansiate product from that recipe
+#if no recipe is found, make disgusting food
 func find_recipe():
-	var current_recipe
 	var chosen_recipe
 	for recipe in recipes: # All Recipes in Array
 		food_types.sort()
@@ -83,7 +82,6 @@ func find_recipe():
 	
 	#empty list for next batch
 	food_types.clear()
-	current_recipe = null
 	chosen_recipe = null
 	return
 	

@@ -1,6 +1,6 @@
 extends Node
 
-@onready var current_level = $Kitchen
+@onready var current_level
 @export var CalebMode : bool = false
 @export var Hunger : bool = false
 @export var HordeMechanics : bool = false
@@ -11,9 +11,15 @@ var to_go
 var scene_switch_setter = false
 
 func _ready() -> void:
-	current_level.connect("level_changed", Callable(self, "start_loading"))
 	if SandwichMode:
 		Manager.sandwich_mode = true
+		current_level = $Kitchen
+		$DinerLevelTest.queue_free()
+	else:
+		current_level = $DinerLevelTest
+		$Kitchen.queue_free()
+		
+	current_level.connect("level_changed", Callable(self, "start_loading"))
 
 	
 func start_loading(level):
@@ -33,10 +39,20 @@ func _handle_level_change(current_level_name: String):
 			next_level_name = "terrain_test"
 		"kitchen2":
 			next_level_name = "breakfast_dimension" #change this to the second level once it gets made
+		"diner":
+			next_level_name = "terrain_test"
+		"diner2":
+			next_level_name = "breakfast_dimension"
 		"terrain_test":
-			next_level_name = "kitchen"
+			if(Manager.sandwich_mode):
+				next_level_name = "kitchen"
+			else:
+				next_level_name = "testScenes/DinerLevel_test"
 		"breakfast_dimension":
-			next_level_name = "kitchen"
+			if(Manager.sandwich_mode):
+				next_level_name = "kitchen"
+			else:
+				next_level_name = "testScenes/DinerLevel_test"
 		_:
 			print("Error: Unidentified Level. Check str Level Name.")
 			return

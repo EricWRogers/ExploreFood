@@ -2,7 +2,6 @@
 
 [ext_resource type="ArrayMesh" uid="uid://s452v33kwlah" path="res://scenes/player/KitchenFridge.obj" id="2_4fu4k"]
 [ext_resource type="ArrayMesh" uid="uid://6k5uflh2xt4f" path="res://assets/models/BagelCounter.obj" id="3_uc6ro"]
-[ext_resource type="ArrayMesh" uid="uid://34u8y53nr4p0" path="res://assets/models/cookingpotbig.obj" id="4_ihlwq"]
 [ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="5_tsefd"]
 [ext_resource type="ArrayMesh" uid="uid://dfl6p31i6nbix" path="res://assets/models/KitchenSink.obj" id="6_ihlwq"]
 
@@ -12,10 +11,6 @@ size = Vector3(0.099999994, 0.16, 0.08959961)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hlwvo"]
 size = Vector3(0.3, 0.08, 0.1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ihlwq"]
-height = 0.10449219
-radius = 0.07
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tsefd"]
 size = Vector3(0.080322266, 0.14055175, 0.1)
 
@@ -23,66 +18,6 @@ size = Vector3(0.080322266, 0.14055175, 0.1)
 size = Vector3(0.14126465, 0.10416015, 0.1)
 
 [node name="DinerLayout" type="Node3D" unique_id=1685728999]
-
-[node name="floor" type="CSGCylinder3D" parent="." unique_id=801348178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124999, -0.90000004)
-radius = 1.3000001
-height = 0.1125
-sides = 20
-
-[node name="Diner_walls" type="CSGCylinder3D" parent="." unique_id=401858586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140625, -0.90000004)
-radius = 1.3000001
-height = 0.55625
-sides = 20
-
-[node name="cylinder" type="CSGCylinder3D" parent="Diner_walls" unique_id=1877064639]
-operation = 2
-radius = 1.265625
-height = 0.55625
-sides = 20
-
-[node name="Boss Hole" type="CSGBox3D" parent="Diner_walls" unique_id=641079459]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.2600001, 0, 0.19999999)
-operation = 2
-size = Vector3(0.4, 1, 1)
-
-[node name="FrontDoor" type="CSGBox3D" parent="Diner_walls" unique_id=1453596560]
-transform = Transform3D(0.25980762, 0, -0.14999999, 0, 0.29999998, 0, 0.14999999, 0, 0.25980762, 0.74, 0, -1.01)
-size = Vector3(1.3000001, 1, 0.4)
-
-[node name="kitchen_backwall" type="CSGBox3D" parent="." unique_id=1775747167]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.18, 0.14370282, 0.26487136)
-size = Vector3(1.3000001, 0.6, 0.5)
-
-[node name="kitchen_frontwall" type="CSGCylinder3D" parent="." unique_id=621435449]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.006, 0)
-radius = 1.0
-height = 0.054882817
-sides = 35
-
-[node name="kitchen_frontwall" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=598979960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08529053, 0.10000001)
-radius = 1.0
-height = 0.45686036
-sides = 35
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=1167451593]
-transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.32, 0, 0.18125004, 0.05868254)
-operation = 2
-radius = 0.7
-height = 0.6625
-sides = 35
-
-[node name="CSGBox3D" type="CSGBox3D" parent="kitchen_frontwall" unique_id=1204591523]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050000012, 0.10000003, 0.6000001)
-operation = 2
-size = Vector3(2.2, 0.8, 1.7)
-
-[node name="Window" type="CSGBox3D" parent="kitchen_frontwall" unique_id=327332644]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.1481544, -0.79999995)
-operation = 2
-size = Vector3(0.8, 0.2, 0.2)
 
 [node name="Kitchen_stuff" type="Node3D" parent="." unique_id=758565943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124998, 0.1)
@@ -153,17 +88,6 @@ mesh = ExtResource("3_uc6ro")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0836377, 0.002978921)
 shape = SubResource("BoxShape3D_hlwvo")
 
-[node name="Cauldren" type="StaticBody3D" parent="Kitchen_stuff" unique_id=888219197]
-transform = Transform3D(-0.64278775, 0, 0.7660443, 0, 1, 0, -0.7660443, 0, -0.64278775, -0.44720337, 0.18675727, -0.48000002)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kitchen_stuff/Cauldren" unique_id=1301142177]
-transform = Transform3D(0.06, 0, 8.881784e-16, 0, 0.06, 0, -8.881784e-16, 0, 0.06, 0, -0.083000004, 0)
-mesh = ExtResource("4_ihlwq")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Kitchen_stuff/Cauldren" unique_id=1955241453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, -0.0836377, 0.0029789507)
-shape = SubResource("CylinderShape3D_ihlwq")
-
 [node name="Stove" type="StaticBody3D" parent="Kitchen_stuff" unique_id=1213326087]
 transform = Transform3D(-1, 0, -1.7881393e-07, 0, 1, 0, 1.7881393e-07, 0, -1, 0.10000003, 0.18675728, -0.07999995)
 
@@ -208,6 +132,54 @@ mesh = ExtResource("6_ihlwq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009252876, -0.09155761, -0.002021078)
 shape = SubResource("BoxShape3D_mo7hp")
 
+[node name="tables" type="Node3D" parent="." unique_id=455769254]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="tables" unique_id=1926338321]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, -0.7, -0.06, -1.0999999)
+size = Vector3(1, 0.4, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="tables" unique_id=1110591703]
+transform = Transform3D(0.17320506, 0, 0.099999994, 0, 0.19999999, 0, -0.099999994, 0, 0.17320506, -0.37999997, -0.06, -1.4399998)
+size = Vector3(1, 0.4, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="tables" unique_id=1160942651]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0.030000046, -0.06, -1.6999998)
+size = Vector3(1.7, 0.4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="tables" unique_id=723746810]
+transform = Transform3D(0.06840403, 0, -0.18793851, 0, 0.19999999, 0, 0.18793851, 0, 0.06840403, 0.63, -0.06, -1.0999998)
+size = Vector3(1.7, 0.4, 1)
+
+[node name="booths" type="Node3D" parent="." unique_id=1681992452]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="booths" unique_id=273067233]
+transform = Transform3D(0.12802498, 0, 0.022574259, 0, 0.12999998, 0, -0.022574259, 0, 0.12802498, -1.1462256, 0.0023803785, -0.71844244)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="booths" unique_id=1276307304]
+transform = Transform3D(0.116172224, 0, -0.058343884, 0, 0.12999998, 0, 0.058343884, 0, 0.116172224, -1.0506876, 0.0023803785, -1.4364412)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="booths" unique_id=1970022714]
+transform = Transform3D(0.089211404, 0, -0.09455855, 0, 0.12999998, 0, 0.09455855, 0, 0.089211404, -0.85068756, 0.0023803785, -1.7364411)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="booths" unique_id=779131555]
+transform = Transform3D(0.05834389, 0, -0.116172224, 0, 0.13, 0, 0.116172224, 0, 0.05834389, -0.5306876, 0.0023803785, -1.9564412)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="booths" unique_id=782409759]
+transform = Transform3D(0.022574272, 0, -0.128025, 0, 0.13, 0, 0.128025, 0, 0.022574272, -0.17068756, 0.0023803785, -2.066441)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="booths" unique_id=81397475]
+transform = Transform3D(0.116138265, 0, 0.05841146, 0, 0.12999998, 0, -0.05841146, 0, 0.116138265, 1.051, 0.002, -1.436)
+size = Vector3(1, 0.6, 1.6)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="booths" unique_id=129681326]
+transform = Transform3D(0.12801182, 0, 0.022648744, 0, 0.12999998, 0, -0.022648744, 0, 0.12801182, 1.171, 0.002, -1.066)
+size = Vector3(1, 0.6, 1.6)
+
 [node name="bar stools" type="Node3D" parent="." unique_id=1468782206]
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="bar stools" unique_id=736988942]
@@ -240,50 +212,62 @@ transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="bar stools" unique_id=832463724]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.739, -0.008, -0.4)
 
-[node name="booths" type="Node3D" parent="." unique_id=1681992452]
+[node name="floor" type="CSGCylinder3D" parent="." unique_id=801348178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08124999, -0.90000004)
+radius = 1.3000001
+height = 0.1125
+sides = 20
 
-[node name="CSGBox3D" type="CSGBox3D" parent="booths" unique_id=273067233]
-transform = Transform3D(0.12802498, 0, 0.022574259, 0, 0.12999998, 0, -0.022574259, 0, 0.12802498, -1.1462256, 0.0023803785, -0.71844244)
-size = Vector3(1, 0.6, 1.6)
+[node name="Diner_walls" type="CSGCylinder3D" parent="." unique_id=401858586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140625, -0.90000004)
+radius = 1.3000001
+height = 0.55625
+sides = 20
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="booths" unique_id=1276307304]
-transform = Transform3D(0.116172224, 0, -0.058343884, 0, 0.12999998, 0, 0.058343884, 0, 0.116172224, -1.0506876, 0.0023803785, -1.4364412)
-size = Vector3(1, 0.6, 1.6)
+[node name="cylinder" type="CSGCylinder3D" parent="Diner_walls" unique_id=1877064639]
+operation = 2
+radius = 1.265625
+height = 0.55625
+sides = 20
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="booths" unique_id=1970022714]
-transform = Transform3D(0.089211404, 0, -0.09455855, 0, 0.12999998, 0, 0.09455855, 0, 0.089211404, -0.85068756, 0.0023803785, -1.7364411)
-size = Vector3(1, 0.6, 1.6)
+[node name="Boss Hole" type="CSGBox3D" parent="Diner_walls" unique_id=641079459]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.2600001, 0, 0.19999999)
+operation = 2
+size = Vector3(0.4, 1, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="booths" unique_id=779131555]
-transform = Transform3D(0.05834389, 0, -0.116172224, 0, 0.13, 0, 0.116172224, 0, 0.05834389, -0.5306876, 0.0023803785, -1.9564412)
-size = Vector3(1, 0.6, 1.6)
+[node name="FrontDoor" type="CSGBox3D" parent="Diner_walls" unique_id=1453596560]
+transform = Transform3D(0.25980762, 0, -0.14999999, 0, 0.29999998, 0, 0.14999999, 0, 0.25980762, 0.74, 0, -1.01)
+size = Vector3(1.3000001, 1, 0.4)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="booths" unique_id=782409759]
-transform = Transform3D(0.022574272, 0, -0.128025, 0, 0.13, 0, 0.128025, 0, 0.022574272, -0.17068756, 0.0023803785, -2.066441)
-size = Vector3(1, 0.6, 1.6)
+[node name="kitchen_backwall" type="CSGBox3D" parent="." unique_id=1775747167]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.18, 0.14370282, 0.26487136)
+size = Vector3(1.3000001, 0.6, 0.5)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="booths" unique_id=81397475]
-transform = Transform3D(0.116138265, 0, 0.05841146, 0, 0.12999998, 0, -0.05841146, 0, 0.116138265, 1.051, 0.002, -1.436)
-size = Vector3(1, 0.6, 1.6)
+[node name="kitchen_frontwall" type="CSGCylinder3D" parent="." unique_id=621435449]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.006, 0)
+radius = 1.0
+height = 0.054882817
+sides = 35
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="booths" unique_id=129681326]
-transform = Transform3D(0.12801182, 0, 0.022648744, 0, 0.12999998, 0, -0.022648744, 0, 0.12801182, 1.171, 0.002, -1.066)
-size = Vector3(1, 0.6, 1.6)
+[node name="kitchen_frontwall" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=598979960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08529053, 0.10000001)
+radius = 1.0
+height = 0.45686036
+sides = 35
 
-[node name="tables" type="Node3D" parent="." unique_id=455769254]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=1167451593]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.32, 0, 0.18125004, 0.05868254)
+operation = 2
+radius = 0.7
+height = 0.6625
+sides = 35
 
-[node name="CSGBox3D" type="CSGBox3D" parent="tables" unique_id=1926338321]
-transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, -0.7, -0.06, -1.0999999)
-size = Vector3(1, 0.4, 1)
+[node name="CSGBox3D" type="CSGBox3D" parent="kitchen_frontwall" unique_id=1204591523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050000012, 0.10000003, 0.6000001)
+operation = 2
+size = Vector3(2.2, 0.8, 1.7)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="tables" unique_id=1110591703]
-transform = Transform3D(0.17320506, 0, 0.099999994, 0, 0.19999999, 0, -0.099999994, 0, 0.17320506, -0.37999997, -0.06, -1.4399998)
-size = Vector3(1, 0.4, 1)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="tables" unique_id=1160942651]
-transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0.030000046, -0.06, -1.6999998)
-size = Vector3(1.7, 0.4, 1)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="tables" unique_id=723746810]
-transform = Transform3D(0.06840403, 0, -0.18793851, 0, 0.19999999, 0, 0.18793851, 0, 0.06840403, 0.63, -0.06, -1.0999998)
-size = Vector3(1.7, 0.4, 1)
+[node name="Window" type="CSGBox3D" parent="kitchen_frontwall" unique_id=327332644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.1481544, -0.79999995)
+operation = 2
+size = Vector3(0.8, 0.2, 0.2)
