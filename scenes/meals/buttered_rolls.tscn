@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://cobydjft7aqam"]
 
 [ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_306a5"]
+[ext_resource type="ArrayMesh" uid="uid://cwpk8ojs03xtm" path="res://assets/models/butteredrolls.obj" id="2_kjohq"]
+[ext_resource type="Texture2D" uid="uid://i0oslf62m0g1" path="res://assets/textures/butteryrolltex.png" id="3_1lfvq"]
+[ext_resource type="Texture2D" uid="uid://e1jn587n21yw" path="res://assets/textures/butteryrollrough.png" id="4_c1kd6"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://assets/textures/butte.png" id="5_cdxbr"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_837e2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63hg3"]
+albedo_texture = ExtResource("3_1lfvq")
+roughness_texture = ExtResource("4_c1kd6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6xy6"]
+albedo_texture = ExtResource("5_cdxbr")
 
 [node name="Buttered_Rolls" unique_id=1546410034 instance=ExtResource("1_306a5")]
 meal_name = "Buttered Rolls"
@@ -10,8 +19,11 @@ flavor_text = "Warm, soft, bread that's been covered and gooey butter."
 id = 1
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_837e2")
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+material_overlay = null
+mesh = ExtResource("2_kjohq")
+surface_material_override/0 = SubResource("StandardMaterial3D_63hg3")
+surface_material_override/1 = SubResource("StandardMaterial3D_i6xy6")
 
-[node name="Node3D" parent="." index="2" unique_id=1476605985]
-visible = true
+[node name="InteractUI" parent="." index="2" unique_id=2022474363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6598033, 0)
