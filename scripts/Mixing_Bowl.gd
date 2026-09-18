@@ -1,10 +1,11 @@
 extends Node2D
 
 var following := false
-const MAX_DIST := 7000
+const MAX_DIST := 225
+var count : int = 0 
 
 func _physics_process(delta: float) -> void:
-	var mouseDist := get_global_mouse_position().distance_squared_to( $knob.global_position )
+	var mouseDist := get_global_mouse_position().distance_to( $knob.global_position )
 	if mouseDist < MAX_DIST and Input.is_action_just_pressed("Click"):
 		following = true
 	if Input.is_action_just_released("Click"):
@@ -19,4 +20,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	print("hi")
+	count += 1
+	if count == 5:
+		print("yum")
+	elif count > 5:
+		count = 1
+	print(count)
