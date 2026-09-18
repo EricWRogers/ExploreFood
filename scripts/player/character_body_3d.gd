@@ -1,11 +1,15 @@
 class_name Player extends CharacterBody3D
 
 var speed 
-const WALK_SPEED = 7.0
-const SPRINT_SPEED = 12.0
-const JUMP_VELOCITY = 12
+const BASE_WALK_SPEED = 7.0
+const BASE_SPRINT_SPEED = 12.0
+const BASE_JUMP_VELOCITY = 12
 const SENSITIVITY = 0.003
 var impulse_force = 15
+
+var current_walk_speed = BASE_WALK_SPEED
+var current_sprint_speed = BASE_SPRINT_SPEED
+var current_jump_velocity = BASE_JUMP_VELOCITY
 #var belly = 100
 var hunger = 100
 @export var hunger_reduction_rate = 2.5
@@ -23,7 +27,10 @@ const FOV_CHANGE = 1.5
 var canJump = true;
 @export var in_kitchen : bool = false
 @export var coyoteTime = 0.1;
+@export var power_time = 15.0
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var power_up_timer: Timer = $PowerUpTimer
+
 
 @onready var raycast = $Head/Camera3D/RayCast3D
 @onready var food_spawn: Marker3D = $Head/Camera3D/FoodSpawn
@@ -170,11 +177,11 @@ func _physics_process(delta: float) -> void:
 
 	# Jump
 	if Input.is_action_just_pressed("Jump") and canJump:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = current_jump_velocity
 		canJump = false
 
 	# Sprint
-	speed = SPRINT_SPEED if Input.is_action_pressed("Sprint") else WALK_SPEED
+	speed = current_sprint_speed if Input.is_action_pressed("Sprint") else current_walk_speed
 
 	if Input.is_action_just_pressed("Pause"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -389,6 +396,7 @@ func consume_held() -> void:
 	item_texture.texture = null
 
 	var item = slot.instantiate()
+	power_up(item.id)
 	hunger += item.hunger_restore
 
 	Manager.set("slot%d" % current_slot, null)
@@ -500,3 +508,26 @@ func update_held_item(id):
 			Manager.recipe_book.items["ingredients"]["meatball"]["unlocked"] = true
 		9:
 			pass
+			
+func speed_power_up():
+	if power_up_timer.is_stopped():
+		power_up_timer.start(power_time)
+		current_walk_speed *= 2
+		current_sprint_speed *= 2
+
+func jump_power_up():
+	if power_up_timer.is_stopped():
+		power_up_timer.start(power_time)
+		current_jump_velocity *= 1.5
+
+func _on_power_up_timer_timeout() -> void:
+	current_sprint_speed = BASE_SPRINT_SPEED
+	current_walk_speed = BASE_WALK_SPEED
+	current_jump_velocity = BASE_JUMP_VELOCITY
+
+func power_up(id):
+	match id:
+		1,2,3,4:
+			speed_power_up()
+		5,6,7,8:
+			jump_power_up()
