@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="4_f8w4h"]
 [ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="5_qvun3"]
 [ext_resource type="ArrayMesh" uid="uid://c8xne0bihd6oe" path="res://assets/npcs/TheBoss.obj" id="6_mcm1n"]
+[ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
+[ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
@@ -42,7 +44,17 @@ script = ExtResource("5_qvun3")
 transform = Transform3D(2.598076, 0, -1.5, 0, 3, 0, 1.5, 0, 2.598076, 17.900002, -13.400001, -45.2)
 mesh = ExtResource("6_mcm1n")
 
+[node name="Oven" parent="." unique_id=408695707 instance=ExtResource("7_7hvat")]
+transform = Transform3D(5.1423016, 0, 6.128355, 0, 8, 0, -6.128355, 0, 5.1423016, -11.37, -0.6, -9.599998)
+
+[node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("8_piak7")]
+transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 2.0400002, -0.5, 0.5)
+
+[node name="ScriptlessOven2" parent="." unique_id=1837019092 instance=ExtResource("8_piak7")]
+transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -7.0600004, -0.5, 0.5)
+
+[node name="ScriptlessOven3" parent="." unique_id=1325875925 instance=ExtResource("8_piak7")]
+transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -8.93, -0.5, 0.5)
+
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
-
-[editable path="DinerLayout"]

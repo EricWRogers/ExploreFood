@@ -6,16 +6,15 @@
 albedo_color = Color(0.57600003, 0.6, 0.6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oowas"]
-size = Vector3(0.7631836, 0.7592163, 0.91238403)
+size = Vector3(0.26665038, 0.2705371, 0.2755127)
 
 [node name="ScriptlessOven" type="StaticBody3D" unique_id=2124001694]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=284187068]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3.5, 0, 0, 0)
 mesh = ExtResource("1_ju0od")
 surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975845134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207031, 0.37905884, 0.011917114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00014157114, 0.13471942, 0.013481449)
 shape = SubResource("BoxShape3D_oowas")
