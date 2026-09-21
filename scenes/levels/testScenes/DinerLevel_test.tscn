@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c8xne0bihd6oe" path="res://assets/npcs/TheBoss.obj" id="6_mcm1n"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
+[ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
@@ -20,15 +21,17 @@ level_name = "diner"
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_3jqfu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.2238154, -5.6986084)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1187445877]
-transform = Transform3D(0.64278764, 0.663414, 0.3830222, 0.13302219, -0.58906865, 0.7970591, 0.7544064, -0.46138924, -0.46689484, -4.500001, 11.3, -37.1)
+[node name="Environment" type="Node3D" parent="." unique_id=1741781231]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1187445877]
+transform = Transform3D(0.6427877, 0.66341394, 0.38302216, 0.1330222, -0.58906865, 0.7970591, 0.7544065, -0.4613893, -0.46689487, -4.500001, 11.3, -37.1)
 light_color = Color(0.6627451, 0.9019608, 0.92156863, 1)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=550748019]
-transform = Transform3D(0.6427877, 0.66341394, 0.38302225, -0.49240386, -0.02520135, 0.87000185, 0.58682406, -0.7478282, 0.3104685, -4.500001, 11.3, -2.7999992)
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment" unique_id=550748019]
+transform = Transform3D(0.6427877, 0.6634139, 0.38302216, -0.49240386, -0.025201362, 0.8700019, 0.58682406, -0.7478281, 0.31046844, -4.500001, 11.3, -2.7999992)
 light_color = Color(1, 0.7176471, 0.6509804, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1680998563]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1680998563]
 environment = SubResource("Environment_8ojr3")
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("4_f8w4h")]
@@ -45,7 +48,7 @@ transform = Transform3D(2.598076, 0, -1.5, 0, 3, 0, 1.5, 0, 2.598076, 17.900002,
 mesh = ExtResource("6_mcm1n")
 
 [node name="Oven" parent="." unique_id=408695707 instance=ExtResource("7_7hvat")]
-transform = Transform3D(5.1423016, 0, 6.128355, 0, 8, 0, -6.128355, 0, 5.1423016, -11.37, -0.6, -9.599998)
+transform = Transform3D(-8, 0, -6.993822e-07, 0, 8, 0, 6.993822e-07, 0, -8, 4, -0.8, 0.5831165)
 
 [node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("8_piak7")]
 transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 2.0400002, -0.5, 0.5)
@@ -55,6 +58,12 @@ transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -7.0
 
 [node name="ScriptlessOven3" parent="." unique_id=1325875925 instance=ExtResource("8_piak7")]
 transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -8.93, -0.5, 0.5)
+
+[node name="Plate" parent="." unique_id=904989181 instance=ExtResource("9_piak7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15.500001)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=766124218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3999999, 1, -15.5)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]

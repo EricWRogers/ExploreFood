@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_vgcoc")
-recipe_name = "Grilled Kebabs"
-ingredients = Array[int]([1, 7])
+recipe_name = "Burger"
+ingredients = Array[int]([2, 7])
 product = ExtResource("1_bicjf")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

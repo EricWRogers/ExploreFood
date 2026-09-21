@@ -17,7 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="6_ypotk"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="7_3bk5l"]
 [ext_resource type="Texture2D" uid="uid://cehk4jcniwyv3" path="res://assets/test_images/adventuretime.jpg" id="7_gxv72"]
-[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/Grilled_Kebabs.tres" id="7_wiuov"]
+[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/burger.tres" id="7_wiuov"]
 [ext_resource type="Texture2D" uid="uid://ben2eu1r2lqln" path="res://assets/test_images/pibble.jpeg" id="8_55au0"]
 [ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="8_dvf7r"]
 [ext_resource type="Shader" uid="uid://d23yntsud7c74" path="res://assets/shaders/portal.gdshader" id="9_eubmf"]

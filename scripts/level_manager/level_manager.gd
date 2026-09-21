@@ -10,6 +10,7 @@ extends Node
 var to_go
 var scene_switch_setter = false
 
+
 func _ready() -> void:
 	if SandwichMode:
 		Manager.sandwich_mode = true

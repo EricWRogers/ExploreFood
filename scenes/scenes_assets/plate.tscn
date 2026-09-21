@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://syaombh4sk5s"]
+
+[ext_resource type="Script" uid="uid://dwi65xkuatthr" path="res://scripts/recipe_system/recipe_solver.gd" id="1_l8h4x"]
+[ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="2_bvol2"]
+[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/burger.tres" id="3_hk6lq"]
+[ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="4_wo25l"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="5_mn7g1"]
+[ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://scripts/resources/dubious_food.tres" id="6_wt54v"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_klsck"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6xqmx"]
+height = 0.032836914
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
+height = 0.6508789
+radius = 0.7426758
+
+[node name="Plate" type="StaticBody3D" unique_id=904989181]
+script = ExtResource("1_l8h4x")
+recipes = Array[Resource]([ExtResource("2_bvol2"), ExtResource("3_hk6lq"), ExtResource("4_wo25l"), ExtResource("5_mn7g1"), ExtResource("6_wt54v")])
+
+[node name="PlateMeshInstance" type="MeshInstance3D" parent="." unique_id=851860531]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_klsck")
+
+[node name="PlateCollisionShape" type="CollisionShape3D" parent="." unique_id=347167122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00018310547, 0)
+shape = SubResource("CylinderShape3D_6xqmx")
+
+[node name="PlateArea" type="Area3D" parent="." unique_id=527679114]
+
+[node name="AreaCollisionShape" type="CollisionShape3D" parent="PlateArea" unique_id=500899163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32543945, 0)
+shape = SubResource("CylinderShape3D_klsck")
+
+[connection signal="body_entered" from="PlateArea" to="." method="_on_plate_area_body_entered"]
