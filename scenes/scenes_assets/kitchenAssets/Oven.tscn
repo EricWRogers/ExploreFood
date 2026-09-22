@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
 [ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
-[ext_resource type="Script" uid="uid://duwm5a3yxia3j" path="res://scripts/test_scripts/ingredient_prepper.gd" id="2_nppts"]
+[ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="2_nppts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
 albedo_color = Color(0.52, 0.5936666, 0.65, 1)
@@ -23,11 +23,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00079345703, 0.1243515, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
-[node name="OvenArea" type="Area3D" parent="." unique_id=1222218728]
-script = ExtResource("2_nppts")
+[node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("2_nppts")]
+cook_timer_time = 5.0
 
-[node name="OvenAreaCollisionShape" type="CollisionShape3D" parent="OvenArea" unique_id=870765097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0023193706, 0.1129379, 0.24111179)
+[node name="OvenAreaCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=870765097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0023193706, 0.1129379, 0.2411118)
 shape = SubResource("BoxShape3D_6xqmx")
-
-[connection signal="body_entered" from="OvenArea" to="OvenArea" method="_on_body_entered"]

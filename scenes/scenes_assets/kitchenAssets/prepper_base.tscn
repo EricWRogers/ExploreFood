@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b6k7jg6k26ojl"]
+
+[ext_resource type="Script" uid="uid://duwm5a3yxia3j" path="res://scripts/test_scripts/ingredient_prepper.gd" id="1_8elfv"]
+
+[node name="PrepperBase" type="Area3D" unique_id=1039243692]
+script = ExtResource("1_8elfv")
+
+[node name="CookTimer" type="Timer" parent="." unique_id=707757955]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]
