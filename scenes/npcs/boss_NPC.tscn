@@ -13,7 +13,7 @@
 radius = 0.4086914
 height = 0.91680145
 
-[node name="Big_Boss_NPC" type="Node3D" unique_id=1095072558]
+[node name="BossNPC" type="Node3D" unique_id=1095072558]
 script = ExtResource("1_2i7oy")
 dialogue_tree = Array[ExtResource("2_whkwm")]([ExtResource("3_l08ym"), ExtResource("4_wbtbd"), ExtResource("5_720kh"), ExtResource("6_pa3ns")])
 

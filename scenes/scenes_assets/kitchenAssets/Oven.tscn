@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
 [ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
-[ext_resource type="Script" uid="uid://dwi65xkuatthr" path="res://scripts/recipe_system/recipe_solver.gd" id="1_nppts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
 albedo_color = Color(0.52, 0.5936666, 0.65, 1)
@@ -11,7 +10,6 @@ size = Vector3(0.24987793, 0.24980164, 0.25478458)
 
 [node name="Oven" type="StaticBody3D" unique_id=408695707]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
-script = ExtResource("1_nppts")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1227565413]
 mesh = ExtResource("1_knho3")

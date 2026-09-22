@@ -47,8 +47,8 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		isInRange = false
 		isDialogueSelected = false
 
-#quest manager. Might make into its own script?
-func _on_table_area_body_entered(body: Node3D) -> void:
+#TEMPORARY quest manager. Might make into its own script?
+func _on_quest_check_body_entered(body: Node3D) -> void:
 	if (Manager.current_quest_item == ""): #if quest is null, nothing happens
 		print("quest item null")
 		return
@@ -57,6 +57,7 @@ func _on_table_area_body_entered(body: Node3D) -> void:
 		if (body.name == Manager.current_quest_item): #pass quest
 			print("correct! Scrumptious!")
 			dialogue_tree_index = 2 #pass
+			$"../TempPortalManager".open_portal(2)
 			Manager.current_quest_item = ""
 			#Manager.kitchen.showwaffle()
 		else:										#fail quest

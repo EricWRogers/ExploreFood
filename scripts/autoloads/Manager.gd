@@ -8,7 +8,7 @@ const TERRY_ICON = preload("uid://c4mrqsstnqfjk")
 const WAFFLE_ICON = preload("uid://bapm1ifqtscdd")
 
 
-signal scene_change
+#signal scene_change
 
 var currently_held_food
 var holding = false
@@ -35,6 +35,7 @@ var the_asker
 var askers_request = []
 var current_customers = 0
 var waffledimension = false
+var is_portal_2: bool = false
 
 @export var current_quest_item : String
 

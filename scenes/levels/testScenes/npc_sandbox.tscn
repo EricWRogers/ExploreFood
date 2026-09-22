@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dshpelnsl3c1r"]
 
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_bhq4y"]
-[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/big_boss_npc.tscn" id="2_oxr57"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="2_oxr57"]
 [ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="3_w2cx6"]
 [ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="8_6h4kx"]
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="9_rbr8a"]
