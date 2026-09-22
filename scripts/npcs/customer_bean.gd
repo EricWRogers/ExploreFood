@@ -5,6 +5,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var has_ordered : bool = false
 var my_seat : Vector3
 
 enum State{
@@ -67,7 +68,8 @@ func state_seat(delta : float):
 	move_and_slide()
 
 func state_order(delta: float):
-	print("OH WAITER")
+	if !has_ordered:
+		set_order()
 	pass
 	
 func state_leave(delta : float):
@@ -75,3 +77,34 @@ func state_leave(delta : float):
 
 func set_seat(new_target : Vector3):
 	my_seat = new_target
+
+func set_order():
+	$Bubble.show()
+	for i in range(0,2):
+		var rand = randi_range(1, 6)
+		var to_change
+		if i == 1:
+			to_change = $Bubble/Bubble2
+		else:
+			to_change = $Bubble/Bubble3
+		match rand:
+			1:
+				to_change.texture = Manager.TERRY_ICON
+				Manager.askers_request.append(1)
+			2:
+				to_change.texture = Manager.WAFFLE_ICON
+				Manager.askers_request.append(2)
+			3:
+				to_change.texture = Manager.BUTTERFROG_ICON
+				Manager.askers_request.append(3)
+			4:
+				to_change.texture = Manager.DOUGH_BABY_ICON_NEW
+				Manager.askers_request.append(7)
+			5:
+				to_change.texture = Manager.DROPLET_ICON
+				Manager.askers_request.append(5)
+			6:
+				to_change.texture = Manager.MEAT_BALL
+				Manager.askers_request.append(8)
+	Manager.askers_request.sort()
+	has_ordered = true

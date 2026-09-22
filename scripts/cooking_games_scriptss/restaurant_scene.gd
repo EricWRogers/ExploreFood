@@ -9,7 +9,8 @@ var customer_spots = []
 
 func _ready():
 	customer_spots = customer_points.get_children()
-	spawn_customer()
+	for i in range (customer_spots.size() - 1):
+		spawn_customer()
 
 func spawn_customer():
 	var customer = CUSTOMER_BEAN.instantiate()
@@ -19,6 +20,6 @@ func spawn_customer():
 	customer.set_seat(pick_rand_spot().global_position)
 	
 func pick_rand_spot():
-	var spot = customer_spots[randi_range(0, customer_spots.size())]
+	var spot = customer_spots[randi_range(0, customer_spots.size() - 1)]
 	customer_spots.erase(spot)
 	return spot

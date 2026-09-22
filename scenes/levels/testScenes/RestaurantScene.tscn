@@ -48,5 +48,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.347313, 0, -24.148005)
 [node name="Marker3D2" type="Marker3D" parent="CustomerPoints" unique_id=1333878021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.957055, 0, -35.680626)
 
+[node name="Marker3D3" type="Marker3D" parent="CustomerPoints" unique_id=598786316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2769451, 0, -34.540745)
+
 [node name="CustomerSpawn" type="Marker3D" parent="." unique_id=1014526666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.330276, 0, -15.856724)
