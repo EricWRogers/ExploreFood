@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="9_amfce"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
+[ext_resource type="PackedScene" uid="uid://bf5lrlvyh6g" path="res://scenes/scenes_assets/kitchenAssets/pan.tscn" id="10_amfce"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
@@ -79,6 +80,12 @@ transform = Transform3D(0.8597999, 0, -0.510631, 0, 1, 0, 0.510631, 0, 0.8597999
 [node name="QuestCollisionShape" type="CollisionShape3D" parent="QuestCheck" unique_id=1966982578]
 transform = Transform3D(1.0000002, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000002, 0.04997921, 0.7500001, 0.15001678)
 shape = SubResource("BoxShape3D_6xqmx")
+
+[node name="Pan" parent="." unique_id=29644927 instance=ExtResource("10_amfce")]
+transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -9.027583, 1.4000001, 0.35949853)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=212609830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 2, 0.099999785)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]

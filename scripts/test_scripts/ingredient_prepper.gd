@@ -14,6 +14,10 @@ var is_full: bool = false
 
 @export var spawn_position: Vector3 = Vector3(0, 0, 0)
 
+func _process(delta: float) -> void:
+	if (is_full):
+		pass
+
 func _on_body_entered(body: Node3D) -> void:
 	if (body.has_method("im_food") && !is_full): #checks if body is an ingredient. This check should be made better later.
 		print("yum, I found a food! is prepped: ", body.is_prepped)
@@ -31,13 +35,14 @@ func _on_cook_timer_timeout() -> void:
 	var ingredient_spawn
 	var current_scene = get_tree().root
 	ingredient_spawn = ingredient.instantiate()
+	ingredient_spawn.rarity_level = 1
 	current_scene.add_child(ingredient_spawn)
 	ingredient_spawn.is_prepped = true
 	print("cook time up! is prepped: ", ingredient_spawn.is_prepped)
 	
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-	ingredient_spawn.position = Vector3(0, 2, 0)
-	
+	ingredient_spawn.position = Vector3(-5.6, 2, 0.1)
+	print ("spawning", ingredient_spawn)
 	#clear vars for next ingredient
 	is_full = false
 	ingredient = null
