@@ -52,6 +52,7 @@ var current_target: Node = null
 var current_slot = 0
 var recipe_open = false
 var free_cam = false
+var hold_prep: bool
 
 func _ready():
 	hunger = Manager.belly
@@ -290,7 +291,14 @@ func pickup_food() -> void:
 		return
 
 	var food_scene: PackedScene = load(current_target.scene_file_path)
-
+	
+	#carry over prepped bool (hopefully)
+	if (current_target).has_method("im_food"):
+		if (current_target.is_prepped):
+			hold_prep = true #new food item is_prepped 
+		else:
+			hold_prep = false  #new food item !is_prepped 
+	
 	current_target.get_took()
 
 	for i in range(1, 4):
@@ -435,6 +443,12 @@ func dropthrow() -> void:
 	var forward_dir = -$Head/Camera3D.global_transform.basis.z
 	var impulse_vector = forward_dir * impulse_force
 	drop.apply_central_impulse(impulse_vector)
+	
+	if (drop).has_method("im_food"):
+		if (hold_prep):
+			drop.is_prepped = true #new food item is_prepped 
+		else:
+			drop.is_prepped = false  #new food item !is_prepped 
 
 	# Clear the inventory slot.
 	Manager.set("slot%d" % current_slot, null)

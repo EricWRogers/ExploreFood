@@ -28,11 +28,12 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_cook_timer_timeout() -> void:
-	print("cook time up!")
 	var ingredient_spawn
 	var current_scene = get_tree().root
 	ingredient_spawn = ingredient.instantiate()
 	current_scene.add_child(ingredient_spawn)
+	ingredient_spawn.is_prepped = true
+	print("cook time up! is prepped: ", ingredient_spawn.is_prepped)
 	
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 	ingredient_spawn.position = Vector3(0, 2, 0)
