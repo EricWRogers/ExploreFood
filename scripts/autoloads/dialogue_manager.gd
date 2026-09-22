@@ -28,7 +28,8 @@ func _process(_delta):
 	): 
 		text_box.queue_free()
 		current_line_index += 1
-		_line_check()
+		if (Manager.sandwich_mode):
+			_line_check()
 		
 		#end dialogue
 		if current_line_index >= dialogue_lines.size():

@@ -5,12 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_3jqfu"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="4_f8w4h"]
 [ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="5_qvun3"]
-[ext_resource type="ArrayMesh" uid="uid://c8xne0bihd6oe" path="res://assets/npcs/TheBoss.obj" id="6_mcm1n"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/big_boss_npc.tscn" id="9_amfce"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
+size = Vector3(12, 12.400001, 1)
 
 [node name="DinerLevelTest" type="Node3D" unique_id=1870153108]
 script = ExtResource("1_3jqfu")
@@ -43,10 +46,6 @@ transform = Transform3D(0.48870417, 0, 0.8724496, 0, 1, 0, -0.8724496, 0, 0.4887
 [node name="TempPortalManager" type="Node3D" parent="." unique_id=1750418309]
 script = ExtResource("5_qvun3")
 
-[node name="TheBoss" type="MeshInstance3D" parent="." unique_id=1537657396]
-transform = Transform3D(2.598076, 0, -1.5, 0, 3, 0, 1.5, 0, 2.598076, 17.900002, -13.400001, -45.2)
-mesh = ExtResource("6_mcm1n")
-
 [node name="Oven" parent="." unique_id=408695707 instance=ExtResource("7_7hvat")]
 transform = Transform3D(-8, 0, -6.993822e-07, 0, 8, 0, 6.993822e-07, 0, -8, 4, -0.8, 0.5831165)
 
@@ -64,6 +63,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15.500001)
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=766124218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3999999, 1, -15.5)
+
+[node name="Big_Boss_NPC" parent="." unique_id=1095072558 instance=ExtResource("9_amfce")]
+transform = Transform3D(0.8660254, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, 0.8660254, 18.355265, -3.3000002, -44.417675)
+
+[node name="BossWall" type="StaticBody3D" parent="Big_Boss_NPC" unique_id=1281128756]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Big_Boss_NPC/BossWall" unique_id=1504752695]
+transform = Transform3D(0.992669, 0, -0.1208573, 0, 1, 0, 0.1208573, 0, 0.992669, -0.5098152, 5.7000003, 3.595993)
+shape = SubResource("BoxShape3D_klsck")
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
