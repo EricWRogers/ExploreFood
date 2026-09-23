@@ -369,7 +369,7 @@ func update_slots(slot: int) -> void:
 	add_child(selected_object)
 
 	selected_object.global_position = item_hold_spawn.global_position
-	selected_object.scale = Vector3(0.5, 0.5, 0.5)
+	selected_object.scale = Vector3(0.25, 0.25, 0.25)
 	selected_object.freeze = true
 	selected_object.collision_layer = 2
 	selected_object.collision_mask = 2
