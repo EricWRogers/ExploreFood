@@ -10,13 +10,19 @@ func _physics_process(delta: float) -> void:
 		following = true
 	if Input.is_action_just_released("Click"):
 		following = false
-	#print(following)
+
 	
 	if following:
 		var ang := get_global_mouse_position().angle_to_point( $knob.global_position ) + PI
-		print($knob/knobPoint.position.rotated( $knob.rotation))
-		print($knob/knobPoint.global_position - global_position)
+		var d :Vector2= ($knob/knobPoint.position.rotated( $knob.rotation))
+		var a = $middlePoint.global_position.angle_to(d)
+		print (a)
+		var finalAng :float= remap( a, -3.14, 3.14, 0, 100 )
+		print(finalAng)
 		$knob.rotation = ang
+		
+		#var fang : float= lerp_angle( $knob.rotation, ang, 0.3)
+		#$knob.rotation = clamp(fang, -3,8)
 
 
 func _on_button_pressed() -> void:

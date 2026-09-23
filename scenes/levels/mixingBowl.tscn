@@ -13,7 +13,7 @@ position = Vector2(605, 397)
 texture = ExtResource("2_ccmht")
 
 [node name="knob" type="Marker2D" parent="Node2D" unique_id=78694652]
-position = Vector2(605, 397.00006)
+position = Vector2(605, 397)
 scale = Vector2(1e-05, 1e-05)
 
 [node name="knob" type="Sprite2D" parent="Node2D/knob" unique_id=1007693946]
@@ -26,7 +26,7 @@ position = Vector2(12400002, -100006.11)
 scale = Vector2(100000.01, 15625.017)
 
 [node name="middlePoint" type="Marker2D" parent="Node2D" unique_id=452314388]
-position = Vector2(703, 221)
+position = Vector2(689, 355)
 
 [node name="Button" type="Button" parent="." unique_id=1833540709]
 offset_left = 1007.0
