@@ -276,6 +276,7 @@ size = Vector3(0.4, 1, 1)
 
 [node name="FrontDoor" type="CSGBox3D" parent="Diner_walls" unique_id=279068632]
 transform = Transform3D(0.05209447, 0, -0.2954423, 0, 0.29999995, 0, 0.2954423, 0, 0.05209447, -1.2600001, 0, 0.23000002)
+operation = 2
 size = Vector3(1.3000001, 1, 0.4)
 
 [node name="kitchen_backwall" type="CSGBox3D" parent="." unique_id=377335486]

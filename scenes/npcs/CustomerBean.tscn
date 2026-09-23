@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cf8h7xtq160oq"]
+
+[ext_resource type="Script" uid="uid://hyrs013wrifh" path="res://scripts/npcs/customer_bean.gd" id="1_ctgow"]
+[ext_resource type="Texture2D" uid="uid://cv67callux6ok" path="res://assets/ui/ui_assets/cloudbubble.png" id="2_2un5t"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="3_ijxn3"]
+[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="4_hv8gh"]
+[ext_resource type="Texture2D" uid="uid://d4nhempagt20r" path="res://assets/ui/ui_assets/checkmark-64.png" id="5_bowvb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gtwna"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gtwna"]
+
+[node name="CustomerBean" type="CharacterBody3D" unique_id=523690442]
+script = ExtResource("1_ctgow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1948590818]
+shape = SubResource("CapsuleShape3D_gtwna")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=635077942]
+mesh = SubResource("CapsuleMesh_gtwna")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=205750357]
+
+[node name="Bubble" type="Sprite3D" parent="." unique_id=1026903]
+transform = Transform3D(0.355, 0, 0, 0, 0.305, 0, 0, 0, 0.285, 0, 2.5130873, 0)
+visible = false
+billboard = 1
+texture = ExtResource("2_2un5t")
+
+[node name="Bubble2" type="Sprite3D" parent="Bubble" unique_id=1227603871]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 1.7922509, 0, -0.69367427)
+billboard = 1
+render_priority = 1
+texture = ExtResource("3_ijxn3")
+
+[node name="Bubble3" type="Sprite3D" parent="Bubble" unique_id=2122455847]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -1.5332499, 0, -0.69367427)
+billboard = 1
+render_priority = 1
+texture = ExtResource("4_hv8gh")
+
+[node name="Success" type="Sprite3D" parent="Bubble" unique_id=2012916297]
+transform = Transform3D(7.750003, 0, 0, 0, 7.750003, 0, 0, 0, 7.7500005, 0.072033666, -0.43631554, -0.69367427)
+visible = false
+billboard = 1
+render_priority = 2
+texture = ExtResource("5_bowvb")
+
+[node name="Label" type="Label3D" parent="Bubble" unique_id=1699958767]
+transform = Transform3D(2.8169017, 0, 0, 0, 3.2786887, 0, 0, 0, 3.5087721, 0.14102393, -0.1458664, -0.42530864)
+billboard = 1
+modulate = Color(0, 0, 0, 1)
+text = "+"
+font_size = 103

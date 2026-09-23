@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bf5lrlvyh6g"]
 
 [ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="1_vasep"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_n76ko"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
 height = 1.0358887
 radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0lmfk"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Pan" type="Node3D" unique_id=29644927]
 
@@ -33,3 +37,18 @@ cook_timer_time = 3.0
 [node name="PanCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=1496624846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446167, 0)
 shape = SubResource("CylinderShape3D_klsck")
+
+[node name="ProgressBar" type="Sprite3D" parent="." unique_id=1559055203]
+transform = Transform3D(-0.1, 0, 0, 0, -0.1, 0, 0, 0, -0.1, 0, 0.62, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_0lmfk")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=131292540]
+transparent_bg = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=1043761746]
+offset_right = 500.0
+offset_bottom = 500.0
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("2_n76ko")
