@@ -1,8 +1,13 @@
 extends Node2D
 
+#signal turnedKnob
+
 var following := false
 const MAX_DIST := 225
 var count : int = 0 
+
+func _ready() -> void:
+	$"../Button/ColorIndicator".modulate = Color (1, 0, 0)
 
 func _physics_process(delta: float) -> void:
 	var mouseDist := get_global_mouse_position().distance_to( $knob.global_position )
@@ -23,12 +28,15 @@ func _physics_process(delta: float) -> void:
 		
 		var fang : float= lerp_angle( $knob.rotation, ang, 0.3)
 		$knob.rotation = clamp(fang, -4,1)
+		#emit_signal("turnedKnob")
 
 
 func _on_button_pressed() -> void:
 	count += 1
 	if count == 5:
 		print("yum")
+		$"../Button/ColorIndicator".modulate = Color (0, 1, 0)
 	elif count > 5:
 		count = 1
+		$"../Button/ColorIndicator".modulate = Color (1, 0, 0)
 	print(count)
