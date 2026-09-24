@@ -5,12 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="3_ijxn3"]
 [ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="4_hv8gh"]
 [ext_resource type="Texture2D" uid="uid://d4nhempagt20r" path="res://assets/ui/ui_assets/checkmark-64.png" id="5_bowvb"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="6_ijxn3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gtwna"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gtwna"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+radius = 2.0474894
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ijxn3"]
+viewport_path = NodePath("SubViewport")
+
 [node name="CustomerBean" type="CharacterBody3D" unique_id=523690442]
+collision_layer = 2
 script = ExtResource("1_ctgow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1948590818]
@@ -52,3 +60,31 @@ billboard = 1
 modulate = Color(0, 0, 0, 1)
 text = "+"
 font_size = 103
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2077694697]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=921196538]
+shape = SubResource("SphereShape3D_gtwna")
+
+[node name="Timer" type="Timer" parent="." unique_id=113798018]
+
+[node name="TimerProgress" type="Sprite3D" parent="." unique_id=914393720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0426576, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_ijxn3")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1880079442]
+transparent_bg = true
+size = Vector2i(120, 120)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=2022246599]
+offset_right = 120.0
+offset_bottom = 120.0
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("6_ijxn3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

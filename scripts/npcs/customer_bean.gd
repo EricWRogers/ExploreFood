@@ -1,12 +1,20 @@
 extends CharacterBody3D
 
+signal finished_eating(spot : Vector3)
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var timer: Timer = $Timer
+@onready var texture_progress_bar: TextureProgressBar = $SubViewport/TextureProgressBar
+@onready var timer_progress: Sprite3D = $TimerProgress
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var has_ordered : bool = false
-var my_seat : Vector3
+var my_seat : Object
+var my_exit: Object
+var order_distance = 1
+var angry_time = 5.0
 
 enum State{
 	SEAT,
@@ -16,6 +24,9 @@ enum State{
 
 var current_state : State = State.SEAT
 
+func _process(_delta: float) -> void:
+	if !timer.is_stopped():
+		texture_progress_bar.value = (timer.time_left / timer.wait_time) * 100.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -32,7 +43,6 @@ func _physics_process(delta: float) -> void:
 func change_state(new_state: State) -> void:
 	if current_state == new_state:
 		return
-	
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
@@ -40,11 +50,14 @@ func change_state(new_state: State) -> void:
 func enter_state(state: State) -> void:
 	match state:
 		State.SEAT:
+			timer_progress.hide()
 			pass
 		State.ORDER:
+			timer_progress.show()
 			pass
 
 		State.LEAVE:
+			timer_progress.hide()
 			pass
 
 
@@ -58,27 +71,47 @@ func exit_state(state: State) -> void:
 		State.LEAVE:
 			pass
 			
-func state_seat(delta : float):
-	if global_position.distance_squared_to(my_seat) < 1.0:
+func state_seat(_delta : float):
+	if global_position.distance_squared_to(my_seat.global_position) < 1.0:
 		change_state(State.ORDER)
-	nav_agent.set_target_position(my_seat)
+	nav_agent.set_target_position(my_seat.global_position)
 	var next_nav_point = nav_agent.get_next_path_position()
 		
 	velocity = (next_nav_point - global_position).normalized() * SPEED
 	move_and_slide()
 
-func state_order(delta: float):
+func state_order(_delta: float):
 	if !has_ordered:
 		set_order()
+	if timer.is_stopped():
+		timer.wait_time = angry_time
+		timer.start()
+		texture_progress_bar.max_value = 100.0
+		texture_progress_bar.value = 100.0
+
 	pass
 	
-func state_leave(delta : float):
-	pass
+func state_leave(_delta : float):
+	if global_position.distance_squared_to(my_exit.global_position) < 1.0:
+		finished_eating.emit(my_seat)
+		queue_free()
+	nav_agent.set_target_position(my_exit.global_position)
+	var next_nav_point = nav_agent.get_next_path_position()
+		
+	velocity = (next_nav_point - global_position).normalized() * SPEED
+	move_and_slide()
+	
 
-func set_seat(new_target : Vector3):
+func set_seat(new_target : Object):
 	my_seat = new_target
 
+func set_exit(new_exit: Object):
+	my_exit = new_exit
+
 func set_order():
+	has_ordered = true
+	if randi_range(1, 10) != 1: return
+	#the res is code i stole from Caleb
 	$Bubble.show()
 	for i in range(0,2):
 		var rand = randi_range(1, 6)
@@ -107,4 +140,18 @@ func set_order():
 				to_change.texture = Manager.MEAT_BALL
 				Manager.askers_request.append(8)
 	Manager.askers_request.sort()
-	has_ordered = true
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.has_method("get_took") and has_ordered:
+		change_state(State.LEAVE)
+		#body.queue_free()
+
+
+func _on_timer_timeout() -> void:
+	timer.stop()
+	change_state(State.LEAVE)
+	$Bubble.show()
+	$Bubble/Bubble2.hide()
+	$Bubble/Bubble3.hide()
+	$Bubble/Label.text = "FUCK THIS"

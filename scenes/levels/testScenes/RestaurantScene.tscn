@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="1_24jtx"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_011c8"]
 [ext_resource type="PackedScene" uid="uid://dy7amoxc7ps52" path="res://scenes/levels/DinerLayout.tscn" id="2_lmh5o"]
+[ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="4_011c8"]
+[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_nqhf5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmh5o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,5 +53,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.957055, 0, -35.680626)
 [node name="Marker3D3" type="Marker3D" parent="CustomerPoints" unique_id=598786316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2769451, 0, -34.540745)
 
+[node name="Marker3D4" type="Marker3D" parent="CustomerPoints" unique_id=587742925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.679794, 0, -27.65153)
+
+[node name="Marker3D5" type="Marker3D" parent="CustomerPoints" unique_id=1335391422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.61195, 0, -18.97137)
+
+[node name="Marker3D6" type="Marker3D" parent="CustomerPoints" unique_id=1153008335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.017033, 0, -18.97137)
+
+[node name="Marker3D7" type="Marker3D" parent="CustomerPoints" unique_id=928876774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.192394, 0, -26.23673)
+
+[node name="Marker3D8" type="Marker3D" parent="CustomerPoints" unique_id=1132512506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.136269, 0, -30.423754)
+
+[node name="Marker3D9" type="Marker3D" parent="CustomerPoints" unique_id=2110706367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7666321, 0, -33.672226)
+
+[node name="Marker3D10" type="Marker3D" parent="CustomerPoints" unique_id=1678582327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6090393, 0, -36.669968)
+
+[node name="Marker3D11" type="Marker3D" parent="CustomerPoints" unique_id=7202613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.787775, 0, -36.669968)
+
+[node name="Marker3D12" type="Marker3D" parent="CustomerPoints" unique_id=1900780787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2563939, 0, -41.784027)
+
+[node name="Marker3D13" type="Marker3D" parent="CustomerPoints" unique_id=722483217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.597588, 0, -43.770985)
+
+[node name="Marker3D14" type="Marker3D" parent="CustomerPoints" unique_id=831351066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.773712, 0, -40.101677)
+
+[node name="Marker3D15" type="Marker3D" parent="CustomerPoints" unique_id=1005254507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.027308, 0, -34.671112)
+
+[node name="Marker3D16" type="Marker3D" parent="CustomerPoints" unique_id=245629219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.588896, 0, -27.663376)
+
+[node name="Marker3D17" type="Marker3D" parent="CustomerPoints" unique_id=826357478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.856725, 0, -28.500626)
+
+[node name="Marker3D18" type="Marker3D" parent="CustomerPoints" unique_id=1239402637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.856725, 0, -20.159283)
+
+[node name="Marker3D19" type="Marker3D" parent="CustomerPoints" unique_id=623465838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.759613, 0, -24.02108)
+
+[node name="Marker3D20" type="Marker3D" parent="CustomerPoints" unique_id=862312616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.616689, 0, -24.02108)
+
+[node name="Marker3D21" type="Marker3D" parent="CustomerPoints" unique_id=1529307642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.484926, 0, -28.391605)
+
+[node name="Marker3D22" type="Marker3D" parent="CustomerPoints" unique_id=1580142134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.702736, 0, -29.940641)
+
 [node name="CustomerSpawn" type="Marker3D" parent="." unique_id=1014526666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.330276, 0, -15.856724)
+
+[node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("4_nqhf5")]
+
+[node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("4_011c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7663765, 0.66370964, -11.416536)
