@@ -19,10 +19,10 @@ func _physics_process(delta: float) -> void:
 		print (a)
 		var finalAng :float= remap( a, -3.14, 3.14, 0, 100 )
 		print(finalAng)
-		$knob.rotation = ang
+		#$knob.rotation = ang
 		
-		#var fang : float= lerp_angle( $knob.rotation, ang, 0.3)
-		#$knob.rotation = clamp(fang, -3,8)
+		var fang : float= lerp_angle( $knob.rotation, ang, 0.3)
+		$knob.rotation = clamp(fang, -4,1)
 
 
 func _on_button_pressed() -> void:
