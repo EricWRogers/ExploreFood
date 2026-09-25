@@ -35,4 +35,8 @@ offset_right = 1138.0
 offset_bottom = 460.0
 text = "buttin"
 
+[node name="ColorIndicator" type="Sprite2D" parent="Button" unique_id=1936362983]
+position = Vector2(267, 51)
+texture = ExtResource("2_ccmht")
+
 [connection signal="pressed" from="Button" to="Node2D" method="_on_button_pressed"]
