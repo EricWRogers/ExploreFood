@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dy7amoxc7ps52" path="res://scenes/levels/DinerLayout.tscn" id="2_lmh5o"]
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="4_011c8"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_nqhf5"]
+[ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="6_1ruqg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmh5o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -114,3 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.330276, 0, -15.856724)
 
 [node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("4_011c8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7663765, 0.66370964, -11.416536)
+mass = 1.0
+
+[node name="TipJar" parent="." unique_id=835479530 instance=ExtResource("6_1ruqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0817404, 1.3081326, -14.466656)
