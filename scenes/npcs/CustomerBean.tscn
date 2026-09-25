@@ -86,5 +86,8 @@ fill_mode = 4
 nine_patch_stretch = true
 texture_progress = ExtResource("6_ijxn3")
 
+[node name="CoinSpawn" type="Marker3D" parent="." unique_id=242355491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

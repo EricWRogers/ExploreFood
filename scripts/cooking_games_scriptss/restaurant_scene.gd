@@ -40,7 +40,7 @@ func pick_rand_spot():
 
 func customer_done(fresh_spot : Object):
 	customer_spots.append(fresh_spot)
-	#add_new_customer.emit() testing purposes only
+	add_new_customer.emit() #testing purposes only
 
 func new_customer():
 	spawn_customer()
