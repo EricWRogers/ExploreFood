@@ -9,8 +9,11 @@ const CUSTOMER_BEAN = preload("uid://cf8h7xtq160oq")
 @onready var customer_spawn: Marker3D = $CustomerSpawn
 const CHICKEN_AND_WAFFLE = preload("uid://bh7bxo4knjirp")
 
+var is_rush_hour : bool = false
+
 
 var customer_spots = []
+var current_customers = []
 #this controls when customers spawn and where their seats
 #the nitty gritty stuff is in customer_bean.gd
 #Summary:
@@ -32,18 +35,35 @@ func spawn_customer():
 	customer.set_seat(pick_rand_spot())
 	customer.set_exit(customer_spawn)
 	customer.finished_eating.connect(customer_done)
+	current_customers.append(customer)
 	
 func pick_rand_spot():
 	var spot = customer_spots[randi_range(0, customer_spots.size() - 1)]
 	customer_spots.erase(spot)
 	return spot
 
-func customer_done(fresh_spot : Object):
+func customer_done(fresh_spot : Object, customer : Object):
 	customer_spots.append(fresh_spot)
-	#add_new_customer.emit() testing purposes only
+	current_customers.erase(customer)
+	if is_rush_hour or current_customers.size() < 2:
+		spawn_customer()
 
 func new_customer():
 	spawn_customer()
 	var meal = CHICKEN_AND_WAFFLE.instantiate()
 	add_child(meal)
 	meal.global_position = Vector3(-0.766,0.664,-11.417)
+
+func start_rush_hour():
+	is_rush_hour = true
+	for i in range(customer_spots.size()/ 2):
+		spawn_customer()
+		
+func stop_rush_hour():
+	is_rush_hour = false
+	
+func rush_button():
+	if is_rush_hour:
+		stop_rush_hour()
+	else:
+		start_rush_hour()
