@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://287n6qn8ljnd"]
+
+[ext_resource type="Script" uid="uid://scir151vugrh" path="res://scenes/levels/simon_says.gd" id="1_l7nso"]
+[ext_resource type="Texture2D" uid="uid://bcteto12x3ndi" path="res://icon.svg" id="2_4tte8"]
+
+[node name="SimonSays" type="Node2D" unique_id=775830389]
+script = ExtResource("1_l7nso")
+
+[node name="Button" type="Button" parent="." unique_id=849077586]
+modulate = Color(1, 0, 0, 1)
+offset_left = 698.0
+offset_top = 213.0
+offset_right = 834.0
+offset_bottom = 349.0
+icon = ExtResource("2_4tte8")
+
+[node name="Button2" type="Button" parent="." unique_id=405692911]
+modulate = Color(0, 1, 0, 1)
+offset_left = 886.0
+offset_top = 317.0
+offset_right = 1022.0
+offset_bottom = 453.0
+icon = ExtResource("2_4tte8")
+
+[node name="Button3" type="Button" parent="." unique_id=1539349063]
+modulate = Color(0, 0, 1, 1)
+offset_left = 509.0
+offset_top = 307.0
+offset_right = 645.0
+offset_bottom = 443.0
+icon = ExtResource("2_4tte8")
+
+[node name="Button4" type="Button" parent="." unique_id=263599841]
+modulate = Color(1, 1, 0, 1)
+offset_left = 698.0
+offset_top = 420.0
+offset_right = 834.0
+offset_bottom = 556.0
+icon = ExtResource("2_4tte8")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
