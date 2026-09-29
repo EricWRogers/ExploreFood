@@ -7,7 +7,6 @@ signal finished_eating(spot : Vector3)
 @onready var texture_progress_bar: TextureProgressBar = $SubViewport/TextureProgressBar
 @onready var timer_progress: Sprite3D = $TimerProgress
 @onready var coin_spawn: Marker3D = $CoinSpawn
-@onready var coin_payer: Timer = $CoinPayer
 
 const GOLD_COIN = preload("uid://3plpvx8a7yxk")
 
@@ -109,7 +108,7 @@ func state_order(_delta: float):
 	
 func state_leave(_delta : float):
 	if global_position.distance_squared_to(my_exit.global_position) < 1.0:
-		finished_eating.emit(my_seat)
+		finished_eating.emit(my_seat, self)
 		queue_free()
 	nav_agent.set_target_position(my_exit.global_position)
 	var next_nav_point = nav_agent.get_next_path_position()
@@ -143,7 +142,7 @@ func set_exit(new_exit: Object):
 
 func set_order():
 	can_take_food = true
-	if randi_range(1, 10) != 1: return
+	if randi_range(1, 50) != 1: return
 	#the res is code i stole from Caleb
 	$Bubble.show()
 	for i in range(0,2):
