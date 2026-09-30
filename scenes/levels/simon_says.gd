@@ -27,28 +27,53 @@ func _ready() -> void:
 		pattern_to_solve.append(adding_next_number)
 		print(pattern_to_solve)
 	print(pattern_to_solve)
+	flashing_lights()
 	
 
 func check_answer() -> void:
 	if pattern_to_solve.slice(0,round) == pattern_player_input.slice(0,round):
-		#for i in pattern_to_solve.slice(0,round):
 		print(pattern_to_solve.slice(0,round))
 		print(pattern_player_input)
-	#flashing_lights()
+	flashing_lights()
 	round += 1
 	player_input_so_far = 0
 	pattern_player_input = []
 	
 
 
-#func flashing_lights() -> void:
-	#for x in pattern_to_solve.slice(0,round):
-		#print("x%s" % x)
-		#if pattern_to_solve[x] == 1:
-			#active_flash = create_tween()
-			#active_flash.tween_property($Button, "modulate", Color(1,1,1), 1.15)
-			#active_flash.tween_property($Button, "modulate", Color(1,0,0), 1.15)
-			#print("colors")
+func flashing_lights() -> void:
+	for i in pattern_to_solve.slice(0,round):
+		print("i%s" % i)
+		print(pattern_to_solve)
+		#if pattern_to_solve.slice(0,round):
+		if i == 1:
+			active_flash = create_tween()
+			#active_flash.tween_await(x * 1)
+			active_flash.tween_property($Button, "modulate", Color(1,1,1), 0.5)
+			active_flash.tween_property($Button, "modulate", Color(1,0,0), 0.5)
+			print("red colors")
+			#await active_flash.finished
+			
+		if i == 2:
+			active_flash = create_tween()
+			active_flash.tween_property($Button2, "modulate", Color(1,1,1), 0.5)
+			active_flash.tween_property($Button2, "modulate", Color(0,1,0), 0.5)
+			print("green colors")
+			#await active_flash.finished
+		
+		if i == 3:
+			active_flash = create_tween()
+			active_flash.tween_property($Button3, "modulate", Color(1,1,1), 0.5)
+			active_flash.tween_property($Button3, "modulate", Color(0,0,1), 0.5)
+			print("blue colors")
+			#await active_flash.finished
+			
+		if i == 4:
+			active_flash = create_tween()
+			active_flash.tween_property($Button4, "modulate", Color(1,1,1), 0.5)
+			active_flash.tween_property($Button4, "modulate", Color(1,1,0), 0.5)
+			print("yellow colors")
+			#await active_flash.finished
 
 func _on_button_pressed() -> void:
 	pattern_player_input.append(1) #red
