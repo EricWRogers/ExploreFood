@@ -123,7 +123,6 @@ func state_watch(_delta: float) -> void:
 	var direction := (player.global_position - global_position).normalized()
 	look_at(global_position - direction, Vector3.UP)
 	
-	var current_player_pos = player.global_position
 	
 	#looks confusing but its just doubling the distance that decides if baby should run
 	# basically Stare, when player gets closer move away, if too close start running
