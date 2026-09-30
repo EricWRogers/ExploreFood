@@ -5,6 +5,7 @@
 
 [node name="SimonSays" type="Node2D" unique_id=775830389]
 script = ExtResource("1_l7nso")
+flash_time = 0.6
 
 [node name="Button" type="Button" parent="." unique_id=849077586]
 modulate = Color(1, 0, 0, 1)

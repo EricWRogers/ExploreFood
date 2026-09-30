@@ -1,20 +1,22 @@
 extends Node2D
 
+@export var flash_time: float
+
 var pattern_to_solve = []
 var pattern_player_input = []
-var adding_next_number : int
-
-var number_of_pattern : int = 5
-var level : int = 1
-var rng = RandomNumberGenerator.new()
-
 var player_input_so_far : int = 0
+
+var level : int = 1
 
 var flash = create_tween()
 var active_flash : Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var adding_next_number : int
+	var rng = RandomNumberGenerator.new()
+	var number_of_pattern : int = 5
+	
 	$Button.modulate = Color (1, 0, 0) #red = 1
 	$Button2.modulate = Color (0, 1, 0) #green = 2
 	$Button3.modulate = Color (0, 0, 1) #blue = 3
@@ -31,81 +33,65 @@ func _ready() -> void:
 	
 
 func check_answer() -> void:
+	#check if player was correct
 	if pattern_to_solve.slice(0,level) == pattern_player_input.slice(0,level):
 		print(pattern_to_solve.slice(0,level))
 		print(pattern_player_input)
-	flashing_lights()
+	
+	#start next level
 	level += 1
 	player_input_so_far = 0
 	pattern_player_input = []
-	
+	flashing_lights()
 
 
 func flashing_lights() -> void:
 	for i in pattern_to_solve.slice(0,level):
-		print("i%s" % i)
+		print("i: %s" % i)
 		print(pattern_to_solve)
-		#if pattern_to_solve.slice(0,level):
-		if i == 1:
-			active_flash = create_tween()
-			#active_flash.tween_await(x * 1)
-			active_flash.tween_property($Button, "modulate", Color(1,1,1), 0.5)
-			active_flash.tween_property($Button, "modulate", Color(1,0,0), 0.5)
-			print("red colors")
-			#await active_flash.finished
-			
-		if i == 2:
-			active_flash = create_tween()
-			active_flash.tween_property($Button2, "modulate", Color(1,1,1), 0.5)
-			active_flash.tween_property($Button2, "modulate", Color(0,1,0), 0.5)
-			print("green colors")
-			#await active_flash.finished
+		match i:
+			1:
+				active_flash.tween_property($Button, "modulate", Color(1,1,1), flash_time)
+				active_flash.tween_property($Button, "modulate", Color(1,0,0), flash_time)
+				print("red colors")
+			2:
+				active_flash = create_tween()
+				active_flash.tween_property($Button2, "modulate", Color(1,1,1), flash_time)
+				active_flash.tween_property($Button2, "modulate", Color(0,1,0), flash_time)
+				print("green colors")
+			3:
+				active_flash = create_tween()
+				active_flash.tween_property($Button3, "modulate", Color(1,1,1), flash_time)
+				active_flash.tween_property($Button3, "modulate", Color(0,0,1), flash_time)
+				print("blue colors")
+			4:
+				active_flash = create_tween()
+				active_flash.tween_property($Button4, "modulate", Color(1,1,1), flash_time)
+				active_flash.tween_property($Button4, "modulate", Color(1,1,0), flash_time)
+				print("yellow colors")
+			_:
+				push_error("ERROR: Index overflow")
 		
-		if i == 3:
-			active_flash = create_tween()
-			active_flash.tween_property($Button3, "modulate", Color(1,1,1), 0.5)
-			active_flash.tween_property($Button3, "modulate", Color(0,0,1), 0.5)
-			print("blue colors")
-			#await active_flash.finished
-			
-		if i == 4:
-			active_flash = create_tween()
-			active_flash.tween_property($Button4, "modulate", Color(1,1,1), 0.5)
-			active_flash.tween_property($Button4, "modulate", Color(1,1,0), 0.5)
-			print("yellow colors")
-			#await active_flash.finished
+		await active_flash.finished
 
 func _on_button_pressed() -> void:
 	pattern_player_input.append(1) #red
-	player_input_so_far += 1
-	print(pattern_player_input)
-	if player_input_so_far >= level:
-		check_answer()
-
-
+	input_count()
+	
 func _on_button_2_pressed() -> void:
 	pattern_player_input.append(2) #green
-	player_input_so_far += 1
-	print(pattern_player_input)
-	if player_input_so_far >= level:
-		check_answer()
-
+	input_count()
 
 func _on_button_3_pressed() -> void:
 	pattern_player_input.append(3) #blue
-	player_input_so_far += 1
-	print(pattern_player_input)
-	if player_input_so_far >= level:
-		check_answer()
-
+	input_count()
 
 func _on_button_4_pressed() -> void:
 	pattern_player_input.append(4) #yellow
+	input_count()
+
+func input_count():
 	player_input_so_far += 1
 	print(pattern_player_input)
 	if player_input_so_far >= level:
 		check_answer()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
