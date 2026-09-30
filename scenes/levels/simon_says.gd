@@ -37,9 +37,10 @@ func check_answer() -> void:
 	if pattern_to_solve.slice(0,level) == pattern_player_input.slice(0,level):
 		print(pattern_to_solve.slice(0,level))
 		print(pattern_player_input)
+		level += 1
+	
 	
 	#start next level
-	level += 1
 	player_input_so_far = 0
 	pattern_player_input = []
 	flashing_lights()
