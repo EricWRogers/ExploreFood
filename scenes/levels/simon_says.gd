@@ -5,7 +5,7 @@ var pattern_player_input = []
 var adding_next_number : int
 
 var number_of_pattern : int = 5
-var round : int = 1
+var level : int = 1
 var rng = RandomNumberGenerator.new()
 
 var player_input_so_far : int = 0
@@ -31,21 +31,21 @@ func _ready() -> void:
 	
 
 func check_answer() -> void:
-	if pattern_to_solve.slice(0,round) == pattern_player_input.slice(0,round):
-		print(pattern_to_solve.slice(0,round))
+	if pattern_to_solve.slice(0,level) == pattern_player_input.slice(0,level):
+		print(pattern_to_solve.slice(0,level))
 		print(pattern_player_input)
 	flashing_lights()
-	round += 1
+	level += 1
 	player_input_so_far = 0
 	pattern_player_input = []
 	
 
 
 func flashing_lights() -> void:
-	for i in pattern_to_solve.slice(0,round):
+	for i in pattern_to_solve.slice(0,level):
 		print("i%s" % i)
 		print(pattern_to_solve)
-		#if pattern_to_solve.slice(0,round):
+		#if pattern_to_solve.slice(0,level):
 		if i == 1:
 			active_flash = create_tween()
 			#active_flash.tween_await(x * 1)
@@ -79,7 +79,7 @@ func _on_button_pressed() -> void:
 	pattern_player_input.append(1) #red
 	player_input_so_far += 1
 	print(pattern_player_input)
-	if player_input_so_far >= round:
+	if player_input_so_far >= level:
 		check_answer()
 
 
@@ -87,7 +87,7 @@ func _on_button_2_pressed() -> void:
 	pattern_player_input.append(2) #green
 	player_input_so_far += 1
 	print(pattern_player_input)
-	if player_input_so_far >= round:
+	if player_input_so_far >= level:
 		check_answer()
 
 
@@ -95,7 +95,7 @@ func _on_button_3_pressed() -> void:
 	pattern_player_input.append(3) #blue
 	player_input_so_far += 1
 	print(pattern_player_input)
-	if player_input_so_far >= round:
+	if player_input_so_far >= level:
 		check_answer()
 
 
@@ -103,7 +103,7 @@ func _on_button_4_pressed() -> void:
 	pattern_player_input.append(4) #yellow
 	player_input_so_far += 1
 	print(pattern_player_input)
-	if player_input_so_far >= round:
+	if player_input_so_far >= level:
 		check_answer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
