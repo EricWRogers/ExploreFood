@@ -4,9 +4,9 @@ signal add_new_customer()
 
 const CUSTOMER_BEAN = preload("uid://cf8h7xtq160oq")
 
-@onready var customer_points: Node3D = $CustomerPoints
-@onready var nav_region: NavigationRegion3D = $NavigationRegion3D
-@onready var customer_spawn: Marker3D = $CustomerSpawn
+@export var customer_points: Node3D 
+@export var nav_region: NavigationRegion3D 
+@export var customer_spawn: Marker3D 
 const CHICKEN_AND_WAFFLE = preload("uid://bh7bxo4knjirp")
 
 var is_rush_hour : bool = false
@@ -24,7 +24,7 @@ var current_customers = []
 func _ready():
 	add_new_customer.connect(new_customer)
 	customer_spots = customer_points.get_children()
-	for i in range (10):
+	for i in range (2):
 		spawn_customer()
 
 
@@ -67,3 +67,7 @@ func rush_button():
 		stop_rush_hour()
 	else:
 		start_rush_hour()
+
+
+func _on_dinner_bell_rush_button_hit() -> void:
+	rush_button()

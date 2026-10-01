@@ -403,9 +403,10 @@ shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
 [node name="BaseSoup" unique_id=1546410034 instance=ExtResource("1_ahws6")]
+collision_layer = 513
 meal_name = "Base Soup"
 flavor_text = "Everything makes soup"
-id = 9
+id = 10
 value = 5
 hunger_restore = 10
 

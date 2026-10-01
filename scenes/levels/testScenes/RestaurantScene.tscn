@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="4_011c8"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_nqhf5"]
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="6_1ruqg"]
+[ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="7_56f8t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmh5o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -119,3 +120,8 @@ mass = 1.0
 
 [node name="TipJar" parent="." unique_id=835479530 instance=ExtResource("6_1ruqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0817404, 1.3081326, -14.466656)
+
+[node name="DinnerBell" parent="." unique_id=1442131147 instance=ExtResource("7_56f8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4051704, 0.97951984, -14.306175)
+
+[connection signal="rush_button_hit" from="DinnerBell" to="." method="_on_dinner_bell_rush_button_hit"]

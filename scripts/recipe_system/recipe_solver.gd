@@ -25,7 +25,7 @@ func _on_plate_area_body_entered(body: Node3D) -> void:
 		print(ingredient_types)
 
 func _find_recipe():
-	var chosen_recipe = recipes[-1] #recipe is dubious food by default
+	var chosen_recipe = null #recipe is dubious food by default
 	var recipe_spawn = null
 	
 	#sort ingredients by index 
