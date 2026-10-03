@@ -58,6 +58,7 @@ func start_rush_hour():
 	is_rush_hour = true
 	for i in range(customer_spots.size()/ 2):
 		spawn_customer()
+		await get_tree().create_timer(1.0).timeout
 		
 func stop_rush_hour():
 	is_rush_hour = false
