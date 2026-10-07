@@ -96,6 +96,7 @@ shader_parameter/rim_intensity = 2.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_klsck"]
 
 [node name="BaseMeal" type="RigidBody3D" unique_id=1546410034]
+collision_layer = 513
 script = ExtResource("1_aflix")
 type = "meal"
 

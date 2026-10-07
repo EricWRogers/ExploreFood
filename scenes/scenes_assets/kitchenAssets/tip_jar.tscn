@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://blrahey2ux1v7"]
+
+[ext_resource type="Script" uid="uid://dfal5wud3d13u" path="res://scripts/ui/tip_jar.gd" id="1_chmen"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_clc5b"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_us1kw"]
+size = Vector3(0.52545166, 0.5157471, 0.5939331)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+radius = 1.0304016
+
+[node name="TipJar" type="StaticBody3D" unique_id=835479530]
+script = ExtResource("1_chmen")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1670689323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07861328, 0)
+mesh = SubResource("CylinderMesh_clc5b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1721678911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0067443848, -0.023864746, -0.0051574707)
+shape = SubResource("BoxShape3D_us1kw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1026557387]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=646896669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10913086, 0)
+shape = SubResource("SphereShape3D_gtwna")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1681738256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30280507, 0)
+billboard = 1
+text = "TIPS: 0"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

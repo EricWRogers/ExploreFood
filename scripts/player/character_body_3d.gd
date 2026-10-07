@@ -258,6 +258,7 @@ func _physics_process(delta: float) -> void:
 		
 		var new_target = raycast.get_collider()
 
+
 		if current_target and current_target != new_target:
 			_exit_target()
 
@@ -277,6 +278,8 @@ func _physics_process(delta: float) -> void:
 			current_target.assemble()
 		elif current_target.has_method("absorb"):
 			current_target.holder = $Head/KillerBeanSproject2/ItemHoldSpawn
+		elif current_target.has_method("start_rush_hour"):
+			current_target.start_rush_hour()
 		else:
 			pickup_food()
 
