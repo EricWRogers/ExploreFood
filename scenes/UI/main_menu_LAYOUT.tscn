@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ctfinkw61l6q2"]
+
+[node name="MainMenuLayout" type="Node2D" unique_id=1778735858]
+
+[node name="Button" type="Button" parent="." unique_id=292743305]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 800.0
+offset_top = 730.0
+offset_right = 1300.0
+offset_bottom = 930.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="." unique_id=276582583]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 800.0
+offset_top = 450.0
+offset_right = 1300.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
