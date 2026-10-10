@@ -26,18 +26,19 @@ const FOV_CHANGE = 1.5
 
 var canJump = true;
 @export var in_kitchen : bool = false
-@export var coyoteTime = 0.1;
 @export var power_time = 15.0
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var power_up_timer: Timer = $PowerUpTimer
 
 
-@onready var raycast = $Head/Camera3D/RayCast3D
-@onready var food_spawn: Marker3D = $Head/Camera3D/FoodSpawn
+@onready var first_person_raycast = $Head/FirstPersonCam/RayCast3D
+@onready var third_person_raycast: RayCast3D = $Head/ThirdPersonCam/Camera3D/RayCast3D
+var current_raycast : RayCast3D
+
+@onready var food_spawn: Marker3D = $Head/FirstPersonCam/FoodSpawn
 
 
 @onready var head = $Head
-@onready var camera = $Head/Camera3D
 @onready var consume_bar: TextureProgressBar = $CanvasLayer/MarginContainer8/ConsumeBar
 
 @onready var killer_bean_sproject_2: Node3D = $Head/KillerBeanSproject2
@@ -53,6 +54,8 @@ var current_slot = 0
 var recipe_open = false
 var free_cam = false
 var hold_prep: bool
+var is_first_person : bool = true
+var camera : Camera3D
 
 func _ready():
 	hunger = Manager.belly
@@ -63,7 +66,15 @@ func _ready():
 		$CanvasLayer/MarginContainer4.show()
 		$CanvasLayer/MarginContainer5.show()
 	Manager.player = self
-	$Head/Camera3D.make_current()
+	if is_first_person:
+		$Head/FirstPersonCam.make_current()
+		camera = $Head/FirstPersonCam
+		current_raycast = first_person_raycast
+		print(current_raycast)
+	else:
+		$Head/ThirdPersonCam/Camera3D.make_current()
+		camera = $Head/ThirdPersonCam/Camera3D
+		current_raycast = third_person_raycast
 	Manager.player_hold = $Head/KillerBeanSproject2/ItemHoldSpawn
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Manager.slot1 != null:
@@ -88,16 +99,20 @@ func start_hunger():
 	
 
 func _unhandled_input(event):
-	if recipe_open:
+	if recipe_open or not alive:
 		return
-	if not alive:
-		return
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+		if is_first_person:
+			camera.rotate_x(-event.relative.y * SENSITIVITY)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90),deg_to_rad(90))
+		else:
+			$Head/ThirdPersonCam.rotate_x(-event.relative.y * SENSITIVITY)
+			$Head/ThirdPersonCam.rotation.x = clamp($Head/ThirdPersonCam.rotation.x,deg_to_rad(-60),deg_to_rad(60))
 func update_cash():
 	$CanvasLayer/MarginContainer6/Money.text = str("$",Manager.money)
 func _physics_process(delta: float) -> void:
@@ -113,13 +128,16 @@ func _physics_process(delta: float) -> void:
 			$CanvasLayer.show()
 			$GodMode.active = false
 			alive = true
-			$Head/Camera3D.make_current()
+			$Head/FirstPersonCam.make_current()
 
 	if Input.is_action_just_pressed("hunger_disable"):
 		$HungerTick.stop()
 		$CanvasLayer/MarginContainer4.hide()
 		$CanvasLayer/MarginContainer5.hide()
-
+		
+	if Input.is_action_just_pressed("toggle_perspective"):
+		toggle_camera_perspective()
+	
 	if in_kitchen:
 		$CanvasLayer/MarginContainer6.show()
 
@@ -170,7 +188,7 @@ func _physics_process(delta: float) -> void:
 	# Gravity
 	if not is_on_floor():
 		if canJump and coyote_timer.is_stopped():
-			coyote_timer.start(coyoteTime)
+			coyote_timer.start(0.1)
 		velocity += get_gravity() * 3 * delta
 	else:
 		canJump = true
@@ -214,7 +232,7 @@ func _physics_process(delta: float) -> void:
 				Manager.held_sandwich.freeze = false
 				Manager.held_sandwich.set_collision_layer_value(1, true)
 				Manager.held_sandwich.set_collision_mask_value(1, true)
-				var forward_dir = -$Head/Camera3D.global_transform.basis.z
+				var forward_dir = -$Head/FirstPersonCam.global_transform.basis.z
 				var impulse_vector = forward_dir * impulse_force
 				Manager.held_sandwich.apply_central_impulse(impulse_vector)
 			Manager.held_sandwich.held = false
@@ -254,9 +272,9 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, targetFOV, delta * 5.0)
 
 	# Target detection
-	if raycast.is_colliding():
+	if current_raycast.is_colliding():
 		
-		var new_target = raycast.get_collider()
+		var new_target = current_raycast.get_collider()
 
 
 		if current_target and current_target != new_target:
@@ -443,7 +461,7 @@ func dropthrow() -> void:
 	current_scene.add_child(drop)
 	drop.freeze = false
 	drop.global_position = food_spawn.global_position
-	var forward_dir = -$Head/Camera3D.global_transform.basis.z
+	var forward_dir = -$Head/FirstPersonCam.global_transform.basis.z
 	var impulse_vector = forward_dir * impulse_force
 	drop.apply_central_impulse(impulse_vector)
 	
@@ -548,3 +566,15 @@ func power_up(id):
 			speed_power_up()
 		5,6,7,8:
 			jump_power_up()
+
+func toggle_camera_perspective() -> void:
+	is_first_person = !is_first_person
+
+	if is_first_person:
+		camera = $Head/FirstPersonCam
+		$Head/FirstPersonCam.make_current()
+		current_raycast = first_person_raycast
+	else:
+		camera = $Head/ThirdPersonCam/Camera3D
+		$Head/ThirdPersonCam/Camera3D.make_current()
+		current_raycast = third_person_raycast

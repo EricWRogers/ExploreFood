@@ -393,19 +393,19 @@ shape = SubResource("CapsuleShape3D_fxx43")
 [node name="Head" type="Node3D" parent="." unique_id=2053960824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5481422, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1917950583]
+[node name="FirstPersonCam" type="Camera3D" parent="Head" unique_id=1917950583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41463566)
 cull_mask = 1048571
 fov = 100.0
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=2052499547]
+[node name="RayCast3D" type="RayCast3D" parent="Head/FirstPersonCam" unique_id=2052499547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.415)
 target_position = Vector3(0, 0, -4)
 collision_mask = 1536
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="FoodSpawn" type="Marker3D" parent="Head/Camera3D" unique_id=836658789]
+[node name="FoodSpawn" type="Marker3D" parent="Head/FirstPersonCam" unique_id=836658789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2482054)
 
 [node name="KillerBeanSproject2" parent="Head" unique_id=1222725279 instance=ExtResource("2_lfbm7")]
@@ -510,17 +510,17 @@ bones/22/rotation = Quaternion(-0.0047545214, 0.21003616, 0.00082998554, 0.97768
 bones/23/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="BoneAttachment3D" parent="Head/RagdollGuy/Skeleton3D" index="1" unique_id=1481971334]
-transform = Transform3D(-0.99766904, 7.3470175e-05, 0.0682413, -6.5826345e-05, -0.9999998, 0.00011425931, 0.0682413, 0.00010949653, 0.997669, 0.07721376, 0.034317203, -0.0018671076)
+transform = Transform3D(-0.99766856, 7.3351664e-05, 0.0682475, -6.5282686e-05, -0.9999998, 0.000120466575, 0.0682475, 0.00011572614, 0.99766856, 0.077213734, 0.034317184, -0.0018674266)
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="Head/RagdollGuy/Skeleton3D" index="2" unique_id=1742551553]
 active = false
 
 [node name="Physical Bone main" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2043989485]
-transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.0007411202)
+transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.6883073e-05, 0.024982415, 0.0007411207)
 collision_layer = 2
 collision_mask = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4402743e-05, 0.0003411267, 0.28093803)
-body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074112014)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4405304e-05, 0.0003411416, 0.28093803)
+body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.0001158237, 0.009849755, 0.00074112066)
 bone_name = "main"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone main" unique_id=2145911635]
@@ -528,12 +528,12 @@ transform = Transform3D(1.0000025, 4.898757e-07, -7.4505806e-08, -5.662441e-07, 
 shape = SubResource("CapsuleShape3D_6ev1f")
 
 [node name="Physical Bone ribcage" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=515706595]
-transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374917, 0.034741156, 0.0010656099)
+transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.008374924, 0.034741156, 0.0010656099)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002093045, -5.698773e-05, 0.23355156)
-body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.00820221, -9.0607864e-05, -0.00039225002)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020931289, -5.6989826e-05, 0.23355174)
+body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202217, -9.0607864e-05, -0.00039225002)
 bone_name = "ribcage"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -560,12 +560,12 @@ transform = Transform3D(0.32195434, 0.027684554, -0.94635034, 0.8035644, 0.52056
 shape = SubResource("CapsuleShape3D_anuhh")
 
 [node name="Physical Bone R_forearm" type="PhysicalBone3D" parent="Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029571217, 0.013724994, -0.014683832)
+transform = Transform3D(0.00052035804, -0.034812022, -0.0049194214, 0.033488084, -0.0010074694, 0.010671546, -0.010706359, -0.00484319, 0.033140093, -0.029571215, 0.013724988, -0.014683847)
 collision_layer = 2
 collision_mask = 3
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400528, 0.21708825, 0.5559474)
-body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.0008026846, -0.018890904, -0.014583348)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3240053, 0.21708824, 0.5559479)
+body_offset = Transform3D(0.0077229915, -0.03354854, 0.0071553886, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.03237942, 0.00080268085, -0.01889091, -0.014583363)
 bone_name = "R_forearm"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -641,10 +641,20 @@ transform = Transform3D(1, 1.6581996e-08, -3.8528003e-09, -1.6581998e-08, 0.9999
 [node name="L_hand_handle" parent="Head/RagdollGuy/L_shoulder_handle/L_forearm_handle" index="0" unique_id=884264639]
 transform = Transform3D(1, 8.4458485e-09, 0, -8.4458485e-09, 1, 0, 0, 0, 1, 0.024824267, -2.264855e-16, -8.881784e-18)
 
-[node name="3rdPerson" type="Camera3D" parent="Head" unique_id=380403917]
-transform = Transform3D(1, 0, 0, 0, 0.96506035, 0.26202768, 0, -0.26202768, 0.96506035, 0, 2.806454, 7.9200816)
-cull_mask = 1048571
-fov = 60.7
+[node name="ThirdPersonCam" type="SpringArm3D" parent="Head" unique_id=393549416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2143295, 0)
+spring_length = 3.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="Head/ThirdPersonCam" unique_id=332921462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.021194)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/ThirdPersonCam/Camera3D" unique_id=833912505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.07097912)
+target_position = Vector3(0, 0, -8)
+collision_mask = 1536
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252249867]
 

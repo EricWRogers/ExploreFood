@@ -27,8 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if !active:
-		self.global_position = $"../Head/Camera3D".global_position
-		self.global_rotation = $"../Head/Camera3D".global_rotation
+		self.global_position = $"../Head/FirstPersonCam".global_position
+		self.global_rotation = $"../Head/FirstPersonCam".global_rotation
 		return
 	var speed = base_speed
 	if Input.is_key_pressed(KEY_SHIFT):

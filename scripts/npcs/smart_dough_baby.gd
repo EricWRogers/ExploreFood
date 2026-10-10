@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 7.0
+const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 @onready var animation_player: AnimationPlayer = $"../../../AnimationPlayer"
