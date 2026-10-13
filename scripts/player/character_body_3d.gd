@@ -494,7 +494,7 @@ func death():
 	$Head/RagdollGuy/AnimationPlayer.play("Hold")
 	$Head/RagdollGuy/AnimationPlayer.stop()
 	$Head/KillerBeanSproject2.hide()
-	$"Head/3rdPerson".make_current()
+	$Head/ThirdPersonCam/Camera3D.make_current()
 	$Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D.active = true
 	$Head/RagdollGuy.show()
 	$Head/RagdollGuy.fall()
