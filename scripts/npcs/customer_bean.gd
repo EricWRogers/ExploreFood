@@ -9,26 +9,36 @@ signal finished_eating(spot : Vector3)
 @onready var coin_spawn: Marker3D = $CoinSpawn
 
 const GOLD_COIN = preload("uid://3plpvx8a7yxk")
+const FOOD_TRAY = preload("uid://cwtpfule1qklh")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var can_take_food : bool = false
 var is_paying: bool = false
+var is_eating: bool = true
 var my_seat : Object
 var my_exit: Object
 var order_distance = 1
 var angry_time = 15.0
+var tray
 
 enum State{
 	SEAT,
 	ORDER,
-	LEAVE,
-	PAY
+	EAT,
+	PAY,
+	LEAVE
 }
 
 var current_state : State = State.SEAT
 
+#NOTE: State.EAT will spawn a food tray
+#food tray has an animation to play and place the mat
+#Take the food that enters the area then EITHER
+#spawn a new one at foodTray.FoodSpawn OR just translate the meal
+#once the animation finishes play ANOTHER timer to show eating
+#when the timer runs out transition to State.PAY
 func _process(_delta: float) -> void:
 	if !timer.is_stopped():
 		texture_progress_bar.value = (timer.time_left / timer.wait_time) * 100.0
@@ -41,12 +51,16 @@ func _physics_process(delta: float) -> void:
 
 		State.ORDER:
 			state_order(delta)
-
-		State.LEAVE:
-			state_leave(delta)
 		
 		State.PAY:
 			state_pay(delta)
+			
+		State.EAT:
+			state_eat(delta)
+			
+		State.LEAVE:
+			state_leave(delta)
+		
 
 func change_state(new_state: State) -> void:
 	if current_state == new_state:
@@ -58,19 +72,21 @@ func change_state(new_state: State) -> void:
 func enter_state(state: State) -> void:
 	match state:
 		State.SEAT:
-			timer_progress.hide()
 			pass
+			
 		State.ORDER:
 			timer_progress.show()
 			pass
-
+			
+		State.EAT:
+			pass
+			
+		State.PAY:
+			pass
+			
 		State.LEAVE:
-			timer_progress.hide()
 			pass
 		
-		State.PAY:
-			timer_progress.hide()
-			pass
 
 
 func exit_state(state: State) -> void:
@@ -78,13 +94,17 @@ func exit_state(state: State) -> void:
 		State.SEAT:
 			pass
 		State.ORDER:
-			pass
+			timer_progress.hide();
+		
+		State.EAT:
+			tray.queue_free()
 
+		State.PAY:
+			pass
+			
 		State.LEAVE:
 			pass
 			
-		State.PAY:
-			pass
 		
 func state_seat(_delta : float):
 	if global_position.distance_squared_to(my_seat.global_position) < 1.0:
@@ -105,17 +125,16 @@ func state_order(_delta: float):
 		texture_progress_bar.value = 100.0
 
 	pass
-	
-func state_leave(_delta : float):
-	if global_position.distance_squared_to(my_exit.global_position) < 1.0:
-		finished_eating.emit(my_seat, self)
-		queue_free()
-	nav_agent.set_target_position(my_exit.global_position)
-	var next_nav_point = nav_agent.get_next_path_position()
-		
-	velocity = (next_nav_point - global_position).normalized() * SPEED
-	move_and_slide()
-	
+
+func state_eat(_delta:float):
+	pass
+	#Soooooon
+	if !is_eating:
+		is_eating = true
+		tray = FOOD_TRAY.instantiate()
+		add_child(tray)
+		tray.start_anim()
+
 func state_pay(_delta: float) -> void:
 	if !is_paying:
 		is_paying = true
@@ -128,6 +147,16 @@ func state_pay(_delta: float) -> void:
 			coin.global_position = coin_spawn.global_position
 			await get_tree().create_timer(1.0).timeout
 		change_state(State.LEAVE)
+
+func state_leave(_delta : float):
+	if global_position.distance_squared_to(my_exit.global_position) < 1.0:
+		finished_eating.emit(my_seat, self)
+		queue_free()
+	nav_agent.set_target_position(my_exit.global_position)
+	var next_nav_point = nav_agent.get_next_path_position()
+		
+	velocity = (next_nav_point - global_position).normalized() * SPEED
+	move_and_slide()
 	
 
 
