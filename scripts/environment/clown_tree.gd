@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		target_scale = 15.0
 	for nose in noses:
 		if nose != null:
-			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta)
+			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta / 2.0)
 			if nose.scale.length() >= target_scale * 0.99:
 					explode(nose)
 
