@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://cwtpfule1qklh"]
+
+[ext_resource type="Script" uid="uid://dod0w6mryyu2" path="res://scripts/cooking_games_scriptss/food_tray.gd" id="1_6hfpp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gtwna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us1kw"]
+albedo_color = Color(0, 1, 0.5019608, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrvaf"]
+albedo_color = Color(0, 0.5019608, 0, 1)
+
+[sub_resource type="Animation" id="Animation_2ayfd"]
+resource_name = "Eat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverWare:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.40000004, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.191, 1, 0), Vector3(-2.191, 0.1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SilverWare:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SilverWare2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5333333, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.152, 1, 0), Vector3(2.152, 0.1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SilverWare2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6hfpp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverWare:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.1911309, 0.09834063, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SilverWare:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SilverWare2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.1517065, 0.09834063, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SilverWare2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10y5y"]
+_data = {
+&"Eat": SubResource("Animation_2ayfd"),
+&"RESET": SubResource("Animation_6hfpp")
+}
+
+[node name="FoodTray" type="Node3D" unique_id=392880819]
+script = ExtResource("1_6hfpp")
+
+[node name="BottomMat" type="MeshInstance3D" parent="." unique_id=2025623109]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_gtwna")
+surface_material_override/0 = SubResource("StandardMaterial3D_us1kw")
+
+[node name="TopMat" type="MeshInstance3D" parent="." unique_id=507924431]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("PlaneMesh_gtwna")
+surface_material_override/0 = SubResource("StandardMaterial3D_qrvaf")
+
+[node name="SilverWare" type="CSGBox3D" parent="." unique_id=1614037808]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.75, -2.1911309, 0.09834063, 0)
+size = Vector3(0.34960938, 0.34753418, 1)
+
+[node name="SilverWare2" type="CSGBox3D" parent="." unique_id=1673445272]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.75, 2.1517065, 0.09834063, 0)
+size = Vector3(0.34960938, 0.34753418, 1)
+
+[node name="FoodSpawn" type="Marker3D" parent="." unique_id=104889157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1806256400]
+libraries/ = SubResource("AnimationLibrary_10y5y")

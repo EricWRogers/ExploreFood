@@ -8,7 +8,7 @@ const CUSTOMER_BEAN = preload("uid://cf8h7xtq160oq")
 @export var nav_region: NavigationRegion3D 
 @export var customer_spawn: Marker3D 
 const CHICKEN_AND_WAFFLE = preload("uid://bh7bxo4knjirp")
-
+#Testing
 var is_rush_hour : bool = false
 
 
