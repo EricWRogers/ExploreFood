@@ -12,7 +12,7 @@ const SENSITIVITY: float = 0.003
 
 @export var dash_speed: float = 35.0
 @export var dash_duration: float = 0.25
-@export var dash_cooldown: float = 0.5
+@export var dash_cooldown: float = 1.0
 @export var sprint_tap_threshold: float = 0.3
 
 @export var power_time: float = 15.0
@@ -23,6 +23,7 @@ var current_jump_velocity: float = BASE_JUMP_VELOCITY
 var speed: float = BASE_WALK_SPEED
 
 var can_jump: bool = true
+var jump_count = 2
 var is_dashing: bool = false
 var dash_direction: Vector3 = Vector3.ZERO
 var dash_time_left: float = 0.0
@@ -310,10 +311,7 @@ func _handle_sprint_input() -> void:
 
 
 func _update_dash(delta: float) -> void:
-	dash_cooldown_left = maxf(
-		0.0,
-		dash_cooldown_left - delta
-	)
+	dash_cooldown_left = maxf(0.0, dash_cooldown_left - delta)
 
 	if not is_dashing:
 		return
@@ -327,15 +325,10 @@ func _update_dash(delta: float) -> void:
 func start_dash() -> void:
 	if is_dashing or dash_cooldown_left > 0.0:
 		return
-
-	var input_dir: Vector2 = Input.get_vector(
-		"Left", "Right", "Forward", "Back"
-	)
+	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Forward", "Back")
 
 	var direction: Vector3 = (
-		head.global_transform.basis
-		* Vector3(input_dir.x, 0.0, input_dir.y)
-	)
+		head.global_transform.basis* Vector3(input_dir.x, 0.0, input_dir.y))
 
 	direction.y = 0.0
 
@@ -361,13 +354,25 @@ func _update_gravity(delta: float) -> void:
 		velocity += get_gravity() * 3.0 * delta
 	else:
 		can_jump = true
+		jump_count = 2
 		coyote_timer.stop()
 
 
 func _handle_jump() -> void:
-	if Input.is_action_just_pressed("Jump") and can_jump:
+	if not Input.is_action_just_pressed("Jump"):
+		return
+
+	# First jump or coyote jump
+	if can_jump and jump_count > 0:
 		velocity.y = current_jump_velocity
+		jump_count -= 1
 		can_jump = false
+		coyote_timer.stop()
+
+	# Double jump while airborne
+	elif not is_on_floor() and jump_count > 0:
+		velocity.y = current_jump_velocity
+		jump_count -= 1
 
 
 func _update_movement(delta: float) -> void:
