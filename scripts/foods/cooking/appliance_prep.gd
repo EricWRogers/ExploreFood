@@ -29,7 +29,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print("yum, I found a food! is prepped: ", body.prep_group)
 		
 		if (body.prep_group != 0):
-			print("it's alreday been prepped")
+			print("can't take, it's alreday been prepped")
 		else:
 			ingredient = load(body.scene_file_path)
 			body.queue_free()
