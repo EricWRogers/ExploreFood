@@ -55,6 +55,27 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Exit"
 
+[node name="Control2" type="Control" parent="CenterContainer/HBoxContainer" unique_id=413210177]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer" unique_id=1092073545]
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 2
+text = "WASD to walk around.
+Mouse to look around.
+Space to jump.
+E to interact.
+Hold Shift to sprint.
+Click Shift to dash.
+1, 2, and 3 for the corresponding inventory space.
+Q for throw.
+F for cook.
+K to restart.
+Tab for cookbook.
+Hold left click to eat.
+Escape frees mouse."
+
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
