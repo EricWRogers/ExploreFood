@@ -1,5 +1,6 @@
 extends Control
 
+const dinerLvlTest = preload("res://scenes/levels/testScenes/DinerLevel_test.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,8 +13,11 @@ func _process(delta: float) -> void:
 
 
 func _on_new_game_pressed() -> void:
+	#print(dinerLvlTest)
+	var load_scene = dinerLvlTest.instantiate()
+	add_sibling(load_scene)
+	#print(load_scene)
 	$".".hide()
-	pass # Replace with function body.
 
 
 func _on_continue_pressed() -> void:

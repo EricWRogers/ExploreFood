@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dxevjnm3htr8j" path="res://scripts/level_manager/level_manager.gd" id="1_mnhan"]
 [ext_resource type="PackedScene" uid="uid://d1l0ij7271ank" path="res://scenes/level_manager/loading_screen.tscn" id="3_5774q"]
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
-[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_k1abw"]
-[ext_resource type="PackedScene" uid="uid://cvn3sdcwlvolg" path="res://scenes/UI/sandwich_assembly_ui.tscn" id="5_5x5fn"]
+[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="4_k1abw"]
+[ext_resource type="PackedScene" uid="uid://cvn3sdcwlvolg" path="res://scenes/ui/sandwich_assembly_ui.tscn" id="5_5x5fn"]
 
 [node name="LevelManager" type="Node" unique_id=2118240317 node_paths=PackedStringArray("start_screen")]
 script = ExtResource("1_mnhan")
