@@ -74,7 +74,8 @@ F for cook.
 K to restart.
 Tab for cookbook.
 Hold left click to eat.
-Escape frees mouse."
+Escape frees mouse.
+Option toggle persepctive."
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
