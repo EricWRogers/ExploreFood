@@ -4,9 +4,9 @@ class_name BaseFood
 @export var food_name : String
 @export var icon : Texture2D
 @export var flavor_text : String
-@export var rarity_level : float #determines spawn rate between 0 and 1. a value of 1 would always spawn and a value of 0 would never spawn 
-@export var category : Manager.FoodType
-@export var flavor : Manager.FlavorType
+
+##determines spawn rate between 0 and 1. a value of 1 will always spawn and a value of 0 will never spawn
+@export var rarity_level : float  
 @export var rand_spin : bool = true
 @export var id : int = 0
 @export var color : Color
@@ -16,6 +16,37 @@ class_name BaseFood
 @export var processed_ingredient : PackedScene
 @export var is_prepped: bool = false
 
+@export_group("Food Groups")
+@export var food_group: FoodGroup
+@export var prep_group: PrepGroup
+@export var cook_group: CookGroup
+@export_subgroup("Depreciated")
+@export var category : Manager.FoodType
+@export var flavor : Manager.FlavorType
+
+##type of food that an ingredient is. Must always have a value
+enum FoodGroup {
+	BREAD,
+	MEAT,
+	VEGGIE,
+	BUTTER #butter is a temp food group to be able to easily include butter frog in our prototype. 
+}
+
+##tracks how food has been prepped, if it has been prepped
+enum PrepGroup {
+	NONE,
+	CHOPPED,
+	FLATTENED
+}
+
+##tracks how food has been cooked, if it has been cooked
+enum CookGroup {
+	NONE,
+	BAKED,
+	GRILLED
+}
+
+#appearance
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial

@@ -48,6 +48,7 @@ var free_cam: bool = false
 var recipe_open: bool = false
 var is_first_person: bool = true
 var hold_prep: bool = false
+var lock_mouse : bool = false
 
 var hunger: float = 100.0
 @export var hunger_reduction_rate: float = 2.5
@@ -178,7 +179,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if recipe_open or not alive:
 		return
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -277,7 +278,12 @@ func _handle_global_inputs() -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	if Input.is_action_just_pressed("Pause"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		lock_mouse = !lock_mouse
+		if lock_mouse:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 
 func _handle_gameplay_inputs() -> void:
@@ -502,10 +508,7 @@ func _handle_inventory_input() -> void:
 		_select_inventory_slot(3)
 
 	if Input.is_action_just_pressed("dropthrow"):
-		if Manager.held_sandwich:
-			_drop_held_sandwich()
-		else:
-			dropthrow()
+		dropthrow()
 
 
 func _select_inventory_slot(slot: int) -> void:
@@ -529,23 +532,6 @@ func _remove_inventory_item(slot: int) -> void:
 	if food_scene != null:
 		Manager.inventory.erase(food_scene)
 
-
-func _drop_held_sandwich() -> void:
-	var sandwich = Manager.held_sandwich
-	update_slots(0)
-
-	if sandwich.has_method("absorb"):
-		sandwich.holder = null
-		sandwich.freeze = false
-		sandwich.set_collision_layer_value(1, true)
-		sandwich.set_collision_mask_value(1, true)
-
-		var forward_dir = -$Head/FirstPersonCam.global_transform.basis.z
-		sandwich.apply_central_impulse(forward_dir * impulse_force)
-
-	sandwich.held = false
-	sandwich.freeze = false
-	Manager.held_sandwich = null
 
 
 func update_slots(slot: int) -> void:

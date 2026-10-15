@@ -40,7 +40,7 @@ func start_cook_timer():
 	cook_timer.wait_time = cook_timer_time
 	cook_timer.start()
 
-func _on_cook_timer_timeout() -> void:
+func _on_prep_timer_timeout() -> void:
 	var ingredient_spawn
 	
 	#spawn prepped ingredient
@@ -52,7 +52,7 @@ func _on_cook_timer_timeout() -> void:
 	print("cook time up! is prepped: ", ingredient_spawn.is_prepped)
 	
 	#hide timer
-	$"../SubViewport/TextureProgressBar".visible = false
+	timer_ui.visible = true
 	
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 	ingredient_spawn.position = Vector3(-5.6, 2, 0.1)
