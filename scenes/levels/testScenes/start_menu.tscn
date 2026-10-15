@@ -44,6 +44,7 @@ layout_mode = 2
 text = "New Game"
 
 [node name="Continue" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Continue (useless)"
@@ -53,3 +54,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
