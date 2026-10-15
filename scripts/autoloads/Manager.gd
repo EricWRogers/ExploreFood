@@ -51,19 +51,6 @@ func clear_current_bagel():
 	player.dropthrow()
 	player.update_slots(current_slot)
 
-
-enum FoodType {
-	FRUIT, 
-	VEGATABLE, 
-	GRAIN,
-	PASTA,
-	DAIRY,
-	CHEESE,
-	EGG,
-	MEAT,
-	FISH
-}
-
 enum FlavorType {
 	SWEET,
 	SALTY,
@@ -76,6 +63,20 @@ enum FlavorType {
 	DISGUSTING
 }
 
+##DEPRECIATED. Keeping to avoid breaking current prototype. Use enum FoodGroup instead!!
+enum FoodType {
+	FRUIT, 
+	VEGATABLE, 
+	GRAIN,
+	PASTA,
+	DAIRY,
+	CHEESE,
+	EGG,
+	MEAT,
+	FISH
+}
+
+##DEPRECIATED. Keeping to avoid breaking current prototype. Use enum PrepGroup instead!!
 enum PrepType {
 	SOLID,
 	LIQUID,
