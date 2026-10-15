@@ -113,8 +113,8 @@ shader_parameter/rim_intensity = 2.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fno60"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tlr3t"]
-radius = 0.4633789
-height = 1.8525391
+radius = 0.7480469
+height = 2.3061523
 
 [node name="DoughBaby" type="RigidBody3D" unique_id=1672482069]
 collision_layer = 513
@@ -142,7 +142,7 @@ mesh = ExtResource("4_21aiw")
 surface_material_override/0 = SubResource("StandardMaterial3D_fno60")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=193634790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09569615, -0.05552113, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09569615, 0.17128551, 0)
 shape = SubResource("CapsuleShape3D_tlr3t")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1177597142]

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="7_5a4i3"]
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="8_t5ex0"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_kjh5u"]
+[ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="10_royyw"]
 
 [sub_resource type="Environment" id="Environment_1amvd"]
 
@@ -47,23 +48,26 @@ shape = SubResource("WorldBoundaryShape3D_kjh5u")
 [node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("2_86ql8")]
 
 [node name="Oven" parent="." unique_id=408695707 instance=ExtResource("3_urqlb")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2.1000004, 0, -7)
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2.1000004, 0, -8.5)
 
 [node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("4_t5ex0")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.1, 0, -7)
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.1, 0, -8.5)
 
 [node name="Pan" parent="." unique_id=29644927 instance=ExtResource("5_kjh5u")]
-transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.76604444, 2.3233957, 1.9000001, -6.6642785)
+transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.76604444, 2.3233957, 1.9000001, -8.264278)
 
 [node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("6_royyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3, 0, 10.5)
 
 [node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("7_5a4i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.4, 5.4000006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8, 0.4, -2.0999994)
 rarity_level = 0.9
 
 [node name="Nest" parent="." unique_id=2116521288 instance=ExtResource("8_t5ex0")]
-transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64278764, -8.8, 0, 5.8)
+transform = Transform3D(-0.6427876, 0, 0.7660445, 0, 1, 0, -0.7660445, 0, -0.6427876, 14.2, 0, 4.3)
 
 [node name="Plate" parent="." unique_id=904989181 instance=ExtResource("9_kjh5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.400001, 0, -8.900001)
+
+[node name="CuttingBoard" parent="." unique_id=655305112 instance=ExtResource("10_royyw")]
+transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, -6.2000003, 1.8000001, -8.1)

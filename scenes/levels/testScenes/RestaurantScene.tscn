@@ -26,8 +26,11 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Arr
 agent_height = 2.0
 agent_radius = 1.0
 
-[node name="RestaurantScene" type="Node3D" unique_id=2020143306]
+[node name="RestaurantScene" type="Node3D" unique_id=2020143306 node_paths=PackedStringArray("customer_points", "nav_region", "customer_spawn")]
 script = ExtResource("1_24jtx")
+customer_points = NodePath("CustomerPoints")
+nav_region = NodePath("NavigationRegion3D")
+customer_spawn = NodePath("CustomerSpawn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1991806859]
 environment = SubResource("Environment_nqhf5")

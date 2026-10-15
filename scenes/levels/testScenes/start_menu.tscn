@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dodm11ohml1rt"]
+
+[ext_resource type="Script" uid="uid://bqbq5ao504vsa" path="res://scenes/levels/testScenes/start_menu.gd" id="1_ljq4x"]
+
+[node name="StartMenu" type="Control" unique_id=1906028576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljq4x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2098751730]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1081.0
+color = Color(0.2784314, 0, 0.1882353, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=827626821]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 416.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=44780573]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(200, 0)
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer" unique_id=553477754]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=2102942808]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=895486063]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "New Game"
+
+[node name="Continue" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Continue (useless)"
+
+[node name="Exit" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=221770821]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

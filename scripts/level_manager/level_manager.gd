@@ -1,10 +1,9 @@
 extends Node
 
 @onready var current_level
-@export var CalebMode : bool = false
+@export var start_screen: Node
 @export var Hunger : bool = false
 @export var HordeMechanics : bool = false
-@export var SandwichMode : bool = false
 @export var KitchenHubToggle : bool = false
 @export var CookingMinigames : bool = false
 var to_go
@@ -12,14 +11,7 @@ var scene_switch_setter = false
 
 
 func _ready() -> void:
-	if SandwichMode:
-		Manager.sandwich_mode = true
-		current_level = $Kitchen
-		$DinerLevelTest.queue_free()
-	else:
-		current_level = $DinerLevelTest
-		$Kitchen.queue_free()
-		
+	current_level = start_screen
 	current_level.connect("level_changed", Callable(self, "start_loading"))
 
 	

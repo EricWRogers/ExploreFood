@@ -8,7 +8,8 @@ var player_input_so_far : int = 0
 
 var level : int = 1
 
-var flash = create_tween()
+
+#var flash = create_tween()
 var active_flash : Tween
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +39,8 @@ func check_answer() -> void:
 		print(pattern_to_solve.slice(0,level))
 		print(pattern_player_input)
 		level += 1
+		if pattern_to_solve == pattern_player_input:
+			print ("done")
 	
 	
 	#start next level
@@ -94,5 +97,5 @@ func _on_button_4_pressed() -> void:
 func input_count():
 	player_input_so_far += 1
 	print(pattern_player_input)
-	if player_input_so_far >= level:
+	if player_input_so_far >= level: # or pattern_to_solve.slice(0,player_input_so_far + 1) != pattern_player_input:
 		check_answer()
