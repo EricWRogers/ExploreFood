@@ -34,7 +34,7 @@ func _ready() -> void:
 	Manager.assemblerui = self
 	
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("exit"):
+	if Input.is_action_just_pressed("Pause"):
 		if cooking:
 			return
 		Manager.player.alive = true
