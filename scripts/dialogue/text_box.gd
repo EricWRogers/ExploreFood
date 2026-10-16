@@ -10,13 +10,14 @@ const MAX_WIDTH = 10000
 var text = ""
 var letter_index = 0
 
-var letter_time = 0.03
-var space_time = 0.06
-var punctuation_time = 0.2
+var letter_time = 0.02
+var space_time = 0.04
+var punctuation_time = 0.16
 
 signal finished_displaying()
 
 func display_text(text_to_display: String):
+	
 	text = text_to_display
 	label.text = text_to_display
 	
@@ -29,8 +30,6 @@ func display_text(text_to_display: String):
 		await container.resized # wait for y resize
 		container.custom_maximum_size.y = container.size.y
 		
-	
-	#container.position.x -= container.size.x / 2
 	container.position.y -= (container.size.y + 24)*container.scale.y
 	
 	label.text = ""
@@ -41,7 +40,6 @@ func _display_letter():
 	
 	letter_index += 1
 	if letter_index >= text.length():
-		#print(text)
 		finished_displaying.emit() #emits signal to dialogue manager
 		return
 	
@@ -53,6 +51,13 @@ func _display_letter():
 		_:
 			timer.start(letter_time)
 
+func skip_text_type():
+	timer.stop()
+	label.text = text
+	
+	letter_index += 1
+	finished_displaying.emit() #emits signal to dialogue manager
+	return
 
 func _on_timer_timeout() -> void:
 	_display_letter()

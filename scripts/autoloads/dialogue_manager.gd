@@ -21,15 +21,9 @@ func _ready() -> void:
 
 func _process(_delta):	
 	#progresses down the dialogue lines 
-	if(
-		Input.is_action_just_pressed("Interact") &&
-		is_dialogue_active &&
-		can_advance_line
-	): 
+	if(Input.is_action_just_pressed("Interact") && is_dialogue_active && can_advance_line): 
 		text_box.queue_free()
 		current_line_index += 1
-		if (Manager.sandwich_mode):
-			_line_check()
 		
 		#end dialogue
 		if current_line_index >= dialogue_lines.size():
@@ -41,8 +35,12 @@ func _process(_delta):
 			#unfreeze player 
 			unfreeze_player.emit()
 			return
+		#new textbox
 		else:
 			show_text_box()
+	#skip dialogue
+	elif (Input.is_action_just_pressed("Interact") && is_dialogue_active):
+			text_box.skip_text_type()
 
 #dialogue starts here. Method called from npc dialogue
 func start_dialogue(lines: Array[String], quest_item: String, dialogue_tree_index: int):
