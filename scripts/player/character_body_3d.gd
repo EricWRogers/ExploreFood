@@ -5,13 +5,13 @@ extends CharacterBody3D
 # MOVEMENT SETTINGS
 # ─────────────────────────────────────────
 
-const BASE_WALK_SPEED: float = 7.0
+const BASE_WALK_SPEED: float = 9.0
 const BASE_SPRINT_SPEED: float = 12.0
 const BASE_JUMP_VELOCITY: float = 12.0
 const SENSITIVITY: float = 0.003
 
-@export var dash_speed: float = 35.0
-@export var dash_duration: float = 0.25
+@export var dash_speed: float = 55.0
+@export var dash_duration: float = 0.025
 @export var dash_cooldown: float = 1.0
 @export var sprint_tap_threshold: float = 0.3
 
@@ -48,7 +48,7 @@ var free_cam: bool = false
 var recipe_open: bool = false
 var is_first_person: bool = true
 var hold_prep: bool = false
-var lock_mouse : bool = false
+var lock_mouse : bool = true
 
 var hunger: float = 100.0
 @export var hunger_reduction_rate: float = 2.5
@@ -276,8 +276,7 @@ func _handle_global_inputs() -> void:
 		else:
 			Manager.recipe_book.disappear()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("Exit"):
 		lock_mouse = !lock_mouse
 		if lock_mouse:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -353,6 +352,8 @@ func start_dash() -> void:
 # ─────────────────────────────────────────
 
 func _update_gravity(delta: float) -> void:
+	if is_dashing:
+		return
 	if not is_on_floor():
 		if can_jump and coyote_timer.is_stopped():
 			coyote_timer.start(0.1)
