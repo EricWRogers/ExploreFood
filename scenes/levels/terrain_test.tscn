@@ -537,6 +537,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.72041, 0, -18.645153)
 
 [node name="WormEnemy" parent="." unique_id=1050930802 instance=ExtResource("10_v7lih")]
 transform = Transform3D(80.267944, 0, -151.52231, 0, 171.46999, 0, 151.52231, 0, 80.267944, 133.9191, -5.0414886, -25.901302)
+visible = false
 
 [node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("11_885wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.73379, -3.8158453, 15.11434)

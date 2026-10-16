@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="11_hh3th"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="12_ftecv"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="13_ftecv"]
-[ext_resource type="PackedScene" uid="uid://bbmodv87vgbe7" path="res://scenes/tools/Fridge_storageTest.tscn" id="14_21yr6"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
@@ -179,9 +178,6 @@ script = ExtResource("13_ftecv")
 customer_points = NodePath("../CustomerPoints")
 nav_region = NodePath("../NavigationRegion3D")
 customer_spawn = NodePath("../CustomerSpawn")
-
-[node name="FridgeStorageTest" parent="." unique_id=1403427390 instance=ExtResource("14_21yr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6000001, -0.1, -29.4)
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1107548737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7862545, -15.102238)
