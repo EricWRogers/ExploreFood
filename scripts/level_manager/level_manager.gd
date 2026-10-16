@@ -1,20 +1,29 @@
 extends Node
 
-@onready var current_level
 @export var start_screen: Node
 @export var Hunger : bool = false
 @export var HordeMechanics : bool = false
 @export var KitchenHubToggle : bool = false
 @export var CookingMinigames : bool = false
+
+@onready var current_level
+
 var to_go
 var scene_switch_setter = false
 
 
 func _ready() -> void:
 	current_level = start_screen
+	print("current level: ", current_level)
+	start_screen.starting_game.connect(on_starting_level)
+
+func on_starting_level(_level): #emits signal from text box
+	print("diner loaded!")
+	current_level = _level
+	#current_level = get_child(1)
+	##when the signal "level changed" is emitted, the function "start_loading" is called
 	current_level.connect("level_changed", Callable(self, "start_loading"))
 
-	
 func start_loading(level):
 	$LoadingScreen.play_in()
 	to_go = level
