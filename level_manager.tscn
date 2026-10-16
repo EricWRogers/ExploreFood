@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxevjnm3htr8j" path="res://scripts/level_manager/level_manager.gd" id="1_mnhan"]
 [ext_resource type="PackedScene" uid="uid://d1l0ij7271ank" path="res://scenes/level_manager/loading_screen.tscn" id="3_5774q"]
 [ext_resource type="PackedScene" uid="uid://wsg88toudkyf" path="res://scenes/ui/PauseMenu.tscn" id="3_bj8vm"]
+[ext_resource type="Texture2D" uid="uid://cawerie68wxtv" path="res://assets/ui/ui_assets/qr-code5.png" id="3_ftccg"]
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="4_k1abw"]
 
@@ -11,6 +12,12 @@ script = ExtResource("1_mnhan")
 start_screen = NodePath("StartMenu")
 
 [node name="StartMenu" parent="." unique_id=1906028576 instance=ExtResource("3_s60hn")]
+
+[node name="QrCode5" type="Sprite2D" parent="StartMenu" unique_id=488901767]
+z_index = 596
+position = Vector2(192.00003, 196)
+scale = Vector2(0.26796538, 0.26796538)
+texture = ExtResource("3_ftccg")
 
 [node name="Pause_Menu" parent="." unique_id=842476797 instance=ExtResource("3_bj8vm")]
 
