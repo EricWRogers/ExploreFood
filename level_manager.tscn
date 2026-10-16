@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://wsg88toudkyf" path="res://scenes/ui/PauseMenu.tscn" id="3_bj8vm"]
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="4_k1abw"]
-[ext_resource type="PackedScene" uid="uid://cvn3sdcwlvolg" path="res://scenes/ui/sandwich_assembly_ui.tscn" id="5_5x5fn"]
 
 [node name="LevelManager" type="Node" unique_id=2118240317 node_paths=PackedStringArray("start_screen")]
 script = ExtResource("1_mnhan")
@@ -21,9 +20,6 @@ start_screen = NodePath("StartMenu")
 wait_time = 0.5
 
 [node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("4_k1abw")]
-
-[node name="SandwichAssemblyUI" parent="." unique_id=784765384 instance=ExtResource("5_5x5fn")]
-visible = false
 
 [connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

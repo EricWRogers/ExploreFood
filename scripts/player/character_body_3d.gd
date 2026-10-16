@@ -48,7 +48,7 @@ var free_cam: bool = false
 var recipe_open: bool = false
 var is_first_person: bool = true
 var hold_prep: bool = false
-var lock_mouse : bool = true
+
 
 var hunger: float = 100.0
 @export var hunger_reduction_rate: float = 2.5
@@ -57,6 +57,17 @@ var consume_speed: float = 0.08
 var impulse_force: float = 15.0
 
 @export var in_kitchen: bool = false
+
+# ─────────────────────────────────────────
+# PUSHING CURSOR STATE FOR PAUSE MENU
+# ─────────────────────────────────────────
+#signal status_changed(new_state: bool)
+#
+var lock_mouse : bool = true # :
+	#set(value):
+		#lock_mouse = value
+		#status_changed.emit(lock_mouse)
+
 
 # ─────────────────────────────────────────
 # INVENTORY AND TARGETS
