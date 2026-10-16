@@ -10,11 +10,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _input(event):
+	if event.is_action_pressed("Pause"):
+		$Holder.visible = true
+		get_tree().paused = true
 
 func _on_resume_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().paused = false
+	$Holder.visible = false
 
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.
