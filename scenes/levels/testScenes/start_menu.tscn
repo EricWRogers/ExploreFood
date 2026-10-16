@@ -15,6 +15,7 @@ script = ExtResource("1_ljq4x")
 layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 1081.0
+mouse_filter = 2
 color = Color(0.2784314, 0, 0.1882353, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=827626821]
@@ -62,6 +63,7 @@ layout_mode = 2
 [node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer" unique_id=1092073545]
 custom_minimum_size = Vector2(1000, 400)
 layout_mode = 2
+mouse_filter = 2
 text = "WASD to walk around.
 Mouse to look around.
 Space to jump.

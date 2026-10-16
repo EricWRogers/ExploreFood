@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_vb6pq")
 
 [node name="Holder" type="Control" parent="." unique_id=527211229]
@@ -16,6 +17,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Holder" unique_id=1923322982]
 layout_mode = 1
@@ -30,6 +32,7 @@ offset_right = 1766.0
 offset_bottom = 838.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.2784314, 0, 0.1882353, 0.54901963)
 
 [node name="CenterContainer" type="CenterContainer" parent="Holder" unique_id=976889148]
@@ -41,14 +44,36 @@ offset_top = 320.0
 offset_right = 1532.0
 offset_bottom = 720.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Holder/CenterContainer" unique_id=1665759782]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(200, 0)
+mouse_filter = 2
+
+[node name="TextEdit" type="TextEdit" parent="Holder/CenterContainer/HBoxContainer" unique_id=309436163]
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 2
+mouse_filter = 2
+text = "WASD to walk around.
+Mouse to look around.
+Space to jump.
+E to interact.
+Hold Shift to sprint.
+Click Shift to dash.
+1, 2, and 3 for the corresponding inventory space.
+Q for throw.
+F for cook.
+K to restart.
+Tab for cookbook.
+Hold left click to eat.
+Escape frees mouse.
+Option toggle persepctive."
 
 [node name="Control" type="Control" parent="Holder/CenterContainer/HBoxContainer" unique_id=329882961]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Holder/CenterContainer/HBoxContainer" unique_id=1406386398]
 layout_mode = 2
@@ -69,24 +94,7 @@ text = "Exit"
 [node name="Control2" type="Control" parent="Holder/CenterContainer/HBoxContainer" unique_id=2101917745]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="Holder/CenterContainer/HBoxContainer" unique_id=309436163]
-custom_minimum_size = Vector2(1000, 400)
-layout_mode = 2
-text = "WASD to walk around.
-Mouse to look around.
-Space to jump.
-E to interact.
-Hold Shift to sprint.
-Click Shift to dash.
-1, 2, and 3 for the corresponding inventory space.
-Q for throw.
-F for cook.
-K to restart.
-Tab for cookbook.
-Hold left click to eat.
-Escape frees mouse.
-Option toggle persepctive."
+mouse_filter = 2
 
 [connection signal="pressed" from="Holder/CenterContainer/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Holder/CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
