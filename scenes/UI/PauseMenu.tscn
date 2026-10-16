@@ -69,7 +69,8 @@ K to restart.
 Tab for cookbook.
 Hold left click to eat.
 Escape frees mouse.
-Option toggle persepctive."
+Option to toggle persepctive.
+P to Pause."
 
 [node name="Control" type="Control" parent="Holder/CenterContainer/HBoxContainer" unique_id=329882961]
 layout_mode = 2

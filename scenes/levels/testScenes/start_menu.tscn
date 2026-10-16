@@ -28,39 +28,60 @@ offset_right = 416.0
 offset_bottom = 68.0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=44780573]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1652275570]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1172782211]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=110306389]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="TextEdit2" type="TextEdit" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=812930251]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 140
+text = "Strange Tastes"
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1633092750]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=44780573]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(200, 0)
 
-[node name="Control" type="Control" parent="CenterContainer/HBoxContainer" unique_id=553477754]
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=553477754]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer" unique_id=2102942808]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=2102942808]
 layout_mode = 2
 
-[node name="NewGame" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=895486063]
+[node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=895486063]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 text = "New Game"
 
-[node name="Continue" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Continue (useless)"
 
-[node name="Exit" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer" unique_id=221770821]
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=221770821]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Exit"
 
-[node name="Control2" type="Control" parent="CenterContainer/HBoxContainer" unique_id=413210177]
+[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=413210177]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/HBoxContainer" unique_id=1092073545]
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1092073545]
 custom_minimum_size = Vector2(1000, 400)
 layout_mode = 2
 mouse_filter = 2
@@ -77,8 +98,9 @@ K to restart.
 Tab for cookbook.
 Hold left click to eat.
 Escape frees mouse.
-Option toggle persepctive."
+Option to toggle persepctive.
+P to Pause."
 
-[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
