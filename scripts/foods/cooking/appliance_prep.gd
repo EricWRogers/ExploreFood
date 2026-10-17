@@ -35,8 +35,7 @@ func _on_body_entered(body: Node3D) -> void:
 			body.queue_free()
 			print(ingredient)
 			is_full = true
-		
-		start_prep_timer()
+			start_prep_timer()
 
 func start_prep_timer():
 	#set timer time
@@ -47,22 +46,25 @@ func start_prep_timer():
 
 func _on_prep_timer_timeout() -> void:
 	print("prep timeout!")
-	var ingredient_spawn
+	var ingredient_spawn: Node
 	
-	#spawn prepped ingredient
+	#spawn back prepped ingredient
 	var current_scene = get_tree().root
 	ingredient_spawn = ingredient.instantiate()
 	ingredient_spawn.rarity_level = 1
 	current_scene.add_child(ingredient_spawn)
+	print ("spawning", ingredient_spawn)
+	
+	#set prep tag
 	ingredient_spawn.is_prepped = true
-	print("cook time up! is prepped: ", ingredient_spawn.is_prepped)
 	
-	#hide timer
-	timer_ui.visible = true
-	
+	ingredient_spawn.prep_group = prep_group_application_type #BaseFood.PrepGroup.CHOPPED
+	print("cook time up! is prepped: ", ingredient_spawn.prep_group)
+
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 	ingredient_spawn.position = Vector3(0, 2, 0.1)
-	print ("spawning", ingredient_spawn)
+	
 	#clear vars for next ingredient
+	timer_ui.visible = true
 	is_full = false
 	ingredient = null
