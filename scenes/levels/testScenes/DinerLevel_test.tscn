@@ -100,6 +100,7 @@ navigation_mesh = SubResource("NavigationMesh_gtwna")
 [node name="DinerLayout" parent="NavigationRegion3D" unique_id=721603879 instance=ExtResource("1_w7wq8")]
 
 [node name="CustomerPoints" type="Node3D" parent="." unique_id=1109892348]
+visible = false
 
 [node name="Marker3D" type="Marker3D" parent="CustomerPoints" unique_id=1112117755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.347313, 0, -24.148005)
