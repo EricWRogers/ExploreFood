@@ -35,14 +35,15 @@ func _ready() -> void:
 	
 func showwaffle():
 	$"../AnimationPlayer".play("waffledim")
-	$"../WaffleDimension".make_current()
+	#$"../WaffleDimension".make_current()
 func showmeat():
 	$"../AnimationPlayer".play("sell")
-	$"../Selling".make_current()
+	#$"../Selling".make_current()
 func showsell():
 	$"../AnimationPlayer".play("meatdim")
-	$"../MeatPieDimension".make_current()
+	#$"../MeatPieDimension".make_current()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	$"../Player/CharacterBody3D/Head/Camera3D".make_current()
+	#$"../Player/CharacterBody3D/Head/Camera3D".make_current()
+	pass

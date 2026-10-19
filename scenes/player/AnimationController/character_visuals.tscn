@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dq7bt0g1vkl8o"]
+
+[ext_resource type="Script" uid="uid://dvt56pxptgs0k" path="res://scripts/player/third_person_player_controller/3rd_person_script.gd" id="1_17ier"]
+[ext_resource type="PackedScene" uid="uid://dr5wuqa1o8k2s" path="res://scenes/player/AnimationController/characterfbx.tscn" id="2_17ier"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lg1c5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lg1c5"]
+radius = 0.3173828
+height = 1.7938843
+
+[node name="Player3D" type="CharacterBody3D" unique_id=1594877716]
+script = ExtResource("1_17ier")
+
+[node name="Doremi" parent="." unique_id=718992324 instance=ExtResource("2_17ier")]
+unique_name_in_owner = true
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1536745911]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.96117836, -0.27592778, 0, 0.27592778, 0.96117836, 0, 1.4727043, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=6926665]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.001319766, 0.23493288)
+shape = SubResource("SphereShape3D_lg1c5")
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1806830850]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1205322722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8878479, 0)
+shape = SubResource("CapsuleShape3D_lg1c5")
+
+[node name="IdleBreak" type="Timer" parent="." unique_id=1343138911]
+wait_time = 20.0
+one_shot = true
+
+[node name="Cliff" type="Timer" parent="." unique_id=484025092]
+wait_time = 1.2
+one_shot = true
+
+[node name="CliffEdgeDetect" type="RayCast3D" parent="." unique_id=237375630]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7370681)
+target_position = Vector3(0, -2, 0)
+
+[connection signal="timeout" from="IdleBreak" to="." method="_on_idle_break_timeout"]
+[connection signal="timeout" from="Cliff" to="." method="_on_cliff_timeout"]

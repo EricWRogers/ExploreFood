@@ -13,8 +13,8 @@ var current_value = 0
 #list of current foods in array
 
 func _ready() -> void:
-	if get_tree().current_scene.SandwichMode:
-		sandwich_mode = true
+	#if get_tree().current_scene.SandwichMode:
+		#sandwich_mode = true
 	lvl_manager = $"../.."
 
 func _process(_delta: float) -> void:
