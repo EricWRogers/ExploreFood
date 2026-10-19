@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="11_hh3th"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="12_ftecv"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="13_ftecv"]
+[ext_resource type="PackedScene" uid="uid://bidfxni6ld5mh" path="res://scenes/scenes_assets/kitchenAssets/rolling_pin.tscn" id="14_hyaf1"]
+[ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="15_dbylq"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
@@ -58,16 +60,7 @@ transform = Transform3D(0.48870417, 0, 0.8724496, 0, 1, 0, -0.8724496, 0, 0.4887
 script = ExtResource("5_qvun3")
 
 [node name="Oven" parent="." unique_id=408695707 instance=ExtResource("7_7hvat")]
-transform = Transform3D(-8, 0, -6.993822e-07, 0, 8, 0, 6.993822e-07, 0, -8, 4, -0.8, 0.5831165)
-
-[node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("8_piak7")]
-transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, 2.0400002, -0.5, 0.5)
-
-[node name="ScriptlessOven2" parent="." unique_id=1837019092 instance=ExtResource("8_piak7")]
-transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -7.0600004, -0.5, 0.5)
-
-[node name="ScriptlessOven3" parent="." unique_id=1325875925 instance=ExtResource("8_piak7")]
-transform = Transform3D(-7, 0, 6.119594e-07, 0, 7, 0, -6.119594e-07, 0, -7, -8.93, -0.5, 0.5)
+transform = Transform3D(-8, 0, -1.2079664e-06, 0, 8, 0, 1.2079664e-06, 0, -8, 4, -0.8, 0.5831165)
 
 [node name="Plate" parent="." unique_id=904989181 instance=ExtResource("9_piak7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15.500001)
@@ -89,7 +82,7 @@ transform = Transform3D(1.0000002, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0,
 shape = SubResource("BoxShape3D_6xqmx")
 
 [node name="Pan" parent="." unique_id=29644927 instance=ExtResource("10_amfce")]
-transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -9.027583, 1.4000001, 0.35949853)
+transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -7.3450727, 0.90350914, 0.097008735)
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=212609830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 2, 0.099999785)
@@ -183,6 +176,21 @@ customer_spawn = NodePath("../CustomerSpawn")
 [node name="Label3D" type="Label3D" parent="." unique_id=1107548737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7862545, -15.102238)
 text = "Throw Food here to plate."
+
+[node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("8_piak7")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -7.4418097, -0.52428925, 0.31618905)
+
+[node name="ScriptlessOven2" parent="." unique_id=973909210 instance=ExtResource("8_piak7")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -10.438507, -0.52428925, 0.31618905)
+
+[node name="ScriptlessOven3" parent="." unique_id=2076049835 instance=ExtResource("8_piak7")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -13.564941, -0.52428925, 0.31618905)
+
+[node name="RollingPin" parent="." unique_id=655305112 instance=ExtResource("14_hyaf1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.355526, 0.95417213, 0)
+
+[node name="CuttingBoard" parent="." unique_id=1280753785 instance=ExtResource("15_dbylq")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.600278, 0.9387969, 0)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]

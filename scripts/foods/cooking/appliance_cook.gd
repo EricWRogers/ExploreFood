@@ -3,13 +3,14 @@ extends Node
 ##Applies cooking tag to ingredients placed inside
 ##if ingredients make a valid meal, it will output that meal instead
 ##
-
+@export var station_ui : Control
 @export_group("Appliance Settings")
 @export var cook_group_application_type: BaseFood.CookGroup
 @export var spawn_position: Vector3 = Vector3(0, 0, 0)
 var is_in_range: bool = false
 var is_full: bool = false
 var is_cooking: bool = false
+var capacity: int = 0
 
 @export_group("Saved Recipes")
 @export var recipes : Array[Resource]
@@ -45,12 +46,18 @@ func _on_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player in")
 		is_in_range = true
+		%Prompts.show()
 	
 	if (body.has_method("im_food") && !is_full && !is_cooking): #checks if body is an ingredient. This check should be made better later.
 		#print("yum, I found a food! is prepped: ", body.prep_group)
 		if (body.cook_group != 0):
 			print("can't take, it's already been cooked!")
 		else:
+			if capacity >= 6:
+				return
+			else:
+				station_ui._update_visual(body.icon)
+				capacity += 1
 			#set ingredient to cooked
 			body.cook_group = cook_group_application_type
 			
@@ -77,6 +84,7 @@ func _on_body_exited(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player out")
 		is_in_range = false
+		%Prompts.hide()
 
 func find_recipe():
 	print("cooking...")
@@ -138,7 +146,7 @@ func find_recipe():
 
 func cook_ingredient():
 	var ingredient_spawn: Node
-	
+	station_ui._reset_visual()
 	#spawn back cooked ingredient
 	var current_scene = get_tree().current_scene
 	ingredient_spawn = current_ingredient.instantiate()

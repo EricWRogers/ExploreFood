@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="1_vp2bf"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_0frey"]
+[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/ui/station_ui.tscn" id="3_qlia1"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="4_0frey"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_klsck"]
 size = Vector3(1.4, 0.1, 0.8)
@@ -10,10 +12,13 @@ size = Vector3(1.4, 0.1, 0.8)
 albedo_color = Color(0.6963695, 0.54209954, 0.45846534, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
-size = Vector3(2.2, 1, 2.3)
+size = Vector3(2.727307, 1, 3.9503663)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0ybpa"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_opmsq"]
+viewport_path = NodePath("SubViewport2")
 
 [node name="RollingPin" type="Node3D" unique_id=655305112]
 
@@ -22,11 +27,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.05000003, -
 mesh = SubResource("BoxMesh_klsck")
 surface_material_override/0 = SubResource("StandardMaterial3D_vxd2y")
 
-[node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("1_vp2bf")]
+[node name="PrepperBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("1_vp2bf")]
+station_ui = NodePath("../SubViewport2/StationUI")
 prep_group_application_type = 2
 
 [node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=639771963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036383152, 0.55, 1.4751831)
 shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1347711455]
@@ -43,3 +49,68 @@ texture_progress = ExtResource("3_0frey")
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.68, 0.1)
 billboard = 1
 texture = SubResource("ViewportTexture_0ybpa")
+
+[node name="SubViewport2" type="SubViewport" parent="." unique_id=227888312]
+transparent_bg = true
+size = Vector2i(1232, 820)
+
+[node name="StationUI" parent="SubViewport2" unique_id=927286265 instance=ExtResource("3_qlia1")]
+
+[node name="Prompts" type="Node3D" parent="." unique_id=1218766654]
+unique_name_in_owner = true
+transform = Transform3D(3.655, 0, 0, 0, 3.655, 0, 0, 0, 3.655, 0, -0.45218706, 0.07625145)
+
+[node name="StationUI" type="Sprite3D" parent="Prompts" unique_id=1328519033]
+transform = Transform3D(0.035, 0, 0, 0, 0.033602014, 0.0097931, 0, -0.0097931, 0.033602014, 0, 0.36813137, 0.1653666)
+no_depth_test = true
+texture = SubResource("ViewportTexture_opmsq")
+
+[node name="Label3D" type="Label3D" parent="Prompts" unique_id=509309239]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.16030538, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "F"
+font_size = 52
+
+[node name="Label3D2" type="Label3D" parent="Prompts" unique_id=553513585]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.07639199, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Start"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Prompts" unique_id=1970570609]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237789)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("4_0frey")
+
+[node name="Label3D3" type="Label3D" parent="Prompts" unique_id=2009505412]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.046311453, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "R"
+font_size = 52
+
+[node name="Label3D4" type="Label3D" parent="Prompts" unique_id=1562014938]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.1308283, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Reset"
+font_size = 52
+
+[node name="Sprite3D2" type="Sprite3D" parent="Prompts" unique_id=1114214485]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.046311453, 0.20140585, 0.20237789)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("4_0frey")

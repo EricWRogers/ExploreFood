@@ -137,3 +137,4 @@ shape = SubResource("SphereShape3D_viy58")
 
 [node name="Node3D" parent="." index="5" unique_id=1982560729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0375543, 0)
+visible = true

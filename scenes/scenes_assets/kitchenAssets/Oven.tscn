@@ -1,26 +1,79 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
-[ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
+[ext_resource type="ArrayMesh" uid="uid://dykj1lhd6211t" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
+[ext_resource type="ArrayMesh" uid="uid://cix102ki0p2t1" path="res://assets/models/KitchenStoveDoor.obj" id="2_hjg1s"]
 [ext_resource type="PackedScene" uid="uid://c8ke6sc3oty3q" path="res://scenes/scenes_assets/kitchenAssets/cooker_base.tscn" id="2_mv8nq"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_mv8nq"]
+[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/ui/station_ui.tscn" id="5_wh7oj"]
+[ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="6_fhgkx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
+cull_mode = 2
 albedo_color = Color(0.52, 0.5936666, 0.65, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
 size = Vector3(0.24987793, 0.24980164, 0.25478458)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
-size = Vector3(0.29999998, 0.28, 0.52)
+size = Vector3(0.46004638, 0.28, 0.73216796)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mv8nq"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_wh7oj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenMeshInstance/Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fhgkx"]
+resource_name = "open_close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenMeshInstance/Node3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.4),
+"transitions": PackedFloat32Array(1.7411019, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.63634, 0, 0), Vector3(1.5320165, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u77ib"]
+_data = {
+&"RESET": SubResource("Animation_wh7oj"),
+&"open_close": SubResource("Animation_fhgkx")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+viewport_path = NodePath("SubViewport2")
 
 [node name="Oven" type="StaticBody3D" unique_id=408695707]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="OvenMeshInstance" type="MeshInstance3D" parent="." unique_id=1227565413]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0)
 mesh = ExtResource("1_knho3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
+
+[node name="Node3D" type="Node3D" parent="OvenMeshInstance" unique_id=2139419905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5771024, 1.524207)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OvenMeshInstance/Node3D" unique_id=1088584033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5771024, -1.524207)
+mesh = ExtResource("2_hjg1s")
 surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 
 [node name="OvenCollisionShape" type="CollisionShape3D" parent="." unique_id=102896497]
@@ -32,7 +85,7 @@ cook_group_application_type = 1
 cook_timer_time = 16.0
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3862142e-09, 0.13999999, 0.17000014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029602055, 0.13999999, 0.27608415)
 shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=125908505]
@@ -49,3 +102,70 @@ texture_progress = ExtResource("3_mv8nq")
 transform = Transform3D(0.014, 0, 0, 0, 0.014, 0, 0, 0, 0.014, 0, 0.354, 0.04984)
 billboard = 1
 texture = SubResource("ViewportTexture_mv8nq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1020070380]
+libraries/ = SubResource("AnimationLibrary_u77ib")
+
+[node name="SubViewport2" type="SubViewport" parent="." unique_id=1963538903]
+transparent_bg = true
+size = Vector2i(1232, 820)
+
+[node name="StationUI" parent="SubViewport2" unique_id=927286265 instance=ExtResource("5_wh7oj")]
+
+[node name="Prompts" type="Node3D" parent="." unique_id=97559206]
+unique_name_in_owner = true
+
+[node name="StationUI" type="Sprite3D" parent="Prompts" unique_id=1723716704]
+transform = Transform3D(0.035, 0, 0, 0, 0.033602014, 0.0097931, 0, -0.0097931, 0.033602014, 0, 0.36813137, 0.1653666)
+no_depth_test = true
+texture = SubResource("ViewportTexture_lg1c5")
+
+[node name="Label3D" type="Label3D" parent="Prompts" unique_id=1493674701]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.16030538, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "F"
+font_size = 52
+
+[node name="Label3D2" type="Label3D" parent="Prompts" unique_id=655210645]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.07639199, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Start"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Prompts" unique_id=141069528]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237789)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("6_fhgkx")
+
+[node name="Label3D3" type="Label3D" parent="Prompts" unique_id=8598555]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.046311453, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "R"
+font_size = 52
+
+[node name="Label3D4" type="Label3D" parent="Prompts" unique_id=1653742079]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.1308283, 0.20253533, 0.20215291)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Reset"
+font_size = 52
+
+[node name="Sprite3D2" type="Sprite3D" parent="Prompts" unique_id=1170220105]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.046311453, 0.20140585, 0.20237789)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("6_fhgkx")
