@@ -2,13 +2,14 @@ extends Node
 
 ###Applies prep tag to ingredients placed inside
 ##
-
+@export var station_ui : Control
 @export_group("Appliance Settings")
 @export var prep_group_application_type: BaseFood.PrepGroup
 @export var spawn_position: Vector3 = Vector3(0, 0, 0)
 var is_in_range: bool = false
 var is_full: bool = false
 var is_prepping: bool = false
+var capacity: int = 0
 
 @export_group("Timer Settings")
 @export var prep_timer_time: float = 1
@@ -37,12 +38,18 @@ func _on_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player in")
 		is_in_range = true
+		%Prompts.show()
 	
 	if (body.has_method("im_food") && !is_full): #checks if body is an ingredient. This check should be made better later.
 		#print("yum, I found a food! is prepped: ", body.prep_group)
 		if (body.prep_group != 0):
 			print("can't take, it's already been prepped!")
 		else:
+			if capacity >= 6:
+				return
+			else:
+				station_ui._update_visual(body.icon)
+				capacity += 1
 			#take ingredient data
 			saved_cook_group = body.cook_group
 			current_ingredient = load(body.scene_file_path)
@@ -64,12 +71,13 @@ func _on_body_exited(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player out")
 		is_in_range = false
+		%Prompts.hide()
 
 func prep_all():
 	print("prepping...")
 	for ingredient in collected_ingredients:
 		var ingredient_spawn: Node
-	
+		station_ui._reset_visual()
 		#spawn back prepped ingredient
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()

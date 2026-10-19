@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://btxkpupwkwt4v"]
+
+[ext_resource type="Script" uid="uid://nsb7i2lqxgw6" path="res://scripts/ui/station_ui.gd" id="1_2fbla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(0.22, 0.22, 0.22, 0.5568628)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.17, 0.17, 0.17, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0.28, 0.28, 0.28, 0.7254902)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.42, 0.42, 0.42, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="StationUI" type="Control" unique_id=927286265 node_paths=PackedStringArray("icons")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1262.6696
+offset_bottom = 903.0
+script = ExtResource("1_2fbla")
+icons = [NodePath("Panel/FlowContainer/InputIcon/Panel/MarginContainer/Icon1"), NodePath("Panel/FlowContainer/InputIcon2/Panel/MarginContainer/Icon2"), NodePath("Panel/FlowContainer/InputIcon3/Panel/MarginContainer/Icon3"), NodePath("Panel/FlowContainer/InputIcon4/Panel/MarginContainer/Icon4"), NodePath("Panel/FlowContainer/InputIcon5/Panel/MarginContainer/Icon5"), NodePath("Panel/FlowContainer/InputIcon6/Panel/MarginContainer/Icon6")]
+
+[node name="Panel" type="Panel" parent="." unique_id=11586059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -31.669556
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel" unique_id=1844109878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = -1
+theme_override_constants/v_separation = -1
+
+[node name="InputIcon" type="MarginContainer" parent="Panel/FlowContainer" unique_id=82810305]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon" unique_id=1182004399]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon/Panel" unique_id=1617721410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon1" type="TextureRect" parent="Panel/FlowContainer/InputIcon/Panel/MarginContainer" unique_id=66859296]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputIcon2" type="MarginContainer" parent="Panel/FlowContainer" unique_id=1389452044]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon2" unique_id=1582413268]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon2/Panel" unique_id=763107144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon2" type="TextureRect" parent="Panel/FlowContainer/InputIcon2/Panel/MarginContainer" unique_id=1751822508]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputIcon3" type="MarginContainer" parent="Panel/FlowContainer" unique_id=1581427640]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon3" unique_id=312657689]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon3/Panel" unique_id=950901097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon3" type="TextureRect" parent="Panel/FlowContainer/InputIcon3/Panel/MarginContainer" unique_id=973566945]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputIcon4" type="MarginContainer" parent="Panel/FlowContainer" unique_id=348140590]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon4" unique_id=33888994]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon4/Panel" unique_id=621292694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon4" type="TextureRect" parent="Panel/FlowContainer/InputIcon4/Panel/MarginContainer" unique_id=1075374691]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputIcon5" type="MarginContainer" parent="Panel/FlowContainer" unique_id=2108164580]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon5" unique_id=1156936458]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon5/Panel" unique_id=691250911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon5" type="TextureRect" parent="Panel/FlowContainer/InputIcon5/Panel/MarginContainer" unique_id=1091203062]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputIcon6" type="MarginContainer" parent="Panel/FlowContainer" unique_id=1966016472]
+custom_minimum_size = Vector2(410, 410)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Panel/FlowContainer/InputIcon6" unique_id=1757785552]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/FlowContainer/InputIcon6/Panel" unique_id=1569431593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Icon6" type="TextureRect" parent="Panel/FlowContainer/InputIcon6/Panel/MarginContainer" unique_id=1856008087]
+unique_name_in_owner = true
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
