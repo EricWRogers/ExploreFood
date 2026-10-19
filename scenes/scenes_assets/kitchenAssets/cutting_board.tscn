@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dg1wwwka7nv2c"]
 
 [ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="1_8o83u"]
+[ext_resource type="ArrayMesh" uid="uid://bwlgwore5grfd" path="res://assets/models/Cutting Board/KitchenKnife.obj" id="1_vxd2y"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_uvd5x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_klsck"]
@@ -21,6 +22,10 @@ viewport_path = NodePath("SubViewport")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.05000003, -2.9802322e-08)
 mesh = SubResource("BoxMesh_klsck")
 surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
+
+[node name="KnifeMeshInstance" type="MeshInstance3D" parent="." unique_id=1904940315]
+transform = Transform3D(0.3830222, 0.663414, 0.6427876, -0.86602545, 0.49999997, 0, -0.32139382, -0.5566704, 0.7660445, -0.3, -0.29999998, 0.5)
+mesh = ExtResource("1_vxd2y")
 
 [node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("1_8o83u")]
 prep_group_application_type = 1

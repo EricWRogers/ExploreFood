@@ -22,7 +22,7 @@ func _ready() -> void:
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	timer_ui.value = 100 / prep_timer.time_left
 	#print("cook timer time left: ", cook_timer.time_left)
 	#print("timer ui", timer_ui.value)

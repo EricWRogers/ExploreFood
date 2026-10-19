@@ -104,13 +104,14 @@ food_name = "Mystery Meat"
 icon = ExtResource("2_0ffux")
 flavor_text = "Iunno"
 rarity_level = 0.68
-category = 7
-flavor = 6
 id = 8
 color = Color(0.6509804, 0.11764706, 0.13333334, 1)
 value = 4
 hunger_restore = 30
 processed_ingredient = ExtResource("3_b46q7")
+food_group = 1
+category = 7
+flavor = 6
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1146662064]
 material_overlay = SubResource("ShaderMaterial_glbkg")
