@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://dg1wwwka7nv2c"]
 
 [ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="1_8o83u"]
+[ext_resource type="ArrayMesh" uid="uid://o2nvahr51jap" path="res://assets/models/Cutting Board/KitchenKnife.obj" id="1_vxd2y"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_uvd5x"]
-[ext_resource type="Script" uid="uid://b1a7awk4j55lo" path="res://scripts/foods/cooking/appliance_prep.gd" id="2_vxd2y"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
-size = Vector3(2, 1, 1.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_klsck"]
 size = Vector3(1.4, 0.1, 0.8)
@@ -13,25 +10,30 @@ size = Vector3(1.4, 0.1, 0.8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
 albedo_color = Color(0.82, 0.63181, 0.4018, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
+size = Vector3(2, 1, 1.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uvd5x"]
+viewport_path = NodePath("SubViewport")
+
 [node name="CuttingBoard" type="Node3D" unique_id=655305112]
-
-[node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("1_8o83u")]
-script = ExtResource("2_vxd2y")
-prep_group_application_type = 1
-prep_timer_time = 1.0
-
-[node name="CuttingBoardCollisionShape3D" type="CollisionShape3D" parent="PrepperBase" unique_id=1801927608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.049999982)
-shape = SubResource("BoxShape3D_q026u")
-
-[node name="PrepTimer" type="Timer" parent="PrepperBase" unique_id=799637590]
-wait_time = 5.0
-one_shot = true
 
 [node name="CuttingBoardMeshInstance" type="MeshInstance3D" parent="." unique_id=1058181148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.05000003, -2.9802322e-08)
 mesh = SubResource("BoxMesh_klsck")
 surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
+
+[node name="KnifeMeshInstance" type="MeshInstance3D" parent="." unique_id=1904940315]
+transform = Transform3D(0.030241208, 0.50767356, -0.86101866, -0.99893004, 0.045510203, -0.008251321, 0.03499625, 0.8603468, 0.5085066, -0.25115484, 0.10280843, -0.1060385)
+mesh = ExtResource("1_vxd2y")
+
+[node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("1_8o83u")]
+prep_group_application_type = 1
+prep_timer_time = 3.0
+
+[node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=1105606633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.940697e-08, 0.55, 0.25)
+shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1347711455]
 transparent_bg = true
@@ -43,4 +45,7 @@ value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("2_uvd5x")
 
-[connection signal="timeout" from="PrepperBase/PrepTimer" to="PrepperBase" method="_on_prep_timer_timeout"]
+[node name="ProgressBar" type="Sprite3D" parent="." unique_id=2101044877]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.68, 0.1)
+billboard = 1
+texture = SubResource("ViewportTexture_uvd5x")

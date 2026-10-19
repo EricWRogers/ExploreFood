@@ -20,6 +20,8 @@ class_name BaseFood
 @export var food_group: FoodGroup
 @export var prep_group: PrepGroup
 @export var cook_group: CookGroup
+@onready var food_tags: Array = [food_group, prep_group, cook_group]
+
 @export_subgroup("Depreciated")
 @export var category : Manager.FoodType
 @export var flavor : Manager.FlavorType

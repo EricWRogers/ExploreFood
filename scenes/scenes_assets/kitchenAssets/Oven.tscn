@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
 [ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
-[ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="2_nppts"]
+[ext_resource type="PackedScene" uid="uid://c8ke6sc3oty3q" path="res://scenes/scenes_assets/kitchenAssets/cooker_base.tscn" id="2_mv8nq"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="3_hjg1s"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_mv8nq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
@@ -10,8 +11,8 @@ albedo_color = Color(0.52, 0.5936666, 0.65, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
 size = Vector3(0.24987793, 0.24980164, 0.25478458)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
-size = Vector3(0.25756836, 0.23054504, 0.31700134)
+[sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
+size = Vector3(0.26, 0.26, 0.39)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mv8nq"]
 viewport_path = NodePath("SubViewport")
@@ -27,17 +28,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00079345703, 0.1243515, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
-[node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("2_nppts")]
-cook_timer_time = 5.0
+[node name="CookerBase" parent="." unique_id=1039243692 instance=ExtResource("2_mv8nq")]
+cook_group_application_type = 1
+cook_timer_time = 16.0
+recipes = Array[Resource]([ExtResource("3_hjg1s")])
 
-[node name="OvenAreaCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=870765097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0023193706, 0.1129379, 0.2411118)
-shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="ProgressBar" type="Sprite3D" parent="." unique_id=463823974]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0.3536621, 0.10278244)
-billboard = 1
-texture = SubResource("ViewportTexture_mv8nq")
+[node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.51495e-09, 0.12999998, 0.10500006)
+shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=125908505]
 transparent_bg = true
@@ -48,3 +46,8 @@ offset_bottom = 500.0
 value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("3_mv8nq")
+
+[node name="ProgressBar" type="Sprite3D" parent="." unique_id=463823974]
+transform = Transform3D(0.014, 0, 0, 0, 0.014, 0, 0, 0, 0.014, 0, 0.354, 0.04984)
+billboard = 1
+texture = SubResource("ViewportTexture_mv8nq")

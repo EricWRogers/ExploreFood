@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://pa70wv8ei3mv"]
 
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_ojraw"]
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_ojraw"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="3_ojraw"]
 [ext_resource type="Texture2D" uid="uid://btnegyl7ryf5c" path="res://assets/test_images/glaggles.jpg" id="4_o4bqr"]
 [ext_resource type="PackedScene" uid="uid://ccjolq6yl5xle" path="res://scenes/scenes_assets/Stove.tscn" id="4_o37it"]
@@ -31,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://djoyr33lscll1" path="res://assets/test_images/worm.png" id="15_551tx"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="32_k55bu"]
 [ext_resource type="Script" uid="uid://cofymd23xiktd" path="res://scripts/ui/tutorial_counter_kitchen.gd" id="33_22rdp"]
+[ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="34_551tx"]
 [ext_resource type="PackedScene" uid="uid://bq3880c8knav0" path="res://scenes/scenes_assets/assembler.tscn" id="34_njsh3"]
 [ext_resource type="Script" uid="uid://baf58iaawxp85" path="res://scripts/ui/kitchenunlocker.gd" id="37_180ue"]
 [ext_resource type="PackedScene" uid="uid://b2yne1ikxqbfh" path="res://scenes/scenes_assets/sign.tscn" id="41_gfcys"]
@@ -269,7 +269,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njsh3"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_njsh3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_22rdp")
@@ -424,7 +424,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_551tx"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_551tx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_180ue"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_njsh3")
@@ -449,7 +449,7 @@ shader_parameter/texture_scroll_speed_x = -2.2352000028647012e-08
 shader_parameter/texture_scroll_speed_y = -2.2352000028647012e-08
 shader_parameter/edge_softness = 0.499999988824
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov0qq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yakgj"]
 resource_local_to_scene = true
 render_priority = 4
 shader = ExtResource("9_eubmf")
@@ -2529,50 +2529,6 @@ _data = {
 script = ExtResource("1_ojraw")
 level_name = "kitchen"
 
-[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_ojraw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.603239, 0, 6.6052794)
-
-[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0583887, 2.0915632, -3.783536)
-
-[node name="BoneAttachment3D" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1170644129, 830886139) index="1" unique_id=1481971334]
-transform = Transform3D(-0.99767184, 7.3287636e-05, 0.0681991, -6.8534166e-05, -0.9999998, 7.203594e-05, 0.0681991, 6.719027e-05, 0.99767184, 0.07721387, 0.034317303, -0.0018650163)
-
-[node name="Physical Bone main" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="0" unique_id=2043989485]
-transform = Transform3D(-0.034726102, 0.0055023925, 0.0004123184, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.002594904, -5.686283e-05, 0.024982419, 0.0007411167)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4721255e-05, 0.00034096278, 0.28093818)
-body_offset = Transform3D(-0.034726102, 0.0055023925, 0.00041231842, 0, 0.0026274577, -0.035063438, -0.0055178194, -0.034629013, -0.0025949043, -0.000115811825, 0.009849761, 0.0007411167)
-
-[node name="Physical Bone ribcage" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="1" unique_id=515706595]
-transform = Transform3D(0.0017110788, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653562, -0.03512009, -1.9296644e-05, 0.00171097, -0.00837478, 0.03474116, 0.0010656193)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000209352, -5.6992514e-05, 0.23354858)
-body_offset = Transform3D(0.0017110789, -0.00039606582, 0.035117853, 0, 0.03515951, 0.00039653564, -0.035120092, -1.9296644e-05, 0.0017109701, -0.008202106, -9.060651e-05, -0.00039224327)
-
-[node name="Physical Bone R_shoulder" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="2" unique_id=1566338530]
-transform = Transform3D(0.0019740753, -0.0063986415, 0.03451824, 0.0003433498, 0.034574635, 0.006389459, -0.035104606, -2.1655458e-05, 0.002003595, -0.028050244, 0.03247275, -8.694828e-06)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.126946e-07, 5.678337e-07, 0.34040132)
-body_offset = Transform3D(0.00039296423, -0.0003799298, 0.035157498, -3.6418575e-09, 0.0351597, 0.00037995446, -0.035159543, -4.2499796e-06, 0.00039294083, -0.011967659, -0.00012935698, -0.00013378263)
-
-[node name="Physical Bone R_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="3" unique_id=256072554]
-transform = Transform3D(0.00052035804, -0.034812026, -0.004919421, 0.033488084, -0.0010074693, 0.010671546, -0.010706359, -0.00484319, 0.03314009, -0.029570967, 0.013724931, -0.014683716)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32400793, 0.21709603, 0.55594593)
-body_offset = Transform3D(0.0077229915, -0.033548538, 0.007155389, 0.031683296, 0.009787507, 0.011692825, -0.01314811, 0.0038792924, 0.032379422, 0.00080293417, -0.018891048, -0.014583297)
-
-[node name="Physical Bone L_shoulder" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="4" unique_id=189867189]
-transform = Transform3D(-0.00039047102, -0.00037934908, -0.03515753, -1.7337684e-06, -0.0351597, 0.00037939168, -0.035159577, 5.9467043e-06, 0.00039042963, 0.02742362, 0.034520764, 0.00068785995)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0447111e-06, 1.4213089e-07, 0.3404047)
-body_offset = Transform3D(-0.00039296923, -0.0003798252, -0.0351575, 5.819629e-10, 0.035159696, -0.00037984893, 0.03515955, -4.2457905e-06, -0.00039294636, 0.011967778, 0.00012929738, 0.00013379753)
-
-[node name="Physical Bone L_forearm" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="5" unique_id=162760682]
-transform = Transform3D(0.0068268473, -0.03296005, 0.010167471, 0.02886046, 0.0111344475, 0.01671665, -0.018889586, 0.005099742, 0.029215142, 0.04511577, 0.02831554, -0.030620016)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36635518, 0.3353628, 0.77011514)
-body_offset = Transform3D(0.006827213, -0.032959145, 0.010170169, -0.028861754, -0.011135753, -0.016713548, 0.018887479, -0.00510276, -0.02921598, 0.0057222545, 0.006032221, 0.03113047)
-
-[node name="Physical Bone L_hand" parent="Player/CharacterBody3D/Head/RagdollGuy/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1723867934, 1731430436, 1742551553) index="6" unique_id=2021430158]
-transform = Transform3D(0.014106005, -0.027229475, 0.017202463, 0.031241033, 0.016135061, -7.771838e-05, -0.007833699, 0.015315479, 0.03066623, 0.06163156, 0.021755114, 0.0149669275)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43194234, -0.05945587, -0.33873647)
-body_offset = Transform3D(-0.015912607, 0.031064551, -0.00425798, -0.031314082, -0.015988534, 0.00037857104, -0.0016017021, 0.0039633596, 0.034900922, 0.0072779655, 0.012703501, 0.012749702)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695034258]
 environment = SubResource("Environment_p86jp")
 
@@ -2593,7 +2549,7 @@ image_of_world = ExtResource("5_r7waf")
 light_color = Color(0.7490196, 0.56078434, 0.6666667, 1)
 
 [node name="Portalmesh" parent="Portal2" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_njsh3")
+surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
 
 [node name="OmniLight3D" parent="Portal2" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2606,7 +2562,7 @@ image_of_world = ExtResource("6_r7waf")
 light_color = Color(1, 0.63529414, 0.2509804, 1)
 
 [node name="Portalmesh" parent="Portal4" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_551tx")
+surface_material_override/0 = SubResource("ShaderMaterial_180ue")
 
 [node name="OmniLight3D" parent="Portal4" index="4" unique_id=1644803749]
 light_energy = 0.0
@@ -2620,7 +2576,7 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, -24.57022,
 image_of_world = ExtResource("7_gxv72")
 
 [node name="Portalmesh" parent="Portal6" index="3" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_ov0qq")
+surface_material_override/0 = SubResource("ShaderMaterial_yakgj")
 
 [node name="Portal3" parent="." unique_id=2060560846 instance=ExtResource("3_ojraw")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 15.73823, 0.68851566, -24.747807)
@@ -3235,6 +3191,9 @@ cost = 55
 [node name="Unlocker" type="Node3D" parent="." unique_id=566695377]
 script = ExtResource("37_180ue")
 
+[node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("34_551tx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69422364, 10.79484)
+
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal4" to="." method="_on_portal_2_body_entered"]
@@ -3249,9 +3208,6 @@ script = ExtResource("37_180ue")
 [connection signal="animation_finished" from="AnimationPlayer" to="Tutorial_Counter_Kitchen" method="_on_animation_player_animation_finished"]
 [connection signal="purchased" from="MoneySign3" to="Unlocker" method="_on_money_sign_3_purchased"]
 
-[editable path="Player"]
-[editable path="Player/CharacterBody3D"]
-[editable path="Player/CharacterBody3D/Head/RagdollGuy"]
 [editable path="Portal2"]
 [editable path="Portal4"]
 [editable path="Portal6"]

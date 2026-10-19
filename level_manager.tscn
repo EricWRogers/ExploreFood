@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxevjnm3htr8j" path="res://scripts/level_manager/level_manager.gd" id="1_mnhan"]
 [ext_resource type="PackedScene" uid="uid://d1l0ij7271ank" path="res://scenes/level_manager/loading_screen.tscn" id="3_5774q"]
 [ext_resource type="PackedScene" uid="uid://wsg88toudkyf" path="res://scenes/ui/PauseMenu.tscn" id="3_bj8vm"]
+[ext_resource type="Texture2D" uid="uid://cawerie68wxtv" path="res://assets/ui/ui_assets/qr-code5.png" id="3_ftccg"]
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="4_k1abw"]
 
@@ -12,14 +13,38 @@ start_screen = NodePath("StartMenu")
 
 [node name="StartMenu" parent="." unique_id=1906028576 instance=ExtResource("3_s60hn")]
 
+[node name="QrCode5" type="Sprite2D" parent="StartMenu" unique_id=488901767]
+z_index = 596
+position = Vector2(192.00003, 196)
+scale = Vector2(0.26796538, 0.26796538)
+texture = ExtResource("3_ftccg")
+
+[node name="Label" type="Label" parent="StartMenu" unique_id=1010933683]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 45.0
+offset_right = 1154.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 42
+text = "Click the QR to be taken to the form"
+
 [node name="Pause_Menu" parent="." unique_id=842476797 instance=ExtResource("3_bj8vm")]
 
 [node name="LoadingScreen" parent="." unique_id=1529669277 instance=ExtResource("3_5774q")]
+
+[node name="Panel" parent="LoadingScreen" index="0" unique_id=1732031707]
+visible = false
 
 [node name="Timer" type="Timer" parent="." unique_id=49514619]
 wait_time = 0.5
 
 [node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("4_k1abw")]
+
+[node name="LinkButton" type="LinkButton" parent="." unique_id=801633891]
+z_index = 4096
+offset_right = 357.0
+offset_bottom = 361.0
+uri = "https://docs.google.com/forms/d/e/1FAIpQLSe4_9GyTZwKKLl2U5JimMSOO5SJ3Mwe0WyAtMBAnpkaJkdfGg/viewform?usp=dialog"
 
 [connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

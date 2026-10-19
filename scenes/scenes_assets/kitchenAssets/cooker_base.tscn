@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c8ke6sc3oty3q"]
+
+[ext_resource type="Script" uid="uid://cq8vnlnt8uay8" path="res://scripts/foods/cooking/appliance_cook.gd" id="1_tvo66"]
+
+[node name="CookerBase" type="Area3D" unique_id=1039243692]
+script = ExtResource("1_tvo66")
+
+[node name="CookTimer" type="Timer" parent="." unique_id=707757955]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]

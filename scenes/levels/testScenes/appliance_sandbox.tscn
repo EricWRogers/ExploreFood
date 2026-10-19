@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="8_t5ex0"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_kjh5u"]
 [ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="10_royyw"]
+[ext_resource type="PackedScene" uid="uid://bidfxni6ld5mh" path="res://scenes/scenes_assets/kitchenAssets/rolling_pin.tscn" id="11_5a4i3"]
 
 [sub_resource type="Environment" id="Environment_1amvd"]
 
@@ -71,3 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.400001, 0, -8.900001)
 
 [node name="CuttingBoard" parent="." unique_id=655305112 instance=ExtResource("10_royyw")]
 transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, -6.2000003, 1.8000001, -8.1)
+
+[node name="RollingPin" parent="." unique_id=290186007 instance=ExtResource("11_5a4i3")]
+transform = Transform3D(0.10089885, 0, 0.9948967, 0, 1, 0, -0.9948967, 0, 0.10089885, -9.3, 1.8000001, -5.7000003)

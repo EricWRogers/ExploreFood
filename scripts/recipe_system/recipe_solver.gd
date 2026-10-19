@@ -11,12 +11,11 @@ var ingredient_types : Array
 var ingredient_objs = []
 var isCooking = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("cook") && ingredient_types.size() > 1):
 		_find_recipe()
 
 #if ingredient hits plate, add ingredient type to array and then delete the ingredient
-#TODO: Make the plate only accept ingredient marked "Prepped"
 func _on_plate_area_body_entered(body: Node3D) -> void:
 	if (body.has_method("RollSpawn") && body.is_prepped): #checks if body is an ingredient. This check should be made better later.
 		ingredient_types.append(body.category)
@@ -29,7 +28,7 @@ func _find_recipe():
 	var recipe_spawn = null
 	
 	#sort ingredients by index 
-	ingredient_types.sort() 
+	ingredient_types.sort()
 	
 	for recipe in recipes: # All Recipes in Array
 		

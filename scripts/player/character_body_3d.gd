@@ -47,8 +47,6 @@ var alive: bool = true
 var free_cam: bool = false
 var recipe_open: bool = false
 var is_first_person: bool = true
-var hold_prep: bool = false
-
 
 var hunger: float = 100.0
 @export var hunger_reduction_rate: float = 2.5
@@ -76,6 +74,10 @@ var lock_mouse : bool = true # :
 var selected_object: Node = null
 var current_target: Node = null
 var current_slot: int = 0
+##DEPRECIATED. Staying here a little longer as to not break the current prototype
+var hold_prep: bool = false 
+var held_prep: BaseFood.PrepGroup
+var held_cook: BaseFood.CookGroup
 
 var hotbar: Array = []
 
@@ -611,9 +613,13 @@ func pickup_food() -> void:
 	if empty_slot == 0:
 		current_target.get_rolled()
 		return
-
+	
+	#save food prep and cook tags when picked up 
 	if current_target.has_method("im_food"):
 		hold_prep = current_target.is_prepped
+		held_prep = current_target.prep_group
+		held_cook = current_target.cook_group
+		print("Picking up ", current_target, ": Prep group = ", held_prep ,". Cook group = ", held_cook, ".")
 
 	var item_icon = current_target.icon
 	var item_id = current_target.id
@@ -646,10 +652,14 @@ func dropthrow() -> void:
 	# Set properties BEFORE add_child() triggers _ready().
 	drop.rarity_level = 1.0
 	drop.freeze = false
-
+	
+	#load food with proper prep and cook tags
 	if drop.has_method("im_food"):
 		drop.is_prepped = hold_prep
-
+		drop.prep_group = held_prep
+		drop.cook_group = held_cook
+		print("Dropping ", drop, ": Prep group = ", drop.prep_group, ". Cook group = ", drop.cook_group, ".")
+	
 	get_tree().current_scene.add_child(drop)
 
 	drop.global_position = food_spawn.global_position
