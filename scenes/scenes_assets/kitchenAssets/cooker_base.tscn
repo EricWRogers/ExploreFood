@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://c8ke6sc3oty3q"]
 
 [ext_resource type="Script" uid="uid://cq8vnlnt8uay8" path="res://scripts/foods/cooking/appliance_cook.gd" id="1_tvo66"]
+[ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://scripts/resources/dubious_food.tres" id="2_fwbir"]
+[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/burger.tres" id="2_ovor5"]
+[ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="3_rhex8"]
+[ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="4_si5fi"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="5_e5vul"]
 
 [node name="CookerBase" type="Area3D" unique_id=1039243692]
 script = ExtResource("1_tvo66")
+recipes = Array[Resource]([ExtResource("2_ovor5"), ExtResource("3_rhex8"), ExtResource("4_si5fi"), ExtResource("5_e5vul"), ExtResource("2_fwbir")])
 
 [node name="CookTimer" type="Timer" parent="." unique_id=707757955]
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="CookTimer" to="." method="_on_cook_timer_timeout"]

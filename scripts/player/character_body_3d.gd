@@ -619,7 +619,7 @@ func pickup_food() -> void:
 		hold_prep = current_target.is_prepped
 		held_prep = current_target.prep_group
 		held_cook = current_target.cook_group
-		print("Picking up ", current_target, ": Prep group = ", held_prep ,". Cook group = ", held_cook, ".")
+		#print("Picking up ", current_target, ": Prep group = ", held_prep ,". Cook group = ", held_cook, ".")
 
 	var item_icon = current_target.icon
 	var item_id = current_target.id
@@ -658,7 +658,7 @@ func dropthrow() -> void:
 		drop.is_prepped = hold_prep
 		drop.prep_group = held_prep
 		drop.cook_group = held_cook
-		print("Dropping ", drop, ": Prep group = ", drop.prep_group, ". Cook group = ", drop.cook_group, ".")
+		#print("Dropping ", drop, ": Prep group = ", drop.prep_group, ". Cook group = ", drop.cook_group, ".")
 	
 	get_tree().current_scene.add_child(drop)
 

@@ -1,11 +1,36 @@
 [gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://grdk5jioofas"]
 
 [ext_resource type="PackedScene" uid="uid://dotd1uouxgu3q" path="res://scenes/meals/burger.tscn" id="1_bicjf"]
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_rr608"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="1_vgcoc"]
+
+[sub_resource type="Resource" id="Resource_r6xs7"]
+resource_name = "Bun"
+script = ExtResource("1_rr608")
+prep_group = 1
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_00xqt"]
+resource_name = "Chopped Grilled Meat"
+script = ExtResource("1_rr608")
+food_group = 1
+prep_group = 1
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_0ng80"]
+resource_name = "Chopped Grilled Veggies"
+script = ExtResource("1_rr608")
+food_group = 2
+prep_group = 1
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 
 [resource]
 script = ExtResource("1_vgcoc")
 recipe_name = "Burger"
 ingredients = Array[int]([2, 7])
+food_group_array = Array[ExtResource("1_rr608")]([SubResource("Resource_r6xs7"), SubResource("Resource_00xqt"), SubResource("Resource_0ng80")])
 product = ExtResource("1_bicjf")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

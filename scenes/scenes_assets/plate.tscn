@@ -13,9 +13,8 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6xqmx"]
 height = 0.032836914
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
-height = 0.6508789
-radius = 0.7426758
+[sub_resource type="BoxShape3D" id="BoxShape3D_mv8nq"]
+size = Vector3(1.4, 1, 2.2)
 
 [node name="Plate" type="StaticBody3D" unique_id=904989181]
 script = ExtResource("1_l8h4x")
@@ -32,7 +31,7 @@ shape = SubResource("CylinderShape3D_6xqmx")
 [node name="PlateArea" type="Area3D" parent="." unique_id=527679114]
 
 [node name="AreaCollisionShape" type="CollisionShape3D" parent="PlateArea" unique_id=500899163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32543945, 0)
-shape = SubResource("CylinderShape3D_klsck")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.32543945, 0.6)
+shape = SubResource("BoxShape3D_mv8nq")
 
 [connection signal="body_entered" from="PlateArea" to="." method="_on_plate_area_body_entered"]

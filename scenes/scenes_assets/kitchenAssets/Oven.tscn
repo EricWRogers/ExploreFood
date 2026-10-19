@@ -2,7 +2,6 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
 [ext_resource type="PackedScene" uid="uid://c8ke6sc3oty3q" path="res://scenes/scenes_assets/kitchenAssets/cooker_base.tscn" id="2_mv8nq"]
-[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="3_hjg1s"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_mv8nq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
@@ -12,7 +11,7 @@ albedo_color = Color(0.52, 0.5936666, 0.65, 1)
 size = Vector3(0.24987793, 0.24980164, 0.25478458)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
-size = Vector3(0.26, 0.26, 0.39)
+size = Vector3(0.29999998, 0.28, 0.52)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mv8nq"]
 viewport_path = NodePath("SubViewport")
@@ -25,16 +24,15 @@ mesh = ExtResource("1_knho3")
 surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 
 [node name="OvenCollisionShape" type="CollisionShape3D" parent="." unique_id=102896497]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00079345703, 0.1243515, 0.0051751137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0007934571, 0.12435151, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
 [node name="CookerBase" parent="." unique_id=1039243692 instance=ExtResource("2_mv8nq")]
 cook_group_application_type = 1
 cook_timer_time = 16.0
-recipes = Array[Resource]([ExtResource("3_hjg1s")])
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.51495e-09, 0.12999998, 0.10500006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3862142e-09, 0.13999999, 0.17000014)
 shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=125908505]

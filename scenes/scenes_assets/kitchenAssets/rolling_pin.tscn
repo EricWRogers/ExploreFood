@@ -10,7 +10,7 @@ size = Vector3(1.4, 0.1, 0.8)
 albedo_color = Color(0.6963695, 0.54209954, 0.45846534, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
-size = Vector3(2, 1, 1.5)
+size = Vector3(2.2, 1, 2.3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0ybpa"]
 viewport_path = NodePath("SubViewport")
@@ -24,10 +24,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vxd2y")
 
 [node name="PrepperBase" parent="." unique_id=1039243692 instance=ExtResource("1_vp2bf")]
 prep_group_application_type = 2
-prep_timer_time = 6.0
 
 [node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=639771963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0.55, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.65)
 shape = SubResource("BoxShape3D_klsck")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1347711455]

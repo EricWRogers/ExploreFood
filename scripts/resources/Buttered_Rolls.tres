@@ -2,10 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://cobydjft7aqam" path="res://scenes/meals/buttered_rolls.tscn" id="1_4cq1h"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="1_5nq1g"]
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_p2osy"]
+
+[sub_resource type="Resource" id="Resource_qlyjg"]
+resource_name = "Rolls"
+script = ExtResource("1_p2osy")
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_lnb88"]
+resource_name = "Butter"
+script = ExtResource("1_p2osy")
+food_group = 3
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 
 [resource]
 script = ExtResource("1_5nq1g")
 recipe_name = "Buttered Rolls"
 ingredients = Array[int]([4, 2])
+food_group_array = Array[ExtResource("1_p2osy")]([SubResource("Resource_qlyjg"), SubResource("Resource_lnb88")])
 product = ExtResource("1_4cq1h")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
