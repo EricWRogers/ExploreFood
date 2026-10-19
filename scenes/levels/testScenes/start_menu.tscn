@@ -38,11 +38,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="TextEdit2" type="TextEdit" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=812930251]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1751806737]
 custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 140
+theme_override_font_sizes/normal_font_size = 140
 text = "Strange Tastes"
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1633092750]
@@ -55,6 +54,7 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(200, 0)
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=553477754]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=2102942808]
@@ -78,13 +78,12 @@ theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 text = "Exit"
 
 [node name="Control2" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=413210177]
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(30, 20)
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1092073545]
-custom_minimum_size = Vector2(1000, 400)
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1525319747]
+custom_minimum_size = Vector2(750, 400)
 layout_mode = 2
-mouse_filter = 2
 text = "WASD to walk around.
 Mouse to look around.
 Space to jump.

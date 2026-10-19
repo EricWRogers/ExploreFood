@@ -49,13 +49,12 @@ mouse_filter = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Holder/CenterContainer" unique_id=1665759782]
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(200, 0)
+offset_transform_position = Vector2(185.15, 0)
 mouse_filter = 2
 
-[node name="TextEdit" type="TextEdit" parent="Holder/CenterContainer/HBoxContainer" unique_id=309436163]
+[node name="RichTextLabel" type="RichTextLabel" parent="Holder/CenterContainer/HBoxContainer" unique_id=416280342]
 custom_minimum_size = Vector2(1000, 400)
 layout_mode = 2
-mouse_filter = 2
 text = "WASD to walk around.
 Mouse to look around.
 Space to jump.
