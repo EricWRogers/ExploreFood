@@ -1,10 +1,78 @@
-extends Node3D #change to the food whatever
-class_name Fridge
+extends StaticBody3D
 
-@export var size : int #chest size
+@export var ing : BaseFood :
+	set(value):
+		ing = value
+		ing.node = self
+		$Sprite2d.texture = value.icon #change to account for 3d
+				
+var current_ingredient: PackedScene  
+var stored_ingredents: Array[PackedScene]
 
-func activate():
-	print("activated")    #testing
+@export var fridgeLimit = 6
+
+#setter varuble to controle the visibillity of the lable
+var enabled : bool = false:
+	set(value):
+		enabled = value
+		$Label.visible = value 
+		
+func _ready():
+	enabled = false
+	#name = ing.title #update name with item title
+
+func _input(event):
+	#check if enabled and if key pressed
+	if (event is InputEventKey && 
+		event.is_pressed() && 
+		event.keycode == KEY_E &&
+		enabled):
+			print(name + "Activated.") #testing 
+			if (Manager.holding == true): #if holding put itme in fridge
+				insert()
+			else: #if nothing in hand take item out of stack
+				remove()
+			
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if(body.is_in_group("Player")):
+		enabled = true
+	if(body.has_method("im_food") && enabled):
+		current_ingredient = load(body.scene_file_path)
+		body.queue_free()
+		insert()
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if(body.is_in_group("Player")):
+		enabled = false
+#	if ing:  #exiting body will deactivate item
+#		ing.de_activate()
+
+		
+#only saves raw ingredents, not cooked or preped
+func insert():
+	#add to array, set current ingendent == body/held food, delete body
+	#current_ingredient = load(body.scene_file_path)
+	#body.queue_free()
+	if (stored_ingredents.size() >= fridgeLimit):
+		return
+	else:
+		stored_ingredents.append(current_ingredient) 
 	
-func de_activate():
-	print("de-activated") #testing
+		
+#grab index from array and spit out ingredent
+func remove():
+	var ingredient_spawn = stored_ingredents[-1] 
+	var current_scene = get_tree().current_scene
+	var temp = ingredient_spawn.instantiate() 
+	temp.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+	current_scene.add_child(temp)
+	stored_ingredents.remove_at(ingredient_spawn) #remove ingredent from array
+	
+	#ingredent_spawn = stored_ingredent[0]
+	#var current_scene = get_tree().current_scene
+	#ingredient_spawn = current_ingredient.instantiate() 
+	#ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+	#current_scene.add_child(ingredient_spawn)
+	#print("spawning: ", ingredient_spawn)
