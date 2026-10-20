@@ -607,8 +607,9 @@ func update_slots(slot: int) -> void:
 	selected_object.global_position = item_hold_spawn.global_position
 	selected_object.scale = Vector3.ONE * 0.25
 	selected_object.freeze = true
-	selected_object.collision_layer = 2
-	selected_object.collision_mask = 2
+	selected_object.collision_layer = 3
+	selected_object.collision_mask = 3
+	selected_object.find_child("CollisionShape3D").set_deferred("disabled", true)
 	selected_object.reparent(item_hold_spawn)
 
 	Manager.holding = true
