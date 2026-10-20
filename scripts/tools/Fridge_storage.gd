@@ -70,10 +70,11 @@ func insert():
 func remove():
 	print("removing...")
 	print("stored ingredients: ", stored_ingredents)
-	print("stored ingredienta[-1]: ", stored_ingredents[-1])
-	if (stored_ingredents[-1] == null || stored_ingredents.is_empty()): 
+	#print("stored ingredienta[-1]: ", stored_ingredents[-1])
+	if (stored_ingredents.is_empty()): 
 			return
 	else:
+		
 		var ingredient_spawn: PackedScene
 		ingredient_spawn = stored_ingredents[-1]
 		var current_scene = get_tree().current_scene
@@ -81,6 +82,7 @@ func remove():
 		temp.rarity_level = 1 #makes sure that the food is guarenteed to spawn
 		current_scene.add_child(temp)
 		stored_ingredents.remove_at(-1) #remove ingredent from array
+		Manager.set("slot%d" % Manager.current_slot, ingredient_spawn)
 	
 	#ingredent_spawn = stored_ingredent[0]
 	#var current_scene = get_tree().current_scene

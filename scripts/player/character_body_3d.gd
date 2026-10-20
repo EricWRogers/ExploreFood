@@ -601,6 +601,7 @@ func update_slots(slot: int) -> void:
 		return
 
 	selected_object = food_scene.instantiate()
+	Manager.currently_held_food = selected_object
 	selected_object.rarity_level = 1
 	add_child(selected_object)
 
