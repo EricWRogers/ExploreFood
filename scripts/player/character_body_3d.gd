@@ -22,6 +22,8 @@ var current_sprint_speed: float = BASE_SPRINT_SPEED
 var current_jump_velocity: float = BASE_JUMP_VELOCITY
 var speed: float = BASE_WALK_SPEED
 
+var base_grav_mult = 3.0
+var upward_grav_mult = 2.25
 var can_jump: bool = true
 var jump_count = 2
 var is_dashing: bool = false
@@ -367,11 +369,18 @@ func start_dash() -> void:
 func _update_gravity(delta: float) -> void:
 	if is_dashing:
 		return
+
 	if not is_on_floor():
 		if can_jump and coyote_timer.is_stopped():
 			coyote_timer.start(0.1)
 
-		velocity += get_gravity() * 3.0 * delta
+		var gravity_multiplier = base_grav_mult
+		
+		#when going up only get a fraction of actual gravity
+		if velocity.y > 0.0:
+			gravity_multiplier = upward_grav_mult
+
+		velocity += get_gravity() * gravity_multiplier * delta
 	else:
 		can_jump = true
 		jump_count = 2
