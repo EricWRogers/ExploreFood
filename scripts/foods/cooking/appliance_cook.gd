@@ -7,6 +7,7 @@ extends Node
 @export_group("Appliance Settings")
 @export var cook_group_application_type: BaseFood.CookGroup
 @export var spawn_position: Vector3 = Vector3(0, 0, 0)
+@onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
 var is_cooking: bool = false
@@ -30,6 +31,7 @@ func _ready() -> void:
 	if (timer_ui == null):
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
+	%Prompts.hide()
 
 func _process(_delta: float) -> void:
 	#timer animation
@@ -43,11 +45,6 @@ func _process(_delta: float) -> void:
 
 ##Takes ingredient thrown at it. Won't start until player presses "cook" (f)
 func _on_body_entered(body: Node3D) -> void:
-	if (body.is_in_group("Player")):
-		print("player in")
-		is_in_range = true
-		%Prompts.show()
-	
 	if (body.has_method("im_food") && !is_full && !is_cooking): #checks if body is an ingredient. This check should be made better later.
 		#print("yum, I found a food! is prepped: ", body.prep_group)
 		if (body.cook_group != 0):
@@ -79,12 +76,6 @@ func _on_body_entered(body: Node3D) -> void:
 			
 			#is_full = true
 			#start_cook_timer()
-
-func _on_body_exited(body: Node3D) -> void:
-	if (body.is_in_group("Player")):
-		print("player out")
-		is_in_range = false
-		%Prompts.hide()
 
 func find_recipe():
 	print("cooking...")
@@ -197,3 +188,16 @@ func start_cook_timer():
 	#timer_ui.visible = false
 	#is_full = false
 	#ingredient = null
+
+
+func _on_player_detect_area_body_entered(body: Node3D) -> void:
+	if (body.is_in_group("Player")):
+		print("player in")
+		is_in_range = true
+		%Prompts.show()
+
+func _on_player_detect_area_body_exited(body: Node3D) -> void:
+	if (body.is_in_group("Player")):
+		print("player out")
+		is_in_range = false
+		%Prompts.hide()

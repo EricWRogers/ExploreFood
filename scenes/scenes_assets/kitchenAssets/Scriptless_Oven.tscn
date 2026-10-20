@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cqbf61752c7lu"]
 
-[ext_resource type="ArrayMesh" uid="uid://c264yr6gojfvs" path="res://assets/models/KitchenStove.obj" id="1_ju0od"]
+[ext_resource type="ArrayMesh" uid="uid://dykj1lhd6211t" path="res://assets/models/KitchenStove.obj" id="1_ju0od"]
+[ext_resource type="ArrayMesh" uid="uid://cix102ki0p2t1" path="res://assets/models/KitchenStoveDoor.obj" id="2_oowas"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
-albedo_color = Color(0.57600003, 0.6, 0.6, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp2ar"]
+cull_mode = 2
+albedo_color = Color(0.51796776, 0.6011183, 0.6875475, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oowas"]
 size = Vector3(0.26665038, 0.2705371, 0.2755127)
@@ -11,9 +13,18 @@ size = Vector3(0.26665038, 0.2705371, 0.2755127)
 [node name="ScriptlessOven" type="StaticBody3D" unique_id=2124001694]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=284187068]
+[node name="OvenMeshInstance" type="MeshInstance3D" parent="." unique_id=1257134851]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = ExtResource("1_ju0od")
-surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_kp2ar")
+
+[node name="Node3D" type="Node3D" parent="OvenMeshInstance" unique_id=1665916580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5771024, 1.524207)
+
+[node name="OvenDoorMeshInstance" type="MeshInstance3D" parent="OvenMeshInstance/Node3D" unique_id=2104152112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5771024, -1.524207)
+mesh = ExtResource("2_oowas")
+surface_material_override/0 = SubResource("StandardMaterial3D_kp2ar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975845134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00014157114, 0.13471942, 0.013481449)

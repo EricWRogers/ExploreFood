@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_lddjm"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="2_86ql8"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="3_urqlb"]
-[ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="4_t5ex0"]
 [ext_resource type="PackedScene" uid="uid://bf5lrlvyh6g" path="res://scenes/scenes_assets/kitchenAssets/pan.tscn" id="5_kjh5u"]
 [ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="6_royyw"]
 [ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="7_5a4i3"]
@@ -50,9 +49,6 @@ shape = SubResource("WorldBoundaryShape3D_kjh5u")
 
 [node name="Oven" parent="." unique_id=408695707 instance=ExtResource("3_urqlb")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2.1000004, 0, -8.5)
-
-[node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("4_t5ex0")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.1, 0, -8.5)
 
 [node name="Pan" parent="." unique_id=29644927 instance=ExtResource("5_kjh5u")]
 transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.76604444, 2.3233957, 1.9000001, -8.264278)

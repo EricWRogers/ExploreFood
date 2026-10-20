@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="4_f8w4h"]
 [ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="5_qvun3"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
+[ext_resource type="ArrayMesh" uid="uid://dfl6p31i6nbix" path="res://assets/models/KitchenSink.obj" id="8_dbylq"]
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="9_amfce"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
@@ -17,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="15_dbylq"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbylq"]
+size = Vector3(0.45599997, 6.305, 0.22699998)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
 size = Vector3(12, 12.400001, 1)
@@ -50,6 +54,38 @@ light_color = Color(1, 0.7176471, 0.6509804, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1680998563]
 environment = SubResource("Environment_8ojr3")
 
+[node name="Kitchen" type="Node3D" parent="." unique_id=498396752]
+
+[node name="Appliances" type="Node3D" parent="Kitchen" unique_id=2145882773]
+
+[node name="Oven" parent="Kitchen/Appliances" unique_id=408695707 instance=ExtResource("7_7hvat")]
+transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, -2.4, -0.6, 0.5831165)
+
+[node name="Pan" parent="Kitchen/Appliances" unique_id=29644927 instance=ExtResource("10_amfce")]
+transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -5.5450726, 1.4035091, 0.29700872)
+
+[node name="RollingPin" parent="Kitchen/Appliances" unique_id=655305112 instance=ExtResource("14_hyaf1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.055526, 1.2541721, 0.90000004)
+
+[node name="CuttingBoard" parent="Kitchen/Appliances" unique_id=1280753785 instance=ExtResource("15_dbylq")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.200278, 1.238797, 0.90000004)
+
+[node name="Non-FunctionalModels" type="Node3D" parent="Kitchen" unique_id=853716661]
+
+[node name="ScriptlessOven" parent="Kitchen/Non-FunctionalModels" unique_id=2124001694 instance=ExtResource("8_piak7")]
+transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, -5, -0.6, 0.6)
+
+[node name="Sink" type="StaticBody3D" parent="Kitchen/Non-FunctionalModels" unique_id=920345652]
+transform = Transform3D(-9, 0, -1.3589622e-06, 0, 9, 0, 1.3589622e-06, 0, -9, 1.0999999, -0.70000005, 0.39999932)
+
+[node name="SinkMeshInstance" type="MeshInstance3D" parent="Kitchen/Non-FunctionalModels/Sink" unique_id=1220407780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("8_dbylq")
+
+[node name="SinkCollisionShape" type="CollisionShape3D" parent="Kitchen/Non-FunctionalModels/Sink" unique_id=193832129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0069999695, 0, -0.010500006)
+shape = SubResource("BoxShape3D_dbylq")
+
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("4_f8w4h")]
 transform = Transform3D(0.19051516, 0, 0.98168427, 0, 1, 0, -0.98168427, 0, 0.19051516, 25.877405, 0, -14.380052)
 
@@ -58,9 +94,6 @@ transform = Transform3D(0.48870417, 0, 0.8724496, 0, 1, 0, -0.8724496, 0, 0.4887
 
 [node name="TempPortalManager" type="Node3D" parent="." unique_id=1750418309]
 script = ExtResource("5_qvun3")
-
-[node name="Oven" parent="." unique_id=408695707 instance=ExtResource("7_7hvat")]
-transform = Transform3D(-8, 0, -1.2079664e-06, 0, 8, 0, 1.2079664e-06, 0, -8, 4, -0.8, 0.5831165)
 
 [node name="Plate" parent="." unique_id=904989181 instance=ExtResource("9_piak7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15.500001)
@@ -80,9 +113,6 @@ transform = Transform3D(0.8597999, 0, -0.510631, 0, 1, 0, 0.510631, 0, 0.8597999
 [node name="QuestCollisionShape" type="CollisionShape3D" parent="QuestCheck" unique_id=1966982578]
 transform = Transform3D(1.0000002, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000002, 0.04997921, 0.7500001, 0.15001678)
 shape = SubResource("BoxShape3D_6xqmx")
-
-[node name="Pan" parent="." unique_id=29644927 instance=ExtResource("10_amfce")]
-transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -7.3450727, 0.90350914, 0.097008735)
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=212609830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 2, 0.099999785)
@@ -176,21 +206,6 @@ customer_spawn = NodePath("../CustomerSpawn")
 [node name="Label3D" type="Label3D" parent="." unique_id=1107548737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7862545, -15.102238)
 text = "Throw Food here to plate."
-
-[node name="ScriptlessOven" parent="." unique_id=2124001694 instance=ExtResource("8_piak7")]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -7.4418097, -0.52428925, 0.31618905)
-
-[node name="ScriptlessOven2" parent="." unique_id=973909210 instance=ExtResource("8_piak7")]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -10.438507, -0.52428925, 0.31618905)
-
-[node name="ScriptlessOven3" parent="." unique_id=2076049835 instance=ExtResource("8_piak7")]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -13.564941, -0.52428925, 0.31618905)
-
-[node name="RollingPin" parent="." unique_id=655305112 instance=ExtResource("14_hyaf1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.355526, 0.95417213, 0)
-
-[node name="CuttingBoard" parent="." unique_id=1280753785 instance=ExtResource("15_dbylq")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.600278, 0.9387969, 0)
 
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
