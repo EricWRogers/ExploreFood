@@ -5,7 +5,7 @@ extends Node
 @export var station_ui : Control
 @export_group("Appliance Settings")
 @export var prep_group_application_type: BaseFood.PrepGroup
-@export var spawn_position: Vector3 = Vector3(0, 0, 0)
+@onready var spawn_position: Marker3D = $SpawnMarker
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
@@ -83,7 +83,7 @@ func prep_all():
 		ingredient_spawn.cook_group = saved_cook_group
 
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-		ingredient_spawn.position = Vector3(0, 2, 0.1)
+		ingredient_spawn.position = spawn_position.global_position
 		
 		current_ingredient = null
 	
@@ -141,7 +141,7 @@ func return_ingredients():
 		ingredient_spawn.cook_group = saved_cook_group
 
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-		ingredient_spawn.position = Vector3(0, 2, 0.1)
+		ingredient_spawn.position = spawn_position.global_position
 		
 		current_ingredient = null
 	station_ui._reset_visual()

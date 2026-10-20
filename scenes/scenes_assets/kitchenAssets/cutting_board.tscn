@@ -43,6 +43,9 @@ prep_group_application_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.55, 0.79999995)
 shape = SubResource("BoxShape3D_klsck")
 
+[node name="SpawnMarker" type="Marker3D" parent="PrepperBase" unique_id=1445998607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
+
 [node name="PlayerDetectArea" type="Area3D" parent="." unique_id=323925388]
 
 [node name="PlayerDetectCollisionShape" type="CollisionShape3D" parent="PlayerDetectArea" unique_id=2099433590]
