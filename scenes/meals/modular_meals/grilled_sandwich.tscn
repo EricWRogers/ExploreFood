@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dd2ajql81fcw7"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_nxxef"]
+
+[node name="Grilled Sandwich" unique_id=1546410034 instance=ExtResource("1_nxxef")]
+meal_name = "Grilled Sandwich"

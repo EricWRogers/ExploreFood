@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://cx1ycynesieg8"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_dpkqn"]
+[ext_resource type="PackedScene" uid="uid://b5xw1ju8u0qse" path="res://scenes/meals/modular_meals/bacon.tscn" id="2_1vr4c"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_pe2c5"]
+
+[sub_resource type="Resource" id="Resource_1vr4c"]
+script = ExtResource("1_dpkqn")
+food_group = 1
+prep_group = 1
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_pe2c5")
+recipe_name = "Bacon"
+food_group_array = Array[ExtResource("1_dpkqn")]([SubResource("Resource_1vr4c")])
+product = ExtResource("2_1vr4c")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"
