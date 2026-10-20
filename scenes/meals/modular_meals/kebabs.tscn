@@ -1,6 +1,62 @@
 [gd_scene format=3 uid="uid://bt3hiajxembi3"]
 
 [ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_cpy2k"]
+[ext_resource type="Texture2D" uid="uid://cg6ncasrch1o5" path="res://assets/textures/ModularFoodTextures/skewer.png" id="2_1ytdv"]
+[ext_resource type="ArrayMesh" uid="uid://botch16kcwl8u" path="res://assets/models/ModularFoodModels/SticksOptomized.obj" id="3_bc7qa"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="4_y1cqt"]
+[ext_resource type="ArrayMesh" uid="uid://c0jebf7p1jlet" path="res://assets/models/ModularFoodModels/MeatCubeOptomized.obj" id="5_6dkq6"]
+[ext_resource type="Texture2D" uid="uid://b3egn5dxnq3nd" path="res://assets/textures/ModularFoodTextures/veggiediced.png" id="6_8aacr"]
+[ext_resource type="ArrayMesh" uid="uid://cht2o4d5ccjes" path="res://assets/models/ModularFoodModels/VeggieCubedOptomized.obj" id="7_yk5n1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4ayg"]
+albedo_texture = ExtResource("2_1ytdv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8ww1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aclm"]
+albedo_texture = ExtResource("4_y1cqt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjthv"]
+albedo_texture = ExtResource("6_8aacr")
 
 [node name="Kebabs" unique_id=1546410034 instance=ExtResource("1_cpy2k")]
 meal_name = "Kebabs"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.363175, 0.28960985, -0.18501662, 0, 0.4198768, 0.21746744, 0.4328151, -0.24301153, 0.15524739, 0.15565474, -0.18055151, -0.12573437)
+material_override = SubResource("StandardMaterial3D_p4ayg")
+material_overlay = SubResource("ShaderMaterial_o8ww1")
+mesh = ExtResource("3_bc7qa")
+
+[node name="MeshParents" type="Node3D" parent="." index="1" unique_id=1307086849]
+transform = Transform3D(0.32139382, 0.24620192, -0.17604722, 0, 0.38302222, 0.19283628, 0.38302222, -0.20658796, 0.14772117, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshParents" index="0" unique_id=1921432183]
+transform = Transform3D(0.41959313, 0, 0.01848229, 0, 0.42, 0, -0.01848229, 0, 0.41959313, 0.03944227, 0.03496979, 0.06659973)
+material_override = SubResource("StandardMaterial3D_7aclm")
+mesh = ExtResource("5_6dkq6")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MeshParents" index="1" unique_id=1396546781]
+transform = Transform3D(-0.062914796, 8.881784e-16, 0.41526103, -3.02289e-09, 0.42000002, -7.474403e-09, -0.41526106, -1.4901161e-08, -0.06291479, 0.02214127, 0.04185449, -0.9712396)
+material_override = SubResource("StandardMaterial3D_7aclm")
+mesh = ExtResource("5_6dkq6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshParents" index="2" unique_id=341200107]
+transform = Transform3D(1.3700002, -2.6862237e-08, -7.7807265e-08, -5.9604645e-08, -0.005257517, 1.3699902, -5.9604645e-08, -1.36999, -0.0052573383, -0.026626822, 0.05348233, 0.6421064)
+material_override = SubResource("StandardMaterial3D_wjthv")
+mesh = ExtResource("7_yk5n1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshParents" index="3" unique_id=863496095]
+transform = Transform3D(-1.3432621, 0.025507092, 0.2681371, 0.2609629, -0.21439849, 1.3277171, 0.06668204, 1.3528795, 0.20535558, 0.005993142, 0.06364904, -0.56298035)
+material_override = SubResource("StandardMaterial3D_wjthv")
+mesh = ExtResource("7_yk5n1")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshParents" index="4" unique_id=1575008482]
+transform = Transform3D(1.3700002, -3.387526e-08, -8.583058e-08, -5.9604645e-08, -0.17806104, 1.3583796, -5.9604645e-08, -1.3583794, -0.17806089, -0.008024503, -0.022429964, -1.4813647)
+material_override = SubResource("StandardMaterial3D_wjthv")
+mesh = ExtResource("7_yk5n1")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="MeshParents" index="5" unique_id=1586616363]
+transform = Transform3D(0.41742083, 0, -0.04647394, 0, 0.42, 0, 0.04647394, 0, 0.41742083, 0.019641776, 0.034969766, 1.0149164)
+material_override = SubResource("StandardMaterial3D_7aclm")
+mesh = ExtResource("5_6dkq6")
