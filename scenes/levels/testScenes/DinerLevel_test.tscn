@@ -65,10 +65,10 @@ transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, -2
 transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -5.5450726, 1.4035091, 0.29700872)
 
 [node name="RollingPin" parent="Kitchen/Appliances" unique_id=655305112 instance=ExtResource("14_hyaf1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -10.055526, 1.2541721, 0.90000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.455525, 1.2541721, 0.90000004)
 
 [node name="CuttingBoard" parent="Kitchen/Appliances" unique_id=1280753785 instance=ExtResource("15_dbylq")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.200278, 1.238797, 0.90000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.300279, 1.238797, 0.90000004)
 
 [node name="Non-FunctionalModels" type="Node3D" parent="Kitchen" unique_id=853716661]
 

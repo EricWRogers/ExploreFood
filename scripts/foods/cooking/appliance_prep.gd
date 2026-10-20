@@ -35,6 +35,8 @@ func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("cook") && is_in_range && collected_ingredients.size() >= 1):
 		is_prepping = true
 		prep_all()
+	if (Input.is_action_just_pressed("Reset") && is_in_range):
+		return_ingredients()
 
 func _on_body_entered(body: Node3D) -> void:
 	
@@ -69,16 +71,12 @@ func prep_all():
 	print("prepping...")
 	for ingredient in collected_ingredients:
 		var ingredient_spawn: Node
-		station_ui._reset_visual()
 		#spawn back prepped ingredient
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()
 		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
 		current_scene.add_child(ingredient_spawn)
 		print ("spawning: ", ingredient_spawn)
-	
-		#set prep tag
-		ingredient_spawn.is_prepped = true
 		
 		#add tags
 		ingredient_spawn.prep_group = prep_group_application_type #Example: BaseFood.PrepGroup.CHOPPED
@@ -92,6 +90,7 @@ func prep_all():
 	#clear vars for next ingredient
 	is_full = false
 	is_prepping = false
+	station_ui._reset_visual()
 
 func start_prep_timer():
 	#set timer time
@@ -127,6 +126,25 @@ func start_prep_timer():
 	#timer_ui.visible = false
 	#is_full = false
 
+func return_ingredients():
+	#spawn back prepped ingredient
+	for ingredient in collected_ingredients:
+		var ingredient_spawn: Node
+		#spawn back prepped ingredient
+		var current_scene = get_tree().root
+		ingredient_spawn = ingredient.instantiate()
+		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		current_scene.add_child(ingredient_spawn)
+		print ("spawning: ", ingredient_spawn)
+		
+		#add tags
+		ingredient_spawn.cook_group = saved_cook_group
+
+		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
+		ingredient_spawn.position = Vector3(0, 2, 0.1)
+		
+		current_ingredient = null
+	station_ui._reset_visual()
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):

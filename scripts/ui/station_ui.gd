@@ -7,7 +7,10 @@ func _update_visual(texture):
 	print(icons[filled])
 	icons[filled].texture = texture
 	filled += 1
+
 func _reset_visual():
+	print("reseting...")
 	filled = 0
 	for icon in icons:
+		print("icon: ", icon)
 		icon.texture = null
