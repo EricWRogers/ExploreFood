@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkph46r33vcca"
+path="res://.godot/imported/MTFork.obj-b90f00c05a0f4a987887870d4cf498ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/MTFork.obj-b90f00c05a0f4a987887870d4cf498ed.mesh"]
+
+source_file="res://assets/models/3rdPersonController/Mesh/MultiTool/MTFork.obj"
+dest_files=["res://.godot/imported/MTFork.obj-b90f00c05a0f4a987887870d4cf498ed.mesh", "res://.godot/imported/MTFork.obj-b90f00c05a0f4a987887870d4cf498ed.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.01, 0.01, 0.01)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

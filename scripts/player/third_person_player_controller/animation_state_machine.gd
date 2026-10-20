@@ -1,6 +1,8 @@
 extends Node3D
 
 var state_machine = AnimationNodeStateMachinePlayback
+@onready var mult: Node3D = %mult
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine = %AnimationTree.get("parameters/playback") as AnimationNodeStateMachinePlayback

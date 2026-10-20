@@ -7,8 +7,20 @@ extends CharacterBody3D
 @export var move_speed := 2.6
 @export var sprint_speed := 10.6
 @export var acceleration := 20.0
-@export var rotation_speed := 12
-@export var jump_impulse := 12
+@export var rotation_speed := 12.0
+@export var air_control := 8.0
+
+@export_group("Jump")
+@export var jump_impulse := 12.0
+@export var jump_buffer_time := 0.12
+@export var coyote_time := 0.12
+@export var apex_gravity_multiplier := 0.35
+@export var fall_gravity_multiplier := 1.4
+@export var jump_cut_multiplier := 2.0
+
+var jump_buffer_timer := 0.0
+var coyote_timer := 0.0
+var jump_was_cut := false
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_dir := Vector3.BACK
@@ -17,6 +29,8 @@ var cliff_detect := true
 var not_moving := true
 var balancing_cliff_edge := false
 var breaking_idle := false
+var fall_start_height := 0.0
+var fell_far_enough := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -32,51 +46,138 @@ func _unhandled_input(event: InputEvent) -> void:
 	)
 	if is_camera_motion:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
-		
+
 func _physics_process(delta: float) -> void:
-	if %CliffEdgeDetect.is_colliding():
-		cliff_detect = true
-	else:
-		cliff_detect = false
+	cliff_detect = %CliffEdgeDetect.is_colliding()
+
 	_camera_pivot.rotation.x += _camera_input_direction.y * delta
-	_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, 
-	-PI / 6.0, PI / 3.0)
+	_camera_pivot.rotation.x = clamp(
+		_camera_pivot.rotation.x,
+		-PI / 6.0,
+		PI / 3.0
+	)
 	_camera_pivot.rotation.y -= _camera_input_direction.x * delta
-	
 	_camera_input_direction = Vector2.ZERO
-	
-	var raw_input := Input.get_vector("Left",
-	"Right", "Forward", "Back")
+
+	var raw_input := Input.get_vector(
+		"Left",
+		"Right",
+		"Forward",
+		"Back"
+	)
+
 	var forward := _camera.global_basis.z
 	var right := _camera.global_basis.x
-	
+
 	var move_direction := forward * raw_input.y + right * raw_input.x
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
+
 	var is_sprinting := Input.is_action_pressed("Sprint")
-	var y_velocity := velocity.y
-	velocity.y = 0
-	if is_sprinting:
-		velocity = velocity.move_toward(move_direction * 
-		sprint_speed, acceleration * delta)
-		velocity.y = y_velocity + _gravity * delta
+	var was_grounded := is_on_floor()
+
+	if is_sprinting and was_grounded and move_direction.length() > 0.1:
+		%Steps.emitting = true
 	else:
-		velocity = velocity.move_toward(move_direction * 
-		move_speed, acceleration * delta)
-		velocity.y = y_velocity + _gravity * delta
-	var is_starting_jump := Input.is_action_just_pressed("Jump") and is_on_floor()
-	if is_starting_jump:
+		%Steps.emitting = false
+
+	var target_speed := move_speed
+	if is_sprinting:
+		target_speed = sprint_speed
+
+	var target_velocity := move_direction * target_speed
+	var horizontal_velocity := Vector3(velocity.x, 0.0, velocity.z)
+
+	if was_grounded:
+		if move_direction.length() > 0.0:
+			var current_direction := horizontal_velocity.normalized()
+			var direction_dot := current_direction.dot(move_direction)
+			var accel := acceleration
+
+			if horizontal_velocity.length() > 0.1 and direction_dot < 0.5:
+				accel = 80.0
+
+			horizontal_velocity = horizontal_velocity.move_toward(
+				target_velocity,
+				accel * delta
+			)
+		else:
+			horizontal_velocity = horizontal_velocity.move_toward(
+				Vector3.ZERO,
+				60.0 * delta
+			)
+	else:
+		if move_direction.length() > 0.0:
+			horizontal_velocity = horizontal_velocity.move_toward(
+				target_velocity,
+				air_control * delta
+			)
+
+	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
+
+	if Input.is_action_just_pressed("Jump"):
+		jump_buffer_timer = jump_buffer_time
+	else:
+		jump_buffer_timer = maxf(0.0, jump_buffer_timer - delta)
+
+	if was_grounded:
+		coyote_timer = coyote_time
+	else:
+		coyote_timer = maxf(0.0, coyote_timer - delta)
+
+	var is_starting_jump := false
+
+	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
+		is_starting_jump = true
+		velocity.y = jump_impulse
+		jump_buffer_timer = 0.0
+		coyote_timer = 0.0
+		jump_was_cut = false
+
 		not_moving = false
 		$IdleBreak.stop()
 		$Cliff.stop()
 		balancing_cliff_edge = false
 		breaking_idle = false
-		velocity.y += jump_impulse
-	
-	var was_on_floor = is_on_floor()
+
+	elif Input.is_action_just_pressed("Jump") and !was_grounded:
+		%Doremi.mult._fork()
+
+	if Input.is_action_just_released("Jump") and velocity.y > 0.0:
+		velocity.y *= 0.6
+		jump_was_cut = true
+
+	if !is_starting_jump:
+		var gravity_multiplier := 1.0
+
+		if velocity.y > 0.0:
+			if absf(velocity.y) < 2.5:
+				gravity_multiplier = apex_gravity_multiplier
+			elif !Input.is_action_pressed("Jump") and velocity.y > 5.0:
+				gravity_multiplier = jump_cut_multiplier
+		elif velocity.y < 0.0:
+			gravity_multiplier = fall_gravity_multiplier
+
+		velocity.y += _gravity * gravity_multiplier * delta
+
+	var was_on_floor := is_on_floor()
 	move_and_slide()
-	var just_landed = !was_on_floor and is_on_floor()
-	
+	var just_landed := !was_on_floor and is_on_floor()
+
+	if was_on_floor and !is_on_floor():
+		fall_start_height = global_position.y
+		fell_far_enough = false
+
+	if !is_on_floor():
+		var fall_distance := fall_start_height - global_position.y
+		if fall_distance >= 2.0:
+			fell_far_enough = true
+
+	if just_landed and fell_far_enough:
+		%LandHigh.restart()
+		%LandHigh.emitting = true
+
 	if move_direction.length() > 0.2:
 		not_moving = false
 		$IdleBreak.stop()
@@ -84,14 +185,27 @@ func _physics_process(delta: float) -> void:
 		balancing_cliff_edge = false
 		breaking_idle = false
 		_last_movement_dir = move_direction
-	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_dir, Vector3.UP)
-	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
-	
+
+	var target_angle := Vector3.BACK.signed_angle_to(
+		_last_movement_dir,
+		Vector3.UP
+	)
+	_skin.global_rotation.y = lerp_angle(
+		_skin.rotation.y,
+		target_angle,
+		rotation_speed * delta
+	)
+
+	if Input.is_action_just_pressed("Interact"):
+		%Doremi.mult._spoon()
+
 	if is_starting_jump:
 		_skin._jump()
 	elif just_landed:
+		%LandLow.restart()
+		%LandLow.emitting = true
 		_skin._land()
-	elif !is_on_floor() and velocity.y < 0:
+	elif !is_on_floor() and velocity.y < 0.0:
 		_skin._fall()
 	elif is_on_floor():
 		var ground_speed := Vector2(velocity.x, velocity.z).length()
@@ -121,4 +235,5 @@ func _on_cliff_timeout() -> void:
 		balancing_cliff_edge = true
 		breaking_idle = false
 		$IdleBreak.stop()
+		$Cliff.stop()
 		_skin._cliff()

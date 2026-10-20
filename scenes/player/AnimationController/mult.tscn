@@ -1,0 +1,580 @@
+[gd_scene format=3 uid="uid://bi7wxp8lxy1fr"]
+
+[ext_resource type="PackedScene" uid="uid://c36i1ke6ri5yg" path="res://assets/models/3rdPersonController/Mesh/MultiTool/mult.fbx" id="1_8nb0l"]
+[ext_resource type="Texture2D" uid="uid://c56ittai3asc6" path="res://assets/models/3rdPersonController/Mesh/MultiTool/handlepng.png" id="2_5f8lb"]
+[ext_resource type="Script" uid="uid://rcawt5intmj3" path="res://scripts/player/third_person_player_controller/multitoolanimations.gd" id="2_kp4ho"]
+[ext_resource type="ArrayMesh" uid="uid://bit0m3fm6qjb8" path="res://assets/models/3rdPersonController/Mesh/MultiTool/MTSpoon.obj" id="3_sni3q"]
+[ext_resource type="Texture2D" uid="uid://dk0fv8qddr3fb" path="res://assets/models/3rdPersonController/Mesh/MultiTool/spoonpng.png" id="4_kp4ho"]
+[ext_resource type="ArrayMesh" uid="uid://bkph46r33vcca" path="res://assets/models/3rdPersonController/Mesh/MultiTool/MTFork.obj" id="5_jfr7u"]
+[ext_resource type="Texture2D" uid="uid://dsd340wujj7rs" path="res://assets/models/3rdPersonController/Mesh/MultiTool/forkpng.png" id="6_lv3pq"]
+[ext_resource type="Texture2D" uid="uid://1r2opmm5ojtv" path="res://assets/models/3rdPersonController/Mesh/MultiTool/4_Point_Star.png" id="8_jfr7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lihiw"]
+albedo_texture = ExtResource("2_5f8lb")
+metallic = 0.53
+roughness = 0.63
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mi6l"]
+albedo_texture = ExtResource("4_kp4ho")
+metallic = 0.62
+roughness = 0.22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v67d"]
+albedo_texture = ExtResource("6_lv3pq")
+metallic = 0.26
+roughness = 0.7
+
+[sub_resource type="Animation" id="Animation_sni3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.1504634e-16, -3.1221776, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D/Spoon/Node3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D/Spoon/Node3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D/Fork/Node3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.806434, -5.9269934e-16, 0.015658911)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2331498, -5.4222856e-16, 0.018099267)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2555101, -0.01074791, 0.057097692)]
+}
+
+[sub_resource type="Animation" id="Animation_kp4ho"]
+resource_name = "SwitchtoFork"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.24148414, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.35, 0.745, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.1504634e-16, -3.1221776, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D/Spoon/Node3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -3.1415927)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D/Spoon/Node3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.34789217, -2.5568793e-16, 0.006755188)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.42, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.615, 1, 1), Vector3(0.615, 1, 1), Vector3(1.1, 1, 1), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D/Fork/Node3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.43, 0.5),
+"transitions": PackedFloat32Array(0.2332585, 1, 0.4829681, 1),
+"update": 0,
+"values": [Vector3(-0.806434, -5.9269934e-16, 0.015658911), Vector3(0.0008151531, 5.9916993e-19, -1.5826896e-05), Vector3(-0.01872313, -1.37607384e-17, 0.00036355667), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2356656, -5.440776e-16, 0.01814811)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2555101, -0.01074791, 0.057097692)]
+}
+
+[sub_resource type="Animation" id="Animation_jfr7u"]
+resource_name = "SwitchtoSpoon"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.61, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D/Fork/Node3D/MtFork:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.2331498, -5.4222856e-16, 0.018099267), Vector3(-2.0386515, -1.1342427e-15, 0.033740073)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.1504634e-16, -3.1221776, 1.5707964)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.19614607, 1),
+"update": 0,
+"values": [Vector3(0.365, 0.615, 0.73), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton3D/Spoon/Node3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.30778575, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.2831855)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton3D/Spoon/Node3D/MtSpoon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2555101, -0.01074791, 0.057097692)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton3D/Spoon/Node3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lv3pq"]
+_data = {
+&"RESET": SubResource("Animation_sni3q"),
+&"SwitchtoFork": SubResource("Animation_kp4ho"),
+&"SwitchtoSpoon": SubResource("Animation_jfr7u")
+}
+
+[sub_resource type="Animation" id="Animation_lv3pq"]
+resource_name = "Glint"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.22, 1),
+"transitions": PackedFloat32Array(0.1088189, 0.06470428, 1),
+"update": 0,
+"values": [Vector3(0.005, 0.005, 0.005), Vector3(0.03, 0.03, 0.03), Vector3(-0.52, 0, 0.03)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.6763808e-08, 1.110223e-15, -4.3711385e-08)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.26, 0.32, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.005000001, 0.004999999, 0.004999999), Vector3(0.01, 0.035, 0.005), Vector3(0, 0.14, 0.005)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_2mi6l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.025, 0.025, 0.025)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.6763808e-08, 1.110223e-15, -4.3711385e-08)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.005000001, 0.004999999, 0.004999999)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton3D/Fork/Node3D/MtFork/Sprite3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4v67d"]
+_data = {
+&"Glint": SubResource("Animation_lv3pq"),
+&"RESET": SubResource("Animation_2mi6l")
+}
+
+[node name="mult" unique_id=92587430 instance=ExtResource("1_8nb0l")]
+script = ExtResource("2_kp4ho")
+
+[node name="Handle1" parent="Skeleton3D" parent_id_path=PackedInt32Array(723654726) index="0" unique_id=994706263]
+surface_material_override/0 = SubResource("StandardMaterial3D_lihiw")
+
+[node name="Spoon" type="BoneAttachment3D" parent="Skeleton3D" parent_id_path=PackedInt32Array(723654726) index="1" unique_id=2109921877]
+transform = Transform3D(-7.324528e-16, 1, 1.2929037e-16, 0.9998115, 7.3482475e-16, -0.019413814, -0.019413814, 1.1504634e-16, -0.9998115, -3.6333547e-16, 1.2332686, -0.0058442843)
+bone_name = "joint6"
+bone_idx = 4
+
+[node name="Node3D" type="Node3D" parent="Skeleton3D/Spoon" index="0" unique_id=93972755]
+
+[node name="MtSpoon" type="MeshInstance3D" parent="Skeleton3D/Spoon/Node3D" index="0" unique_id=1596796375]
+transform = Transform3D(4.370315e-08, 0.99981153, -0.019413833, 1, -4.371139e-08, 1.1504634e-16, -8.4860546e-10, -0.019413833, -0.99981153, -1.2555101, -0.01074791, 0.057097692)
+mesh = ExtResource("3_sni3q")
+surface_material_override/0 = SubResource("StandardMaterial3D_2mi6l")
+
+[node name="Fork" type="BoneAttachment3D" parent="Skeleton3D" parent_id_path=PackedInt32Array(723654726) index="2" unique_id=1896427334]
+transform = Transform3D(-7.324528e-16, 1, 1.2929037e-16, 0.9998115, 7.3482475e-16, -0.019413814, -0.019413814, 1.1504634e-16, -0.9998115, -3.6333547e-16, 1.2332686, -0.0058442843)
+bone_name = "joint6"
+bone_idx = 4
+
+[node name="Node3D" type="Node3D" parent="Skeleton3D/Fork" index="0" unique_id=382647363]
+transform = Transform3D(1, -2.4422508e-22, 0, 2.4422508e-22, 1, 0, 0, 0, 1, -0.806434, -5.9269934e-16, 0.015658911)
+
+[node name="MtFork" type="MeshInstance3D" parent="Skeleton3D/Fork/Node3D" index="0" unique_id=538469188]
+transform = Transform3D(4.370315e-08, 0.99981153, -0.019413833, 1, -4.371139e-08, -2.180206e-16, -8.486058e-10, -0.019413833, -0.99981153, -1.2331498, -5.4222856e-16, 0.018099267)
+mesh = ExtResource("5_jfr7u")
+surface_material_override/0 = SubResource("StandardMaterial3D_4v67d")
+
+[node name="Sprite3D" type="Sprite3D" parent="Skeleton3D/Fork/Node3D/MtFork" index="0" unique_id=562076492]
+transform = Transform3D(0.025, 1.0927846e-09, 2.7755576e-17, -1.0927846e-09, 0.025, 4.190952e-10, -9.436344e-18, -4.190952e-10, 0.025, -0.1283523, 1.7555075, -3.8276553e-08)
+visible = false
+billboard = 1
+no_depth_test = true
+texture = ExtResource("8_jfr7u")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Skeleton3D/Fork/Node3D/MtFork" index="1" unique_id=1602927829]
+transform = Transform3D(0.005000001, 2.1855683e-10, 5.551112e-18, -2.1855691e-10, 0.004999999, 8.3819035e-11, -1.8872676e-18, -8.3819035e-11, 0.004999999, -0.24212186, 1.6022425, -3.5707245e-08)
+visible = false
+billboard = 1
+no_depth_test = true
+texture = ExtResource("8_jfr7u")
+
+[node name="Switch" type="AnimationPlayer" parent="." index="2" unique_id=287296106]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_lv3pq")
+speed_scale = 3.0
+
+[node name="Glint" type="AnimationPlayer" parent="." index="3" unique_id=307608995]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4v67d")
+speed_scale = 2.0
+
+[connection signal="animation_finished" from="Switch" to="." method="_on_switch_animation_finished"]
