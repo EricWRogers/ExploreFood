@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://s4nc7cnwdfwf"]
+
+[ext_resource type="Texture2D" uid="uid://dm0xx7k0l3nos" path="res://assets/textures/Kitchen Textures/Fridge/KitchenFridge_Mat.png" id="1_8qtye"]
+[ext_resource type="ArrayMesh" uid="uid://ujwyeefn02f8" path="res://assets/models/KitchenFridgeBlender.obj" id="2_xfhdc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sj2xt"]
+cull_mode = 2
+albedo_texture = ExtResource("1_8qtye")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+size = Vector3(6.025, 8.35, 3.215)
+
+[node name="Kitchen_Fridge" type="StaticBody3D" unique_id=660093401]
+
+[node name="KitchenFridgeMeshInstance" type="MeshInstance3D" parent="." unique_id=1611768212]
+material_override = SubResource("StandardMaterial3D_sj2xt")
+mesh = ExtResource("2_xfhdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980938322]
+transform = Transform3D(-0.775, 0, -1.1702174e-07, 0, 0.775, 0, 1.1702174e-07, 0, -0.775, -0.033160567, 3.2053509, 0.112323046)
+shape = SubResource("BoxShape3D_qdy4q")

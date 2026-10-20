@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://dg1wwwka7nv2c"]
 
+[ext_resource type="Texture2D" uid="uid://dxfx87gouo0rf" path="res://assets/textures/Kitchen Textures/Utensils/CuttingBoard_Mat.png" id="1_8mide"]
 [ext_resource type="PackedScene" uid="uid://b6k7jg6k26ojl" path="res://scenes/scenes_assets/kitchenAssets/prepper_base.tscn" id="1_8o83u"]
 [ext_resource type="ArrayMesh" uid="uid://o2nvahr51jap" path="res://assets/models/Cutting Board/KitchenKnife.obj" id="1_vxd2y"]
+[ext_resource type="ArrayMesh" uid="uid://bgje3pk16r2ta" path="res://assets/models/Cutting Board/CuttingBoard.obj" id="2_hsky0"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_uvd5x"]
+[ext_resource type="Texture2D" uid="uid://2q3s8dwuxoot" path="res://assets/textures/Kitchen Textures/Utensils/KitchenKnife_Mat.png" id="3_qp7m4"]
 [ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/UI/station_ui.tscn" id="4_vvgn3"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="5_xd5mj"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_klsck"]
-size = Vector3(1.4, 0.1, 0.8)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brgbp"]
+albedo_texture = ExtResource("1_8mide")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
-albedo_color = Color(0.82, 0.63181, 0.4018, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig8nn"]
+albedo_texture = ExtResource("3_qp7m4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
 size = Vector3(1.6, 1, 2.4)
@@ -27,12 +30,13 @@ viewport_path = NodePath("SubViewport2")
 [node name="CuttingBoard" type="Node3D" unique_id=655305112]
 
 [node name="CuttingBoardMeshInstance" type="MeshInstance3D" parent="." unique_id=1058181148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.05000003, -2.9802322e-08)
-mesh = SubResource("BoxMesh_klsck")
-surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
+transform = Transform3D(1.175, 0, 0, 0, 1.175, 0, 0, 0, 1.175, -5.9604645e-08, 0.05000003, -2.9802322e-08)
+material_override = SubResource("StandardMaterial3D_brgbp")
+mesh = ExtResource("2_hsky0")
 
 [node name="KnifeMeshInstance" type="MeshInstance3D" parent="." unique_id=1904940315]
 transform = Transform3D(0.030241208, 0.50767356, -0.86101866, -0.99893004, 0.045510203, -0.008251321, 0.03499625, 0.8603468, 0.5085066, -0.25115484, 0.10280843, -0.1060385)
+material_override = SubResource("StandardMaterial3D_ig8nn")
 mesh = ExtResource("1_vxd2y")
 
 [node name="PrepperBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("1_8o83u")]
