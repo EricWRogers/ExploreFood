@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ykx67vi3elhy"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_x3v1p"]
+[ext_resource type="Texture2D" uid="uid://dn5gqdhmnbdli" path="res://assets/textures/ModularFoodTextures/breadslice.png" id="2_h3g4m"]
+[ext_resource type="ArrayMesh" uid="uid://rsqfjg8run5y" path="res://assets/models/ModularFoodModels/BreadSliceOptomized.obj" id="3_ugfyi"]
+[ext_resource type="Texture2D" uid="uid://b41erd0cgwq7" path="res://assets/textures/butte.png" id="4_acv8b"]
+[ext_resource type="ArrayMesh" uid="uid://ccasxj2nqaox8" path="res://assets/models/ModularFoodModels/ButterOptomized.obj" id="5_r8sjc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5fwx"]
+albedo_texture = ExtResource("2_h3g4m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be47o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vr4c"]
+albedo_texture = ExtResource("4_acv8b")
+
+[node name="ButteredToast" unique_id=1546410034 instance=ExtResource("1_x3v1p")]
+meal_name = "Buttered Toast"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.8256012, 0, -0.56425405, 0, 1, 0, 0.56425405, 0, 0.8256012, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_f5fwx")
+material_overlay = SubResource("ShaderMaterial_be47o")
+mesh = ExtResource("3_ugfyi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=1403271968]
+transform = Transform3D(0.36323476, 0, -0.93169767, 0, 1, 0, 0.93169767, 0, 0.36323476, 0.07030976, 0.12722844, -0.06161803)
+material_override = SubResource("StandardMaterial3D_1vr4c")
+mesh = ExtResource("5_r8sjc")

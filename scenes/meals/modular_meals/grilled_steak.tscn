@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://da6l8lmhgf2r1"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_en5y0"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="2_3wlj8"]
+[ext_resource type="ArrayMesh" uid="uid://dja2dpi7fog62" path="res://assets/models/ModularFoodModels/MeatSliceOptomized.obj" id="3_1434r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_382ij"]
+albedo_texture = ExtResource("2_3wlj8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kex52"]
+
+[node name="GrilledSteak" unique_id=1546410034 instance=ExtResource("1_en5y0")]
+meal_name = "Grilled Steak"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1906619, 0, 0)
+material_override = SubResource("StandardMaterial3D_382ij")
+material_overlay = SubResource("ShaderMaterial_kex52")
+mesh = ExtResource("3_1434r")
+
+[node name="SpawnMarker" type="Marker3D" parent="." index="3" unique_id=2132342343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)

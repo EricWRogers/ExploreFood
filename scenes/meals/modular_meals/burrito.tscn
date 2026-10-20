@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lvc0whqd41yq"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_3nnru"]
+[ext_resource type="Texture2D" uid="uid://cj1lx2y2l20kl" path="res://assets/textures/ModularFoodTextures/burrito.png" id="2_asxls"]
+[ext_resource type="ArrayMesh" uid="uid://chh0bo3yb5hy1" path="res://assets/models/ModularFoodModels/BurritoOptomized.obj" id="3_o00ag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88v0s"]
+albedo_texture = ExtResource("2_asxls")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfqal"]
+
+[node name="Burrito" unique_id=1546410034 instance=ExtResource("1_3nnru")]
+meal_name = "Burrito"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.71481943, 0, -0.2862397, 0, 0.695, 0, 0.2862397, 0, 0.71481943, 0, 0.31348014, 0)
+material_override = SubResource("StandardMaterial3D_88v0s")
+material_overlay = SubResource("ShaderMaterial_cfqal")
+mesh = ExtResource("3_o00ag")

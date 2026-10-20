@@ -1,37 +1,30 @@
 [gd_scene format=3 uid="uid://bbmodv87vgbe7"]
 
 [ext_resource type="Script" uid="uid://cyfxr2k71lnaq" path="res://scripts/tools/Fridge_storage.gd" id="1_wepfw"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8ojr3"]
-size = Vector3(1, 1.5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yckxo"]
-size = Vector3(2.3, 2.3, 2.2)
+[ext_resource type="ArrayMesh" uid="uid://ujwyeefn02f8" path="res://assets/models/KitchenFridgeBlender.obj" id="2_wepfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
-size = Vector3(1, 1.5, 1)
+size = Vector3(4.8, 6.6, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yckxo"]
+size = Vector3(5.7000003, 6.9, 6.1)
 
 [node name="FridgeStorageTest" type="StaticBody3D" unique_id=399528082]
 script = ExtResource("1_wepfw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1580669578]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_8ojr3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
+mesh = ExtResource("2_wepfw")
 
-[node name="Label" type="Label" parent="." unique_id=910055278]
-offset_right = 176.0
-offset_bottom = 23.0
-text = "chage this to whatever"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1225919234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3578122, 0.100000024)
+shape = SubResource("BoxShape3D_8ojr3")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1848725022]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1908909326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35, 1.7499999)
 shape = SubResource("BoxShape3D_yckxo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1225919234]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_8ojr3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -4,13 +4,12 @@ extends Control
 var filled := 0
 
 func _update_visual(texture):
-	print(icons[filled])
+	#print(icons[filled])
 	icons[filled].texture = texture
 	filled += 1
 
 func _reset_visual():
-	print("reseting...")
+	#print("reseting...")
 	filled = 0
 	for icon in icons:
-		print("icon: ", icon)
 		icon.texture = null

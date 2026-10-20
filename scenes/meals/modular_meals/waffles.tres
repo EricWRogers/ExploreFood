@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://c3m16pih80wr7"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_oyexe"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_nfyp5"]
+[ext_resource type="PackedScene" uid="uid://bncpijm52nd73" path="res://scenes/meals/modular_meals/waffles.tscn" id="2_q47de"]
+
+[sub_resource type="Resource" id="Resource_q47de"]
+script = ExtResource("1_oyexe")
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_ea0kq"]
+script = ExtResource("1_oyexe")
+food_group = 3
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_nfyp5")
+food_group_array = Array[ExtResource("1_oyexe")]([SubResource("Resource_q47de"), SubResource("Resource_ea0kq")])
+product = ExtResource("2_q47de")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

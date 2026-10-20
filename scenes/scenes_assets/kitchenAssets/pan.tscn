@@ -34,6 +34,9 @@ cook_timer_time = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575, 0)
 shape = SubResource("CylinderShape3D_6xqmx")
 
+[node name="SpawnMarker" type="Marker3D" parent="CookerBase" unique_id=1428262190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36, 0, 0)
+
 [node name="PlayerDetectArea" type="Area3D" parent="." unique_id=566642371]
 
 [node name="PlayerDetectCollisionShape" type="CollisionShape3D" parent="PlayerDetectArea" unique_id=2142119142]

@@ -142,10 +142,11 @@ func state_pay(_delta: float) -> void:
 		timer.stop()
 		
 		for money in range(tip):
-			var coin = GOLD_COIN.instantiate()
-			get_tree().current_scene.add_child(coin)
-			coin.global_position = coin_spawn.global_position
-			await get_tree().create_timer(1.0).timeout
+			pass
+			#var coin = GOLD_COIN.instantiate()
+			#get_tree().current_scene.add_child(coin)
+			#coin.global_position = coin_spawn.global_position
+			#await get_tree().create_timer(1.0).timeout
 		change_state(State.LEAVE)
 
 func state_leave(_delta : float):

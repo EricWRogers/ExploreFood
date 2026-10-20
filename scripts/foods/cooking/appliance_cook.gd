@@ -6,7 +6,7 @@ extends Node
 @export var station_ui : Control
 @export_group("Appliance Settings")
 @export var cook_group_application_type: BaseFood.CookGroup
-@export var spawn_position: Vector3 = Vector3(0, 0, 0)
+@onready var spawn_position: Marker3D = $SpawnMarker
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
@@ -20,6 +20,9 @@ var capacity: int = 0
 @export var cook_timer_time: float = 1
 @onready var timer_ui: TextureProgressBar = $"../SubViewport/TextureProgressBar"
 @onready var cook_timer: Timer = $CookTimer
+
+#spawn point
+
 
 ##ingredient settings
 var saved_prep_group: BaseFood.PrepGroup
@@ -133,7 +136,7 @@ func find_recipe():
 	print("spawning: ", recipe_spawn)
 	
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-	recipe_spawn.position = Vector3(0, 2, 0.1) 
+	recipe_spawn.position = spawn_position.global_position
 	
 	#empty list for next batch
 	collected_ingredient_tags.clear()
@@ -156,7 +159,7 @@ func cook_ingredient():
 	ingredient_spawn.prep_group = saved_prep_group
 #
 	##TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-	ingredient_spawn.position = Vector3(0, 2, 0.1)
+	ingredient_spawn.position = spawn_position.global_position
 	#
 	##clear vars for next ingredient
 	is_full = false
@@ -211,7 +214,7 @@ func return_ingredients():
 		ingredient_spawn.prep_group = saved_prep_group
 
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-		ingredient_spawn.position = Vector3(0, 2, 0.1)
+		ingredient_spawn.position = spawn_position.global_position
 		
 		current_ingredient = null
 	

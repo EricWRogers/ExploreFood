@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://36roovdukhsx"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_fraqw"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_eg8yd"]
+[ext_resource type="PackedScene" uid="uid://lvc0whqd41yq" path="res://scenes/meals/modular_meals/burrito.tscn" id="2_w30ju"]
+
+[sub_resource type="Resource" id="Resource_w30ju"]
+resource_name = "Tortillia"
+script = ExtResource("1_fraqw")
+prep_group = 2
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_s8ycn"]
+resource_name = "Grilled Diced Meat"
+script = ExtResource("1_fraqw")
+food_group = 1
+prep_group = 1
+cook_group = 2
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_eg8yd")
+recipe_name = "Burrito"
+food_group_array = Array[ExtResource("1_fraqw")]([SubResource("Resource_w30ju"), SubResource("Resource_s8ycn")])
+product = ExtResource("2_w30ju")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

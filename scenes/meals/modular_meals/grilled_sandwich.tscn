@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dd2ajql81fcw7"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_nxxef"]
+[ext_resource type="Texture2D" uid="uid://dn5gqdhmnbdli" path="res://assets/textures/ModularFoodTextures/breadslice.png" id="2_pikrr"]
+[ext_resource type="ArrayMesh" uid="uid://rsqfjg8run5y" path="res://assets/models/ModularFoodModels/BreadSliceOptomized.obj" id="3_l4pvv"]
+[ext_resource type="Texture2D" uid="uid://dhneie6b35ej5" path="res://assets/textures/ModularFoodTextures/meatslice.png" id="4_wtftg"]
+[ext_resource type="ArrayMesh" uid="uid://c6awxnvwufe3i" path="res://assets/models/ModularFoodModels/DeliSlice.obj" id="5_41i2v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pu40"]
+albedo_texture = ExtResource("2_pikrr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilnai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qph7e"]
+albedo_texture = ExtResource("4_wtftg")
+
+[node name="Grilled Sandwich" unique_id=1546410034 instance=ExtResource("1_nxxef")]
+meal_name = "Grilled Sandwich"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(-0.7489064, 0, 0.66267586, 0, 1, 0, -0.66267586, 0, -0.7489064, 0.047311485, 0, -0.07291031)
+material_override = SubResource("StandardMaterial3D_7pu40")
+material_overlay = SubResource("ShaderMaterial_ilnai")
+mesh = ExtResource("3_l4pvv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="1" unique_id=678166916]
+transform = Transform3D(-0.6150609, 0, -0.9952889, 0, 1.8378386, 0, 0.9952889, 0, -0.6150609, -0.04319042, 0.13332224, -0.07291031)
+material_override = SubResource("StandardMaterial3D_qph7e")
+material_overlay = SubResource("ShaderMaterial_ilnai")
+mesh = ExtResource("5_41i2v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2" unique_id=421026111]
+transform = Transform3D(-0.7489064, 0, 0.66267586, 0, 1, 0, -0.66267586, 0, -0.7489064, 0.047311485, 0.25173324, -0.07291031)
+material_override = SubResource("StandardMaterial3D_7pu40")
+material_overlay = SubResource("ShaderMaterial_ilnai")
+mesh = ExtResource("3_l4pvv")

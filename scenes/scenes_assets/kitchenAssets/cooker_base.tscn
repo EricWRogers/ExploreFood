@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://c8ke6sc3oty3q"]
 
 [ext_resource type="Script" uid="uid://cq8vnlnt8uay8" path="res://scripts/foods/cooking/appliance_cook.gd" id="1_tvo66"]
+[ext_resource type="Resource" uid="uid://cx1ycynesieg8" path="res://scenes/meals/modular_meals/bacon.tres" id="2_54ac1"]
 [ext_resource type="Resource" uid="uid://b7ra2ggefpxow" path="res://scripts/resources/dubious_food.tres" id="2_fwbir"]
-[ext_resource type="Resource" uid="uid://grdk5jioofas" path="res://scripts/resources/burger.tres" id="2_ovor5"]
-[ext_resource type="Resource" uid="uid://c1xm8jeivs62g" path="res://scripts/resources/Buttered_Rolls.tres" id="3_rhex8"]
-[ext_resource type="Resource" uid="uid://wxo4evyi3x2e" path="res://scripts/resources/Chicken_And_Waffle_Recipe.tres" id="4_si5fi"]
+[ext_resource type="Resource" uid="uid://soba4nbm4me7" path="res://scenes/meals/modular_meals/bread_rolls.tres" id="3_3pwyn"]
+[ext_resource type="Resource" uid="uid://36roovdukhsx" path="res://scenes/meals/modular_meals/burrito.tres" id="4_ggjk7"]
+[ext_resource type="Resource" uid="uid://cxmy8e157iq2p" path="res://scenes/meals/modular_meals/buttered_toast.tres" id="5_5icyh"]
 [ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="5_e5vul"]
+[ext_resource type="Resource" uid="uid://dngjig56gq0x0" path="res://scenes/meals/modular_meals/grilled_sandwich.tres" id="6_icuxn"]
+[ext_resource type="Resource" uid="uid://dol3b5aakj7wq" path="res://scenes/meals/modular_meals/grilled_steak.tres" id="7_ocusm"]
+[ext_resource type="Resource" uid="uid://bl3lgk3fmnjv6" path="res://scenes/meals/modular_meals/kebabs.tres" id="8_tbugp"]
+[ext_resource type="Resource" uid="uid://dqgtj4q1np8wj" path="res://scenes/meals/modular_meals/loaf_of_bread.tres" id="9_iqx6s"]
+[ext_resource type="Resource" uid="uid://c3m16pih80wr7" path="res://scenes/meals/modular_meals/waffles.tres" id="10_u830p"]
 
 [node name="CookerBase" type="Area3D" unique_id=1039243692]
 script = ExtResource("1_tvo66")
-recipes = Array[Resource]([ExtResource("2_ovor5"), ExtResource("3_rhex8"), ExtResource("4_si5fi"), ExtResource("5_e5vul"), ExtResource("2_fwbir")])
+recipes = Array[Resource]([ExtResource("2_54ac1"), ExtResource("3_3pwyn"), ExtResource("4_ggjk7"), ExtResource("5_5icyh"), ExtResource("6_icuxn"), ExtResource("7_ocusm"), ExtResource("8_tbugp"), ExtResource("9_iqx6s"), ExtResource("10_u830p"), ExtResource("5_e5vul"), ExtResource("2_fwbir")])
 
 [node name="CookTimer" type="Timer" parent="." unique_id=707757955]
 one_shot = true
