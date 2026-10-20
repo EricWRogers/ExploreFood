@@ -83,13 +83,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0007934571, 0.12435151, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
-[node name="CookerBase" parent="." unique_id=1039243692 instance=ExtResource("2_mv8nq")]
+[node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("2_mv8nq")]
+station_ui = NodePath("../SubViewport2/StationUI")
 cook_group_application_type = 1
 cook_timer_time = 16.0
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020165916, 0.17500003, 0.16500027)
 shape = SubResource("BoxShape3D_klsck")
+
+[node name="SpawnMarker" type="Marker3D" parent="CookerBase" unique_id=846745714]
+transform = Transform3D(0.14285715, 0, 0, 0, 0.14285715, 0, 0, 0, 0.14285715, -0.5957144, 0.35714287, 0)
 
 [node name="PlayerDetectArea" type="Area3D" parent="." unique_id=436615403]
 

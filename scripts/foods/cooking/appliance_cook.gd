@@ -6,7 +6,7 @@ extends Node
 @export var station_ui : Control
 @export_group("Appliance Settings")
 @export var cook_group_application_type: BaseFood.CookGroup
-@export var spawn_position: Vector3 = Vector3(0, 0, 0)
+@onready var spawn_position: Marker3D = $SpawnMarker
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
@@ -21,9 +21,13 @@ var capacity: int = 0
 @onready var timer_ui: TextureProgressBar = $"../SubViewport/TextureProgressBar"
 @onready var cook_timer: Timer = $CookTimer
 
+#spawn point
+
+
 ##ingredient settings
 var saved_prep_group: BaseFood.PrepGroup
 var current_ingredient: PackedScene
+var collected_ingredients : Array[PackedScene]
 var current_ingredient_tags: Array
 var collected_ingredient_tags : Array[Array]
 
@@ -42,6 +46,9 @@ func _process(_delta: float) -> void:
 		is_cooking = true
 		find_recipe()
 		#start_cook_timer()
+		
+	if (Input.is_action_just_pressed("Reset") && is_in_range):
+		return_ingredients()
 
 ##Takes ingredient thrown at it. Won't start until player presses "cook" (f)
 func _on_body_entered(body: Node3D) -> void:
@@ -55,6 +62,7 @@ func _on_body_entered(body: Node3D) -> void:
 			else:
 				station_ui._update_visual(body.icon)
 				capacity += 1
+			
 			#set ingredient to cooked
 			body.cook_group = cook_group_application_type
 			
@@ -64,6 +72,7 @@ func _on_body_entered(body: Node3D) -> void:
 			current_ingredient_tags = [body.food_group, body.prep_group, body.cook_group]
 			
 			#add ingredient data to main array
+			collected_ingredients.append(current_ingredient)
 			collected_ingredient_tags.append(current_ingredient_tags)
 			
 			#delete obj
@@ -127,17 +136,17 @@ func find_recipe():
 	print("spawning: ", recipe_spawn)
 	
 	#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-	recipe_spawn.position = Vector3(0, 2, 0.1) 
+	recipe_spawn.position = spawn_position.global_position
 	
 	#empty list for next batch
 	collected_ingredient_tags.clear()
+	station_ui._reset_visual()
 	chosen_recipe = null
 	is_cooking = false
 	return
 
 func cook_ingredient():
 	var ingredient_spawn: Node
-	station_ui._reset_visual()
 	#spawn back cooked ingredient
 	var current_scene = get_tree().current_scene
 	ingredient_spawn = current_ingredient.instantiate()
@@ -150,13 +159,14 @@ func cook_ingredient():
 	ingredient_spawn.prep_group = saved_prep_group
 #
 	##TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
-	ingredient_spawn.position = Vector3(0, 2, 0.1)
+	ingredient_spawn.position = spawn_position.global_position
 	#
 	##clear vars for next ingredient
 	is_full = false
 	is_cooking = false
 	timer_ui.visible = false
 	current_ingredient = null
+	station_ui._reset_visual()
 
 func start_cook_timer():
 	#set timer time
@@ -189,6 +199,27 @@ func start_cook_timer():
 	#is_full = false
 	#ingredient = null
 
+func return_ingredients():
+	#spawn back prepped ingredient
+	for ingredient in collected_ingredients:
+		var ingredient_spawn: Node
+		#spawn back prepped ingredient
+		var current_scene = get_tree().root
+		ingredient_spawn = ingredient.instantiate()
+		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		current_scene.add_child(ingredient_spawn)
+		print ("spawning: ", ingredient_spawn)
+		
+		#add tags
+		ingredient_spawn.prep_group = saved_prep_group
+
+		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
+		ingredient_spawn.position = spawn_position.global_position
+		
+		current_ingredient = null
+	
+	station_ui._reset_visual()
+	
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
