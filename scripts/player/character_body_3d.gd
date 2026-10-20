@@ -118,6 +118,8 @@ var hotbar: Array = []
 
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var power_up_timer: Timer = $PowerUpTimer
+@onready var shadow_ray: RayCast3D = $ShadowRay
+@onready var shadow: Sprite3D = $ShadowRay/Shadow
 
 
 # ─────────────────────────────────────────
@@ -232,7 +234,22 @@ func _physics_process(delta: float) -> void:
 
 	if recipe_open:
 		return
+	
+	if shadow_ray.is_colliding():
+		shadow.show()
 
+		var ground_point: Vector3 = shadow_ray.get_collision_point()
+		shadow.global_position = ground_point
+
+		var distance: float = absf(global_position.y - ground_point.y)
+
+		var t: float = clampf(distance / 12, 0.0, 1.0)
+		var scale_factor: float = lerpf(2.0, 0.5, t)
+
+		shadow.scale = Vector3.ONE * scale_factor
+	else:
+		shadow.hide()
+		
 	_handle_gameplay_inputs()
 	_update_consuming()
 	_update_gravity(delta)
@@ -413,7 +430,6 @@ func _update_movement(delta: float) -> void:
 		head.transform.basis
 		* Vector3(input_dir.x, 0.0, input_dir.y)
 	).normalized()
-
 	if is_dashing:
 		velocity.x = dash_direction.x * dash_speed
 		velocity.z = dash_direction.z * dash_speed
