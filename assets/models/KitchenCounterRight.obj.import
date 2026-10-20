@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsgfuca1hkaem"
+path="res://.godot/imported/KitchenCounterRight.obj-1cd474ae461f6eacf3eef4c8cbbe7f79.mesh"
+
+[deps]
+
+files=["res://.godot/imported/KitchenCounterRight.obj-1cd474ae461f6eacf3eef4c8cbbe7f79.mesh"]
+
+source_file="res://assets/models/KitchenCounterRight.obj"
+dest_files=["res://.godot/imported/KitchenCounterRight.obj-1cd474ae461f6eacf3eef4c8cbbe7f79.mesh", "res://.godot/imported/KitchenCounterRight.obj-1cd474ae461f6eacf3eef4c8cbbe7f79.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
