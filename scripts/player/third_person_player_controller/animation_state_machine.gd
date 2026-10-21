@@ -39,7 +39,7 @@ func _crouch_walk():
 func _cliff_hang():
 	state_machine.travel("moveset_cliff_hang")
 func _cliff_climb():
-	state_machine.travel("moveset_cliff_climb")
+	state_machine.travel("moveset_cliff_climbing")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "moveset/idle_break":

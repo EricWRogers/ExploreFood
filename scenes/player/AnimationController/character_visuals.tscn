@@ -5,7 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_17ier"]
 height = 0.5029373
-radius = 0.118652344
+radius = 0.26464844
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lg1c5"]
 
@@ -113,12 +113,22 @@ target_position = Vector3(0, 0, 1)
 [node name="EyelevelDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=1235037224]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5149316, 0)
-target_position = Vector3(0, 0, 1)
+target_position = Vector3(0, 0, 0.5)
 
 [node name="InGeometryDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=164477436]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1452773, 0)
-target_position = Vector3(0, 0, 1)
+target_position = Vector3(0, 0, 0.5)
+
+[node name="ClimbingDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=1929105354]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07097092, 0)
+target_position = Vector3(0, 0, 0.5)
+
+[node name="ClimbedUpDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=689359488]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.114489466, -0.20371838)
+target_position = Vector3(0, 0, 0.5)
 
 [node name="DistanceCheck" type="Area3D" parent="Doremi/CliffDetection" unique_id=1894477600]
 unique_name_in_owner = true
@@ -153,6 +163,11 @@ one_shot = true
 wait_time = 1.2
 one_shot = true
 
+[node name="LedgeGrabTimer" type="Timer" parent="." unique_id=827529985]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
 [node name="Steps" type="GPUParticles3D" parent="." unique_id=1147791364]
 unique_name_in_owner = true
 emitting = false
@@ -181,3 +196,4 @@ draw_pass_1 = SubResource("SphereMesh_buqam")
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="timeout" from="IdleBreak" to="." method="_on_idle_break_timeout"]
 [connection signal="timeout" from="Cliff" to="." method="_on_cliff_timeout"]
+[connection signal="timeout" from="LedgeGrabTimer" to="." method="_on_ledge_grab_timer_timeout"]

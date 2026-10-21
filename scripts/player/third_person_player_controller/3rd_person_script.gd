@@ -31,6 +31,7 @@ var jump_was_cut := false
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_dir := Vector3.BACK
 var _gravity := -30.0
+var _gravity_retain := -30.0
 var cliff_detect := true
 var not_moving := true
 var balancing_cliff_edge := false
@@ -43,6 +44,11 @@ var overhead_detect := false
 var eyelevel_detect := false
 var ingeo_detect := false
 var hanging := false
+var edge_snap := false
+var currently_snapping := false
+var climbing := false
+var can_ledge_grab := false
+var ledge_timer_switch := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -50,7 +56,7 @@ var hanging := false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	_gravity_retain = _gravity
 func _input(event: InputEvent) -> void:
 	pass
 	#if event is InputEventKey or event is InputEventMouse:
@@ -63,15 +69,30 @@ func _input(event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_camera_input_direction = event.screen_relative
-
+func snap_to_edge():
+	#snaps character to wall so they dont float#
+	if hanging:
+		if !edge_snap:
+			edge_snap == true
+			velocity = _skin.global_transform.basis.z.normalized() * 50
+			currently_snapping = true
+func freeze_velocity():
+	velocity = Vector3.ZERO
 func _physics_process(delta: float) -> void:
 	#Cliff Hang Stuff#
 	
+	if currently_snapping and is_on_wall():
+		freeze_velocity()
 	var area_detect = %DistanceCheck.has_overlapping_bodies()
 	overhead_detect = %OverheadDetect.is_colliding()
 	eyelevel_detect = %EyelevelDetect.is_colliding()
 	ingeo_detect = %InGeometryDetect.is_colliding()
-	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect:
+	if Input.is_action_just_pressed("Forward") and hanging:
+		climbing = true
+		velocity.y = 3
+		_skin._cliff_climb()
+	#detect the edge and freeze movement and gravity#
+	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect and not climbing  and can_ledge_grab:
 		var normal: Vector3 = %InGeometryDetect.get_collision_normal()
 		var target_angle: float = atan2(normal.x, normal.z) + PI
 		_skin.global_rotation.y = lerp_angle(
@@ -79,11 +100,23 @@ func _physics_process(delta: float) -> void:
 		target_angle,
 		cliff_hang_rot * delta
 		)
-		velocity.y = 0
+		velocity = Vector3.ZERO
 		_gravity = 0
 		_skin._cliff_hang()
 		hanging = true
-	
+		snap_to_edge()
+		print("climbing")
+	#climb up the edge#
+	if climbing == true and not %ClimbingDetect.is_colliding():
+		if %ClimbedUpDetect.is_colliding():
+			climbing = false
+			hanging = false
+			_gravity = _gravity_retain
+		else:
+			#hanging = false
+			velocity = _skin.global_transform.basis.z.normalized() * 2
+			currently_snapping = false
+			#_gravity = _gravity_retain
 	var controller_direction := Input.get_vector(
 	"look_left",
 	"look_right",
@@ -179,9 +212,9 @@ func _physics_process(delta: float) -> void:
 				target_velocity,
 				air_control * delta
 			)
-	#if !hanging:
-	velocity.x = horizontal_velocity.x
-	velocity.z = horizontal_velocity.z
+	if !hanging:
+		velocity.x = horizontal_velocity.x
+		velocity.z = horizontal_velocity.z
 
 	if Input.is_action_just_pressed("Jump"):
 		jump_buffer_timer = jump_buffer_time
@@ -198,6 +231,7 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		is_starting_jump = true
 		velocity.y = jump_impulse
+		%LedgeGrabTimer.start()
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 		jump_was_cut = false
@@ -257,11 +291,12 @@ func _physics_process(delta: float) -> void:
 		_last_movement_dir,
 		Vector3.UP
 	)
-	_skin.global_rotation.y = lerp_angle(
-		_skin.rotation.y,
-		target_angle,
-		rotation_speed * delta
-	)
+	if !hanging:
+		_skin.global_rotation.y = lerp_angle(
+			_skin.rotation.y,
+			target_angle,
+			rotation_speed * delta
+		)
 
 	if Input.is_action_just_pressed("Interact"):
 		%Doremi.mult._spoon()
@@ -275,6 +310,7 @@ func _physics_process(delta: float) -> void:
 	elif !is_on_floor() and velocity.y < 0.0:
 		_skin._fall()
 	elif is_on_floor():
+		can_ledge_grab = false
 		var ground_speed := Vector2(velocity.x, velocity.z).length()
 		if crouching and ground_speed < 0.1 and not just_landed:
 			_skin._crouch()
@@ -314,3 +350,7 @@ func _on_cliff_timeout() -> void:
 		$IdleBreak.stop()
 		$Cliff.stop()
 		_skin._cliff()
+
+
+func _on_ledge_grab_timer_timeout() -> void:
+	can_ledge_grab = true
