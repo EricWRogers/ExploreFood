@@ -168,10 +168,116 @@ surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
 script = ExtResource("13_hvl47")
 spawn = NodePath("../Marker3D")
+spawn_points = [null]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
 shape = SubResource("BoxShape3D_qlq6c")
+
+[node name="Marker3D" type="Marker3D" parent="WaterFloor" unique_id=812024854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18221784, 64.58929, -9.569529)
+
+[node name="Marker3D32" type="Marker3D" parent="WaterFloor" unique_id=1122263248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.382097, 71.9112, 51.766533)
+
+[node name="Marker3D33" type="Marker3D" parent="WaterFloor" unique_id=1711870085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.339874, 71.9112, 34.64261)
+
+[node name="Marker3D34" type="Marker3D" parent="WaterFloor" unique_id=2015576613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.122307, 62.44659, -12.930771)
+
+[node name="Marker3D35" type="Marker3D" parent="WaterFloor" unique_id=1992511159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.937786, 63.81197, -51.811577)
+
+[node name="Marker3D2" type="Marker3D" parent="WaterFloor" unique_id=199401663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.057714, 66.440765, 22.661314)
+
+[node name="Marker3D3" type="Marker3D" parent="WaterFloor" unique_id=162274620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.444664, 61.745796, -3.0995216)
+
+[node name="Marker3D4" type="Marker3D" parent="WaterFloor" unique_id=386897138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.84143, 65.52037, -3.0995216)
+
+[node name="Marker3D5" type="Marker3D" parent="WaterFloor" unique_id=1461252447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.086105, 65.52037, -36.134605)
+
+[node name="Marker3D6" type="Marker3D" parent="WaterFloor" unique_id=1302533893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.64081, 63.559673, -79.39793)
+
+[node name="Marker3D7" type="Marker3D" parent="WaterFloor" unique_id=370605818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.759464, 63.559673, -101.199905)
+
+[node name="Marker3D8" type="Marker3D" parent="WaterFloor" unique_id=1093561856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.372177, 65.35453, -107.01929)
+
+[node name="Marker3D9" type="Marker3D" parent="WaterFloor" unique_id=840685417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.68121, 63.559673, -158.33046)
+
+[node name="Marker3D10" type="Marker3D" parent="WaterFloor" unique_id=1099156795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.147308, 64.07302, -201.3389)
+
+[node name="Marker3D11" type="Marker3D" parent="WaterFloor" unique_id=963834257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.787186, 64.07302, -201.3389)
+
+[node name="Marker3D12" type="Marker3D" parent="WaterFloor" unique_id=1811595334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.02788, 88.87775, -198.95122)
+
+[node name="Marker3D13" type="Marker3D" parent="WaterFloor" unique_id=1266199878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.18265, 65.533295, -147.5265)
+
+[node name="Marker3D14" type="Marker3D" parent="WaterFloor" unique_id=2107792381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.03299, 65.533295, -109.30616)
+
+[node name="Marker3D15" type="Marker3D" parent="WaterFloor" unique_id=1139268518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.42497, 65.533295, -50.39377)
+
+[node name="Marker3D16" type="Marker3D" parent="WaterFloor" unique_id=454833798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.5938, 65.533295, 3.015482)
+
+[node name="Marker3D17" type="Marker3D" parent="WaterFloor" unique_id=1629768872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.74387, 65.533295, 72.2513)
+
+[node name="Marker3D18" type="Marker3D" parent="WaterFloor" unique_id=1803917560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.70354, 67.41173, 120.86061)
+
+[node name="Marker3D19" type="Marker3D" parent="WaterFloor" unique_id=644962256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.633926, 80.40687, 138.32689)
+
+[node name="Marker3D20" type="Marker3D" parent="WaterFloor" unique_id=1383966299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.799694, 80.40687, 129.635)
+
+[node name="Marker3D21" type="Marker3D" parent="WaterFloor" unique_id=583840754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.399376, 80.40687, 138.64838)
+
+[node name="Marker3D22" type="Marker3D" parent="WaterFloor" unique_id=815405403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.18413, 80.40687, 111.01134)
+
+[node name="Marker3D23" type="Marker3D" parent="WaterFloor" unique_id=684690920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.95857, 80.40687, 88.69958)
+
+[node name="Marker3D24" type="Marker3D" parent="WaterFloor" unique_id=699264228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.6013, 80.40687, 64.225555)
+
+[node name="Marker3D25" type="Marker3D" parent="WaterFloor" unique_id=956159798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.85884, 64.46666, 25.544085)
+
+[node name="Marker3D26" type="Marker3D" parent="WaterFloor" unique_id=2068764848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.5095, 64.46666, 1.8127041)
+
+[node name="Marker3D27" type="Marker3D" parent="WaterFloor" unique_id=153573996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -181.6768, 69.19767, -23.348713)
+
+[node name="Marker3D28" type="Marker3D" parent="WaterFloor" unique_id=1707357072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.03297, 87.04576, -71.46585)
+
+[node name="Marker3D29" type="Marker3D" parent="WaterFloor" unique_id=956848645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.82074, 79.604546, -123.11484)
+
+[node name="Marker3D30" type="Marker3D" parent="WaterFloor" unique_id=265168033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.42713, 67.37109, -154.99178)
+
+[node name="Marker3D31" type="Marker3D" parent="WaterFloor" unique_id=320606978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.03873, 65.71768, -189.41745)
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
 transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, 5.520287, 0.49479103, 0)
@@ -181,7 +287,7 @@ active = true
 in_kitchen = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1756919948]
-transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 1.9073486e-06)
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, -0.001134634, 0.0043320656, -0.0020751953)
 navigation_mesh = SubResource("NavigationMesh_us1kw")
 
 [node name="TempBridge3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=887330641]
