@@ -37,7 +37,7 @@ func _crouch():
 func _crouch_walk():
 	state_machine.travel("moveset_crouch_walk")
 func _cliff_hang():
-	state_machine.travel("moveset_curl_break")
+	state_machine.travel("moveset_cliff_hang")
 func _cliff_climb():
 	state_machine.travel("moveset_cliff_climb")
 

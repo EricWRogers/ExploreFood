@@ -81,6 +81,7 @@ func _physics_process(delta: float) -> void:
 		)
 		velocity.y = 0
 		_gravity = 0
+		_skin._cliff_hang()
 		hanging = true
 	
 	var controller_direction := Input.get_vector(
