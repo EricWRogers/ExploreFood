@@ -32,7 +32,14 @@ func _curl():
 	state_machine.travel("moveset_curl")
 func _curl_break():
 	state_machine.travel("moveset_curl_break")
-
+func _crouch():
+	state_machine.travel("moveset_crouch_stand")
+func _crouch_walk():
+	state_machine.travel("moveset_crouch_walk")
+func _cliff_hang():
+	state_machine.travel("moveset_curl_break")
+func _cliff_climb():
+	state_machine.travel("moveset_cliff_climb")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "moveset/idle_break":

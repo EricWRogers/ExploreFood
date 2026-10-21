@@ -4,11 +4,12 @@ extends CharacterBody3D
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
 
 @export_group("Movement")
-@export var move_speed := 2.6
+@export var move_speed := 3.5
 @export var sprint_speed := 10.6
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
 @export var air_control := 8.0
+@export var crouch_speed := 2.6
 
 @export_group("Jump")
 @export var jump_impulse := 12.0
@@ -31,6 +32,7 @@ var balancing_cliff_edge := false
 var breaking_idle := false
 var fall_start_height := 0.0
 var fell_far_enough := false
+var crouching := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -74,15 +76,19 @@ func _physics_process(delta: float) -> void:
 	move_direction = move_direction.normalized()
 
 	var is_sprinting := Input.is_action_pressed("Sprint")
+	if Input.is_action_just_pressed("crouch"):
+		crouching = !crouching
 	var was_grounded := is_on_floor()
 
-	if is_sprinting and was_grounded and move_direction.length() > 0.1:
+	if is_sprinting and was_grounded and move_direction.length() > 0.1 and not crouching:
 		%Steps.emitting = true
 	else:
 		%Steps.emitting = false
 
 	var target_speed := move_speed
-	if is_sprinting:
+	if crouching:
+		target_speed = crouch_speed
+	elif is_sprinting:
 		target_speed = sprint_speed
 
 	var target_velocity := move_direction * target_speed
@@ -209,19 +215,27 @@ func _physics_process(delta: float) -> void:
 		_skin._fall()
 	elif is_on_floor():
 		var ground_speed := Vector2(velocity.x, velocity.z).length()
-
-		if is_sprinting and ground_speed > 0.1:
-			_skin._run()
-		elif ground_speed > 0.1:
-			_skin._walk()
+		if crouching and ground_speed < 0.1 and not just_landed:
+			_skin._crouch()
+			$IdleBreak.stop()
+			$Cliff.stop()
+		elif crouching:
+			_skin._crouch_walk()
+			$IdleBreak.stop()
+			$Cliff.stop()
 		else:
-			if !not_moving:
-				not_moving = true
-				$IdleBreak.start()
-				$Cliff.start()
+			if is_sprinting and ground_speed > 0.1:
+				_skin._run()
+			elif ground_speed > 0.1:
+				_skin._walk()
+			else:
+				if !not_moving:
+					not_moving = true
+					$IdleBreak.start()
+					$Cliff.start()
 
-			if !balancing_cliff_edge and !breaking_idle:
-				_skin._idle()
+				if !balancing_cliff_edge and !breaking_idle:
+					_skin._idle()
 
 
 func _on_idle_break_timeout() -> void:
