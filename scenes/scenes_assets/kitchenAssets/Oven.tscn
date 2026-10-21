@@ -1,15 +1,25 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dykj1lhd6211t" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
+[ext_resource type="Texture2D" uid="uid://cyyjnk3qaq1he" path="res://assets/textures/Kitchen Textures/Stove/KitchenStove_Mat.png" id="1_yrvie"]
+[ext_resource type="Texture2D" uid="uid://bugvx5l8saakk" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveMetallic_Mat.png" id="2_80qjy"]
 [ext_resource type="ArrayMesh" uid="uid://cix102ki0p2t1" path="res://assets/models/KitchenStoveDoor.obj" id="2_hjg1s"]
 [ext_resource type="PackedScene" uid="uid://c8ke6sc3oty3q" path="res://scenes/scenes_assets/kitchenAssets/cooker_base.tscn" id="2_mv8nq"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_mv8nq"]
+[ext_resource type="Texture2D" uid="uid://cnib4eer0bf4s" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveDoor_Mat.png" id="4_77wul"]
+[ext_resource type="Texture2D" uid="uid://jk21dh2rub0p" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveDoorMetallic_Mat.png" id="5_4y2aq"]
 [ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/UI/station_ui.tscn" id="5_wh7oj"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="6_fhgkx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju0od"]
-cull_mode = 2
-albedo_color = Color(0.50869215, 0.6694631, 0.7503281, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjvnc"]
+albedo_texture = ExtResource("1_yrvie")
+metallic = 1.0
+metallic_texture = ExtResource("2_80qjy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufixx"]
+albedo_texture = ExtResource("4_77wul")
+metallic = 1.0
+metallic_texture = ExtResource("5_4y2aq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q026u"]
 size = Vector3(0.24987793, 0.24980164, 0.25478458)
@@ -68,16 +78,16 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="OvenMeshInstance" type="MeshInstance3D" parent="." unique_id=1227565413]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tjvnc")
 mesh = ExtResource("1_knho3")
-surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 
 [node name="Node3D" type="Node3D" parent="OvenMeshInstance" unique_id=2139419905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5771024, 1.524207)
 
 [node name="OvenDoorMeshInstance" type="MeshInstance3D" parent="OvenMeshInstance/Node3D" unique_id=1088584033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5771024, -1.524207)
+material_override = SubResource("StandardMaterial3D_ufixx")
 mesh = ExtResource("2_hjg1s")
-surface_material_override/0 = SubResource("StandardMaterial3D_ju0od")
 
 [node name="OvenCollisionShape" type="CollisionShape3D" parent="." unique_id=102896497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0007934571, 0.12435151, 0.0051751137)

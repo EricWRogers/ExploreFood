@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cel2u71811rgo"]
+
+[ext_resource type="Texture2D" uid="uid://baw5xndyxgrs6" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterSink_Mat.png" id="1_kpq7c"]
+[ext_resource type="ArrayMesh" uid="uid://cilsyxdtt5jeg" path="res://assets/models/KitchenCounterSink.obj" id="2_dw5ni"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3e0l"]
+cull_mode = 2
+albedo_texture = ExtResource("1_kpq7c")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrfb1"]
+size = Vector3(2.175, 1.56, 1.35)
+
+[node name="Counter_Sink" type="StaticBody3D" unique_id=1894709827]
+
+[node name="CounterSink_MeshInstance" type="MeshInstance3D" parent="." unique_id=2139505558]
+material_override = SubResource("StandardMaterial3D_e3e0l")
+mesh = ExtResource("2_dw5ni")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1575303128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06922537, 0.77200484, -0.06666416)
+shape = SubResource("BoxShape3D_nrfb1")

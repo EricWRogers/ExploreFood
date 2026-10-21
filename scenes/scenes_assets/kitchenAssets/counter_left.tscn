@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://1fk3womvmyn"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtbsjgwel71k7" path="res://assets/models/KitchenCounterLeft.obj" id="1_6cies"]
+[ext_resource type="Texture2D" uid="uid://dxin3xdl4ojxj" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterLeft_Mat.png" id="1_mxqni"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw20g"]
+albedo_texture = ExtResource("1_mxqni")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+size = Vector3(2.38, 1.355, 1.445)
+
+[node name="Counter_Left" type="StaticBody3D" unique_id=1894709827]
+
+[node name="CounterL_MeshInstance" type="MeshInstance3D" parent="." unique_id=2139505558]
+material_override = SubResource("StandardMaterial3D_aw20g")
+mesh = ExtResource("1_6cies")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CounterL_MeshInstance" unique_id=1239672923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123616636, 0.65472066, -0.085873425)
+shape = SubResource("BoxShape3D_qdy4q")

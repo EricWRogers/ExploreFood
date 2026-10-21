@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="4_f8w4h"]
 [ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="5_qvun3"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
-[ext_resource type="ArrayMesh" uid="uid://dfl6p31i6nbix" path="res://assets/models/KitchenSink.obj" id="8_dbylq"]
+[ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="8_b22uh"]
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="9_amfce"]
+[ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="9_d0w18"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
 [ext_resource type="PackedScene" uid="uid://bf5lrlvyh6g" path="res://scenes/scenes_assets/kitchenAssets/pan.tscn" id="10_amfce"]
+[ext_resource type="PackedScene" uid="uid://1fk3womvmyn" path="res://scenes/scenes_assets/kitchenAssets/counter_left.tscn" id="10_d0w18"]
+[ext_resource type="PackedScene" uid="uid://256jfh5xv3qy" path="res://scenes/scenes_assets/kitchenAssets/counter_right.tscn" id="11_bllhf"]
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="11_hh3th"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="12_ftecv"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="13_ftecv"]
@@ -18,9 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="15_dbylq"]
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dbylq"]
-size = Vector3(0.45599997, 6.305, 0.22699998)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
 size = Vector3(12, 12.400001, 1)
@@ -65,26 +65,27 @@ transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, -2
 transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -5.5450726, 1.4035091, 0.29700872)
 
 [node name="RollingPin" parent="Kitchen/Appliances" unique_id=655305112 instance=ExtResource("14_hyaf1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.455525, 1.2541721, 0.90000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.455525, 1.472338, 0.90000004)
 
 [node name="CuttingBoard" parent="Kitchen/Appliances" unique_id=1280753785 instance=ExtResource("15_dbylq")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.300279, 1.238797, 0.90000004)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.300279, 1.4895194, 0.90000004)
 
 [node name="Non-FunctionalModels" type="Node3D" parent="Kitchen" unique_id=853716661]
 
 [node name="ScriptlessOven" parent="Kitchen/Non-FunctionalModels" unique_id=2124001694 instance=ExtResource("8_piak7")]
 transform = Transform3D(-7, 0, -6.119594e-07, 0, 7, 0, 6.119594e-07, 0, -7, -5, -0.6, 0.6)
 
-[node name="Sink" type="StaticBody3D" parent="Kitchen/Non-FunctionalModels" unique_id=920345652]
-transform = Transform3D(-9, 0, -1.3589622e-06, 0, 9, 0, 1.3589622e-06, 0, -9, 1.0999999, -0.70000005, 0.39999932)
+[node name="Kitchen_Fridge" parent="Kitchen/Non-FunctionalModels" unique_id=660093401 instance=ExtResource("8_b22uh")]
+transform = Transform3D(-0.755, 0, -1.1400183e-07, 0, 0.755, 0, 1.1400183e-07, 0, -0.755, 4.791402, -0.5659251, 0.6244928)
 
-[node name="SinkMeshInstance" type="MeshInstance3D" parent="Kitchen/Non-FunctionalModels/Sink" unique_id=1220407780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
-mesh = ExtResource("8_dbylq")
+[node name="Counter_Sink" parent="Kitchen/Non-FunctionalModels" unique_id=1894709827 instance=ExtResource("9_d0w18")]
+transform = Transform3D(-1.785, 0, -2.695275e-07, 0, 1.785, 0, 2.695275e-07, 0, -1.785, 1.2121902, -0.5658369, 0.33375835)
 
-[node name="SinkCollisionShape" type="CollisionShape3D" parent="Kitchen/Non-FunctionalModels/Sink" unique_id=193832129]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0069999695, 0, -0.010500006)
-shape = SubResource("BoxShape3D_dbylq")
+[node name="Counter_Left" parent="Kitchen/Non-FunctionalModels" unique_id=1240225138 instance=ExtResource("10_d0w18")]
+transform = Transform3D(-1.78, 0, -1.5561254e-07, 0, 1.78, 0, 1.5561254e-07, 0, -1.78, -8.611372, -0.52734447, 0.35307527)
+
+[node name="Counter_Right" parent="Kitchen/Non-FunctionalModels" unique_id=361079195 instance=ExtResource("11_bllhf")]
+transform = Transform3D(-1.78, 0, -1.5561254e-07, 0, 1.78, 0, 1.5561254e-07, 0, -1.78, -12.171607, -0.5183782, 0.36286485)
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("4_f8w4h")]
 transform = Transform3D(0.19051516, 0, 0.98168427, 0, 1, 0, -0.98168427, 0, 0.19051516, 25.877405, 0, -14.380052)
@@ -123,7 +124,6 @@ navigation_mesh = SubResource("NavigationMesh_gtwna")
 [node name="DinerLayout" parent="NavigationRegion3D" unique_id=721603879 instance=ExtResource("1_w7wq8")]
 
 [node name="CustomerPoints" type="Node3D" parent="." unique_id=1109892348]
-visible = false
 
 [node name="Marker3D" type="Marker3D" parent="CustomerPoints" unique_id=1112117755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.347313, 0, -24.148005)

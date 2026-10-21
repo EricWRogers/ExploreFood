@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l4jab3jwklou"]
 
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_lddjm"]
-[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="2_86ql8"]
+[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/ui/cook_book.tscn" id="2_86ql8"]
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="3_urqlb"]
 [ext_resource type="PackedScene" uid="uid://bf5lrlvyh6g" path="res://scenes/scenes_assets/kitchenAssets/pan.tscn" id="5_kjh5u"]
 [ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="6_royyw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_kjh5u"]
 [ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="10_royyw"]
 [ext_resource type="PackedScene" uid="uid://bidfxni6ld5mh" path="res://scenes/scenes_assets/kitchenAssets/rolling_pin.tscn" id="11_5a4i3"]
+[ext_resource type="PackedScene" uid="uid://bbmodv87vgbe7" path="res://scenes/tools/Fridge_storageTest.tscn" id="11_evare"]
 
 [sub_resource type="Environment" id="Environment_1amvd"]
 
@@ -74,3 +75,6 @@ transform = Transform3D(0.10089885, 0, 0.9948967, 0, 1, 0, -0.9948967, 0, 0.1008
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1694733256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
+
+[node name="FridgeStorageTest" parent="." unique_id=399528082 instance=ExtResource("11_evare")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.1, 0, 11.400001)

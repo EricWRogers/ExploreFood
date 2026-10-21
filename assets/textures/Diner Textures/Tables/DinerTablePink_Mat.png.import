@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdhabnn0xuv0i"
-path="res://.godot/imported/KitchenFridgeDoor_Mat.png-73908a1bd67030637dfb424cb7dbde03.ctex"
+uid="uid://dw0tn6vp1ofmf"
+path="res://.godot/imported/DinerTablePink_Mat.png-a95f282f0a71f3a2c00f1cd5af4d1737.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Kitchen Textures/Fridge/KitchenFridgeDoor_Mat.png"
-dest_files=["res://.godot/imported/KitchenFridgeDoor_Mat.png-73908a1bd67030637dfb424cb7dbde03.ctex"]
+source_file="res://assets/textures/Diner Textures/Tables/DinerTablePink_Mat.png"
+dest_files=["res://.godot/imported/DinerTablePink_Mat.png-a95f282f0a71f3a2c00f1cd5af4d1737.ctex"]
 
 [params]
 
