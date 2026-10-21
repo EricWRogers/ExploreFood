@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var sprint_speed := 10.6
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
+@export var cliff_hang_rot := 50
 @export var air_control := 8.0
 @export var crouch_speed := 2.6
 
@@ -38,6 +39,10 @@ var fall_start_height := 0.0
 var fell_far_enough := false
 var crouching := false
 var sprint_toggle := false
+var overhead_detect := false
+var eyelevel_detect := false
+var ingeo_detect := false
+var hanging := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -60,6 +65,24 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative
 
 func _physics_process(delta: float) -> void:
+	#Cliff Hang Stuff#
+	
+	var area_detect = %DistanceCheck.has_overlapping_bodies()
+	overhead_detect = %OverheadDetect.is_colliding()
+	eyelevel_detect = %EyelevelDetect.is_colliding()
+	ingeo_detect = %InGeometryDetect.is_colliding()
+	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect:
+		var normal: Vector3 = %InGeometryDetect.get_collision_normal()
+		var target_angle: float = atan2(normal.x, normal.z) + PI
+		_skin.global_rotation.y = lerp_angle(
+		_skin.rotation.y,
+		target_angle,
+		cliff_hang_rot * delta
+		)
+		velocity.y = 0
+		_gravity = 0
+		hanging = true
+	
 	var controller_direction := Input.get_vector(
 	"look_left",
 	"look_right",
@@ -155,7 +178,7 @@ func _physics_process(delta: float) -> void:
 				target_velocity,
 				air_control * delta
 			)
-
+	#if !hanging:
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
 
