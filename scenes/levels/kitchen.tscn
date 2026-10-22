@@ -2641,6 +2641,7 @@ texture_albedo_3 = Color(0.51005334, 0.62, 0.44640002, 1)
 texture_scale_2 = 0.9
 texture_scale_3 = 0.9
 metadata/_custom_type_script = "uid://cddg1xr5hye1d"
+metadata/Surface = "Grass"
 
 [node name="Chunk (-1, -1)" type="MeshInstance3D" parent="MarchingSquaresTerrain" unique_id=298786175 node_paths=PackedStringArray("terrain_system")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)

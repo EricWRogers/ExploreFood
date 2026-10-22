@@ -41,6 +41,9 @@ func _cliff_hang():
 func _cliff_climb():
 	state_machine.travel("moveset_cliff_climbing")
 
+func _footstep():
+	get_parent().footstep()
+
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "moveset/idle_break":
 		print("yo")

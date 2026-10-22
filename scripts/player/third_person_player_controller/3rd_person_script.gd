@@ -93,7 +93,7 @@ func _process(_delta: float) -> void:
 	new_scale = 1.0 - (new_scale / max_spring_length)
 	new_scale = clamp(new_scale, 0.0, 1.0)
 	decal.size = Vector3(new_scale, 1.0, new_scale)
-	
+func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
 	#Cliff Hang Stuff#
 	
