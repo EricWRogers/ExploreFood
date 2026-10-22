@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 		_skin._cliff_hang()
 		hanging = true
 		snap_to_edge()
-		print("climbing")
+		#print("climbing")
 	#climb up the edge#
 	if climbing == true and not %ClimbingDetect.is_colliding():
 		if %ClimbedUpDetect.is_colliding():
@@ -163,7 +163,7 @@ func _physics_process(delta: float) -> void:
 	var is_sprint_joypad := Input.is_action_just_pressed("Sprint")
 	if _current_input_device == "joypad" and is_sprint_joypad:
 		sprint_toggle = !sprint_toggle
-		print(sprint_toggle)
+		#print(sprint_toggle)
 	elif _current_input_device == "keyboard_mouse":
 		sprint_toggle = false
 	if Input.is_action_just_pressed("crouch"):
