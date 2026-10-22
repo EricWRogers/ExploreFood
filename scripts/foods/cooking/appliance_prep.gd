@@ -45,11 +45,11 @@ func _on_body_entered(body: Node3D) -> void:
 		if (body.prep_group != 0):
 			print("can't take, it's already been prepped!")
 		else:
-			if capacity >= 6:
+			if station_ui.filled >= station_ui.capacity:
 				return
 			else:
 				station_ui._update_visual(body.icon)
-				capacity += 1
+
 			#take ingredient data
 			saved_cook_group = body.cook_group
 			current_ingredient = load(body.scene_file_path)
@@ -90,6 +90,7 @@ func prep_all():
 	#clear vars for next ingredient
 	is_full = false
 	is_prepping = false
+	collected_ingredients.clear()
 	station_ui._reset_visual()
 
 func start_prep_timer():
@@ -144,6 +145,8 @@ func return_ingredients():
 		ingredient_spawn.position = spawn_position.global_position
 		
 		current_ingredient = null
+	#clear data
+	collected_ingredients.clear()
 	station_ui._reset_visual()
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:

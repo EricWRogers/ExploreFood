@@ -1,6 +1,7 @@
 extends Control
 
 @export var icons: Array[TextureRect] = []
+@export var capacity: int = 6
 var filled := 0
 
 func _update_visual(texture):
