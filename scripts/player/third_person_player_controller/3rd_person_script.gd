@@ -42,23 +42,32 @@ var crouching := false
 var sprint_toggle := false
 var overhead_detect := false
 var eyelevel_detect := false
-var ingeo_detect := false
+var ingeo_detect_left := false
+var ingeo_detect_right := false
 var hanging := false
 var edge_snap := false
 var currently_snapping := false
 var climbing := false
 var can_ledge_grab := false
 var ledge_timer_switch := false
+var max_spring_length : float
+var climb_started := false
+var climbing_detect_started := false
+var climbing_detect_has_collided := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
 @onready var _camera_pivot: Node3D = %CameraPivot
+@onready var shadow: SpringArm3D = $Shadow
+@onready var decal: Decal = $Shadow/Decal
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_gravity_retain = _gravity
-func _input(event: InputEvent) -> void:
-	pass
+	max_spring_length = shadow.spring_length
+#func _input(event: InputEvent) -> void:
+	#pass
 	#if event is InputEventKey or event is InputEventMouse:
 		#_current_input_device = "keyboard_mouse"
 		#print("keyboardmouse")
@@ -78,6 +87,13 @@ func snap_to_edge():
 			currently_snapping = true
 func freeze_velocity():
 	velocity = Vector3.ZERO
+func _process(_delta: float) -> void:
+	#print(breaking_idle)
+	var new_scale: float = shadow.get_hit_length()
+	new_scale = 1.0 - (new_scale / max_spring_length)
+	new_scale = clamp(new_scale, 0.0, 1.0)
+	decal.size = Vector3(new_scale, 1.0, new_scale)
+	
 func _physics_process(delta: float) -> void:
 	#Cliff Hang Stuff#
 	
@@ -86,13 +102,16 @@ func _physics_process(delta: float) -> void:
 	var area_detect = %DistanceCheck.has_overlapping_bodies()
 	overhead_detect = %OverheadDetect.is_colliding()
 	eyelevel_detect = %EyelevelDetect.is_colliding()
-	ingeo_detect = %InGeometryDetect.is_colliding()
-	if Input.is_action_just_pressed("Forward") and hanging:
+	ingeo_detect_left = %InGeometryDetectL.is_colliding()
+	ingeo_detect_right = %InGeometryDetectR.is_colliding()
+	if Input.is_action_just_pressed("Forward") and hanging and !climb_started:
 		climbing = true
+		climb_started = true
+		climbing_detect_has_collided = false
 		velocity.y = 3
 		_skin._cliff_climb()
 	#detect the edge and freeze movement and gravity#
-	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect and not climbing  and can_ledge_grab:
+	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect_left and ingeo_detect_right and not climbing  and can_ledge_grab:
 		var normal: Vector3 = %InGeometryDetect.get_collision_normal()
 		var target_angle: float = atan2(normal.x, normal.z) + PI
 		_skin.global_rotation.y = lerp_angle(
@@ -106,17 +125,28 @@ func _physics_process(delta: float) -> void:
 		hanging = true
 		snap_to_edge()
 		#print("climbing")
+	#elif not ingeo_detect_left or not ingeo_detect_right:
+		#climbing = false
+		#hanging = false
+		#_gravity = _gravity_retain
+		#currently_snapping = false
 	#climb up the edge#
-	if climbing == true and not %ClimbingDetect.is_colliding():
+	if climbing:
+		if %ClimbingDetect.is_colliding():
+			climbing_detect_has_collided = true
+
+		if not climbing_detect_has_collided or %ClimbingDetect.is_colliding():
+			velocity.y = 3
+		else:
+			velocity = _skin.global_transform.basis.z.normalized() * 2
+			currently_snapping = false
+
 		if %ClimbedUpDetect.is_colliding():
 			climbing = false
 			hanging = false
-			_gravity = _gravity_retain
-		else:
-			#hanging = false
-			velocity = _skin.global_transform.basis.z.normalized() * 2
 			currently_snapping = false
-			#_gravity = _gravity_retain
+			_gravity = _gravity_retain
+			climb_started = false
 	var controller_direction := Input.get_vector(
 	"look_left",
 	"look_right",
@@ -228,7 +258,7 @@ func _physics_process(delta: float) -> void:
 
 	var is_starting_jump := false
 
-	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
+	if jump_buffer_timer > 0.0 and coyote_timer > 0.0 and not climb_started:
 		is_starting_jump = true
 		velocity.y = jump_impulse
 		%LedgeGrabTimer.start()

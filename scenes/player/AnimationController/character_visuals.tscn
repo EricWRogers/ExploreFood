@@ -87,6 +87,19 @@ scale_min = 0.099999994
 scale_max = 0.29999998
 scale_curve = SubResource("CurveTexture_moldy")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_buqam"]
+radius = 0.1
+
+[sub_resource type="Gradient" id="Gradient_17ier"]
+offsets = PackedFloat32Array(0, 0.50711745, 0.8096085)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.8235294, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg1c5"]
+gradient = SubResource("Gradient_17ier")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Player3D" type="CharacterBody3D" unique_id=1594877716]
 script = ExtResource("1_17ier")
 air_control = 32.0
@@ -115,9 +128,19 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5149316, 0)
 target_position = Vector3(0, 0, 0.5)
 
-[node name="InGeometryDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=164477436]
+[node name="InGeometryDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=649951165]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1452773, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.145, 0)
+target_position = Vector3(0, 0, 0.5)
+
+[node name="InGeometryDetectL" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=259697303]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13657984, 1.1452773, 0)
+target_position = Vector3(0, 0, 0.5)
+
+[node name="InGeometryDetectR" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=1242998644]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13122669, 1.1452773, 0)
 target_position = Vector3(0, 0, 0.5)
 
 [node name="ClimbingDetect" type="RayCast3D" parent="Doremi/CliffDetection" unique_id=1929105354]
@@ -170,6 +193,7 @@ one_shot = true
 
 [node name="Steps" type="GPUParticles3D" parent="." unique_id=1147791364]
 unique_name_in_owner = true
+layers = 2
 emitting = false
 lifetime = 0.3
 explosiveness = 0.94
@@ -178,6 +202,7 @@ draw_pass_1 = SubResource("SphereMesh_6g1ex")
 
 [node name="LandHigh" type="GPUParticles3D" parent="." unique_id=2097747465]
 unique_name_in_owner = true
+layers = 2
 emitting = false
 amount = 16
 one_shot = true
@@ -187,11 +212,23 @@ draw_pass_1 = SubResource("SphereMesh_buqam")
 
 [node name="LandLow" type="GPUParticles3D" parent="." unique_id=1731410421]
 unique_name_in_owner = true
+layers = 2
 emitting = false
 one_shot = true
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_veuuv")
 draw_pass_1 = SubResource("SphereMesh_buqam")
+
+[node name="Shadow" type="SpringArm3D" parent="." unique_id=47157216]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.1, 0)
+shape = SubResource("SphereShape3D_buqam")
+spring_length = 6.2
+
+[node name="Decal" type="Decal" parent="Shadow" unique_id=1301756846]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 3.8295505e-09, -0.08760989)
+size = Vector3(1, 0.6314209, 1)
+texture_albedo = SubResource("GradientTexture2D_lg1c5")
+cull_mask = 1048573
 
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="timeout" from="IdleBreak" to="." method="_on_idle_break_timeout"]
