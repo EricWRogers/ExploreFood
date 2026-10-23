@@ -299,8 +299,8 @@ func _handle_global_inputs() -> void:
 			Manager.belly += 50
 			update_cash()
 
-	if Input.is_action_just_pressed("recipe_book"):
-		recipe_open = not recipe_open
+	#if Input.is_action_just_pressed("recipe_book"):
+	#	recipe_open = not recipe_open
 
 		if recipe_open:
 			Manager.recipe_book.appear()

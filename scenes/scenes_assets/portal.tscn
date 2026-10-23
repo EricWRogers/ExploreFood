@@ -371,6 +371,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
 
 [node name="Portalframe" type="MeshInstance3D" parent="." unique_id=34904202]
 transform = Transform3D(-3.4531997e-08, 0, -0.79, 0, 0.79, 0, 0.79, 0, -3.4531997e-08, 0, 0, 0)
+visible = false
 mesh = ExtResource("1_70wcr")
 surface_material_override/0 = SubResource("StandardMaterial3D_4itmh")
 

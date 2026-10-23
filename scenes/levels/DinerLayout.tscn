@@ -157,16 +157,19 @@ material = SubResource("StandardMaterial3D_qyu0r")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="bar stools" unique_id=1801947817]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.49694908, -0.007972717, -0.7012047)
+visible = false
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="bar stools" unique_id=336538617]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.63912195, -0.007972717, -0.56352156)
+visible = false
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="bar stools" unique_id=911760323]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.73939127, -0.007972717, -0.40039694)
+visible = false
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 
@@ -192,6 +195,7 @@ material = SubResource("StandardMaterial3D_qyu0r")
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="bar stools" unique_id=1335298632]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.739, -0.008, -0.4)
+visible = false
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 
@@ -218,7 +222,7 @@ height = 0.55625
 sides = 20
 
 [node name="Boss Hole" type="CSGBox3D" parent="Diner_walls" unique_id=2077338880]
-transform = Transform3D(0.24999999, 0, 0.43301272, 0, 0.5, 0, -0.43301272, 0, 0.24999999, 0.745, 0, -1.02)
+transform = Transform3D(0.24999999, 0, 0.43301272, 0, 0.5, 0, -0.43301272, 0, 0.24999999, 0.745, 0, -1.3146114)
 operation = 2
 size = Vector3(0.4, 1, 1)
 
@@ -242,23 +246,28 @@ sides = 35
 material = SubResource("StandardMaterial3D_hlwvo")
 
 [node name="kitchen_frontwall" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=1577984489]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08529053, 0.10000001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.085290514, 0.10000001)
 radius = 1.0
 height = 0.45686036
 sides = 35
 material = SubResource("StandardMaterial3D_eyprv")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="kitchen_frontwall" unique_id=707547834]
-transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 1.32, 0, 0.18125004, 0.05868254)
+transform = Transform3D(1.3999999, 0, 0, 0, 1, 0, 0, 0, 1.32, 0, 0.18125004, 0.05868254)
 operation = 2
 radius = 0.7
 height = 0.6625
 sides = 35
 
 [node name="CSGBox3D" type="CSGBox3D" parent="kitchen_frontwall" unique_id=1644532185]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050000012, 0.10000003, 0.6000001)
+transform = Transform3D(0.84348077, 0, 0.5371595, 0, 1, 0, -0.5371595, 0, 0.84348077, 0.51007104, -0.038530245, -0.094266854)
 operation = 2
-size = Vector3(2.2, 0.8, 1.7)
+size = Vector3(1.4611328, 0.57451785, 0.53212893)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="kitchen_frontwall" unique_id=361930013]
+transform = Transform3D(0.7789754, 0, 0.6270549, 0, 1, 0, -0.6270549, 0, 0.7789754, -0.64945585, 0.10925294, -0.7240276)
+operation = 2
+size = Vector3(0.25462952, 0.30668944, 0.43193358)
 
 [node name="Window" type="CSGBox3D" parent="kitchen_frontwall" unique_id=1352011163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.1481544, -0.79999995)

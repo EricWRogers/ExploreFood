@@ -35,7 +35,7 @@ material_override = SubResource("StandardMaterial3D_brgbp")
 mesh = ExtResource("2_hsky0")
 
 [node name="KnifeMeshInstance" type="MeshInstance3D" parent="." unique_id=1904940315]
-transform = Transform3D(0.030241208, 0.50767356, -0.86101866, -0.99893004, 0.045510203, -0.008251321, 0.03499625, 0.8603468, 0.5085066, -0.25115484, 0.10280843, -0.1060385)
+transform = Transform3D(-0.022542614, -0.634827, -0.7723255, -0.99893, 0.0455102, -0.008251323, 0.04038686, 0.77131295, -0.63517344, 0.14884517, 0.10280843, -0.3060385)
 material_override = SubResource("StandardMaterial3D_ig8nn")
 mesh = ExtResource("1_vxd2y")
 

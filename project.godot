@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/MarchingSquaresTerrain/plugin.cfg", "res
 folder_colors={
 "res://addons/": "orange",
 "res://assets/": "red",
+"res://data/": "teal",
 "res://scenes/": "blue",
 "res://scripts/": "green"
 }

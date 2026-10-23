@@ -7,14 +7,16 @@
 albedo_texture = ExtResource("1_cxab1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxab1"]
-size = Vector3(2.065, 1.355, 1.445)
+size = Vector3(3.3899999, 1.9399999, 2.03)
 
 [node name="Counter_Middle" type="StaticBody3D" unique_id=272959201]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 
 [node name="CounterMid_MeshInstance" type="MeshInstance3D" parent="." unique_id=1981518265]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_aw20g")
 mesh = ExtResource("1_jvnp4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CounterMid_MeshInstance" unique_id=2050435377]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007998884, 0.65472066, -0.085873425)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2050435377]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -0.0054988447, 0.97722155, 0.011626587)
 shape = SubResource("BoxShape3D_cxab1")
