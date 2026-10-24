@@ -76,14 +76,21 @@ func start_prep_timer():
 	timer_ui.visible = true
 	station_ui.visible = false
 	prep_timer.wait_time = prep_timer_time
+	
+	##animation start
+	
+	
 	prep_timer.start()
 
 func _on_prep_timer_timeout() -> void:
 	print("prep timeout!")
-	#animation here
-	prep_all()
 	timer_ui.visible = false
 	station_ui.visible = true
+	
+	##animation end
+	
+	
+	prep_all()
 
 ##preps all ingredients in array
 func prep_all():

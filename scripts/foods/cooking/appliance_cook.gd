@@ -87,14 +87,21 @@ func start_cook_timer():
 	timer_ui.visible = true
 	station_ui.visible = false
 	cook_timer.wait_time = cook_timer_time
+	
+	##animation start 
+	
+	
 	cook_timer.start()
 
 func _on_cook_timer_timeout() -> void:
 	print("prep timeout!")
-	##animation here
-	find_recipe()
 	timer_ui.visible = false
 	station_ui.visible = true
+	
+	##animation end
+	
+	
+	find_recipe()
 
 func find_recipe():
 	print("cooking...")
