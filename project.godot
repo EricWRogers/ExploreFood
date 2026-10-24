@@ -22,6 +22,7 @@ Manager="*uid://bjr5b12cf4cru"
 DialogueManager="*uid://bl2apitv64di7"
 PauseMenu="*uid://cxpyqdm2553yb"
 CyclopsAutoload="*uid://4siqre3jhe80"
+ForkCollectableVisual="*uid://dv8efstm83wou"
 
 [display]
 
