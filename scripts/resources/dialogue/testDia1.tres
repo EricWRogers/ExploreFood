@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="1_ieom1"]
 
 [resource]
+resource_name = "tutorial_reminder"
 script = ExtResource("1_ieom1")
-dialogue_lines = Array[String](["Did you get lost? The portal is right there!", "Go make me a Meat Pie!"])
+dialogue_lines = Array[String](["Are you intimidated by how magnificent this kitchen is? ", "Well don't be! As long as you make something tasty!"])
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

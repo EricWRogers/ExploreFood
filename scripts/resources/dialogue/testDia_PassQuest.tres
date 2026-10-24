@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="1_vqkf1"]
 
 [resource]
+resource_name = "Pass Quest 1"
 script = ExtResource("1_vqkf1")
 dialogue_lines = Array[String](["Oh my! Oh Yes!!", "This is perfection! Utterly delightful!", "I knew you were the right chef to kidnap", "As a reward, why don't you go exploring the next world", "I'm thrilled to see what you cook up next!"])
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

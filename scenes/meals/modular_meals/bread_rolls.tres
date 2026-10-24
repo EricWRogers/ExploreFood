@@ -5,14 +5,22 @@
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_uyqt5"]
 
 [sub_resource type="Resource" id="Resource_5iiqw"]
+resource_name = "chopped baked bread"
 script = ExtResource("1_fp0nx")
 prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_f6com"]
+resource_name = "Butter"
+script = ExtResource("1_fp0nx")
+food_group = 3
 cook_group = 1
 metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 
 [resource]
 script = ExtResource("2_uyqt5")
 recipe_name = "Bread Rolls"
-food_group_array = Array[ExtResource("1_fp0nx")]([SubResource("Resource_5iiqw")])
+food_group_array = Array[ExtResource("1_fp0nx")]([SubResource("Resource_5iiqw"), SubResource("Resource_f6com")])
 product = ExtResource("2_428ns")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

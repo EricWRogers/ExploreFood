@@ -155,24 +155,6 @@ transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="bar stools" unique_id=1801947817]
-transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.49694908, -0.007972717, -0.7012047)
-visible = false
-use_collision = true
-material = SubResource("StandardMaterial3D_qyu0r")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="bar stools" unique_id=336538617]
-transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.63912195, -0.007972717, -0.56352156)
-visible = false
-use_collision = true
-material = SubResource("StandardMaterial3D_qyu0r")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="bar stools" unique_id=911760323]
-transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, -0.73939127, -0.007972717, -0.40039694)
-visible = false
-use_collision = true
-material = SubResource("StandardMaterial3D_qyu0r")
-
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="bar stools" unique_id=1774931461]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.11, -0.008, -0.85)
 use_collision = true
@@ -190,12 +172,6 @@ material = SubResource("StandardMaterial3D_qyu0r")
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="bar stools" unique_id=1313947364]
 transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.639, -0.008, -0.564)
-use_collision = true
-material = SubResource("StandardMaterial3D_qyu0r")
-
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="bar stools" unique_id=1335298632]
-transform = Transform3D(0.049999982, 0, 0, 0, 0.02599999, 0, 0, 0, 0.049999982, 0.739, -0.008, -0.4)
-visible = false
 use_collision = true
 material = SubResource("StandardMaterial3D_qyu0r")
 

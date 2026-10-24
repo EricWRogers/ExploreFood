@@ -660,7 +660,7 @@ func pickup_food() -> void:
 		Manager.inventory.append(food_scene)
 
 	update_slots(empty_slot)
-	update_held_item(item_id)
+	#update_held_item(item_id)
 
 
 func dropthrow() -> void:
