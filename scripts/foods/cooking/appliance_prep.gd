@@ -4,15 +4,20 @@ extends Node
 ##
 @export_group("Appliance Settings")
 @export var prep_group_application_type: BaseFood.PrepGroup
-@onready var spawn_position: Marker3D = $SpawnMarker
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
 var is_prepping: bool = false
 var capacity: int = 0
 
-@export_category("UI")
+@export_group("UI and animation")
+@export var idle_model: Node3D
+@export var animation_model: Node3D
+@export var animation: AnimationPlayer
 @export var station_ui : Control
+@onready var spawn_position: Marker3D = $SpawnMarker
+#@onready var animation: AnimationPlayer = $"../AnimationPlayer"
+
 
 @export_group("Timer Settings")
 @export var prep_timer_time: float = 1
@@ -29,6 +34,8 @@ func _ready() -> void:
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
 	%Prompts.hide()
+	idle_model.visible = true
+	animation_model.visible = false
 
 func _process(_delta: float) -> void:
 	timer_ui.value = 100 / prep_timer.time_left
@@ -81,7 +88,10 @@ func start_prep_timer():
 	prep_timer.wait_time = prep_timer_time
 	
 	##animation start
-	
+	idle_model.visible = false
+	animation_model.visible = true
+	if (prep_group_application_type == BaseFood.PrepGroup.CHOPPED):
+		animation.play("Take 001")
 	
 	prep_timer.start()
 
@@ -91,7 +101,10 @@ func _on_prep_timer_timeout() -> void:
 	station_ui.visible = true
 	
 	##animation end
-	
+	idle_model.visible = true
+	animation_model.visible = false
+	if (prep_group_application_type == BaseFood.PrepGroup.CHOPPED):
+		animation.stop()
 	
 	prep_all()
 

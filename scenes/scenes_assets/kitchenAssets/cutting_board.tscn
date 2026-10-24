@@ -6,14 +6,18 @@
 [ext_resource type="ArrayMesh" uid="uid://bgje3pk16r2ta" path="res://assets/models/Cutting Board/CuttingBoard.obj" id="2_hsky0"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_uvd5x"]
 [ext_resource type="Texture2D" uid="uid://2q3s8dwuxoot" path="res://assets/textures/Kitchen Textures/Utensils/KitchenKnife_Mat.png" id="3_qp7m4"]
+[ext_resource type="PackedScene" uid="uid://c2jjg8cmacncq" path="res://assets/Animations/KitchenKnifeCutting.fbx" id="4_356eb"]
 [ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/UI/station_ui.tscn" id="4_vvgn3"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="5_xd5mj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brgbp"]
-albedo_texture = ExtResource("1_8mide")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig8nn"]
 albedo_texture = ExtResource("3_qp7m4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
+albedo_texture = ExtResource("3_qp7m4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brgbp"]
+albedo_texture = ExtResource("1_8mide")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klsck"]
 size = Vector3(1.6, 1, 2.4)
@@ -29,18 +33,31 @@ viewport_path = NodePath("SubViewport2")
 
 [node name="CuttingBoard" type="Node3D" unique_id=655305112]
 
+[node name="IdleKnife" type="Node3D" parent="." unique_id=1034146499]
+
+[node name="KnifeMeshInstance" type="MeshInstance3D" parent="IdleKnife" unique_id=1904940315]
+transform = Transform3D(-0.022542614, -0.634827, -0.7723255, -0.99893, 0.0455102, -0.008251323, 0.04038686, 0.77131295, -0.63517344, 0.14884517, 0.10280843, -0.3060385)
+material_override = SubResource("StandardMaterial3D_ig8nn")
+mesh = ExtResource("1_vxd2y")
+
+[node name="KitchenKnifeCutting" parent="." unique_id=723409340 instance=ExtResource("4_356eb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1.0000001, 0, 8.742278e-08, 0, -1, 0.42999998, 0.22999999, 0.16)
+
+[node name="KitchenKnife_Mesh" parent="KitchenKnifeCutting" index="0" unique_id=115545775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.00031713577, 0.0035292294, -0.00789183)
+material_override = SubResource("StandardMaterial3D_klsck")
+mesh = ExtResource("1_vxd2y")
+
 [node name="CuttingBoardMeshInstance" type="MeshInstance3D" parent="." unique_id=1058181148]
 transform = Transform3D(1.175, 0, 0, 0, 1.175, 0, 0, 0, 1.175, -5.9604645e-08, 0.05000003, -2.9802322e-08)
 material_override = SubResource("StandardMaterial3D_brgbp")
 mesh = ExtResource("2_hsky0")
 
-[node name="KnifeMeshInstance" type="MeshInstance3D" parent="." unique_id=1904940315]
-transform = Transform3D(-0.022542614, -0.634827, -0.7723255, -0.99893, 0.0455102, -0.008251323, 0.04038686, 0.77131295, -0.63517344, 0.14884517, 0.10280843, -0.3060385)
-material_override = SubResource("StandardMaterial3D_ig8nn")
-mesh = ExtResource("1_vxd2y")
-
-[node name="PrepperBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("1_8o83u")]
+[node name="PrepperBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("idle_model", "animation_model", "animation", "station_ui") instance=ExtResource("1_8o83u")]
 prep_group_application_type = 1
+idle_model = NodePath("../IdleKnife")
+animation_model = NodePath("../KitchenKnifeCutting")
+animation = NodePath("../KitchenKnifeCutting/AnimationPlayer")
 station_ui = NodePath("../SubViewport2/StationUI")
 
 [node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=1105606633]
@@ -138,3 +155,5 @@ texture = ExtResource("5_xd5mj")
 
 [connection signal="body_entered" from="PlayerDetectArea" to="PrepperBase" method="_on_player_detect_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectArea" to="PrepperBase" method="_on_player_detect_area_body_exited"]
+
+[editable path="KitchenKnifeCutting"]

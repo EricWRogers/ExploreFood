@@ -3,11 +3,9 @@ extends Node
 ##Applies cooking tag to ingredients placed inside
 ##if ingredients make a valid meal, it will output that meal instead
 ##
-@export var station_ui : Control
+
 @export_group("Appliance Settings")
 @export var cook_group_application_type: BaseFood.CookGroup
-@onready var spawn_position: Marker3D = $SpawnMarker
-@onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
 var is_cooking: bool
@@ -15,6 +13,15 @@ var is_cooking: bool
 
 @export_group("Saved Recipes")
 @export var recipes : Array[Resource]
+
+@export_group("UI and animation")
+@export var idle_mesh: MeshInstance3D
+@export var animation_mesh: Node3D
+@export var animation: AnimationPlayer
+@export var station_ui : Control
+@onready var spawn_position: Marker3D = $SpawnMarker
+@onready var player_detection: Area3D = $"../PlayerDetectArea"
+#@onready var animation: AnimationPlayer = $"../AnimationPlayer"
 
 @export_group("Timer Settings")
 @export var cook_timer_time: float = 1
@@ -90,7 +97,6 @@ func start_cook_timer():
 	
 	##animation start 
 	
-	
 	cook_timer.start()
 
 func _on_cook_timer_timeout() -> void:
@@ -99,7 +105,7 @@ func _on_cook_timer_timeout() -> void:
 	station_ui.visible = true
 	
 	##animation end
-	
+	animation.play("open_close")
 	
 	find_recipe()
 

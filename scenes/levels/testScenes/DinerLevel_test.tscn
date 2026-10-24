@@ -11,13 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="9_amfce"]
 [ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="9_d0w18"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
-[ext_resource type="PackedScene" uid="uid://bf5lrlvyh6g" path="res://scenes/scenes_assets/kitchenAssets/pan.tscn" id="10_amfce"]
 [ext_resource type="PackedScene" uid="uid://1fk3womvmyn" path="res://scenes/scenes_assets/kitchenAssets/counter_left.tscn" id="10_d0w18"]
 [ext_resource type="PackedScene" uid="uid://256jfh5xv3qy" path="res://scenes/scenes_assets/kitchenAssets/counter_right.tscn" id="11_bllhf"]
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="11_hh3th"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="12_ftecv"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="13_ftecv"]
-[ext_resource type="PackedScene" uid="uid://bidfxni6ld5mh" path="res://scenes/scenes_assets/kitchenAssets/rolling_pin.tscn" id="14_hyaf1"]
 [ext_resource type="PackedScene" uid="uid://dg1wwwka7nv2c" path="res://scenes/scenes_assets/kitchenAssets/cutting_board.tscn" id="15_dbylq"]
 [ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="15_ehwar"]
 [ext_resource type="Resource" uid="uid://bcfig0tge7q1u" path="res://scripts/resources/dialogue/testDia.tres" id="16_eml6s"]
@@ -91,14 +89,6 @@ environment = SubResource("Environment_8ojr3")
 
 [node name="Oven" parent="Kitchen/Appliances" unique_id=408695707 instance=ExtResource("7_7hvat")]
 transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, -6, -0.6, 0.5831165)
-
-[node name="Pan" parent="Kitchen/Appliances" unique_id=29644927 instance=ExtResource("10_amfce")]
-transform = Transform3D(-0.7871766, 0, 0.61672765, 0, 1, 0, -0.61672765, 0, -0.7871766, -5.5450726, 1.4035091, 0.29700872)
-visible = false
-
-[node name="RollingPin" parent="Kitchen/Appliances" unique_id=655305112 instance=ExtResource("14_hyaf1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.455525, 1.472338, 0.90000004)
-visible = false
 
 [node name="Counter_Right" parent="Kitchen/Appliances" unique_id=361079195 instance=ExtResource("11_bllhf")]
 transform = Transform3D(-0.025719592, 0, 0.9996692, 0, 1, 0, -0.9996692, 0, -0.025719592, -12.135128, -0.6, -3.8819323)
