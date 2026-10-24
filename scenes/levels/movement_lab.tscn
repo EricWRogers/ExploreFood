@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dfd47cc554yqi" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="4_v37vc"]
 [ext_resource type="Script" uid="uid://dmot4k5n7k0w6" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="5_20n0i"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="6_xeajp"]
+[ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="8_5bgta"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5666,97 +5667,209 @@ mesh_vector_data = SubResource("Resource_waa2y")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1147694828]
 transform = Transform3D(1, 0, 0, 0, 1.3907092e-07, 1, 0, -1, 1.3907092e-07, 0, 9, 0)
 
-[node name="Block_0" type="Node3D" parent="." unique_id=1916915812]
+[node name="Playground" type="Node3D" parent="." unique_id=245966797]
+
+[node name="Block_0" type="Node3D" parent="Playground" unique_id=1916915812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, -18)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_twt6u")
 
-[node name="Block_1" type="Node3D" parent="." unique_id=1651467921]
+[node name="Block_1" type="Node3D" parent="Playground" unique_id=1651467921]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 7, -13)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_jdk3d")
 
-[node name="Block_2" type="Node3D" parent="." unique_id=156214775]
+[node name="Block_2" type="Node3D" parent="Playground" unique_id=156214775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -11)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_trxqd")
 
-[node name="Block_3" type="Node3D" parent="." unique_id=746800507]
+[node name="Block_3" type="Node3D" parent="Playground" unique_id=746800507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -10)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_jxpgc")
 
-[node name="Block_4" type="Node3D" parent="." unique_id=945149017]
+[node name="Block_4" type="Node3D" parent="Playground" unique_id=945149017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 8, -7)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_qgsqh")
 
-[node name="Block_5" type="Node3D" parent="." unique_id=512905263]
+[node name="Block_5" type="Node3D" parent="Playground" unique_id=512905263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 10, -7)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_aoign")
 
-[node name="Block_6" type="Node3D" parent="." unique_id=1127398853]
+[node name="Block_6" type="Node3D" parent="Playground" unique_id=1127398853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 10, -6)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_5c1v1")
 
-[node name="Block_7" type="Node3D" parent="." unique_id=2064762936]
+[node name="Block_7" type="Node3D" parent="Playground" unique_id=2064762936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_t0xy1")
 
-[node name="Block_8" type="Node3D" parent="." unique_id=333020557]
+[node name="Block_8" type="Node3D" parent="Playground" unique_id=333020557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 11, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_d3y7i")
 
-[node name="Block_9" type="Node3D" parent="." unique_id=1837161749]
+[node name="Block_9" type="Node3D" parent="Playground" unique_id=1837161749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 17, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_ibpkh")
 
-[node name="Block_10" type="Node3D" parent="." unique_id=1373005711]
+[node name="Block_10" type="Node3D" parent="Playground" unique_id=1373005711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 11, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_mjqae")
 
-[node name="Block_11" type="Node3D" parent="." unique_id=1265700480]
+[node name="Block_11" type="Node3D" parent="Playground" unique_id=1265700480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 11, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_hahwy")
 
-[node name="Block_12" type="Node3D" parent="." unique_id=538365355]
+[node name="Block_12" type="Node3D" parent="Playground" unique_id=538365355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 23, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b4sp0")
 
-[node name="Block_13" type="Node3D" parent="." unique_id=971781223]
+[node name="Block_13" type="Node3D" parent="Playground" unique_id=971781223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 28, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_mda4k")
 
-[node name="Block_17" type="Node3D" parent="." unique_id=2038943976]
+[node name="Block_17" type="Node3D" parent="Playground" unique_id=2038943976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 27, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_a7sfm")
 
-[node name="Block_14" type="Node3D" parent="." unique_id=904727525]
+[node name="Block_14" type="Node3D" parent="Playground" unique_id=904727525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 29, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_agopi")
 
-[node name="Block_15" type="Node3D" parent="." unique_id=2117734099]
+[node name="Block_15" type="Node3D" parent="Playground" unique_id=2117734099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 29, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_iv6j5")
 
-[node name="Block_16" type="Node3D" parent="." unique_id=1203683001]
+[node name="Block_16" type="Node3D" parent="Playground" unique_id=1203683001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 27, -19)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_6nj25")
 
-[node name="Block_19" type="Node3D" parent="." unique_id=2024816500]
+[node name="Block_19" type="Node3D" parent="Playground" unique_id=2024816500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 30, -21)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_80e8w")
+
+[node name="Collectables" type="Node3D" parent="." unique_id=1016475271]
+
+[node name="ForkCollectable" parent="Collectables" unique_id=1627533786 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.495327, 8.534366, -10.530546)
+
+[node name="ForkCollectable2" parent="Collectables" unique_id=295614713 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.495327, 8.534366, -11.530546)
+
+[node name="ForkCollectable3" parent="Collectables" unique_id=1239433543 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.495327, 8.534366, -12.530546)
+
+[node name="ForkCollectable10" parent="Collectables" unique_id=491136035 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.560537, 8.534366, -10.504284)
+
+[node name="ForkCollectable11" parent="Collectables" unique_id=711167219 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.560537, 8.534366, -10.504284)
+
+[node name="ForkCollectable12" parent="Collectables" unique_id=791283129 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.560537, 8.534366, -10.504284)
+
+[node name="ForkCollectable13" parent="Collectables" unique_id=112091670 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.560537, 10.041958, -9.864465)
+
+[node name="ForkCollectable14" parent="Collectables" unique_id=144151080 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.560537, 10.870452, -9.032313)
+
+[node name="ForkCollectable15" parent="Collectables" unique_id=702016658 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23.560537, 11.552168, -7.925474)
+
+[node name="ForkCollectable16" parent="Collectables" unique_id=1943026570 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 11.552168, -0.61926264)
+
+[node name="ForkCollectable17" parent="Collectables" unique_id=1704442793 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 13.552168, -0.61926264)
+
+[node name="ForkCollectable18" parent="Collectables" unique_id=740897805 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 15.552168, -0.61926264)
+
+[node name="ForkCollectable19" parent="Collectables" unique_id=828911381 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 17.552168, -0.61926264)
+
+[node name="ForkCollectable20" parent="Collectables" unique_id=1324065494 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.553669, 30.552168, -16.619263)
+
+[node name="ForkCollectable21" parent="Collectables" unique_id=1198066427 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.553669, 30.552168, -17.619263)
+
+[node name="ForkCollectable22" parent="Collectables" unique_id=1269810585 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.553669, 30.552168, -15.619263)
+
+[node name="ForkCollectable23" parent="Collectables" unique_id=1630108984 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.553669, 30.552168, -15.619263)
+
+[node name="ForkCollectable24" parent="Collectables" unique_id=362478742 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.553669, 30.552168, -16.619263)
+
+[node name="ForkCollectable25" parent="Collectables" unique_id=147033796 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.553669, 30.552168, -17.619263)
+
+[node name="ForkCollectable26" parent="Collectables" unique_id=728073280 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 30.552168, -17.619263)
+
+[node name="ForkCollectable27" parent="Collectables" unique_id=101807447 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 30.552168, -16.619263)
+
+[node name="ForkCollectable28" parent="Collectables" unique_id=287122531 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20.553669, 30.552168, -15.619263)
+
+[node name="ForkCollectable29" parent="Collectables" unique_id=1038300108 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.93409, 34.55217, -19.818201)
+
+[node name="ForkCollectable30" parent="Collectables" unique_id=570874985 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.598254, 34.55217, -18.779018)
+
+[node name="ForkCollectable31" parent="Collectables" unique_id=2059067947 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.174775, 34.55217, -17.801775)
+
+[node name="ForkCollectable32" parent="Collectables" unique_id=535515572 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.217201, 34.55217, -17.424881)
+
+[node name="ForkCollectable33" parent="Collectables" unique_id=784123713 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.170286, 34.55217, -18.065216)
+
+[node name="ForkCollectable34" parent="Collectables" unique_id=1291345489 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.446898, 34.55217, -19.215876)
+
+[node name="ForkCollectable35" parent="Collectables" unique_id=644410526 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.862183, 34.55217, -20.249699)
+
+[node name="ForkCollectable36" parent="Collectables" unique_id=1150814838 instance=ExtResource("8_5bgta")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.818797, 34.55217, -20.414566)
+
+[node name="ForkCollectable4" parent="Collectables" unique_id=1870234026 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -7.333645)
+
+[node name="ForkCollectable5" parent="Collectables" unique_id=1850174172 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -8.333645)
+
+[node name="ForkCollectable6" parent="Collectables" unique_id=1551229164 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -9.333645)
+
+[node name="ForkCollectable7" parent="Collectables" unique_id=1914407796 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -11.333645)
+
+[node name="ForkCollectable8" parent="Collectables" unique_id=1350382543 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -12.333645)
+
+[node name="ForkCollectable9" parent="Collectables" unique_id=144805035 instance=ExtResource("8_5bgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -13.333645)
