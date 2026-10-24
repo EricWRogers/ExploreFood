@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btfshjhyxmdyb"
+path="res://.godot/imported/cheeseslice.obj-d866296c89a5a067662e41babc584aec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cheeseslice.obj-d866296c89a5a067662e41babc584aec.mesh"]
+
+source_file="res://assets/models/ModularFoodModels/cheeseslice.obj"
+dest_files=["res://.godot/imported/cheeseslice.obj-d866296c89a5a067662e41babc584aec.mesh", "res://.godot/imported/cheeseslice.obj-d866296c89a5a067662e41babc584aec.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
