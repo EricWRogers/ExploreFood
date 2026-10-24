@@ -10,7 +10,7 @@ extends Node
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 var is_in_range: bool = false
 var is_full: bool = false
-var is_cooking: bool = false
+var is_cooking: bool
 #var capacity: int = 0
 
 @export_group("Saved Recipes")
@@ -20,9 +20,6 @@ var is_cooking: bool = false
 @export var cook_timer_time: float = 1
 @onready var timer_ui: TextureProgressBar = $"../SubViewport/TextureProgressBar"
 @onready var cook_timer: Timer = $CookTimer
-
-#spawn point
-
 
 ##ingredient settings
 var saved_prep_group: BaseFood.PrepGroup
@@ -35,17 +32,18 @@ func _ready() -> void:
 	if (timer_ui == null):
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
+	is_cooking = false
 	%Prompts.hide()
 
 func _process(_delta: float) -> void:
 	#timer animation
-	#timer_ui.value = 100 / cook_timer.time_left
+	timer_ui.value = 100 / cook_timer.time_left
 	
 	#start cooking
 	if (Input.is_action_just_pressed("cook") && is_in_range && collected_ingredient_tags.size() >= 1):
 		is_cooking = true
-		find_recipe()
-		#start_cook_timer()
+		#find_recipe()
+		start_cook_timer()
 		
 	if (Input.is_action_just_pressed("Reset") && is_in_range):
 		return_ingredients()
@@ -53,7 +51,7 @@ func _process(_delta: float) -> void:
 ##Takes ingredient thrown at it. Won't start until player presses "cook" (f)
 func _on_body_entered(body: Node3D) -> void:
 	if (body.has_method("im_food") && !is_full && !is_cooking): #checks if body is an ingredient. This check should be made better later.
-		#print("yum, I found a food! is prepped: ", body.prep_group)
+		print("yum, I found a food!: ", body)
 		if (body.cook_group != 0):
 			print("can't take, it's already been cooked!")
 		else:
@@ -83,7 +81,20 @@ func _on_body_entered(body: Node3D) -> void:
 			#print("collected ingredients:", collected_ingredient_tags)
 			
 			#is_full = true
-			#start_cook_timer()
+
+func start_cook_timer():
+	#set timer time
+	timer_ui.visible = true
+	station_ui.visible = false
+	cook_timer.wait_time = cook_timer_time
+	cook_timer.start()
+
+func _on_cook_timer_timeout() -> void:
+	print("prep timeout!")
+	##animation here
+	find_recipe()
+	timer_ui.visible = false
+	station_ui.visible = true
 
 func find_recipe():
 	print("cooking...")
@@ -146,6 +157,7 @@ func find_recipe():
 	is_cooking = false
 	return
 
+##cooks one ingredient even if it doesnt make a valid meal. currently isnt being used.
 func cook_ingredient():
 	var ingredient_spawn: Node
 	#spawn back cooked ingredient
@@ -170,12 +182,6 @@ func cook_ingredient():
 	timer_ui.visible = false
 	current_ingredient = null
 	station_ui._reset_visual()
-
-func start_cook_timer():
-	#set timer time
-	timer_ui.visible = true
-	cook_timer.wait_time = cook_timer_time
-	cook_timer.start()
 
 #func _on_cook_timer_timeout() -> void:
 	#print("prep timeout!")

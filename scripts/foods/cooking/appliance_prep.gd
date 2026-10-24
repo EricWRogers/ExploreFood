@@ -36,10 +36,12 @@ func _process(_delta: float) -> void:
 	#print("timer ui", timer_ui.value)
 	if (Input.is_action_just_pressed("cook") && is_in_range && collected_ingredients.size() >= 1):
 		is_prepping = true
-		prep_all()
+		start_prep_timer()
+		#prep_all()
 	if (Input.is_action_just_pressed("Reset") && is_in_range):
 		return_ingredients()
 
+##giving food
 func _on_body_entered(body: Node3D) -> void:
 	
 	if (body.has_method("im_food") && !is_full): #checks if body is an ingredient. This check should be made better later.
@@ -69,7 +71,21 @@ func _on_body_entered(body: Node3D) -> void:
 			#is_full = true
 			#start_prep_timer()
 
-##runs on start
+func start_prep_timer():
+	#set timer time
+	timer_ui.visible = true
+	station_ui.visible = false
+	prep_timer.wait_time = prep_timer_time
+	prep_timer.start()
+
+func _on_prep_timer_timeout() -> void:
+	print("prep timeout!")
+	#animation here
+	prep_all()
+	timer_ui.visible = false
+	station_ui.visible = true
+
+##preps all ingredients in array
 func prep_all():
 	print("prepping...")
 	for ingredient in collected_ingredients:
@@ -125,7 +141,7 @@ func prep_all():
 	#timer_ui.visible = false
 	#is_full = false
 
-##runs upon reset
+##returns unprepped ingredients on reset
 func return_ingredients():
 	#spawn back prepped ingredient
 	for ingredient in collected_ingredients:
@@ -134,11 +150,9 @@ func return_ingredients():
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()
 		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		ingredient_spawn.cook_group = saved_cook_group #add tags
 		current_scene.add_child(ingredient_spawn)
 		print ("spawning: ", ingredient_spawn)
-		
-		#add tags
-		ingredient_spawn.cook_group = saved_cook_group
 
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 		ingredient_spawn.position = spawn_position.global_position
@@ -148,11 +162,6 @@ func return_ingredients():
 	collected_ingredients.clear()
 	station_ui._reset_visual()
 
-func start_prep_timer():
-	#set timer time
-	timer_ui.visible = true
-	prep_timer.wait_time = prep_timer_time
-	prep_timer.start()
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):

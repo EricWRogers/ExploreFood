@@ -96,7 +96,7 @@ shape = SubResource("BoxShape3D_q026u")
 [node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("2_mv8nq")]
 station_ui = NodePath("../SubViewport2/StationUI")
 cook_group_application_type = 1
-cook_timer_time = 16.0
+cook_timer_time = 6.0
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020165916, 0.17500003, 0.16500027)
