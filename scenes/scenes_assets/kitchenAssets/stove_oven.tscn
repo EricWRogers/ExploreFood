@@ -3,11 +3,40 @@
 [ext_resource type="ArrayMesh" uid="uid://dt8ro5m44en78" path="res://assets/models/KitchenModels/vintage_oven_body.obj" id="1_w4k7t"]
 [ext_resource type="Texture2D" uid="uid://e51tfnmytcs5" path="res://assets/textures/Kitchen Textures/Stove/OvenTexture.png" id="2_40l7o"]
 [ext_resource type="ArrayMesh" uid="uid://cy74g4u5anbrf" path="res://assets/models/KitchenModels/vintage_oven_door.obj" id="3_4vnwr"]
+[ext_resource type="Shader" uid="uid://s3cit3g6fdc6" path="res://assets/shaders/stove_oven_flame.gdshader" id="3_40l7o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
+metallic = 0.24
+roughness = 0.66
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dmvi"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n66xe"]
+offset = Vector3(0, 1, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nq02n"]
+noise = SubResource("FastNoiseLite_n66xe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vnwr"]
+render_priority = 0
+shader = ExtResource("3_40l7o")
+shader_parameter/time_speed = 1.165
+shader_parameter/spin = 2.245
+shader_parameter/flame_brightness = 1.5550000000000002
+shader_parameter/color_intensity = 0.5
+shader_parameter/horizontal_frequency = 3.095
+shader_parameter/vertical_frequency = 4.92
+shader_parameter/size = 0.875
+shader_parameter/core_size = 0.75
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nq02n")
+shader_parameter/color1 = Color(0.28713328, 0.21900001, 0.73, 1)
+shader_parameter/color2 = Color(0.34300002, 0.57656676, 0.98, 1)
+shader_parameter/color3 = Color(0.52919996, 0.98, 0.89735335, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tq11"]
+next_pass = SubResource("ShaderMaterial_4vnwr")
+transparency = 1
+blend_mode = 1
 cull_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6ica"]
@@ -26,10 +55,15 @@ albedo_color = Color(0, 0, 0, 0.5294118)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055969357, 0, -0.0046902895)
 mesh = ExtResource("1_w4k7t")
 surface_material_override/0 = SubResource("StandardMaterial3D_38i88")
-surface_material_override/1 = SubResource("StandardMaterial3D_1dmvi")
+surface_material_override/1 = SubResource("StandardMaterial3D_0tq11")
+surface_material_override/2 = SubResource("StandardMaterial3D_0tq11")
+surface_material_override/3 = SubResource("StandardMaterial3D_0tq11")
+surface_material_override/4 = SubResource("StandardMaterial3D_0tq11")
 
 [node name="VintageOvenDoor" type="MeshInstance3D" parent="." unique_id=1517269840]
 mesh = ExtResource("3_4vnwr")
 surface_material_override/0 = SubResource("StandardMaterial3D_a6ica")
 surface_material_override/1 = SubResource("StandardMaterial3D_lf4ke")
 surface_material_override/2 = SubResource("StandardMaterial3D_puwec")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=249675139]
