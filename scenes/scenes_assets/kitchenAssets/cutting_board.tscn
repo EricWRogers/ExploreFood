@@ -107,7 +107,7 @@ no_depth_test = true
 texture = SubResource("ViewportTexture_jc70t")
 
 [node name="Add" type="Node3D" parent="Prompts" unique_id=385203358]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10123118, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09575922, 0, 0)
 
 [node name="Label3D" type="Label3D" parent="Prompts/Add" unique_id=849783231]
 transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
@@ -135,7 +135,7 @@ render_priority = 75
 texture = ExtResource("5_xd5mj")
 
 [node name="Start" type="Node3D" parent="Prompts" unique_id=2088922382]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31737345, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114911065, 0, 0)
 
 [node name="Label3D" type="Label3D" parent="Prompts/Start" unique_id=1372272864]
 transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
@@ -163,7 +163,7 @@ render_priority = 75
 texture = ExtResource("5_xd5mj")
 
 [node name="Reset" type="Node3D" parent="Prompts" unique_id=642731116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09302326, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12038302, 0, 0)
 
 [node name="Label3D3" type="Label3D" parent="Prompts/Reset" unique_id=1902592559]
 transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, 0.04631145, 0.20253533, 0.2021529)

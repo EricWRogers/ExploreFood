@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("Reset") && is_in_range):
 		return_ingredients()
 	
-	##prompts
+	##ui prompts
 	if (station_ui.filled >= 1 && station_ui_prompts.visible):
 		ui_start.show()
 		ui_reset.show()

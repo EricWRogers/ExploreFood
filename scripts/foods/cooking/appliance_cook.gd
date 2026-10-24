@@ -18,7 +18,13 @@ var is_cooking: bool
 @export var idle_mesh: MeshInstance3D
 @export var animation_mesh: Node3D
 @export var animation: AnimationPlayer
+
 @export var station_ui : Control
+@onready var station_ui_prompts:= %Prompts
+@onready var ui_add := $"../Prompts/Add"
+@onready var ui_start := $"../Prompts/Start"
+@onready var ui_reset := $"../Prompts/Reset"
+
 @onready var spawn_position: Marker3D = $SpawnMarker
 @onready var player_detection: Area3D = $"../PlayerDetectArea"
 #@onready var animation: AnimationPlayer = $"../AnimationPlayer"
@@ -42,7 +48,7 @@ func _ready() -> void:
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
 	is_cooking = false
-	%Prompts.hide()
+	station_ui_prompts.hide()
 
 func _process(_delta: float) -> void:
 	#timer animation
@@ -56,10 +62,22 @@ func _process(_delta: float) -> void:
 		
 	if (Input.is_action_just_pressed("Reset") && is_in_range):
 		return_ingredients()
+		
+	##ui prompts
+	if (station_ui.filled >= 1 && station_ui_prompts.visible):
+		ui_start.show()
+		ui_reset.show()
+	else:
+		ui_start.hide()
+		ui_reset.hide()
+	if (station_ui.filled >= station_ui.capacity):
+		ui_add.hide()
+	else:
+		ui_add.show()
 
 ##Takes ingredient thrown at it. Won't start until player presses "cook" (f)
 func _on_body_entered(body: Node3D) -> void:
-	if (body.has_method("im_food") && !is_full && !is_cooking): #checks if body is an ingredient. This check should be made better later.
+	if (body.has_method("im_food") && !is_full && !is_cooking && station_ui_prompts.visible): #checks if body is an ingredient. This check should be made better later.
 		print("yum, I found a food!: ", body)
 		if (body.cook_group != 0):
 			print("can't take, it's already been cooked!")
@@ -260,10 +278,10 @@ func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player in")
 		is_in_range = true
-		%Prompts.show()
+		station_ui_prompts.show()
 
 func _on_player_detect_area_body_exited(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player out")
 		is_in_range = false
-		%Prompts.hide()
+		station_ui_prompts.hide()

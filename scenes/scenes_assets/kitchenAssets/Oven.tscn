@@ -71,7 +71,7 @@ size = Vector3(0.53999996, 0.35, 0.88)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mv8nq"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_80qjy"]
 viewport_path = NodePath("SubViewport2")
 
 [node name="Oven" type="StaticBody3D" unique_id=408695707]
@@ -141,16 +141,48 @@ size = Vector2i(1232, 820)
 
 [node name="StationUI" parent="SubViewport2" unique_id=927286265 instance=ExtResource("5_wh7oj")]
 
-[node name="Prompts" type="Node3D" parent="." unique_id=97559206]
+[node name="Prompts" type="Node3D" parent="." unique_id=1787585507]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06781292, -0.13584863)
 
-[node name="StationUI" type="Sprite3D" parent="Prompts" unique_id=1723716704]
+[node name="StationUI" type="Sprite3D" parent="Prompts" unique_id=793029634]
 transform = Transform3D(0.035, 0, 0, 0, 0.033602014, 0.0097931, 0, -0.0097931, 0.033602014, 0, 0.36813137, 0.1653666)
 no_depth_test = true
-texture = SubResource("ViewportTexture_lg1c5")
+texture = SubResource("ViewportTexture_80qjy")
 
-[node name="Label3D" type="Label3D" parent="Prompts" unique_id=1493674701]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.16030538, 0.20253533, 0.20215291)
+[node name="Add" type="Node3D" parent="Prompts" unique_id=1532917739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10123118, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="Prompts/Add" unique_id=138090888]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "Q"
+font_size = 52
+
+[node name="Label3D2" type="Label3D" parent="Prompts/Add" unique_id=757529494]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.07639199, 0.20253533, 0.2021529)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Add"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Prompts/Add" unique_id=633798652]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237786)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("6_fhgkx")
+
+[node name="Start" type="Node3D" parent="Prompts" unique_id=1808101185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09737346, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="Prompts/Start" unique_id=351774868]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -159,8 +191,8 @@ outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
 text = "F"
 font_size = 52
 
-[node name="Label3D2" type="Label3D" parent="Prompts" unique_id=655210645]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.07639199, 0.20253533, 0.20215291)
+[node name="Label3D2" type="Label3D" parent="Prompts/Start" unique_id=1039448841]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.07639199, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -168,14 +200,17 @@ outline_modulate = Color(1, 1, 1, 0.13725491)
 text = "Start"
 font_size = 52
 
-[node name="Sprite3D" type="Sprite3D" parent="Prompts" unique_id=141069528]
-transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237789)
+[node name="Sprite3D" type="Sprite3D" parent="Prompts/Start" unique_id=1745055710]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237786)
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("6_fhgkx")
 
-[node name="Label3D3" type="Label3D" parent="Prompts" unique_id=8598555]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.046311453, 0.20253533, 0.20215291)
+[node name="Reset" type="Node3D" parent="Prompts" unique_id=1340101122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07697673, 0, 0)
+
+[node name="Label3D3" type="Label3D" parent="Prompts/Reset" unique_id=1675366859]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, 0.04631145, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -184,8 +219,8 @@ outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
 text = "R"
 font_size = 52
 
-[node name="Label3D4" type="Label3D" parent="Prompts" unique_id=1653742079]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.1308283, 0.20253533, 0.20215291)
+[node name="Label3D4" type="Label3D" parent="Prompts/Reset" unique_id=329041102]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, 0.1308283, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -193,8 +228,8 @@ outline_modulate = Color(1, 1, 1, 0.13725491)
 text = "Reset"
 font_size = 52
 
-[node name="Sprite3D2" type="Sprite3D" parent="Prompts" unique_id=1170220105]
-transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.046311453, 0.20140585, 0.20237789)
+[node name="Sprite3D2" type="Sprite3D" parent="Prompts/Reset" unique_id=1207002381]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.04631145, 0.20140585, 0.20237786)
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("6_fhgkx")
