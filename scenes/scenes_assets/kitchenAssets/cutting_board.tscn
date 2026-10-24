@@ -59,13 +59,16 @@ idle_model = NodePath("../IdleKnife")
 animation_model = NodePath("../KitchenKnifeCutting")
 animation = NodePath("../KitchenKnifeCutting/AnimationPlayer")
 station_ui = NodePath("../SubViewport2/StationUI")
+prep_timer_time = 4.0
 
 [node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=1105606633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.55, 0.79999995)
 shape = SubResource("BoxShape3D_klsck")
 
 [node name="SpawnMarker" type="Marker3D" parent="PrepperBase" unique_id=1445998607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 0.099999994, 0)
+
+[node name="ChoppingMarker" type="Marker3D" parent="PrepperBase" unique_id=1309989136]
 
 [node name="PlayerDetectArea" type="Area3D" parent="." unique_id=323925388]
 
@@ -96,15 +99,46 @@ size = Vector2i(1232, 820)
 
 [node name="Prompts" type="Node3D" parent="." unique_id=778397898]
 unique_name_in_owner = true
-transform = Transform3D(3.655, 0, 0, 0, 3.655, 0, 0, 0, 3.655, 0, -0.45218706, 0.07625145)
+transform = Transform3D(3.655, 0, 0, 0, 3.655, 0, 0, 0, 3.655, 0, -0.45218706, -1.2937486)
 
 [node name="StationUI" type="Sprite3D" parent="Prompts" unique_id=1795375454]
 transform = Transform3D(0.035, 0, 0, 0, 0.033602014, 0.0097931, 0, -0.0097931, 0.033602014, 0, 0.36813137, 0.1653666)
 no_depth_test = true
 texture = SubResource("ViewportTexture_jc70t")
 
-[node name="Label3D" type="Label3D" parent="Prompts" unique_id=1372272864]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.16030538, 0.20253533, 0.20215291)
+[node name="Add" type="Node3D" parent="Prompts" unique_id=385203358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10123118, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="Prompts/Add" unique_id=849783231]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
+text = "Q"
+font_size = 52
+
+[node name="Label3D2" type="Label3D" parent="Prompts/Add" unique_id=953109893]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.07639199, 0.20253533, 0.2021529)
+no_depth_test = true
+render_priority = 100
+outline_render_priority = 100
+outline_modulate = Color(1, 1, 1, 0.13725491)
+text = "Add"
+font_size = 52
+
+[node name="Sprite3D" type="Sprite3D" parent="Prompts/Add" unique_id=1545950723]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237786)
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("5_xd5mj")
+
+[node name="Start" type="Node3D" parent="Prompts" unique_id=2088922382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31737345, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="Prompts/Start" unique_id=1372272864]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.16030538, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -113,8 +147,8 @@ outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
 text = "F"
 font_size = 52
 
-[node name="Label3D2" type="Label3D" parent="Prompts" unique_id=1937985550]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, -0.07639199, 0.20253533, 0.20215291)
+[node name="Label3D2" type="Label3D" parent="Prompts/Start" unique_id=1937985550]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, -0.07639199, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -122,14 +156,17 @@ outline_modulate = Color(1, 1, 1, 0.13725491)
 text = "Start"
 font_size = 52
 
-[node name="Sprite3D" type="Sprite3D" parent="Prompts" unique_id=1729569093]
-transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237789)
+[node name="Sprite3D" type="Sprite3D" parent="Prompts/Start" unique_id=1729569093]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336605, 0.0044115647, 0, -0.0044115647, 0.014336605, -0.16030538, 0.20140585, 0.20237786)
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("5_xd5mj")
 
-[node name="Label3D3" type="Label3D" parent="Prompts" unique_id=1902592559]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.046311453, 0.20253533, 0.20215291)
+[node name="Reset" type="Node3D" parent="Prompts" unique_id=642731116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09302326, 0, 0)
+
+[node name="Label3D3" type="Label3D" parent="Prompts/Reset" unique_id=1902592559]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, 0.04631145, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -138,8 +175,8 @@ outline_modulate = Color(0.25882354, 0.25882354, 0.25882354, 1)
 text = "R"
 font_size = 52
 
-[node name="Label3D4" type="Label3D" parent="Prompts" unique_id=2001555593]
-transform = Transform3D(0.15000004, 0, 0, 0, 0.14336604, 0.04411566, 0, -0.04411566, 0.14336604, 0.1308283, 0.20253533, 0.20215291)
+[node name="Label3D4" type="Label3D" parent="Prompts/Reset" unique_id=2001555593]
+transform = Transform3D(0.15000004, 0, 0, 0, 0.14336602, 0.04411566, 0, -0.04411566, 0.14336602, 0.1308283, 0.20253533, 0.2021529)
 no_depth_test = true
 render_priority = 100
 outline_render_priority = 100
@@ -147,11 +184,13 @@ outline_modulate = Color(1, 1, 1, 0.13725491)
 text = "Reset"
 font_size = 52
 
-[node name="Sprite3D2" type="Sprite3D" parent="Prompts" unique_id=1367307265]
-transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.046311453, 0.20140585, 0.20237789)
+[node name="Sprite3D2" type="Sprite3D" parent="Prompts/Reset" unique_id=1367307265]
+transform = Transform3D(0.015000005, 0, 0, 0, 0.014336606, 0.0044115647, 0, -0.0044115647, 0.014336606, 0.04631145, 0.20140585, 0.20237786)
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("5_xd5mj")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=138884834]
 
 [connection signal="body_entered" from="PlayerDetectArea" to="PrepperBase" method="_on_player_detect_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectArea" to="PrepperBase" method="_on_player_detect_area_body_exited"]

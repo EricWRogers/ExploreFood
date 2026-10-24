@@ -105,7 +105,7 @@ func _on_cook_timer_timeout() -> void:
 	station_ui.visible = true
 	
 	##animation end
-	animation.play("open_close")
+	#animation.play("open_close")
 	
 	find_recipe()
 

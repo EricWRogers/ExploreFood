@@ -14,7 +14,14 @@ var capacity: int = 0
 @export var idle_model: Node3D
 @export var animation_model: Node3D
 @export var animation: AnimationPlayer
+
 @export var station_ui : Control
+@onready var station_ui_prompts:= %Prompts
+@onready var ui_add := $"../Prompts/Add"
+@onready var ui_start := $"../Prompts/Start"
+@onready var ui_reset := $"../Prompts/Reset"
+
+@onready var chopping_position: Marker3D = $ChoppingMarker
 @onready var spawn_position: Marker3D = $SpawnMarker
 #@onready var animation: AnimationPlayer = $"../AnimationPlayer"
 
@@ -33,7 +40,7 @@ func _ready() -> void:
 	if (timer_ui == null):
 		push_error("Timer UI cannot be found!")
 	timer_ui.visible = false
-	%Prompts.hide()
+	station_ui_prompts.hide()
 	idle_model.visible = true
 	animation_model.visible = false
 
@@ -47,11 +54,23 @@ func _process(_delta: float) -> void:
 		#prep_all()
 	if (Input.is_action_just_pressed("Reset") && is_in_range):
 		return_ingredients()
+	
+	##prompts
+	if (station_ui.filled >= 1 && station_ui_prompts.visible):
+		ui_start.show()
+		ui_reset.show()
+	else:
+		ui_start.hide()
+		ui_reset.hide()
+	if (station_ui.filled >= station_ui.capacity):
+		ui_add.hide()
+	else:
+		ui_add.show()
 
 ##giving food
 func _on_body_entered(body: Node3D) -> void:
 	
-	if (body.has_method("im_food") && !is_full): #checks if body is an ingredient. This check should be made better later.
+	if (body.has_method("im_food") && !is_full && station_ui_prompts.visible): #checks if body is an ingredient. This check should be made better later.
 		#print("yum, I found a food! is prepped: ", body.prep_group)
 		if (body.prep_group != 0 || 
 			(body.food_group == BaseFood.FoodGroup.BUTTER || 
@@ -84,7 +103,7 @@ func _on_body_entered(body: Node3D) -> void:
 func start_prep_timer():
 	#set timer time
 	timer_ui.visible = true
-	station_ui.visible = false
+	station_ui_prompts.hide()
 	prep_timer.wait_time = prep_timer_time
 	
 	##animation start
@@ -92,13 +111,14 @@ func start_prep_timer():
 	animation_model.visible = true
 	if (prep_group_application_type == BaseFood.PrepGroup.CHOPPED):
 		animation.play("Take 001")
-	
+		
+		
 	prep_timer.start()
 
 func _on_prep_timer_timeout() -> void:
 	print("prep timeout!")
 	timer_ui.visible = false
-	station_ui.visible = true
+	station_ui_prompts.show()
 	
 	##animation end
 	idle_model.visible = true
@@ -190,10 +210,10 @@ func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player in")
 		is_in_range = true
-		%Prompts.show()
+		station_ui_prompts.show()
 
 func _on_player_detect_area_body_exited(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
 		print("player out")
 		is_in_range = false
-		%Prompts.hide()
+		station_ui_prompts.hide()
