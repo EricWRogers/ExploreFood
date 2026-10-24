@@ -28,6 +28,8 @@ var is_cooking: bool
 @onready var timer_ui: TextureProgressBar = $"../SubViewport/TextureProgressBar"
 @onready var cook_timer: Timer = $CookTimer
 
+@export var type_parent : StaticBody3D = null
+
 ##ingredient settings
 var saved_prep_group: BaseFood.PrepGroup
 var current_ingredient: PackedScene
@@ -94,7 +96,10 @@ func start_cook_timer():
 	timer_ui.visible = true
 	station_ui.visible = false
 	cook_timer.wait_time = cook_timer_time
-	
+	if not type_parent == null:
+		type_parent.can_open = false
+		animation.play_backwards("open_close")
+	type_parent.can_open = false
 	##animation start 
 	
 	cook_timer.start()
@@ -103,7 +108,8 @@ func _on_cook_timer_timeout() -> void:
 	print("prep timeout!")
 	timer_ui.visible = false
 	station_ui.visible = true
-	
+	if not type_parent == null:
+		type_parent.can_open = true
 	##animation end
 	#animation.play("open_close")
 	
@@ -172,6 +178,9 @@ func find_recipe():
 
 ##cooks one ingredient even if it doesnt make a valid meal. currently isnt being used.
 func cook_ingredient():
+	if not type_parent == null:
+		type_parent.can_open = false
+		%AnimationPlayer.play_backwards("open_close")
 	var ingredient_spawn: Node
 	#spawn back cooked ingredient
 	var current_scene = get_tree().current_scene
@@ -222,6 +231,9 @@ func cook_ingredient():
 	#ingredient = null
 
 func return_ingredients():
+	if not type_parent == null:
+		type_parent.can_open = true
+		#%AnimationPlayer.play_backwards("open_close")
 	#spawn back prepped ingredient
 	for ingredient in collected_ingredients:
 		var ingredient_spawn: Node

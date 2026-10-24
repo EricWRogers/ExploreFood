@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c8c5v0wmg6ghn"]
 
+[ext_resource type="Script" uid="uid://51s7jmas358a" path="res://scripts/cooking_games_scriptss/oven_anims.gd" id="1_80qjy"]
 [ext_resource type="ArrayMesh" uid="uid://dykj1lhd6211t" path="res://assets/models/KitchenStove.obj" id="1_knho3"]
 [ext_resource type="Texture2D" uid="uid://cyyjnk3qaq1he" path="res://assets/textures/Kitchen Textures/Stove/KitchenStove_Mat.png" id="1_yrvie"]
 [ext_resource type="Texture2D" uid="uid://bugvx5l8saakk" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveMetallic_Mat.png" id="2_80qjy"]
@@ -75,6 +76,7 @@ viewport_path = NodePath("SubViewport2")
 
 [node name="Oven" type="StaticBody3D" unique_id=408695707]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+script = ExtResource("1_80qjy")
 
 [node name="OvenMeshInstance" type="MeshInstance3D" parent="." unique_id=1227565413]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -90,6 +92,7 @@ material_override = SubResource("StandardMaterial3D_ufixx")
 mesh = ExtResource("2_hjg1s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OvenMeshInstance/KitchenStoveDoor" unique_id=1020070380]
+unique_name_in_owner = true
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_u77ib")
 
@@ -97,10 +100,12 @@ libraries/ = SubResource("AnimationLibrary_u77ib")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0007934571, 0.12435151, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
-[node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("2_mv8nq")]
+[node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("animation", "station_ui", "type_parent") instance=ExtResource("2_mv8nq")]
 cook_group_application_type = 1
+animation = NodePath("../OvenMeshInstance/KitchenStoveDoor/AnimationPlayer")
 station_ui = NodePath("../SubViewport2/StationUI")
 cook_timer_time = 6.0
+type_parent = NodePath("..")
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020165916, 0.17500003, 0.16500027)
@@ -194,5 +199,7 @@ no_depth_test = true
 render_priority = 75
 texture = ExtResource("6_fhgkx")
 
+[connection signal="body_entered" from="PlayerDetectArea" to="." method="_on_player_detect_area_body_entered"]
 [connection signal="body_entered" from="PlayerDetectArea" to="CookerBase" method="_on_player_detect_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectArea" to="." method="_on_player_detect_area_body_exited"]
 [connection signal="body_exited" from="PlayerDetectArea" to="CookerBase" method="_on_player_detect_area_body_exited"]
