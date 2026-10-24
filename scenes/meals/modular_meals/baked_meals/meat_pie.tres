@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://bp02c8dipw4pn"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_fngm8"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_n471i"]
+[ext_resource type="PackedScene" uid="uid://601yk0fiju1b" path="res://scenes/meals/modular_meals/baked_meals/meat_pie.tscn" id="2_tkpay"]
+
+[sub_resource type="Resource" id="Resource_tkpay"]
+resource_name = "Baked Bread"
+script = ExtResource("1_fngm8")
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_cl7wo"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_fngm8")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_n471i")
+recipe_name = "Meat Pie"
+food_group_array = Array[ExtResource("1_fngm8")]([SubResource("Resource_tkpay"), SubResource("Resource_cl7wo")])
+product = ExtResource("2_tkpay")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

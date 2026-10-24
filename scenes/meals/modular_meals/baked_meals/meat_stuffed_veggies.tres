@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://d12owylrjlub"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_dm87t"]
+[ext_resource type="PackedScene" uid="uid://d2th6ugrbtvrh" path="res://scenes/meals/modular_meals/baked_meals/meat_stuffed_veggies.tscn" id="2_8fdod"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_y7b32"]
+
+[sub_resource type="Resource" id="Resource_8fdod"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_dm87t")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_2advn"]
+resource_name = "Baked Veggie"
+script = ExtResource("1_dm87t")
+food_group = 2
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_y7b32")
+recipe_name = "Meat Stuffed Veggies"
+food_group_array = Array[ExtResource("1_dm87t")]([SubResource("Resource_8fdod"), SubResource("Resource_2advn")])
+product = ExtResource("2_8fdod")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

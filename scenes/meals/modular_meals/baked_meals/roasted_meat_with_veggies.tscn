@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://chhgs6b4lqf6o"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_nu2gs"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="2_gdomy"]
+[ext_resource type="ArrayMesh" uid="uid://dja2dpi7fog62" path="res://assets/models/ModularFoodModels/MeatSliceOptomized.obj" id="3_phnos"]
+[ext_resource type="Texture2D" uid="uid://b3egn5dxnq3nd" path="res://assets/textures/ModularFoodTextures/veggiediced.png" id="4_atfvj"]
+[ext_resource type="ArrayMesh" uid="uid://cht2o4d5ccjes" path="res://assets/models/ModularFoodModels/VeggieCubedOptomized.obj" id="5_gs3m2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klpra"]
+albedo_texture = ExtResource("2_gdomy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atfvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxq4f"]
+albedo_texture = ExtResource("4_atfvj")
+
+[node name="RoastedMeatWithVeggies" unique_id=1546410034 instance=ExtResource("1_nu2gs")]
+meal_name = "Roasted Meat with Veggies"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+material_override = SubResource("StandardMaterial3D_klpra")
+material_overlay = SubResource("ShaderMaterial_atfvj")
+mesh = ExtResource("3_phnos")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="1" unique_id=1203368830]
+transform = Transform3D(-0.29480007, -0.14145352, -0.4484514, 0.19959441, -0.5168883, 0.03183226, -0.42576966, -0.144368, 0.32542735, -0.25298685, 0.3091275, -0.5788456)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="4" unique_id=2020361116]
+transform = Transform3D(-0.018128574, -0.041067638, -0.5531814, 0.19959441, -0.5168883, 0.031832263, -0.51755023, -0.19790062, 0.031652957, 0.74921775, 0.3091275, -0.036584258)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="5" unique_id=201842140]
+transform = Transform3D(0.4784266, 0.014320039, 0.28094068, 0.0006826273, 0.5542195, -0.029412013, -0.28130472, 0.025699569, 0.4777366, 0.37831837, 0.24836197, 0.055498242)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." index="6" unique_id=760669841]
+transform = Transform3D(0.22972508, 0.098610215, 0.3681405, 0.1539733, -0.4172188, 0.015674751, 0.34863105, 0.11928745, -0.24950327, 0.5671306, 0.3091275, 0.092056334)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." index="7" unique_id=636060957]
+transform = Transform3D(0.32386985, 0.035857424, 0.22326577, -0.0055438397, 0.39114404, -0.054777488, -0.22605887, 0.041779805, 0.3212115, -0.44136775, 0.2551574, -0.5310359)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." index="8" unique_id=1774098195]
+transform = Transform3D(-0.51713365, -0.0191596, 0.20057565, -0.003837971, 0.5533215, 0.042959858, -0.20145202, 0.038641818, -0.51570255, -0.48580837, 0.1174086, 0.43821433)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." index="9" unique_id=1025579795]
+transform = Transform3D(-0.3008221, -0.099275835, 0.31253058, 0.15397328, -0.41721877, 0.015674742, 0.2895225, 0.118734084, 0.31639206, -0.6509122, 0.22998917, 0.33107144)
+material_override = SubResource("StandardMaterial3D_xxq4f")
+mesh = ExtResource("5_gs3m2")

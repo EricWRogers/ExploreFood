@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://udy0lfhxyprs"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_c1a6b"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_7hhru"]
+[ext_resource type="PackedScene" uid="uid://bicbmy3waqurx" path="res://scenes/meals/modular_meals/baked_meals/savory_meat_and_veggie_bread_bites.tscn" id="2_iw3hu"]
+
+[sub_resource type="Resource" id="Resource_iw3hu"]
+resource_name = "Baked Chopped Bread"
+script = ExtResource("1_c1a6b")
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_4fflt"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_c1a6b")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_nq5b5"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_c1a6b")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_7hhru")
+recipe_name = "Savory Meat and Veggie Bread Bites"
+food_group_array = Array[ExtResource("1_c1a6b")]([SubResource("Resource_iw3hu"), SubResource("Resource_4fflt"), SubResource("Resource_nq5b5")])
+product = ExtResource("2_iw3hu")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

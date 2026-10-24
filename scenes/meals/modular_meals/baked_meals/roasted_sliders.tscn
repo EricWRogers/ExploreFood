@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://8aww8s4lxym7"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_x2uc7"]
+[ext_resource type="Texture2D" uid="uid://dn5gqdhmnbdli" path="res://assets/textures/ModularFoodTextures/breadslice.png" id="2_utseo"]
+[ext_resource type="ArrayMesh" uid="uid://rsqfjg8run5y" path="res://assets/models/ModularFoodModels/BreadSliceOptomized.obj" id="3_idluv"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="4_i1eya"]
+[ext_resource type="ArrayMesh" uid="uid://dja2dpi7fog62" path="res://assets/models/ModularFoodModels/MeatSliceOptomized.obj" id="5_sqeji"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ehpr"]
+albedo_texture = ExtResource("2_utseo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2027"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hbd5"]
+albedo_texture = ExtResource("4_i1eya")
+
+[node name="RoastedSliders" unique_id=1546410034 instance=ExtResource("1_x2uc7")]
+meal_name = "Roasted Sliders"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.020061122, 0, -1.4005308, 0, 1, 0, 0.6100417, 0, 0.046056222, -0.17498595, 0, -0.076909095)
+material_override = SubResource("StandardMaterial3D_6ehpr")
+material_overlay = SubResource("ShaderMaterial_p2027")
+mesh = ExtResource("3_idluv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=2126030283]
+transform = Transform3D(-0.72784746, 0, -0.07482874, 0, 0.485, 0, 0.10376952, 0, -0.5248545, 0.07947981, 0.08260602, -0.18083492)
+material_override = SubResource("StandardMaterial3D_2hbd5")
+mesh = ExtResource("5_sqeji")

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://boojwhx6qjqm6"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_qjtxc"]
+[ext_resource type="PackedScene" uid="uid://cnoe1xpm1ioea" path="res://scenes/meals/modular_meals/baked_meals/meat_pie_with_veggies.tscn" id="2_5wlk2"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_xdtun"]
+
+[sub_resource type="Resource" id="Resource_5wlk2"]
+resource_name = "Baked Bread"
+script = ExtResource("1_qjtxc")
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_cbglc"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_qjtxc")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_jyug1"]
+resource_name = "Baked Chopped Veggie"
+script = ExtResource("1_qjtxc")
+food_group = 2
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_xdtun")
+recipe_name = "Meat Pie with Veggies"
+food_group_array = Array[ExtResource("1_qjtxc")]([SubResource("Resource_5wlk2"), SubResource("Resource_cbglc"), SubResource("Resource_jyug1")])
+product = ExtResource("2_5wlk2")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

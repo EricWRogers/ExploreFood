@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcir40kainshy"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_7yksg"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="2_rhxq0"]
+[ext_resource type="ArrayMesh" uid="uid://dja2dpi7fog62" path="res://assets/models/ModularFoodModels/MeatSliceOptomized.obj" id="3_746th"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klpra"]
+albedo_texture = ExtResource("2_rhxq0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dutg3"]
+
+[node name="RoastedMeat" unique_id=1546410034 instance=ExtResource("1_7yksg")]
+meal_name = "RoastedMeat"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.81314033, 0, 0, 0, 1.5241185, 0, 0, 0, 0.85882455, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_klpra")
+material_overlay = SubResource("ShaderMaterial_dutg3")
+mesh = ExtResource("3_746th")

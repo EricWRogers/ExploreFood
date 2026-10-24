@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://601yk0fiju1b"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_e37qp"]
+[ext_resource type="Texture2D" uid="uid://2h74ejd88nnf" path="res://assets/textures/ModularFoodTextures/tin.png" id="2_ks073"]
+[ext_resource type="ArrayMesh" uid="uid://bnxprsgxn3560" path="res://assets/models/ModularFoodModels/PieTinOptomized.obj" id="3_mgssk"]
+[ext_resource type="Texture2D" uid="uid://b8pk5kgiiy3o1" path="res://assets/textures/ModularFoodTextures/burnttexture.png" id="4_eb1xi"]
+[ext_resource type="ArrayMesh" uid="uid://ckh8rvgw2fnlb" path="res://assets/models/ModularFoodModels/PieFillingOptomized.obj" id="5_duv08"]
+[ext_resource type="Texture2D" uid="uid://xxchfw660rr2" path="res://assets/textures/ModularFoodTextures/piecrust.png" id="6_ucw3n"]
+[ext_resource type="ArrayMesh" uid="uid://c0rd87hjlc65m" path="res://assets/models/ModularFoodModels/PieCrustOptomized.obj" id="7_3f35e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj67a"]
+albedo_texture = ExtResource("2_ks073")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcfxj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
+albedo_texture = ExtResource("4_eb1xi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q026u"]
+albedo_texture = ExtResource("6_ucw3n")
+
+[node name="MeatPie" unique_id=1546410034 instance=ExtResource("1_e37qp")]
+meal_name = "Meat Pie"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+material_override = SubResource("StandardMaterial3D_lj67a")
+material_overlay = SubResource("ShaderMaterial_pcfxj")
+mesh = ExtResource("3_mgssk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=1436771635]
+material_override = SubResource("StandardMaterial3D_klsck")
+mesh = ExtResource("5_duv08")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="2" unique_id=754527266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0093694925, 0)
+material_override = SubResource("StandardMaterial3D_q026u")
+mesh = ExtResource("7_3f35e")

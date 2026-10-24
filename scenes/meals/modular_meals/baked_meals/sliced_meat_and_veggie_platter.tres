@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://du2c4mr4dvw6f"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_33hux"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_364u1"]
+[ext_resource type="PackedScene" uid="uid://dbeew5q4ld21k" path="res://scenes/meals/modular_meals/baked_meals/sliced_meat_and_veggie_platter.tscn" id="2_ranr8"]
+
+[sub_resource type="Resource" id="Resource_ranr8"]
+resource_name = "Baked Chopped Meat"
+script = ExtResource("1_33hux")
+food_group = 1
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_45baj"]
+resource_name = "Baked Chopped Veggie"
+script = ExtResource("1_33hux")
+food_group = 2
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_364u1")
+recipe_name = "Sliced Meat and Veggie Platter"
+food_group_array = Array[ExtResource("1_33hux")]([SubResource("Resource_ranr8"), SubResource("Resource_45baj")])
+product = ExtResource("2_ranr8")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

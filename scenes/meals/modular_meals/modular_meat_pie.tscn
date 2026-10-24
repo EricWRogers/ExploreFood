@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://0uxnomhrpbry"]
-
-[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_otne5"]
-
-[node name="ModularMeatPie" unique_id=1546410034 instance=ExtResource("1_otne5")]
-meal_name = "Meat Pie"

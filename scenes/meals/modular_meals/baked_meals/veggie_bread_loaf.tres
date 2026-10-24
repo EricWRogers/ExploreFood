@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://cftaa0o614rpv"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_31ebf"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_cbkh3"]
+[ext_resource type="PackedScene" uid="uid://bxbue06b6sbca" path="res://scenes/meals/modular_meals/baked_meals/veggie_bread_loaf.tscn" id="2_dd0pi"]
+
+[sub_resource type="Resource" id="Resource_dd0pi"]
+resource_name = "Baked Bread"
+script = ExtResource("1_31ebf")
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[sub_resource type="Resource" id="Resource_ukybo"]
+resource_name = "Baked Chopped Veggie"
+script = ExtResource("1_31ebf")
+food_group = 2
+prep_group = 1
+cook_group = 1
+metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
+
+[resource]
+script = ExtResource("2_cbkh3")
+recipe_name = "Veggie Bread Loaf"
+food_group_array = Array[ExtResource("1_31ebf")]([SubResource("Resource_dd0pi"), SubResource("Resource_ukybo")])
+product = ExtResource("2_dd0pi")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://balexa8xl10ii"]
+
+[ext_resource type="PackedScene" uid="uid://c2rqvns1x25my" path="res://scenes/meals/base_meal.tscn" id="1_4bfw6"]
+[ext_resource type="Texture2D" uid="uid://bxwu38v2fmfgh" path="res://assets/textures/ModularFoodTextures/breadloaf.png" id="2_3mv4p"]
+[ext_resource type="ArrayMesh" uid="uid://bcpake1wj5dwr" path="res://assets/models/ModularFoodModels/BreadLoafOptomized.obj" id="3_6dpat"]
+[ext_resource type="Texture2D" uid="uid://2h74ejd88nnf" path="res://assets/textures/ModularFoodTextures/tin.png" id="4_qtyit"]
+[ext_resource type="ArrayMesh" uid="uid://6imo6m8y5772" path="res://assets/models/ModularFoodModels/LoafTinOptomized.obj" id="5_d85aw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l7p6"]
+albedo_texture = ExtResource("2_3mv4p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o16hd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8xqx"]
+albedo_texture = ExtResource("4_qtyit")
+
+[node name="BreadLoaf" unique_id=1546410034 instance=ExtResource("1_4bfw6")]
+meal_name = "Bread Loaf"
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1675912402]
+transform = Transform3D(0.92, 0, 0, 0, 0.92, 0, 0, 0, 0.92, 0, 0.06623733, -0.002990365)
+material_override = SubResource("StandardMaterial3D_3l7p6")
+material_overlay = SubResource("ShaderMaterial_o16hd")
+mesh = ExtResource("3_6dpat")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="1" unique_id=287405512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.061055183)
+material_override = SubResource("StandardMaterial3D_t8xqx")
+material_overlay = SubResource("ShaderMaterial_o16hd")
+mesh = ExtResource("5_d85aw")
