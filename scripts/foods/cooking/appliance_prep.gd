@@ -46,8 +46,11 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if (body.has_method("im_food") && !is_full): #checks if body is an ingredient. This check should be made better later.
 		#print("yum, I found a food! is prepped: ", body.prep_group)
-		if (body.prep_group != 0):
-			print("can't take, it's already been prepped!")
+		if (body.prep_group != 0 || 
+			(body.food_group == BaseFood.FoodGroup.BUTTER || 
+			body.food_group == BaseFood.FoodGroup.EGG)):
+			print("can't take!")
+			#Rejection UI here
 		else:
 			if station_ui.filled >= station_ui.capacity:
 				return
