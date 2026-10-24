@@ -40,8 +40,8 @@ material_override = SubResource("StandardMaterial3D_ig8nn")
 mesh = ExtResource("1_vxd2y")
 
 [node name="PrepperBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("1_8o83u")]
-station_ui = NodePath("../SubViewport2/StationUI")
 prep_group_application_type = 1
+station_ui = NodePath("../SubViewport2/StationUI")
 
 [node name="PrepperCollisionShape" type="CollisionShape3D" parent="PrepperBase" unique_id=1105606633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.55, 0.79999995)

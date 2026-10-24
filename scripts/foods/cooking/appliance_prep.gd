@@ -2,7 +2,6 @@ extends Node
 
 ###Applies prep tag to ingredients placed inside
 ##
-@export var station_ui : Control
 @export_group("Appliance Settings")
 @export var prep_group_application_type: BaseFood.PrepGroup
 @onready var spawn_position: Marker3D = $SpawnMarker
@@ -11,6 +10,9 @@ var is_in_range: bool = false
 var is_full: bool = false
 var is_prepping: bool = false
 var capacity: int = 0
+
+@export_category("UI")
+@export var station_ui : Control
 
 @export_group("Timer Settings")
 @export var prep_timer_time: float = 1
@@ -60,13 +62,14 @@ func _on_body_entered(body: Node3D) -> void:
 			#delete obj
 			body.queue_free()
 			
-			#debugging lines
-			print("ingredient: ", current_ingredient)
-			print("collected ingredients:", collected_ingredients)
+			##debugging lines
+			#print("ingredient: ", current_ingredient)
+			#print("collected ingredients:", collected_ingredients)
 			
 			#is_full = true
 			#start_prep_timer()
 
+##runs on start
 func prep_all():
 	print("prepping...")
 	for ingredient in collected_ingredients:
@@ -75,12 +78,13 @@ func prep_all():
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()
 		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
-		current_scene.add_child(ingredient_spawn)
-		print ("spawning: ", ingredient_spawn)
 		
 		#add tags
 		ingredient_spawn.prep_group = prep_group_application_type #Example: BaseFood.PrepGroup.CHOPPED
 		ingredient_spawn.cook_group = saved_cook_group
+		
+		current_scene.add_child(ingredient_spawn)
+		print ("spawning: ", ingredient_spawn)
 
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 		ingredient_spawn.position = spawn_position.global_position
@@ -92,12 +96,6 @@ func prep_all():
 	is_prepping = false
 	collected_ingredients.clear()
 	station_ui._reset_visual()
-
-func start_prep_timer():
-	#set timer time
-	timer_ui.visible = true
-	prep_timer.wait_time = prep_timer_time
-	prep_timer.start()
 
 #func _on_prep_timer_timeout() -> void:
 	#print("prep timeout!")
@@ -127,11 +125,12 @@ func start_prep_timer():
 	#timer_ui.visible = false
 	#is_full = false
 
+##runs upon reset
 func return_ingredients():
 	#spawn back prepped ingredient
 	for ingredient in collected_ingredients:
-		var ingredient_spawn: Node
 		#spawn back prepped ingredient
+		var ingredient_spawn: Node
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()
 		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
@@ -148,6 +147,12 @@ func return_ingredients():
 	#clear data
 	collected_ingredients.clear()
 	station_ui._reset_visual()
+
+func start_prep_timer():
+	#set timer time
+	timer_ui.visible = true
+	prep_timer.wait_time = prep_timer_time
+	prep_timer.start()
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):

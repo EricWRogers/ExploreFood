@@ -643,7 +643,7 @@ func pickup_food() -> void:
 	
 	#save food prep and cook tags when picked up 
 	if current_target.has_method("im_food"):
-		hold_prep = current_target.is_prepped
+		#hold_prep = current_target.is_prepped
 		held_prep = current_target.prep_group
 		held_cook = current_target.cook_group
 		#print("Picking up ", current_target, ": Prep group = ", held_prep ,". Cook group = ", held_cook, ".")
@@ -682,7 +682,7 @@ func dropthrow() -> void:
 	
 	#load food with proper prep and cook tags
 	if drop.has_method("im_food"):
-		drop.is_prepped = hold_prep
+		#drop.is_prepped = hold_prep
 		drop.prep_group = held_prep
 		drop.cook_group = held_cook
 		#print("Dropping ", drop, ": Prep group = ", drop.prep_group, ". Cook group = ", drop.cook_group, ".")

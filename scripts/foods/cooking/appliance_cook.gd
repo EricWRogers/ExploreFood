@@ -118,13 +118,16 @@ func find_recipe():
 	
 	# make dubious food
 	if (chosen_recipe == null):
-		if (collected_ingredient_tags.size() == 1):
-			print("only one ingredient found.")
-			cook_ingredient()
-			return
-		else:
-			print("dubious food")
-			chosen_recipe = recipes[-1]
+		print("dubious food")
+		chosen_recipe = recipes[-1]
+		
+		#if (collected_ingredient_tags.size() == 1):
+			#print("only one ingredient found.")
+			#cook_ingredient()
+			#return
+		#else:
+			#print("dubious food")
+			#chosen_recipe = recipes[-1]
 		#make_soup() #<- or make dubious food
 		#return
 	
@@ -207,12 +210,11 @@ func return_ingredients():
 		var current_scene = get_tree().root
 		ingredient_spawn = ingredient.instantiate()
 		ingredient_spawn.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		ingredient_spawn.prep_group = saved_prep_group #add tags
+		
 		current_scene.add_child(ingredient_spawn)
 		print ("spawning: ", ingredient_spawn)
 		
-		#add tags
-		ingredient_spawn.prep_group = saved_prep_group
-
 		#TODO: Change spawn point. Hard coding point is.. fine... but should probably spawn on top of a specific obj or something instead?
 		ingredient_spawn.position = spawn_position.global_position
 		

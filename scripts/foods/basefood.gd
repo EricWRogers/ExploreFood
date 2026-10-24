@@ -13,7 +13,7 @@ class_name BaseFood
 @export var type : String
 @export var value : int
 @export var hunger_restore : int
-@export var processed_ingredient : PackedScene
+#@export var processed_ingredient : PackedScene
 @export var is_prepped: bool = false
 
 @export_group("Food Groups")
@@ -32,7 +32,8 @@ enum FoodGroup {
 	BREAD,
 	MEAT,
 	VEGGIE,
-	BUTTER #butter is a temp food group to be able to easily include butter frog in our prototype. 
+	BUTTER, #butter is a temp food group to be able to easily include butter frog in our prototype. 
+	EGG #added because i didnt want to chop up Terry as a meat. I dont have any egg recipes yet though srry
 }
 
 ##tracks how food has been prepped, if it has been prepped
@@ -49,16 +50,21 @@ enum CookGroup {
 	GRILLED
 }
 
-#appearance
-@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
-@onready var overlay := mesh_instance_3d.material_overlay as ShaderMaterial
+@export_group("Appearance")
+@export var chopped_mesh: Mesh
+@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var overlay := mesh_instance.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
 func _ready():
-	overlay = mesh_instance_3d.material_overlay.duplicate()
+	overlay = mesh_instance.material_overlay.duplicate()
 	next_pass = overlay.next_pass.duplicate()
 	overlay.next_pass = next_pass
-	mesh_instance_3d.material_overlay = overlay
+	mesh_instance.material_overlay = overlay
+	
+	if (prep_group == PrepGroup.CHOPPED):
+		mesh_instance.mesh = chopped_mesh
+	
 	RollSpawn()
 	if rand_spin:
 		self.rotation_degrees.y = randi_range(0, 360)
