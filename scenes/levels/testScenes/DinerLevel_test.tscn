@@ -28,6 +28,12 @@
 
 [sub_resource type="Environment" id="Environment_8ojr3"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_2fgrh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qaolc"]
+viewport_path = NodePath("SubViewport2")
+
 [sub_resource type="Resource" id="Resource_eyak3"]
 resource_name = "Pass Tutorial"
 script = ExtResource("15_ehwar")
@@ -89,6 +95,12 @@ environment = SubResource("Environment_8ojr3")
 
 [node name="Oven" parent="Kitchen/Appliances" unique_id=408695707 instance=ExtResource("7_7hvat")]
 transform = Transform3D(-7, 0, -1.0569706e-06, 0, 7, 0, 1.0569706e-06, 0, -7, -6, -0.6, 0.5831165)
+
+[node name="ProgressBar" parent="Kitchen/Appliances/Oven" index="5" unique_id=463823974]
+texture = SubResource("ViewportTexture_2fgrh")
+
+[node name="StationUI" parent="Kitchen/Appliances/Oven/Prompts" parent_id_path=PackedInt32Array(408695707, 97559206) index="0" unique_id=1723716704]
+texture = SubResource("ViewportTexture_qaolc")
 
 [node name="Counter_Right" parent="Kitchen/Appliances" unique_id=361079195 instance=ExtResource("11_bllhf")]
 transform = Transform3D(-0.025719592, 0, 0.9996692, 0, 1, 0, -0.9996692, 0, -0.025719592, -12.135128, -0.6, -3.8819323)
@@ -268,3 +280,5 @@ material = SubResource("StandardMaterial3D_klsck")
 [connection signal="body_entered" from="Portal2" to="." method="_on_portal_2_body_entered"]
 [connection signal="body_entered" from="QuestCheck" to="BossNPC" method="_on_quest_check_body_entered"]
 [connection signal="rush_button_hit" from="CounterProps/DinnerBell" to="RestaurantSystem" method="_on_dinner_bell_rush_button_hit"]
+
+[editable path="Kitchen/Appliances/Oven"]

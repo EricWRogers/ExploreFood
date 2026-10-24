@@ -92,6 +92,7 @@ material_override = SubResource("StandardMaterial3D_ufixx")
 mesh = ExtResource("2_hjg1s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OvenMeshInstance/KitchenStoveDoor" unique_id=1020070380]
+unique_name_in_owner = true
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_u77ib")
 
@@ -99,10 +100,12 @@ libraries/ = SubResource("AnimationLibrary_u77ib")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0007934571, 0.12435151, 0.0051751137)
 shape = SubResource("BoxShape3D_q026u")
 
-[node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("2_mv8nq")]
+[node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("animation", "station_ui", "type_parent") instance=ExtResource("2_mv8nq")]
 cook_group_application_type = 1
+animation = NodePath("../OvenMeshInstance/KitchenStoveDoor/AnimationPlayer")
 station_ui = NodePath("../SubViewport2/StationUI")
 cook_timer_time = 6.0
+type_parent = NodePath("..")
 
 [node name="CookerCollisionShape" type="CollisionShape3D" parent="CookerBase" unique_id=938174525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020165916, 0.17500003, 0.16500027)
