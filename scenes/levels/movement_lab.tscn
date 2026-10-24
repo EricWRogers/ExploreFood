@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dmot4k5n7k0w6" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="5_20n0i"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="6_xeajp"]
 [ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="8_5bgta"]
+[ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="9_v37vc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5873,3 +5874,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -12.333645)
 
 [node name="ForkCollectable9" parent="Collectables" unique_id=144805035 instance=ExtResource("8_5bgta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -13.333645)
+
+[node name="StoveOven" parent="." unique_id=1051010450 instance=ExtResource("9_v37vc")]
+transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, 0, 0.9744922, 2.5624063)
+
+[node name="StoveOven2" parent="." unique_id=1169747221 instance=ExtResource("9_v37vc")]
+transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, -1.4557672, 0.9744922, 2.5624063)
+
+[node name="StoveOven3" parent="." unique_id=1845515641 instance=ExtResource("9_v37vc")]
+transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, -2.916928, 0.9744922, 2.5624063)

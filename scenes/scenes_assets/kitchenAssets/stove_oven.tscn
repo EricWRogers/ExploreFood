@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://e51tfnmytcs5" path="res://assets/textures/Kitchen Textures/Stove/OvenTexture.png" id="2_40l7o"]
 [ext_resource type="ArrayMesh" uid="uid://cy74g4u5anbrf" path="res://assets/models/KitchenModels/vintage_oven_door.obj" id="3_4vnwr"]
 [ext_resource type="Shader" uid="uid://s3cit3g6fdc6" path="res://assets/shaders/stove_oven_flame.gdshader" id="3_40l7o"]
+[ext_resource type="ArrayMesh" uid="uid://byqa2v55mv0gw" path="res://assets/models/KitchenModels/vintage_oven_tray.obj" id="4_4vnwr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
@@ -39,6 +40,9 @@ transparency = 1
 blend_mode = 1
 cull_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq02n"]
+albedo_texture = ExtResource("2_40l7o")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6ica"]
 albedo_texture = ExtResource("2_40l7o")
 
@@ -49,9 +53,102 @@ albedo_texture = ExtResource("2_40l7o")
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.5294118)
 
+[sub_resource type="Animation" id="Animation_a6ica"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenSquish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lf4ke"]
+resource_name = "cooking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenSquish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.6817919, 0.48296815, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.015, 0.985, 1.01), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nq02n"]
+_data = {
+&"RESET": SubResource("Animation_a6ica"),
+&"cooking": SubResource("Animation_lf4ke")
+}
+
+[sub_resource type="Animation" id="Animation_4vnwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenSquish/DoorPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_38i88"]
+resource_name = "close_door"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenSquish/DoorPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.2030631, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n66xe"]
+resource_name = "open_door"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenSquish/DoorPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7666667, 1, 1.2),
+"transitions": PackedFloat32Array(1.9318728, 0.210224, 1.5691686, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.6301376, 0, 0), Vector3(1.3584211, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tq11"]
+_data = {
+&"RESET": SubResource("Animation_4vnwr"),
+&"close_door": SubResource("Animation_38i88"),
+&"open_door": SubResource("Animation_n66xe")
+}
+
 [node name="StoveOven" type="Node3D" unique_id=1051010450]
 
-[node name="VintageOvenBody" type="MeshInstance3D" parent="." unique_id=278353777]
+[node name="OvenSquish" type="Node3D" parent="." unique_id=1773969685]
+
+[node name="VintageOvenBody" type="MeshInstance3D" parent="OvenSquish" unique_id=278353777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055969357, 0, -0.0046902895)
 mesh = ExtResource("1_w4k7t")
 surface_material_override/0 = SubResource("StandardMaterial3D_38i88")
@@ -60,10 +157,23 @@ surface_material_override/2 = SubResource("StandardMaterial3D_0tq11")
 surface_material_override/3 = SubResource("StandardMaterial3D_0tq11")
 surface_material_override/4 = SubResource("StandardMaterial3D_0tq11")
 
-[node name="VintageOvenDoor" type="MeshInstance3D" parent="." unique_id=1517269840]
+[node name="VintageOvenTray" type="MeshInstance3D" parent="OvenSquish" unique_id=606955121]
+mesh = ExtResource("4_4vnwr")
+surface_material_override/0 = SubResource("StandardMaterial3D_nq02n")
+
+[node name="DoorPivot" type="Node3D" parent="OvenSquish" unique_id=249675139]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.19276682, 0.369)
+
+[node name="VintageOvenDoor" type="MeshInstance3D" parent="OvenSquish/DoorPivot" unique_id=1517269840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19, -0.369)
 mesh = ExtResource("3_4vnwr")
 surface_material_override/0 = SubResource("StandardMaterial3D_a6ica")
 surface_material_override/1 = SubResource("StandardMaterial3D_lf4ke")
 surface_material_override/2 = SubResource("StandardMaterial3D_puwec")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=249675139]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1311275232]
+libraries/ = SubResource("AnimationLibrary_nq02n")
+
+[node name="Door" type="AnimationPlayer" parent="." unique_id=2077582318]
+libraries/ = SubResource("AnimationLibrary_0tq11")
+speed_scale = 2.0
