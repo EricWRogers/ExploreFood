@@ -32,6 +32,8 @@ heightmap_texture = ExtResource("7_antww")
 height = 2.239746
 radius = 0.23339844
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+
 [node name="Clown_Tree" type="Node3D" unique_id=1282798476]
 script = ExtResource("1_dtrys")
 
@@ -57,3 +59,12 @@ transform = Transform3D(0.6148066, 0.29520142, 0.7313472, 0.037296757, 0.9153880
 
 [node name="ClownMask3" parent="." unique_id=69236649 instance=ExtResource("10_2yi7y")]
 transform = Transform3D(-0.4520756, -0.70069474, -0.5519551, 0.24254057, 0.49891907, -0.8320177, 0.8583714, -0.51000667, -0.05560234, -1.7462672, 3.417725, -0.1828529)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1439687423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1880949998]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("SphereShape3D_gtwna")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

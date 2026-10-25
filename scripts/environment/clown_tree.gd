@@ -8,9 +8,10 @@ var has_checked_noses: bool = false
 
 var noses = []
 var og_nose_scale
-var too_close_distance_squared = 15.0 ** 2
 var player_speed = 1.0
 var speed_limit = 10.0
+var player_close : bool = false;
+var target_scale
 
 var player
 
@@ -40,16 +41,16 @@ func _process(delta: float) -> void:
 	else:
 		player = get_tree().get_first_node_in_group("Player").get_child(0)
 
-	var target_scale = 1.0
 	
-
-	if player_speed > speed_limit and global_position.distance_squared_to(player.global_position) < too_close_distance_squared:
-		target_scale = 15.0
+	if player_close and player_speed > speed_limit:
+			target_scale = 15.0
+	else:
+		target_scale = 1.0
 	for nose in noses:
 		if nose != null:
 			nose.scale = nose.scale.lerp(og_nose_scale * target_scale, delta / 2.0)
 			if nose.scale.length() >= target_scale * 0.99:
-					explode(nose)
+				explode(nose)
 
 
 func get_clown_nose(mask: StaticBody3D) -> RigidBody3D:
@@ -67,3 +68,15 @@ func explode(nose: RigidBody3D) -> void:
 
 	noses.erase(nose)
 	nose.queue_free()
+
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player_close = true
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player_close = false
