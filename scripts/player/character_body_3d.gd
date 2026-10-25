@@ -599,8 +599,11 @@ func update_slots(slot: int) -> void:
 		Manager.holding = false
 		Manager.current_slot = 0
 		return
-
 	selected_object = food_scene.instantiate()
+	if selected_object.name == "WafflePad":
+		var frog = selected_object.get_child(3)
+		if frog != null:
+			frog.queue_free()
 	Manager.currently_held_food = selected_object
 	selected_object.rarity_level = 1
 	add_child(selected_object)
@@ -675,6 +678,10 @@ func dropthrow() -> void:
 		return
 
 	var drop = food_scene.instantiate()
+	if drop.name == "WafflePad":
+		var frog = drop.get_child(3)
+		if frog != null:
+			frog.queue_free()
 
 	# Set properties BEFORE add_child() triggers _ready().
 	drop.rarity_level = 1.0

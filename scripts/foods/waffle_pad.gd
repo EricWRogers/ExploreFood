@@ -11,8 +11,6 @@ func _ready():
 
 func on_looked_at():
 	super()
-	
-	print("Do something extra")
 	$Node3D/Label3D.show()
 	
 func get_took():
