@@ -694,7 +694,7 @@ func dropthrow() -> void:
 		drop.cook_group = held_cook
 		#print("Dropping ", drop, ": Prep group = ", drop.prep_group, ". Cook group = ", drop.cook_group, ".")
 	
-	get_tree().current_scene.add_child(drop)
+	get_parent().add_child(drop)
 
 	drop.global_position = food_spawn.global_position
 
