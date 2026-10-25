@@ -6,6 +6,7 @@ extends HBoxContainer
 @export var max_slots := 6
 @export var wrap_around := true
 @export var scroll_cooldown := 0.04
+signal update_held
 
 var current_slot := 0
 var scroll_timer := 0.0
@@ -24,6 +25,7 @@ func _input(event: InputEvent) -> void:
 			for item in hotbar_slots:
 				item._unfocus()
 			hotbar_slots[current_slot]._focus()
+			emit_signal("update_held", current_slot)
 			return
 	var direction := 0
 	if event is InputEventMouseButton:
@@ -56,6 +58,8 @@ func _input(event: InputEvent) -> void:
 	for item in hotbar_slots:
 		item._unfocus()
 	hotbar_slots[current_slot]._focus()
+	emit_signal("update_held", current_slot)
+	
 	Manager.player_current_hovered_slot = current_slot
 func _update_visual(tie):
 	var viewers = get_tree().get_nodes_in_group("Viewer")

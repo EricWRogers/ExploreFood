@@ -56,16 +56,24 @@ var _contact_point := Vector3.ZERO
 var _has_contact := false
 var _was_touching := false
 var _held := false
+var _held_point : Marker3D
 
 func _become_dropped():
 	_held = false
 	contact_monitor = true
 	set_collision_layer_value(1, true)
 
-func _become_held():
+func _become_held(pnt):
 	_held = true
 	contact_monitor = false
 	set_collision_layer_value(1, false)
+	_held_point = pnt
+	freeze = true
+	
+func _become_stored():
+	hide()
+func _become_visibly_held():
+	show()
 
 func _ready() -> void:
 	contact_monitor = true
@@ -141,6 +149,9 @@ func _basis_from_normal(normal: Vector3) -> Basis:
 	return Basis(x, y, z)
 
 func _process(_delta: float) -> void:
+	if _held_point:
+		global_position = _held_point.global_position
+		global_rotation = _held_point.global_rotation
 	$Node3D.global_position = global_position
 	$Node3D.global_position.y = $Node3D.global_position.y + tooltip_offset
 	arrow.global_position = global_position

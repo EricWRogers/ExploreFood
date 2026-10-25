@@ -108,7 +108,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwj7j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veuuv"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 7
 border_width_top = 7
@@ -148,6 +148,13 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 shadow_color = Color(0, 0, 0, 0)
 shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g1ex"]
+bg_color = Color(0, 0, 0, 0.16078432)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
 
 [node name="Player3D" type="CharacterBody3D" unique_id=1594877716]
 script = ExtResource("1_17ier")
@@ -319,28 +326,17 @@ theme_override_constants/separation = 10
 script = ExtResource("5_moldy")
 hotbar_slots = [NodePath("Slot1"), NodePath("Slot2"), NodePath("Slot3"), NodePath("Slot4"), NodePath("Slot5"), NodePath("Slot6")]
 
-[node name="Slot1" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=396926362 node_paths=PackedStringArray("panel_shrink", "texture")]
+[node name="Slot1" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=396926362 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
 layout_mode = 2
 script = ExtResource("5_m6hw8")
 panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot1" unique_id=1825147457]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot1/Panel" unique_id=793406763]
-z_index = -1
-texture_filter = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
 
 [node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot1/Panel" unique_id=164655938]
 visible = false
@@ -371,18 +367,18 @@ scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 
-[node name="Slot2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=573487662 node_paths=PackedStringArray("panel_shrink", "texture")]
-layout_mode = 2
-script = ExtResource("5_m6hw8")
-panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot1/Panel" unique_id=144501689]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2" unique_id=643513607]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=1995354901]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot1/Panel/Back" unique_id=793406763]
 z_index = -1
 texture_filter = 3
 layout_mode = 1
@@ -394,7 +390,19 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=1988034175]
+[node name="Slot2" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=1854892990 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
+layout_mode = 2
+script = ExtResource("5_m6hw8")
+panel_shrink = NodePath("Panel/Panel")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2" unique_id=925350646]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=1940836009]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -407,11 +415,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel/Selected1" unique_id=1585830981]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel/Selected1" unique_id=1356127316]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m6hw8")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=1841515530]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=1639757455]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -423,18 +431,18 @@ scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 
-[node name="Slot3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=283641083 node_paths=PackedStringArray("panel_shrink", "texture")]
-layout_mode = 2
-script = ExtResource("5_m6hw8")
-panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel" unique_id=840245559]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3" unique_id=1029270713]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=1959370906]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot2/Panel/Back" unique_id=519034959]
 z_index = -1
 texture_filter = 3
 layout_mode = 1
@@ -446,7 +454,19 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=654271086]
+[node name="Slot3" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=1002225712 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
+layout_mode = 2
+script = ExtResource("5_m6hw8")
+panel_shrink = NodePath("Panel/Panel")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3" unique_id=1675553029]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=1539042507]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -459,11 +479,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel/Selected1" unique_id=181354690]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel/Selected1" unique_id=686275111]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m6hw8")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=1209683161]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=1024405879]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -475,18 +495,18 @@ scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 
-[node name="Slot4" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=2044537617 node_paths=PackedStringArray("panel_shrink", "texture")]
-layout_mode = 2
-script = ExtResource("5_m6hw8")
-panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel" unique_id=1846987812]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4" unique_id=255677955]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=1845470332]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot3/Panel/Back" unique_id=1321955550]
 z_index = -1
 texture_filter = 3
 layout_mode = 1
@@ -498,7 +518,19 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=742711712]
+[node name="Slot4" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=1628548894 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
+layout_mode = 2
+script = ExtResource("5_m6hw8")
+panel_shrink = NodePath("Panel/Panel")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4" unique_id=1644063168]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=514602757]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -511,11 +543,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel/Selected1" unique_id=1920854909]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel/Selected1" unique_id=1944509870]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m6hw8")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=1098421257]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=1237041245]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -527,18 +559,18 @@ scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 
-[node name="Slot5" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=772657108 node_paths=PackedStringArray("panel_shrink", "texture")]
-layout_mode = 2
-script = ExtResource("5_m6hw8")
-panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel" unique_id=1923671405]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5" unique_id=415741491]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=1092798573]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot4/Panel/Back" unique_id=722658173]
 z_index = -1
 texture_filter = 3
 layout_mode = 1
@@ -550,7 +582,19 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=516540106]
+[node name="Slot5" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=1402547143 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
+layout_mode = 2
+script = ExtResource("5_m6hw8")
+panel_shrink = NodePath("Panel/Panel")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5" unique_id=1457269640]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=254235158]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -563,11 +607,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel/Selected1" unique_id=281323560]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel/Selected1" unique_id=1054276578]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m6hw8")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=1882132540]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=1951701156]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -579,18 +623,18 @@ scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 
-[node name="Slot6" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=1072479457 node_paths=PackedStringArray("panel_shrink", "texture")]
-layout_mode = 2
-script = ExtResource("5_m6hw8")
-panel_shrink = NodePath("Panel/Panel")
-texture = NodePath("Panel/Item1")
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel" unique_id=1976900457]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6" unique_id=1092242804]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mwj7j")
-
-[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=867587621]
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot5/Panel/Back" unique_id=2082530367]
 z_index = -1
 texture_filter = 3
 layout_mode = 1
@@ -602,7 +646,19 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=620211143]
+[node name="Slot6" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Hotbar" unique_id=536559749 node_paths=PackedStringArray("panel_shrink", "panel_modulate", "texture")]
+layout_mode = 2
+script = ExtResource("5_m6hw8")
+panel_shrink = NodePath("Panel/Panel")
+panel_modulate = NodePath("Panel")
+texture = NodePath("Panel/Back/Item1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6" unique_id=637588526]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veuuv")
+
+[node name="Selected1" type="MarginContainer" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=793485150]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -615,11 +671,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel/Selected1" unique_id=802239942]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel/Selected1" unique_id=1166461888]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m6hw8")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=501040643]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=1831775706]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -630,6 +686,29 @@ grow_vertical = 2
 scale = Vector2(0.96, 0.96)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
+
+[node name="Back" type="Panel" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel" unique_id=1114190155]
+clip_children = 2
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="Item1" type="TextureRect" parent="CanvasLayer/MarginContainer/Hotbar/Slot6/Panel/Back" unique_id=1577175346]
+z_index = -1
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="body_entered" from="Doremi/ItemDetect" to="." method="_on_item_detect_body_entered"]
@@ -637,3 +716,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_moldy")
 [connection signal="timeout" from="IdleBreak" to="." method="_on_idle_break_timeout"]
 [connection signal="timeout" from="Cliff" to="." method="_on_cliff_timeout"]
 [connection signal="timeout" from="LedgeGrabTimer" to="." method="_on_ledge_grab_timer_timeout"]
+[connection signal="update_held" from="CanvasLayer/MarginContainer/Hotbar" to="." method="_on_hotbar_update_held"]

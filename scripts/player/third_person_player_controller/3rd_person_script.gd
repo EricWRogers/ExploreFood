@@ -132,7 +132,17 @@ func _process(_delta: float) -> void:
 		if target_slot == -1:
 			return
 		inventory[target_slot] = grab_focus
-		grab_focus._become_held()
+		grab_focus._become_held($Doremi/FoodHoldPnt)
+		for item in inventory:
+			if item == null:
+				pass
+			else:
+				item._become_stored()
+		if inventory[target_slot] != null:
+			inventory[target_slot]._become_visibly_held()
+		else:
+			pass
+		grab_focus.global_position = $Doremi/FoodHoldPnt.global_position
 		current_taken_slots += 1
 		spawn_inventory_slot_viewer(grab_focus, target_slot)
 		print("Item stored in slot: ", target_slot)
@@ -461,3 +471,13 @@ func _on_item_detect_body_entered(body: Node3D) -> void:
 func _on_item_detect_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Ingredient"):
 		grab_candidates.erase(body)
+func _on_hotbar_update_held(slot_index) -> void:
+	for item in inventory:
+		if item == null:
+			pass
+		else:
+			item._become_stored()
+	if inventory[slot_index] != null:
+		inventory[slot_index]._become_visibly_held()
+	else:
+		pass
