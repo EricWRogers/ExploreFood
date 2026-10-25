@@ -19,6 +19,7 @@ class_name BaseIngredient
 @export var hunger_restore : int
 #@export var processed_ingredient : PackedScene
 @export var is_prepped: bool = false
+@export var inventory_icon_FOV : float = 30.5
 
 @export_group("Food Groups")
 @export var food_group: FoodGroup
@@ -30,7 +31,11 @@ class_name BaseIngredient
 #@export_subgroup("Depreciated")
 #@export var category : Manager.FoodType
 #@export var flavor : Manager.FlavorType
+@onready var mesh_instance: MeshInstance3D = $DeformableMeshInstance3D
+@onready var overlay := mesh_instance.material_overlay as ShaderMaterial
+@onready var next_pass := overlay.next_pass as ShaderMaterial
 
+@export var tooltip_offset : float
 ##type of food that an ingredient is. Must always have a value
 enum FoodGroup {
 	BREAD,
@@ -50,12 +55,15 @@ enum FlavorProfile {
 var _contact_point := Vector3.ZERO
 var _has_contact := false
 var _was_touching := false
+var _held := false
 
 func _become_dropped():
+	_held = false
 	contact_monitor = true
 	set_collision_layer_value(1, true)
 
 func _become_held():
+	_held = true
 	contact_monitor = false
 	set_collision_layer_value(1, false)
 
@@ -63,9 +71,31 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 4
 	arrow.top_level = true
+	#print("Overlay: ", overlay)
+	#print("Next pass: ", overlay.next_pass)
+	#print("Next pass is ShaderMaterial: ", overlay.next_pass is ShaderMaterial)
 	
 func _focus_obtain():
-	pass
+	if _held:
+		return
+	%Sprite3D.texture = InputManager.get_prompt("interact")
+	$Node3D.show()
+	%Sprite3D.scale = Vector3(.90, .90, .90)
+	%Sprite3D.modulate = Color(0.0, 0.0, 0.0, 0.0)
+	var tween
+	if tween: tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(%Sprite3D, "scale", Vector3(0.55, 0.55, 0.55), 0.2)
+	tween.tween_property(%Sprite3D, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
+	overlay.set_shader_parameter("transparency", 0.5)
+	next_pass.set_shader_parameter("size", 1.1)
+func _defocus():
+	$Node3D.hide()
+	%Sprite3D.scale = Vector3(.90, .90, .90)
+	%Sprite3D.modulate = Color(0.0, 0.0, 0.0, 0.0)
+	overlay.set_shader_parameter("transparency", 0.0)
+	next_pass.set_shader_parameter("size", 0.0)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var count := state.get_contact_count()
@@ -111,6 +141,8 @@ func _basis_from_normal(normal: Vector3) -> Basis:
 	return Basis(x, y, z)
 
 func _process(_delta: float) -> void:
+	$Node3D.global_position = global_position
+	$Node3D.global_position.y = $Node3D.global_position.y + tooltip_offset
 	arrow.global_position = global_position
 	if not _has_contact:
 		return
@@ -126,8 +158,6 @@ func _process(_delta: float) -> void:
 
 	arrow.look_at(global_position + dir, up)
 	
-
-
 func _on_body_entered(body: Node) -> void:
 	on_hit(Vector3.ZERO, Vector3.ZERO, false)
 	

@@ -36,6 +36,16 @@ var askers_request = []
 var current_customers = 0
 var waffledimension = false
 
+## ─────────────────────────────────────────
+## All this shit above is sloppy goopy so whatever i write under here is good and awesome :P
+## ─────────────────────────────────────────
+
+var max_hotbar_slots := 6
+var player_current_hovered_slot : int
+
+## ─────────────────────────────────────────
+## This is the end of good
+## ─────────────────────────────────────────
 var is_portal_1: bool = false
 var is_portal_2: bool = false
 

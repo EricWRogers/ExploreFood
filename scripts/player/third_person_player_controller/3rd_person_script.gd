@@ -24,6 +24,9 @@ extends CharacterBody3D
 @export var fall_gravity_multiplier := 1.4
 @export var jump_cut_multiplier := 2.0
 
+@export_group("Powers")
+@export var max_hotbar_slots := 6
+
 var jump_buffer_timer := 0.0
 var coyote_timer := 0.0
 var jump_was_cut := false
@@ -54,13 +57,18 @@ var max_spring_length : float
 var climb_started := false
 var climbing_detect_started := false
 var climbing_detect_has_collided := false
+var grab_candidates := []
+var grab_focus : RigidBody3D
+var current_taken_slots := 0
+var inventory: Array = [null, null, null, null, null, null]
+var total_viewers := 1
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var shadow: SpringArm3D = $Shadow
 @onready var decal: Decal = $Shadow/Decal
-
+@onready var inventory_viewer = preload("res://fp_scenes/inventory/inventory_icon_maker.tscn")
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -93,6 +101,68 @@ func _process(_delta: float) -> void:
 	new_scale = 1.0 - (new_scale / max_spring_length)
 	new_scale = clamp(new_scale, 0.0, 1.0)
 	decal.size = Vector3(new_scale, 1.0, new_scale)
+	
+	if grab_candidates.size() > 1:
+		var closest : RigidBody3D = null
+		var closest_distance: float = INF
+		for item in grab_candidates:
+			var current = global_position.distance_to(item.global_position)
+			if current < closest_distance:
+				closest_distance = current
+				closest = item
+		grab_focus = closest
+		unfocus_all()
+		grab_focus._focus_obtain()
+	elif grab_candidates.size() == 1:
+		grab_focus = grab_candidates[0]
+		unfocus_all()
+		grab_focus._focus_obtain()
+	else:
+		unfocus_all()
+		return
+	if Input.is_action_just_pressed("Interact") and grab_focus:
+		var target_slot = Manager.player_current_hovered_slot
+
+		if inventory[target_slot] != null:
+			target_slot = -1
+			for i in range(inventory.size()):
+				if inventory[i] == null:
+					target_slot = i
+					break
+		if target_slot == -1:
+			return
+		inventory[target_slot] = grab_focus
+		grab_focus._become_held()
+		current_taken_slots += 1
+		spawn_inventory_slot_viewer(grab_focus, target_slot)
+		print("Item stored in slot: ", target_slot)
+func spawn_inventory_slot_viewer(item, tie):
+	var viewer_family = get_tree().get_nodes_in_group("Viewer")
+
+	for view in viewer_family:
+		if view.slot_tie == tie:
+			view.reset_item()
+			view.spawn_item(item)
+			$CanvasLayer/MarginContainer/Hotbar._update_visual()
+			return
+
+	var viewer = inventory_viewer.instantiate()
+	viewer.slot_tie = tie
+	viewer.add_to_group("Viewer")
+	get_tree().root.add_child(viewer)
+
+	# Move each new viewer farther below the map.
+	total_viewers += 1
+	#viewer.global_position = Vector3(0, -10 * total_viewers, 0)
+
+	viewer._set_FOV(item.inventory_icon_FOV)
+	viewer.spawn_item(item)
+
+	$CanvasLayer/MarginContainer/Hotbar._update_visual(tie)
+func unfocus_all():
+	var ingredients = get_tree().get_nodes_in_group("Ingredient")
+	for item in ingredients:
+		item._defocus()
 func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
 	#Cliff Hang Stuff#
@@ -384,3 +454,10 @@ func _on_cliff_timeout() -> void:
 
 func _on_ledge_grab_timer_timeout() -> void:
 	can_ledge_grab = true
+
+func _on_item_detect_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Ingredient"):
+		grab_candidates.append(body)
+func _on_item_detect_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Ingredient"):
+		grab_candidates.erase(body)

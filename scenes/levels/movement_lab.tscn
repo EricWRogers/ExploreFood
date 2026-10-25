@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="8_5bgta"]
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="9_v37vc"]
 [ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="10_20n0i"]
+[ext_resource type="PackedScene" uid="uid://ddtb22qi8a2kr" path="res://fp_scenes/ingredients/testingredient.tscn" id="11_2kjt3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5929,3 +5930,12 @@ transform = Transform3D(0.13042144, 0.1316418, 0.4643928, 0, 0.48104602, -0.1363
 
 [node name="Base15" parent="." unique_id=342855235 instance=ExtResource("10_20n0i")]
 transform = Transform3D(-0.024679296, -0.0702286, 0.4944278, 0.22553198, 0.44010606, 0.07377013, -0.44556287, 0.22665973, 0.0099546015, -1.1644176, 16.890823, -8.158856)
+
+[node name="Base16" parent="." unique_id=1378778937 instance=ExtResource("11_2kjt3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7552171, 6.1237655, -5.0339823)
+
+[node name="Base17" parent="." unique_id=1591146139 instance=ExtResource("11_2kjt3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.2557774, 6.1237655, -6.6054444)
+
+[node name="Base18" parent="." unique_id=1932455168 instance=ExtResource("11_2kjt3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5264616, 7.2369885, -6.6054444)
