@@ -41,6 +41,7 @@ folder_colors={
 "res://addons/": "orange",
 "res://assets/": "red",
 "res://data/": "teal",
+"res://fp_scenes/": "yellow",
 "res://scenes/": "blue",
 "res://scripts/": "green"
 }
@@ -50,6 +51,7 @@ folder_colors={
 Player="for the player"
 Terrain=""
 SandwichPiece=""
+Ingredient=""
 
 [input]
 

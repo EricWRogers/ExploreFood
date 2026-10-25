@@ -17,7 +17,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		%AudioStreamPlayer3D.play()
 		$GPUParticles3D.emitting = true
 		%Fork.visible = false
-		%Area3D.monitoring = false
+		%Area3D.set_collision_layer_value(1, false)
 
 
 func _on_gpu_particles_3d_finished() -> void:

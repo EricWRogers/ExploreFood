@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="6_xeajp"]
 [ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="8_5bgta"]
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="9_v37vc"]
+[ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="10_20n0i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5883,3 +5884,48 @@ transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, 
 
 [node name="StoveOven3" parent="." unique_id=1845515641 instance=ExtResource("9_v37vc")]
 transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, -2.916928, 0.9744922, 2.5624063)
+
+[node name="Base" parent="." unique_id=175947415 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.220369, -6.643323)
+
+[node name="Base2" parent="." unique_id=985322419 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.49687815, -0.04645423, 0.030888645, 0.055786233, 0.41375965, -0.2751197, 0, 0.2768483, 0.41635928, 0, 7.306778, -6.643323)
+
+[node name="Base3" parent="." unique_id=466344284 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.2784413, 0.4152956, 0, -0.4152956, 0.2784413, 0, 0, 0, 0.5, -1.8811606, 8.694611, -6.643323)
+
+[node name="Base4" parent="." unique_id=671926015 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.48104602, -0.13636251, 0, 0.13636251, 0.48104602, 0.8179177, 9.21356, -6.643323)
+
+[node name="Base5" parent="." unique_id=1272432198 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.42370063, -0.23713169, 0.119357996, 0.22553195, 0.440106, 0.07377012, -0.14004682, -0.0086748, 0.47990793, -0.9925386, 9.914671, -7.2923837)
+
+[node name="Base6" parent="." unique_id=847395422 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.2128094, 0, -0.4524513, 0, 0.5, 0, 0.4524513, 0, 0.2128094, -2.8637874, 23.605293, -5.6519513)
+
+[node name="Base7" parent="." unique_id=1857137228 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.23943189, -0.046454206, -0.43647957, -0.2252129, 0.41375968, -0.16757719, 0.3767646, 0.2768483, 0.17721036, -2.7893832, 18.911045, -5.8177896)
+
+[node name="Base8" parent="." unique_id=1422797891 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.118509844, 0.4152956, -0.25196224, -0.1767576, 0.2784413, 0.37580207, 0.4524513, -1.4901161e-08, 0.2128094, -3.810971, 22.830206, -5.6519513)
+
+[node name="Base9" parent="." unique_id=387505937 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.2128094, 0, -0.4524513, -0.12339479, 0.48104602, -0.05803845, 0.43529978, 0.13636251, 0.20474222, -2.0458698, 21.328112, -5.6895323)
+
+[node name="Base10" parent="." unique_id=710229217 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.28834233, -0.23713171, -0.3326068, 0.16274542, 0.44010603, -0.17268649, 0.37466338, -0.008674803, 0.33098656, -3.298031, 21.495136, -5.7504845)
+
+[node name="Base11" parent="." unique_id=201188358 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.13042144, 0, 0.48269063, 0, 0.5, 0, -0.48269063, 0, 0.13042144, 0.3516665, 17.279572, -9.098682)
+
+[node name="Base12" parent="." unique_id=1263827012 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.12960713, 0.25514692, 0.4100025, 0.05578623, 0.41375962, -0.27511972, -0.47967684, 0.117059946, 0.07878505, 0.3483557, 13.592792, -9.08643)
+
+[node name="Base13" parent="." unique_id=38237920 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.07262944, 0.108326904, 0.48269063, -0.4152956, 0.2784413, 0, -0.26880202, -0.4009186, 0.13042144, -0.37398708, 13.065336, -6.413034)
+
+[node name="Base14" parent="." unique_id=1045720828 instance=ExtResource("10_20n0i")]
+transform = Transform3D(0.13042144, 0.1316418, 0.4643928, 0, 0.48104602, -0.13636251, -0.48269063, 0.03556919, 0.12547743, 0.5650145, 15.272762, -9.888285)
+
+[node name="Base15" parent="." unique_id=342855235 instance=ExtResource("10_20n0i")]
+transform = Transform3D(-0.024679296, -0.0702286, 0.4944278, 0.22553198, 0.44010606, 0.07377013, -0.44556287, 0.22665973, 0.0099546015, -1.1644176, 16.890823, -8.158856)

@@ -1,0 +1,174 @@
+[gd_scene format=4 uid="uid://btwbp7dxsobrs"]
+
+[ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="1_rx6ym"]
+[ext_resource type="Script" uid="uid://u6d3ob7ggjoy" path="res://fp_scenes/ingredients/base_ingredient.gd" id="1_u81yw"]
+[ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_e57vj"]
+[ext_resource type="Script" uid="uid://cgnrlxvv62axi" path="res://addons/deformablemesh/dm_deformable_mesh.gd" id="2_u81yw"]
+[ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="3_swxwk"]
+[ext_resource type="AudioStream" uid="uid://bvggjh7yq6ady" path="res://assets/sounds/SFX/food/meat/meatnoise_01.mp3" id="5_e57vj"]
+[ext_resource type="ArrayMesh" path="res://addons/deformablemesh/dm_debug_sphere_mesh.tres" id="6_t4brm"]
+[ext_resource type="AudioStream" uid="uid://bth4yyp0i8740" path="res://assets/sounds/SFX/food/meat/meatnoise_02.mp3" id="6_vvtme"]
+[ext_resource type="AudioStream" uid="uid://c4b3ctreb3e0e" path="res://assets/sounds/SFX/food/meat/meatnoise_003.mp3" id="7_dgoyy"]
+[ext_resource type="Script" uid="uid://dbjhg5oy6a0ud" path="res://addons/deformablemesh/dm_spherical_deformer.gd" id="7_vhj7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwj7j"]
+render_priority = 0
+shader = ExtResource("2_e57vj")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0999999977648
+
+[sub_resource type="Shader" id="Shader_7ygjy"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ygjy"]
+resource_local_to_scene = true
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_mwj7j")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("1_rx6ym")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uqh2x"]
+_surfaces = [{
+"aabb": AABB(-0.738603, -0.638871, -0.723046, 1.321453, 1.293755, 1.287446),
+"attribute_data": PackedByteArray("uGY4P6B+ID+sfSw/ovAhP7iQNz+ObQ4/qEkoP5gwGD+l0SQ/rtktP8vGSj+DeQM/nMYbP6SkIz+0QDQ/tJszP4skCz+yMzI/zc9MP5sqGz+W0hU/wMA/P8klST+0qDM/qN0nP8nBSD/6YPo+znlOP7+7Pj/NKE0/k6ESP9yuWz/sfuw+viY+P8+Wzj7SLFI/+0L7PuiEZz+wpS8/5EBkP6BGID/6snk/wTFBPwAAgD/LB0s/64RqP9UVVT//E38/4algP/Dpbz/Ynlc/z/9OP+5Ebj/RPFE/30NfP7GZMD/0zXM/rcssP+BZYD+VUhU/79VuP5LGET/ce1w/9TD1Pu2lbD/smOs+wJg/P9j21z7NCk0/uly6PtszWz+jSqM+sggyP/cQ9z6tQS0/tc60PrFbMT+N4Iw+trM1P9MYUz6X1BY/9vx1Po/bDj+xtDA+m6caP6S8oz6n8CY/2MLXPqRVJD+JGgk/mYEYP8qqyT6H0QY/pHqkPp3DHD/2EvY+lo4VP+Ve5T6VWxU/lgYWP4/SDj+IdAg/iqAJP/NA8z6IBwg/ziDOPoWyBD+jlCI//ub9PpN5Ez/mhuU+rB4sP7/Cvj7D+0I/geyAPs1DTT/0ZvQ+g28DP+CE3z6ZOhk/vRy9Pq4DLj+HioY+uoE5P8aYxT2zVjM/7pLtPt5y3j7m9uU+tPazPtDSzz7tTO0+grMBP/1AfT7FusQ+x1jHPtg22D6QLJA+8GjwPsOYQj7p4ug+uUC5PcamxT6OpA0+oVyhPusA6zzAeMA+89hyPrWItD6oLqg+pvylPt9I3z6LVIs+yCjIPc5wTj6fAB87nYycPs7ETT6tGC0+odCgPYg0CD4AAAAAtji2PfEAcT3XdFc+u9A6PuoQ6j23wDY+gwADPbR0ND4AAAAAqIanPo+Qjj2ZnJg+juCNPNt+2z6cTBw+j4yOPvFgcT3UjtM+iUCJPIy2Cz/4LHg+jE6MPoNkAz7CqsE+r3CvPYixBz+dbp0+lXCVPt2UXD6xnLA+nbgcPvmg+D6hmCA+pFskP4vaij6rpKo+kBSQPqWpJD/U9FM+lKcTP+PMYj7a1Nk+liiWPr4ivj6HGoc+gGkAP6AioD6QIRA/thq2PgDJ/z7E7MM+i2YLP7+kvj6axxk/2ETYPomUCD8="),
+"format": 34359742487,
+"index_count": 576,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABQAAAAIABAAGAAEAAQAGAAMABwAEAAAABAAIAAYACQAHAAAACQAAAAUABwAKAAQACgAIAAQACwAHAAkADAAKAAcACwAMAAcADAANAAoACgANAAgADgAMAAsADwANAAwADgAPAAwACAANABAADwARAA0ADQARABAAEgARAA8AEwASAA8AEwAPAA4AFAASABMAFAATABUAFQATABYAEwAOABYAFQAWABcAFwAWABgAFgAOABkAFgAZABgADgALABkAGAAZABoAGQALABsAGQAbABoACwAJABsAGgAbABwAGwAJAB0AGwAdABwACQAFAB0AHAAdAB4AHQAfAB4AHQAFAB8AHgAfACAABQAhAB8ABQACACEAHwAiACAAHwAhACIAIAAiACMAIQACACQAAgADACQAIQAlACIAIQAkACUAIgAmACMAIgAlACYAIwAmACcAJgAoACcAJwAoACkAJQAqACYAJgAqACgAJQAkACsAJQArACoAJAAsACsAJAADACwAKgArAC0AKgAuACgAKgAtAC4AKwAvAC0AKwAsAC8ALQAvADAAAwAxACwABgAxAAMALAAyAC8AMQAyACwALwAzADAAMgAzAC8ALQAwADQANAAwADMALgAtADQABgA1ADEACAA1AAYACAAQADUANQA2ADEAMQA2ADIANQAQADcANQA3ADYAEAA4ADcAEAARADgAOQA4ABEANgA6ADIAMgA6ADMANgA3ADsANgA7ADoANwA4ADwANwA8ADsAPQA4ADkAPQA8ADgAPgA9ADkAPwAzADoANAAzAD8AQAA0AD8ALgA0AEAAPwA6AEEALgBAAEIAKAAuAEIAKABCACkAQAA/AEMAQwA/AEEAQgBAAEQAQABDAEQAKQBCAEUAQgBEAEUARQBGACkARwBGAEUARwBIAEYARQBEAEkASQBHAEUARABDAEoARABKAEkAQwBLAEoAQwBBAEsATABIAEcATABNAEgATgBHAEkATgBMAEcATwBNAEwATwBQAE0AUQBQAE8AUgBPAEwAUgBMAE4AUwBRAE8AUwBPAFIAVABRAFMAVABTAFUAVQBTAFYAUwBSAFYAVQBWAFcAUgBOAFgAVgBSAFgAVwBWAFkAVgBYAFkAWQBaAFcAWABOAFsATgBJAFsAWQBYAFwAWABbAFwAXQBaAFkAXABdAFkAXQA+AFoAWwBJAF4ASQBKAF4AXABbAF8AWwBeAF8AYABdAFwAXwBgAFwAYQA+AF0AYABhAF0AYQA9AD4AXwBeAGIAYQBjAD0AYwA8AD0AZABhAGAAZABjAGEAZQBgAF8AZQBkAGAAYgBlAF8AXgBmAGIAZgBlAGIASgBmAF4ASgBLAGYAZgBnAGUAZwBkAGUASwBnAGYAZwBoAGQAZABoAGMASwBpAGcAZwBpAGgASwBBAGkAaQBqAGgAaABrAGMAaABqAGsAYwBrADwAOwA8AGsAQQBsAGkAaQBsAGoAbABrAGoAOwBrAGwAQQA6AGwAOgA7AGwA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 109,
+"vertex_data": PackedByteArray("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")
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lg1c5"]
+radius = 0.611517
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t4brm"]
+streams_count = 3
+stream_0/stream = ExtResource("5_e57vj")
+stream_1/stream = ExtResource("6_vvtme")
+stream_2/stream = ExtResource("7_dgoyy")
+
+[sub_resource type="Animation" id="Animation_vhj7v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPivot/DeformerDir:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -2.0708523)]
+}
+
+[sub_resource type="Animation" id="Animation_t4brm"]
+resource_name = "bouncy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterPivot/DeformerDir:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.18946458, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.7788647), Vector3(0, 0, 2.1462984)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhj7v"]
+_data = {
+&"RESET": SubResource("Animation_vhj7v"),
+&"bouncy": SubResource("Animation_t4brm")
+}
+
+[node name="Base" type="RigidBody3D" unique_id=175947415 groups=["Ingredient"]]
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_u81yw")
+color = Color(0.6642349, 0.09393873, 0.10658457, 1)
+
+[node name="DeformableMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1184330542 node_paths=PackedStringArray("deformers")]
+material_overlay = SubResource("ShaderMaterial_7ygjy")
+mesh = SubResource("ArrayMesh_uqh2x")
+script = ExtResource("2_u81yw")
+original_mesh = ExtResource("3_swxwk")
+deformers = [NodePath("../CenterPivot/DeformerDir/SphericalDeformer")]
+metadata/_custom_type_script = "uid://cgnrlxvv62axi"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=670592487]
+shape = SubResource("SphereShape3D_lg1c5")
+
+[node name="CollisionSFX" type="AudioStreamPlayer3D" parent="." unique_id=939211561]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_t4brm")
+unit_size = 7.0
+bus = &"SFX"
+
+[node name="CenterPivot" type="Node3D" parent="." unique_id=1433366724]
+unique_name_in_owner = true
+top_level = true
+
+[node name="DeformerDir" type="Node3D" parent="CenterPivot" unique_id=1513391700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0708523)
+
+[node name="SphericalDeformer" type="MeshInstance3D" parent="CenterPivot/DeformerDir" unique_id=1127475659]
+mesh = ExtResource("6_t4brm")
+script = ExtResource("7_vhj7v")
+strength = 0.4
+attenuation = 2.6390157
+metadata/_custom_type_script = "uid://dbjhg5oy6a0ud"
+
+[node name="Bounce" type="AnimationPlayer" parent="." unique_id=1097094121]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_vhj7v")
+speed_scale = 0.6
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://535fpmsemk8o"]
+
+[ext_resource type="Script" uid="uid://vuyneytxv51a" path="res://fp_scenes/ingredients/splatter.gd" id="1_3ordn"]
+[ext_resource type="Texture2D" uid="uid://dbv5ge08fbxnu" path="res://fp_scenes/ingredients/textures/splatter.png" id="1_i3tte"]
+
+[sub_resource type="Animation" id="Animation_3ordn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Decal:albedo_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7mtqd"]
+resource_name = "fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Decal:albedo_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vnjgu"]
+resource_name = "splatter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333334, 1),
+"transitions": PackedFloat32Array(0.4506252, 1.4640858, 1),
+"update": 0,
+"values": [Vector3(0.565, 0.565, 0.565), Vector3(1.05, 1.05, 1.05), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Decal:albedo_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mtqd"]
+_data = {
+&"RESET": SubResource("Animation_3ordn"),
+&"fade": SubResource("Animation_7mtqd"),
+&"splatter": SubResource("Animation_vnjgu")
+}
+
+[node name="Splatter" type="Node3D" unique_id=541154663]
+script = ExtResource("1_3ordn")
+
+[node name="Decal" type="Decal" parent="." unique_id=823863443]
+size = Vector3(1, 0.65, 1)
+texture_albedo = ExtResource("1_i3tte")
+albedo_mix = 0.0
+cull_mask = 1048573
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=595427850]
+libraries/ = SubResource("AnimationLibrary_7mtqd")
+speed_scale = 6.0
+
+[node name="Fade" type="Timer" parent="." unique_id=239718662]
+wait_time = 3.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Fade" to="." method="_on_fade_timeout"]

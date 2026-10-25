@@ -239,6 +239,9 @@ script = ExtResource("3_mwj7j")
 volume_db = -25.185
 script = ExtResource("4_m6hw8")
 
+[node name="FoodHoldPnt" type="Marker3D" parent="." unique_id=1652267701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90617627, 0.57027936)
+
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="timeout" from="IdleBreak" to="." method="_on_idle_break_timeout"]
 [connection signal="timeout" from="Cliff" to="." method="_on_cliff_timeout"]
