@@ -1,6 +1,6 @@
 extends Node
 
-var current_device : String
+#var current_device : String
 
 const KEYBOARD_PROMPTS = {
 	"interact": "res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png",
@@ -22,8 +22,8 @@ const XBOX_PROMPTS = {
 func get_prompt(action: String) -> Texture2D:
 	var prompts = KEYBOARD_PROMPTS
 
-	if current_device == "controller":
-		pass
+	if Manager.current_control_device == "controller":
+		prompts = SWITCH_PROMPTS
 
 	if not prompts.has(action):
 		return null

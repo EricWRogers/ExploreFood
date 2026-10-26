@@ -57,6 +57,7 @@ var _has_contact := false
 var _was_touching := false
 var _held := false
 var _held_point : Marker3D
+var old_scale : Vector3
 
 func _become_dropped():
 	_held = false
@@ -79,6 +80,7 @@ func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 4
 	arrow.top_level = true
+	old_scale = scale
 	#print("Overlay: ", overlay)
 	#print("Next pass: ", overlay.next_pass)
 	#print("Next pass is ShaderMaterial: ", overlay.next_pass is ShaderMaterial)
@@ -152,6 +154,8 @@ func _process(_delta: float) -> void:
 	if _held_point:
 		global_position = _held_point.global_position
 		global_rotation = _held_point.global_rotation
+		scale = _held_point.scale - old_scale
+		scale = clamp(scale, Vector3(0.001, 0.001, 0.001), Vector3(5.0, 5.0, 5.0))
 	$Node3D.global_position = global_position
 	$Node3D.global_position.y = $Node3D.global_position.y + tooltip_offset
 	arrow.global_position = global_position

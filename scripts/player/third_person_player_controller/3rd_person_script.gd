@@ -62,6 +62,8 @@ var grab_focus : RigidBody3D
 var current_taken_slots := 0
 var inventory: Array = [null, null, null, null, null, null]
 var total_viewers := 1
+var held_item_appeared := false
+var is_holding := false
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -69,11 +71,16 @@ var total_viewers := 1
 @onready var shadow: SpringArm3D = $Shadow
 @onready var decal: Decal = $Shadow/Decal
 @onready var inventory_viewer = preload("res://fp_scenes/inventory/inventory_icon_maker.tscn")
+@onready var food_hold_pnt: Marker3D = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt
+@onready var held_item: AnimationPlayer = $HeldItem
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_gravity_retain = _gravity
 	max_spring_length = shadow.spring_length
+	
+## attempt at making controller input auto switch (doesnt work)
 #func _input(event: InputEvent) -> void:
 	#pass
 	#if event is InputEventKey or event is InputEventMouse:
@@ -82,26 +89,28 @@ func _ready() -> void:
 	#elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		#_current_input_device = "joypad"
 		#print("joypad")
-
+## camera movement
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_camera_input_direction = event.screen_relative
+		
+## snaps player to edge when ledge grab
 func snap_to_edge():
-	#snaps character to wall so they dont float#
 	if hanging:
 		if !edge_snap:
 			edge_snap == true
 			velocity = _skin.global_transform.basis.z.normalized() * 50
 			currently_snapping = true
+## freeze no movement when ledged
 func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
-	#print(breaking_idle)
 	var new_scale: float = shadow.get_hit_length()
 	new_scale = 1.0 - (new_scale / max_spring_length)
 	new_scale = clamp(new_scale, 0.0, 1.0)
 	decal.size = Vector3(new_scale, 1.0, new_scale)
 	
+	## checks closest items and focus/unfocus them
 	if grab_candidates.size() > 1:
 		var closest : RigidBody3D = null
 		var closest_distance: float = INF
@@ -120,32 +129,44 @@ func _process(_delta: float) -> void:
 	else:
 		unfocus_all()
 		return
+	## if focused and press interact it picks the item up
 	if Input.is_action_just_pressed("Interact") and grab_focus:
-		var target_slot = Manager.player_current_hovered_slot
+		var target_slot: int = Manager.player_current_hovered_slot
 
-		if inventory[target_slot] != null:
+		if target_slot < 0 or target_slot >= inventory.size() or inventory[target_slot] != null:
 			target_slot = -1
+
 			for i in range(inventory.size()):
 				if inventory[i] == null:
 					target_slot = i
 					break
+
 		if target_slot == -1:
 			return
+
 		inventory[target_slot] = grab_focus
-		grab_focus._become_held($Doremi/FoodHoldPnt)
+
+		$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
+
+		grab_focus._become_held($Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt)
+
 		for item in inventory:
-			if item == null:
-				pass
-			else:
+			if item != null:
 				item._become_stored()
+
 		if inventory[target_slot] != null:
 			inventory[target_slot]._become_visibly_held()
-		else:
-			pass
-		grab_focus.global_position = $Doremi/FoodHoldPnt.global_position
+			%Doremi.is_holding = true
+			is_holding = true
+			if is_on_floor():
+				held_item_appeared = false
+			_play_held_item_appear()
+
+		grab_focus.global_position = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt.global_position
 		current_taken_slots += 1
 		spawn_inventory_slot_viewer(grab_focus, target_slot)
 		print("Item stored in slot: ", target_slot)
+## spawns the scene that displays hotb ar icons
 func spawn_inventory_slot_viewer(item, tie):
 	var viewer_family = get_tree().get_nodes_in_group("Viewer")
 
@@ -161,7 +182,6 @@ func spawn_inventory_slot_viewer(item, tie):
 	viewer.add_to_group("Viewer")
 	get_tree().root.add_child(viewer)
 
-	# Move each new viewer farther below the map.
 	total_viewers += 1
 	#viewer.global_position = Vector3(0, -10 * total_viewers, 0)
 
@@ -169,14 +189,15 @@ func spawn_inventory_slot_viewer(item, tie):
 	viewer.spawn_item(item)
 
 	$CanvasLayer/MarginContainer/Hotbar._update_visual(tie)
+## makes sure no random items stay focused
 func unfocus_all():
 	var ingredients = get_tree().get_nodes_in_group("Ingredient")
 	for item in ingredients:
 		item._defocus()
+## supposed to get the floor mat but i dont know if this works
 func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
-	#Cliff Hang Stuff#
-	
+	## cliff hanging logic
 	if currently_snapping and is_on_wall():
 		freeze_velocity()
 	var area_detect = %DistanceCheck.has_overlapping_bodies()
@@ -190,7 +211,8 @@ func _physics_process(delta: float) -> void:
 		climbing_detect_has_collided = false
 		velocity.y = 3
 		_skin._cliff_climb()
-	#detect the edge and freeze movement and gravity#
+		_play_held_item_put_away()
+	## detect edge and freeze vel
 	if area_detect and !overhead_detect and !eyelevel_detect and ingeo_detect_left and ingeo_detect_right and not climbing  and can_ledge_grab:
 		var normal: Vector3 = %InGeometryDetect.get_collision_normal()
 		var target_angle: float = atan2(normal.x, normal.z) + PI
@@ -202,15 +224,10 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		_gravity = 0
 		_skin._cliff_hang()
+		_play_held_item_put_away()
 		hanging = true
 		snap_to_edge()
-		#print("climbing")
-	#elif not ingeo_detect_left or not ingeo_detect_right:
-		#climbing = false
-		#hanging = false
-		#_gravity = _gravity_retain
-		#currently_snapping = false
-	#climb up the edge#
+	## climbs up the ledge like a horse chess piece
 	if climbing:
 		if %ClimbingDetect.is_colliding():
 			climbing_detect_has_collided = true
@@ -227,6 +244,7 @@ func _physics_process(delta: float) -> void:
 			currently_snapping = false
 			_gravity = _gravity_retain
 			climb_started = false
+	## controller camera movement
 	var controller_direction := Input.get_vector(
 	"look_left",
 	"look_right",
@@ -264,7 +282,7 @@ func _physics_process(delta: float) -> void:
 
 	var forward := _camera.global_basis.z
 	var right := _camera.global_basis.x
-
+## basic movement
 	var move_direction := forward * raw_input.y + right * raw_input.x
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
@@ -297,7 +315,7 @@ func _physics_process(delta: float) -> void:
 
 	var target_velocity := move_direction * target_speed
 	var horizontal_velocity := Vector3(velocity.x, 0.0, velocity.z)
-
+## acceleration and air control
 	if was_grounded:
 		if move_direction.length() > 0.0:
 			var current_direction := horizontal_velocity.normalized()
@@ -325,7 +343,7 @@ func _physics_process(delta: float) -> void:
 	if !hanging:
 		velocity.x = horizontal_velocity.x
 		velocity.z = horizontal_velocity.z
-
+	## jump buffer and coyote time
 	if Input.is_action_just_pressed("Jump"):
 		jump_buffer_timer = jump_buffer_time
 	else:
@@ -351,10 +369,10 @@ func _physics_process(delta: float) -> void:
 		$Cliff.stop()
 		balancing_cliff_edge = false
 		breaking_idle = false
-
+## lunge here
 	elif Input.is_action_just_pressed("Jump") and !was_grounded:
 		%Doremi.mult._fork()
-
+## small hops
 	if Input.is_action_just_released("Jump") and velocity.y > 0.0:
 		velocity.y *= 0.8
 		jump_was_cut = true
@@ -375,7 +393,7 @@ func _physics_process(delta: float) -> void:
 	var was_on_floor := is_on_floor()
 	move_and_slide()
 	var just_landed := !was_on_floor and is_on_floor()
-
+## checks to see if land should spawn big particles
 	if was_on_floor and !is_on_floor():
 		fall_start_height = global_position.y
 		fell_far_enough = false
@@ -388,7 +406,7 @@ func _physics_process(delta: float) -> void:
 	if just_landed and fell_far_enough:
 		%LandHigh.restart()
 		%LandHigh.emitting = true
-
+## interupt idle breaks
 	if move_direction.length() > 0.2:
 		not_moving = false
 		$IdleBreak.stop()
@@ -396,7 +414,7 @@ func _physics_process(delta: float) -> void:
 		balancing_cliff_edge = false
 		breaking_idle = false
 		_last_movement_dir = move_direction
-
+## smoothly rotate character
 	var target_angle := Vector3.BACK.signed_angle_to(
 		_last_movement_dir,
 		Vector3.UP
@@ -407,18 +425,21 @@ func _physics_process(delta: float) -> void:
 			target_angle,
 			rotation_speed * delta
 		)
-
+## large hop here
 	if Input.is_action_just_pressed("Interact"):
 		%Doremi.mult._spoon()
-
+## complicated logic for animations
 	if is_starting_jump:
 		_skin._jump()
+		_play_held_item_put_away()
 	elif just_landed:
 		%LandLow.restart()
 		%LandLow.emitting = true
 		_skin._land()
+		_play_held_item_put_away()
 	elif !is_on_floor() and velocity.y < 0.0:
 		_skin._fall()
+		_play_held_item_put_away()
 	elif is_on_floor():
 		can_ledge_grab = false
 		var ground_speed := Vector2(velocity.x, velocity.z).length()
@@ -426,17 +447,22 @@ func _physics_process(delta: float) -> void:
 			_skin._crouch()
 			$IdleBreak.stop()
 			$Cliff.stop()
+			_play_held_item_put_away()
 		elif crouching:
 			_skin._crouch_walk()
 			$IdleBreak.stop()
 			$Cliff.stop()
+			_play_held_item_put_away()
 		else:
 			if is_sprinting and ground_speed > 0.1 and _current_input_device == "keyboard_mouse":
 				_skin._run()
+				_play_held_item_appear()
 			elif sprint_toggle and ground_speed > 0.1 and _current_input_device == "joypad":
 				_skin._run()
+				_play_held_item_appear()
 			elif ground_speed > 0.1:
 				_skin._walk()
+				_play_held_item_appear()
 			else:
 				if !not_moving:
 					not_moving = true
@@ -445,14 +471,15 @@ func _physics_process(delta: float) -> void:
 
 				if !balancing_cliff_edge and !breaking_idle:
 					_skin._idle()
-
-
+					_play_held_item_appear()
+## idle break
 func _on_idle_break_timeout() -> void:
 	if not_moving and !balancing_cliff_edge:
 		breaking_idle = true
 		_skin._idle_break()
+		_play_held_item_put_away()
 
-
+## clumsy cliff idle break
 func _on_cliff_timeout() -> void:
 	if !cliff_detect and not_moving:
 		balancing_cliff_edge = true
@@ -460,6 +487,7 @@ func _on_cliff_timeout() -> void:
 		$IdleBreak.stop()
 		$Cliff.stop()
 		_skin._cliff()
+		_play_held_item_put_away()
 
 
 func _on_ledge_grab_timer_timeout() -> void:
@@ -471,13 +499,39 @@ func _on_item_detect_body_entered(body: Node3D) -> void:
 func _on_item_detect_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Ingredient"):
 		grab_candidates.erase(body)
+## updates what item is visibly held
 func _on_hotbar_update_held(slot_index) -> void:
 	for item in inventory:
-		if item == null:
-			pass
-		else:
+		if item != null:
 			item._become_stored()
+	if slot_index < 0 or slot_index >= inventory.size():
+		%Doremi.is_holding = false
+		is_holding = false
+		_play_held_item_put_away()
+		return
 	if inventory[slot_index] != null:
 		inventory[slot_index]._become_visibly_held()
+		%Doremi.is_holding = true
+		is_holding = true
+		if is_on_floor():
+				held_item_appeared = false
+		_play_held_item_appear()
 	else:
-		pass
+		%Doremi.is_holding = false
+		is_holding = false
+		_play_held_item_put_away()
+## animation logic for pulling out and putting away items
+func _play_held_item_appear() -> void:
+	if held_item_appeared:
+		return
+
+	held_item_appeared = true
+	held_item.play("appear")
+
+
+func _play_held_item_put_away() -> void:
+	if !held_item_appeared:
+		return
+
+	held_item_appeared = false
+	held_item.play("put_away")
