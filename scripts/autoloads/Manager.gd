@@ -42,6 +42,7 @@ var waffledimension = false
 
 var max_hotbar_slots := 6
 var player_current_hovered_slot : int
+var current_control_device : String = "controller"
 
 ## ─────────────────────────────────────────
 ## This is the end of good

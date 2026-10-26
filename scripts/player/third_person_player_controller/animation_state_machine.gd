@@ -1,17 +1,26 @@
 extends Node3D
 
 var state_machine = AnimationNodeStateMachinePlayback
+@onready var anim_tree = %AnimationTree
 @onready var mult: Node3D = %mult
+@onready var item_attachment: BoneAttachment3D = %ItemAttachment
 
+var is_holding = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine = %AnimationTree.get("parameters/playback") as AnimationNodeStateMachinePlayback
-
-
+	
+func _update_held_size(size):
+	anim_tree.set("parameters/moveset_idle/Blend3/blend_amount", size)
+	anim_tree.set("parameters/moveset_run/Blend3/blend_amount", size)
+	anim_tree.set("parameters/moveset_walk/Blend3/blend_amount", size)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var amount = 1.0 if is_holding else 0.0
 
+	anim_tree.set("parameters/moveset_idle/Blend2/blend_amount", amount)
+	anim_tree.set("parameters/moveset_run/Blend2/blend_amount", amount)
+	anim_tree.set("parameters/moveset_walk/Blend2/blend_amount", amount)
 func _idle():
 	state_machine.travel("moveset_idle")
 func _walk():
