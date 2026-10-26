@@ -19,6 +19,7 @@ var is_paying: bool = false
 var is_eating: bool = true
 var my_seat : Object
 var my_exit: Object
+var my_succulent_meal
 var order_distance = 1
 var angry_time = 15.0
 var tray
@@ -76,9 +77,29 @@ func enter_state(state: State) -> void:
 			
 		State.ORDER:
 			timer_progress.show()
+			timer.stop()
+			set_order()
+			timer.wait_time = angry_time
+			timer.start()
+			texture_progress_bar.max_value = 100.0
+			texture_progress_bar.value = 100.0
+
 			pass
 			
 		State.EAT:
+			tray = FOOD_TRAY.instantiate()
+			get_tree().current_scene.add_child(tray)
+			tray.global_position = my_seat.get_child(0).global_position
+			tray.global_rotation = my_seat.global_rotation
+			tray.get_child(0).start_anim()
+			
+			timer_progress.show()
+			timer.stop()
+			timer.wait_time = angry_time
+			timer.start()
+			texture_progress_bar.max_value = 100.0
+			texture_progress_bar.value = 100.0
+			texture_progress_bar.tint_progress = Color.LIME_GREEN
 			pass
 			
 		State.PAY:
@@ -94,10 +115,12 @@ func exit_state(state: State) -> void:
 		State.SEAT:
 			pass
 		State.ORDER:
-			timer_progress.hide();
+			timer_progress.hide()
+			timer.stop()
 		
 		State.EAT:
 			tray.queue_free()
+			my_succulent_meal.queue_free()
 
 		State.PAY:
 			pass
@@ -111,29 +134,25 @@ func state_seat(_delta : float):
 		change_state(State.ORDER)
 	nav_agent.set_target_position(my_seat.global_position)
 	var next_nav_point = nav_agent.get_next_path_position()
-		
 	velocity = (next_nav_point - global_position).normalized() * SPEED
+	var move_direction = velocity
+	move_direction.y = 0
+
+	if move_direction.length_squared() > 0.001:
+		look_at(global_position + move_direction, Vector3.UP)
 	move_and_slide()
 
 func state_order(_delta: float):
-	if !can_take_food:
-		set_order()
-	if timer.is_stopped():
-		timer.wait_time = angry_time
-		timer.start()
-		texture_progress_bar.max_value = 100.0
-		texture_progress_bar.value = 100.0
+	var target_direction = my_seat.get_child(0).global_position - global_position
+	target_direction.y = 0
 
+	if target_direction.length_squared() > 0.001:
+		look_at(global_position + target_direction, Vector3.UP)
 	pass
 
 func state_eat(_delta:float):
 	pass
-	#Soooooon
-	if !is_eating:
-		is_eating = true
-		tray = FOOD_TRAY.instantiate()
-		add_child(tray)
-		tray.start_anim()
+		
 
 func state_pay(_delta: float) -> void:
 	if !is_paying:
@@ -157,6 +176,11 @@ func state_leave(_delta : float):
 	var next_nav_point = nav_agent.get_next_path_position()
 		
 	velocity = (next_nav_point - global_position).normalized() * SPEED
+	var move_direction = velocity
+	move_direction.y = 0
+
+	if move_direction.length_squared() > 0.001:
+		look_at(global_position + move_direction, Vector3.UP)
 	move_and_slide()
 	
 
@@ -207,14 +231,28 @@ func set_order():
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("get_took") and current_state == State.ORDER:
 		can_take_food = false
-		change_state(State.PAY)
-		body.queue_free()
+		change_state(State.EAT)
+		body.scale = Vector3.ONE * 0.5
+		body.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5
+		
+		var food = body as RigidBody3D
+		food.linear_velocity = Vector3.ZERO
+		food.global_rotation = Vector3.ZERO
+		food.lock_rotation = true
+		food.collision_layer = 2
+		
+		my_succulent_meal = food
 
 
 func _on_timer_timeout() -> void:
 	timer.stop()
-	change_state(State.LEAVE)
 	$Bubble.show()
 	$Bubble/Bubble2.hide()
 	$Bubble/Bubble3.hide()
-	$Bubble/Label.text = "BAD SERVICE"
+	match current_state:
+		State.ORDER:
+			$Bubble/Label.text = "THIS SUCKS"
+			change_state(State.LEAVE)
+		State.EAT:
+			$Bubble/Label.text = "Stupendifious"
+			change_state(State.PAY)

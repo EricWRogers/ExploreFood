@@ -142,29 +142,32 @@ _data = {
 &"RESET": SubResource("Animation_6hfpp")
 }
 
-[node name="FoodTray" type="Node3D" unique_id=392880819]
+[node name="TrayParent" type="Node3D" unique_id=1124247706]
+
+[node name="FoodTray" type="Node3D" parent="." unique_id=392880819]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_6hfpp")
 
-[node name="BottomMat" type="MeshInstance3D" parent="." unique_id=2025623109]
+[node name="BottomMat" type="MeshInstance3D" parent="FoodTray" unique_id=2025623109]
 transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_gtwna")
 surface_material_override/0 = SubResource("StandardMaterial3D_us1kw")
 
-[node name="TopMat" type="MeshInstance3D" parent="." unique_id=507924431]
+[node name="TopMat" type="MeshInstance3D" parent="FoodTray" unique_id=507924431]
 transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_gtwna")
 surface_material_override/0 = SubResource("StandardMaterial3D_qrvaf")
 
-[node name="SilverWare" type="CSGBox3D" parent="." unique_id=1614037808]
+[node name="SilverWare" type="CSGBox3D" parent="FoodTray" unique_id=1614037808]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.75, -2.1911309, 0.09834063, 0)
 size = Vector3(0.34960938, 0.34753418, 1)
 
-[node name="SilverWare2" type="CSGBox3D" parent="." unique_id=1673445272]
+[node name="SilverWare2" type="CSGBox3D" parent="FoodTray" unique_id=1673445272]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.75, 2.1517065, 0.09834063, 0)
 size = Vector3(0.34960938, 0.34753418, 1)
 
-[node name="FoodSpawn" type="Marker3D" parent="." unique_id=104889157]
+[node name="FoodSpawn" type="Marker3D" parent="FoodTray" unique_id=104889157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1806256400]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FoodTray" unique_id=1806256400]
 libraries/ = SubResource("AnimationLibrary_10y5y")
