@@ -255,5 +255,5 @@ func _on_timer_timeout() -> void:
 			$Bubble/Label.text = "THIS SUCKS"
 			change_state(State.LEAVE)
 		State.EAT:
-			$Bubble/Label.text = "Stupendifious"
+			$Bubble/Label.text = "Yummy"
 			change_state(State.PAY)
