@@ -11,6 +11,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gtwna"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtwna"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
 radius = 2.0474894
 
@@ -26,6 +29,7 @@ shape = SubResource("CapsuleShape3D_gtwna")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=635077942]
 mesh = SubResource("CapsuleMesh_gtwna")
+surface_material_override/0 = SubResource("StandardMaterial3D_gtwna")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=205750357]
 
@@ -88,6 +92,10 @@ texture_progress = ExtResource("6_ijxn3")
 
 [node name="CoinSpawn" type="Marker3D" parent="." unique_id=242355491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="EyeHole" type="CSGBox3D" parent="." unique_id=1562565587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016447067, 0.74316067, -0.379)
+size = Vector3(0.6991234, 0.56799316, 0.25732422)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
