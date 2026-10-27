@@ -164,11 +164,11 @@ transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 220, 440, -3.605, 440)
 mesh = SubResource("PlaneMesh_lg1c5")
 surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
-[node name="WaterFloor" type="Area3D" parent="." unique_id=270011674 node_paths=PackedStringArray("spawn")]
+[node name="WaterFloor" type="Area3D" parent="." unique_id=270011674 node_paths=PackedStringArray("spawn", "spawn_points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
 script = ExtResource("13_hvl47")
 spawn = NodePath("../Marker3D")
-spawn_points = [null]
+spawn_points = [NodePath("Marker3D"), NodePath("Marker3D32"), NodePath("Marker3D33"), NodePath("Marker3D34"), NodePath("Marker3D35"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4"), NodePath("Marker3D5"), NodePath("Marker3D6"), NodePath("Marker3D7"), NodePath("Marker3D8"), NodePath("Marker3D9"), NodePath("Marker3D10"), NodePath("Marker3D11"), NodePath("Marker3D12"), NodePath("Marker3D13"), NodePath("Marker3D14"), NodePath("Marker3D15"), NodePath("Marker3D16"), NodePath("Marker3D17"), NodePath("Marker3D18"), NodePath("Marker3D19"), NodePath("Marker3D20"), NodePath("Marker3D21"), NodePath("Marker3D22"), NodePath("Marker3D23"), NodePath("Marker3D24"), NodePath("Marker3D25"), NodePath("Marker3D26"), NodePath("Marker3D27"), NodePath("Marker3D28"), NodePath("Marker3D29"), NodePath("Marker3D30"), NodePath("Marker3D31"), NodePath("../Marker3D")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
