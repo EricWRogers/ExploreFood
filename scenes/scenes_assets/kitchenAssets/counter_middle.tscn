@@ -2,9 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://br3k4q7o72o0o" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterMid_Mat.png" id="1_cxab1"]
 [ext_resource type="ArrayMesh" uid="uid://b145byj8fc2jm" path="res://assets/models/KitchenCounterMid.obj" id="1_jvnp4"]
+[ext_resource type="Texture2D" uid="uid://cgl1r5wvyd50a" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterMidMetallic_Mat.png" id="2_aw20g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw20g"]
 albedo_texture = ExtResource("1_cxab1")
+metallic = 1.0
+metallic_texture = ExtResource("2_aw20g")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxab1"]
 size = Vector3(3.3899999, 1.9399999, 2.03)
