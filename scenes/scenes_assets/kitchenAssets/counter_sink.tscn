@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://baw5xndyxgrs6" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterSink_Mat.png" id="1_kpq7c"]
 [ext_resource type="ArrayMesh" uid="uid://cilsyxdtt5jeg" path="res://assets/models/KitchenCounterSink.obj" id="2_dw5ni"]
+[ext_resource type="Texture2D" uid="uid://d0kxhv61w4t2c" path="res://assets/textures/Kitchen Textures/Counters/KitchenCounterSinkMetallic_Mat.png" id="2_nrfb1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3e0l"]
 cull_mode = 2
 albedo_texture = ExtResource("1_kpq7c")
+metallic = 1.0
+metallic_texture = ExtResource("2_nrfb1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nrfb1"]
 size = Vector3(2.175, 1.56, 1.35)

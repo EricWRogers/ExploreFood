@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://bf5lrlvyh6g"]
 
+[ext_resource type="Texture2D" uid="uid://bnbitv3q2t45s" path="res://assets/textures/Kitchen Textures/Utensils/KitchenSkillet_Mat.png" id="1_0jhqg"]
 [ext_resource type="ArrayMesh" uid="uid://b6ppby7j3iryv" path="res://assets/models/KitchenSkillet.obj" id="1_0lmfk"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_n76ko"]
+[ext_resource type="Texture2D" uid="uid://cwocxbpwa84yi" path="res://assets/textures/Kitchen Textures/Utensils/KitchenSkilletMetallic_Mat.png" id="2_pucfa"]
 [ext_resource type="PackedScene" uid="uid://c8ke6sc3oty3q" path="res://scenes/scenes_assets/kitchenAssets/cooker_base.tscn" id="3_o0bwe"]
-[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/UI/station_ui.tscn" id="4_u0fv8"]
+[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/ui/station_ui.tscn" id="4_u0fv8"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="5_5vp3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehwar"]
+albedo_texture = ExtResource("1_0jhqg")
+metallic = 1.0
+metallic_texture = ExtResource("2_pucfa")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6xqmx"]
 height = 1.15
@@ -23,11 +30,12 @@ viewport_path = NodePath("SubViewport2")
 
 [node name="PanMeshInstance" type="MeshInstance3D" parent="." unique_id=1121749275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05015707, 0)
+material_override = SubResource("StandardMaterial3D_ehwar")
 mesh = ExtResource("1_0lmfk")
 
 [node name="CookerBase" parent="." unique_id=1039243692 node_paths=PackedStringArray("station_ui") instance=ExtResource("3_o0bwe")]
-station_ui = NodePath("../SubViewport2/StationUI")
 cook_group_application_type = 2
+station_ui = NodePath("../SubViewport2/StationUI")
 cook_timer_time = 10.0
 
 [node name="CookerShape" type="CollisionShape3D" parent="CookerBase" unique_id=1269071240]

@@ -20,6 +20,10 @@ class_name BaseIngredient
 #@export var processed_ingredient : PackedScene
 @export var is_prepped: bool = false
 @export var inventory_icon_FOV : float = 30.5
+@export var resize : Vector3
+@export var hardness : float
+@export var bounciness : float
+@export var time_to_cook : float
 
 @export_group("Food Groups")
 @export var food_group: FoodGroup
@@ -57,17 +61,31 @@ var _has_contact := false
 var _was_touching := false
 var _held := false
 var _held_point : Marker3D
+var _held_slot : int
 var old_scale : Vector3
+var last_dir : Vector3
+var can_be_cooked : bool = true
+var current_station : Node3D
 
 func _become_dropped():
 	_held = false
 	contact_monitor = true
-	set_collision_layer_value(1, true)
+	_held_point = null
+	scale = resize
+	set_collision_layer_value(2, true)
+	freeze = false
+	_apply_light_drop_impulse(last_dir)
+	set_collision_layer_value(3, false)
+	$Reactivate.start()
+	
 
 func _become_held(pnt):
+	set_collision_layer_value(2, false)
+	$Reactivate.stop()
 	_held = true
 	contact_monitor = false
-	set_collision_layer_value(1, false)
+	#set_collision_layer_value(2, false)
+	set_collision_layer_value(3, false)
 	_held_point = pnt
 	freeze = true
 	
@@ -75,8 +93,33 @@ func _become_stored():
 	hide()
 func _become_visibly_held():
 	show()
+	
+func _apply_light_drop_impulse(dir):
+	apply_central_impulse(dir * 2.0)
+	
+func pan_grill():
+	if not can_be_cooked:
+		return
+	can_be_cooked = false
+	var tween = create_tween()
+	tween.tween_method(
+		func(value): overlay.set_shader_parameter("blend", value),
+		0.0,
+		1.0,
+		time_to_cook
+	)
+	tween.tween_callback(finish_cooking)
+func finish_cooking():
+	_become_dropped()
+	current_station.finished_cooking()
+	color = Color(0.35, 0.133, 0.133, 1.0)
+	current_station = null
+	
 
 func _ready() -> void:
+	self.physics_material_override.bounce = bounciness
+	$CenterPivot/DeformerDir/SphericalDeformer.strength = hardness
+	scale = resize
 	contact_monitor = true
 	max_contacts_reported = 4
 	arrow.top_level = true
@@ -176,3 +219,7 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	on_hit(Vector3.ZERO, Vector3.ZERO, false)
 	
+
+
+func _on_reactivate_timeout() -> void:
+	set_collision_layer_value(3, true)

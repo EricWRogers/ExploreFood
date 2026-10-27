@@ -5,12 +5,15 @@
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_e57vj"]
 [ext_resource type="Script" uid="uid://cgnrlxvv62axi" path="res://addons/deformablemesh/dm_deformable_mesh.gd" id="2_u81yw"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="3_swxwk"]
+[ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_dgoyy"]
 [ext_resource type="AudioStream" uid="uid://bvggjh7yq6ady" path="res://assets/sounds/SFX/food/meat/meatnoise_01.mp3" id="5_e57vj"]
 [ext_resource type="ArrayMesh" path="res://addons/deformablemesh/dm_debug_sphere_mesh.tres" id="6_t4brm"]
 [ext_resource type="AudioStream" uid="uid://bth4yyp0i8740" path="res://assets/sounds/SFX/food/meat/meatnoise_02.mp3" id="6_vvtme"]
 [ext_resource type="AudioStream" uid="uid://c4b3ctreb3e0e" path="res://assets/sounds/SFX/food/meat/meatnoise_003.mp3" id="7_dgoyy"]
 [ext_resource type="Script" uid="uid://dbjhg5oy6a0ud" path="res://addons/deformablemesh/dm_spherical_deformer.gd" id="7_vhj7v"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="11_vvtme"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dgoyy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwj7j"]
 resource_local_to_scene = true
@@ -30,9 +33,16 @@ uniform float angle = 20.0;
 uniform float line_count = 20.0;
 uniform float speed = 10.0;
 uniform float blur : hint_range(0.0, 2.0, 0);
+uniform vec2 overlay_uv_scale = vec2(1.0, 1.0);
 
 uniform sampler2D mesh_texture : source_color;
 uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+// --- new ---
+uniform sampler2D overlay_texture : source_color;
+uniform float blend : hint_range(0.0, 1.0) = 0.0;  // 0 = first result, 1 = overlay only
+uniform float burnt : hint_range(0.0, 1.0) = 0.0;  // 0 = no burn, 1 = fully tinted by burnt_color
+uniform vec3 burnt_color : source_color = vec3(0.25, 0.15, 0.1);
 
 vec2 rotate(vec2 uv, float rotation_angle) {
     float radians_angle = radians(rotation_angle);
@@ -54,7 +64,15 @@ void fragment() {
 
     vec3 tex_col = texture(mesh_texture, uv).rgb;
 
-    ALBEDO = mix(tex_col, stripe_col, transparency);
+    // first result (your original output)
+    vec3 first_col = mix(tex_col, stripe_col, transparency);
+
+    // second texture, darkened by the burn color
+    vec3 overlay_col = texture(overlay_texture, uv * overlay_uv_scale).rgb;
+    vec3 burnt_col = overlay_col * burnt_color;          // multiply = darken/tint
+    vec3 second_col = mix(overlay_col, burnt_col, burnt);
+
+    ALBEDO = mix(first_col, second_col, blend);
 }
 "
 
@@ -69,10 +87,15 @@ shader_parameter/angle = 20.0
 shader_parameter/line_count = 20.0
 shader_parameter/speed = 1.015
 shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
 shader_parameter/mesh_texture = ExtResource("1_rx6ym")
 shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("4_dgoyy")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vvtme"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dgoyy"]
 _surfaces = [{
 "aabb": AABB(-0.738603, -0.638871, -0.7220955, 1.321453, 1.293755, 1.2864954),
 "attribute_data": PackedByteArray("uGY4P6B+ID+sfSw/ovAhP7iQNz+ObQ4/qEkoP5gwGD+l0SQ/rtktP8vGSj+DeQM/nMYbP6SkIz+0QDQ/tJszP4skCz+yMzI/zc9MP5sqGz+W0hU/wMA/P8klST+0qDM/qN0nP8nBSD/6YPo+znlOP7+7Pj/NKE0/k6ESP9yuWz/sfuw+viY+P8+Wzj7SLFI/+0L7PuiEZz+wpS8/5EBkP6BGID/6snk/wTFBPwAAgD/LB0s/64RqP9UVVT//E38/4algP/Dpbz/Ynlc/z/9OP+5Ebj/RPFE/30NfP7GZMD/0zXM/rcssP+BZYD+VUhU/79VuP5LGET/ce1w/9TD1Pu2lbD/smOs+wJg/P9j21z7NCk0/uly6PtszWz+jSqM+sggyP/cQ9z6tQS0/tc60PrFbMT+N4Iw+trM1P9MYUz6X1BY/9vx1Po/bDj+xtDA+m6caP6S8oz6n8CY/2MLXPqRVJD+JGgk/mYEYP8qqyT6H0QY/pHqkPp3DHD/2EvY+lo4VP+Ve5T6VWxU/lgYWP4/SDj+IdAg/iqAJP/NA8z6IBwg/ziDOPoWyBD+jlCI//ub9PpN5Ez/mhuU+rB4sP7/Cvj7D+0I/geyAPs1DTT/0ZvQ+g28DP+CE3z6ZOhk/vRy9Pq4DLj+HioY+uoE5P8aYxT2zVjM/7pLtPt5y3j7m9uU+tPazPtDSzz7tTO0+grMBP/1AfT7FusQ+x1jHPtg22D6QLJA+8GjwPsOYQj7p4ug+uUC5PcamxT6OpA0+oVyhPusA6zzAeMA+89hyPrWItD6oLqg+pvylPt9I3z6LVIs+yCjIPc5wTj6fAB87nYycPs7ETT6tGC0+odCgPYg0CD4AAAAAtji2PfEAcT3XdFc+u9A6PuoQ6j23wDY+gwADPbR0ND4AAAAAqIanPo+Qjj2ZnJg+juCNPNt+2z6cTBw+j4yOPvFgcT3UjtM+iUCJPIy2Cz/4LHg+jE6MPoNkAz7CqsE+r3CvPYixBz+dbp0+lXCVPt2UXD6xnLA+nbgcPvmg+D6hmCA+pFskP4vaij6rpKo+kBSQPqWpJD/U9FM+lKcTP+PMYj7a1Nk+liiWPr4ivj6HGoc+gGkAP6AioD6QIRA/thq2PgDJ/z7E7MM+i2YLP7+kvj6axxk/2ETYPomUCD8="),
@@ -132,16 +155,23 @@ _data = {
 }
 
 [node name="Base" type="RigidBody3D" unique_id=175947415 groups=["Ingredient"]]
+collision_layer = 6
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_dgoyy")
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_u81yw")
 color = Color(0.6642349, 0.09393873, 0.10658457, 1)
 inventory_icon_FOV = 17.3
+resize = Vector3(0.5, 0.5, 0.5)
+hardness = 0.4
+bounciness = 0.5
+time_to_cook = 8.5
 tooltip_offset = 0.4
 
 [node name="DeformableMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1184330542 node_paths=PackedStringArray("deformers")]
 material_overlay = SubResource("ShaderMaterial_7ygjy")
-mesh = SubResource("ArrayMesh_vvtme")
+mesh = SubResource("ArrayMesh_dgoyy")
 script = ExtResource("2_u81yw")
 original_mesh = ExtResource("3_swxwk")
 deformers = [NodePath("../CenterPivot/DeformerDir/SphericalDeformer")]
@@ -182,9 +212,15 @@ top_level = true
 [node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=311779449]
 unique_name_in_owner = true
 transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, 0, 0.18838966, -0.008809596)
+layers = 2
 billboard = 1
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("11_vvtme")
 
+[node name="Reactivate" type="Timer" parent="." unique_id=1978139593]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Reactivate" to="." method="_on_reactivate_timeout"]

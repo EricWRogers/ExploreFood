@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cguem6bk1qlyb"]
+
+[ext_resource type="Texture2D" uid="uid://dabf4bnghjy6" path="res://assets/textures/Diner Textures/Chairs/DinerChairBlue_Mat.png" id="1_t5hyk"]
+[ext_resource type="ArrayMesh" uid="uid://bii2hhytksc01" path="res://assets/models/DinerChair.obj" id="2_ngnoa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mps0"]
+albedo_texture = ExtResource("1_t5hyk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+
+[node name="Diner_Chair" type="StaticBody3D" unique_id=750442028]
+
+[node name="DinerChairMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1508357476]
+material_override = SubResource("StandardMaterial3D_0mps0")
+mesh = ExtResource("2_ngnoa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=144282758]
+transform = Transform3D(1, 0, 0, 0, 1.6761845, 0, 0, 0, 1, 0, 0.75701964, 0)
+shape = SubResource("BoxShape3D_qdy4q")

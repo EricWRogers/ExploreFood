@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bbh2yrfjhnr16"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2gilrdrsdvkg" path="res://assets/models/KitchenModels/cute_stoll.obj" id="1_g2srx"]
+[ext_resource type="Texture2D" uid="uid://cyer30s4lr1gu" path="res://assets/models/3rdPersonController/Mesh/Doremi_0.png" id="2_wrg6v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4uf4"]
+albedo_texture = ExtResource("2_wrg6v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x1fh7"]
+size = Vector3(0.82818604, 1, 1.1414795)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6g1ex"]
+size = Vector3(0.6581726, 0.10784912, 0.32788086)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=2146016540]
+
+[node name="CuteStoll" type="MeshInstance3D" parent="." unique_id=181404964]
+mesh = ExtResource("1_g2srx")
+surface_material_override/0 = SubResource("StandardMaterial3D_f4uf4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1954248958]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0.0039978027, -0.15482879, 0.0010495782)
+shape = SubResource("BoxShape3D_x1fh7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1663094098]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1622627905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003829956, 0.54603213, -0.20934665)
+shape = SubResource("BoxShape3D_6g1ex")

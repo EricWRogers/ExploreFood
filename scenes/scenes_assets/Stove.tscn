@@ -115,8 +115,8 @@ height = 0.1796341
 radius = 2.209961
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_i1pkh"]
-top_radius = 2.9746094
-bottom_radius = 2.9746094
+top_radius = 1.453125
+bottom_radius = 1.453125
 height = 0.005493164
 
 [sub_resource type="Shader" id="Shader_x8dg1"]
@@ -168,6 +168,7 @@ uniform float player_wave_speed : hint_range(0.0, 10.0, 0.1) = 5.0;
 #ifdef CAUSTICS
 group_uniforms caustics;
 uniform float caustic_size : hint_range(0.0, 8.0, 0.01) = 2.0;
+uniform float caustic_speed : hint_range(0.0, 5.0, 0.01) = 1.0;
 uniform float caustic_range : hint_range(0.0, 256.0, 0.1) = 40.0;
 uniform float caustic_strength : hint_range(0.0, 1.0, 0.01) = 0.08;
 #endif
@@ -394,7 +395,7 @@ void fragment() {
 	float caustic_value = 0.0;
 	// Protect yourself from calculating Noise at runtime with this handy if statement!
 	if (range_mod > 0.0) {
-		vec3 X = vec3(world.xz * caustic_size, mod(TIME, 578.0) * 0.8660254037844386);
+		vec3 X = vec3(world.xz * caustic_size, mod(TIME * caustic_speed, 578.0) * 0.8660254037844386);
 		vec4 noiseResult = os2NoiseWithDerivatives_Fallback(X);
 		noiseResult = os2NoiseWithDerivatives_Fallback(X - noiseResult.xyz / 16.0);
 		caustic_value = fma(noiseResult.w, 0.5, 0.5) * range_mod * range_mod;
@@ -486,6 +487,7 @@ shader_parameter/influence_size = 1.0
 shader_parameter/player_wave_frequenzy = 10.0
 shader_parameter/player_wave_speed = 5.0
 shader_parameter/caustic_size = 3.74999991618
+shader_parameter/caustic_speed = 1.0
 shader_parameter/caustic_range = 256.0
 shader_parameter/caustic_strength = 0.25999999418848
 shader_parameter/ssr_mix_strength = 0.65
@@ -504,7 +506,7 @@ shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.43708605, 1), 0.0, 0.0, 0, 0, Vector2(0.8278145, 1), -5.3179536, -5.3179536, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_lqdem"]
+[sub_resource type="CurveTexture" id="CurveTexture_4itmh"]
 curve = SubResource("Curve_i8vbu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lg1c5"]
@@ -517,15 +519,15 @@ emission_ring_cone_angle = 65.73
 gravity = Vector3(0, 3, 0)
 scale_min = 0.099999994
 scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_lqdem")
+scale_curve = SubResource("CurveTexture_4itmh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvufb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_848sg"]
 transparency = 4
 albedo_color = Color(0.827451, 0.5372549, 0.39607844, 1)
 roughness = 0.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_x1fh7"]
-material = SubResource("StandardMaterial3D_qvufb")
+material = SubResource("StandardMaterial3D_848sg")
 
 [sub_resource type="Gradient" id="Gradient_63pmu"]
 offsets = PackedFloat32Array(0, 0.7033333, 1)
