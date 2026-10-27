@@ -13,13 +13,17 @@ func _process(delta: float) -> void:
 
 func _on_detect_food_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Ingredient") and not cooking:
+		cooking = true
 		if body.can_be_cooked:
-			cooking = true
 			body._become_held($SpawnPnt)
 			body.pan_grill()
+			cooking = true
+			#body.pan_grill()
 			body.current_station = self
 			$Sizzle.play()
 			$AnimationPlayer.play("cooking")
+		else:
+			cooking = false
 func finished_cooking():
 	$Sizzle.stop()
 	$AnimationPlayer.stop()

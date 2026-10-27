@@ -80,10 +80,11 @@ func _become_dropped():
 	
 
 func _become_held(pnt):
+	set_collision_layer_value(2, false)
 	$Reactivate.stop()
 	_held = true
 	contact_monitor = false
-	set_collision_layer_value(2, false)
+	#set_collision_layer_value(2, false)
 	set_collision_layer_value(3, false)
 	_held_point = pnt
 	freeze = true
@@ -99,6 +100,7 @@ func _apply_light_drop_impulse(dir):
 func pan_grill():
 	if not can_be_cooked:
 		return
+	can_be_cooked = false
 	var tween = create_tween()
 	tween.tween_method(
 		func(value): overlay.set_shader_parameter("blend", value),
@@ -108,7 +110,6 @@ func pan_grill():
 	)
 	tween.tween_callback(finish_cooking)
 func finish_cooking():
-	can_be_cooked = false
 	_become_dropped()
 	current_station.finished_cooking()
 	color = Color(0.35, 0.133, 0.133, 1.0)
