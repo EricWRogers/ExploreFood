@@ -225,6 +225,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # ─────────────────────────────────────────
 
 func _physics_process(delta: float) -> void:
+	$CanvasLayer/MarginContainer6/Money.text = str(Manager.money)
 	_handle_global_inputs()
 
 	if not alive:

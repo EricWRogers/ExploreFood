@@ -24,7 +24,7 @@ var current_customers = []
 func _ready():
 	add_new_customer.connect(new_customer)
 	customer_spots = customer_points.get_children()
-	for i in range (2):
+	for i in range (1):
 		spawn_customer()
 
 
@@ -33,6 +33,7 @@ func spawn_customer():
 	nav_region.add_child(customer)
 	customer.global_position = customer_spawn.global_position
 	customer.set_seat(pick_rand_spot())
+	print(customer.my_seat.global_position)
 	customer.set_exit(customer_spawn)
 	customer.finished_eating.connect(customer_done)
 	current_customers.append(customer)
