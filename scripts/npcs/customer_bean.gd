@@ -22,6 +22,7 @@ var my_exit: Object
 var my_succulent_meal
 var order_distance = 1
 var angry_time = 15.0
+var satisfaction_time
 var tray
 
 enum State{
@@ -41,6 +42,7 @@ var current_state : State = State.SEAT
 #once the animation finishes play ANOTHER timer to show eating
 #when the timer runs out transition to State.PAY
 func _process(_delta: float) -> void:
+
 	if !timer.is_stopped():
 		texture_progress_bar.value = (timer.time_left / timer.wait_time) * 100.0
 
@@ -157,15 +159,13 @@ func state_eat(_delta:float):
 func state_pay(_delta: float) -> void:
 	if !is_paying:
 		is_paying = true
-		var tip = int(timer.time_left / 5.0)
+		var tip = int(satisfaction_time)
 		timer.stop()
 		
 		for money in range(tip):
-			pass
-			#var coin = GOLD_COIN.instantiate()
-			#get_tree().current_scene.add_child(coin)
-			#coin.global_position = coin_spawn.global_position
-			#await get_tree().create_timer(1.0).timeout
+			print(tip)
+			Manager.money +=1
+			await get_tree().create_timer(1.0).timeout
 		change_state(State.LEAVE)
 
 func state_leave(_delta : float):
@@ -196,8 +196,8 @@ func set_exit(new_exit: Object):
 
 func set_order():
 	can_take_food = true
-	if randi_range(1, 50) != 1: return
-	#the res is code i stole from Caleb
+	return
+	#ignore rest of it
 	$Bubble.show()
 	for i in range(0,2):
 		var rand = randi_range(1, 6)
@@ -230,6 +230,7 @@ func set_order():
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("get_took") and current_state == State.ORDER:
+		satisfaction_time = timer.time_left
 		can_take_food = false
 		change_state(State.EAT)
 		body.scale = Vector3.ONE * 0.5
