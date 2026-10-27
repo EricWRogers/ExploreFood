@@ -105,6 +105,8 @@ func snap_to_edge():
 func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("dropthrow") and Manager.player_current_hovered_slot != -1:
+		dropthrow()
 	var new_scale: float = shadow.get_hit_length()
 	new_scale = 1.0 - (new_scale / max_spring_length)
 	new_scale = clamp(new_scale, 0.0, 1.0)
@@ -147,7 +149,7 @@ func _process(_delta: float) -> void:
 		inventory[target_slot] = grab_focus
 
 		$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
-
+		grab_focus._held_slot = Manager.player_current_hovered_slot
 		grab_focus._become_held($Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt)
 
 		for item in inventory:
@@ -166,6 +168,25 @@ func _process(_delta: float) -> void:
 		current_taken_slots += 1
 		spawn_inventory_slot_viewer(grab_focus, target_slot)
 		print("Item stored in slot: ", target_slot)
+func dropthrow():
+		var current_drop = Manager.player_current_hovered_slot
+		for item in inventory:
+			if item != null:
+				if item._held_slot == Manager.player_current_hovered_slot:
+					item.last_dir = _last_movement_dir
+					%Doremi.is_holding = false
+					current_taken_slots -= 1
+					item._become_dropped()
+					var inv_ndx = inventory.find(item)
+					if inv_ndx != -1:
+						var viewer_family = get_tree().get_nodes_in_group("Viewer")
+						inventory[inv_ndx] = null
+						for view in viewer_family:
+							if view.slot_tie == inv_ndx:
+								view.reset_item()
+					#print(inventory)
+					break
+		
 ## spawns the scene that displays hotb ar icons
 func spawn_inventory_slot_viewer(item, tie):
 	var viewer_family = get_tree().get_nodes_in_group("Viewer")
@@ -174,7 +195,7 @@ func spawn_inventory_slot_viewer(item, tie):
 		if view.slot_tie == tie:
 			view.reset_item()
 			view.spawn_item(item)
-			$CanvasLayer/MarginContainer/Hotbar._update_visual()
+			$CanvasLayer/MarginContainer/Hotbar._update_visual(tie)
 			return
 
 	var viewer = inventory_viewer.instantiate()
@@ -205,7 +226,7 @@ func _physics_process(delta: float) -> void:
 	eyelevel_detect = %EyelevelDetect.is_colliding()
 	ingeo_detect_left = %InGeometryDetectL.is_colliding()
 	ingeo_detect_right = %InGeometryDetectR.is_colliding()
-	if Input.is_action_just_pressed("Forward") and hanging and !climb_started:
+	if hanging and !climb_started:
 		climbing = true
 		climb_started = true
 		climbing_detect_has_collided = false

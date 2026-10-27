@@ -144,6 +144,9 @@ _data = {
 &"open_door": SubResource("Animation_n66xe")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
+size = Vector3(0.7558594, 0.76901245, 0.763916)
+
 [node name="StoveOven" type="Node3D" unique_id=1051010450]
 
 [node name="OvenSquish" type="Node3D" parent="." unique_id=1773969685]
@@ -177,3 +180,10 @@ libraries/ = SubResource("AnimationLibrary_nq02n")
 [node name="Door" type="AnimationPlayer" parent="." unique_id=2077582318]
 libraries/ = SubResource("AnimationLibrary_0tq11")
 speed_scale = 2.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1394568077]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=404250203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040146112, 0.3846283, -0.002319336)
+shape = SubResource("BoxShape3D_lg1c5")

@@ -8,9 +8,11 @@
 [ext_resource type="Script" uid="uid://dmot4k5n7k0w6" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="5_20n0i"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="6_xeajp"]
 [ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="8_5bgta"]
+[ext_resource type="Texture2D" uid="uid://bwtasbrti8sms" path="res://fp_scenes/kitchen/textures/cutetile.png" id="8_kgps5"]
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="9_v37vc"]
 [ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="10_20n0i"]
-[ext_resource type="PackedScene" uid="uid://ddtb22qi8a2kr" path="res://fp_scenes/ingredients/testingredient.tscn" id="11_2kjt3"]
+[ext_resource type="PackedScene" uid="uid://dhcy2uefcvcx6" path="res://fp_scenes/kitchen/scenes/pan_grill.tscn" id="12_expiw"]
+[ext_resource type="PackedScene" uid="uid://bbh2yrfjhnr16" path="res://scenes/scenes_assets/cute_stool.tscn" id="15_u2y67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -55,6 +57,119 @@ fog_sky_affect = 0.298
 adjustment_enabled = true
 adjustment_brightness = 1.15
 adjustment_saturation = 1.21
+
+[sub_resource type="Resource" id="Resource_ckef2"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_3o8n1"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_i0rkg"]
+script = ExtResource("4_v37vc")
+data = PackedInt32Array(-1, -1, -1, -1, -1, -1)
+data_type = 1
+
+[sub_resource type="Resource" id="Resource_pb8y1"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(-1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0, 0, 0, -1)
+data_type = 6
+stride = 3
+
+[sub_resource type="Resource" id="Resource_k6b4f"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_tqsfk"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_2nqba"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+data_type = 4
+stride = 4
+
+[sub_resource type="Resource" id="Resource_5j0t4"]
+script = ExtResource("4_v37vc")
+data = PackedInt32Array(0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5)
+data_type = 1
+
+[sub_resource type="Resource" id="Resource_k36br"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(-1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1)
+data_type = 6
+stride = 3
+
+[sub_resource type="Resource" id="Resource_kji0p"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_uiv6t"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(0, -1, -16, -1, -16, 0, 0, 0, 0, 0, -16, 0, -16, -1, 0, -1, 16, -16, 16, 0, 0, 0, 0, -16, 16, 0, 16, -1, 0, -1, 0, 0, 16, 0, 16, -16, 0, -16, 0, 0, 16, -1, 16, 0, 0, 0, 0, -1)
+data_type = 5
+stride = 2
+
+[sub_resource type="Resource" id="Resource_nrpjg"]
+script = ExtResource("4_v37vc")
+data = PackedInt32Array(0, 1, 2, 3, 7, 6, 5, 4, 1, 0, 4, 5, 2, 1, 5, 6, 3, 2, 6, 7, 0, 3, 7, 4)
+data_type = 1
+
+[sub_resource type="Resource" id="Resource_5lpjy"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(-0.062257282, 0.9961165, -0.062257282, -0.062257282, 0.9961165, 0.062257282, -0.062257282, -0.9961165, 0.062257282, -0.062257282, -0.9961165, -0.062257282, 0.062257282, 0.9961165, -0.062257282, 0.062257282, 0.9961165, 0.062257282, 0.062257282, -0.9961165, 0.062257282, 0.062257282, -0.9961165, -0.062257282)
+data_type = 6
+stride = 3
+
+[sub_resource type="Resource" id="Resource_dj4ne"]
+script = ExtResource("3_5bgta")
+data = PackedFloat32Array(0, 1, 0, 0, 1, 16, 0, 0, 16, 0, 0, 0, 16, 1, 0, 16, 1, 16, 16, 0, 16, 16, 0, 0)
+data_type = 6
+stride = 3
+
+[sub_resource type="Resource" id="Resource_l5htv"]
+script = ExtResource("2_hq6hs")
+data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_6burq"]
+script = ExtResource("5_20n0i")
+num_vertices = 8
+num_edges = 12
+num_faces = 6
+num_face_vertices = 24
+active_vertex = -1
+active_edge = -1
+active_face = -1
+active_face_vertex = -1
+edge_vertex_indices = PackedInt32Array(0, 1, 1, 2, 2, 3, 3, 0, 7, 6, 6, 5, 5, 4, 4, 7, 0, 4, 5, 1, 6, 2, 7, 3)
+edge_face_indices = PackedInt32Array(0, 2, 0, 3, 0, 4, 0, 5, 1, 4, 1, 3, 1, 2, 1, 5, 2, 5, 2, 3, 3, 4, 4, 5)
+face_vertex_count = PackedInt32Array(4, 4, 4, 4, 4, 4)
+face_vertex_indices = PackedInt32Array(0, 1, 2, 3, 7, 6, 5, 4, 1, 0, 4, 5, 2, 1, 5, 6, 3, 2, 6, 7, 0, 3, 7, 4)
+vertex_data = {
+"normal": SubResource("Resource_5lpjy"),
+"position": SubResource("Resource_dj4ne"),
+"selected": SubResource("Resource_l5htv")
+}
+edge_data = {
+"selected": SubResource("Resource_ckef2"),
+"uv_seam": SubResource("Resource_3o8n1")
+}
+face_data = {
+"material_index": SubResource("Resource_i0rkg"),
+"normal": SubResource("Resource_pb8y1"),
+"selected": SubResource("Resource_k6b4f"),
+"visible": SubResource("Resource_tqsfk")
+}
+face_vertex_data = {
+"color": SubResource("Resource_2nqba"),
+"face_index": SubResource("Resource_5j0t4"),
+"normal": SubResource("Resource_k36br"),
+"selected": SubResource("Resource_kji0p"),
+"uv0": SubResource("Resource_uiv6t"),
+"vertex_index": SubResource("Resource_nrpjg")
+}
 
 [sub_resource type="Resource" id="Resource_20n0i"]
 script = ExtResource("2_hq6hs")
@@ -131,7 +246,7 @@ stride = 3
 script = ExtResource("2_hq6hs")
 data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0)
 
-[sub_resource type="Resource" id="Resource_tuih5"]
+[sub_resource type="Resource" id="Resource_5ywk8"]
 script = ExtResource("5_20n0i")
 num_vertices = 8
 num_edges = 12
@@ -169,7 +284,7 @@ face_vertex_data = {
 "vertex_index": SubResource("Resource_7urxf")
 }
 
-[sub_resource type="Resource" id="Resource_5ywk8"]
+[sub_resource type="Resource" id="Resource_tuih5"]
 script = ExtResource("5_20n0i")
 num_vertices = 8
 num_edges = 12
@@ -5059,6 +5174,15 @@ face_vertex_data = {
 "vertex_index": SubResource("Resource_mutxd")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_lg1c5"]
+size = Vector3(8, 1.749, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfobl"]
+shading_mode = 0
+albedo_color = Color(0.78, 0.78, 0.78, 1)
+albedo_texture = ExtResource("8_kgps5")
+uv1_scale = Vector3(40, 25, 40)
+
 [node name="MovementLab" type="Node3D" unique_id=102214623]
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("6_xeajp")]
@@ -5072,181 +5196,217 @@ environment = SubResource("Environment_v37vc")
 [node name="Block_0" type="Node3D" parent="Floor" unique_id=425882391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
 script = ExtResource("1_xeajp")
-mesh_vector_data = SubResource("Resource_tuih5")
+mesh_vector_data = SubResource("Resource_6burq")
+collision_layer = 3
 
 [node name="Block_1" type="Node3D" parent="Floor" unique_id=1025900760]
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_5ywk8")
+collision_layer = 3
 
 [node name="Block_2" type="Node3D" parent="Floor" unique_id=1520912223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_3" type="Node3D" parent="Floor" unique_id=983150848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_4" type="Node3D" parent="Floor" unique_id=31971800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_k8lgc")
+collision_layer = 3
 
 [node name="Block_5" type="Node3D" parent="Floor" unique_id=1288982351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_6" type="Node3D" parent="Floor" unique_id=409988210]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_7" type="Node3D" parent="Floor" unique_id=1068900557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_8" type="Node3D" parent="Floor" unique_id=285591415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_9" type="Node3D" parent="Floor" unique_id=928327697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_10" type="Node3D" parent="Floor" unique_id=462142485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_11" type="Node3D" parent="Floor" unique_id=628296904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_12" type="Node3D" parent="Floor" unique_id=154138574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_13" type="Node3D" parent="Floor" unique_id=1385254543]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_14" type="Node3D" parent="Floor" unique_id=253834299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_15" type="Node3D" parent="Floor" unique_id=564906961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_16" type="Node3D" parent="Floor" unique_id=2097467886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_17" type="Node3D" parent="Floor" unique_id=1097622785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_18" type="Node3D" parent="Floor" unique_id=992213741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_19" type="Node3D" parent="Floor" unique_id=347206962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_20" type="Node3D" parent="Floor" unique_id=905876139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_21" type="Node3D" parent="Floor" unique_id=534848357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_22" type="Node3D" parent="Floor" unique_id=1669295209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_23" type="Node3D" parent="Floor" unique_id=1960830477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_24" type="Node3D" parent="Floor" unique_id=1360806327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_25" type="Node3D" parent="Floor" unique_id=1550496495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_26" type="Node3D" parent="Floor" unique_id=1008043454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_27" type="Node3D" parent="Floor" unique_id=313781576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_28" type="Node3D" parent="Floor" unique_id=1182828031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_29" type="Node3D" parent="Floor" unique_id=88120464]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_30" type="Node3D" parent="Floor" unique_id=1789369519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_31" type="Node3D" parent="Floor" unique_id=1079370541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -48)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_32" type="Node3D" parent="Floor" unique_id=1443895261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_33" type="Node3D" parent="Floor" unique_id=2128536108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 32)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_34" type="Node3D" parent="Floor" unique_id=2074007906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Block_35" type="Node3D" parent="Floor" unique_id=1032404120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_tuih5")
+collision_layer = 3
 
 [node name="Jump" type="Node3D" parent="." unique_id=1541649070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
@@ -5255,6 +5415,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4777j")
+collision_layer = 3
 
 [node name="HalfMeter" type="Label3D" parent="Jump/HalfMeterBlock" unique_id=1953164640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42828083, 0.8555405, 2.021)
@@ -5264,6 +5425,7 @@ text = "0.5 Meter"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4777j")
+collision_layer = 3
 
 [node name="1Meter" type="Label3D" parent="Jump/1MeterBlock" unique_id=2114492783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3435297, 0.84882736, 2.0205526)
@@ -5273,6 +5435,7 @@ text = "1 Meter"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_j2dco")
+collision_layer = 3
 
 [node name="1Meter2" type="Label3D" parent="Jump/2Meter" unique_id=807277773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3435297, 1.8571157, 2.0205526)
@@ -5282,6 +5445,7 @@ text = "2 Meter"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_0rsn8")
+collision_layer = 3
 
 [node name="1Meter" type="Label3D" parent="Jump/3Meter" unique_id=610225332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4589193, 2.8212457, 2.0205526)
@@ -5292,6 +5456,7 @@ font_size = 45
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_0dtaw")
+collision_layer = 3
 
 [node name="1Meter2" type="Label3D" parent="Jump/4Meter" unique_id=2023658016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58166194, 3.7671337, 2.0205526)
@@ -5302,6 +5467,7 @@ font_size = 59
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_fgvsi")
+collision_layer = 3
 
 [node name="1Meter3" type="Label3D" parent="Jump/5Meter" unique_id=1241946435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5886843, 4.7511206, 2.0205526)
@@ -5312,6 +5478,7 @@ font_size = 59
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_rfu1j")
+collision_layer = 3
 
 [node name="1Meter4" type="Label3D" parent="Jump/6Meter" unique_id=1550045269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5924196, 5.7482934, 2.0205526)
@@ -5322,6 +5489,7 @@ font_size = 59
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_i13b5")
+collision_layer = 3
 
 [node name="1Meter5" type="Label3D" parent="Jump/7Meter" unique_id=190924003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5902996, 6.7451434, 2.0205526)
@@ -5332,6 +5500,7 @@ font_size = 59
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_6210g")
+collision_layer = 3
 
 [node name="8Meter" type="Label3D" parent="Jump/Block_4" unique_id=1901269331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69978046, 7.6959963, 2.0205526)
@@ -5345,106 +5514,127 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -20)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform" type="Node3D" parent="Distance" unique_id=81731956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -20)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform" type="Node3D" parent="Distance" unique_id=1182300873]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -20)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp2" type="Node3D" parent="Distance" unique_id=1408546969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -17)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform2" type="Node3D" parent="Distance" unique_id=1916842285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -17)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform2" type="Node3D" parent="Distance" unique_id=1594507716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -17)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp3" type="Node3D" parent="Distance" unique_id=1133995960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform3" type="Node3D" parent="Distance" unique_id=1814415429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform3" type="Node3D" parent="Distance" unique_id=659627025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -14)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp4" type="Node3D" parent="Distance" unique_id=2008068735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -11)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform4" type="Node3D" parent="Distance" unique_id=687009074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -11)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform4" type="Node3D" parent="Distance" unique_id=1524871212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -11)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp5" type="Node3D" parent="Distance" unique_id=454099658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -8)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform5" type="Node3D" parent="Distance" unique_id=1655739097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -8)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform5" type="Node3D" parent="Distance" unique_id=1600726523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -8)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp6" type="Node3D" parent="Distance" unique_id=2143643096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -5)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b2pkj")
+collision_layer = 3
 
 [node name="JumpPlatform6" type="Node3D" parent="Distance" unique_id=995354641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -5)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_7syfe")
+collision_layer = 3
 
 [node name="LandPlatform6" type="Node3D" parent="Distance" unique_id=1735700957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -5)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4bme1")
+collision_layer = 3
 
 [node name="JumpRamp7" type="Node3D" parent="Distance" unique_id=1801169926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_4inkv")
+collision_layer = 3
 
 [node name="JumpPlatform7" type="Node3D" parent="Distance" unique_id=447251673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_jo5y2")
+collision_layer = 3
 
 [node name="LandPlatform7" type="Node3D" parent="Distance" unique_id=1699607173]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_njye8")
+collision_layer = 3
 
 [node name="1Meter2" type="Label3D" parent="Distance" unique_id=2053912649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6628, 2.2087216, -18.983433)
@@ -5518,41 +5708,49 @@ outline_size = 40
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_p52cc")
+collision_layer = 3
 
 [node name="Slope2" type="Node3D" parent="Slopes" unique_id=1803521920]
 transform = Transform3D(-1, 0, 8.195639e-08, 0, 1, 0, -8.195639e-08, 0, -1, 19, 1, 4)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_p52cc")
+collision_layer = 3
 
 [node name="Block_0" type="Node3D" parent="Slopes" unique_id=171923583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 4)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_8g7qk")
+collision_layer = 3
 
 [node name="Block_1" type="Node3D" parent="Slopes" unique_id=1733258671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 6)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_duyda")
+collision_layer = 3
 
 [node name="Block_2" type="Node3D" parent="Slopes" unique_id=853274610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 8)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_kdcac")
+collision_layer = 3
 
 [node name="Block_3" type="Node3D" parent="Slopes" unique_id=161420078]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 19, 1, 6)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_8g7qk")
+collision_layer = 3
 
 [node name="Block_4" type="Node3D" parent="Slopes" unique_id=1051541876]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 19, 1, 8)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_duyda")
+collision_layer = 3
 
 [node name="Block_5" type="Node3D" parent="Slopes" unique_id=1074269715]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 19, 1, 10)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_kdcac")
+collision_layer = 3
 
 [node name="1Meter9" type="Label3D" parent="Slopes" unique_id=378927651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.578433, 2.2087216, 2.3377843)
@@ -5621,51 +5819,61 @@ outline_size = 21
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 9)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_3v1fj")
+collision_layer = 3
 
 [node name="Block_7" type="Node3D" parent="Slopes" unique_id=1654647462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 9)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_u04mr")
+collision_layer = 3
 
 [node name="Block_8" type="Node3D" parent="Slopes" unique_id=862457896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 9)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_ccpl1")
+collision_layer = 3
 
 [node name="Block_9" type="Node3D" parent="Slopes" unique_id=558390786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 9)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_kbtch")
+collision_layer = 3
 
 [node name="Block_10" type="Node3D" parent="Slopes" unique_id=95675911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 9)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_waa2y")
+collision_layer = 3
 
 [node name="Block_11" type="Node3D" parent="Slopes" unique_id=769591444]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 15)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_3v1fj")
+collision_layer = 3
 
 [node name="Block_12" type="Node3D" parent="Slopes" unique_id=1410905759]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 1, 15)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_u04mr")
+collision_layer = 3
 
 [node name="Block_13" type="Node3D" parent="Slopes" unique_id=1286405765]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6, 1, 15)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_ccpl1")
+collision_layer = 3
 
 [node name="Block_14" type="Node3D" parent="Slopes" unique_id=1541442431]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9, 1, 15)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_kbtch")
+collision_layer = 3
 
 [node name="Block_15" type="Node3D" parent="Slopes" unique_id=864341601]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 1, 15)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_waa2y")
+collision_layer = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1147694828]
 transform = Transform3D(1, 0, 0, 0, 1.3907092e-07, 1, 0, -1, 1.3907092e-07, 0, 9, 0)
@@ -5676,96 +5884,115 @@ transform = Transform3D(1, 0, 0, 0, 1.3907092e-07, 1, 0, -1, 1.3907092e-07, 0, 9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, -18)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_twt6u")
+collision_layer = 3
 
 [node name="Block_1" type="Node3D" parent="Playground" unique_id=1651467921]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 7, -13)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_jdk3d")
+collision_layer = 3
 
 [node name="Block_2" type="Node3D" parent="Playground" unique_id=156214775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -11)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_trxqd")
+collision_layer = 3
 
 [node name="Block_3" type="Node3D" parent="Playground" unique_id=746800507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -10)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_jxpgc")
+collision_layer = 3
 
 [node name="Block_4" type="Node3D" parent="Playground" unique_id=945149017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 8, -7)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_qgsqh")
+collision_layer = 3
 
 [node name="Block_5" type="Node3D" parent="Playground" unique_id=512905263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 10, -7)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_aoign")
+collision_layer = 3
 
 [node name="Block_6" type="Node3D" parent="Playground" unique_id=1127398853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 10, -6)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_5c1v1")
+collision_layer = 3
 
 [node name="Block_7" type="Node3D" parent="Playground" unique_id=2064762936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_t0xy1")
+collision_layer = 3
 
 [node name="Block_8" type="Node3D" parent="Playground" unique_id=333020557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 11, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_d3y7i")
+collision_layer = 3
 
 [node name="Block_9" type="Node3D" parent="Playground" unique_id=1837161749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 17, 0)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_ibpkh")
+collision_layer = 3
 
 [node name="Block_10" type="Node3D" parent="Playground" unique_id=1373005711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 11, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_mjqae")
+collision_layer = 3
 
 [node name="Block_11" type="Node3D" parent="Playground" unique_id=1265700480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 11, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_hahwy")
+collision_layer = 3
 
 [node name="Block_12" type="Node3D" parent="Playground" unique_id=538365355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 23, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_b4sp0")
+collision_layer = 3
 
 [node name="Block_13" type="Node3D" parent="Playground" unique_id=971781223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 28, -3)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_mda4k")
+collision_layer = 3
 
 [node name="Block_17" type="Node3D" parent="Playground" unique_id=2038943976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 27, -16)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_a7sfm")
+collision_layer = 3
 
 [node name="Block_14" type="Node3D" parent="Playground" unique_id=904727525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 29, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_agopi")
+collision_layer = 3
 
 [node name="Block_15" type="Node3D" parent="Playground" unique_id=2117734099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 29, -2)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_iv6j5")
+collision_layer = 3
 
 [node name="Block_16" type="Node3D" parent="Playground" unique_id=1203683001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 27, -19)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_6nj25")
+collision_layer = 3
 
 [node name="Block_19" type="Node3D" parent="Playground" unique_id=2024816500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 30, -21)
 script = ExtResource("1_xeajp")
 mesh_vector_data = SubResource("Resource_80e8w")
+collision_layer = 3
 
 [node name="Collectables" type="Node3D" parent="." unique_id=1016475271]
 
@@ -5880,62 +6107,76 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8445661, -13.333645)
 [node name="StoveOven" parent="." unique_id=1051010450 instance=ExtResource("9_v37vc")]
 transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, 0, 0.9744922, 2.5624063)
 
-[node name="StoveOven2" parent="." unique_id=1169747221 instance=ExtResource("9_v37vc")]
-transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, -1.4557672, 0.9744922, 2.5624063)
-
-[node name="StoveOven3" parent="." unique_id=1845515641 instance=ExtResource("9_v37vc")]
-transform = Transform3D(-1.75, 0, 2.6424266e-07, 0, 1.75, 0, -2.6424266e-07, 0, -1.75, -2.916928, 0.9744922, 2.5624063)
-
 [node name="Base" parent="." unique_id=175947415 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.220369, -6.643323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.220369, -6.643323)
 
 [node name="Base2" parent="." unique_id=985322419 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.49687815, -0.04645423, 0.030888645, 0.055786233, 0.41375965, -0.2751197, 0, 0.2768483, 0.41635928, 0, 7.306778, -6.643323)
+transform = Transform3D(0.9937563, -0.09290845, 0.061777294, 0.11157247, 0.8275193, -0.55023944, 0, 0.55369663, 0.83271855, 0, 7.306778, -6.643323)
 
 [node name="Base3" parent="." unique_id=466344284 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.2784413, 0.4152956, 0, -0.4152956, 0.2784413, 0, 0, 0, 0.5, -1.8811606, 8.694611, -6.643323)
+transform = Transform3D(0.5568826, 0.8305912, 0, -0.8305912, 0.5568826, 0, 0, 0, 1, -1.8811606, 8.694611, -6.643323)
 
 [node name="Base4" parent="." unique_id=671926015 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.5, 0, 0, 0, 0.48104602, -0.13636251, 0, 0.13636251, 0.48104602, 0.8179177, 9.21356, -6.643323)
+transform = Transform3D(1, 0, 0, 0, 0.96209204, -0.27272502, 0, 0.27272502, 0.96209204, 0.8179177, 9.21356, -6.643323)
 
 [node name="Base5" parent="." unique_id=1272432198 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.42370063, -0.23713169, 0.119357996, 0.22553195, 0.440106, 0.07377012, -0.14004682, -0.0086748, 0.47990793, -0.9925386, 9.914671, -7.2923837)
+transform = Transform3D(0.8474013, -0.47426337, 0.23871604, 0.45106387, 0.88021207, 0.14754024, -0.28009367, -0.0173496, 0.95981586, -0.9925386, 9.914671, -7.2923837)
 
 [node name="Base6" parent="." unique_id=847395422 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.2128094, 0, -0.4524513, 0, 0.5, 0, 0.4524513, 0, 0.2128094, -2.8637874, 23.605293, -5.6519513)
+transform = Transform3D(0.4256188, 0, -0.9049026, 0, 1, 0, 0.9049026, 0, 0.4256188, -2.8637874, 23.605293, -5.6519513)
 
 [node name="Base7" parent="." unique_id=1857137228 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.23943189, -0.046454206, -0.43647957, -0.2252129, 0.41375968, -0.16757719, 0.3767646, 0.2768483, 0.17721036, -2.7893832, 18.911045, -5.8177896)
+transform = Transform3D(0.47886372, -0.09290849, -0.87295914, -0.4504257, 0.8275193, -0.3351544, 0.7535292, 0.5536965, 0.3544206, -2.7893832, 18.911045, -5.8177896)
 
 [node name="Base8" parent="." unique_id=1422797891 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.118509844, 0.4152956, -0.25196224, -0.1767576, 0.2784413, 0.37580207, 0.4524513, -1.4901161e-08, 0.2128094, -3.810971, 22.830206, -5.6519513)
+transform = Transform3D(0.23701963, 0.8305912, -0.5039245, -0.3535152, 0.55688256, 0.75160414, 0.9049026, 2.9802322e-08, 0.42561874, -3.810971, 22.830206, -5.6519513)
 
 [node name="Base9" parent="." unique_id=387505937 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.2128094, 0, -0.4524513, -0.12339479, 0.48104602, -0.05803845, 0.43529978, 0.13636251, 0.20474222, -2.0458698, 21.328112, -5.6895323)
+transform = Transform3D(0.42561877, -7.450581e-09, -0.9049026, -0.24678956, 0.96209204, -0.116076894, 0.8705995, 0.27272502, 0.40948445, -2.0458698, 21.328112, -5.6895323)
 
 [node name="Base10" parent="." unique_id=710229217 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.28834233, -0.23713171, -0.3326068, 0.16274542, 0.44010603, -0.17268649, 0.37466338, -0.008674803, 0.33098656, -3.298031, 21.495136, -5.7504845)
+transform = Transform3D(0.5766846, -0.47426343, -0.6652135, 0.3254908, 0.880212, -0.34537306, 0.74932677, -0.017349571, 0.6619731, -3.298031, 21.495136, -5.7504845)
 
 [node name="Base11" parent="." unique_id=201188358 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.13042144, 0, 0.48269063, 0, 0.5, 0, -0.48269063, 0, 0.13042144, 0.3516665, 17.279572, -9.098682)
+transform = Transform3D(0.2608429, 0, 0.96538126, 0, 1, 0, -0.96538126, 0, 0.2608429, 0.3516665, 17.279572, -9.098682)
 
 [node name="Base12" parent="." unique_id=1263827012 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.12960713, 0.25514692, 0.4100025, 0.05578623, 0.41375962, -0.27511972, -0.47967684, 0.117059946, 0.07878505, 0.3483557, 13.592792, -9.08643)
+transform = Transform3D(0.25921428, 0.51029384, 0.820005, 0.111572474, 0.82751924, -0.5502395, -0.95935374, 0.2341199, 0.15757005, 0.3483557, 13.592792, -9.08643)
 
 [node name="Base13" parent="." unique_id=38237920 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.07262944, 0.108326904, 0.48269063, -0.4152956, 0.2784413, 0, -0.26880202, -0.4009186, 0.13042144, -0.37398708, 13.065336, -6.413034)
+transform = Transform3D(0.14525887, 0.21665381, 0.96538126, -0.8305912, 0.5568826, 0, -0.53760403, -0.8018372, 0.2608429, -0.37398708, 13.065336, -6.413034)
 
 [node name="Base14" parent="." unique_id=1045720828 instance=ExtResource("10_20n0i")]
-transform = Transform3D(0.13042144, 0.1316418, 0.4643928, 0, 0.48104602, -0.13636251, -0.48269063, 0.03556919, 0.12547743, 0.5650145, 15.272762, -9.888285)
+transform = Transform3D(0.2608429, 0.26328364, 0.9287856, 0, 0.96209204, -0.27272505, -0.96538126, 0.07113839, 0.25095487, 0.5650145, 15.272762, -9.888285)
 
 [node name="Base15" parent="." unique_id=342855235 instance=ExtResource("10_20n0i")]
-transform = Transform3D(-0.024679296, -0.0702286, 0.4944278, 0.22553198, 0.44010606, 0.07377013, -0.44556287, 0.22665973, 0.0099546015, -1.1644176, 16.890823, -8.158856)
+transform = Transform3D(-0.049358573, -0.1404572, 0.98885566, 0.45106393, 0.880212, 0.14754023, -0.89112574, 0.45331952, 0.019909175, -1.1644176, 16.890823, -8.158856)
 
-[node name="Base16" parent="." unique_id=1378778937 instance=ExtResource("11_2kjt3")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7552171, 6.1237655, -5.0339823)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2110307025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.360284, 0.15534496, -0.3580358)
+mesh = SubResource("BoxMesh_lg1c5")
+surface_material_override/0 = SubResource("StandardMaterial3D_vfobl")
 
-[node name="Base17" parent="." unique_id=1591146139 instance=ExtResource("11_2kjt3")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.2557774, 6.1237655, -6.6054444)
+[node name="Pan" parent="." unique_id=425900260 instance=ExtResource("12_expiw")]
+transform = Transform3D(0.2094217, 0, 0.17823449, 0, 0.27500004, 0, -0.17823455, 0, 0.20942163, 0.27621138, 2.3544543, 2.2809646)
 
-[node name="Base18" parent="." unique_id=1932455168 instance=ExtResource("11_2kjt3")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5264616, 7.2369885, -6.6054444)
+[node name="Pan2" parent="." unique_id=12684811 instance=ExtResource("12_expiw")]
+transform = Transform3D(0.2094217, 0, 0.17823449, 0, 0.27500004, 0, -0.17823455, 0, 0.20942163, 0.27621138, 2.3544543, 2.9152453)
+
+[node name="Pan3" parent="." unique_id=359065415 instance=ExtResource("12_expiw")]
+transform = Transform3D(0.20942168, 0, 0.17823449, 0, 0.27499998, 0, -0.17823452, 0, 0.20942163, -0.34983575, 2.3544543, 2.2809646)
+
+[node name="DetectFood" parent="Pan3" index="3" unique_id=452036686]
+transform = Transform3D(0.99999994, 0, 5.9604645e-08, 0, 0.99999994, 0, 0, 0, 1, 0.67224216, 0, 0.5721307)
+
+[node name="Pan4" parent="." unique_id=932965263 instance=ExtResource("12_expiw")]
+transform = Transform3D(0.20942168, 0, 0.17823449, 0, 0.27499998, 0, -0.17823452, 0, 0.20942163, -0.3652005, 2.3544543, 2.9152453)
+
+[node name="DetectFood" parent="Pan4" index="3" unique_id=452036686]
+transform = Transform3D(0.99999994, 0, 5.9604645e-08, 0, 0.99999994, 0, 0, 0, 1, 0.724206, 0, 0.6163554)
+
+[node name="CuteStoll" parent="." unique_id=181404964 instance=ExtResource("15_u2y67")]
+transform = Transform3D(-1.1, 0, -1.6609539e-07, 0, 1.1, 0, 1.6609539e-07, 0, -1.1, 0.052315414, 0.9968598, 1.5159416)
+
+[editable path="Pan3"]
+[editable path="Pan4"]
