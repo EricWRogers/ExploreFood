@@ -71,7 +71,6 @@ albedo_color = Color(0.528, 0.71573335, 0.88, 1)
 
 [node name="DinerLevelTest" type="Node3D" unique_id=1870153108]
 script = ExtResource("1_3jqfu")
-level_name = "diner"
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_3jqfu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.2238154, -5.6986084)
@@ -131,9 +130,11 @@ transform = Transform3D(-1.7000003, 0, -1.4861874e-07, 0, 1.7000003, 0, 1.486187
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("4_f8w4h")]
 transform = Transform3D(-0.32585117, 0, 0.9454211, 0, 1, 0, -0.9454211, 0, -0.32585117, 24.83023, 0.1, -12.163834)
+new_level_path = "res://scenes/levels/terrain_test.tscn"
 
 [node name="Portal2" parent="." unique_id=2091818075 instance=ExtResource("4_f8w4h")]
 transform = Transform3D(0.3248469, 0, 0.9457667, 0, 1, 0, -0.9457667, 0, 0.3248469, -25.346758, 0, -25.014454)
+new_level_path = "res://scenes/levels/BreadWorld_GreyBox.tscn"
 
 [node name="TempPortalManager" type="Node3D" parent="." unique_id=1750418309]
 script = ExtResource("5_qvun3")

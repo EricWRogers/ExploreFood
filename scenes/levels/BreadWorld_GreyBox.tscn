@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://drfqtagsbvvuh"]
 
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="1_bg5gd"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_yibec"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ojr3"]
@@ -15,6 +16,12 @@ albedo_color = Color(0.0627451, 0.28627452, 0.3372549, 1)
 albedo_color = Color(0.33333334, 0.2509804, 0.70980394, 1)
 
 [node name="BreadWorldGreyBox" type="Node3D" unique_id=179416587]
+
+[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("1_bg5gd")]
+transform = Transform3D(-0.94522715, 0, 0.32641333, 0, 1, 0, -0.32641333, 0, -0.94522715, 95.06983, 23.273394, 107.408875)
+new_level_path = "res://scenes/levels/testScenes/DinerLevel_test.tscn"
+in_kitchen = false
+active = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=495668105]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 494.80005, -30.699986, 349.00006)
@@ -424,7 +431,7 @@ size = Vector3(810.5, 15.400001, 895.10004)
 material = SubResource("StandardMaterial3D_yckxo")
 
 [node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_yibec")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.200325, 55.499985, 101.90001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.200325, 28.395508, 101.90001)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1997043669]
 transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 0, 185.70001, 0)

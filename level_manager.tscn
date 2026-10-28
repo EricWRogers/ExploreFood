@@ -7,9 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_k1abw"]
 
-[node name="LevelManager" type="Node" unique_id=2118240317 node_paths=PackedStringArray("start_screen")]
+[node name="LevelManager" type="Node" unique_id=2118240317]
 script = ExtResource("1_mnhan")
-start_screen = NodePath("StartMenu")
+
+[node name="SceneParent3D" type="Node3D" parent="." unique_id=736801837]
+
+[node name="SceneParent2D" type="Node2D" parent="." unique_id=960592007]
+
+[node name="SceneParentControl" type="Control" parent="." unique_id=395457182]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="StartMenu" parent="." unique_id=1906028576 instance=ExtResource("3_s60hn")]
 

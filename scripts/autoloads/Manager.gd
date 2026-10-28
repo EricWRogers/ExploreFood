@@ -45,10 +45,12 @@ var player_current_hovered_slot : int
 var current_control_device : String = "controller"
 
 ## ─────────────────────────────────────────
-## This is the end of good
+## Level Managment
 ## ─────────────────────────────────────────
-var is_portal_1: bool = false
-var is_portal_2: bool = false
+var level_manager: LevelManager
+#soon to be depreciated
+var is_portal_1: bool = true
+var is_portal_2: bool = true
 
 ## ─────────────────────────────────────────
 ## Dialogue, Tutorial and Quests 
@@ -56,7 +58,6 @@ var is_portal_2: bool = false
 @export var current_quest_item : String
 var dialogue_tree_index : int = 0
 var is_tut_over: bool = false
-
 
 var slot1
 var slot2
@@ -104,3 +105,10 @@ enum PrepType {
 	MIXED,
 	FRIED
 }
+
+#called when script is instantiated. 
+func _init() -> void:
+	print("game manager init")
+
+func _ready() -> void:
+	print("Portal 1 unlocked = ", is_portal_1, "\n Portal 2 unlocked = ", is_portal_2)

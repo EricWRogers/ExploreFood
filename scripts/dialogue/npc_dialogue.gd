@@ -49,13 +49,13 @@ func _call_dialogue():
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
-		print("player in")
+		#print("player in")
 		interact_ui.show()
 		isInRange = true
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if (body.is_in_group("Player")):
-		print("player out")
+		#print("player out")
 		interact_ui.hide()
 		isInRange = false
 		isDialogueSelected = false
@@ -75,7 +75,10 @@ func _on_quest_check_body_entered(body: Node3D) -> void:
 			else:
 				print("Pass tutorial")
 				Manager.dialogue_tree_index = 2 ##pass tutorial
+				
+				## !! REMOVE TEMP !! ##
 				$"../TempPortalManager".open_portal(1)
+				
 				Manager.current_quest_item = ""
 				#remove tutorial wall
 				$"../TutWall".visible = false
@@ -84,7 +87,10 @@ func _on_quest_check_body_entered(body: Node3D) -> void:
 		elif (body.name == Manager.current_quest_item): 
 			print("Correct! Scrumptious!")
 			Manager.dialogue_tree_index = 4 ##pass quest
+			
+			## !! REMOVE TEMP !! ##
 			$"../TempPortalManager".open_portal(2)
+			
 			Manager.current_quest_item = ""
 		else:										
 			print("Wrong wrong wrong! Horrible.")
@@ -102,10 +108,10 @@ func spawn_tut():
 	ingredient_spawn1.rarity_level = 1 #makes sure that the food is guarenteed to spawn
 	current_scene.add_child(ingredient_spawn1)
 	ingredient_spawn1.position = Vector3(2, 2.6, -0.25)
-	print ("tutorial is spawning: ", ingredient_spawn1)
+	#print ("tutorial is spawning: ", ingredient_spawn1)
 	
 	ingredient_spawn2 = ingredient2.instantiate()
 	ingredient_spawn2.rarity_level = 1 #makes sure that the food is guarenteed to spawn
 	current_scene.add_child(ingredient_spawn2)
 	ingredient_spawn2.position = Vector3(0.1, 2, 0.8)
-	print ("tutorial is spawning: ", ingredient_spawn2)
+	#print ("tutorial is spawning: ", ingredient_spawn2)
