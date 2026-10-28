@@ -6158,25 +6158,7 @@ mesh = SubResource("BoxMesh_lg1c5")
 surface_material_override/0 = SubResource("StandardMaterial3D_vfobl")
 
 [node name="Pan" parent="." unique_id=425900260 instance=ExtResource("12_expiw")]
-transform = Transform3D(0.2094217, 0, 0.17823449, 0, 0.27500004, 0, -0.17823455, 0, 0.20942163, 0.27621138, 2.3544543, 2.2809646)
-
-[node name="Pan2" parent="." unique_id=12684811 instance=ExtResource("12_expiw")]
-transform = Transform3D(0.2094217, 0, 0.17823449, 0, 0.27500004, 0, -0.17823455, 0, 0.20942163, 0.27621138, 2.3544543, 2.9152453)
-
-[node name="Pan3" parent="." unique_id=359065415 instance=ExtResource("12_expiw")]
-transform = Transform3D(0.20942168, 0, 0.17823449, 0, 0.27499998, 0, -0.17823452, 0, 0.20942163, -0.34983575, 2.3544543, 2.2809646)
-
-[node name="DetectFood" parent="Pan3" index="3" unique_id=452036686]
-transform = Transform3D(0.99999994, 0, 5.9604645e-08, 0, 0.99999994, 0, 0, 0, 1, 0.67224216, 0, 0.5721307)
-
-[node name="Pan4" parent="." unique_id=932965263 instance=ExtResource("12_expiw")]
-transform = Transform3D(0.20942168, 0, 0.17823449, 0, 0.27499998, 0, -0.17823452, 0, 0.20942163, -0.3652005, 2.3544543, 2.9152453)
-
-[node name="DetectFood" parent="Pan4" index="3" unique_id=452036686]
-transform = Transform3D(0.99999994, 0, 5.9604645e-08, 0, 0.99999994, 0, 0, 0, 1, 0.724206, 0, 0.6163554)
+transform = Transform3D(0.76153344, 0, 0.6481256, 0, 1, 0, -0.6481256, 0, 0.76153344, 0.27621138, 2.3544543, 2.2809646)
 
 [node name="CuteStoll" parent="." unique_id=181404964 instance=ExtResource("15_u2y67")]
 transform = Transform3D(-1.1, 0, -1.6609539e-07, 0, 1.1, 0, 1.6609539e-07, 0, -1.1, 0.052315414, 0.9968598, 1.5159416)
-
-[editable path="Pan3"]
-[editable path="Pan4"]

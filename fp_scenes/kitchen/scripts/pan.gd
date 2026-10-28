@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends StaticBody3D
 
 var cooking := false
 # Called when the node enters the scene tree for the first time.
@@ -15,18 +15,18 @@ func _on_detect_food_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Ingredient") and not cooking:
 		cooking = true
 		if body.can_be_cooked:
-			body._become_held($SpawnPnt)
+			body._become_held($Pan/SpawnPnt)
 			body.pan_grill()
 			cooking = true
 			#body.pan_grill()
 			body.current_station = self
-			$Sizzle.play()
-			$AnimationPlayer.play("cooking")
+			$Pan/Sizzle.play()
+			$Pan/AnimationPlayer.play("cooking")
 		else:
 			cooking = false
 func finished_cooking():
-	$Sizzle.stop()
-	$AnimationPlayer.stop()
+	$Pan/Sizzle.stop()
+	$Pan/AnimationPlayer.stop()
 	cooking = false
-	$GPUParticles3D.hide()
-	$Water.hide()
+	$Pan/GPUParticles3D.hide()
+	$Pan/Water.hide()
