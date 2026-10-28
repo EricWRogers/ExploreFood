@@ -6,12 +6,12 @@
 [ext_resource type="Resource" uid="uid://c757vrkq8ux22" path="res://scripts/resources/dialogue/testDia1.tres" id="4_wbtbd"]
 [ext_resource type="Resource" uid="uid://b7bn8ouwgdbyi" path="res://scripts/resources/dialogue/testDia_PassQuest.tres" id="5_720kh"]
 [ext_resource type="Resource" uid="uid://hrb6cte5xt1s" path="res://scripts/resources/dialogue/testDia_FailQuest.tres" id="6_pa3ns"]
-[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="7_us053"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/ui/InteractUI.tscn" id="7_us053"]
 [ext_resource type="ArrayMesh" uid="uid://c8xne0bihd6oe" path="res://assets/npcs/TheBoss.obj" id="8_whkwm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
-radius = 0.4428711
-height = 0.9305687
+radius = 0.7944336
+height = 1.5888672
 
 [node name="BossNPC" type="Node3D" unique_id=1095072558]
 script = ExtResource("1_2i7oy")
@@ -23,9 +23,10 @@ mesh = ExtResource("8_whkwm")
 
 [node name="BossDialogueArea" type="Area3D" parent="." unique_id=1359091874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.6370835, 7.890775)
+collision_mask = 5
 
 [node name="DialogueCollisionShape" type="CollisionShape3D" parent="BossDialogueArea" unique_id=618379208]
-transform = Transform3D(9.999999, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, -1.2016783, 0.06883621)
+transform = Transform3D(9.999999, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, -4.105011, 0.06883621)
 shape = SubResource("CapsuleShape3D_q026u")
 
 [node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("7_us053")]
