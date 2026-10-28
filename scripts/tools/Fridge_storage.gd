@@ -8,6 +8,7 @@ extends StaticBody3D
 				
 var current_ingredient: PackedScene  
 var stored_ingredents: Array[PackedScene]
+var held_ingredient
 
 @export var fridgeLimit = 6
 
@@ -27,29 +28,38 @@ func _input(event):
 		event.keycode == KEY_E &&
 		enabled):
 			#print(name + "Activated.") #testing 
+			## walking up and pressing e on fridge
 			if (Manager.holding == true): #if holding put itme in fridge
-				current_ingredient = Manager.currently_held_food#get the ingredent player is holding
-				print(current_ingredient)
-				current_ingredient.queue_free() #delete body
-				insert()
+				#### ERROR: item not going into stored_ingredents array
+				var held_ingredient = Manager.currently_held_food#get the ingredent player is holding
+				print("holding: ", held_ingredient)
+				if (stored_ingredents.size() >= fridgeLimit):
+					return
+				else:
+					stored_ingredents.append(held_ingredient)
+					held_ingredient.queue_free() #delete body
+				print(stored_ingredents) #testing 
+				
 			else: #if nothing in hand take item out of stack
 				remove()
 			
-
+## checking if player is in fridge area
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body.is_in_group("Player")):
 		enabled = true
-	if(body.has_method("im_food") && enabled):
+	if(body.has_method("im_food") && enabled): ## throwing food into fridge
 		current_ingredient = load(body.scene_file_path)
 		body.queue_free()
-		insert()
+		if (stored_ingredents.size() >= fridgeLimit):
+			return
+		else:
+			stored_ingredents.append(current_ingredient)
+		print(stored_ingredents) #testing
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if(body.is_in_group("Player")):
 		enabled = false
-#	if ing:  #exiting body will deactivate item
-#		ing.de_activate()
 
 		
 #only saves raw ingredents, not cooked or preped
