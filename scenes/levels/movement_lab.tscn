@@ -12,7 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="9_v37vc"]
 [ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="10_20n0i"]
 [ext_resource type="PackedScene" uid="uid://dhcy2uefcvcx6" path="res://fp_scenes/kitchen/scenes/pan_grill.tscn" id="12_expiw"]
+[ext_resource type="ArrayMesh" uid="uid://bkrie13pbgh8m" path="res://assets/models/KitchenModels/cuttingboard.obj" id="14_7urxf"]
+[ext_resource type="Texture2D" uid="uid://bwh7iwflt453v" path="res://fp_scenes/kitchen/textures/CuttingBoardTexture.png" id="15_622b1"]
 [ext_resource type="PackedScene" uid="uid://bbh2yrfjhnr16" path="res://scenes/scenes_assets/cute_stool.tscn" id="15_u2y67"]
+[ext_resource type="ArrayMesh" uid="uid://d1iul0l35dsjx" path="res://assets/models/KitchenModels/Knife.obj" id="16_mib14"]
+[ext_resource type="Texture2D" uid="uid://xln1v64k2bf7" path="res://fp_scenes/kitchen/textures/KnifeTexture.png" id="17_euos5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5183,6 +5187,12 @@ albedo_color = Color(0.78, 0.78, 0.78, 1)
 albedo_texture = ExtResource("8_kgps5")
 uv1_scale = Vector3(40, 25, 40)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1je7"]
+albedo_texture = ExtResource("15_622b1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5eod"]
+albedo_texture = ExtResource("17_euos5")
+
 [node name="MovementLab" type="Node3D" unique_id=102214623]
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("6_xeajp")]
@@ -6162,3 +6172,13 @@ transform = Transform3D(0.76153344, 0, 0.6481256, 0, 1, 0, -0.6481256, 0, 0.7615
 
 [node name="CuteStoll" parent="." unique_id=181404964 instance=ExtResource("15_u2y67")]
 transform = Transform3D(-1.1, 0, -1.6609539e-07, 0, 1.1, 0, 1.6609539e-07, 0, -1.1, 0.052315414, 0.9968598, 1.5159416)
+
+[node name="Cuttingboard" type="MeshInstance3D" parent="." unique_id=1970338610]
+transform = Transform3D(1.58, 0, 0, 0, 1.58, 0, 0, 0, 1.58, -1.3874403, 1.028269, 2.6998236)
+mesh = ExtResource("14_7urxf")
+surface_material_override/0 = SubResource("StandardMaterial3D_j1je7")
+
+[node name="Knife" type="MeshInstance3D" parent="." unique_id=1057837572]
+transform = Transform3D(0.675, 0, 0, 0, 0.675, 0, 0, 0, 0.675, -1.3603647, 1.1306624, 2.8897734)
+mesh = ExtResource("16_mib14")
+surface_material_override/0 = SubResource("StandardMaterial3D_b5eod")
