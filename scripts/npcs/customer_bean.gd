@@ -24,7 +24,8 @@ var order_distance = 1
 var angry_time = 15.0
 var satisfaction_time
 var tray
-
+var good_time = ["Amazing", "So good", "Delicious","Yum-yum"]
+var bad_time = ["MANAGER", "That sucked", "One Star", "Disgusting"]
 enum State{
 	SEAT,
 	ORDER,
@@ -252,8 +253,10 @@ func _on_timer_timeout() -> void:
 	$Bubble/Bubble3.hide()
 	match current_state:
 		State.ORDER:
-			$Bubble/Label.text = "THIS SUCKS"
+			$Bubble/Label.text = bad_time.pick_random()
+			$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
 			change_state(State.LEAVE)
 		State.EAT:
-			$Bubble/Label.text = "Yummy"
+			$Bubble/Label.text = good_time.pick_random()
+			$Bubble.modulate = Color(0.68, 1.0, .68, .7)
 			change_state(State.PAY)
