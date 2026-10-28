@@ -24,7 +24,7 @@ var current_customers = []
 func _ready():
 	add_new_customer.connect(new_customer)
 	customer_spots = customer_points.get_children()
-	for i in range (1):
+	for i in range (2):
 		spawn_customer()
 
 
