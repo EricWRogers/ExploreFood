@@ -112,7 +112,7 @@ contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_2oq5p")
 inventory_icon_FOV = 17.3
-resize = Vector3(1.2, 1.2, 1.2)
+resize = Vector3(1.3, 1.3, 1.3)
 upright = true
 player_held_offset = Vector3(-0.1, 0, 0.3)
 
