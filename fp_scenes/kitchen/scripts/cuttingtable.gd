@@ -14,9 +14,50 @@ var cross_section_material = preload(
 @export var world_size: Vector2 = Vector2(0.5, 0.8)
 @onready var knife_move: Node3D = $Kitchentable/KnifeMove
 @export var move_speed: float = 10.0
+@export var max_actions : float = 10
+@export var current_actions : float = 0
 
-var cutting = false
-var anim = false
+var vis_knife
+var cutting := false
+var anim := false
+var started := false
+var new_knife
+var food_on := false
+
+func _ready() -> void:
+	new_knife = $KnifeNotInUse.duplicate()
+	cut_bodies_parent.add_child(new_knife)
+	new_knife.position = Vector3(-0.014, 0.054, -0.027)
+	new_knife.rotation_degrees = Vector3(0.0, -118.0, 0.0)
+	new_knife.show()
+	$KnifeNotInUse.queue_free()
+	
+func start_station():
+	if food_on:
+		return
+	$DetectIngredient.set_collision_mask_value(2, false)
+	for item in get_tree().get_nodes_in_group("Camera"):
+		item.current = false
+	$Kitchentable/CuttingCam.current = true
+	started = true
+	for item in get_tree().get_nodes_in_group("Player"):
+		item.can_move = false
+		item.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+func end_station():
+	for child in cut_bodies_parent.get_children():
+		if child is RigidBody3D:
+			child.freeze = true
+	cut_bodies_parent.can_be_picked_up = true
+	food_on = true
+	$DetectIngredient.set_collision_mask_value(2, true)
+	$Kitchentable/CuttingCam.current = false
+	started = false
+	for item in get_tree().get_nodes_in_group("Player"):
+		item.can_move = true
+		item.show()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func get_custom_mouse_position() -> Vector2:
 	var screen_size = get_viewport().get_visible_rect().size
@@ -32,7 +73,26 @@ func get_custom_mouse_position() -> Vector2:
 	)
 
 func _process(delta: float) -> void:
+	if !started or food_on == true:
+		$Kitchentable/KnifeMove/Knife.hide()
+		$Decal.hide()
+		if new_knife != null:
+			new_knife.show()
+		return
+	else:
+		$Kitchentable/KnifeMove/Knife.show()
+		$Decal.show()
+		if new_knife != null:
+			new_knife.hide()
+	#if Input
 	if Input.is_action_just_pressed("Click"):
+		if current_actions < max_actions:
+			current_actions += 1
+		elif current_actions == max_actions:
+			current_actions = 0
+			_cut()
+			end_station()
+			return
 		_cut()
 
 	$Decal.global_position.x = knife_move.global_position.x
@@ -194,6 +254,3 @@ func calculate_mesh_volume(mesh: ArrayMesh) -> float:
 			volume += abs(v1.dot(v2.cross(v3))) / 6.0
 
 	return volume
-
-
-	

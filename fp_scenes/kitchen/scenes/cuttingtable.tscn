@@ -4,17 +4,12 @@
 [ext_resource type="ArrayMesh" uid="uid://bt7uhy7np1m63" path="res://assets/models/KitchenModels/kitchentable.obj" id="1_muhvn"]
 [ext_resource type="Texture2D" uid="uid://xln1v64k2bf7" path="res://fp_scenes/kitchen/textures/KnifeTexture.png" id="2_6ai25"]
 [ext_resource type="Script" uid="uid://bmiffi2d4skdh" path="res://fp_scenes/kitchen/scripts/spawn_useable_mesh.gd" id="2_l5wov"]
-[ext_resource type="ArrayMesh" uid="uid://bkrie13pbgh8m" path="res://assets/models/KitchenModels/cuttingboard.obj" id="3_i021g"]
-[ext_resource type="Texture2D" uid="uid://bwh7iwflt453v" path="res://fp_scenes/kitchen/textures/CuttingBoardTexture.png" id="4_0xjw0"]
 [ext_resource type="ArrayMesh" uid="uid://d1iul0l35dsjx" path="res://assets/models/KitchenModels/Knife.obj" id="5_6ai25"]
 [ext_resource type="Shader" uid="uid://beaaisjx5byl0" path="res://assets/shaders/movement_lab_sky.gdshader" id="7_0xjw0"]
-[ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="9_l5wov"]
+[ext_resource type="PackedScene" uid="uid://ddq1rjtvwl500" path="res://fp_scenes/ingredients/base_item.tscn" id="10_1sjbb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mib14"]
 albedo_texture = ExtResource("2_6ai25")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1je7"]
-albedo_texture = ExtResource("4_0xjw0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i021g"]
 albedo_texture = ExtResource("2_6ai25")
@@ -199,7 +194,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
-size = Vector3(1.3440685, 1.243042, 1.0366211)
+size = Vector3(1.3440685, 1.1644897, 1.0366211)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6g1ex"]
 size = Vector3(1.5281434, 2.0080566, 0.25000763)
@@ -212,7 +207,7 @@ radius = 0.31884766
 script = ExtResource("1_i021g")
 knife = NodePath("Kitchentable/KnifeMove/CutPlane")
 food_area = NodePath("Kitchentable/KnifeMove/CutPlane/FoodArea")
-cut_bodies_parent = NodePath("Kitchentable/Cuttingboard")
+cut_bodies_parent = NodePath("BaseItem")
 world_size = Vector2(0.2, 0.2)
 
 [node name="SpawnUseableMesh" type="Node3D" parent="." unique_id=210254345]
@@ -223,12 +218,7 @@ transform = Transform3D(1.26, 0, 0, 0, 1.26, 0, 0, 0, 1.26, 0, 0, 0)
 mesh = ExtResource("1_muhvn")
 surface_material_override/0 = SubResource("StandardMaterial3D_mib14")
 
-[node name="Cuttingboard" type="MeshInstance3D" parent="Kitchentable" unique_id=740148982]
-transform = Transform3D(1.2539684, 0, 0, 0, 1.2539684, 0, 0, 0, 1.2539684, 0, 0.559, 0)
-mesh = ExtResource("3_i021g")
-surface_material_override/0 = SubResource("StandardMaterial3D_j1je7")
-
-[node name="CuttingCam" type="Camera3D" parent="Kitchentable" unique_id=561440477]
+[node name="CuttingCam" type="Camera3D" parent="Kitchentable" unique_id=561440477 groups=["Camera"]]
 transform = Transform3D(-0.7936508, 1.4098077e-15, -6.9383155e-08, -6.701898e-08, 0.20541194, 0.7666078, 1.7957682e-08, 0.7666078, -0.20541194, 0, 1.5604585, -0.2856832)
 fov = 52.5
 
@@ -279,7 +269,7 @@ collision_layer = 19
 collision_mask = 19
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1782039283]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0018873215, 0.121520996, -0.0021972656)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0018873215, 0.08224487, -0.0021972656)
 shape = SubResource("BoxShape3D_lg1c5")
 
 [node name="BoundsCollision" type="Node3D" parent="." unique_id=614557439]
@@ -332,12 +322,15 @@ shape = SubResource("CylinderShape3D_lg1c5")
 [node name="FoodSpawn" type="Marker3D" parent="." unique_id=1927763599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5581386, 0)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=366488331]
-transform = Transform3D(-0.6593563, -0.39283097, 0.64104056, 0, 0.8526397, 0.5224993, -0.7518306, 0.3445132, -0.56219333, 3.140524, 3.8773975, -2.6172104)
-fov = 53.7
+[node name="BaseItem" parent="." unique_id=1306381208 instance=ExtResource("10_1sjbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0459594, 0)
 
-[node name="Base" parent="." unique_id=175947415 instance=ExtResource("9_l5wov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9935198, 0)
+[node name="KnifeNotInUse" type="MeshInstance3D" parent="." unique_id=2026780497]
+transform = Transform3D(-0.2657854, 0, -0.50084674, 0, 0.56700003, 0, 0.5008466, 0, -0.26578546, -0.014192045, 1.0905417, -0.026814863)
+visible = false
+mesh = ExtResource("5_6ai25")
+surface_material_override/0 = SubResource("StandardMaterial3D_i021g")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="DetectIngredient" to="." method="_on_detect_ingredient_body_entered"]
 [connection signal="body_entered" from="DetectIngredient" to="SpawnUseableMesh" method="_on_detect_ingredient_body_entered"]

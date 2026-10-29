@@ -45,6 +45,7 @@ func _ready() -> void:
 
 
 func _become_dropped():
+	show()
 	_held = false
 	contact_monitor = true
 	_held_point = null

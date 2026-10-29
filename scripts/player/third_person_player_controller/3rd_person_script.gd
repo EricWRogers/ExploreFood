@@ -31,6 +31,7 @@ var jump_buffer_timer := 0.0
 var coyote_timer := 0.0
 var jump_was_cut := false
 
+var can_move := true
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_dir := Vector3.BACK
 var _gravity := -30.0
@@ -107,6 +108,10 @@ func snap_to_edge():
 func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
+	if not can_move:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
 	if Input.is_action_just_pressed("dropthrow") and Manager.player_current_hovered_slot != -1:
 		dropthrow()
 	var new_scale: float = shadow.get_hit_length()
@@ -240,6 +245,10 @@ func unfocus_all():
 ## supposed to get the floor mat but i dont know if this works
 func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
 	## cliff hanging logic
 	if currently_snapping and is_on_wall():
 		freeze_velocity()

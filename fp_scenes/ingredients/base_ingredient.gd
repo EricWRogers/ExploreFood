@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name BaseIngredient
 
 @onready var splatter = preload("res://fp_scenes/ingredients/splatter.tscn")
+@onready var grilled = preload("res://fp_scenes/kitchen/textures/GrilledTexture.png")
 
 @export_group("Base Info")
 @export var food_name : String
@@ -26,6 +27,8 @@ class_name BaseIngredient
 @export var time_to_cook : float
 @export var material : Texture2D
 @export var cross_section : Texture2D
+#@export var texture : Texture2D
+@export var mat_uv_scale : Vector2
 
 @export_group("Food Groups")
 @export var food_group: FoodGroup
@@ -68,6 +71,7 @@ var old_scale : Vector3
 var last_dir : Vector3
 var can_be_cooked : bool = true
 var current_station : Node3D
+var is_pan_grilled : bool = false
 
 func _become_dropped():
 	_held = false
@@ -113,8 +117,13 @@ func pan_grill():
 	tween.tween_callback(finish_cooking)
 func finish_cooking():
 	_become_dropped()
+	can_sleep = true
+	is_pan_grilled = true
 	current_station.finished_cooking()
 	color = Color(0.35, 0.133, 0.133, 1.0)
+	cross_section = grilled
+	material = grilled
+	mat_uv_scale = overlay.get_shader_parameter("overlay_uv_scale")
 	current_station = null
 	
 
@@ -126,6 +135,7 @@ func _ready() -> void:
 	max_contacts_reported = 4
 	arrow.top_level = true
 	old_scale = scale
+	overlay.set_shader_parameter("mesh_texture", material)
 	#print("Overlay: ", overlay)
 	#print("Next pass: ", overlay.next_pass)
 	#print("Next pass is ShaderMaterial: ", overlay.next_pass is ShaderMaterial)
