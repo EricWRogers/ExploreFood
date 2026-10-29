@@ -1,0 +1,183 @@
+extends RigidBody3D
+class_name BaseItem
+
+@onready var splatter = preload("res://fp_scenes/ingredients/splatter.tscn")
+
+@export_group("Base Info")
+@export var item_name : String
+@export var icon : Texture2D
+@export var flavor_text : String
+
+@export_group("Metadata")
+@export var color : Color
+@export var inventory_icon_FOV : float = 30.5
+@export var resize : Vector3
+@export var hardness : float
+@export var bounciness : float
+@export var tooltip_offset : float
+@export var upright : bool = false
+@export var player_held_offset : Vector3
+@export var can_be_picked_up : bool = false
+
+@onready var mesh_instance: MeshInstance3D = $Cuttingboard
+@onready var overlay := mesh_instance.material_overlay as ShaderMaterial
+@onready var next_pass := overlay.next_pass as ShaderMaterial
+@onready var arrow: Node3D = %CenterPivot
+
+var _contact_point := Vector3.ZERO
+var _has_contact := false
+var _was_touching := false
+var _held := false
+var _held_point : Marker3D
+var _held_slot : int
+var old_scale : Vector3
+var last_dir : Vector3
+
+
+func _ready() -> void:
+	self.physics_material_override.bounce = bounciness
+	#$CenterPivot/DeformerDir/SphericalDeformer.strength = hardness
+	scale = resize
+	contact_monitor = true
+	max_contacts_reported = 4
+	arrow.top_level = true
+	old_scale = scale
+
+
+func _become_dropped():
+	_held = false
+	contact_monitor = true
+	_held_point = null
+	scale = resize
+	set_collision_layer_value(2, true)
+	freeze = false
+	_apply_light_drop_impulse(last_dir)
+	set_collision_layer_value(3, false)
+	$Reactivate.start()
+
+func _become_held(pnt):
+	set_collision_layer_value(2, false)
+	$Reactivate.stop()
+	_held = true
+	contact_monitor = false
+	set_collision_layer_value(3, false)
+	_held_point = pnt
+	freeze = true
+
+func _become_stored():
+	hide()
+
+func _become_visibly_held():
+	show()
+
+func _apply_light_drop_impulse(dir):
+	apply_central_impulse(dir * 2.0)
+
+func _on_reactivate_timeout() -> void:
+	set_collision_layer_value(3, true)
+
+func _focus_obtain():
+	if _held:
+		return
+	%Sprite3D.texture = InputManager.get_prompt("interact")
+	$Node3D.show()
+	%Sprite3D.scale = Vector3(.90, .90, .90)
+	%Sprite3D.modulate = Color(0.0, 0.0, 0.0, 0.0)
+	var tween
+	if tween: tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(%Sprite3D, "scale", Vector3(0.55, 0.55, 0.55), 0.2)
+	tween.tween_property(%Sprite3D, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
+	overlay.set_shader_parameter("transparency", 0.5)
+	next_pass.set_shader_parameter("size", 1.1)
+
+func _defocus():
+	$Node3D.hide()
+	%Sprite3D.scale = Vector3(.90, .90, .90)
+	%Sprite3D.modulate = Color(0.0, 0.0, 0.0, 0.0)
+	overlay.set_shader_parameter("transparency", 0.0)
+	next_pass.set_shader_parameter("size", 0.0)
+
+
+# --- Collision / hit feedback ---
+
+#func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	#var count := state.get_contact_count()
+	#var touching := count > 0
+#
+	#if touching:
+		#var point_sum := Vector3.ZERO
+		#var normal_sum := Vector3.ZERO
+		#for i in count:
+			#point_sum += state.get_contact_local_position(i)  # global space
+			#normal_sum += state.get_contact_local_normal(i)   # global space
+#
+		#var point := point_sum / count
+		#var normal := normal_sum.normalized()
+		#if normal.is_zero_approx():
+			#normal = state.get_contact_local_normal(0)
+#
+		#_contact_point = point
+		#_has_contact = true
+#
+		#if not _was_touching:
+			#on_hit.call_deferred(point, normal, true)
+#
+	#_was_touching = touching
+
+func on_hit(point: Vector3 = Vector3.ZERO, normal: Vector3 = Vector3.ZERO, spawn : bool = false) -> void:
+	#%Bounce.play("bouncy")
+	%CollisionSFX.play()
+	#if spawn:
+		#var splat_spawn = splatter.instantiate()
+		#get_tree().current_scene.add_child(splat_spawn)
+		#splat_spawn.global_position = point
+		#splat_spawn.global_basis = _basis_from_normal(normal)
+		#splat_spawn.rotate_object_local(Vector3.UP, randf() * TAU)
+		#splat_spawn.appear(color)
+
+#func _basis_from_normal(normal: Vector3) -> Basis:
+	#var y := normal.normalized()
+	#if y.is_zero_approx():
+		#return Basis.IDENTITY
+	#var ref := Vector3.FORWARD if absf(y.dot(Vector3.FORWARD)) < 0.99 else Vector3.RIGHT
+	#var x := ref.cross(y).normalized()
+	#var z := x.cross(y).normalized()
+	#return Basis(x, y, z)
+
+func _on_body_entered(body: Node) -> void:
+	on_hit(Vector3.ZERO, Vector3.ZERO, false)
+
+
+# --- Per-frame follow / deformer aim ---
+
+func _process(_delta: float) -> void:
+	if _held_point:
+		global_position = _held_point.global_position
+		global_position = _held_point.global_position + _held_point.global_basis * player_held_offset
+		if upright:
+			# only yaw follows the hand, pitch and roll are locked to 0
+			global_rotation = Vector3(0.0, _held_point.global_rotation.y, 0.0)
+		else:
+			global_rotation = _held_point.global_rotation
+		scale = _held_point.scale * resize
+		scale = clamp(scale, Vector3(0.001, 0.001, 0.001), Vector3(5.0, 5.0, 5.0))
+		scale = _held_point.scale * resize
+		scale = clamp(scale, Vector3(0.001, 0.001, 0.001), Vector3(5.0, 5.0, 5.0))
+	$Node3D.global_position = global_position
+	$Node3D.global_position.y = $Node3D.global_position.y + tooltip_offset
+	#arrow.global_position = global_position
+	if not _has_contact:
+		return
+
+	var dir := _contact_point - global_position
+	if dir.length_squared() < 0.0001:
+		return
+
+	# Avoid look_at failing when dir is parallel to the up vector
+	#var up := Vector3.UP
+	#if absf(dir.normalized().dot(Vector3.UP)) > 0.99:
+		#up = Vector3.RIGHT
+#
+	#arrow.look_at(global_position + dir, up)

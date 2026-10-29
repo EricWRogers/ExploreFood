@@ -64,6 +64,8 @@ var inventory: Array = [null, null, null, null, null, null]
 var total_viewers := 1
 var held_item_appeared := false
 var is_holding := false
+const GRAB_GROUPS := ["Ingredient", "Item"]
+
 
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: Node3D = %Doremi
@@ -113,24 +115,21 @@ func _process(_delta: float) -> void:
 	decal.size = Vector3(new_scale, 1.0, new_scale)
 	
 	## checks closest items and focus/unfocus them
-	if grab_candidates.size() > 1:
-		var closest : RigidBody3D = null
-		var closest_distance: float = INF
-		for item in grab_candidates:
-			var current = global_position.distance_to(item.global_position)
-			if current < closest_distance:
-				closest_distance = current
-				closest = item
-		grab_focus = closest
-		unfocus_all()
-		grab_focus._focus_obtain()
-	elif grab_candidates.size() == 1:
-		grab_focus = grab_candidates[0]
-		unfocus_all()
-		grab_focus._focus_obtain()
-	else:
-		unfocus_all()
+	var closest : RigidBody3D = null
+	var closest_distance: float = INF
+	for item in grab_candidates:
+		if item.is_in_group("Item") and not item.can_be_picked_up:
+			continue
+		var current = global_position.distance_to(item.global_position)
+		if current < closest_distance:
+			closest_distance = current
+			closest = item
+
+	unfocus_all()
+	grab_focus = closest
+	if grab_focus == null:
 		return
+	grab_focus._focus_obtain()
 	## if focused and press interact it picks the item up
 	if Input.is_action_just_pressed("Interact") and grab_focus:
 		var target_slot: int = Manager.player_current_hovered_slot
@@ -166,8 +165,30 @@ func _process(_delta: float) -> void:
 
 		grab_focus.global_position = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt.global_position
 		current_taken_slots += 1
+		_on_item_picked_up(grab_focus, target_slot)
 		spawn_inventory_slot_viewer(grab_focus, target_slot)
 		print("Item stored in slot: ", target_slot)
+func _on_item_picked_up(item: RigidBody3D, slot: int) -> void:
+	match _get_grab_kind(item):
+		&"ingredient":
+			pass  # ingredient-only pickup behavior
+		&"item":
+			pass  # generic item pickup behavior
+
+func _on_item_dropped(item: RigidBody3D) -> void:
+	match _get_grab_kind(item):
+		&"ingredient":
+			pass
+		&"item":
+			pass
+		
+func _get_grab_kind(body: Node) -> StringName:
+	if body.is_in_group("Ingredient"):
+		return &"ingredient"
+	if body.is_in_group("Item"):
+		return &"item"
+	return &""
+
 func dropthrow():
 		var current_drop = Manager.player_current_hovered_slot
 		for item in inventory:
@@ -176,6 +197,7 @@ func dropthrow():
 					item.last_dir = _last_movement_dir
 					%Doremi.is_holding = false
 					current_taken_slots -= 1
+					_on_item_dropped(item)
 					item._become_dropped()
 					var inv_ndx = inventory.find(item)
 					if inv_ndx != -1:
@@ -212,9 +234,9 @@ func spawn_inventory_slot_viewer(item, tie):
 	$CanvasLayer/MarginContainer/Hotbar._update_visual(tie)
 ## makes sure no random items stay focused
 func unfocus_all():
-	var ingredients = get_tree().get_nodes_in_group("Ingredient")
-	for item in ingredients:
-		item._defocus()
+	for group in GRAB_GROUPS:
+		for item in get_tree().get_nodes_in_group(group):
+			item._defocus()
 ## supposed to get the floor mat but i dont know if this works
 func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
@@ -515,11 +537,11 @@ func _on_ledge_grab_timer_timeout() -> void:
 	can_ledge_grab = true
 
 func _on_item_detect_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Ingredient"):
+	if _get_grab_kind(body) != &"" and not grab_candidates.has(body):
 		grab_candidates.append(body)
+
 func _on_item_detect_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Ingredient"):
-		grab_candidates.erase(body)
+	grab_candidates.erase(body)  # erase is a no-op if it isn't in the array
 ## updates what item is visibly held
 func _on_hotbar_update_held(slot_index) -> void:
 	for item in inventory:

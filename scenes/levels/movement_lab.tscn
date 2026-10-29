@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://btwbp7dxsobrs" path="res://fp_scenes/ingredients/base_ingredient.tscn" id="10_20n0i"]
 [ext_resource type="PackedScene" uid="uid://dhcy2uefcvcx6" path="res://fp_scenes/kitchen/scenes/pan_grill.tscn" id="12_expiw"]
 [ext_resource type="PackedScene" uid="uid://bmalq3ihe10ji" path="res://fp_scenes/kitchen/scenes/cuttingtable.tscn" id="14_c15e7"]
+[ext_resource type="PackedScene" uid="uid://ddq1rjtvwl500" path="res://fp_scenes/ingredients/base_item.tscn" id="15_jjhnx"]
 [ext_resource type="PackedScene" uid="uid://bbh2yrfjhnr16" path="res://scenes/scenes_assets/cute_stool.tscn" id="15_u2y67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
@@ -6166,3 +6167,6 @@ transform = Transform3D(-1.1, 0, -1.6609539e-07, 0, 1.1, 0, 1.6609539e-07, 0, -1
 
 [node name="CuttingStation" parent="." unique_id=1032888304 instance=ExtResource("14_c15e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8111302, 1.0212754, 2.545014)
+
+[node name="BaseItem" parent="." unique_id=1665145921 instance=ExtResource("15_jjhnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2073655, -1.7333326)

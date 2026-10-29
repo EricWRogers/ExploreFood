@@ -24,6 +24,7 @@ PauseMenu="*uid://cxpyqdm2553yb"
 CyclopsAutoload="*uid://4siqre3jhe80"
 ForkCollectableVisual="*uid://dv8efstm83wou"
 InputManager="*uid://bxpef1g6bexd8"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
@@ -34,7 +35,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MarchingSquaresTerrain/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg", "res://addons/deformablemesh/plugin.cfg")
+enabled=PackedStringArray("res://addons/MarchingSquaresTerrain/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg", "res://addons/deformablemesh/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
@@ -54,6 +55,7 @@ Terrain=""
 SandwichPiece=""
 Ingredient=""
 Viewer=""
+Item=""
 
 [input]
 

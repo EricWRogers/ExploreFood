@@ -212,7 +212,7 @@ radius = 0.31884766
 script = ExtResource("1_i021g")
 knife = NodePath("Kitchentable/KnifeMove/CutPlane")
 food_area = NodePath("Kitchentable/KnifeMove/CutPlane/FoodArea")
-cut_bodies_parent = NodePath(".")
+cut_bodies_parent = NodePath("Kitchentable/Cuttingboard")
 world_size = Vector2(0.2, 0.2)
 
 [node name="SpawnUseableMesh" type="Node3D" parent="." unique_id=210254345]
