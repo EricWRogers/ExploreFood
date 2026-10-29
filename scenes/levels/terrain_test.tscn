@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
 [ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="4_gba4x"]
 [ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
+[ext_resource type="AudioStream" uid="uid://cyp5dma1o0o4c" path="res://assets/sounds/SFX/dragon-studio-big-rock-splash-5-467472.mp3" id="6_15qdo"]
 [ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="7_qlq6c"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="9_l0ptr"]
 [ext_resource type="PackedScene" uid="uid://d2lxclnqmsnyo" path="res://scenes/npcs/worm_monster/worm_enemy.tscn" id="10_v7lih"]
@@ -172,6 +173,9 @@ spawn_points = [NodePath("Marker3D"), NodePath("Marker3D32"), NodePath("Marker3D
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=1011485669]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 37.841553, 47.852623, 34.517242)
 shape = SubResource("BoxShape3D_qlq6c")
+
+[node name="waterSplash" type="AudioStreamPlayer" parent="WaterFloor" unique_id=1264549212]
+stream = ExtResource("6_15qdo")
 
 [node name="Marker3D" type="Marker3D" parent="WaterFloor" unique_id=812024854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18221784, 64.58929, -9.569529)

@@ -3,6 +3,12 @@ extends Area3D
 @export var spawn: Node3D
 @export var spawn_points : Array[Marker3D] = []
 @export var player = null
+@onready var water_splash: AudioStreamPlayer = $waterSplash
+
+
+func on_ready():
+	if spawn_points == null:
+		pass
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
@@ -11,6 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 		if closest_spawn:
 			print("the closest spawn: ", closest_spawn.name)
 			body.global_position = closest_spawn.global_position
+			water_splash.play()
 		#player.body
 		#body.global_position = spawn.global_position
 
