@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bnjiafn5n5itk"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4rneocwvbpke" path="res://assets/models/PretzelTree/PretzelTree.obj" id="1_j32ac"]
+[ext_resource type="Material" uid="uid://b0apboa8pqf5" path="res://assets/materials/pretzel_leaves.tres" id="2_iq2g2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=673147483]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027667586]
+shape = SubResource("CylinderShape3D_klsck")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1371992551]
+mesh = ExtResource("1_j32ac")
+surface_material_override/1 = ExtResource("2_iq2g2")
+surface_material_override/2 = ExtResource("2_iq2g2")
+surface_material_override/3 = ExtResource("2_iq2g2")
