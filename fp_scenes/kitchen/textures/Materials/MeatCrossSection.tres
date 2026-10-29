@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0dpba8vm2f22"]
+
+[ext_resource type="Texture2D" uid="uid://opk6v36fqvby" path="res://assets/textures/steakinside.png" id="1_eq7mc"]
+
+[resource]
+albedo_texture = ExtResource("1_eq7mc")

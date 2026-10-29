@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://u6d3ob7ggjoy" path="res://fp_scenes/ingredients/base_ingredient.gd" id="1_u81yw"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_e57vj"]
 [ext_resource type="Script" uid="uid://cgnrlxvv62axi" path="res://addons/deformablemesh/dm_deformable_mesh.gd" id="2_u81yw"]
+[ext_resource type="Texture2D" uid="uid://opk6v36fqvby" path="res://assets/textures/steakinside.png" id="3_ajx4s"]
 [ext_resource type="ArrayMesh" uid="uid://djwklg663sg68" path="res://assets/models/meatball.obj" id="3_swxwk"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_dgoyy"]
 [ext_resource type="AudioStream" uid="uid://bvggjh7yq6ady" path="res://assets/sounds/SFX/food/meat/meatnoise_01.mp3" id="5_e57vj"]
@@ -95,7 +96,7 @@ shader_parameter/blend = 0.0
 shader_parameter/burnt = 0.0
 shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dgoyy"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ibuep"]
 _surfaces = [{
 "aabb": AABB(-0.738603, -0.638871, -0.7220955, 1.321453, 1.293755, 1.2864954),
 "attribute_data": PackedByteArray("uGY4P6B+ID+sfSw/ovAhP7iQNz+ObQ4/qEkoP5gwGD+l0SQ/rtktP8vGSj+DeQM/nMYbP6SkIz+0QDQ/tJszP4skCz+yMzI/zc9MP5sqGz+W0hU/wMA/P8klST+0qDM/qN0nP8nBSD/6YPo+znlOP7+7Pj/NKE0/k6ESP9yuWz/sfuw+viY+P8+Wzj7SLFI/+0L7PuiEZz+wpS8/5EBkP6BGID/6snk/wTFBPwAAgD/LB0s/64RqP9UVVT//E38/4algP/Dpbz/Ynlc/z/9OP+5Ebj/RPFE/30NfP7GZMD/0zXM/rcssP+BZYD+VUhU/79VuP5LGET/ce1w/9TD1Pu2lbD/smOs+wJg/P9j21z7NCk0/uly6PtszWz+jSqM+sggyP/cQ9z6tQS0/tc60PrFbMT+N4Iw+trM1P9MYUz6X1BY/9vx1Po/bDj+xtDA+m6caP6S8oz6n8CY/2MLXPqRVJD+JGgk/mYEYP8qqyT6H0QY/pHqkPp3DHD/2EvY+lo4VP+Ve5T6VWxU/lgYWP4/SDj+IdAg/iqAJP/NA8z6IBwg/ziDOPoWyBD+jlCI//ub9PpN5Ez/mhuU+rB4sP7/Cvj7D+0I/geyAPs1DTT/0ZvQ+g28DP+CE3z6ZOhk/vRy9Pq4DLj+HioY+uoE5P8aYxT2zVjM/7pLtPt5y3j7m9uU+tPazPtDSzz7tTO0+grMBP/1AfT7FusQ+x1jHPtg22D6QLJA+8GjwPsOYQj7p4ug+uUC5PcamxT6OpA0+oVyhPusA6zzAeMA+89hyPrWItD6oLqg+pvylPt9I3z6LVIs+yCjIPc5wTj6fAB87nYycPs7ETT6tGC0+odCgPYg0CD4AAAAAtji2PfEAcT3XdFc+u9A6PuoQ6j23wDY+gwADPbR0ND4AAAAAqIanPo+Qjj2ZnJg+juCNPNt+2z6cTBw+j4yOPvFgcT3UjtM+iUCJPIy2Cz/4LHg+jE6MPoNkAz7CqsE+r3CvPYixBz+dbp0+lXCVPt2UXD6xnLA+nbgcPvmg+D6hmCA+pFskP4vaij6rpKo+kBSQPqWpJD/U9FM+lKcTP+PMYj7a1Nk+liiWPr4ivj6HGoc+gGkAP6AioD6QIRA/thq2PgDJ/z7E7MM+i2YLP7+kvj6axxk/2ETYPomUCD8="),
@@ -167,11 +168,13 @@ resize = Vector3(0.5, 0.5, 0.5)
 hardness = 0.4
 bounciness = 0.5
 time_to_cook = 8.5
+material = ExtResource("1_rx6ym")
+cross_section = ExtResource("3_ajx4s")
 tooltip_offset = 0.4
 
 [node name="DeformableMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1184330542 node_paths=PackedStringArray("deformers")]
 material_overlay = SubResource("ShaderMaterial_7ygjy")
-mesh = SubResource("ArrayMesh_dgoyy")
+mesh = SubResource("ArrayMesh_ibuep")
 script = ExtResource("2_u81yw")
 original_mesh = ExtResource("3_swxwk")
 deformers = [NodePath("../CenterPivot/DeformerDir/SphericalDeformer")]

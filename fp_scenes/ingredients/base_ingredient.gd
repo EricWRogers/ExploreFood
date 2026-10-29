@@ -24,6 +24,8 @@ class_name BaseIngredient
 @export var hardness : float
 @export var bounciness : float
 @export var time_to_cook : float
+@export var material : Texture2D
+@export var cross_section : Texture2D
 
 @export_group("Food Groups")
 @export var food_group: FoodGroup

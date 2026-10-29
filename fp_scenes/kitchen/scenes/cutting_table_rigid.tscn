@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://wb0m6pku8aqg"]
+
+[node name="RigidBody3D5" type="RigidBody3D" unique_id=550748768]
+collision_layer = 16
+collision_mask = 16
+mass = 2.0
+center_of_mass_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=780172983]
+transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, 0.04486431, 0.5207455, -0.05659139)
