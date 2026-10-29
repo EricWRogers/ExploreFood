@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://de16mu71m0w67"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgw4t8judqrcm" path="res://assets/models/BW_Barn.obj" id="1_btqlm"]
+
+[node name="PretzelBarn" type="StaticBody3D" unique_id=2129157020]
+
+[node name="BarnMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1560791016]
+mesh = ExtResource("1_btqlm")
