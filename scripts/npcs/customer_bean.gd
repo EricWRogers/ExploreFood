@@ -234,16 +234,16 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		satisfaction_time = timer.time_left
 		can_take_food = false
 		change_state(State.EAT)
-		body.scale = Vector3.ONE * 0.5
-		body.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5
+		my_succulent_meal = body as RigidBody3D
+		my_succulent_meal.scale = Vector3.ONE * 0.5
+		my_succulent_meal.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5
+		my_succulent_meal.on_looked_away()
+		my_succulent_meal.linear_velocity = Vector3.ZERO
+		my_succulent_meal.global_rotation = Vector3.ZERO
+		my_succulent_meal.lock_rotation = true
+		#my_succulent_meal.find_child("CollisionShape3D").set_deferred("disabled", true)
+		my_succulent_meal.set_collision_layer_value(10, false)
 		
-		var food = body as RigidBody3D
-		food.linear_velocity = Vector3.ZERO
-		food.global_rotation = Vector3.ZERO
-		food.lock_rotation = true
-		food.collision_layer = 2
-		
-		my_succulent_meal = food
 
 
 func _on_timer_timeout() -> void:
