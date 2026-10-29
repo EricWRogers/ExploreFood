@@ -17,5 +17,5 @@ material_override = SubResource("StandardMaterial3D_0cgne")
 mesh = ExtResource("1_6pc3y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=259439269]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16129673, 1.5063686, -0.020260692)
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -0.014771521, 0.19986558, -0.02271387)
 shape = SubResource("CylinderShape3D_8vwli")
