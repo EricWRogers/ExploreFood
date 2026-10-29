@@ -6,9 +6,11 @@ extends StaticBody3D
 		ing.node = self
 		$Sprite2d.texture = value.icon #change to account for 3d
 				
-var current_ingredient: PackedScene  
-var stored_ingredents: Array[PackedScene]
-var held_ingredient
+var current_ingredient: Node3D  
+var stored_ingredents: Array[Node3D]
+var held_ingredient: Node3D
+
+var ingredient_parent: Node
 
 @export var fridgeLimit = 6
 
@@ -31,14 +33,18 @@ func _input(event):
 			## walking up and pressing e on fridge
 			if (Manager.holding == true): #if holding put itme in fridge
 				#### ERROR: item not going into stored_ingredents array
-				var held_ingredient = Manager.currently_held_food#get the ingredent player is holding
+				held_ingredient = Manager.currently_held_food #get the ingredent player is holding
 				print("holding: ", held_ingredient)
 				if (stored_ingredents.size() >= fridgeLimit):
+					print("storage full")
 					return
 				else:
 					stored_ingredents.append(held_ingredient)
-					held_ingredient.queue_free() #delete body
-				print(stored_ingredents) #testing 
+					
+					if(held_ingredient.get_parent() != null):
+						ingredient_parent = held_ingredient.get_parent()
+						ingredient_parent.remove_child(held_ingredient);
+				print("stored ingredients: ", stored_ingredents) #testing 
 				
 			else: #if nothing in hand take item out of stack
 				remove()
@@ -47,13 +53,19 @@ func _input(event):
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body.is_in_group("Player")):
 		enabled = true
+		#print("Player in fridger")
 	if(body.has_method("im_food") && enabled): ## throwing food into fridge
-		current_ingredient = load(body.scene_file_path)
-		body.queue_free()
 		if (stored_ingredents.size() >= fridgeLimit):
 			return
 		else:
-			stored_ingredents.append(current_ingredient)
+			held_ingredient = body
+			stored_ingredents.append(held_ingredient)
+			
+			if(held_ingredient.get_parent() != null):
+				ingredient_parent = held_ingredient.get_parent()
+				ingredient_parent.remove_child(held_ingredient);
+			
+			#body.queue_free()
 		print(stored_ingredents) #testing
 
 
@@ -71,7 +83,7 @@ func insert():
 	if (stored_ingredents.size() >= fridgeLimit):
 		return
 	else:
-		stored_ingredents.append(current_ingredient) 
+		stored_ingredents.append(held_ingredient) 
 		#not removeing ingredent from player hand, not puting anything into stored_ingredents
 	print(stored_ingredents) #testing
 	
@@ -84,15 +96,22 @@ func remove():
 	if (stored_ingredents.is_empty()): 
 			return
 	else:
-		
-		var ingredient_spawn: PackedScene
-		ingredient_spawn = stored_ingredents[-1]
+		var dup_ingredent = stored_ingredents[-1].duplicate()
 		var current_scene = get_tree().current_scene
-		var temp = ingredient_spawn.instantiate() 
-		temp.rarity_level = 1 #makes sure that the food is guarenteed to spawn
-		current_scene.add_child(temp)
+		#var temp = dup_ingredent.instantiate() 
+		#temp.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		current_scene.add_child(dup_ingredent)
 		stored_ingredents.remove_at(-1) #remove ingredent from array
-		Manager.set("slot%d" % Manager.current_slot, ingredient_spawn)
+		Manager.set("slot%d" % Manager.current_slot, dup_ingredent)
+		
+		#var ingredient_spawn: PackedScene
+		#ingredient_spawn = stored_ingredents[-1]
+		#var current_scene = get_tree().current_scene
+		#var temp = ingredient_spawn.instantiate() 
+		#temp.rarity_level = 1 #makes sure that the food is guarenteed to spawn
+		#current_scene.add_child(temp)
+		#stored_ingredents.remove_at(-1) #remove ingredent from array
+		#Manager.set("slot%d" % Manager.current_slot, ingredient_spawn)
 	
 	#ingredent_spawn = stored_ingredent[0]
 	#var current_scene = get_tree().current_scene

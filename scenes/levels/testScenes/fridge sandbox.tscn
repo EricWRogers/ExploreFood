@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c8ud2v6v3d601"]
+
+[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_nsvov"]
+[ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="2_dbt60"]
+[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="3_6hao6"]
+[ext_resource type="PackedScene" uid="uid://64gd2rjmrdd3" path="res://scenes/food/waffle_pad.tscn" id="4_j5ycm"]
+
+[node name="FridgeSandbox" type="Node3D" unique_id=112596284]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=845334086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0593033, -0.5156455, 0)
+use_collision = true
+size = Vector3(32.880615, 1, 43.41211)
+
+[node name="Kitchen_Fridge" parent="." unique_id=660093401 instance=ExtResource("2_dbt60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.70719)
+
+[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_nsvov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34974408, 0)
+
+[node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("3_6hao6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6340437, 0.4684131, -3.1658325)
+
+[node name="WafflePad" parent="." unique_id=1169599723 instance=ExtResource("4_j5ycm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.880704, 0.42981887, -0.27055025)
+rarity_level = 1.0
