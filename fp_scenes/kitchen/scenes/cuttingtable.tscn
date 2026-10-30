@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://xln1v64k2bf7" path="res://fp_scenes/kitchen/textures/KnifeTexture.png" id="2_6ai25"]
 [ext_resource type="Script" uid="uid://bmiffi2d4skdh" path="res://fp_scenes/kitchen/scripts/spawn_useable_mesh.gd" id="2_l5wov"]
 [ext_resource type="ArrayMesh" uid="uid://d1iul0l35dsjx" path="res://assets/models/KitchenModels/Knife.obj" id="5_6ai25"]
-[ext_resource type="Shader" uid="uid://beaaisjx5byl0" path="res://assets/shaders/movement_lab_sky.gdshader" id="7_0xjw0"]
 [ext_resource type="PackedScene" uid="uid://ddq1rjtvwl500" path="res://fp_scenes/ingredients/base_item.tscn" id="10_1sjbb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mib14"]
@@ -21,44 +20,6 @@ points = PackedVector3Array(-0.50793654, -0.50793654, -0.007936508, 0.50793654, 
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lg1c5"]
 size = Vector2(1.3, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1fh7"]
-shader = ExtResource("7_0xjw0")
-shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
-shader_parameter/day_bottom_color = Color(0.4, 0.8, 1, 1)
-shader_parameter/sunset_top_color = Color(0.7, 0.75, 1, 1)
-shader_parameter/sunset_bottom_color = Color(1, 0.5, 0.7, 1)
-shader_parameter/night_top_color = Color(0.02, 0, 0.04, 1)
-shader_parameter/night_bottom_color = Color(0.1, 0, 0.2, 1)
-shader_parameter/horizon_color = Color(0, 0.7, 0.8, 1)
-shader_parameter/horizon_blur = 0.05
-shader_parameter/sun_color = Color(10, 8, 1, 1)
-shader_parameter/sun_sunset_color = Color(10, 0, 0, 1)
-shader_parameter/sun_size = 0.2
-shader_parameter/sun_blur = 10.0
-shader_parameter/moon_color = Color(1, 0.95, 0.7, 1)
-shader_parameter/moon_size = 0.06
-shader_parameter/moon_blur = 0.1
-shader_parameter/clouds_edge_color = Color(0.8, 0.8, 0.98, 1)
-shader_parameter/clouds_top_color = Color(1, 1, 1, 1)
-shader_parameter/clouds_middle_color = Color(0.92, 0.92, 0.98, 1)
-shader_parameter/clouds_bottom_color = Color(0.83, 0.83, 0.94, 1)
-shader_parameter/clouds_speed = 2.0
-shader_parameter/clouds_direction = 0.2
-shader_parameter/clouds_scale = 1.0
-shader_parameter/clouds_cutoff = 0.3
-shader_parameter/clouds_fuzziness = 0.5
-shader_parameter/clouds_weight = 0.0
-shader_parameter/clouds_blur = 0.25
-shader_parameter/stars_speed = 1.0
-shader_parameter/overwritten_time = 0.0
-
-[sub_resource type="Sky" id="Sky_6g1ex"]
-sky_material = SubResource("ShaderMaterial_x1fh7")
-
-[sub_resource type="Environment" id="Environment_lg1c5"]
-background_mode = 2
-sky = SubResource("Sky_6g1ex")
 
 [sub_resource type="Gradient" id="Gradient_17ier"]
 offsets = PackedFloat32Array(0, 0.50711745, 0.8096085)
@@ -215,6 +176,7 @@ script = ExtResource("2_l5wov")
 
 [node name="Kitchentable" type="MeshInstance3D" parent="." unique_id=40878475]
 transform = Transform3D(1.26, 0, 0, 0, 1.26, 0, 0, 0, 1.26, 0, 0, 0)
+visible = false
 mesh = ExtResource("1_muhvn")
 surface_material_override/0 = SubResource("StandardMaterial3D_mib14")
 
@@ -248,9 +210,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 0)
 visible = false
 mesh = SubResource("PlaneMesh_lg1c5")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=756750458]
-environment = SubResource("Environment_lg1c5")
-
 [node name="Decal" type="Decal" parent="." unique_id=510954645]
 transform = Transform3D(-2.4784356e-08, 0, -0.56700003, 0, 0.56700003, 0, 0.567, 0, -2.4784358e-08, -0.60172737, 0.6253029, 0.19955386)
 size = Vector3(1.1674805, 1.6185303, 0.0859375)
@@ -260,9 +219,6 @@ cull_mask = 1048573
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1513816795]
 libraries/ = SubResource("AnimationLibrary_l5wov")
 speed_scale = 3.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1277640219]
-transform = Transform3D(1, 0, 0, 0, -0.031865016, 0.99949217, 0, -0.99949217, -0.031865016, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=232963509]
 collision_layer = 19
