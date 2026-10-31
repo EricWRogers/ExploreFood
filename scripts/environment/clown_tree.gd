@@ -16,10 +16,10 @@ var player
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	speed_limit = player.sprint_speed - 3.0
 	noses.append(mystery_meat)
 	noses.append(mystery_meat_2)
 	noses.append(mystery_meat_3)
+	speed_limit = player.sprint_speed - 2.0
 	print(noses.size())
 	og_nose_scale = $MysteryMeat.scale
 	if player == null:

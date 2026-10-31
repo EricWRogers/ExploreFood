@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_bdps2"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_o5ppf"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="4_gba4x"]
 [ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
 [ext_resource type="AudioStream" uid="uid://cyp5dma1o0o4c" path="res://assets/sounds/SFX/dragon-studio-big-rock-splash-5-467472.mp3" id="6_15qdo"]
 [ext_resource type="Texture2D" uid="uid://joxagayqd5ks" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-09-08 001932.png" id="7_qlq6c"]
@@ -19,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cuodhvdm6usa5" path="res://scenes/scenes_assets/nest.tscn" id="16_qlq6c"]
 [ext_resource type="ArrayMesh" uid="uid://34u8y53nr4p0" path="res://assets/models/cookingpotbig.obj" id="17_837e2"]
 [ext_resource type="Texture2D" uid="uid://fnsup1sr53w5" path="res://assets/textures/pottex.png" id="18_15qdo"]
+[ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="19_15qdo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ufli"]
 shader = ExtResource("5_o5ppf")
@@ -104,12 +104,6 @@ albedo_texture = ExtResource("18_15qdo")
 
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
 script = ExtResource("1_6dgx5")
-
-[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("4_gba4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.355896, 0)
-
-[node name="CharacterBody3D" parent="Player" index="0" unique_id=1731430436]
-in_kitchen = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
@@ -834,7 +828,8 @@ mesh = ExtResource("17_837e2")
 surface_material_override/0 = SubResource("StandardMaterial3D_gtwna")
 surface_material_override/1 = SubResource("StandardMaterial3D_us1kw")
 
+[node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("19_15qdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7627095, 0.80417514, 0.87317276)
+
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
-
-[editable path="Player"]
