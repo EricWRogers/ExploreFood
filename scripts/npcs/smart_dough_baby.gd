@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 
 @onready var animation_player: AnimationPlayer = $"../../../AnimationPlayer"
@@ -17,7 +17,7 @@ const JUMP_VELOCITY = 4.5
 
 
 var player: Node3D
-var anim_speed := 10.0
+var anim_speed := 5.0
 
 var watch_distance := 25.0
 var stranger_danger := 10.0
@@ -28,6 +28,7 @@ enum State {
 	FROLIC,
 	WATCH,
 	RUN,
+	DEAD
 }
 
 var current_state: State = State.WATCH
@@ -61,13 +62,15 @@ func _physics_process(delta: float) -> void:
 
 		State.RUN:
 			state_run(delta)
+			
+		State.DEAD:
+			pass
 
 
 
 func change_state(new_state: State) -> void:
 	if current_state == new_state:
 		return
-	
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
@@ -167,3 +170,6 @@ func state_run(_delta: float) -> void:
 	var next_nav_point = navigation_agent_3d.get_next_path_position()
 	velocity = (next_nav_point - global_position).normalized() * SPEED * 2
 	move_and_slide()
+
+func is_dead():
+	change_state(State.DEAD)
