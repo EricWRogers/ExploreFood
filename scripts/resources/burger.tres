@@ -30,7 +30,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("1_vgcoc")
 recipe_name = "Burger"
-ingredients = Array[int]([2, 7])
-food_group_array = Array[ExtResource("1_rr608")]([SubResource("Resource_r6xs7"), SubResource("Resource_00xqt"), SubResource("Resource_0ng80")])
 product = ExtResource("1_bicjf")
+food_group_array = Array[ExtResource("1_rr608")]([SubResource("Resource_r6xs7"), SubResource("Resource_00xqt"), SubResource("Resource_0ng80")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

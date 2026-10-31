@@ -22,6 +22,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_6u81l")
 recipe_name = "Somosas"
-food_group_array = Array[ExtResource("1_272rv")]([SubResource("Resource_meffa"), SubResource("Resource_w8ktb")])
 product = ExtResource("2_meffa")
+food_group_array = Array[ExtResource("1_272rv")]([SubResource("Resource_meffa"), SubResource("Resource_w8ktb")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

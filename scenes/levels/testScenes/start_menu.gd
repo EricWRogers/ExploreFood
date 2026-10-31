@@ -1,7 +1,7 @@
 extends Control
 
-const dinerLvlTest = preload("res://scenes/levels/testScenes/DinerLevel_test.tscn")
-signal starting_game()
+#const dinerLvlTest = preload("res://scenes/levels/testScenes/DinerLevel_test.tscn")
+#signal starting_game()
 var started : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -16,13 +16,20 @@ func _process(_delta: float) -> void:
 
 func _on_new_game_pressed() -> void:
 	started = true
-	var load_scene = dinerLvlTest.instantiate()
 	
-	starting_game.emit(load_scene) #emits signal to level manager
+	# load starting scene from level manager
+	Manager.level_manager.load_scene(Manager.level_manager.starting_scene)
+	print("loading scene: ", Manager.level_manager.starting_scene)
+	
+	#var load_scene = dinerLvlTest.instantiate()
+	
+	#starting_game.emit(load_scene) #emits signal to level manager
+	
 	#load_scene.connect("start_game", Callable(self, "game_started"))
 	#emit_signal("start_game") 
 	
-	add_sibling(load_scene)
+	#add_sibling(load_scene)
+	
 	#print(load_scene)
 	$".".hide()
 

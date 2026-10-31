@@ -21,6 +21,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_y2jma")
 recipe_name = "Roasted Sliders"
-food_group_array = Array[ExtResource("1_fse37")]([SubResource("Resource_ly424"), SubResource("Resource_sxcwd")])
 product = ExtResource("2_7b0wr")
+food_group_array = Array[ExtResource("1_fse37")]([SubResource("Resource_ly424"), SubResource("Resource_sxcwd")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

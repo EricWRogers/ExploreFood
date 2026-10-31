@@ -29,6 +29,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_xdtun")
 recipe_name = "Meat Pie with Veggies"
-food_group_array = Array[ExtResource("1_qjtxc")]([SubResource("Resource_5wlk2"), SubResource("Resource_cbglc"), SubResource("Resource_jyug1")])
 product = ExtResource("2_5wlk2")
+food_group_array = Array[ExtResource("1_qjtxc")]([SubResource("Resource_5wlk2"), SubResource("Resource_cbglc"), SubResource("Resource_jyug1")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

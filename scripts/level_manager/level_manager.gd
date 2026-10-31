@@ -2,22 +2,32 @@ class_name LevelManager extends Node
 
 ###
 #
-##BUG: only allows one scene per parent at a time. Need to allow multiple scenes instead of just one
 ##BUG: REMOVE DOESNT WORK AAAAAAAAHHHH
+##TODO: chang load() from needing a string to needing a packed scene. I hate strings.
 #
 ###
+
+@export_category("Opening Scenes")
+##game's starting menu
+@export var start_menu: String = "res://scenes/levels/testScenes/start_menu.tscn"
+##whichever scene you want to load when you start the game. I promise to one day make it not an annoying string
+@export var starting_scene: String
+
+## example scenes you may want to load. Just copy/paste the string below: ##
+#new diner scene: res://scenes/levels/diner_hub.tscn
+#old diner greybox: res://scenes/levels/testScenes/DinerLevel_test.tscn
+#movement playground: res://scenes/levels/movement_lab.tscn
+##
+
+##store loaded scenes by path
+var scene_cache: Dictionary[String, Node] = {} 
+enum change_mode {HIDE, REMOVE, DELETE, KEEP}
 
 @onready var scene_parent_3D: Node3D = $SceneParent3D
 @onready var scene_parent_2D: Node2D = $SceneParent2D
 @onready var scene_parent_control: Control = $SceneParentControl
 
-#var current_3D_scene: Node
-#var current_2D_scene: Node
-#var current_GUI_scene: Node
 
-var scene_cache: Dictionary[String, Node] = {} #store loaded scenes by path
-enum change_mode {HIDE, REMOVE, DELETE, KEEP}
-#enum node_type {NODE3D, NODE2D, NODECONTROL}
 
 #called when script is instantiated. 
 func _init() -> void:
@@ -26,7 +36,7 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	load_scene(start_menu)
 	
 	#print("3D scene parent: ", scene_parent_3D.name)
 	#print("2D scene parent: ", scene_parent_2D.name)
@@ -85,7 +95,7 @@ func delete_scene(_old_scene: Node):
 	
 	_old_scene.queue_free() #removes node entirely
 
-##Load a new scene
+##load a new scene
 func load_scene(_new_scene: String):
 	print("loading scene...")
 	print("pre-load cache:", scene_cache)
@@ -115,7 +125,8 @@ func load_scene(_new_scene: String):
 			scene_parent_control.add_child(new_node)
 			#current_GUI_scene = new_node
 		else:
-			printerr("Node type not recognized as one of the valid three options.")
+			printerr("Node type not recognized as one of the valid three options. Make sure it is a Node3D, Node2D, or Control.")
+			return
 	
 	print("post-load cache:", scene_cache, "\n")
 	#print("current scene: ", current_3D_scene.name)

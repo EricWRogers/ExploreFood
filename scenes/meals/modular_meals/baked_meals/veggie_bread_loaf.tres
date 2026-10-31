@@ -21,6 +21,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_cbkh3")
 recipe_name = "Veggie Bread Loaf"
-food_group_array = Array[ExtResource("1_31ebf")]([SubResource("Resource_dd0pi"), SubResource("Resource_ukybo")])
 product = ExtResource("2_dd0pi")
+food_group_array = Array[ExtResource("1_31ebf")]([SubResource("Resource_dd0pi"), SubResource("Resource_ukybo")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

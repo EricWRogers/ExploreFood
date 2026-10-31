@@ -13,6 +13,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_l1ufs")
 recipe_name = "Bread Loaf"
-food_group_array = Array[ExtResource("1_m07q2")]([SubResource("Resource_ha03e")])
 product = ExtResource("2_jgdig")
+food_group_array = Array[ExtResource("1_m07q2")]([SubResource("Resource_ha03e")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

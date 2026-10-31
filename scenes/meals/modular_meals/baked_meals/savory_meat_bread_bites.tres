@@ -22,6 +22,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_w6o8s")
 recipe_name = "Savory Meat Bread Bites"
-food_group_array = Array[ExtResource("1_3u7fo")]([SubResource("Resource_pwvqm"), SubResource("Resource_xyly0")])
 product = ExtResource("2_pwvqm")
+food_group_array = Array[ExtResource("1_3u7fo")]([SubResource("Resource_pwvqm"), SubResource("Resource_xyly0")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

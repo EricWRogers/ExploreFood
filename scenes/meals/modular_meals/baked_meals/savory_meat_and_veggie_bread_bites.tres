@@ -30,6 +30,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_7hhru")
 recipe_name = "Savory Meat and Veggie Bread Bites"
-food_group_array = Array[ExtResource("1_c1a6b")]([SubResource("Resource_iw3hu"), SubResource("Resource_4fflt"), SubResource("Resource_nq5b5")])
 product = ExtResource("2_iw3hu")
+food_group_array = Array[ExtResource("1_c1a6b")]([SubResource("Resource_iw3hu"), SubResource("Resource_4fflt"), SubResource("Resource_nq5b5")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

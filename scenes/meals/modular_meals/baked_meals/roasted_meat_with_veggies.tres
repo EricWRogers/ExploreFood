@@ -22,6 +22,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("2_1dijs")
 recipe_name = "Roasted Meat with Veggies"
-food_group_array = Array[ExtResource("1_t1ul7")]([SubResource("Resource_ctlxl"), SubResource("Resource_026wl")])
 product = ExtResource("2_oruh3")
+food_group_array = Array[ExtResource("1_t1ul7")]([SubResource("Resource_ctlxl"), SubResource("Resource_026wl")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

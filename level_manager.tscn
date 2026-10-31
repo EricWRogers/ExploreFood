@@ -9,6 +9,7 @@
 
 [node name="LevelManager" type="Node" unique_id=2118240317]
 script = ExtResource("1_mnhan")
+starting_scene = "res://scenes/levels/diner_hub.tscn"
 
 [node name="SceneParent3D" type="Node3D" parent="." unique_id=736801837]
 
@@ -21,6 +22,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="StartMenu" parent="." unique_id=1906028576 instance=ExtResource("3_s60hn")]
+visible = false
 
 [node name="QrCode5" type="Sprite2D" parent="StartMenu" unique_id=488901767]
 z_index = 596

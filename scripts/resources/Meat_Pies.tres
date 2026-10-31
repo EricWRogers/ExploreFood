@@ -29,7 +29,6 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("1_5m0m5")
 recipe_name = "Meat Pies with Tear Sauce"
-ingredients = Array[int]([7, 1, 2])
-food_group_array = Array[ExtResource("1_r2p4k")]([SubResource("Resource_0splx"), SubResource("Resource_sgldq"), SubResource("Resource_fhgkx")])
 product = ExtResource("1_1138b")
+food_group_array = Array[ExtResource("1_r2p4k")]([SubResource("Resource_0splx"), SubResource("Resource_sgldq"), SubResource("Resource_fhgkx")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
