@@ -468,15 +468,15 @@ material = ExtResource("7_550bw")
 use_collision = true
 
 [node name="RightWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1646586100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.900002, 3.6000001, -0.476367)
-size = Vector3(0.45, 7.3, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.900002, 3.6000001, -1.726367)
+size = Vector3(0.45, 7.3, 17.5)
 
 [node name="FrontWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1753481268]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.195002, 3.6000001, -10.250002)
 size = Vector3(0.45, 7.3, 10.95)
 
 [node name="BackWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1381378747]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.195002, 3.6000001, 9.299999)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.195002, 3.6000001, 6.799999)
 size = Vector3(0.45, 7.3, 10.95)
 
 [node name="KitchenProps" type="Node3D" parent="." unique_id=1103485876]

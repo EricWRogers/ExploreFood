@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://c5xk8uu26ui0"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_m1mv7"]
+[ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="2_rcnws"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_rku26"]
+
+[resource]
+script = ExtResource("2_rku26")
+recipe_name = "Meat Skewer"
+ingredients = Array[PackedScene]([ExtResource("2_rcnws")])
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

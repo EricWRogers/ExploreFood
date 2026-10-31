@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://c4kn5bsbbd0p3"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_x3es5"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_csguc"]
+
+[resource]
+script = ExtResource("2_csguc")
+recipe_name = "Grilled Cheese"
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"
