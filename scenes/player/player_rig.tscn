@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dshe0mt0luia6"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=694503497]
+[ext_resource type="PackedScene" uid="uid://dqknfjwai4r8a" path="res://assets/models/Character Rig/PlayerRigStrangeTastes.glb" id="1_je2xj"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=757106404]
-
-[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=40338959]
+[node name="PlayerRigStrangeTastes" unique_id=1517707414 instance=ExtResource("1_je2xj")]
