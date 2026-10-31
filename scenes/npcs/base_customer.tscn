@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://pu1ko3y5e6py"]
+
+[ext_resource type="Script" uid="uid://dgom2pesyo3yy" path="res://scripts/npcs/base_customer.gd" id="1_f7vnj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f7vnj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kgrf3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oluxd"]
+
+[node name="BaseCustomer" type="CharacterBody3D" unique_id=945363357]
+script = ExtResource("1_f7vnj")
+
+[node name="BodyCollisionShape" type="CollisionShape3D" parent="." unique_id=1661689660]
+shape = SubResource("CapsuleShape3D_f7vnj")
+
+[node name="BodyMeshInstance" type="MeshInstance3D" parent="." unique_id=2125818872]
+mesh = SubResource("CapsuleMesh_kgrf3")
+surface_material_override/0 = SubResource("StandardMaterial3D_oluxd")
