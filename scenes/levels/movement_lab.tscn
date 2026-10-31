@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ddq1rjtvwl500" path="res://fp_scenes/ingredients/base_item.tscn" id="15_jjhnx"]
 [ext_resource type="PackedScene" uid="uid://bbh2yrfjhnr16" path="res://scenes/scenes_assets/cute_stool.tscn" id="15_u2y67"]
 [ext_resource type="PackedScene" uid="uid://ddtb22qi8a2kr" path="res://fp_scenes/ingredients/testingredient.tscn" id="16_u2y67"]
+[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="17_7urxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -6175,3 +6176,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2073655, -1.7333326)
 [node name="Base16" parent="." unique_id=757910577 instance=ExtResource("16_u2y67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9237385, -5.292262)
 color = Color(1, 0.9333334, 0, 1)
+
+[node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("17_7urxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.304753, 0.9999999, 31.016768)

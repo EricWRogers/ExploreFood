@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bcoibplikv5po" path="res://assets/textures/clown_tree/Happy Clown/ClownHappy_BaseColor.png" id="2_ffrgo"]
 [ext_resource type="Texture2D" uid="uid://b3bommfsh0keb" path="res://assets/textures/clown_tree/Happy Clown/ClownHappy_Normal.png" id="3_8xfo0"]
 [ext_resource type="Texture2D" uid="uid://ddwpjv1fm67g3" path="res://assets/textures/clown_tree/Happy Clown/ClownHappy_Roughness.png" id="4_tjf0i"]
-[ext_resource type="PackedScene" uid="uid://bh6j3fag6cvkt" path="res://scenes/food/mystery_meat.tscn" id="5_ffrgo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
 
@@ -22,6 +21,3 @@ shape = SubResource("CapsuleShape3D_klsck")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4072559, 0, 0)
 mesh = ExtResource("1_n74ss")
 surface_material_override/0 = SubResource("StandardMaterial3D_aguan")
-
-[node name="MysteryMeat" parent="." unique_id=1169599723 instance=ExtResource("5_ffrgo")]
-transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.23354077, 0.21769726)

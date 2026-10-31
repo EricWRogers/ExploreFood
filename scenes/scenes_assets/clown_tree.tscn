@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://8phl16d4pfj0" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Leaves_Normal.png" id="8_luc6b"]
 [ext_resource type="Texture2D" uid="uid://c50e0c8awyerp" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Leaves_Roughness.png" id="9_edlky"]
 [ext_resource type="PackedScene" uid="uid://c7hhif1nwtvl7" path="res://scenes/scenes_assets/clown_mask.tscn" id="10_2yi7y"]
+[ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="12_75btq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
 albedo_texture = ExtResource("2_2yi7y")
@@ -61,10 +62,24 @@ transform = Transform3D(0.6148066, 0.29520142, 0.7313472, 0.037296757, 0.9153880
 transform = Transform3D(-0.4520756, -0.70069474, -0.5519551, 0.24254057, 0.49891907, -0.8320177, 0.8583714, -0.51000667, -0.05560234, -1.7462672, 3.417725, -0.1828529)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1439687423]
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1880949998]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 shape = SubResource("SphereShape3D_gtwna")
+
+[node name="MysteryMeat" parent="." unique_id=175947415 instance=ExtResource("12_75btq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.2443302, -2.253939)
+freeze = true
+
+[node name="MysteryMeat2" parent="." unique_id=557406398 instance=ExtResource("12_75btq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.1039062, 3.0876513, -0.28912243)
+freeze = true
+
+[node name="MysteryMeat3" parent="." unique_id=1796395542 instance=ExtResource("12_75btq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.0015656, 2.8891344, 0.5296323)
+freeze = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
