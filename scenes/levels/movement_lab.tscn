@@ -5952,10 +5952,10 @@ mesh = SubResource("BoxMesh_lg1c5")
 surface_material_override/0 = SubResource("StandardMaterial3D_vfobl")
 
 [node name="Pan" parent="." unique_id=425900260 instance=ExtResource("12_expiw")]
-transform = Transform3D(0.98256505, -0.0029474944, -0.18589532, 0.00704885, 0.99974614, 0.021405749, 0.18578503, -0.022342883, 0.9823363, 0.2114616, 2.3544543, 2.4520066)
+transform = Transform3D(0.98256505, -0.0029474944, -0.18589532, 0.00704885, 0.99974614, 0.021405749, 0.18578503, -0.022342883, 0.9823363, -9.471419, 3.4694328, 53.619755)
 
 [node name="CuteStoll" parent="." unique_id=181404964 instance=ExtResource("15_u2y67")]
-transform = Transform3D(-1.1, 0, -1.6609539e-07, 0, 1.1, 0, 1.6609539e-07, 0, -1.1, 0.052315414, 0.9968598, 1.5159416)
+transform = Transform3D(-1.1801286e-07, 0, 1.1, 0, 1.1, 0, -1.1, 0, -1.1801286e-07, 1.0919212, 0.9968598, 2.668323)
 
 [node name="CuttingStation" parent="." unique_id=1032888304 instance=ExtResource("14_c15e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8111302, 1.0212754, 2.545014)
