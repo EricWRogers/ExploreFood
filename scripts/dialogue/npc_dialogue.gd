@@ -21,8 +21,8 @@ func _ready() -> void:
 	isDialogueSelected = false
 	
 	##spawn tutorial ingredients
-	if (!Manager.is_tut_over):
-		spawn_tut()
+	#if (!Manager.is_tut_over):
+		#spawn_tut()
 
 func _process(_delta):	
 	if(Input.is_action_just_pressed("Interact") && 
@@ -71,7 +71,7 @@ func _on_quest_check_body_entered(body: Node3D) -> void:
 			if (body.name == "DubiousMeal"):
 				print("Fail tutorial")
 				Manager.dialogue_tree_index = 3 ##fail tutorial
-				spawn_tut()
+				#spawn_tut()
 			else:
 				print("Pass tutorial")
 				Manager.dialogue_tree_index = 2 ##pass tutorial

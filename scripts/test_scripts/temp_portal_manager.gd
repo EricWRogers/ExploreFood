@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var portal1 : Area3D = $"../Portal"
-@onready var portal2 : Area3D = $"../Portal2"
+@onready var portal1 : Area3D = $Portal
+@onready var portal2 : Area3D = $Portal2
 
 
 
@@ -12,9 +12,9 @@ func _ready() -> void:
 	if (Manager.is_portal_2):
 		portal2.unlock()
 	
-	if(Manager.is_tut_over):
-		$"../TutWall".visible = false
-		$"../TutWall".use_collision = false
+	#if(Manager.is_tut_over):
+		#$"../TutWall".visible = false
+		#$"../TutWall".use_collision = false
 
 func open_portal(portal_num: int):
 	if (portal_num == 1):

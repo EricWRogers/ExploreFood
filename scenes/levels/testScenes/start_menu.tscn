@@ -45,6 +45,7 @@ theme_override_font_sizes/normal_font_size = 140
 text = "Strange Tastes"
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1633092750]
+visible = false
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 

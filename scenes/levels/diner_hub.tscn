@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://buaqdhytesqan" path="res://assets/models/Player/PlayerRigStrangeTastes.blend" id="1_fopx5"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="2_axn4y"]
 [ext_resource type="PackedScene" uid="uid://dupg4kim35k5f" path="res://scenes/scenes_assets/kitchenAssets/diner_table.tscn" id="3_3gldf"]
+[ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="3_6ynox"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="3_64sq4"]
 [ext_resource type="PackedScene" uid="uid://cguem6bk1qlyb" path="res://scenes/scenes_assets/kitchenAssets/diner_chair.tscn" id="4_2pljy"]
 [ext_resource type="Material" uid="uid://h5sgosxvarw3" path="res://assets/materials/Diner_greybox_cyan.tres" id="5_3gldf"]
@@ -18,21 +19,62 @@
 [ext_resource type="PackedScene" uid="uid://256jfh5xv3qy" path="res://scenes/scenes_assets/kitchenAssets/counter_right.tscn" id="15_nwjeg"]
 [ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="16_i1uo6"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="17_ap8ml"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q026u"]
+blend_mode = 1
+albedo_color = Color(0.92549175, 0.00011262596, 0.7440698, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6xqmx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcuss"]
+sky_top_color = Color(0.039599974, 0.011999998, 0.15, 1)
+sky_horizon_color = Color(0.09677773, 0.05356831, 0.18822289, 1)
+sky_curve = 0.15528998
+sky_cover_modulate = Color(0.8561711, 0.36567345, 0.40122676, 1)
+ground_bottom_color = Color(0.038133297, 0.002199998, 0.11, 1)
+ground_horizon_color = Color(0.09803922, 0.05490196, 0.1882353, 1)
+ground_curve = 0.024622854
+
+[sub_resource type="Sky" id="Sky_ap8ml"]
+sky_material = SubResource("ProceduralSkyMaterial_fcuss")
 
 [sub_resource type="Environment" id="Environment_klsck"]
+background_mode = 2
+sky = SubResource("Sky_ap8ml")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
 albedo_texture = ExtResource("5_jjp07")
 
 [sub_resource type="QuadMesh" id="QuadMesh_klsck"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6ynox"]
+height = 1.85
+radius = 1.5
+
 [node name="DinerHUB" type="Node3D" unique_id=1374841576]
 
 [node name="PlayerRigStrangeTastes" parent="." unique_id=495163099 instance=ExtResource("1_fopx5")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0, -3.3000002)
+visible = false
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("2_axn4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7130246, 0, -1.9)
+
+[node name="Portals" type="Node3D" parent="." unique_id=51422246]
+script = ExtResource("3_6ynox")
+
+[node name="Portal" parent="Portals" unique_id=220733343 instance=ExtResource("17_ap8ml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 16)
+
+[node name="Portal2" parent="Portals" unique_id=638575099 instance=ExtResource("17_ap8ml")]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, 8.4, 0, 11.5)
 
 [node name="DinerStructure" type="CSGCombiner3D" parent="." unique_id=1727943190]
 use_collision = true
@@ -44,6 +86,52 @@ size = Vector3(28.300001, 0.3, 42.9)
 [node name="LeftWall" type="CSGBox3D" parent="DinerStructure" unique_id=1122947971]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.6000001, 5.223632)
 size = Vector3(0.45, 7.3, 44.5)
+
+[node name="Window" type="CSGBox3D" parent="DinerStructure/LeftWall" unique_id=166631515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025000095, -0.27499914, -16.575)
+operation = 2
+size = Vector3(0.65000004, 3.95, 6.4500003)
+
+[node name="WindowGlass" type="MeshInstance3D" parent="DinerStructure/LeftWall/Window" unique_id=579798777]
+transform = Transform3D(-8.742278e-08, 1, 0, -2, -4.371139e-08, 0, 0, 0, 3.215, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="Window2" type="CSGBox3D" parent="DinerStructure/LeftWall" unique_id=354481559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025000095, -0.27499914, -8.825001)
+operation = 2
+size = Vector3(0.65000004, 3.95, 6.4500003)
+
+[node name="WindowGlass" type="MeshInstance3D" parent="DinerStructure/LeftWall/Window2" unique_id=118471777]
+transform = Transform3D(-8.742278e-08, 1, 0, -2, -4.371139e-08, 0, 0, 0, 3.215, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="Window3" type="CSGBox3D" parent="DinerStructure/LeftWall" unique_id=1640665486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025000095, -0.27499914, -1.125001)
+operation = 2
+size = Vector3(0.65000004, 3.95, 6.4500003)
+
+[node name="WindowGlass" type="MeshInstance3D" parent="DinerStructure/LeftWall/Window3" unique_id=60630087]
+transform = Transform3D(-8.742278e-08, 1, 0, -2, -4.371139e-08, 0, 0, 0, 3.215, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="Window4" type="CSGBox3D" parent="DinerStructure/LeftWall" unique_id=1619494375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025000095, -0.27499914, 6.574999)
+operation = 2
+size = Vector3(0.65000004, 3.95, 6.4500003)
+
+[node name="WindowGlass" type="MeshInstance3D" parent="DinerStructure/LeftWall/Window4" unique_id=916653241]
+transform = Transform3D(-8.742278e-08, 1, 0, -2, -4.371139e-08, 0, 0, 0, 3.215, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_q026u")
+
+[node name="WindowCollider" type="StaticBody3D" parent="DinerStructure/LeftWall" unique_id=764931391]
+
+[node name="WorldBoundary" type="CollisionShape3D" parent="DinerStructure/LeftWall/WindowCollider" unique_id=1855658543]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_klsck")
 
 [node name="EntranceWall" type="CSGBox3D" parent="DinerStructure" unique_id=384752096]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4700012, 3.6000001, -16.800001)
@@ -76,8 +164,18 @@ height = 0.65
 sides = 15
 
 [node name="BackWall" type="CSGBox3D" parent="DinerStructure" unique_id=1398389689]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.2500002, 3.65, 16.25)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.2500002, 3.65, 17)
 size = Vector3(0.45, 7.3, 14.1)
+
+[node name="Ceiling" type="StaticBody3D" parent="DinerStructure" unique_id=902829217]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DinerStructure/Ceiling" unique_id=281257448]
+transform = Transform3D(-7.5680003, -8.742277e-08, 0, 6.616156e-07, -1, 0, 0, 0, 16.95814, 2.25, 7.310505, 0)
+mesh = SubResource("PlaneMesh_6xqmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DinerStructure/Ceiling" unique_id=1033158452]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("WorldBoundaryShape3D_6xqmx")
 
 [node name="DinerProps" type="Node3D" parent="." unique_id=412483644]
 
@@ -265,7 +363,7 @@ size = Vector3(1.65, 1.45, 1.7)
 [node name="Stools" type="Node3D" parent="DinerProps" unique_id=1195924673]
 
 [node name="Stool" type="CSGCombiner3D" parent="DinerProps/Stools" unique_id=1140709251]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2000003, 0.55, 3.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7500002, 0.55, 4)
 use_collision = true
 
 [node name="Seat" type="CSGCylinder3D" parent="DinerProps/Stools/Stool" unique_id=1378929870]
@@ -464,20 +562,30 @@ height = 0.050000012
 sides = 14
 material = ExtResource("7_550bw")
 
-[node name="KitchenLayout" type="CSGCombiner3D" parent="." unique_id=1142513212]
+[node name="CustomerDoor" type="CSGBox3D" parent="DinerProps" unique_id=454120511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000007, 2.5749998, -16.375)
+use_collision = true
+size = Vector3(3.3, 5.15, 0.35)
+material = ExtResource("5_3gldf")
+
+[node name="KitchenStructure" type="CSGCombiner3D" parent="." unique_id=1142513212]
 use_collision = true
 
-[node name="RightWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1646586100]
+[node name="RightWall" type="CSGBox3D" parent="KitchenStructure" unique_id=1646586100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.900002, 3.6000001, -1.726367)
 size = Vector3(0.45, 7.3, 17.5)
 
-[node name="FrontWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1753481268]
+[node name="FrontWall" type="CSGBox3D" parent="KitchenStructure" unique_id=1753481268]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.195002, 3.6000001, -10.250002)
 size = Vector3(0.45, 7.3, 10.95)
 
-[node name="BackWall" type="CSGBox3D" parent="KitchenLayout" unique_id=1381378747]
+[node name="BackWall" type="CSGBox3D" parent="KitchenStructure" unique_id=1381378747]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.195002, 3.6000001, 6.799999)
 size = Vector3(0.45, 7.3, 10.95)
+
+[node name="Ceiling2" type="MeshInstance3D" parent="KitchenStructure" unique_id=1077539361]
+transform = Transform3D(5.8273606, 1.7484552e-07, 0, 1.0188878e-06, -0.99999994, -7.4106475e-07, -8.9074005e-14, 8.742277e-08, -8.476792, 15.3, 7.310505, -1.65)
+mesh = SubResource("PlaneMesh_6xqmx")
 
 [node name="KitchenProps" type="Node3D" parent="." unique_id=1103485876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.499999, 0, 0)
@@ -526,6 +634,9 @@ transform = Transform3D(0.55, 0, 3.5527137e-15, 0, 0.55, 0, -3.5527137e-15, 0, 0
 
 [node name="CuttingStation" parent="KitchenProps/Appliances" unique_id=1032888304 instance=ExtResource("9_ap8ml")]
 transform = Transform3D(-7.648999e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -7.648999e-08, 0.021309853, 0.5371945, -2)
+
+[node name="Kitchentable" parent="KitchenProps/Appliances/CuttingStation" index="1" unique_id=40878475]
+visible = false
 
 [node name="PanGrill" parent="KitchenProps/Appliances" unique_id=761239173 instance=ExtResource("10_fcuss")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.499997, 1.3000001, -1.2999998)
@@ -603,13 +714,25 @@ transform = Transform3D(-2.7101061e-08, 0, 0.62, 0, 0.62, 0, -0.62, 0, -2.710106
 [node name="Counter_Right5" parent="KitchenProps/Counters/Island Counters" unique_id=38646178 instance=ExtResource("15_nwjeg")]
 transform = Transform3D(-2.7101061e-08, 0, 0.62, 0, 0.62, 0, -0.62, 0, -2.7101061e-08, 9.536743e-07, 0, -3.4514575)
 
-[node name="Portals" type="Node3D" parent="." unique_id=51422246]
+[node name="Lights" type="Node3D" parent="." unique_id=420649548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, 0)
 
-[node name="Portal" parent="Portals" unique_id=220733343 instance=ExtResource("17_ap8ml")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.35, 0, -15.55)
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=211693041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.250001, 4.1500006, 0.39999992)
+omni_range = 5.5
 
-[node name="Portal2" parent="Portals" unique_id=638575099 instance=ExtResource("17_ap8ml")]
-transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, 8.4, 0, 11.5)
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=114421829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.250001, 4.1500006, -3.1)
+omni_range = 5.55
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1283902975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, -7.45)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=395258632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 0.20000029)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=971941023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 8)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1750316730]
 
@@ -617,7 +740,10 @@ transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, 8.
 environment = SubResource("Environment_klsck")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=185782905]
-transform = Transform3D(-0.7255533, 0.005369987, -0.688145, -0.24127525, 0.93450946, 0.2616837, 0.6444833, 0.3558979, -0.67674077, -11.86, 14.9, -8.94)
+transform = Transform3D(0.5340272, 0.35300377, -0.76824677, -0.24127519, 0.9345094, 0.2616838, 0.81030923, 0.045612633, 0.5842245, -11.86, 14.9, -8.94)
+light_color = Color(0.79, 0.78078336, 0.711, 1)
+light_energy = 1.4
+light_angular_distance = 5.0
 
 [node name="refs" type="Node3D" parent="." unique_id=1867599300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6, 0, 0)
@@ -632,3 +758,17 @@ mesh = SubResource("QuadMesh_klsck")
 transform = Transform3D(7.788288e-06, 0, 19.999996, 0, 20, 0, -40, 0, 3.8941434e-06, -33.629997, 8.63, 2.3199997)
 material_override = SubResource("StandardMaterial3D_6xqmx")
 mesh = SubResource("QuadMesh_klsck")
+
+[node name="BossNPC" parent="." unique_id=1095072558 instance=ExtResource("19_fcuss")]
+transform = Transform3D(-0.0769545, 0, 0.2114308, 0, 0.22499996, 0, -0.2114308, 0, -0.0769545, 2.1519065, 1.6437345, 3.9875011)
+
+[node name="QuestCheck" type="Area3D" parent="." unique_id=1482719693]
+transform = Transform3D(0.48929307, 0, -0.8721194, 0, 1, 0, 0.8721194, 0, 0.48929307, 3.3681755, 1.4, 4.4712625)
+
+[node name="QuestCollisionShape" type="CollisionShape3D" parent="QuestCheck" unique_id=1933518371]
+transform = Transform3D(1.0000002, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000002, -0.25002003, 0.97500026, -0.84998417)
+shape = SubResource("CylinderShape3D_6ynox")
+
+[node name="BossStuff" type="Node3D" parent="." unique_id=182584960]
+
+[editable path="KitchenProps/Appliances/CuttingStation"]
