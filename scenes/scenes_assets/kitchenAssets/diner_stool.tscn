@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bfuscfk6j0in8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dc5vwh8ilo4be" path="res://assets/models/DinerStool.obj" id="1_rbirg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0mps0"]
+height = 1.6635284
+
+[node name="DinerStool" type="StaticBody3D" unique_id=1777703655]
+
+[node name="Stool_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=210284472]
+mesh = ExtResource("1_rbirg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=618153137]
+transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0.6064558, 0)
+shape = SubResource("CylinderShape3D_0mps0")
