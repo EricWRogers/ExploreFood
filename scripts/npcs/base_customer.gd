@@ -83,6 +83,7 @@ func change_state(new_state: State) -> void:
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
+	print(current_state)
 	
 func enter_state(state: State) -> void:
 	match state:
@@ -175,7 +176,6 @@ func state_pay(_delta: float) -> void:
 		timer.stop()
 		
 		for money in range(tip):
-			print(tip)
 			Manager.money +=1
 			await get_tree().create_timer(1.0).timeout
 		change_state(State.LEAVE)
