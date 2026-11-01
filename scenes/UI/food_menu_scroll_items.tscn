@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dp3pht34fixeq"]
+
+[ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="1_rhjjt"]
+
+[node name="TextureRect" type="TextureRect" unique_id=248977429]
+texture = ExtResource("1_rhjjt")
+expand_mode = 5
+
+[node name="meal name" type="Label" parent="." unique_id=1732586693]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 333.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Name of meal"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1249242597]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 104.0
+offset_right = 303.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "put meau ui image"
+
+[node name="Button" type="Button" parent="." unique_id=1201205443]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 47.0
+offset_right = 577.0
+offset_bottom = 276.0
+mouse_filter = 1
+text = "Order Up!"

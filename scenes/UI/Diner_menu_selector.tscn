@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg0rdmkrymcnb"]
 
-[ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="1_lypqw"]
+[ext_resource type="PackedScene" uid="uid://dp3pht34fixeq" path="res://scenes/ui/food_menu_scroll_items.tscn" id="1_lypqw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yckxo"]
 
@@ -45,30 +45,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=55628053]
+[node name="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=248977429 instance=ExtResource("1_lypqw")]
 layout_mode = 2
-texture = ExtResource("1_lypqw")
-expand_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=828339226]
-layout_mode = 2
-texture = ExtResource("1_lypqw")
-expand_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=602761429]
-layout_mode = 2
-texture = ExtResource("1_lypqw")
-expand_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=1451170399]
-layout_mode = 2
-texture = ExtResource("1_lypqw")
-expand_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=954553452]
-layout_mode = 2
-texture = ExtResource("1_lypqw")
-expand_mode = 5
 
 [node name="Label" type="Label" parent="Control" unique_id=1573796938]
 layout_mode = 0
