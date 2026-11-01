@@ -20,7 +20,6 @@ func _ready() -> void:
 	noses.append(mystery_meat_2)
 	noses.append(mystery_meat_3)
 	speed_limit = player.sprint_speed - 2.0
-	print(noses.size())
 	og_nose_scale = $MysteryMeat.scale
 	if player == null:
 		push_error("NO PLAYER FOUND")
@@ -60,7 +59,6 @@ func explode(nose: RigidBody3D) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("Player is close")
 		player_close = true
 
 
