@@ -2,6 +2,7 @@ extends Node3D
 
 signal add_new_customer()
 
+const BASE_CUSTOMER = preload("uid://pu1ko3y5e6py")
 const CUSTOMER_BEAN = preload("uid://cf8h7xtq160oq")
 
 @export var customer_points: Node3D 
@@ -15,7 +16,7 @@ var is_rush_hour : bool = false
 var customer_spots = []
 var current_customers = []
 #this controls when customers spawn and where their seats
-#the nitty gritty stuff is in customer_bean.gd
+#the nitty gritty stuff is in BASE_CUSTOMER.gd
 #Summary:
 #connects signal to customer spawner
 #puts all valid seats into a list
@@ -29,7 +30,7 @@ func _ready():
 
 
 func spawn_customer():
-	var customer = CUSTOMER_BEAN.instantiate()
+	var customer = BASE_CUSTOMER.instantiate()
 	nav_region.add_child(customer)
 	customer.global_position = customer_spawn.global_position
 	customer.set_seat(pick_rand_spot())

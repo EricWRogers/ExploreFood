@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://cv3gjmrvlmcrn"]
 
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="1_24jtx"]
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="2_011c8"]
+[ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="2_3m62w"]
 [ext_resource type="PackedScene" uid="uid://dy7amoxc7ps52" path="res://scenes/levels/DinerLayout.tscn" id="2_lmh5o"]
 [ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="4_011c8"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_nqhf5"]
 [ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="6_1ruqg"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="7_56f8t"]
+[ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="8_3m62w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lmh5o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,15 +33,14 @@ customer_points = NodePath("CustomerPoints")
 nav_region = NodePath("NavigationRegion3D")
 customer_spawn = NodePath("CustomerSpawn")
 
+[node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("2_3m62w")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1991806859]
 environment = SubResource("Environment_nqhf5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1088033236]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
-
-[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("2_011c8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.340128)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1448553023]
 navigation_mesh = SubResource("NavigationMesh_gtwna")
@@ -75,5 +75,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0817404, 1.3081326, -14.466
 
 [node name="DinnerBell" parent="." unique_id=1442131147 instance=ExtResource("7_56f8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4051704, 0.97951984, -14.306175)
+
+[node name="Clown_Tree" parent="." unique_id=1282798476 instance=ExtResource("8_3m62w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1052704, -0.5500002, -3.1063318)
 
 [connection signal="rush_button_hit" from="DinnerBell" to="." method="_on_dinner_bell_rush_button_hit"]

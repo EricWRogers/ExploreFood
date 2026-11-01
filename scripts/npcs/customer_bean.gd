@@ -8,7 +8,7 @@ signal finished_eating(spot : Vector3)
 @onready var timer_progress: Sprite3D = $TimerProgress
 @onready var coin_spawn: Marker3D = $CoinSpawn
 
-const GOLD_COIN = preload("uid://3plpvx8a7yxk")
+#const GOLD_COIN = preload("uid://3plpvx8a7yxk")
 const FOOD_TRAY = preload("uid://cwtpfule1qklh")
 
 const SPEED = 5.0
@@ -230,7 +230,7 @@ func set_order():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.has_method("get_took") and current_state == State.ORDER:
+	if body is BaseIngredient and current_state == State.ORDER:
 		satisfaction_time = timer.time_left
 		can_take_food = false
 		change_state(State.EAT)
