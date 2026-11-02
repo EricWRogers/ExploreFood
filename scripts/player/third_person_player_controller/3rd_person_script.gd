@@ -189,7 +189,8 @@ func _process(_delta: float) -> void:
 				item._become_stored()
 
 		if inventory[target_slot] != null:
-			inventory[target_slot]._become_visibly_held()
+			if !in_station:
+				inventory[target_slot]._become_visibly_held()
 			%Doremi.is_holding = true
 			is_holding = true
 			if is_on_floor():
@@ -612,7 +613,8 @@ func _on_hotbar_update_held(slot_index) -> void:
 		_play_held_item_put_away()
 		return
 	if inventory[slot_index] != null:
-		inventory[slot_index]._become_visibly_held()
+		if !in_station:
+			inventory[slot_index]._become_visibly_held()
 		%Doremi.is_holding = true
 		is_holding = true
 		if is_on_floor():
@@ -624,6 +626,8 @@ func _on_hotbar_update_held(slot_index) -> void:
 		_play_held_item_put_away()
 ## animation logic for pulling out and putting away items
 func _play_held_item_appear() -> void:
+	if in_station:
+		return
 	if held_item_appeared:
 		return
 

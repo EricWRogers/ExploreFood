@@ -10,6 +10,7 @@ signal update_held
 
 var current_slot := 0
 var scroll_timer := 0.0
+var move_scroll := false
 
 func _process(delta: float) -> void:
 	if scroll_timer > 0.0:
@@ -17,6 +18,10 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if $"../../..".in_station and $"../../..".get_held_item() != null:
 		$"../../..".get_held_item().hide()
+	if $"../../..".in_station:
+		move_scroll = true
+	else:
+		move_scroll = false
 	if event is InputEventKey and event.pressed and not event.echo:
 		var number = event.keycode - KEY_0
 		if number >= 1 and number <= max_slots:
@@ -46,6 +51,17 @@ func _input(event: InputEvent) -> void:
 			direction = -1
 			scroll_timer = scroll_cooldown
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			if scroll_timer > 0.0:
+				return
+			direction = 1
+			scroll_timer = scroll_cooldown
+	elif event is InputEventKey and event.pressed and move_scroll:
+		if event.physical_keycode == KEY_A:
+			if scroll_timer > 0.0:
+				return
+			direction = -1
+			scroll_timer = scroll_cooldown
+		elif event.physical_keycode == KEY_D:
 			if scroll_timer > 0.0:
 				return
 			direction = 1
