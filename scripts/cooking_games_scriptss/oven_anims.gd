@@ -10,6 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func check_validity(ingredient, station):
+	pass
+	
 
 func _on_player_detect_area_body_entered(body: Node3D) -> void:
 	if body.has_method("_setup_camera") and can_open:

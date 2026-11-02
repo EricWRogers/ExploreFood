@@ -25,7 +25,7 @@ shader_parameter/size = 1.0
 
 [sub_resource type="Shader" id="Shader_7ygjy"]
 code = "shader_type spatial;
-render_mode unshaded;
+//render_mode unshaded;
 
 uniform vec3 color_one : source_color;
 uniform vec3 color_two : source_color;

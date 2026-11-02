@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const STATION_GROUP := "Station"
+
 @export_group("Camera")
 @export var mouse_sensitivity := 0.003
 @export var controller_sensitivity := 3.0
@@ -60,11 +62,15 @@ var climbing_detect_started := false
 var climbing_detect_has_collided := false
 var grab_candidates := []
 var grab_focus : RigidBody3D
+var station_candidates := []
+var station_focus: StaticBody3D
 var current_taken_slots := 0
 var inventory: Array = [null, null, null, null, null, null]
 var total_viewers := 1
 var held_item_appeared := false
 var is_holding := false
+var in_station := false
+@export var current_recipe : Resource
 const GRAB_GROUPS := ["Ingredient", "Item"]
 
 
@@ -104,6 +110,15 @@ func snap_to_edge():
 			edge_snap == true
 			velocity = _skin.global_transform.basis.z.normalized() * 50
 			currently_snapping = true
+func reset_hotbar_eligibility():
+	for i in inventory.size():
+		$CanvasLayer/MarginContainer/Hotbar.set_eligibility(i, "reset")
+func update_hotbar_eligibility():
+	for i in inventory.size():
+		var state := "none"
+		if station_focus != null:
+			state = station_focus.get_eligibility(inventory[i])
+		$CanvasLayer/MarginContainer/Hotbar.set_eligibility(i, state)
 ## freeze no movement when ledged
 func freeze_velocity():
 	velocity = Vector3.ZERO
@@ -118,7 +133,20 @@ func _process(_delta: float) -> void:
 	new_scale = 1.0 - (new_scale / max_spring_length)
 	new_scale = clamp(new_scale, 0.0, 1.0)
 	decal.size = Vector3(new_scale, 1.0, new_scale)
-	
+	var closest_station: Node3D = null
+	var closest_station_distance: float = INF
+	for station in station_candidates:
+		var d = global_position.distance_to(station.global_position)
+		if d < closest_station_distance:
+			closest_station_distance = d
+			closest_station = station
+
+	unfocus_all_stations()
+	station_focus = closest_station
+	if station_focus != null:
+		station_focus._focus_obtain()
+	if Input.is_action_just_pressed("cook") and station_focus != null:
+		start_station()
 	## checks closest items and focus/unfocus them
 	var closest : RigidBody3D = null
 	var closest_distance: float = INF
@@ -173,6 +201,25 @@ func _process(_delta: float) -> void:
 		_on_item_picked_up(grab_focus, target_slot)
 		spawn_inventory_slot_viewer(grab_focus, target_slot)
 		print("Item stored in slot: ", target_slot)
+		
+func get_held_item() -> RigidBody3D:
+	var slot: int = Manager.player_current_hovered_slot
+	if slot < 0 or slot >= inventory.size():
+		return null
+	return inventory[slot]
+		
+func unfocus_all_stations():
+	for station in get_tree().get_nodes_in_group(STATION_GROUP):
+		station._defocus()
+		
+func start_station() -> void:
+	if station_focus == null:
+		return
+	if not station_focus.has_method("_start_station"):
+		push_warning("%s has no _start_station()" % station_focus.name)
+		return
+	station_focus._start_station(self)
+
 func _on_item_picked_up(item: RigidBody3D, slot: int) -> void:
 	match _get_grab_kind(item):
 		&"ingredient":
@@ -548,9 +595,12 @@ func _on_ledge_grab_timer_timeout() -> void:
 func _on_item_detect_body_entered(body: Node3D) -> void:
 	if _get_grab_kind(body) != &"" and not grab_candidates.has(body):
 		grab_candidates.append(body)
+	if body.is_in_group(STATION_GROUP) and not station_candidates.has(body):
+		station_candidates.append(body)
 
 func _on_item_detect_body_exited(body: Node3D) -> void:
-	grab_candidates.erase(body)  # erase is a no-op if it isn't in the array
+	grab_candidates.erase(body)
+	station_candidates.erase(body)
 ## updates what item is visibly held
 func _on_hotbar_update_held(slot_index) -> void:
 	for item in inventory:

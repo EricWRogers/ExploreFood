@@ -30,8 +30,8 @@ func _ready() -> void:
 	base_pos = position
 	base_y = position.y
 	base_quat = quaternion
-	$Camera3D2.global_position = $CameraFollow.global_position
-	$Camera3D2.global_rotation = $CameraFollow.global_rotation
+	#$Camera3D2.global_position = $CameraFollow.global_position
+	#$Camera3D2.global_rotation = $CameraFollow.global_rotation
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

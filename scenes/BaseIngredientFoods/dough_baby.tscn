@@ -102,6 +102,7 @@ _surfaces = [{
 [node name="DoughBaby" unique_id=175947415 instance=ExtResource("1_eihya")]
 id = 2
 color = Color(1, 0.84705883, 0.6901961, 1)
+inventory_icon_FOV = 27.0
 hardness = 0.25
 bounciness = 0.0
 material = ExtResource("2_d8k50")

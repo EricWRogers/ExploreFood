@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 	if scroll_timer > 0.0:
 		scroll_timer -= delta
 func _input(event: InputEvent) -> void:
+	if $"../../..".in_station and $"../../..".get_held_item() != null:
+		$"../../..".get_held_item().hide()
 	if event is InputEventKey and event.pressed and not event.echo:
 		var number = event.keycode - KEY_0
 		if number >= 1 and number <= max_slots:
@@ -89,3 +91,8 @@ func select_slot(slot_index: int) -> void:
 
 	emit_signal("update_held", current_slot)
 	Manager.player_current_hovered_slot = current_slot
+	
+func set_eligibility(index, eligibility):
+	if index >= 0 and index < hotbar_slots.size():
+		hotbar_slots[index].eligibility = eligibility
+		hotbar_slots[index].update_eligible()

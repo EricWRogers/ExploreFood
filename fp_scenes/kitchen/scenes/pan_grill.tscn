@@ -613,11 +613,6 @@ shape = SubResource("ConcavePolygonShape3D_ycsf4")
 transform = Transform3D(0.33507472, 0, 0.28517526, 0, 0.44, 0, -0.28517526, 0, 0.33507472, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_i5tsp")
 
-[node name="Camera3D2" type="Camera3D" parent="." unique_id=801577075]
-transform = Transform3D(-0.99972, -0.016646296, 0.016818903, 0, 0.7107445, 0.70345026, -0.023663783, 0.70325327, -0.7105455, 0.00024938583, 1.2021523, -0.8964069)
-top_level = true
-fov = 79.3
-
 [node name="CameraFollow" type="Marker3D" parent="." unique_id=1728330092]
 transform = Transform3D(-0.99972, -0.016646296, 0.016818903, 0, 0.7107445, 0.70345026, -0.023663783, 0.70325327, -0.7105455, 0.00024938583, 1.2021523, -0.8964069)
 

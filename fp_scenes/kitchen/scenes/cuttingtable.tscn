@@ -179,7 +179,7 @@ transform = Transform3D(1.26, 0, 0, 0, 1.26, 0, 0, 0, 1.26, 0, 0, 0)
 mesh = ExtResource("1_muhvn")
 surface_material_override/0 = SubResource("StandardMaterial3D_mib14")
 
-[node name="CuttingCam" type="Camera3D" parent="Kitchentable" unique_id=561440477 groups=["Camera"]]
+[node name="CuttingCam" type="Camera3D" parent="Kitchentable" unique_id=561440477]
 transform = Transform3D(-0.7936508, 1.4098077e-15, -6.9383155e-08, -6.701898e-08, 0.20541194, 0.7666078, 1.7957682e-08, 0.7666078, -0.20541194, 0, 1.5604585, -0.2856832)
 fov = 52.5
 

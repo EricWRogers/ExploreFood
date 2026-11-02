@@ -73,7 +73,9 @@ var slotb3
 
 enum Stations {
 	CUTTING_BOARD,
-	PAN_GRILL
+	PAN_GRILL,
+	OVEN,
+	POOP
 }
 
 

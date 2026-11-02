@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="3_mv8nq"]
 [ext_resource type="Texture2D" uid="uid://cnib4eer0bf4s" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveDoor_Mat.png" id="4_77wul"]
 [ext_resource type="Texture2D" uid="uid://jk21dh2rub0p" path="res://assets/textures/Kitchen Textures/Stove/KitchenStoveDoorMetallic_Mat.png" id="5_4y2aq"]
-[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/UI/station_ui.tscn" id="5_wh7oj"]
+[ext_resource type="PackedScene" uid="uid://btxkpupwkwt4v" path="res://scenes/ui/station_ui.tscn" id="5_wh7oj"]
 [ext_resource type="Texture2D" uid="uid://cgbynngvmnqd2" path="res://assets/ui/ui_assets/square-rounded-icon_white.png" id="6_fhgkx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjvnc"]
