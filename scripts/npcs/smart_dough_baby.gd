@@ -172,4 +172,5 @@ func state_run(_delta: float) -> void:
 	move_and_slide()
 
 func is_dead():
+	reparent(get_tree().current_scene)
 	change_state(State.DEAD)
