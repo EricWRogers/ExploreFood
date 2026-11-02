@@ -2,8 +2,13 @@ extends Node3D
 
 signal add_new_customer()
 
-const BASE_CUSTOMER = preload("uid://pu1ko3y5e6py")
-const CUSTOMER_BEAN = preload("uid://cf8h7xtq160oq")
+const ALIEN_CUSTOMER = preload("uid://nie3puqlomiu")
+const LITTLE_ALIEN_CUSTOMER = preload("uid://ccqsyo3gbx1qk")
+const SITTING_DOG_CUSTOMER = preload("uid://bjpy1yp4wtv5m")
+const STANDING_DOG_CUSTOMER = preload("uid://cghly8qbjj3bi")
+const OLD_MAN_CUSTOMER = preload("uid://lrjofho5ggcq")
+
+
 
 @export var customer_points: Node3D 
 @export var nav_region: NavigationRegion3D 
@@ -15,6 +20,9 @@ var is_rush_hour : bool = false
 
 var customer_spots = []
 var current_customers = []
+var customer_pool = [ALIEN_CUSTOMER, LITTLE_ALIEN_CUSTOMER,
+						SITTING_DOG_CUSTOMER, STANDING_DOG_CUSTOMER,
+						OLD_MAN_CUSTOMER]
 #this controls when customers spawn and where their seats
 #the nitty gritty stuff is in BASE_CUSTOMER.gd
 #Summary:
@@ -23,13 +31,14 @@ var current_customers = []
 #when customer is done they emit signal
 #that signal tells this script their spot is open and adds it back to the list
 func _ready():
+	
 	add_new_customer.connect(new_customer)
 	customer_spots = customer_points.get_children()
-	start_rush_hour()
+	#start_rush_hour()
 
 
 func spawn_customer():
-	var customer = BASE_CUSTOMER.instantiate()
+	var customer = customer_pool.pick_random().instantiate()
 	nav_region.add_child(customer)
 	customer.global_position = customer_spawn.global_position
 	customer.set_seat(pick_rand_spot())
@@ -56,7 +65,7 @@ func new_customer():
 
 func start_rush_hour():
 	is_rush_hour = true
-	for i in range(customer_spots.size()):
+	for i in range(customer_spots.size() / 2):
 		spawn_customer()
 		await get_tree().create_timer(1.0).timeout
 		

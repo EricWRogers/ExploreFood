@@ -265,8 +265,10 @@ func _on_timer_timeout() -> void:
 		State.ORDER:
 			$Bubble/Label.text = bad_time.pick_random()
 			$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
+			$AnimatedSprite3D.frame = 2
 			change_state(State.LEAVE)
 		State.EAT:
 			$Bubble/Label.text = good_time.pick_random()
 			$Bubble.modulate = Color(0.68, 1.0, .68, .7)
+			$AnimatedSprite3D.frame = 1
 			change_state(State.PAY)

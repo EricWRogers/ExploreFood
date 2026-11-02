@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bjpy1yp4wtv5m"]
+
+[ext_resource type="PackedScene" uid="uid://pu1ko3y5e6py" path="res://scenes/npcs/base_customer.tscn" id="1_ptdvp"]
+[ext_resource type="Texture2D" uid="uid://qnl202ow78la" path="res://assets/2DCustomerSprites/AlienDogSpriteSheet.png" id="2_akr6s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6q38t"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo60x"]
+atlas = ExtResource("2_akr6s")
+region = Rect2(0, 827, 885, 827)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyv07"]
+atlas = ExtResource("2_akr6s")
+region = Rect2(885, 827, 885, 827)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b71c"]
+atlas = ExtResource("2_akr6s")
+region = Rect2(1770, 827, 885, 827)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tsew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo60x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyv07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b71c")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SittingDogCustomer" unique_id=945363357 instance=ExtResource("1_ptdvp")]
+
+[node name="TimerProgress" parent="." index="4" unique_id=1741697270]
+texture = SubResource("ViewportTexture_6q38t")
+
+[node name="AnimatedSprite3D" parent="." index="8" unique_id=310551560]
+sprite_frames = SubResource("SpriteFrames_5tsew")
