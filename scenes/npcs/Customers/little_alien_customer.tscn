@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ccqsyo3gbx1qk"]
+
+[ext_resource type="PackedScene" uid="uid://pu1ko3y5e6py" path="res://scenes/npcs/base_customer.tscn" id="1_v2ykt"]
+[ext_resource type="Texture2D" uid="uid://c8qh5uxbq55id" path="res://assets/2DCustomerSprites/LittleAlienGirlSpriteSheet.png" id="2_mof1c"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_omo5i"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4mtg"]
+atlas = ExtResource("2_mof1c")
+region = Rect2(0, 0, 885, 1035)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dql2t"]
+atlas = ExtResource("2_mof1c")
+region = Rect2(885, 0, 885, 1035)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5rgc"]
+atlas = ExtResource("2_mof1c")
+region = Rect2(0, 1035, 885, 1035)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5bgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4mtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dql2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5rgc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LittleAlienCustomer" unique_id=945363357 instance=ExtResource("1_v2ykt")]
+
+[node name="TimerProgress" parent="." index="4" unique_id=1741697270]
+texture = SubResource("ViewportTexture_omo5i")
+
+[node name="AnimatedSprite3D" parent="." index="8" unique_id=310551560]
+sprite_frames = SubResource("SpriteFrames_l5bgl")

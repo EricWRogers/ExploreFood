@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://lrjofho5ggcq"]
+
+[ext_resource type="PackedScene" uid="uid://pu1ko3y5e6py" path="res://scenes/npcs/base_customer.tscn" id="1_gs31p"]
+[ext_resource type="Texture2D" uid="uid://duistyw0qg1ph" path="res://assets/2DCustomerSprites/OldmanSpriteSheet.png" id="2_1q0m5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gkgwo"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5p1g"]
+atlas = ExtResource("2_1q0m5")
+region = Rect2(0, 0, 1656, 1581)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny7sh"]
+atlas = ExtResource("2_1q0m5")
+region = Rect2(1656, 0, 1656, 1581)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsy5u"]
+atlas = ExtResource("2_1q0m5")
+region = Rect2(0, 1581, 1656, 1581)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cctm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5p1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny7sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsy5u")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="OldManCustomer" unique_id=945363357 instance=ExtResource("1_gs31p")]
+
+[node name="TimerProgress" parent="." index="4" unique_id=1741697270]
+texture = SubResource("ViewportTexture_gkgwo")
+
+[node name="AnimatedSprite3D" parent="." index="8" unique_id=310551560]
+sprite_frames = SubResource("SpriteFrames_7cctm")
