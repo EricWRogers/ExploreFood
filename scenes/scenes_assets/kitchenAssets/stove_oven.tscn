@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="7_nq02n"]
 [ext_resource type="ArrayMesh" uid="uid://d28to0l8vvj0t" path="res://assets/models/KitchenModels/vintage_oven_door_frame.obj" id="8_lf4ke"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="9_nq02n"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="10_0tq11"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_h77cv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
@@ -224,6 +226,11 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
 size = Vector3(0.7558594, 0.76901245, 0.763916)
 
+[sub_resource type="Resource" id="Resource_cffq7"]
+script = ExtResource("11_h77cv")
+duration = 0.6
+transition = 1
+
 [node name="StaticBody3D2" type="StaticBody3D" unique_id=1565598496 groups=["Station"]]
 script = ExtResource("1_38i88")
 
@@ -275,3 +282,10 @@ billboard = 1
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("9_nq02n")
+
+[node name="Oven" type="Node3D" parent="." unique_id=2096494294 groups=["Camera"]]
+transform = Transform3D(0.5714286, -4.3141664e-08, 2.4767676e-08, 2.4977938e-08, 0.4948717, 0.28571433, -4.3020265e-08, -0.28571433, 0.4948717, 1.3180681e-07, 0.73020875, 0.87291706)
+script = ExtResource("10_0tq11")
+tween_resource = SubResource("Resource_cffq7")
+tween_on_load = false
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"

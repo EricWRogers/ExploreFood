@@ -48,6 +48,7 @@ func _start_station(player):
 		item._skin.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	_player.update_hotbar_eligibility()
+	InputManager.update_hotbar()
 func rip_away():
 	_player.in_station = false
 	if _player.get_held_item() != null:
@@ -65,6 +66,8 @@ func rip_away():
 		item._skin.show()
 		item.reset_hotbar_eligibility()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	InputManager.update_hotbar()
+	InputManager.hotbar_icons.rip_away_reset()
 	
 func _process(delta: float) -> void:
 	if _currently_at:

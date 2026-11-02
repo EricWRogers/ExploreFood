@@ -74,4 +74,3 @@ func _process(delta):
 		$UvPreviewStudio.color = color
 		dirty = false
 	
-
