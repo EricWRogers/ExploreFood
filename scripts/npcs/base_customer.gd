@@ -39,6 +39,7 @@ enum State{
 }
 
 var current_state : State = State.SEAT
+
 ## preferences ?
 
 ## relationship level

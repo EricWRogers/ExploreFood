@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("2_csguc")
 recipe_name = "Grilled Cheese"
+recipe_station = 1
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

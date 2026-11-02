@@ -67,6 +67,16 @@ var slotb1
 var slotb2
 var slotb3
 
+## ─────────────────────────────────────────
+## Cook Sys
+## ─────────────────────────────────────────
+
+enum Stations {
+	CUTTING_BOARD,
+	PAN_GRILL
+}
+
+
 func clear_current_bagel():
 	player.dropthrow()
 	player.update_slots(current_slot)
