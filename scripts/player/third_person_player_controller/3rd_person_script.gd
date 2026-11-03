@@ -176,43 +176,7 @@ func _process(_delta: float) -> void:
 	grab_focus._focus_obtain()
 	## if focused and press interact it picks the item up
 	if Input.is_action_just_pressed("Interact") and grab_focus:
-		var target_slot: int = Manager.player_current_hovered_slot
-
-		if target_slot < 0 or target_slot >= inventory.size() or inventory[target_slot] != null:
-			target_slot = -1
-
-			for i in range(inventory.size()):
-				if inventory[i] == null:
-					target_slot = i
-					break
-
-		if target_slot == -1:
-			return
-
-		inventory[target_slot] = grab_focus
-
-		$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
-		grab_focus._held_slot = Manager.player_current_hovered_slot
-		grab_focus._become_held($Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt)
-
-		for item in inventory:
-			if item != null:
-				item._become_stored()
-
-		if inventory[target_slot] != null:
-			if !in_station:
-				inventory[target_slot]._become_visibly_held()
-			%Doremi.is_holding = true
-			is_holding = true
-			if is_on_floor():
-				held_item_appeared = false
-			_play_held_item_appear()
-
-		grab_focus.global_position = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt.global_position
-		current_taken_slots += 1
-		_on_item_picked_up(grab_focus, target_slot)
-		spawn_inventory_slot_viewer(grab_focus, target_slot)
-		print("Item stored in slot: ", target_slot)
+		pickup_item(grab_focus, Manager.player_current_hovered_slot)
 func get_held_item() -> RigidBody3D:
 	var slot: int = Manager.player_current_hovered_slot
 	if slot < 0 or slot >= inventory.size():
@@ -271,6 +235,36 @@ func dropthrow():
 								view.reset_item()
 					#print(inventory)
 					break
+func pickup_item(item: RigidBody3D, preferred_slot: int = -1) -> bool:
+	var target_slot := preferred_slot
+	if target_slot < 0 or target_slot >= inventory.size() or inventory[target_slot] != null:
+		target_slot = inventory.find(null)  # first empty slot, -1 if full
+	if target_slot == -1:
+		return false
+
+	inventory[target_slot] = item
+
+	$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
+	item._held_slot = target_slot
+	item._become_held(food_hold_pnt)
+
+	for stored in inventory:
+		if stored != null:
+			stored._become_stored()
+
+	if !in_station:
+		item._become_visibly_held()
+	%Doremi.is_holding = true
+	is_holding = true
+	if is_on_floor():
+		held_item_appeared = false
+	_play_held_item_appear()
+
+	item.global_position = food_hold_pnt.global_position
+	current_taken_slots += 1
+	_on_item_picked_up(item, target_slot)
+	spawn_inventory_slot_viewer(item, target_slot)
+	return true
 func delete_slot(slot: int) -> void:
 	if slot < 0 or slot >= inventory.size():
 		return

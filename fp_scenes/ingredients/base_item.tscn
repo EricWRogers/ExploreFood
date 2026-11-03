@@ -21,7 +21,7 @@ shader_parameter/size = 1.0
 
 [sub_resource type="Shader" id="Shader_7ygjy"]
 code = "shader_type spatial;
-render_mode unshaded;
+//render_mode unshaded;
 
 uniform vec3 color_one : source_color;
 uniform vec3 color_two : source_color;
@@ -106,7 +106,7 @@ stream_2/stream = ExtResource("8_spu1u")
 
 [node name="BaseItem" type="RigidBody3D" unique_id=175947415 groups=["Item"]]
 collision_layer = 6
-collision_mask = 6
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_dgoyy")
 contact_monitor = true
 max_contacts_reported = 4

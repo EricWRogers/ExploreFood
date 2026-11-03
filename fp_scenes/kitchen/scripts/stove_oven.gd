@@ -15,6 +15,8 @@ var valid_dish : bool = false
 var finished_cooking : bool = false
 var currently_cooking : bool = false
 var food_in : bool = false
+var to_be_made : PackedScene
+var dish
 @export var cook_time : int
 
 
@@ -43,6 +45,15 @@ func _defocus():
 	next_pass.set_shader_parameter("size", 0.0)
 
 func _start_station(player):
+	if food_in:
+		if not player.pickup_item(dish):
+			return
+		else:
+			dish.show()
+			dish = null
+			food_in = false
+			$Check.hide()
+			return
 	if currently_cooking:
 		return
 	player.in_station = true
@@ -71,6 +82,7 @@ func rip_away():
 	CameraManager.switch_to_regular()
 	check_valid_dish()
 	_player.display_cook_button(false)
+	to_be_made = _player.current_recipe.product
 	_player = null
 	#recipe = null
 	#ingredient_check = recipe.duplicate()
@@ -115,8 +127,12 @@ func start_cooking_time():
 func hold_dish():
 	currently_cooking = false
 	food_in = true
-	$TextureRect.texture = checkmark
+	$Check.show()
 	$SubViewport/TextureProgressBar.value = 0
+	dish = to_be_made.instantiate()
+	get_tree().current_scene.add_child(dish)
+	dish.hide()
+	
 func update_station(ingredient):
 	if ingredient in ingredient_check:
 		ingredient_check.erase(ingredient)

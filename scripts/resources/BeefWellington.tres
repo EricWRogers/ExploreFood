@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_dt8ws"]
 [ext_resource type="PackedScene" uid="uid://ckin64qqn2uli" path="res://scenes/BaseIngredientFoods/dough_baby.tscn" id="2_g1pi0"]
+[ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="2_w4413"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_yi8er"]
 [ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="3_w4413"]
 
@@ -10,4 +11,5 @@ script = ExtResource("2_yi8er")
 recipe_name = "Beef Wellington"
 recipe_ingredients = Array[PackedScene]([ExtResource("2_g1pi0"), ExtResource("3_w4413")])
 recipe_station = 2
+product = ExtResource("2_w4413")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="10_0tq11"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_h77cv"]
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="12_h77cv"]
+[ext_resource type="Texture2D" uid="uid://cullg0v6cofeq" path="res://fp_scenes/inputs/General/checkmark-64.png" id="13_cffq7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
@@ -308,3 +309,9 @@ texture_progress = ExtResource("12_h77cv")
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 1.0833343, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_lg1c5")
+
+[node name="Check" type="Sprite3D" parent="." unique_id=1408330430]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 1.0833343, 0)
+visible = false
+billboard = 1
+texture = ExtResource("13_cffq7")

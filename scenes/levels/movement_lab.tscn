@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="17_7urxf"]
 [ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="18_622b1"]
 [ext_resource type="PackedScene" uid="uid://ctiioni6ht5el" path="res://scenes/tools/camera_manager.tscn" id="19_j1je7"]
+[ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="20_euos5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -6199,5 +6200,8 @@ mesh_vector_data = SubResource("Resource_tuih5")
 collision_layer = 3
 
 [node name="CameraManager" parent="." unique_id=1797865144 instance=ExtResource("19_j1je7")]
+
+[node name="BaseItem2" parent="." unique_id=674429046 instance=ExtResource("20_euos5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2871222, 5.106048, -8.407143)
 
 [editable path="SmartDoughBaby"]
