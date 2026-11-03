@@ -39,8 +39,12 @@ func unlock():
 	$AnimationPlayer.play("unlock")
 
 func _on_body_entered(body: Node3D) -> void:
+	print("body detected in portal!")
+	
 	# player goes through portal - load new level #
 	if (body.is_in_group("Player")):
+		print("player detected in portal!")
+		
 		# check new level string validity #
 		if (new_level_path == "" || new_level_path == " " || new_level_path == null):
 			printerr("Portal %s new_level_path is null. Make sure you fill write the level path in the inspector!" % self.name)

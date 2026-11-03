@@ -64,19 +64,29 @@ albedo_color = Color(0.92549175, 0.00011262596, 0.7440698, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6xqmx"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_klsck"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehwar"]
+albedo_color = Color(0.86343575, 0.00013158948, 0.7176911, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klsck"]
+
 [node name="DinerHUB" type="Node3D" unique_id=1374841576]
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("2_axn4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7130246, 0, -1.9)
+_current_input_device = "keyboard_mouse"
 
 [node name="Portals" type="Node3D" parent="." unique_id=51422246]
 script = ExtResource("3_6ynox")
 
 [node name="Portal" parent="Portals" unique_id=220733343 instance=ExtResource("17_ap8ml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 16)
+new_level_path = "res://scenes/levels/terrain_test.tscn"
 
 [node name="Portal2" parent="Portals" unique_id=638575099 instance=ExtResource("17_ap8ml")]
 transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, 8.4, 0, 11.5)
+new_level_path = "res://scenes/levels/terrain_3.tscn"
 
 [node name="KitchenStructure" type="CSGCombiner3D" parent="." unique_id=1142513212]
 use_collision = true
@@ -141,6 +151,7 @@ material = ExtResource("5_3gldf")
 
 [node name="Kitchen_Fridge" parent="KitchenProps/Appliances" unique_id=542894939 instance=ExtResource("11_6ynox")]
 transform = Transform3D(0.55, 0, 3.5527137e-15, 0, 0.55, 0, -3.5527137e-15, 0, 0.55, -1.4286919, 0, -9.400001)
+collision_mask = 5
 
 [node name="CuttingStation" parent="KitchenProps/Appliances" unique_id=1032888304 instance=ExtResource("9_ap8ml")]
 transform = Transform3D(-7.648999e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -7.648999e-08, 0.021309853, 0.5371945, -2)
@@ -835,5 +846,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000007, 2.5749998, -16.37
 use_collision = true
 size = Vector3(3.3, 5.15, 0.35)
 material = ExtResource("5_3gldf")
+
+[node name="TestBall" type="RigidBody3D" parent="." unique_id=371439247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45, 6.8000007, 11.560865)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestBall" unique_id=801766974]
+mesh = SubResource("SphereMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehwar")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestBall" unique_id=899241243]
+shape = SubResource("SphereShape3D_klsck")
 
 [editable path="KitchenProps/Appliances/CuttingStation"]
