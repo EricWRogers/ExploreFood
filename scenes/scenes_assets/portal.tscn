@@ -229,30 +229,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:collision_layer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:collision_mask")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_sy41e"]
 resource_name = "unlock"
@@ -349,9 +325,10 @@ _data = {
 
 [node name="Portal" type="Area3D" unique_id=220733343]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_3ycjd")
+active = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1121464066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
@@ -359,7 +336,6 @@ shape = SubResource("BoxShape3D_8ojr3")
 
 [node name="Portalframe" type="MeshInstance3D" parent="." unique_id=34904202]
 transform = Transform3D(-3.4531997e-08, 0, -0.79, 0, 0.79, 0, 0.79, 0, -3.4531997e-08, 0, 0, 0)
-visible = false
 mesh = ExtResource("1_70wcr")
 surface_material_override/0 = SubResource("StandardMaterial3D_4itmh")
 
