@@ -1,7 +1,12 @@
 extends StaticBody3D
 signal rush_button_hit
 
-# Called when the node enters the scene tree for the first time.
+
+var player_close = false;
+func _process(delta: float) -> void:
+	if player_close and Input.is_action_just_pressed("Interact"):
+		rush_button_hit.emit()
+	
 func on_looked_at():
 	#next_pass.set_shader_parameter("transparency", 0.5)
 	if ($Node3D == null):
@@ -23,3 +28,15 @@ func get_rolled():
 	self.freeze = false
 func start_rush_hour():
 	rush_button_hit.emit()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		on_looked_at()
+		player_close = true
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		on_looked_away()
+		player_close = false

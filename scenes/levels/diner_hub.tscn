@@ -299,7 +299,7 @@ nav_region = NodePath("../NavigationRegion3D")
 customer_spawn = NodePath("CustomerSpawn")
 
 [node name="CustomerSpawn" type="Marker3D" parent="Restaurant" unique_id=857119404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.99064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6566671, -14.958116)
 
 [node name="CustomerSpots" type="Node3D" parent="Restaurant" unique_id=976293251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04054737, 0, 0)
@@ -856,5 +856,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ehwar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestBall" unique_id=899241243]
 shape = SubResource("SphereShape3D_klsck")
+
+[connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]
 
 [editable path="KitchenProps/Appliances/CuttingStation"]
