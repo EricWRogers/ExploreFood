@@ -571,4 +571,7 @@ transform = Transform3D(-0.5160789, 0.0647628, -0.764914, 0.15744512, 0.9110378,
 [node name="Pretzel_Tree9" parent="Foliage" unique_id=2034228115 instance=ExtResource("9_2g8fk")]
 transform = Transform3D(1.2111143, 0, 0.18392132, 0, 1.225, 0, -0.18392132, 0, 1.2111143, 46.066128, 0, -21.911125)
 
+[node name="Pretzel_Tree10" parent="Foliage" unique_id=2137185110 instance=ExtResource("9_2g8fk")]
+transform = Transform3D(-0.6968679, 0.0241845, 0.48609698, 0.06072235, 0.8466372, 0.044929244, -0.48289534, 0.071560845, -0.6958384, 61.009457, 0.09004375, 37.20922)
+
 [editable path="Portal"]
