@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_qgerq"]
 [ext_resource type="Texture2D" uid="uid://cxvnfgy865wsk" path="res://addons/MarchingSquaresTerrain/resources/plugin_materials/grass_leaf_sprite.png" id="4_srh1p"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="4_vjxv4"]
+[ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="8_2g8fk"]
 [ext_resource type="PackedScene" uid="uid://bnjiafn5n5itk" path="res://scenes/scenes_assets/BreadWorld/pretzel_tree.tscn" id="9_2g8fk"]
+[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="10_kdjjq"]
 
 [sub_resource type="Shader" id="Shader_asdy7"]
 code = "shader_type spatial;
@@ -174,9 +176,9 @@ agent_radius = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srh1p"]
 render_priority = 0
 shader = ExtResource("4_vjxv4")
-shader_parameter/absorption_color = Color(1, 0.65, 0, 1)
+shader_parameter/absorption_color = Color(0.9685057, 0.671147, 0, 1)
 shader_parameter/fresnel_radius = 2.0
-shader_parameter/fresnel_color = Color(1, 0.85, 0, 1)
+shader_parameter/fresnel_color = Color(0.9058816, 0.87775904, 0.47685027, 1)
 shader_parameter/roughness = 0.15
 shader_parameter/specular = 0.25
 shader_parameter/depth_distance = 25.0
@@ -208,29 +210,33 @@ shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_o0k7j"]
-offsets = PackedFloat32Array(0, 0.12463768, 0.87536234, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.13464996, 0.11184425, 0.10349185, 1, 0.8308129, 0.88610184, 0.8919141, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.12463768, 0.8811594, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.15274468, 0.10550579, 0.08069567, 1, 0.8308129, 0.88610184, 0.8919141, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xmpmc"]
 gradient = SubResource("Gradient_o0k7j")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q026u"]
-sky_top_color = Color(0.31978658, 0.55764467, 0.61017907, 1)
-sky_horizon_color = Color(0.7254902, 0.60784316, 0.38039216, 1)
-sky_curve = 0.21961276
-sky_cover_modulate = Color(1, 1, 1, 0.5137255)
-ground_bottom_color = Color(0.7764706, 0.7529412, 0.38431373, 1)
-ground_horizon_color = Color(0.7254902, 0.60784316, 0.38039216, 1)
-ground_curve = 0.93701375
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ynox"]
+shader = ExtResource("10_kdjjq")
+shader_parameter/sky_color = Color(0.37906295, 0.509009, 0.7173186, 1)
+shader_parameter/horizon_color = Color(0.95, 0.646, 0.18999998, 1)
+shader_parameter/horizon_blur = 0.450000021375
+shader_parameter/sun_color = Color(1, 0.922, 0.74, 1)
+shader_parameter/sun_size = 0.14600000623648
+shader_parameter/sun_blur = 0.0550000026125
+shader_parameter/cloud_color = Color(0.96989816, 0.9653265, 0.76485455, 1)
+shader_parameter/cloud_edge_sharpness = 0.150000007125
+shader_parameter/cloud_scale = 1.5000000679901202
+shader_parameter/cloud_speed = 0.0050000002375
 
 [sub_resource type="Sky" id="Sky_iubr8"]
-sky_material = SubResource("ProceduralSkyMaterial_q026u")
+sky_material = SubResource("ShaderMaterial_6ynox")
 
 [sub_resource type="Environment" id="Environment_itvtl"]
 background_mode = 2
 sky = SubResource("Sky_iubr8")
 ambient_light_source = 3
-ambient_light_sky_contribution = 0.5
+ambient_light_sky_contribution = 0.45
 reflected_light_source = 2
 tonemap_mode = 2
 tonemap_white = 1.15
@@ -450,6 +456,63 @@ chunk_coords = Vector2i(-2, -2)
 cast_shadow = 0
 script = ExtResource("3_qgerq")
 
+[node name="DoughBabies" type="Node3D" parent="NavigationRegion3D" unique_id=394149364]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, -1.1368684e-13, 0, -1.9073486e-06)
+
+[node name="SmartDoughBaby" parent="NavigationRegion3D/DoughBabies" unique_id=1579345735 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.98285204, 0, -0.18439654, 0, 1, 0, 0.18439654, 0, -0.98285204, -35.588745, 5.1531925, -21.234571)
+
+[node name="SmartDoughBaby2" parent="NavigationRegion3D/DoughBabies" unique_id=1221575776 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.5522331, 0, 0.83368963, 0, 1, 0, -0.83368963, 0, -0.5522331, -40.23179, 5.3872275, -25.47136)
+
+[node name="SmartDoughBaby3" parent="NavigationRegion3D/DoughBabies" unique_id=1289376922 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.87454784, 0, 0.48493928, 0, 1, 0, -0.48493928, 0, 0.87454784, -38.42337, 5.6925774, -19.784115)
+
+[node name="SmartDoughBaby4" parent="NavigationRegion3D/DoughBabies" unique_id=1909970719 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.6667676, 0, -0.7452657, 0, 1, 0, 0.7452657, 0, 0.6667676, -46.165737, 5.381762, -22.982698)
+
+[node name="SmartDoughBaby5" parent="NavigationRegion3D/DoughBabies" unique_id=227419585 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.84850645, 0, -0.5291852, 0, 1, 0, 0.5291852, 0, 0.84850645, -51.356766, 0.33180046, 71.55327)
+
+[node name="SmartDoughBaby6" parent="NavigationRegion3D/DoughBabies" unique_id=890405106 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.99376225, 0, 0.11151838, 0, 1, 0, -0.11151838, 0, -0.99376225, -49.79996, 0.5658345, 77.58287)
+
+[node name="SmartDoughBaby7" parent="NavigationRegion3D/DoughBabies" unique_id=1604977529 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.95301235, 0, -0.30293152, 0, 1, 0, 0.30293152, 0, -0.95301235, -39.646988, 0.6978533, 77.90063)
+
+[node name="SmartDoughBaby8" parent="NavigationRegion3D/DoughBabies" unique_id=1528281061 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.019366622, 0, 0.99981236, 0, 1, 0, -0.99981236, 0, -0.019366622, -33.937298, 0.121287584, 83.33711)
+
+[node name="SmartDoughBaby9" parent="NavigationRegion3D/DoughBabies" unique_id=531339522 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.096003525, 0, -0.99538094, 0, 1, 0, 0.99538094, 0, 0.096003525, -52.43858, 0.5658345, 67.73666)
+
+[node name="SmartDoughBaby10" parent="NavigationRegion3D/DoughBabies" unique_id=1927561784 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.9517734, 0, -0.30680165, 0, 1, 0, 0.30680165, 0, 0.9517734, -58.00825, 0.5658345, 70.160324)
+
+[node name="SmartDoughBaby11" parent="NavigationRegion3D/DoughBabies" unique_id=1524055784 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.84483576, 0, 0.5350258, 0, 1, 0, -0.5350258, 0, -0.84483576, 71.31702, 0.602437, -14.136482)
+
+[node name="SmartDoughBaby12" parent="NavigationRegion3D/DoughBabies" unique_id=852800210 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.5522331, 0, 0.83368963, 0, 1, 0, -0.83368963, 0, -0.5522331, 83.13598, -2.236055, -32.48325)
+
+[node name="SmartDoughBaby13" parent="NavigationRegion3D/DoughBabies" unique_id=715441514 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.88452727, 0, -0.46648863, 0, 1, 0, 0.46648863, 0, 0.88452727, 73.43917, -0.23405528, -27.91506)
+
+[node name="SmartDoughBaby14" parent="NavigationRegion3D/DoughBabies" unique_id=1620857875 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.9980258, 0, 0.06280616, 0, 1, 0, -0.06280616, 0, 0.9980258, 64.67154, 0.8310065, -16.487358)
+
+[node name="SmartDoughBaby15" parent="NavigationRegion3D/DoughBabies" unique_id=1680992117 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.8241483, 0, 0.56637406, 0, 1, 0, -0.56637406, 0, -0.8241483, 89.487625, -2.3606148, -25.815672)
+
+[node name="SmartDoughBaby16" parent="NavigationRegion3D/DoughBabies" unique_id=1357673239 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.9634602, 0, -0.26785156, 0, 1, 0, 0.26785156, 0, 0.9634602, 85.3991, -2.2193503, -22.965107)
+
+[node name="SmartDoughBaby17" parent="NavigationRegion3D/DoughBabies" unique_id=193245368 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(0.24533638, 0, -0.96943796, 0, 1, 0, 0.96943796, 0, 0.24533638, 87.20451, -1.8598784, -36.36016)
+
+[node name="SmartDoughBaby18" parent="NavigationRegion3D/DoughBabies" unique_id=1488167497 instance=ExtResource("8_2g8fk")]
+transform = Transform3D(-0.8274655, 0, -0.56151664, 0, 1, 0, 0.56151664, 0, -0.8274655, 83.404724, -1.6263337, -42.560905)
+
 [node name="WaterParent" type="Node3D" parent="." unique_id=317201933]
 
 [node name="Water" type="MeshInstance3D" parent="WaterParent" unique_id=355913572]
@@ -501,7 +564,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_srh1p")
 environment = SubResource("Environment_itvtl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=368851154]
-transform = Transform3D(-0.887567, -0.31474024, 0.3363977, -0.2574308, 0.9444291, 0.20440911, -0.38203943, 0.09482766, -0.91926795, 0, 26.172281, 0)
+transform = Transform3D(0.37312928, -0.6572783, 0.65479755, -0.9256857, -0.2163553, 0.31031686, -0.062295623, -0.72192496, -0.6891615, 0, 26.172281, 0)
 light_color = Color(0.99999946, 0.99208313, 0.77407885, 1)
 
 [node name="Foliage" type="Node3D" parent="." unique_id=2092146034]
