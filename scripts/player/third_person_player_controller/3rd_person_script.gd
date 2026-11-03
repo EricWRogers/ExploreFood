@@ -678,8 +678,9 @@ func queue_food_in_oven():
 		delete_slot(item)
 
 func _on_texture_progress_bar_value_changed(value: float) -> void:
-	if value >= 100:
+	if value >= 100.0:
 		queue_food_in_oven()
 		value = 0
 		display_cook_button(false)
+		current_station.start_cooking_time()
 		current_station.rip_away()

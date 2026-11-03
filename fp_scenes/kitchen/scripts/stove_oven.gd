@@ -113,22 +113,24 @@ func check_valid_dish():
 	if ingredient_check.is_empty():
 		_player.display_cook_button(true)
 		valid_dish = true
-		start_cooking_time()
 	else:
 		_player.display_cook_button(false)
 		valid_dish = false
 
 func start_cooking_time():
 	currently_cooking = true
-	var tween = create_tween()
-	tween.tween_property($SubViewport/TextureProgressBar, "value", 100, cook_time)
+	$SubViewport/TextureProgressBar.value = 0
 	$TextureRect.show()
+	var tween = create_tween()
+	tween.tween_property($SubViewport/TextureProgressBar, "value", 100.0, cook_time)
+	
 	tween.tween_callback(hold_dish)
 func hold_dish():
+	$TextureRect.hide()
 	currently_cooking = false
 	food_in = true
 	$Check.show()
-	$SubViewport/TextureProgressBar.value = 0
+	#$SubViewport/TextureProgressBar.value = 0
 	dish = to_be_made.instantiate()
 	get_tree().current_scene.add_child(dish)
 	dish.hide()
