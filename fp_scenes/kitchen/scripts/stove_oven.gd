@@ -4,14 +4,23 @@ extends StaticBody3D
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
+@onready var checkmark = preload("res://fp_scenes/inputs/General/checkmark-64.png")
+
 var _currently_at := false
 var recipe : Array[PackedScene]
 var ingredient_check : Array[PackedScene]
 var station_finished := false
 var _player: Node
+var valid_dish : bool = false
+var finished_cooking : bool = false
+var currently_cooking : bool = false
+var food_in : bool = false
+@export var cook_time : int
 
 
 func _focus_obtain():
+	if currently_cooking:
+		return
 	if _currently_at:
 		return
 	%Sprite3D.texture = InputManager.get_prompt("cook")
@@ -34,6 +43,8 @@ func _defocus():
 	next_pass.set_shader_parameter("size", 0.0)
 
 func _start_station(player):
+	if currently_cooking:
+		return
 	player.in_station = true
 	$StoveOven/Door.play("open_door")
 	_currently_at = true
@@ -50,6 +61,7 @@ func _start_station(player):
 	_player.update_hotbar_eligibility()
 	InputManager.update_hotbar()
 func rip_away():
+	_player.current_station = null
 	_player.in_station = false
 	if _player.get_held_item() != null:
 		_player.get_held_item().show()
@@ -57,6 +69,8 @@ func rip_away():
 	_currently_at = false
 	_defocus()
 	CameraManager.switch_to_regular()
+	check_valid_dish()
+	_player.display_cook_button(false)
 	_player = null
 	#recipe = null
 	#ingredient_check = recipe.duplicate()
@@ -75,6 +89,7 @@ func _process(delta: float) -> void:
 			rip_away()
 	
 func get_eligibility(item) -> String:
+	print(ingredient_check)
 	if item == null:
 		return "none"
 	for scene in ingredient_check:
@@ -82,15 +97,26 @@ func get_eligibility(item) -> String:
 			return "valid"
 	return "invalid"
 	
-func consume(item) -> bool:
-	for scene in ingredient_check:
-		if scene.resource_path == item.scene_file_path:
-			ingredient_check.erase(scene)
-			station_finished = ingredient_check.is_empty()
-			_player.update_hotbar_eligibility()
-			return true
-	return false
+func check_valid_dish():
+	if ingredient_check.is_empty():
+		_player.display_cook_button(true)
+		valid_dish = true
+		start_cooking_time()
+	else:
+		_player.display_cook_button(false)
+		valid_dish = false
 
+func start_cooking_time():
+	currently_cooking = true
+	var tween = create_tween()
+	tween.tween_property($SubViewport/TextureProgressBar, "value", 100, cook_time)
+	$TextureRect.show()
+	tween.tween_callback(hold_dish)
+func hold_dish():
+	currently_cooking = false
+	food_in = true
+	$TextureRect.texture = checkmark
+	$SubViewport/TextureProgressBar.value = 0
 func update_station(ingredient):
 	if ingredient in ingredient_check:
 		ingredient_check.erase(ingredient)

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="9_nq02n"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="10_0tq11"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_h77cv"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="12_h77cv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
@@ -231,8 +232,12 @@ script = ExtResource("11_h77cv")
 duration = 0.6
 transition = 1
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+viewport_path = NodePath("SubViewport")
+
 [node name="StaticBody3D2" type="StaticBody3D" unique_id=1565598496 groups=["Station"]]
 script = ExtResource("1_38i88")
+cook_time = 30
 
 [node name="StoveOven" type="Node3D" parent="." unique_id=1051010450]
 
@@ -289,3 +294,17 @@ script = ExtResource("10_0tq11")
 tween_resource = SubResource("Resource_cffq7")
 tween_on_load = false
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=445175409]
+transparent_bg = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=127479105]
+offset_right = 500.0
+offset_bottom = 500.0
+fill_mode = 4
+texture_progress = ExtResource("12_h77cv")
+
+[node name="TextureRect" type="Sprite3D" parent="." unique_id=389709808]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 1.0833343, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_lg1c5")

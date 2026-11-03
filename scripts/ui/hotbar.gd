@@ -11,6 +11,7 @@ signal update_held
 var current_slot := 0
 var scroll_timer := 0.0
 var move_scroll := false
+var to_be_deleted : Array = []
 
 func _ready() -> void:
 	InputManager.hotbar_icons = self
@@ -159,14 +160,27 @@ func _update_visual(tie):
 		if item.slot_tie == tie:
 			var slot = hotbar_slots[item.slot_tie]
 			slot.update_texture(item.subviewport)
-			print("putting subviewport texture into hotbar")
+			slot.set_meta("viewer", item)   # new
+			#print("putting subviewport texture into hotbar")
 			break
+func get_slot_viewer(index: int) -> Node:
+	if index < 0 or index >= hotbar_slots.size():
+		return null
+	return hotbar_slots[index].get_meta("viewer", null)
+func get_slot_scene_root(index: int) -> Node:
+	var viewer = get_slot_viewer(index)
+	if viewer == null or viewer.subviewport.get_child_count() == 0:
+		return null
+	return viewer.subviewport.get_child(0)
+func get_slot_packed_scene(index: int) -> PackedScene:
+	var root = get_slot_scene_root(index)
+	if root == null or root.scene_file_path == "":
+		return null
+	return load(root.scene_file_path) as PackedScene
 func select_slot(slot_index: int) -> void:
 	if slot_index < 0 or slot_index >= mini(max_slots, hotbar_slots.size()):
 		return
-
 	current_slot = slot_index
-
 	for item in hotbar_slots:
 		item._unfocus()
 
@@ -179,28 +193,49 @@ func set_eligibility(index, eligibility):
 	if index >= 0 and index < hotbar_slots.size():
 		hotbar_slots[index].eligibility = eligibility
 		hotbar_slots[index].update_eligible()
-
+func debug_slot(index: int) -> void:
+	var viewer = get_slot_viewer(index)
+	print("viewer: ", viewer)
+	if viewer == null:
+		return
+	var sv = viewer.subviewport
+	print("subviewport children: ", sv.get_children())
+	for c in sv.get_children():
+		print("  ", c.name, " (", c.get_class(), ") scene_file_path='", c.scene_file_path, "'")
 func request_insert(inout):
 	#print(current_slot)
 	if current_slot > -1 and move_scroll and $"../../..".get_held_item() != null:
 		var offset_target = current_slot
-		print("insert: current_slot=", current_slot, " move_scroll=", move_scroll, " held=", $"../../..".get_held_item())
+		#print("insert: current_slot=", current_slot, " move_scroll=", move_scroll, " held=", $"../../..".get_held_item())
 		if inout:
 			var tween = create_tween()
 			if hotbar_slots[offset_target].eligibility == "valid":
 				if !hotbar_slots[offset_target].requested_select:
+					var packed = get_slot_viewer(current_slot)
+					if packed != null:
+						var path = packed.item.scene_file_path
+						var check = $"../../..".current_station.ingredient_check
+						for i in check.size():
+							if check[i].resource_path == path:
+								check.remove_at(i)
+								break
+						$"../../..".update_hotbar_eligibility()
+						$"../../..".current_station.check_valid_dish()
+						to_be_deleted.append(current_slot)
+						#print(to_be_deleted)
 					hotbar_slots[offset_target].requested_select = true
 					tween.set_parallel(true)
 					tween.tween_property(hotbar_slots[offset_target].texture, "offset_transform_position:y", -40, 0.2)
 					tween.tween_property(hotbar_slots[offset_target].texture, "self_modulate", Color(1.0, 1.0, 1.0, 0.6), 0.2)
 					$"../../MarginContainer2/StationSlots".slots.append(hotbar_slots[offset_target].texture.get_texture())
 					$"../../MarginContainer2/StationSlots".update_slots()
-			if hotbar_slots[offset_target].eligibility == "invalid":
+			elif hotbar_slots[offset_target].eligibility == "invalid":
 				tween.tween_property(hotbar_slots[offset_target].texture, "offset_transform_position:x", -10, 0.06)
 				tween.tween_property(hotbar_slots[offset_target].texture, "offset_transform_position:x", 4, 0.04)
 				tween.tween_property(hotbar_slots[offset_target].texture, "offset_transform_position:x", -2, 0.02)
 				tween.tween_property(hotbar_slots[offset_target].texture, "offset_transform_position:x", 0, 0.01)
 		else:
+			var was_inserted = hotbar_slots[offset_target].requested_select   # capture first
 			var tween = create_tween()
 			tween.set_parallel(true)
 			hotbar_slots[offset_target].requested_select = false
@@ -209,8 +244,27 @@ func request_insert(inout):
 			if hotbar_slots[offset_target].texture.texture in $"../../MarginContainer2/StationSlots".slots:
 				$"../../MarginContainer2/StationSlots".slots.erase(hotbar_slots[offset_target].texture.get_texture())
 				$"../../MarginContainer2/StationSlots".update_slots()
+			if was_inserted:
+				var viewer = get_slot_viewer(current_slot)
+				if viewer != null:
+					var path = viewer.item.scene_file_path
+					var ingredients = $"../../..".current_recipe.recipe_ingredients
+					var check = $"../../..".current_station.ingredient_check
+					for scene in ingredients:
+						if scene.resource_path == path:
+							check.append(scene)
+							break
+					$"../../..".update_hotbar_eligibility()
+					$"../../..".current_station.check_valid_dish()
+					to_be_deleted.erase(current_slot)
+					#print(to_be_deleted)
 func rip_away_reset():
 	$"../../MarginContainer2/StationSlots".hide()
+	$"../../MarginContainer2/StationSlots".reset()
+	$"../../MarginContainer2/StationSlots".slots.clear()
 	for slot in hotbar_slots:
+		slot.requested_select = false
 		var tween = create_tween()
 		tween.tween_property(slot.texture, "offset_transform_position:y", 0, 0.2)
+		tween.tween_property(slot.texture, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 0.2)
+	
