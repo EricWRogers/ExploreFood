@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dwbk8rhnh0wgc"]
 
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_phe0q"]
+[ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_qgerq"]
+[ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="2_db7ae"]
+[ext_resource type="PackedScene" uid="uid://de16mu71m0w67" path="res://scenes/scenes_assets/BreadWorld/pretzel_barn.tscn" id="2_o0k7j"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_vjxv4"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_qgerq"]
+[ext_resource type="Texture2D" uid="uid://cxvnfgy865wsk" path="res://addons/MarchingSquaresTerrain/resources/plugin_materials/grass_leaf_sprite.png" id="4_srh1p"]
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="4_vjxv4"]
+[ext_resource type="PackedScene" uid="uid://bnjiafn5n5itk" path="res://scenes/scenes_assets/BreadWorld/pretzel_tree.tscn" id="9_2g8fk"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_55rfs"]
 cell_height = 0.75
@@ -21,12 +26,12 @@ shader_parameter/roughness = 0.15
 shader_parameter/specular = 0.25
 shader_parameter/depth_distance = 25.0
 shader_parameter/beers_law = 4.5
-shader_parameter/displacement_strength = 0.3
+shader_parameter/displacement_strength = 0.0
 shader_parameter/displacement_scroll_speed = 0.1
 shader_parameter/displacement_scroll_offset = Vector2(-0.2, 0.3)
 shader_parameter/displacement_scale_offset = 0.5
 shader_parameter/displacement_scale = Vector2(0.04, 0.04)
-shader_parameter/edge_thickness = 0.3
+shader_parameter/edge_thickness = 0.78400003724
 shader_parameter/edge_speed = 0.35
 shader_parameter/edge_noise_scale = Vector2(0.4, 0.4)
 shader_parameter/influence_size = 1.0
@@ -47,7 +52,49 @@ shader_parameter/scroll_offset = Vector2(0.1, -0.3)
 shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
+[sub_resource type="Gradient" id="Gradient_o0k7j"]
+offsets = PackedFloat32Array(0, 0.12173915, 0.87536234, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.14, 0.10908334, 0.105000004, 1, 0.8418166, 0.88284594, 0.88673836, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xmpmc"]
+gradient = SubResource("Gradient_o0k7j")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q026u"]
+sky_top_color = Color(0.31978658, 0.55764467, 0.61017907, 1)
+sky_horizon_color = Color(0.7254902, 0.60784316, 0.38039216, 1)
+sky_curve = 0.21961276
+ground_bottom_color = Color(0.7764706, 0.7529412, 0.38431373, 1)
+ground_horizon_color = Color(0.7254902, 0.60784316, 0.38039216, 1)
+ground_curve = 0.93701375
+
+[sub_resource type="Sky" id="Sky_iubr8"]
+sky_material = SubResource("ProceduralSkyMaterial_q026u")
+
+[sub_resource type="Environment" id="Environment_itvtl"]
+background_mode = 2
+sky = SubResource("Sky_iubr8")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 1.15
+fog_mode = 1
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_xmpmc")
+
 [node name="Terrain3" type="Node3D" unique_id=1382931693]
+
+[node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("1_qgerq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.529667, 8.619691, 32.700035)
+
+[node name="Portal" parent="." unique_id=220733343 instance=ExtResource("2_db7ae")]
+in_kitchen = false
+
+[node name="Props" type="Node3D" parent="." unique_id=1773968177]
+
+[node name="PretzelBarn" parent="Props" unique_id=2129157020 instance=ExtResource("2_o0k7j")]
+transform = Transform3D(0.23828672, 0, 0.97119474, 0, 1, 0, -0.97119474, 0, 0.23828672, -42.64035, 8.389678, 32.90193)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=521952010]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 1.9073486e-06)
@@ -57,8 +104,19 @@ navigation_mesh = SubResource("NavigationMesh_55rfs")
 script = ExtResource("1_phe0q")
 data_directory = "res://scenes/levels/terrain_3_TerrainData/MarchingSquaresTerrain_0d648556"
 _storage_initialized = true
-texture_albedo_1 = Color(0.865625, 0.39325076, 0.2705078, 1)
-texture_albedo_2 = Color(0.99, 0.67781997, 0.5544, 1)
+grass_subdivisions = 2
+grass_size = Vector2(0.6, 0.6)
+texture_7 = ExtResource("4_srh1p")
+tex2_has_grass = false
+texture_albedo_1 = Color(0.8666667, 0.39215687, 0.27058825, 1)
+texture_albedo_2 = Color(0.93, 0.47662506, 0.3255, 1)
+texture_albedo_6 = Color(0.6979166, 0.63044226, 0.517985, 1)
+texture_scale_4 = 0.9
+texture_scale_5 = 0.9
+texture_scale_6 = 1.1
+texture_scale_7 = 1.1
+texture_scale_8 = 0.9
+texture_scale_10 = 0.9
 metadata/_custom_type_script = "uid://cddg1xr5hye1d"
 
 [node name="Chunk (0, 0)" type="MeshInstance3D" parent="NavigationRegion3D/MarchingSquaresTerrain" unique_id=413680881 node_paths=PackedStringArray("terrain_system")]
@@ -267,3 +325,16 @@ mesh = SubResource("PlaneMesh_vjxv4")
 surface_material_override/0 = SubResource("ShaderMaterial_srh1p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=366715737]
+environment = SubResource("Environment_itvtl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=368851154]
+transform = Transform3D(-0.887567, -0.31474024, 0.3363977, -0.2574308, 0.9444291, 0.20440911, -0.38203943, 0.09482766, -0.91926795, 0, 26.172281, 0)
+light_color = Color(0.99999946, 0.99208313, 0.77407885, 1)
+
+[node name="Foliage" type="Node3D" parent="." unique_id=2092146034]
+
+[node name="Pretzel_Tree" parent="Foliage" unique_id=673147483 instance=ExtResource("9_2g8fk")]
+transform = Transform3D(0.58966935, 0, 0.8076448, 0, 1, 0, -0.8076448, 0, 0.58966935, -41.68207, 8.946205, 42.12731)
+
+[node name="Pretzel_Tree2" parent="Foliage" unique_id=2045288445 instance=ExtResource("9_2g8fk")]
+transform = Transform3D(-0.66528225, -0.02368834, -0.74621624, -0.0023016213, 0.99955696, -0.029678553, 0.74658847, -0.0180271, -0.665042, -44.41884, 8.231511, 24.88443)
