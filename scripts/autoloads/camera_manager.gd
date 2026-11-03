@@ -1,7 +1,7 @@
 extends Node
 
-@onready var regular_camera: Camera3D = $Camera3D
-@onready var phantom_camera: PhantomCamera3D = $PhantomCamera3D
+#@onready var regular_camera: Camera3D = $Camera3D
+#@onready var phantom_camera: PhantomCamera3D = $PhantomCamera3D
 
 
 func switch_to_regular():

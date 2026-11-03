@@ -160,6 +160,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_6g1ex")
 
 [node name="WaterFloor" type="Area3D" parent="." unique_id=270011674 node_paths=PackedStringArray("spawn", "spawn_points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
+collision_mask = 15
 script = ExtResource("13_hvl47")
 spawn = NodePath("../Marker3D")
 spawn_points = [NodePath("Marker3D"), NodePath("Marker3D32"), NodePath("Marker3D33"), NodePath("Marker3D34"), NodePath("Marker3D35"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4"), NodePath("Marker3D5"), NodePath("Marker3D6"), NodePath("Marker3D7"), NodePath("Marker3D8"), NodePath("Marker3D9"), NodePath("Marker3D10"), NodePath("Marker3D11"), NodePath("Marker3D12"), NodePath("Marker3D13"), NodePath("Marker3D14"), NodePath("Marker3D15"), NodePath("Marker3D16"), NodePath("Marker3D17"), NodePath("Marker3D18"), NodePath("Marker3D19"), NodePath("Marker3D20"), NodePath("Marker3D21"), NodePath("Marker3D22"), NodePath("Marker3D23"), NodePath("Marker3D24"), NodePath("Marker3D25"), NodePath("Marker3D26"), NodePath("Marker3D27"), NodePath("Marker3D28"), NodePath("Marker3D29"), NodePath("Marker3D30"), NodePath("Marker3D31"), NodePath("../Marker3D")]
@@ -278,9 +279,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.03873, 65.71768, -189.417
 
 [node name="Portal" parent="." unique_id=220733343 instance=ExtResource("15_cibvw")]
 transform = Transform3D(0.19147035, 0, 0.98149836, 0, 1, 0, -0.98149836, 0, 0.19147035, 5.520287, 0.49479103, 0)
-new_level_path = "res://scenes/levels/testScenes/DinerLevel_test.tscn"
+new_level_path = "res://scenes/levels/diner_hub.tscn"
 in_kitchen = false
-active = true
 image_of_world = ExtResource("7_qlq6c")
 light_color = Color(0.5921569, 0.57254905, 0.5411765, 1)
 

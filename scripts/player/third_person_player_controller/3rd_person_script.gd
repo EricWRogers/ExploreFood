@@ -70,6 +70,7 @@ var total_viewers := 1
 var held_item_appeared := false
 var is_holding := false
 var in_station := false
+var current_station : StaticBody3D
 @export var current_recipe : Resource
 const GRAB_GROUPS := ["Ingredient", "Item"]
 
@@ -114,6 +115,7 @@ func reset_hotbar_eligibility():
 	for i in inventory.size():
 		$CanvasLayer/MarginContainer/Hotbar.set_eligibility(i, "reset")
 func update_hotbar_eligibility():
+	print("updating")
 	for i in inventory.size():
 		var state := "none"
 		if station_focus != null:
@@ -123,7 +125,15 @@ func update_hotbar_eligibility():
 func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
-	if not can_move:
+	if not can_move and current_station:
+		if Input.is_action_pressed("Interact") and current_station:
+			$CanvasLayer/MarginContainer3/Panel/TextureProgressBar.value += 0.8
+		else:
+			$CanvasLayer/MarginContainer3/Panel/TextureProgressBar.value -= 0.2
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	elif not can_move:
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
@@ -147,6 +157,7 @@ func _process(_delta: float) -> void:
 		station_focus._focus_obtain()
 	if Input.is_action_just_pressed("cook") and station_focus != null:
 		start_station()
+		current_station = station_focus
 	## checks closest items and focus/unfocus them
 	var closest : RigidBody3D = null
 	var closest_distance: float = INF
@@ -165,44 +176,7 @@ func _process(_delta: float) -> void:
 	grab_focus._focus_obtain()
 	## if focused and press interact it picks the item up
 	if Input.is_action_just_pressed("Interact") and grab_focus:
-		var target_slot: int = Manager.player_current_hovered_slot
-
-		if target_slot < 0 or target_slot >= inventory.size() or inventory[target_slot] != null:
-			target_slot = -1
-
-			for i in range(inventory.size()):
-				if inventory[i] == null:
-					target_slot = i
-					break
-
-		if target_slot == -1:
-			return
-
-		inventory[target_slot] = grab_focus
-
-		$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
-		grab_focus._held_slot = Manager.player_current_hovered_slot
-		grab_focus._become_held($Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt)
-
-		for item in inventory:
-			if item != null:
-				item._become_stored()
-
-		if inventory[target_slot] != null:
-			if !in_station:
-				inventory[target_slot]._become_visibly_held()
-			%Doremi.is_holding = true
-			is_holding = true
-			if is_on_floor():
-				held_item_appeared = false
-			_play_held_item_appear()
-
-		grab_focus.global_position = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt.global_position
-		current_taken_slots += 1
-		_on_item_picked_up(grab_focus, target_slot)
-		spawn_inventory_slot_viewer(grab_focus, target_slot)
-		print("Item stored in slot: ", target_slot)
-		
+		pickup_item(grab_focus, Manager.player_current_hovered_slot)
 func get_held_item() -> RigidBody3D:
 	var slot: int = Manager.player_current_hovered_slot
 	if slot < 0 or slot >= inventory.size():
@@ -261,7 +235,60 @@ func dropthrow():
 								view.reset_item()
 					#print(inventory)
 					break
-		
+func pickup_item(item: RigidBody3D, preferred_slot: int = -1) -> bool:
+	var target_slot := preferred_slot
+	if target_slot < 0 or target_slot >= inventory.size() or inventory[target_slot] != null:
+		target_slot = inventory.find(null)  # first empty slot, -1 if full
+	if target_slot == -1:
+		return false
+
+	inventory[target_slot] = item
+
+	$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
+	item._held_slot = target_slot
+	item._become_held(food_hold_pnt)
+
+	for stored in inventory:
+		if stored != null:
+			stored._become_stored()
+
+	if !in_station:
+		item._become_visibly_held()
+	%Doremi.is_holding = true
+	is_holding = true
+	if is_on_floor():
+		held_item_appeared = false
+	_play_held_item_appear()
+
+	item.global_position = food_hold_pnt.global_position
+	current_taken_slots += 1
+	_on_item_picked_up(item, target_slot)
+	spawn_inventory_slot_viewer(item, target_slot)
+	return true
+func delete_slot(slot: int) -> void:
+	if slot < 0 or slot >= inventory.size():
+		return
+	var item = inventory[slot]
+	if item == null:
+		return
+
+	%Doremi.is_holding = false
+	is_holding = false
+	current_taken_slots -= 1
+	_on_item_dropped(item)
+
+	inventory[slot] = null
+
+	for view in get_tree().get_nodes_in_group("Viewer"):
+		if view.slot_tie == slot:
+			view.reset_item()
+
+	grab_candidates.erase(item)
+	if grab_focus == item:
+		grab_focus = null
+
+	_play_held_item_put_away()
+	item.queue_free()
 ## spawns the scene that displays hotb ar icons
 func spawn_inventory_slot_viewer(item, tie):
 	var viewer_family = get_tree().get_nodes_in_group("Viewer")
@@ -641,3 +668,19 @@ func _play_held_item_put_away() -> void:
 
 	held_item_appeared = false
 	held_item.play("put_away")
+func display_cook_button(show):
+	if show:
+		$CanvasLayer/MarginContainer3.show()
+	else:
+		$CanvasLayer/MarginContainer3.hide()
+func queue_food_in_oven():
+	for item in $CanvasLayer/MarginContainer/Hotbar.to_be_deleted:
+		delete_slot(item)
+
+func _on_texture_progress_bar_value_changed(value: float) -> void:
+	if value >= 100.0:
+		queue_food_in_oven()
+		value = 0
+		display_cook_button(false)
+		current_station.start_cooking_time()
+		current_station.rip_away()

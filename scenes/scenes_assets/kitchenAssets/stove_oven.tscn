@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="7_nq02n"]
 [ext_resource type="ArrayMesh" uid="uid://d28to0l8vvj0t" path="res://assets/models/KitchenModels/vintage_oven_door_frame.obj" id="8_lf4ke"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="9_nq02n"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="10_0tq11"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_h77cv"]
+[ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="12_h77cv"]
+[ext_resource type="Texture2D" uid="uid://cullg0v6cofeq" path="res://fp_scenes/inputs/General/checkmark-64.png" id="13_cffq7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38i88"]
 albedo_texture = ExtResource("2_40l7o")
@@ -224,8 +228,17 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg1c5"]
 size = Vector3(0.7558594, 0.76901245, 0.763916)
 
+[sub_resource type="Resource" id="Resource_cffq7"]
+script = ExtResource("11_h77cv")
+duration = 0.6
+transition = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
+viewport_path = NodePath("SubViewport")
+
 [node name="StaticBody3D2" type="StaticBody3D" unique_id=1565598496 groups=["Station"]]
 script = ExtResource("1_38i88")
+cook_time = 30
 
 [node name="StoveOven" type="Node3D" parent="." unique_id=1051010450]
 
@@ -275,3 +288,33 @@ billboard = 1
 no_depth_test = true
 render_priority = 75
 texture = ExtResource("9_nq02n")
+
+[node name="Oven" type="Node3D" parent="." unique_id=2096494294 groups=["Camera"]]
+transform = Transform3D(0.5714286, -4.3141664e-08, 2.4767676e-08, 2.4977938e-08, 0.4948717, 0.28571433, -4.3020265e-08, -0.28571433, 0.4948717, 1.3180681e-07, 0.73020875, 0.87291706)
+script = ExtResource("10_0tq11")
+tween_resource = SubResource("Resource_cffq7")
+tween_on_load = false
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=445175409]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=127479105]
+offset_right = 500.0
+offset_bottom = 500.0
+step = 0.1
+fill_mode = 4
+texture_progress = ExtResource("12_h77cv")
+
+[node name="TextureRect" type="Sprite3D" parent="." unique_id=389709808]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 1.0833343, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_lg1c5")
+
+[node name="Check" type="Sprite3D" parent="." unique_id=1408330430]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 1.0833343, 0)
+visible = false
+billboard = 1
+texture = ExtResource("13_cffq7")

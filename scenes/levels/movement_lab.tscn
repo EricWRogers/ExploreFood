@@ -18,9 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://ddtb22qi8a2kr" path="res://fp_scenes/ingredients/testingredient.tscn" id="16_u2y67"]
 [ext_resource type="PackedScene" uid="uid://dnk4gsayng8kr" path="res://scenes/scenes_assets/clown_tree.tscn" id="17_7urxf"]
 [ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="18_622b1"]
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="19_euos5"]
 [ext_resource type="PackedScene" uid="uid://ctiioni6ht5el" path="res://scenes/tools/camera_manager.tscn" id="19_j1je7"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="20_j1je7"]
+[ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="20_euos5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5197,11 +5196,6 @@ face_vertex_data = {
 "vertex_index": SubResource("Resource_ax7ug")
 }
 
-[sub_resource type="Resource" id="Resource_vfobl"]
-script = ExtResource("20_j1je7")
-duration = 0.6
-transition = 1
-
 [node name="MovementLab" type="Node3D" unique_id=102214623]
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("6_xeajp")]
@@ -5985,6 +5979,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.456, 1.0949736, 17.264)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.91525)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=568227705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052797318, 0, -0.0038585663)
 navigation_mesh = SubResource("NavigationMesh_gtwna")
 
 [node name="Floor" type="Node3D" parent="NavigationRegion3D" unique_id=353240269]
@@ -6206,11 +6201,7 @@ collision_layer = 3
 
 [node name="CameraManager" parent="." unique_id=1797865144 instance=ExtResource("19_j1je7")]
 
-[node name="Oven" type="Node3D" parent="." unique_id=1430472531 groups=["Camera"]]
-transform = Transform3D(-1, 0, 8.742278e-08, 4.371139e-08, 0.86602545, 0.50000006, -7.5710346e-08, 0.50000006, -0.86602545, 0, 2.2523575, 1.0348015)
-script = ExtResource("19_euos5")
-tween_resource = SubResource("Resource_vfobl")
-tween_on_load = false
-metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+[node name="BaseItem2" parent="." unique_id=674429046 instance=ExtResource("20_euos5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2871222, 5.106048, -8.407143)
 
 [editable path="SmartDoughBaby"]

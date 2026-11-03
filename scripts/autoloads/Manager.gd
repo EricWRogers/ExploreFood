@@ -42,7 +42,7 @@ var waffledimension = false
 
 var max_hotbar_slots := 6
 var player_current_hovered_slot : int
-var current_control_device : String = "controller"
+var current_control_device : String = "keyboardmouse"
 
 ## ─────────────────────────────────────────
 ## Level Managment

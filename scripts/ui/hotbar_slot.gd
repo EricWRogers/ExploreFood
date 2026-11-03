@@ -3,7 +3,9 @@ extends VBoxContainer
 @export var panel_shrink : Panel
 @export var panel_modulate : Panel
 @export var texture : TextureRect
+@export var control_box : MarginContainer
 var eligibility : String
+var requested_select := false
 
 func _ready() -> void:
 	var tween = create_tween()

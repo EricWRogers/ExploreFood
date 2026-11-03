@@ -24,24 +24,28 @@ func _ready() -> void:
 	#print("new level path: ", new_level_path)
 	#print("portal current level: ", current_level)
 	
-	if !in_kitchen:
-		unlock()
+	#if !in_kitchen:
+		#unlock()
 	
 	if !active:
-		self.set_collision_layer_value(1, false)
-		self.set_collision_mask_value(1, false)
+		#self.set_collision_layer_value(1, false)
+		#self.set_collision_mask_value(1, false)
 		$Portalmesh.hide()
 		$OmniLight3D.hide()
 	$OmniLight3D.light_color = light_color
 	mat.set_shader_parameter("albedo_texture", image_of_world)
 
-func unlock():
-	$AnimationPlayer.play("unlock")
+#func unlock():
+	#$AnimationPlayer.play("unlock")
 
 func _on_body_entered(body: Node3D) -> void:
+	print("body detected in portal!")
+	
 	# player goes through portal - load new level #
-	if (body.is_in_group("Player")):
+		
 		# check new level string validity #
+	if body.is_in_group("Player"):
+		print("IT WORK")
 		if (new_level_path == "" || new_level_path == " " || new_level_path == null):
 			printerr("Portal %s new_level_path is null. Make sure you fill write the level path in the inspector!" % self.name)
 			return

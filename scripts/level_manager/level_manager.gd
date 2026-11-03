@@ -15,6 +15,7 @@ class_name LevelManager extends Node
 
 ## example scenes you may want to load. Just copy/paste the string below: ##
 #new diner scene: res://scenes/levels/diner_hub.tscn
+#tutorial island: res://scenes/levels/terrain_3.tscn
 #old diner greybox: res://scenes/levels/testScenes/DinerLevel_test.tscn
 #movement playground: res://scenes/levels/movement_lab.tscn
 ##
