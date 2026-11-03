@@ -12,8 +12,11 @@ metallic = 1.0
 metallic_specular = 0.32
 roughness = 0.6
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_us1kw"]
+radius = 0.9158089
+
 [node name="DinnerBell" type="StaticBody3D" unique_id=1442131147]
-collision_layer = 513
+collision_mask = 15
 script = ExtResource("1_0momx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=971774474]
@@ -27,3 +30,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_21yr6")
 [node name="Node3D" parent="." unique_id=2022474363 instance=ExtResource("4_xeys2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26916194, 0)
 visible = false
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1283612243]
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1333010555]
+shape = SubResource("SphereShape3D_us1kw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
