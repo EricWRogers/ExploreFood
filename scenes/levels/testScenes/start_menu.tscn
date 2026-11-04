@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bqbq5ao504vsa" path="res://scenes/levels/testScenes/start_menu.gd" id="1_ljq4x"]
 [ext_resource type="FontFile" uid="uid://cq3is62qm38qe" path="res://assets/fonts/PasseroOne-Regular.ttf" id="2_2clre"]
+[ext_resource type="Texture2D" uid="uid://kk0rgk6lt0ds" path="res://assets/ui/ui_assets/menubuttonPlay.png" id="3_24yat"]
+[ext_resource type="Texture2D" uid="uid://613bobul84wf" path="res://assets/ui/ui_assets/menubuttonQuit.png" id="4_jyv5n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u3gwf"]
+texture = ExtResource("3_24yat")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dml8"]
+texture = ExtResource("3_24yat")
+modulate_color = Color(0.39215687, 0.29411766, 0.29411766, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhq03"]
+texture = ExtResource("3_24yat")
+modulate_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
 
 [node name="StartMenu" type="Control" unique_id=1906028576]
 layout_mode = 3
@@ -20,30 +33,25 @@ mouse_filter = 2
 color = Color(0.2784314, 0, 0.1882353, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=827626821]
+visible = false
 layout_mode = 1
-offset_right = 1504.0
-offset_bottom = 704.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1652275570]
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1429727782]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1172782211]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=110306389]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1751806737]
-custom_minimum_size = Vector2(1000, 300)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_2clre")
-theme_override_font_sizes/normal_font_size = 140
-text = "Strange Tastes"
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1633092750]
 visible = false
@@ -51,22 +59,26 @@ custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=44780573]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(200, 0)
 
-[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=553477754]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=2102942808]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=895486063]
-custom_minimum_size = Vector2(500, 100)
+visible = false
+custom_minimum_size = Vector2(350, 325)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2clre")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_u3gwf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3dml8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hhq03")
 text = "New Game"
 
 [node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
@@ -76,6 +88,7 @@ layout_mode = 2
 text = "Continue (useless)"
 
 [node name="Exit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=221770821]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -83,15 +96,125 @@ theme_override_fonts/font = ExtResource("2_2clre")
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=413210177]
-custom_minimum_size = Vector2(30, 20)
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1876533106]
+custom_minimum_size = Vector2(129.62, 165.27)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_24yat")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1525319747]
-custom_minimum_size = Vector2(1000, 500)
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=260137532]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = -608
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2" unique_id=1751806737]
+custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_2clre")
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 140
+text = "Strange Tastes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1441383199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = -294
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1077069463]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1684903987]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -38
+
+[node name="Start" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2017652196]
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("3_24yat")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=1279384281]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=41939003]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1216604235]
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("4_jyv5n")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=1737051634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=657005850]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1904431018]
+visible = false
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("3_24yat")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=2027861365]
+layout_mode = 2
+theme_override_constants/margin_left = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=420507174]
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1875975943]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_2clre")
+theme_override_font_sizes/normal_font_size = 34
 text = "WASD to walk around.
 Mouse to look around.
 Space to jump.
@@ -99,7 +222,14 @@ E to interact.
 Hold Shift to sprint.
 Click Shift to dash.
 1, 2, and 3 for the corresponding inventory space.
-Q for throw.
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1525319747]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_2clre")
+theme_override_font_sizes/normal_font_size = 34
+text = "Q for throw.
 F for cook.
 K to restart.
 Tab for cookbook.
@@ -111,3 +241,5 @@ P to Pause."
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2/Button" to="." method="_on_new_exit_button_pressed"]

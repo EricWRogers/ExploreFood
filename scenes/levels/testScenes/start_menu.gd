@@ -40,3 +40,18 @@ func _on_continue_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	started = true
+	
+	# load starting scene from level manager
+	Manager.level_manager.load_scene(Manager.level_manager.starting_scene)
+	print("loading scene: ", Manager.level_manager.starting_scene)
+	$".".hide()
+	pass # Replace with function body.
+
+
+func _on_new_exit_button_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
