@@ -17,12 +17,13 @@ const FOOD_TRAY = preload("uid://cwtpfule1qklh")
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var can_take_food : bool = false
 var is_paying: bool = false
 var is_eating: bool = true
 var my_seat : Object
 var my_exit: Object
 var my_succulent_meal
+var my_order
+var right_food : bool = true
 var order_distance = 1
 var angry_time = 15.0
 var satisfaction_time
@@ -56,10 +57,11 @@ var relationship: int = 0
 
 # change color #
 func _ready() -> void:
-	var customer_mat = customer_mesh.get_surface_override_material(0)
-	customer_mat = customer_mat.duplicate()
-	customer_mat.albedo_color = colors.pick_random()
-	customer_mesh.set_surface_override_material(0, customer_mat)
+	#var customer_mat = customer_mesh.get_surface_override_material(0)
+	#customer_mat = customer_mat.duplicate()
+	#customer_mat.albedo_color = colors.pick_random()
+	#customer_mesh.set_surface_override_material(0, customer_mat)
+	pass
 
 func _process(_delta: float) -> void:
 
@@ -138,6 +140,9 @@ func exit_state(state: State) -> void:
 		State.ORDER:
 			timer_progress.hide()
 			timer.stop()
+			$Bubble.hide()
+			$Bubble/Bubble2.hide()
+			$Bubble/Label.hide()
 		
 		State.EAT:
 			eating_sfx.play()
@@ -215,27 +220,32 @@ func set_exit(new_exit: Object):
 	my_exit = new_exit
 
 func set_order():
-	can_take_food = true
-	var order = load("res://scripts/resources/Meat_Pies.tres")
-	$Bubble/Bubble2.texture = order.icon
+	my_order = Manager.player_unlocked_recipes.product.instantiate()
+	$Bubble/Bubble2.texture = my_order.icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
 	$Bubble/Label.hide()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 
-	if body is BaseIngredient:
+	if (body is BaseIngredient or body is base_meal) and current_state == State.ORDER:
 		satisfaction_time = timer.time_left
-		can_take_food = false
-
-		change_state(State.EAT)
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
 		my_succulent_meal.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5
 		my_succulent_meal.linear_velocity = Vector3.ZERO
 		my_succulent_meal.global_rotation = Vector3.ZERO
 		my_succulent_meal.lock_rotation = true
-		my_succulent_meal.remove_from_group("Ingredient")
+		
+		if my_succulent_meal.is_in_group("Ingredient"):
+			my_succulent_meal.remove_from_group("Ingredient")
+		elif my_succulent_meal.is_in_group("Item"):
+			my_succulent_meal.remove_from_group("Item")
+		
+		if my_succulent_meal.id == my_order.id:
+			right_food = true
+		else:
+			right_food = false
 		change_state(State.EAT)
 		
 
@@ -253,7 +263,15 @@ func _on_timer_timeout() -> void:
 			upset_sfx.play()
 			change_state(State.LEAVE)
 		State.EAT:
-			$Bubble/Label.text = good_time.pick_random()
-			$Bubble.modulate = Color(0.68, 1.0, .68, .7)
-			$AnimatedSprite3D.frame = 1
-			change_state(State.PAY)
+			if right_food:
+				$Bubble/Label.text = good_time.pick_random()
+				$Bubble.modulate = Color(0.68, 1.0, .68, .7)
+				$AnimatedSprite3D.frame = 1
+				change_state(State.PAY)
+			else:
+				$Bubble/Label.text = bad_time.pick_random()
+				$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
+				$AnimatedSprite3D.frame = 2
+				upset_sfx.play()
+				change_state(State.LEAVE)
+				
