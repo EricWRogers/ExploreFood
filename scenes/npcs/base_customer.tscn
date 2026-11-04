@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://erl1hqc6xvfs" path="res://assets/ui/ui_assets/White_circle.png" id="2_l5bgl"]
 [ext_resource type="Texture2D" uid="uid://cv67callux6ok" path="res://assets/ui/ui_assets/cloudbubble.png" id="3_yu0lv"]
 [ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="4_wojjy"]
-[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="5_nslco"]
-[ext_resource type="Texture2D" uid="uid://d4nhempagt20r" path="res://assets/ui/ui_assets/checkmark-64.png" id="6_ti4rw"]
 [ext_resource type="AudioStream" uid="uid://bh1sjs1r8r7un" path="res://assets/sounds/SFX/freesound_community-eating-chips-81092.mp3" id="7_yu0lv"]
 [ext_resource type="AudioStream" uid="uid://b5g5fy43vsn0r" path="res://assets/sounds/SFX/ka-ching.mp3" id="8_nslco"]
 [ext_resource type="AudioStream" uid="uid://cbymwddad4ut3" path="res://assets/sounds/SFX/freesound_community-i-dont-like-you-87027.mp3" id="9_ti4rw"]
@@ -39,7 +37,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oluxd")
 [node name="Timer" type="Timer" parent="." unique_id=2068216514]
 
 [node name="TimerProgress" type="Sprite3D" parent="." unique_id=1741697270]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0426576, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4249067, 0)
 visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_yi5ll")
@@ -57,36 +55,26 @@ nine_patch_stretch = true
 texture_progress = ExtResource("2_l5bgl")
 
 [node name="Bubble" type="Sprite3D" parent="." unique_id=1181671988]
-transform = Transform3D(0.5, 0, 0, 0, 0.444, 0, 0, 0, 0.444, 0, 3.2870321, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.3022785, 0)
 visible = false
 modulate = Color(1, 1, 1, 0.6862745)
-billboard = 1
+billboard = 2
 texture = ExtResource("3_yu0lv")
 
 [node name="Bubble2" type="Sprite3D" parent="Bubble" unique_id=660363220]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 1.7922509, 0, -0.69367427)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -0.83422947, 0)
 visible = false
+billboard = 2
 render_priority = 1
 texture = ExtResource("4_wojjy")
 
-[node name="Bubble3" type="Sprite3D" parent="Bubble" unique_id=366750302]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -1.5332499, 0, -0.69367427)
-visible = false
-render_priority = 1
-texture = ExtResource("5_nslco")
-
-[node name="Success" type="Sprite3D" parent="Bubble" unique_id=1510111246]
-transform = Transform3D(7.750003, 0, 0, 0, 7.750003, 0, 0, 0, 7.7500005, 0.072033666, -0.43631554, -0.69367427)
-visible = false
-render_priority = 2
-texture = ExtResource("6_ti4rw")
-
 [node name="Label" type="Label3D" parent="Bubble" unique_id=1075736832]
-transform = Transform3D(2.8169017, 0, 0, 0, 3.2786887, 0, 0, 0, 3.5087721, 0, -0.146, 0)
+transform = Transform3D(2.8169017, 0, 0, 0, 3.2786887, 0, 0, 0, 3.5087721, 0, 0, 0)
+visible = false
 billboard = 2
 render_priority = 1
 modulate = Color(0, 0, 0, 0.6862745)
-text = "+"
+text = "?"
 font_size = 95
 autowrap_mode = 2
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="1_5m0m5"]
 [ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="1_1138b"]
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_r2p4k"]
+[ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="2_4djqh"]
 
 [sub_resource type="Resource" id="Resource_0splx"]
 resource_name = "Baked Bread"
@@ -29,6 +30,7 @@ metadata/_custom_type_script = "uid://bgvxr2q1wxr3m"
 [resource]
 script = ExtResource("1_5m0m5")
 recipe_name = "Meat Pies with Tear Sauce"
+icon = ExtResource("2_4djqh")
 product = ExtResource("1_1138b")
 food_group_array = Array[ExtResource("1_r2p4k")]([SubResource("Resource_0splx"), SubResource("Resource_sgldq"), SubResource("Resource_fhgkx")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

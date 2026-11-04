@@ -216,37 +216,11 @@ func set_exit(new_exit: Object):
 
 func set_order():
 	can_take_food = true
-	return
-	#ignore rest of it
+	var order = load("res://scripts/resources/Meat_Pies.tres")
+	$Bubble/Bubble2.texture = order.icon
 	$Bubble.show()
-	for i in range(0,2):
-		var rand = randi_range(1, 6)
-		var to_change
-		if i == 1:
-			to_change = $Bubble/Bubble2
-		else:
-			to_change = $Bubble/Bubble3
-		match rand:
-			1:
-				to_change.texture = Manager.TERRY_ICON
-				Manager.askers_request.append(1)
-			2:
-				to_change.texture = Manager.WAFFLE_ICON
-				Manager.askers_request.append(2)
-			3:
-				to_change.texture = Manager.BUTTERFROG_ICON
-				Manager.askers_request.append(3)
-			4:
-				to_change.texture = Manager.DOUGH_BABY_ICON_NEW
-				Manager.askers_request.append(7)
-			5:
-				to_change.texture = Manager.DROPLET_ICON
-				Manager.askers_request.append(5)
-			6:
-				to_change.texture = Manager.MEAT_BALL
-				Manager.askers_request.append(8)
-	Manager.askers_request.sort()
-
+	$Bubble/Bubble2.show()
+	$Bubble/Label.hide()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 
@@ -270,7 +244,7 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	$Bubble.show()
 	$Bubble/Bubble2.hide()
-	$Bubble/Bubble3.hide()
+	$Bubble/Label.show()
 	match current_state:
 		State.ORDER:
 			$Bubble/Label.text = bad_time.pick_random()
