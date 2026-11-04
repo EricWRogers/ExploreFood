@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dp3pht34fixeq"]
 
 [ext_resource type="Texture2D" uid="uid://byhaoiloqt8r1" path="res://assets/test_images/frutiger.png" id="1_rhjjt"]
+[ext_resource type="Script" uid="uid://b4ymtq7ofv7uj" path="res://scenes/ui/food_menu_scroll_items.gd" id="2_icghc"]
 
-[node name="TextureRect" type="TextureRect" unique_id=248977429]
+[node name="food_menu_scroll_items" type="TextureRect" unique_id=248977429]
 texture = ExtResource("1_rhjjt")
 expand_mode = 5
+script = ExtResource("2_icghc")
 
 [node name="meal name" type="Label" parent="." unique_id=1732586693]
 layout_mode = 0
@@ -34,3 +36,5 @@ offset_right = 577.0
 offset_bottom = 276.0
 mouse_filter = 1
 text = "Order Up!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
