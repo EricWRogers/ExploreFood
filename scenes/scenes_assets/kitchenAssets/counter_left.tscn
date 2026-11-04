@@ -10,15 +10,16 @@ metallic = 1.0
 metallic_texture = ExtResource("2_2mkja")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
-size = Vector3(1.99, 1.15, 1.1899999)
+size = Vector3(2.0217822, 1.1431091, 1.3961328)
 
 [node name="Counter_Left" type="StaticBody3D" unique_id=1894709827]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 
 [node name="CounterL_MeshInstance" type="MeshInstance3D" parent="." unique_id=2139505558]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, -0.11844523, 0, -0.23688993)
 material_override = SubResource("StandardMaterial3D_aw20g")
 mesh = ExtResource("1_6cies")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1239672923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013834834, 0.5722206, 0.0016265512)
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0.08855864, 0.56877553, -0.13553987)
 shape = SubResource("BoxShape3D_qdy4q")

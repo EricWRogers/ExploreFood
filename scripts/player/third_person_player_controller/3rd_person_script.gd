@@ -89,6 +89,18 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_gravity_retain = _gravity
 	max_spring_length = shadow.spring_length
+	if !Manager.inventory.is_empty():
+
+		for thing in Manager.inventory:
+			if thing == null:
+				continue
+			var thing_path = thing.scene_file_path
+			var thingy = load(thing_path).instantiate()
+			get_tree().current_scene.add_child(thingy)
+			pickup_item(thingy)
+		inventory = Manager.inventory.duplicate(true)
+		
+
 	
 ## attempt at making controller input auto switch (doesnt work)
 #func _input(event: InputEvent) -> void:
@@ -243,6 +255,7 @@ func pickup_item(item: RigidBody3D, preferred_slot: int = -1) -> bool:
 		return false
 
 	inventory[target_slot] = item
+	Manager.inventory = inventory.duplicate(true)
 
 	$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
 	item._held_slot = target_slot

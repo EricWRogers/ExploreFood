@@ -48,6 +48,12 @@ var relationship: int = 0
 #mesh
 @onready var customer_mesh: MeshInstance3D = $BodyMeshInstance
 
+#Sound Effects!
+@onready var eating_sfx: AudioStreamPlayer3D = $EatingSFX
+@onready var tip_sfx: AudioStreamPlayer3D = $TipSFX
+@onready var upset_sfx: AudioStreamPlayer3D = $UpsetSFX
+
+
 # change color #
 func _ready() -> void:
 	var customer_mat = customer_mesh.get_surface_override_material(0)
@@ -84,7 +90,6 @@ func change_state(new_state: State) -> void:
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
-	print(current_state)
 	
 func enter_state(state: State) -> void:
 	match state:
@@ -135,6 +140,7 @@ func exit_state(state: State) -> void:
 			timer.stop()
 		
 		State.EAT:
+			eating_sfx.play()
 			tray.queue_free()
 			my_succulent_meal.queue_free()
 
@@ -173,6 +179,7 @@ func state_eat(_delta:float):
 func state_pay(_delta: float) -> void:
 	if !is_paying:
 		is_paying = true
+		tip_sfx.play()
 		var tip = int(satisfaction_time)
 		timer.stop()
 		
@@ -246,6 +253,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseIngredient:
 		satisfaction_time = timer.time_left
 		can_take_food = false
+
 		change_state(State.EAT)
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
@@ -254,6 +262,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		my_succulent_meal.global_rotation = Vector3.ZERO
 		my_succulent_meal.lock_rotation = true
 		my_succulent_meal.remove_from_group("Ingredient")
+		change_state(State.EAT)
 		
 
 
@@ -267,6 +276,7 @@ func _on_timer_timeout() -> void:
 			$Bubble/Label.text = bad_time.pick_random()
 			$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
 			$AnimatedSprite3D.frame = 2
+			upset_sfx.play()
 			change_state(State.LEAVE)
 		State.EAT:
 			$Bubble/Label.text = good_time.pick_random()

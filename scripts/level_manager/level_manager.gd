@@ -13,6 +13,8 @@ class_name LevelManager extends Node
 ##whichever scene you want to load when you start the game. I promise to one day make it not an annoying string
 @export var starting_scene: String
 
+
+
 ## example scenes you may want to load. Just copy/paste the string below: ##
 #new diner scene: res://scenes/levels/diner_hub.tscn
 #tutorial island: res://scenes/levels/terrain_3.tscn
