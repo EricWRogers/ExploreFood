@@ -100,9 +100,7 @@ func _ready() -> void:
 			pickup_item(thingy)
 		inventory = Manager.inventory.duplicate(true)
 		
-		print(inventory)
-	else:
-		print("Manager is empty")
+
 	
 ## attempt at making controller input auto switch (doesnt work)
 #func _input(event: InputEvent) -> void:
@@ -258,7 +256,6 @@ func pickup_item(item: RigidBody3D, preferred_slot: int = -1) -> bool:
 
 	inventory[target_slot] = item
 	Manager.inventory = inventory.duplicate(true)
-	print(Manager.inventory)
 
 	$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
 	item._held_slot = target_slot

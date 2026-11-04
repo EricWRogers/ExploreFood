@@ -90,7 +90,6 @@ func change_state(new_state: State) -> void:
 	exit_state(current_state)
 	current_state = new_state
 	enter_state(current_state)
-	print(current_state)
 	
 func enter_state(state: State) -> void:
 	match state:
@@ -254,6 +253,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseIngredient:
 		satisfaction_time = timer.time_left
 		can_take_food = false
+
 		change_state(State.EAT)
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
@@ -262,6 +262,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		my_succulent_meal.global_rotation = Vector3.ZERO
 		my_succulent_meal.lock_rotation = true
 		my_succulent_meal.remove_from_group("Ingredient")
+		change_state(State.EAT)
 		
 
 
