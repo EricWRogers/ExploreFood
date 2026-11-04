@@ -48,6 +48,12 @@ var relationship: int = 0
 #mesh
 @onready var customer_mesh: MeshInstance3D = $BodyMeshInstance
 
+#Sound Effects!
+@onready var eating_sfx: AudioStreamPlayer3D = $EatingSFX
+@onready var tip_sfx: AudioStreamPlayer3D = $TipSFX
+@onready var upset_sfx: AudioStreamPlayer3D = $UpsetSFX
+
+
 # change color #
 func _ready() -> void:
 	var customer_mat = customer_mesh.get_surface_override_material(0)
@@ -135,6 +141,7 @@ func exit_state(state: State) -> void:
 			timer.stop()
 		
 		State.EAT:
+			eating_sfx.play()
 			tray.queue_free()
 			my_succulent_meal.queue_free()
 
@@ -173,6 +180,7 @@ func state_eat(_delta:float):
 func state_pay(_delta: float) -> void:
 	if !is_paying:
 		is_paying = true
+		tip_sfx.play()
 		var tip = int(satisfaction_time)
 		timer.stop()
 		
@@ -267,6 +275,7 @@ func _on_timer_timeout() -> void:
 			$Bubble/Label.text = bad_time.pick_random()
 			$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
 			$AnimatedSprite3D.frame = 2
+			upset_sfx.play()
 			change_state(State.LEAVE)
 		State.EAT:
 			$Bubble/Label.text = good_time.pick_random()

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dodm11ohml1rt"]
 
 [ext_resource type="Script" uid="uid://bqbq5ao504vsa" path="res://scenes/levels/testScenes/start_menu.gd" id="1_ljq4x"]
+[ext_resource type="FontFile" uid="uid://cq3is62qm38qe" path="res://assets/fonts/PasseroOne-Regular.ttf" id="2_2clre"]
 
 [node name="StartMenu" type="Control" unique_id=1906028576]
 layout_mode = 3
@@ -40,6 +41,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1751806737]
 custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_2clre")
 theme_override_font_sizes/normal_font_size = 140
 text = "Strange Tastes"
 
@@ -63,6 +65,8 @@ layout_mode = 2
 [node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=895486063]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2clre")
+theme_override_font_sizes/font_size = 50
 text = "New Game"
 
 [node name="Continue" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=93131726]
@@ -75,6 +79,8 @@ text = "Continue (useless)"
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_fonts/font = ExtResource("2_2clre")
+theme_override_font_sizes/font_size = 50
 text = "Exit"
 
 [node name="Control2" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=413210177]
@@ -82,8 +88,10 @@ custom_minimum_size = Vector2(30, 20)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1525319747]
-custom_minimum_size = Vector2(750, 400)
+custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_2clre")
+theme_override_font_sizes/normal_font_size = 27
 text = "WASD to walk around.
 Mouse to look around.
 Space to jump.
