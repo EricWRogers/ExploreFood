@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://de16mu71m0w67"]
 
 [ext_resource type="ArrayMesh" uid="uid://bgw4t8judqrcm" path="res://assets/models/BW_Barn.obj" id="1_btqlm"]
+[ext_resource type="Texture2D" uid="uid://oescw2get052" path="res://assets/textures/BreadWorldTextures/BW_Barn_Mat.png" id="1_rfpo6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxu1k"]
+albedo_texture = ExtResource("1_rfpo6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
 albedo_color = Color(0.49, 0.22736003, 0.1617, 1)
@@ -30,6 +34,7 @@ points = PackedVector3Array(4.645, -0.5, -4.6, 4.645, -0.5, 4.5, -4.45, -0.5, 4.
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="BarnMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1560791016]
+material_override = SubResource("StandardMaterial3D_hxu1k")
 mesh = ExtResource("1_btqlm")
 surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
 surface_material_override/1 = SubResource("StandardMaterial3D_klsck")
