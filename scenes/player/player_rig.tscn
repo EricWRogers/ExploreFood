@@ -1,5 +1,27 @@
 [gd_scene format=3 uid="uid://dshe0mt0luia6"]
 
 [ext_resource type="PackedScene" uid="uid://dqknfjwai4r8a" path="res://assets/models/Character Rig/PlayerRigStrangeTastes.glb" id="1_je2xj"]
+[ext_resource type="Texture2D" uid="uid://bltd4tpuoemb8" path="res://assets/textures/Player/PlayerTextures.png" id="2_g645d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyr5b"]
+cull_mode = 2
+albedo_texture = ExtResource("2_g645d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcwkd"]
+cull_mode = 2
+albedo_texture = ExtResource("2_g645d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m5xl"]
+cull_mode = 2
+albedo_texture = ExtResource("2_g645d")
 
 [node name="PlayerRigStrangeTastes" unique_id=1517707414 instance=ExtResource("1_je2xj")]
+
+[node name="Body" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="0" unique_id=1604262912]
+material_override = SubResource("StandardMaterial3D_oyr5b")
+
+[node name="Hair" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="1" unique_id=1625226553]
+material_override = SubResource("StandardMaterial3D_tcwkd")
+
+[node name="Hat" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="2" unique_id=2143356753]
+material_override = SubResource("StandardMaterial3D_2m5xl")
