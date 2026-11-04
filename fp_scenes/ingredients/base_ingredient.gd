@@ -83,7 +83,7 @@ func _become_dropped():
 	_apply_light_drop_impulse(last_dir)
 	set_collision_layer_value(3, false)
 	#if dropping doughBaby kill it
-	if id == 2:
+	if id == 2 and get_parent().name == "DoughBabyParent":
 		get_parent().is_dead()
 	$Reactivate.start()
 	
