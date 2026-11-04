@@ -49,7 +49,6 @@ func _on_button_pressed() -> void:
 	Manager.level_manager.load_scene(Manager.level_manager.starting_scene)
 	print("loading scene: ", Manager.level_manager.starting_scene)
 	$".".hide()
-	pass # Replace with function body.
 
 
 func _on_new_exit_button_pressed() -> void:

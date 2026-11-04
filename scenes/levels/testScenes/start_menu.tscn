@@ -106,32 +106,30 @@ texture = ExtResource("3_24yat")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=380448143]
-custom_minimum_size = Vector2(-0.7, 0)
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=434953791]
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1076.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer2" unique_id=380448143]
+custom_minimum_size = Vector2(-0.7, 0)
+layout_mode = 2
 offset_transform_enabled = true
-theme_override_constants/margin_left = 264
+theme_override_constants/margin_left = -1199
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer3" unique_id=1833399203]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/MarginContainer3" unique_id=1833399203]
 layout_mode = 2
 texture = ExtResource("4_12p7d")
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=260137532]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 512
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer2" unique_id=260137532]
+layout_mode = 2
+theme_override_constants/margin_left = -1225
 theme_override_constants/margin_top = -794
 theme_override_constants/margin_right = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2" unique_id=1751806737]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/MarginContainer2" unique_id=1751806737]
 custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -141,96 +139,26 @@ text = "Strange Tastes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1441383199]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -9
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer2" unique_id=1441383199]
+layout_mode = 2
+theme_override_constants/margin_left = -736
 theme_override_constants/margin_top = -312
 theme_override_constants/margin_bottom = -294
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1077069463]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/MarginContainer" unique_id=1077069463]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1684903987]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = -38
-
-[node name="Start" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2017652196]
-custom_minimum_size = Vector2(420, 250)
-layout_mode = 2
-texture = ExtResource("3_24yat")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=1279384281]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 34
-text = "New Game"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=41939003]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1216604235]
-custom_minimum_size = Vector2(420, 250)
-layout_mode = 2
-texture = ExtResource("4_jyv5n")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=1737051634]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 34
-text = "Exit"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=657005850]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1904431018]
-visible = false
-custom_minimum_size = Vector2(420, 250)
-layout_mode = 2
-texture = ExtResource("3_24yat")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=2027861365]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer2/MarginContainer/HBoxContainer" unique_id=2027861365]
 layout_mode = 2
 theme_override_constants/margin_left = 86
+theme_override_constants/margin_right = 149
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=420507174]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/MarginContainer/HBoxContainer/MarginContainer" unique_id=420507174]
 layout_mode = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1875975943]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer2/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1875975943]
 custom_minimum_size = Vector2(300, 250)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -245,7 +173,7 @@ Click Shift to dash.
 1, 2, and 3 for the corresponding inventory space.
 "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1525319747]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1525319747]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -260,8 +188,74 @@ Escape frees mouse.
 Option to toggle persepctive.
 P to Pause."
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2/MarginContainer/HBoxContainer" unique_id=1684903987]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -38
+
+[node name="Start" type="TextureRect" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2017652196]
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("3_24yat")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=1279384281]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/Start" unique_id=41939003]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1216604235]
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("4_jyv5n")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=1737051634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/TextureRect2" unique_id=657005850]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1904431018]
+visible = false
+custom_minimum_size = Vector2(420, 250)
+layout_mode = 2
+texture = ExtResource("3_24yat")
+expand_mode = 1
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/TextureRect2/Button" to="." method="_on_new_exit_button_pressed"]
+[connection signal="pressed" from="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/Start/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer2/MarginContainer/HBoxContainer/VBoxContainer/TextureRect2/Button" to="." method="_on_new_exit_button_pressed"]
