@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cg0rdmkrymcnb"]
 
 [ext_resource type="PackedScene" uid="uid://dp3pht34fixeq" path="res://scenes/ui/food_menu_scroll_items.tscn" id="1_lypqw"]
+[ext_resource type="Script" uid="uid://6f11amxilv8w" path="res://scenes/ui/diner_menu_selector.gd" id="1_ngx34"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yckxo"]
 
@@ -26,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ngx34")
 
 [node name="Control" type="Control" parent="." unique_id=1708378498]
 anchors_preset = 0
@@ -45,13 +47,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" parent="Control/ScrollContainer/VBoxContainer" unique_id=248977429 instance=ExtResource("1_lypqw")]
+[node name="food_menu_scroll_items" parent="Control/ScrollContainer/VBoxContainer" unique_id=248977429 instance=ExtResource("1_lypqw")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=1573796938]
 layout_mode = 0
 offset_right = 620.0
 offset_bottom = 206.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Select a menu for the day"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=433035321]
+z_index = -3
+layout_mode = 0
+offset_right = 622.0
+offset_bottom = 1034.0
+mouse_filter = 2
