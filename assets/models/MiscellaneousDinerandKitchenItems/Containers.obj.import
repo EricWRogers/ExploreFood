@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cru5pbs783lg5"
+path="res://.godot/imported/Containers.obj-e7c4325f897d62fa55b72e64049fafba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Containers.obj-e7c4325f897d62fa55b72e64049fafba.mesh"]
+
+source_file="res://assets/models/MiscellaneousDinerandKitchenItems/Containers.obj"
+dest_files=["res://.godot/imported/Containers.obj-e7c4325f897d62fa55b72e64049fafba.mesh", "res://.godot/imported/Containers.obj-e7c4325f897d62fa55b72e64049fafba.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
