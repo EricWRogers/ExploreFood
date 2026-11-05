@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c48yrkgvbcb81"]
+
+[ext_resource type="Script" uid="uid://5sno6u0tgxae" path="res://recipe_pickup.gd" id="1_bvc5s"]
+[ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="2_7srh8"]
+[ext_resource type="Texture2D" uid="uid://bcteto12x3ndi" path="res://icon.svg" id="3_0nsg2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+radius = 0.74091387
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3436"]
+albedo_color = Color(1, 0.6392157, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_khypw"]
+material = SubResource("StandardMaterial3D_s3436")
+size = Vector3(1, 1, 0.0947876)
+
+[node name="RecipePickup" type="Node3D" unique_id=61122398]
+script = ExtResource("1_bvc5s")
+recipe = ExtResource("2_7srh8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=185363061]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=334628449]
+shape = SubResource("SphereShape3D_gtwna")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1587005635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03427124)
+mesh = SubResource("BoxMesh_khypw")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1478015367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23487103, 0.014264822)
+text = "Really Cool
+Cook Book"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=282603877]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.18096142, 0.031335354)
+texture = ExtResource("3_0nsg2")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

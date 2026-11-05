@@ -1,0 +1,39 @@
+[gd_resource type="Environment" format=3 uid="uid://u64weibhhadt"]
+
+[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="1_58tnp"]
+
+[sub_resource type="Gradient" id="Gradient_o0k7j"]
+offsets = PackedFloat32Array(0, 0.12463768, 0.8811594, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.15274468, 0.10550579, 0.08069567, 1, 0.8308129, 0.88610184, 0.8919141, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xmpmc"]
+gradient = SubResource("Gradient_o0k7j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ynox"]
+shader = ExtResource("1_58tnp")
+shader_parameter/sky_color = Color(0.37906295, 0.509009, 0.7173186, 1)
+shader_parameter/horizon_color = Color(0.95, 0.646, 0.18999998, 1)
+shader_parameter/horizon_blur = 0.450000021375
+shader_parameter/sun_color = Color(1, 0.922, 0.74, 1)
+shader_parameter/sun_size = 0.14600000623648
+shader_parameter/sun_blur = 0.0550000026125
+shader_parameter/cloud_color = Color(0.96989816, 0.9653265, 0.76485455, 1)
+shader_parameter/cloud_edge_sharpness = 0.150000007125
+shader_parameter/cloud_scale = 1.5000000679901202
+shader_parameter/cloud_speed = 0.0050000002375
+
+[sub_resource type="Sky" id="Sky_iubr8"]
+sky_material = SubResource("ShaderMaterial_6ynox")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_iubr8")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.45
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 1.15
+fog_mode = 1
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_xmpmc")
