@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://njehgw3a3x0g"]
+
+[ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/UI/Diner/recipe_ui_node.tscn" id="1_j0idh"]
+
+[node name="DinerBellMenu" type="Control" unique_id=2132693350]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1407907163]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=1336015711]
+layout_mode = 2
+columns = 3
+
+[node name="RecipeUINode" parent="MarginContainer/GridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode2" parent="MarginContainer/GridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode3" parent="MarginContainer/GridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode4" parent="MarginContainer/GridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode5" parent="MarginContainer/GridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
+layout_mode = 2
