@@ -2,17 +2,20 @@ extends CharacterBody3D
 
 const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
-@onready var animation_player: AnimationPlayer = $"../../../AnimationPlayer"
-@onready var path_follow_3d: PathFollow3D = $".."
-@onready var path_3d: Path3D = $"../.."
+@onready var base_nd: BaseIngredientND = $BaseND
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var smart_dough_baby: Node3D = $"../../.."
-@onready var running_point_1: Node3D = $"../../../EscapePoints/RunningPoint1"
-@onready var running_point_2: Node3D = $"../../../EscapePoints/RunningPoint2"
-@onready var running_point_3: Node3D = $"../../../EscapePoints/RunningPoint3"
-@onready var running_point_4: Node3D = $"../../../EscapePoints/RunningPoint4"
+@onready var running_point_1: Node3D = $"../EscapePoints/RunningPoint1"
+@onready var running_point_2: Node3D = $"../EscapePoints/RunningPoint2"
+@onready var running_point_3: Node3D = $"../EscapePoints/RunningPoint3"
+@onready var running_point_4: Node3D = $"../EscapePoints/RunningPoint4"
+@export var frolic_radius: float = 4.0
+@export var frolic_speed: float = 2.0
+@export var frolic_points: int = 12
 
+var frolic_angle: float = 0.0
+var frolic_center: Vector3
 
 
 
@@ -40,8 +43,6 @@ func _ready() -> void:
 	if player == null:
 		push_error("NO PLAYER FOUND")
 		return
-	
-	path_follow_3d.progress_ratio = randf()
 	
 	change_state(State.FROLIC)
 
@@ -81,9 +82,10 @@ func enter_state(state: State) -> void:
 		State.FROLIC:
 			animation_player.play("Frolic")
 
-			path_3d.global_position = global_position + Vector3(4.0, 0, 0)
+			frolic_center = global_position
+			frolic_angle = randf_range(0.0, TAU)
 
-			reparent(path_follow_3d)
+			set_next_frolic_target()
 
 		State.WATCH:
 			pass
@@ -95,9 +97,7 @@ func enter_state(state: State) -> void:
 func exit_state(state: State) -> void:
 	match state:
 		State.FROLIC:
-			animation_player.stop(false)
-			reparent(smart_dough_baby)
-
+			animation_player.stop()
 		State.WATCH:
 			pass
 
@@ -107,14 +107,26 @@ func exit_state(state: State) -> void:
 
 
 func state_frolic(delta: float) -> void:
-	# Move forward along the Path3D.
-	path_follow_3d.progress += anim_speed * delta
 	# Check whether the player is nearby.
-	if distance_to_player_squared < stranger_danger ** 2:
-		change_state(State.RUN)
+	#if distance_to_player_squared < stranger_danger ** 2:
+		#change_state(State.RUN)
+		#return
+	#elif distance_to_player_squared < watch_distance ** 2:
+		#change_state(State.WATCH)
+		#return
 
-	elif distance_to_player_squared < watch_distance ** 2:
-		change_state(State.WATCH)
+	# Pick the next point when we reach the current one.
+	if navigation_agent_3d.is_navigation_finished():
+		set_next_frolic_target()
+
+	var next_nav_point = navigation_agent_3d.get_next_path_position()
+	var direction = (next_nav_point - global_position).normalized()
+
+	if direction.length_squared() > 0.001:
+		look_at(global_position - direction, Vector3.UP)
+
+	velocity = direction * frolic_speed
+	move_and_slide()
 
 
 func state_watch(_delta: float) -> void:
@@ -172,5 +184,18 @@ func state_run(_delta: float) -> void:
 	move_and_slide()
 
 func is_dead():
+	set_collision_layer_value(1, false)
+	base_nd.set_collision_layer_value(1, false)
 	reparent(get_tree().current_scene)
 	change_state(State.DEAD)
+
+func set_next_frolic_target() -> void:
+	frolic_angle += TAU / frolic_points
+
+	var target_position = frolic_center + Vector3(
+		cos(frolic_angle) * frolic_radius,
+		0.0,
+		sin(frolic_angle) * frolic_radius
+	)
+
+	navigation_agent_3d.set_target_position(target_position)

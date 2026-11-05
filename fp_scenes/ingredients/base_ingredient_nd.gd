@@ -83,8 +83,6 @@ func _become_dropped():
 	_apply_light_drop_impulse(last_dir)
 	set_collision_layer_value(3, false)
 	#if dropping doughBaby kill it
-	if id == 2 and get_parent().name == "DoughBabyParent":
-		get_parent().is_dead()
 	$Reactivate.start()
 	
 
@@ -97,6 +95,8 @@ func _become_held(pnt):
 	set_collision_layer_value(3, false)
 	_held_point = pnt
 	freeze = true
+	if id == 2 and get_parent().name == "DoughBabyParent":
+		get_parent().is_dead()
 	
 func _become_stored():
 	hide()
