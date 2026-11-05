@@ -17,6 +17,7 @@ func switch_to_oven():
 			cam.set_priority(0)
 		else:
 			cam.set_priority(1)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	switch_to_regular()

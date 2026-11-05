@@ -31,7 +31,7 @@ func start_rush_hour():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and !Manager.player_unlocked_recipes.is_empty():
 		on_looked_at()
 		player_close = true
 
