@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bowc4ooppdkek"]
+
+[ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/UI/Diner/recipe_ui_node.tscn" id="1_n86j1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uouuo"]
+bg_color = Color(0.13730788, 0.1188774, 0.115054734, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.8311134, 0.7898915, 0.78290576, 1)
+
+[node name="diner_menu_display" type="Control" unique_id=119671671]
+custom_maximum_size = Vector2(512, 688)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1076410733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uouuo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=120064760]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1111.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1001438147]
+layout_mode = 2
+theme_override_constants/separation = -24
+
+[node name="RecipeUINode" parent="Panel/MarginContainer/VBoxContainer" unique_id=1984261646 instance=ExtResource("1_n86j1")]
+layout_mode = 2
+
+[node name="RecipeUINode2" parent="Panel/MarginContainer/VBoxContainer" unique_id=2095041144 instance=ExtResource("1_n86j1")]
+layout_mode = 2
