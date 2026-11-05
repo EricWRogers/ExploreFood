@@ -9,16 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://b6nraai7wmg0d" path="res://assets/textures/temp/refs.png" id="5_jjp07"]
 [ext_resource type="Material" uid="uid://dixr4lu0ueq4a" path="res://assets/materials/diner_greybox_pink.tres" id="6_jjp07"]
 [ext_resource type="Material" uid="uid://byyjqk7ipsgud" path="res://assets/materials/diner_greybox_metal.tres" id="7_550bw"]
-[ext_resource type="PackedScene" uid="uid://bmalq3ihe10ji" path="res://fp_scenes/kitchen/scenes/cuttingtable.tscn" id="9_ap8ml"]
-[ext_resource type="PackedScene" uid="uid://dhcy2uefcvcx6" path="res://fp_scenes/kitchen/scenes/pan_grill.tscn" id="10_fcuss"]
 [ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="11_6ynox"]
 [ext_resource type="PackedScene" uid="uid://1fk3womvmyn" path="res://scenes/scenes_assets/kitchenAssets/counter_left.tscn" id="12_mrweq"]
 [ext_resource type="PackedScene" uid="uid://b766qh50kppxi" path="res://scenes/scenes_assets/kitchenAssets/counter_middle.tscn" id="13_vknda"]
-[ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="14_fmo2d"]
 [ext_resource type="PackedScene" uid="uid://256jfh5xv3qy" path="res://scenes/scenes_assets/kitchenAssets/counter_right.tscn" id="15_nwjeg"]
-[ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="16_i1uo6"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="16_mrweq"]
+[ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="17_64sq4"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="17_ap8ml"]
+[ext_resource type="Texture2D" uid="uid://bwtasbrti8sms" path="res://fp_scenes/kitchen/textures/cutetile.png" id="18_ap8ml"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
@@ -63,6 +61,15 @@ albedo_color = Color(0.92549175, 0.00011262596, 0.7440698, 1)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6xqmx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcuss"]
+size = Vector3(11.352051, 1.749, 17.635803)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ynox"]
+shading_mode = 0
+albedo_color = Color(0.78, 0.78, 0.78, 1)
+albedo_texture = ExtResource("18_ap8ml")
+uv1_scale = Vector3(40, 37.905, 40)
 
 [node name="DinerHUB" type="Node3D" unique_id=1374841576]
 
@@ -146,18 +153,10 @@ material = ExtResource("5_3gldf")
 transform = Transform3D(0.55, 0, 3.5527137e-15, 0, 0.55, 0, -3.5527137e-15, 0, 0.55, -1.4286919, 0, -9.400001)
 collision_mask = 5
 
-[node name="CuttingStation" parent="KitchenProps/Appliances" unique_id=1032888304 instance=ExtResource("9_ap8ml")]
-transform = Transform3D(-7.648999e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -7.648999e-08, 0.021309853, 0.5371945, -2)
-
-[node name="Kitchentable" parent="KitchenProps/Appliances/CuttingStation" index="1" unique_id=40878475]
-visible = false
-
-[node name="PanGrill" parent="KitchenProps/Appliances" unique_id=761239173 instance=ExtResource("10_fcuss")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.499997, 1.3000001, -1.2999998)
-
 [node name="Counters" type="Node3D" parent="KitchenProps" unique_id=460153613]
 
 [node name="FrontWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=2039551068]
+visible = false
 
 [node name="Counter_Left" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1673819292 instance=ExtResource("12_mrweq")]
 transform = Transform3D(1.0499998, 0, 3.5527137e-15, 0, 1.0499998, 0, -3.5527137e-15, 0, 1.0499998, -4.5786915, 0, -9.250001)
@@ -169,6 +168,7 @@ transform = Transform3D(1.0499998, 0, 3.5527137e-15, 0, 1.0499998, 0, -3.5527137
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 3.988206, 0, -9.250001)
 
 [node name="RightWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=431922436]
+visible = false
 
 [node name="Counter_Middle" parent="KitchenProps/Counters/RightWallCounters" unique_id=272959201 instance=ExtResource("13_vknda")]
 transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.4102163, 0, -7.575188)
@@ -176,57 +176,11 @@ transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.710106
 [node name="Counter_Right4" parent="KitchenProps/Counters/RightWallCounters" unique_id=1894709827 instance=ExtResource("15_nwjeg")]
 transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.4102144, 0, -5.475188)
 
-[node name="ScriptlessOven" parent="KitchenProps/Counters/RightWallCounters" unique_id=2124001694 instance=ExtResource("14_fmo2d")]
-transform = Transform3D(-1.9670125e-07, 0, -4.5, 0, 4.5, 0, 4.5, 0, -1.9670125e-07, 4.6102114, 0, -3.375188)
-
-[node name="ScriptlessOven1" parent="KitchenProps/Counters/RightWallCounters" unique_id=553537110 instance=ExtResource("14_fmo2d")]
-transform = Transform3D(-1.9670125e-07, 0, -4.5, 0, 4.5, 0, 4.5, 0, -1.9670125e-07, 4.6102133, 0, -1.675188)
-
-[node name="ScriptlessOven2" parent="KitchenProps/Counters/RightWallCounters" unique_id=739465770 instance=ExtResource("14_fmo2d")]
-transform = Transform3D(-1.9670125e-07, 0, -4.5, 0, 4.5, 0, 4.5, 0, -1.9670125e-07, 4.6102133, 0, -0.025187891)
-
 [node name="Counter_Left4" parent="KitchenProps/Counters/RightWallCounters" unique_id=418017624 instance=ExtResource("12_mrweq")]
 transform = Transform3D(-4.5896947e-08, 0, -1.0499998, 0, 1.0499998, 0, 1.0499998, 0, -4.5896947e-08, 4.4036913, 0, 2.102927)
 
 [node name="Counter_Middle3" parent="KitchenProps/Counters/RightWallCounters" unique_id=68529361 instance=ExtResource("13_vknda")]
 transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.3986254, 0, 4.1918483)
-
-[node name="BackWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=1438923992]
-
-[node name="Counter_Left2" parent="KitchenProps/Counters/BackWallCounters" unique_id=1720854742 instance=ExtResource("12_mrweq")]
-transform = Transform3D(-1.0499998, 0, -9.179391e-08, 0, 1.0499998, 0, 9.179391e-08, 0, -1.0499998, 3.9213114, 0, 5.849999)
-
-[node name="Counter_Sink" parent="KitchenProps/Counters/BackWallCounters" unique_id=503217251 instance=ExtResource("16_i1uo6")]
-transform = Transform3D(-1.055, 0, 9.223102e-08, 0, 1.055, 0, -9.223102e-08, 0, -1.055, -2.3500004, 0, 5.85)
-
-[node name="Counter_Right" parent="KitchenProps/Counters/BackWallCounters" unique_id=1964924199 instance=ExtResource("15_nwjeg")]
-transform = Transform3D(-0.62, 0, -5.4202122e-08, 0, 0.62, 0, 5.4202122e-08, 0, -0.62, -4.5786915, 0, 5.849999)
-
-[node name="Counter_Middle2" parent="KitchenProps/Counters/BackWallCounters" unique_id=2035070282 instance=ExtResource("13_vknda")]
-transform = Transform3D(-0.62, 0, 5.4202122e-08, 0, 0.62, 0, -5.4202122e-08, 0, -0.62, 1.8499994, 0, 5.85)
-
-[node name="Counter_Middle3" parent="KitchenProps/Counters/BackWallCounters" unique_id=1932181357 instance=ExtResource("13_vknda")]
-transform = Transform3D(-0.62, 0, 5.4202122e-08, 0, 0.62, 0, -5.4202122e-08, 0, -0.62, -0.25000095, 0, 5.85)
-
-[node name="Island Counters" type="Node3D" parent="KitchenProps/Counters" unique_id=906941692]
-
-[node name="Counter_Left4" parent="KitchenProps/Counters/Island Counters" unique_id=479861080 instance=ExtResource("12_mrweq")]
-transform = Transform3D(-4.5896947e-08, 0, -1.0499998, 0, 1.0499998, 0, 1.0499998, 0, -4.5896947e-08, -1.5, 0, -3.4)
-
-[node name="Counter_Middle" parent="KitchenProps/Counters/Island Counters" unique_id=1672950505 instance=ExtResource("13_vknda")]
-transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, -1.5, 0, -1.3)
-
-[node name="Counter_Right4" parent="KitchenProps/Counters/Island Counters" unique_id=666873234 instance=ExtResource("15_nwjeg")]
-transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, -1.500001, 0, 0.8)
-
-[node name="Counter_Left5" parent="KitchenProps/Counters/Island Counters" unique_id=247735120 instance=ExtResource("12_mrweq")]
-transform = Transform3D(-4.5896954e-08, 0, 1.0499998, 0, 1.0499998, 0, -1.0499998, 0, -4.5896954e-08, 0, 0, 0.74854255)
-
-[node name="Counter_Middle2" parent="KitchenProps/Counters/Island Counters" unique_id=1458802351 instance=ExtResource("13_vknda")]
-transform = Transform3D(-2.7101061e-08, 0, 0.62, 0, 0.62, 0, -0.62, 0, -2.7101061e-08, 0, 0, -1.3514578)
-
-[node name="Counter_Right5" parent="KitchenProps/Counters/Island Counters" unique_id=38646178 instance=ExtResource("15_nwjeg")]
-transform = Transform3D(-2.7101061e-08, 0, 0.62, 0, 0.62, 0, -0.62, 0, -2.7101061e-08, 9.536743e-07, 0, -3.4514575)
 
 [node name="Lights" type="Node3D" parent="." unique_id=420649548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, 0)
@@ -840,6 +794,12 @@ use_collision = true
 size = Vector3(3.3, 5.15, 0.35)
 material = ExtResource("5_3gldf")
 
-[connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]
+[node name="StaticBody3D2" parent="." unique_id=1565598496 instance=ExtResource("17_64sq4")]
+transform = Transform3D(-7.649493e-08, 0, -1.75, 0, 1.75, 0, 1.75, 0, -7.649493e-08, 19.999582, 0, 0)
 
-[editable path="KitchenProps/Appliances/CuttingStation"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1012366123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.447619, -0.87045395, -1.5283544)
+mesh = SubResource("BoxMesh_fcuss")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ynox")
+
+[connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]

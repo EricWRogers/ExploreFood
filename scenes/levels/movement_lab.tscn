@@ -5200,6 +5200,18 @@ face_vertex_data = {
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("6_xeajp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98321354, 0)
+mouse_sensitivity = 0.003
+controller_sensitivity = 3.0
+move_speed = 3.5
+sprint_speed = 10.6
+acceleration = 20.0
+rotation_speed = 12.0
+cliff_hang_rot = 50
+crouch_speed = 2.6
+_current_input_device = "joypad"
+coyote_time = 0.12
+jump_cut_multiplier = 2.0
+max_hotbar_slots = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=646146897]
 environment = SubResource("Environment_v37vc")
