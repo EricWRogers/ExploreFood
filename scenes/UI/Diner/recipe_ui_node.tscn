@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bblxu32bt4eoa"]
 
+[ext_resource type="Script" uid="uid://288udkkw5kxa" path="res://scripts/ui/recipe_ui_node.gd" id="1_7iaun"]
 [ext_resource type="FontFile" uid="uid://sqqlj7uvuugf" path="res://assets/fonts/MerchantCopyDoublesize-jE7R.ttf" id="1_rvj33"]
 [ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="2_rvj33"]
 
@@ -24,13 +25,31 @@ anti_aliasing = false
 font = ExtResource("1_rvj33")
 font_color = Color(0, 0, 0, 1)
 
-[node name="RecipeUINode" type="MarginContainer" unique_id=1984261646]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmpmc"]
+bg_color = Color(0.43057066, 0.7247408, 0.90105116, 0.4862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvj33"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xqmx"]
+bg_color = Color(0.41302735, 0.76529473, 0.62292147, 0.44705883)
+
+[sub_resource type="Theme" id="Theme_klsck"]
+Button/styles/hover = SubResource("StyleBoxFlat_xmpmc")
+Button/styles/normal = SubResource("StyleBoxFlat_rvj33")
+Button/styles/pressed = SubResource("StyleBoxFlat_6xqmx")
+
+[node name="RecipeUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("ui_label", "ui_icon", "ui_button")]
 offset_right = 187.0
 offset_bottom = 155.0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+script = ExtResource("1_7iaun")
+ui_label = NodePath("PanelContainer/VBoxContainer/NameMargin/RecipeNameLabel")
+ui_icon = NodePath("PanelContainer/VBoxContainer/IconMargin/RecipeIcon")
+ui_button = NodePath("Button")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1730541968]
 layout_mode = 2
@@ -69,3 +88,11 @@ size_flags_vertical = 3
 texture = ExtResource("2_rvj33")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="Button" type="Button" parent="." unique_id=1089022941]
+layout_mode = 2
+theme = SubResource("Theme_klsck")
+toggle_mode = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

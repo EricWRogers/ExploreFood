@@ -6,9 +6,10 @@ class_name Recipe extends Resource
 @export var recipe_ingredients: Array[PackedScene]
 ##station that the recipe is made at (does this need to be stations plural?)
 @export var recipe_station: Manager.Stations
-
 ## recipe output
 @export var product : PackedScene
+##icon that shows on UI
+@export var recipe_icon: Texture2D
 
 @export_group("depreciated")
 ## depreciated. Kept to prevent old recipes from breaking
