@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dbxb4ea5pl7cj"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgv80lthgbx1r" path="res://assets/models/StraightFence.obj" id="1_1e8bc"]
+[ext_resource type="Texture2D" uid="uid://c5b62elemq5bx" path="res://assets/textures/Fence_Mat.png" id="1_h11ro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfk60"]
+albedo_texture = ExtResource("1_h11ro")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+size = Vector3(3.2, 1.4, 0.3)
+
+[node name="RusticFence" type="StaticBody3D" unique_id=1896604819]
+
+[node name="RusticFence_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=686588619]
+material_override = SubResource("StandardMaterial3D_xfk60")
+mesh = ExtResource("1_1e8bc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=958322972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.7, 0.049999982)
+shape = SubResource("BoxShape3D_qdy4q")
