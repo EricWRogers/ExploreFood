@@ -5,9 +5,10 @@
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_tcbet"]
 [ext_resource type="Texture2D" uid="uid://dhmkkwqfmu1v" path="res://assets/BreadWorld/Textures/StoneTexture.png" id="3_xeys2"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_1nuid"]
-[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/ui/InteractUI.tscn" id="4_xeys2"]
+[ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="6_tcbet"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+radius = 0.27178347
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwj7j"]
 resource_local_to_scene = true
@@ -95,10 +96,7 @@ metallic = 1.0
 metallic_specular = 0.32
 roughness = 0.6
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_us1kw"]
-radius = 0.9158089
-
-[node name="DinnerBell" type="StaticBody3D" unique_id=1442131147]
+[node name="DinnerBell" type="StaticBody3D" unique_id=1442131147 groups=["Station"]]
 collision_mask = 15
 script = ExtResource("1_0momx")
 
@@ -111,15 +109,14 @@ material_overlay = SubResource("ShaderMaterial_huw21")
 mesh = ExtResource("2_fx23v")
 surface_material_override/0 = SubResource("StandardMaterial3D_21yr6")
 
-[node name="Node3D" parent="." unique_id=2022474363 instance=ExtResource("4_xeys2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26916194, 0)
-visible = false
+[node name="Node3D" type="Node3D" parent="." unique_id=883533380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42173183, 0)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1283612243]
-collision_mask = 15
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1333010555]
-shape = SubResource("SphereShape3D_us1kw")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=347746427]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18838966, -0.008809596)
+layers = 2
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("6_tcbet")

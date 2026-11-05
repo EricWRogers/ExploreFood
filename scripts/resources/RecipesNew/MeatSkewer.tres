@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://ccp7xripggod1"]
 
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_foqrg"]
+[ext_resource type="Texture2D" uid="uid://cjo4afftrm8od" path="res://fp_scenes/kitchen/textures/MeatSkewerPixart.png" id="2_ch8os"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_i34e1"]
-[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://assets/ui/item_icons/terry_icon.png" id="2_u681t"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_u681t"]
+[ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="3_ufctj"]
 
 [resource]
 script = ExtResource("2_i34e1")
 recipe_name = "Meat Skewer"
+recipe_ingredients = Array[PackedScene]([ExtResource("3_ufctj")])
 recipe_station_tex = ExtResource("3_u681t")
-recipe_icon = ExtResource("2_u681t")
+recipe_icon = ExtResource("2_ch8os")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
