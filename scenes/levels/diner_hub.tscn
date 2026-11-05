@@ -8,11 +8,10 @@
 [ext_resource type="Material" uid="uid://h5sgosxvarw3" path="res://assets/materials/Diner_greybox_cyan.tres" id="5_3gldf"]
 [ext_resource type="Texture2D" uid="uid://b6nraai7wmg0d" path="res://assets/textures/temp/refs.png" id="5_jjp07"]
 [ext_resource type="Material" uid="uid://dixr4lu0ueq4a" path="res://assets/materials/diner_greybox_pink.tres" id="6_jjp07"]
+[ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="7_64sq4"]
 [ext_resource type="Material" uid="uid://byyjqk7ipsgud" path="res://assets/materials/diner_greybox_metal.tres" id="7_550bw"]
 [ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="11_6ynox"]
 [ext_resource type="PackedScene" uid="uid://1fk3womvmyn" path="res://scenes/scenes_assets/kitchenAssets/counter_left.tscn" id="12_mrweq"]
-[ext_resource type="PackedScene" uid="uid://b766qh50kppxi" path="res://scenes/scenes_assets/kitchenAssets/counter_middle.tscn" id="13_vknda"]
-[ext_resource type="PackedScene" uid="uid://256jfh5xv3qy" path="res://scenes/scenes_assets/kitchenAssets/counter_right.tscn" id="15_nwjeg"]
 [ext_resource type="Script" uid="uid://by406hviu23ch" path="res://scripts/cooking_games_scriptss/restaurant_scene.gd" id="16_mrweq"]
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="17_64sq4"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="17_ap8ml"]
@@ -156,31 +155,56 @@ collision_mask = 5
 [node name="Counters" type="Node3D" parent="KitchenProps" unique_id=460153613]
 
 [node name="FrontWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=2039551068]
-visible = false
 
 [node name="Counter_Left" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1673819292 instance=ExtResource("12_mrweq")]
 transform = Transform3D(1.0499998, 0, 3.5527137e-15, 0, 1.0499998, 0, -3.5527137e-15, 0, 1.0499998, -4.5786915, 0, -9.250001)
 
-[node name="Counter_Left2" parent="KitchenProps/Counters/FrontWallCounters" unique_id=35327252 instance=ExtResource("12_mrweq")]
-transform = Transform3D(1.0499998, 0, 3.5527137e-15, 0, 1.0499998, 0, -3.5527137e-15, 0, 1.0499998, 1.9213095, 0, -9.250001)
+[node name="Counter_Left14" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1894709827 instance=ExtResource("12_mrweq")]
+transform = Transform3D(1.05, 1.5854559e-07, -1.5024082e-07, -1.5854559e-07, 1.05, 0, -1.5854559e-07, -2.393972e-14, -0.995, -4.355816, -0.063366175, 5.711618)
 
-[node name="Counter_Right2" parent="KitchenProps/Counters/FrontWallCounters" unique_id=940743293 instance=ExtResource("15_nwjeg")]
-transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 3.988206, 0, -9.250001)
+[node name="Counter_Left2" parent="KitchenProps/Counters/FrontWallCounters" unique_id=35327252 instance=ExtResource("12_mrweq")]
+transform = Transform3D(1.0499998, 0, 3.5527137e-15, 0, 1.0499998, 0, -3.5527137e-15, 0, 1.0499998, 1.8741999, 0, -9.250001)
+
+[node name="Counter_Left3" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1429811049 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-1, 0, 3.552714e-15, 0, 1.05, 0, 3.3835373e-15, 0, 1.05, 4.0995073, 0, -9.250001)
+
+[node name="Counter_Left4" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1043187387 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-4.5896947e-08, 0, -1.0499998, 0, 1.0499998, 0, 1.0499998, 0, -4.5896947e-08, 4.291, 0.001, -9.01)
+
+[node name="Counter_Left5" parent="KitchenProps/Counters/FrontWallCounters" unique_id=543372638 instance=ExtResource("12_mrweq")]
+transform = Transform3D(4.3711385e-08, 0, -1.05, 0, 1.0500001, 0, -1.0000001, 0, -4.5896957e-08, 4.2905607, 0, -6.784948)
+
+[node name="Counter_Left6" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1576191912 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-4.5896947e-08, 0, -1.0499998, 0, 1.0499998, 0, 1.0499998, 0, -4.5896947e-08, 4.3150797, 0, 3.3129678)
+
+[node name="Counter_Left7" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1454892048 instance=ExtResource("12_mrweq")]
+transform = Transform3D(4.3711385e-08, 0, -1.05, 0, 1.0500001, 0, -1.0000001, 0, -4.5896957e-08, 4.3150797, 0, 5.5382752)
+
+[node name="Counter_Left8" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1509106507 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-1.0499998, 0, 9.179389e-08, 0, 1.0499998, 0, -9.179389e-08, 0, -1.0499998, 4.075078, 0.001, 5.7297673)
+
+[node name="Counter_Left9" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1317816494 instance=ExtResource("12_mrweq")]
+transform = Transform3D(1, 0, 9.179391e-08, 0, 1.05, 0, 8.742278e-08, 0, -1.05, 1.8500261, 0, 5.7293286)
+
+[node name="Counter_Left10" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1239261578 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-1.3113416e-07, 0, 1.05, 0, 1.0500001, 0, 1.0000001, 0, 1.3769088e-07, 0.45022392, 0, -2.5046797)
+
+[node name="Counter_Left11" parent="KitchenProps/Counters/FrontWallCounters" unique_id=697699935 instance=ExtResource("12_mrweq")]
+transform = Transform3D(1.6292068e-07, -1.4955127e-14, 1.05, 8.742278e-08, 1.05, 0, -1, 9.1793915e-08, 1.7106672e-07, 0.45022392, 0, -0.3298998)
+
+[node name="Counter_Left12" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1509112301 instance=ExtResource("12_mrweq")]
+transform = Transform3D(2.1855692e-07, 0, -1.0499998, 0, 1.05, 0, -1.0000001, 0, -2.2948481e-07, -1.2451115, 0, -0.33041)
+
+[node name="Counter_Left13" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1958395558 instance=ExtResource("12_mrweq")]
+transform = Transform3D(-2.5034348e-07, 2.2980004e-14, -1.0500001, 8.742278e-08, 1.0500001, -5.63267e-22, 1, -9.179391e-08, -2.6286062e-07, -1.2451115, 0, -2.5046797)
+
+[node name="Counter_Sink" parent="KitchenProps/Counters/FrontWallCounters" unique_id=1205718330 instance=ExtResource("7_64sq4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.17274666, 0, 5.8086953)
+
+[node name="Counter_Sink2" parent="KitchenProps/Counters/FrontWallCounters" unique_id=858868667 instance=ExtResource("7_64sq4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.160283, 0, 5.8086953)
 
 [node name="RightWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=431922436]
-visible = false
-
-[node name="Counter_Middle" parent="KitchenProps/Counters/RightWallCounters" unique_id=272959201 instance=ExtResource("13_vknda")]
-transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.4102163, 0, -7.575188)
-
-[node name="Counter_Right4" parent="KitchenProps/Counters/RightWallCounters" unique_id=1894709827 instance=ExtResource("15_nwjeg")]
-transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.4102144, 0, -5.475188)
-
-[node name="Counter_Left4" parent="KitchenProps/Counters/RightWallCounters" unique_id=418017624 instance=ExtResource("12_mrweq")]
-transform = Transform3D(-4.5896947e-08, 0, -1.0499998, 0, 1.0499998, 0, 1.0499998, 0, -4.5896947e-08, 4.4036913, 0, 2.102927)
-
-[node name="Counter_Middle3" parent="KitchenProps/Counters/RightWallCounters" unique_id=68529361 instance=ExtResource("13_vknda")]
-transform = Transform3D(-2.7101061e-08, 0, -0.62, 0, 0.62, 0, 0.62, 0, -2.7101061e-08, 4.3986254, 0, 4.1918483)
 
 [node name="Lights" type="Node3D" parent="." unique_id=420649548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, 0)
@@ -208,10 +232,204 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 8)
 environment = SubResource("Environment_klsck")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=185782905]
-transform = Transform3D(0.5340272, 0.35300377, -0.76824677, -0.24127519, 0.9345094, 0.2616838, 0.81030923, 0.045612633, 0.5842245, -11.86, 14.9, -8.94)
+transform = Transform3D(0.2025586, 0.91371083, -0.352282, 0.49877596, 0.21331733, 0.8400707, 0.84272933, -0.34587312, -0.41252762, -11.86, 14.9, -8.94)
 light_color = Color(0.79, 0.78078336, 0.711, 1)
 light_energy = 1.4
 light_angular_distance = 5.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Environment" unique_id=1970678639]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 0)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Environment" unique_id=676023841]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, -5.100069)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Environment" unique_id=1416292385]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, -11.618085)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Environment" unique_id=2090444725]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 6.809806)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Environment" unique_id=714502746]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 12.055601)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Environment" unique_id=1704886802]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 0)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D16" type="SpotLight3D" parent="Environment" unique_id=780281893]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -6.1509724)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D17" type="SpotLight3D" parent="Environment" unique_id=2106154901]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 3.4786797)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D18" type="SpotLight3D" parent="Environment" unique_id=477125969]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, -1.2323861)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D19" type="SpotLight3D" parent="Environment" unique_id=1919115604]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, -6.1509724)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 47.775154
+
+[node name="SpotLight3D20" type="SpotLight3D" parent="Environment" unique_id=1941625604]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, 3.4786797)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 47.775154
+
+[node name="SpotLight3D21" type="SpotLight3D" parent="Environment" unique_id=143330598]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, -1.2323861)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D22" type="SpotLight3D" parent="Environment" unique_id=1911751916]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, -6.1509724)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D23" type="SpotLight3D" parent="Environment" unique_id=1789554442]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, 3.4786797)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D24" type="SpotLight3D" parent="Environment" unique_id=161023553]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, -1.2323861)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D25" type="SpotLight3D" parent="Environment" unique_id=421937198]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, -6.1509724)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D26" type="SpotLight3D" parent="Environment" unique_id=177735017]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, 3.4786797)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Environment" unique_id=1858753505]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -5.100069)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 42.240498
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Environment" unique_id=2004112457]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -11.618085)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 14.680274
+spot_angle = 39.766647
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Environment" unique_id=622161408]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 6.809806)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 44.347496
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Environment" unique_id=48185761]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 12.055601)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 46.602196
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Environment" unique_id=1613820834]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 0)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 47.775154
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Environment" unique_id=2119512432]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, -5.100069)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 42.240498
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="Environment" unique_id=2098853389]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, -11.618085)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 39.374996
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="Environment" unique_id=1229930749]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 6.809806)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 44.347496
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="Environment" unique_id=1264699337]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 12.055601)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 46.602196
 
 [node name="refs" type="Node3D" parent="." unique_id=1867599300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6, 0, 0)

@@ -161,7 +161,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pkwh0"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ac3kw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdi2u"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_asdy7")
@@ -253,7 +253,7 @@ albedo_texture = ExtResource("15_ap4k3")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnay1"]
 albedo_texture = ExtResource("15_ap4k3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdi2u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw0y2"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("19_swrdg")
@@ -314,10 +314,10 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw0y2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n60hs"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_rdi2u")
+next_pass = SubResource("ShaderMaterial_kw0y2")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -332,226 +332,200 @@ shader_parameter/overlay_texture = ExtResource("21_foeo7")
 shader_parameter/blend = 0.0
 shader_parameter/burnt = 0.0
 shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n60hs"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gu2m"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_n60hs")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdcjt"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_3gu2m")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8oy3b"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_bdcjt")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3qwcb"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_8oy3b")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdh01"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_3qwcb")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7lyn"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_bdh01")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8cuqq"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_k7lyn")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbo77"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_8cuqq")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u1b4q"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_kbo77")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k2wkj"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_u1b4q")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mifl1"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_k2wkj")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5rk0"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_mifl1")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rge3a"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_j5rk0")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0tlsw"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_rge3a")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mdjwu"]
 resource_local_to_scene = true
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_0tlsw")
-shader = SubResource("Shader_7ygjy")
-shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
-shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
-shader_parameter/angle = 20.0
-shader_parameter/line_count = 20.0
-shader_parameter/speed = 1.015
-shader_parameter/blur = 0.0
-shader_parameter/overlay_uv_scale = Vector2(4, 4)
-shader_parameter/mesh_texture = ExtResource("20_xnay1")
-shader_parameter/transparency = 0.0
-shader_parameter/overlay_texture = ExtResource("21_foeo7")
-shader_parameter/blend = 0.0
-shader_parameter/burnt = 0.0
-shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ha5y"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("19_swrdg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_heado"]
-resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_7ha5y")
+next_pass = SubResource("ShaderMaterial_mdjwu")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -567,17 +541,43 @@ shader_parameter/blend = 0.0
 shader_parameter/burnt = 0.0
 shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmdi2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_heado"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("19_swrdg")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/size = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gscks"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmdi2"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_dmdi2")
+next_pass = SubResource("ShaderMaterial_heado")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("20_xnay1")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("21_foeo7")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gscks"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("19_swrdg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jm7lv"]
+resource_local_to_scene = true
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_gscks")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -628,7 +628,7 @@ in_kitchen = false
 visible = false
 
 [node name="Portalmesh" parent="Portal" index="2" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_ac3kw")
+surface_material_override/0 = SubResource("ShaderMaterial_rdi2u")
 
 [node name="Props" type="Node3D" parent="." unique_id=1773968177]
 
@@ -647,7 +647,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.332823, 0, -15.103111)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=521952010]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 0, 0, 1.9073486e-06)
 navigation_mesh = SubResource("NavigationMesh_55rfs")
-enabled = false
 metadata/_edit_lock_ = true
 
 [node name="MarchingSquaresTerrain" type="Node3D" parent="NavigationRegion3D" unique_id=1848766583]
@@ -1053,77 +1052,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.86322, 0.4772004, 0.556067
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_kw0y2")
+material_overlay = SubResource("ShaderMaterial_n60hs")
 
 [node name="BaseND6" parent="Mushrooms" unique_id=1412713117 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.66876, -2.2335896, -64.48691)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND6" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_3gu2m")
+material_overlay = SubResource("ShaderMaterial_bdcjt")
 
 [node name="BaseND7" parent="Mushrooms" unique_id=1549179355 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(0.7849176, 0.616666, 0.06022738, -0.60178715, 0.73560166, 0.31103492, 0.14750129, -0.28038087, 0.9484885, 56.88948, -0.36413825, -67.64778)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND7" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_8oy3b")
+material_overlay = SubResource("ShaderMaterial_3qwcb")
 
 [node name="BaseND8" parent="Mushrooms" unique_id=537686173 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.58199, -2.2335892, -68.64639)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND8" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_bdh01")
+material_overlay = SubResource("ShaderMaterial_k7lyn")
 
 [node name="BaseND9" parent="Mushrooms" unique_id=2083935665 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.34441, -2.2752657, -70.15395)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND9" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_8cuqq")
+material_overlay = SubResource("ShaderMaterial_kbo77")
 
 [node name="BaseND12" parent="Mushrooms" unique_id=1328280331 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(0.988062, 0.027193531, -0.15163775, -0.045848764, 0.99160266, -0.12092142, 0.14707612, 0.12643026, 0.98101175, 26.307467, -3.024479, 87.48745)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND12" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_u1b4q")
+material_overlay = SubResource("ShaderMaterial_k2wkj")
 
 [node name="BaseND10" parent="Mushrooms" unique_id=439733406 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.521385, -2.5000894, -70.25019)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND10" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_mifl1")
+material_overlay = SubResource("ShaderMaterial_j5rk0")
 
 [node name="BaseND11" parent="Mushrooms" unique_id=2053903948 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(0.9827121, -0.1542432, 0.10240082, 0.14264214, 0.98337877, 0.11233631, -0.11802591, -0.09578757, 0.98837984, 49.90941, -2.1253316, -68.18088)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND11" index="0" unique_id=2069674105]
 transform = Transform3D(5.345, 0, 0, 0, 3.7308083, 0, 0, 0, 5.345, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_rge3a")
+material_overlay = SubResource("ShaderMaterial_0tlsw")
 
 [node name="BaseND2" parent="Mushrooms" unique_id=1658217907 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.220966, 0.32738876, -0.1460514)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND2" index="0" unique_id=2069674105]
 transform = Transform3D(3.86, 0, 0, 0, 2.706, 0, 0, 0, 3.86, 0, -0.39843285, 0)
-material_overlay = SubResource("ShaderMaterial_mdjwu")
+material_overlay = SubResource("ShaderMaterial_7ha5y")
 
 [node name="BaseND4" parent="Mushrooms" unique_id=1580234007 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.33255, 9.27063, 2.563579)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND4" index="0" unique_id=2069674105]
 transform = Transform3D(3.86, 0, 0, 0, 2.706, 0, 0, 0, 3.86, 0, -0.39843285, 0)
-material_overlay = SubResource("ShaderMaterial_heado")
+material_overlay = SubResource("ShaderMaterial_dmdi2")
 
 [node name="BaseND5" parent="Mushrooms" unique_id=1063909480 instance=ExtResource("18_ou5fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.65435, 9.1190605, 2.8376129)
 
 [node name="DeformableMeshInstance3D" parent="Mushrooms/BaseND5" index="0" unique_id=2069674105]
 transform = Transform3D(3.86, 0, 0, 0, 2.706, 0, 0, 0, 3.86, 0, -0.39843285, 0)
-material_overlay = SubResource("ShaderMaterial_gscks")
+material_overlay = SubResource("ShaderMaterial_jm7lv")
 
 [node name="Barrel" type="MeshInstance3D" parent="." unique_id=449991835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.987778, 8.515858, 37.16905)
