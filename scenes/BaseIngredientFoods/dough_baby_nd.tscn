@@ -99,9 +99,10 @@ material = ExtResource("2_wc4cq")
 cross_section = ExtResource("2_wc4cq")
 
 [node name="DeformableMeshInstance3D" parent="." index="0" unique_id=2069674105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1156039, 0)
 material_overlay = SubResource("ShaderMaterial_wc4cq")
 mesh = ExtResource("5_168qo")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=670592487]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08179128, 1.2884326, -0.05750084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08179128, 0.16871333, -0.05750084)
 shape = SubResource("CapsuleShape3D_168qo")

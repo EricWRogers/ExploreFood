@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://o0gfgdmnqmmx"]
+
+[ext_resource type="PackedScene" uid="uid://d212mcpils118" path="res://fp_scenes/ingredients/base_ingredient_ND.tscn" id="1_dbpbm"]
+[ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_orv12"]
+[ext_resource type="Texture2D" uid="uid://8hw4qsdtavnl" path="res://assets/textures/BreadWorldTextures/PuffMushroom_Mat.png" id="3_orv12"]
+[ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_3gpa0"]
+[ext_resource type="ArrayMesh" uid="uid://fbx1v0ncnfpn" path="res://assets/models/PuffMushroom.obj" id="5_5xydb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orv12"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_orv12")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="Shader" id="Shader_7ygjy"]
+code = "shader_type spatial;
+//render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+uniform vec2 overlay_uv_scale = vec2(1.0, 1.0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+// --- new ---
+uniform sampler2D overlay_texture : source_color;
+uniform float blend : hint_range(0.0, 1.0) = 0.0;  // 0 = first result, 1 = overlay only
+uniform float burnt : hint_range(0.0, 1.0) = 0.0;  // 0 = no burn, 1 = fully tinted by burnt_color
+uniform vec3 burnt_color : source_color = vec3(0.25, 0.15, 0.1);
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    // first result (your original output)
+    vec3 first_col = mix(tex_col, stripe_col, transparency);
+
+    // second texture, darkened by the burn color
+    vec3 overlay_col = texture(overlay_texture, uv * overlay_uv_scale).rgb;
+    vec3 burnt_col = overlay_col * burnt_color;          // multiply = darken/tint
+    vec3 second_col = mix(overlay_col, burnt_col, burnt);
+
+    ALBEDO = mix(first_col, second_col, blend);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xydb"]
+resource_local_to_scene = true
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_orv12")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("3_orv12")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("4_3gpa0")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+
+[node name="BaseND" unique_id=175947415 instance=ExtResource("1_dbpbm")]
+freeze = true
+food_name = "Mold Shroom"
+rarity_level = 1.0
+color = Color(0.38431373, 0.46666667, 0.43529412, 1)
+inventory_icon_FOV = 15.0
+resize = Vector3(0.5, 0.5, 0.5)
+material = ExtResource("3_orv12")
+cross_section = ExtResource("3_orv12")
+
+[node name="DeformableMeshInstance3D" parent="." index="0" unique_id=2069674105]
+transform = Transform3D(4.22, 0, 0, 0, 4.22, 0, 0, 0, 4.22, 0, -0.56321037, 0)
+material_overlay = SubResource("ShaderMaterial_5xydb")
+mesh = ExtResource("5_5xydb")
