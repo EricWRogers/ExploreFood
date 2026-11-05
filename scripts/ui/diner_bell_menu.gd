@@ -25,8 +25,8 @@ func _ready() -> void:
 			n.queue_free() 
 
 	#spawn recipe ui node for every unlocked recipe (stored in manager)
-	#for recipe in Manager.player_unlocked_recipes:
-	for recipe in test_recipe_array: #made for testing
+	#for recipe in test_recipe_array: #made for testing
+	for recipe in Manager.player_unlocked_recipes:
 		var current_recipe_node: Node
 		current_recipe_node = recipe_UI_node.instantiate()
 		
