@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://drc5hkuplaq6t"]
+
+[ext_resource type="ArrayMesh" uid="uid://deir0icas1cf2" path="res://assets/models/DinerBoothCorner.obj" id="1_hpabu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mps0"]
+size = Vector3(3.2243347, 0.683136, 1.1849976)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8vwli"]
+size = Vector3(1.2213745, 0.676651, 2.1587524)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5x5j2"]
+size = Vector3(2.9, 1.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtvjm"]
+size = Vector3(0.47875977, 1.0561523, 2.8044434)
+
+[node name="CornerBooth" type="StaticBody3D" unique_id=402515083]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1545374428]
+mesh = ExtResource("1_hpabu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1581210529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30867, 0.16334534, -0.0071105957)
+shape = SubResource("BoxShape3D_0mps0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1297316089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.338788, 0.16504669, 1.6757402)
+shape = SubResource("BoxShape3D_8vwli")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1094109182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1500001, 1.05, -0.35000002)
+shape = SubResource("BoxShape3D_5x5j2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1081875945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6795166, 1.0330567, 1.3179444)
+shape = SubResource("BoxShape3D_qtvjm")
