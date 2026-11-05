@@ -5,11 +5,59 @@
 
 [sub_resource type="Animation" id="Animation_gblxh"]
 resource_name = "Frolic"
-length = 2.1
+length = 1.0666667
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/BaseND:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.3527613e-08, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/BaseND:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.3527613e-08, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.1641534e-10, 0), Vector3(0, 0, 0.2617994), Vector3(0, 1.1641534e-10, 0), Vector3(0, 0, -0.2617994), Vector3(0, 1.1641534e-10, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2otj3"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/BaseND:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D/DoughBabyParent/BaseND:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.1641534e-10, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tb7b8"]
 _data = {
@@ -48,6 +96,7 @@ script = ExtResource("1_gblxh")
 
 [node name="BaseND" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=175947415 instance=ExtResource("2_gblxh")]
 transform = Transform3D(0.99999994, 0, 1.1641532e-10, 0, 1, 0, -1.1641532e-10, 0, 0.99999994, 0, 0, 0)
+lock_rotation = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/DoughBabyParent" unique_id=1188184490]
 shape = SubResource("SphereShape3D_622b1")
