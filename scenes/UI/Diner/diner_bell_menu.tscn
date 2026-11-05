@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://njehgw3a3x0g"]
 
+[ext_resource type="Script" uid="uid://dk6p0gg50vaxc" path="res://scripts/ui/diner_bell_menu.gd" id="1_1q30t"]
 [ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/UI/Diner/recipe_ui_node.tscn" id="1_j0idh"]
+[ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="2_xe5kk"]
+[ext_resource type="Resource" uid="uid://d2jd0n7r10g58" path="res://scripts/resources/RecipesNew/ChickenWaffles.tres" id="3_rksqi"]
+[ext_resource type="Resource" uid="uid://bql8ifvpe02p3" path="res://scripts/resources/RecipesNew/GrilledCheese.tres" id="4_knljf"]
+[ext_resource type="Resource" uid="uid://db12d1bgosc82" path="res://scripts/resources/RecipesNew/LoafBread.tres" id="5_xoo1w"]
+[ext_resource type="Resource" uid="uid://ccp7xripggod1" path="res://scripts/resources/RecipesNew/MeatSkewer.tres" id="6_eg5hv"]
+[ext_resource type="Resource" uid="uid://ubw3qfyv4gcu" path="res://scripts/resources/RecipesNew/MushroomStew.tres" id="7_8tt6f"]
+[ext_resource type="FontFile" uid="uid://sqqlj7uvuugf" path="res://assets/fonts/MerchantCopyDoublesize-jE7R.ttf" id="9_rksqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klsck"]
-content_margin_left = 25.0
-content_margin_top = 25.0
-content_margin_right = 45.0
-content_margin_bottom = 60.0
-bg_color = Color(0.476, 0.629, 0.68, 0.8627451)
+content_margin_left = 26.0
+content_margin_top = 26.0
+content_margin_right = 36.0
+content_margin_bottom = 26.0
+bg_color = Color(0.476, 0.629, 0.68, 0.92156863)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llqqx"]
 bg_color = Color(0.8556, 0.91016, 0.93, 1)
@@ -44,13 +52,29 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_4ho7q")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_emm6w")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_1q30t")
 
-[node name="DinerBellMenu" type="Control" unique_id=2132693350]
+[sub_resource type="LabelSettings" id="LabelSettings_klsck"]
+font = ExtResource("9_rksqi")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_6xqmx"]
+font = ExtResource("9_rksqi")
+font_size = 28
+
+[node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "count_selected")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1q30t")
+test_recipe_array = Array[Resource]([ExtResource("2_xe5kk"), ExtResource("3_rksqi"), ExtResource("4_knljf"), ExtResource("5_xoo1w"), ExtResource("6_eg5hv"), ExtResource("7_8tt6f")])
+recipe_UI_node = ExtResource("1_j0idh")
+recipes_container = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer")
+confirm_button = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button")
+count_selected = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Counter")
+min_selectable_recipes = 1
+max_selectable_recipes = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1407907163]
 layout_mode = 1
@@ -67,26 +91,96 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_klsck")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer" unique_id=873990667]
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1671995728]
 layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=873990667]
+layout_mode = 2
+size_flags_vertical = 3
 theme = SubResource("Theme_1q30t")
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/ScrollContainer" unique_id=1336015711]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer" unique_id=591586703]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=107405190]
+layout_mode = 2
+theme_override_constants/separation = 142
+
+[node name="Tip" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1877418692]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Choose what's on the Menu for Service"
+label_settings = SubResource("LabelSettings_klsck")
+
+[node name="Counter" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1221667158]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0/2"
+label_settings = SubResource("LabelSettings_klsck")
+horizontal_alignment = 2
+
+[node name="RecipeGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1336015711]
 layout_mode = 2
 columns = 3
 
-[node name="RecipeUINode" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
 layout_mode = 2
+
+[node name="RecipeUINode6" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=140872315 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode7" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1664066635 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode8" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1419979783 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode9" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1410587517 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode10" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=298936412 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode11" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1346809390 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="RecipeUINode12" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1714129838 instance=ExtResource("1_j0idh")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=1719260829]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_right = 26
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer" unique_id=82555440]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button" unique_id=882227960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Cooking!"
+label_settings = SubResource("LabelSettings_6xqmx")
+horizontal_alignment = 1
+vertical_alignment = 1

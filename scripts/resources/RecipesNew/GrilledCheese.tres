@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_7baxd"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_771ec"]
+[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="2_r3ooh"]
 
 [resource]
 script = ExtResource("2_771ec")
 recipe_name = "Grilled Cheese"
 recipe_station = 2
+recipe_icon = ExtResource("2_r3ooh")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
