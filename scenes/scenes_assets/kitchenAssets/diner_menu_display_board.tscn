@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dlughvf3c235n"]
+
+[ext_resource type="PackedScene" uid="uid://dbxdj6eei8dv3" path="res://scenes/UI/Diner/diner_menu_display.tscn" id="1_s8vvk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
+size = Vector2(1, 1.125)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_srrcq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wcy5"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_srrcq")
+
+[node name="DinerMenuDisplayBoard" type="Node3D" unique_id=5033477]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1398186492]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_klsck")
+surface_material_override/0 = SubResource("StandardMaterial3D_5wcy5")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1014048019]
+size = Vector2i(512, 688)
+
+[node name="diner_menu_display" parent="SubViewport" unique_id=119671671 instance=ExtResource("1_s8vvk")]

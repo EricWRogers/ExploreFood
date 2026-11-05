@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_xxghg"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_284d2"]
 [ext_resource type="Texture2D" uid="uid://slncfheyw6j6" path="res://assets/ui/item_icons/chickenwaffleicon.png" id="2_lqrd4"]
+[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_lqrd4"]
 
 [resource]
 script = ExtResource("2_284d2")
 recipe_name = "Chicken & Waffles"
 recipe_station = 2
+recipe_station_tex = ExtResource("3_lqrd4")
 recipe_icon = ExtResource("2_lqrd4")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

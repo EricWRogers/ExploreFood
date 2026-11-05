@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://288udkkw5kxa" path="res://scripts/ui/recipe_ui_node.gd" id="1_7iaun"]
 [ext_resource type="FontFile" uid="uid://sqqlj7uvuugf" path="res://assets/fonts/MerchantCopyDoublesize-jE7R.ttf" id="1_rvj33"]
-[ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="2_rvj33"]
+[ext_resource type="Texture2D" uid="uid://cjo4afftrm8od" path="res://fp_scenes/kitchen/textures/MeatSkewerPixart.png" id="3_x4u0m"]
+[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="4_2esvl"]
+[ext_resource type="Texture2D" uid="uid://f58bkp3aipom" path="res://fp_scenes/kitchen/textures/ArrowPixart.png" id="5_iv5ls"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klsck"]
 content_margin_left = 15.0
@@ -39,7 +41,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_xmpmc")
 Button/styles/normal = SubResource("StyleBoxFlat_rvj33")
 Button/styles/pressed = SubResource("StyleBoxFlat_6xqmx")
 
-[node name="RecipeUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("ui_label", "ui_icon", "ui_button")]
+[node name="RecipeUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("ui_label", "ui_icon", "ui_button", "ui_station", "ui_flow")]
 offset_right = 187.0
 offset_bottom = 155.0
 theme_override_constants/margin_left = 12
@@ -50,6 +52,8 @@ script = ExtResource("1_7iaun")
 ui_label = NodePath("PanelContainer/VBoxContainer/NameMargin/RecipeNameLabel")
 ui_icon = NodePath("PanelContainer/VBoxContainer/IconMargin/RecipeIcon")
 ui_button = NodePath("Button")
+ui_station = NodePath("PanelContainer/VBoxContainer/IconMargin2/Station")
+ui_flow = NodePath("PanelContainer/VBoxContainer/IconMargin4/RecipeIcon")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1730541968]
 layout_mode = 2
@@ -75,19 +79,77 @@ vertical_alignment = 1
 
 [node name="IconMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1181788343]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -36
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 31
+
+[node name="RecipeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin" unique_id=1184664040]
+z_index = 1
+texture_filter = 3
+custom_minimum_size = Vector2(163.035, 128)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+texture = ExtResource("3_x4u0m")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="IconMargin2" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1204492962]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -55
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RecipeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin" unique_id=1184664040]
+[node name="Station" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin2" unique_id=1311307745]
+texture_filter = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
-texture = ExtResource("2_rvj33")
+texture = ExtResource("4_2esvl")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="IconMargin3" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1134208210]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -100
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RecipeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin3" unique_id=387372375]
+modulate = Color(1, 0.5, 0.5, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+texture = ExtResource("5_iv5ls")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="IconMargin4" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=923789338]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/margin_top = -55
+
+[node name="RecipeIcon" type="FlowContainer" parent="PanelContainer/VBoxContainer/IconMargin4" unique_id=735660782]
+texture_filter = 3
+custom_minimum_size = Vector2(172.95, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+alignment = 1
+last_wrap_alignment = 2
 
 [node name="Button" type="Button" parent="." unique_id=1089022941]
 layout_mode = 2

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8dfslog4m0px"]
+
+[ext_resource type="Texture2D" uid="uid://pamy1qgd64x7" path="res://fp_scenes/kitchen/textures/MeatBall.png" id="1_l4dgl"]
+
+[node name="TextureRect" type="TextureRect" unique_id=115879002]
+texture_filter = 3
+custom_minimum_size = Vector2(80, 80)
+texture = ExtResource("1_l4dgl")
+expand_mode = 1

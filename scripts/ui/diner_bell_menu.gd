@@ -1,6 +1,8 @@
 extends Control
 
-##for testing only
+##for testing only\
+
+@onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
 @export var test_recipe_array: Array[Resource]
 
 
@@ -22,7 +24,7 @@ func _ready() -> void:
 	if (recipes_container.get_child_count() > 0):
 		for n in recipes_container.get_children():
 			recipes_container.remove_child(n)
-			n.queue_free() 
+			n.queue_free()
 
 	#spawn recipe ui node for every unlocked recipe (stored in manager)
 	#for recipe in test_recipe_array: #made for testing
@@ -33,7 +35,13 @@ func _ready() -> void:
 		# set recipe data #
 		current_recipe_node.ui_label.text = recipe.recipe_name
 		current_recipe_node.ui_icon.texture = recipe.recipe_icon
-		
+		current_recipe_node.ui_station.texture = recipe.recipe_station_tex
+		for item in recipe.recipe_ingredients:
+			var ingredient_tex = ingredient_texture.instantiate()
+			current_recipe_node.ui_flow.add_child(ingredient_tex)
+			var item_pull = item.instantiate()
+			if item_pull.icon != null:
+				ingredient_tex.texture = item_pull.icon
 		# add recipe as child #
 		recipes_container.add_child(current_recipe_node)
 		
