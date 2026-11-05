@@ -6008,9 +6008,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.304753, 0.9999999, 31.01676
 [node name="SmartDoughBaby" parent="." unique_id=1579345735 instance=ExtResource("18_622b1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.456, 1.0949736, 17.264)
 
-[node name="Path3D" parent="SmartDoughBaby" index="1" unique_id=888206596]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.91525)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=568227705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052797318, 0, -0.0038585663)
 navigation_mesh = SubResource("NavigationMesh_gtwna")
