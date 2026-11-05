@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwbk8rhnh0wgc"]
 
+[ext_resource type="Script" uid="uid://ciy6tm3k3i2my" path="res://scenes/levels/bread_world.gd" id="1_hls6b"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_phe0q"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_qgerq"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="2_db7ae"]
@@ -10,7 +11,7 @@
 [ext_resource type="Shader" uid="uid://6eu84ed4xc3x" path="res://assets/shaders/water.gdshader" id="4_vjxv4"]
 [ext_resource type="PackedScene" uid="uid://n1o37yxx1bik" path="res://scenes/npcs/smart_dough_baby.tscn" id="8_2g8fk"]
 [ext_resource type="PackedScene" uid="uid://bnjiafn5n5itk" path="res://scenes/scenes_assets/BreadWorld/pretzel_tree.tscn" id="9_2g8fk"]
-[ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="10_kdjjq"]
+[ext_resource type="Environment" uid="uid://u64weibhhadt" path="res://assets/PostProcessing/BreadWorld/Normal.tres" id="10_kdjjq"]
 
 [sub_resource type="Shader" id="Shader_asdy7"]
 code = "shader_type spatial;
@@ -142,7 +143,7 @@ void fragment() {
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pkwh0"]
 load_path = "res://.godot/imported/FrogScreenshot.png-7f8c0678b529989cdcd582d12a8309fe.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdjjq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ya68"]
 resource_local_to_scene = true
 render_priority = 4
 shader = SubResource("Shader_asdy7")
@@ -211,43 +212,8 @@ shader_parameter/scroll_offset = Vector2(0.1, -0.3)
 shader_parameter/scale_offset = 0.5
 shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
-[sub_resource type="Gradient" id="Gradient_o0k7j"]
-offsets = PackedFloat32Array(0, 0.12463768, 0.8811594, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.15274468, 0.10550579, 0.08069567, 1, 0.8308129, 0.88610184, 0.8919141, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xmpmc"]
-gradient = SubResource("Gradient_o0k7j")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ynox"]
-shader = ExtResource("10_kdjjq")
-shader_parameter/sky_color = Color(0.37906295, 0.509009, 0.7173186, 1)
-shader_parameter/horizon_color = Color(0.95, 0.646, 0.18999998, 1)
-shader_parameter/horizon_blur = 0.450000021375
-shader_parameter/sun_color = Color(1, 0.922, 0.74, 1)
-shader_parameter/sun_size = 0.14600000623648
-shader_parameter/sun_blur = 0.0550000026125
-shader_parameter/cloud_color = Color(0.96989816, 0.9653265, 0.76485455, 1)
-shader_parameter/cloud_edge_sharpness = 0.150000007125
-shader_parameter/cloud_scale = 1.5000000679901202
-shader_parameter/cloud_speed = 0.0050000002375
-
-[sub_resource type="Sky" id="Sky_iubr8"]
-sky_material = SubResource("ShaderMaterial_6ynox")
-
-[sub_resource type="Environment" id="Environment_itvtl"]
-background_mode = 2
-sky = SubResource("Sky_iubr8")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.45
-reflected_light_source = 2
-tonemap_mode = 2
-tonemap_white = 1.15
-fog_mode = 1
-fog_density = 1.0
-adjustment_enabled = true
-adjustment_color_correction = SubResource("GradientTexture1D_xmpmc")
-
 [node name="Terrain3" type="Node3D" unique_id=1382931693]
+script = ExtResource("1_hls6b")
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("1_qgerq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.529667, 8.619691, 32.700035)
@@ -260,7 +226,7 @@ in_kitchen = false
 visible = false
 
 [node name="Portalmesh" parent="Portal" index="2" unique_id=206617557]
-surface_material_override/0 = SubResource("ShaderMaterial_kdjjq")
+surface_material_override/0 = SubResource("ShaderMaterial_0ya68")
 
 [node name="Props" type="Node3D" parent="." unique_id=1773968177]
 
@@ -536,7 +502,7 @@ mesh = SubResource("PlaneMesh_vjxv4")
 surface_material_override/0 = SubResource("ShaderMaterial_srh1p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=366715737]
-environment = SubResource("Environment_itvtl")
+environment = ExtResource("10_kdjjq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=368851154]
 transform = Transform3D(0.37312928, -0.6572783, 0.65479755, -0.9256857, -0.2163553, 0.31031686, -0.062295623, -0.72192496, -0.6891615, 0, 26.172281, 0)
