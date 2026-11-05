@@ -18,11 +18,11 @@ var selected_recipes: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/BeefWellington.tres"))
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/GrilledCheese.tres"))
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MushroomStew.tres"))
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/Buttered_Rolls.tres"))
+	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/BeefWellington.tres"))
+	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/GrilledCheese.tres"))
+	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
+	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MushroomStew.tres"))
+	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/Buttered_Rolls.tres"))
 	confirm_button.visible = false
 	
 	#remove placeholder children from grid
