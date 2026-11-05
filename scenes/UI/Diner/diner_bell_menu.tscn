@@ -9,6 +9,41 @@ content_margin_right = 45.0
 content_margin_bottom = 60.0
 bg_color = Color(0.476, 0.629, 0.68, 0.8627451)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llqqx"]
+bg_color = Color(0.8556, 0.91016, 0.93, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ho7q"]
+bg_color = Color(0.95821935, 0.97406906, 0.9797625, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emm6w"]
+bg_color = Color(0.7396, 0.8278934, 0.86, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q30t"]
+border_width_right = 8
+border_color = Color(0.16609472, 0.32613, 0.39023206, 0.45882353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_1q30t"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_llqqx")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_4ho7q")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_emm6w")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_1q30t")
+
 [node name="DinerBellMenu" type="Control" unique_id=2132693350]
 layout_mode = 3
 anchors_preset = 15
@@ -32,21 +67,26 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_klsck")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer" unique_id=1336015711]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer" unique_id=873990667]
+layout_mode = 2
+theme = SubResource("Theme_1q30t")
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/ScrollContainer" unique_id=1336015711]
 layout_mode = 2
 columns = 3
 
-[node name="RecipeUINode" parent="MarginContainer/PanelContainer/GridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/GridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/GridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/GridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/GridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/ScrollContainer/GridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
 layout_mode = 2
