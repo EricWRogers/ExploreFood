@@ -108,11 +108,11 @@ func exit_state(state: State) -> void:
 
 func state_frolic(delta: float) -> void:
 	# Check whether the player is nearby.
-	#if distance_to_player_squared < stranger_danger ** 2:
-		#change_state(State.RUN)
-		#return
-	#elif distance_to_player_squared < watch_distance ** 2:
-		#change_state(State.WATCH)
+	if distance_to_player_squared < stranger_danger ** 2:
+		change_state(State.RUN)
+		return
+	elif distance_to_player_squared < watch_distance ** 2:
+		change_state(State.WATCH)
 		#return
 
 	# Pick the next point when we reach the current one.
