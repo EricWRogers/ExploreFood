@@ -220,7 +220,7 @@ func set_exit(new_exit: Object):
 	my_exit = new_exit
 
 func set_order():
-	my_order = Manager.player_unlocked_recipes.product.instantiate()
+	my_order = Manager.player_unlocked_recipes.pick_random().product.instantiate()
 	$Bubble/Bubble2.texture = my_order.icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
