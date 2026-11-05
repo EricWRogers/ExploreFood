@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://btipu4y1gkiet"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjg2xkup8jgrp" path="res://assets/models/JankeyFence.obj" id="1_1upnv"]
+[ext_resource type="Texture2D" uid="uid://dc6jsrtm75cf2" path="res://assets/textures/JankyFence_Mat.png" id="1_uc85m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e8bc"]
+albedo_texture = ExtResource("1_uc85m")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+size = Vector3(3.2, 1.4, 0.3)
+
+[node name="RusticFenceJankey" type="StaticBody3D" unique_id=1231633991]
+
+[node name="JankeyFence_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1828412228]
+material_override = SubResource("StandardMaterial3D_1e8bc")
+mesh = ExtResource("1_1upnv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1278049093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.7, 0.049999982)
+shape = SubResource("BoxShape3D_qdy4q")
