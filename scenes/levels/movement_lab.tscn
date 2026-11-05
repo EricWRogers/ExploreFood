@@ -22,7 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="20_euos5"]
 [ext_resource type="PackedScene" uid="uid://d212mcpils118" path="res://fp_scenes/ingredients/base_ingredient_ND.tscn" id="21_j1je7"]
 [ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="22_b5eod"]
-[ext_resource type="PackedScene" uid="uid://c2ej1h8uweivt" path="res://scenes/scenes_assets/StonePillar.tscn" id="23_qwprg"]
+[ext_resource type="ArrayMesh" uid="uid://c1ctw7rhhxl6a" path="res://assets/Food/models/MeatSkewerMeal.obj" id="23_voqab"]
+[ext_resource type="Texture2D" uid="uid://cg6ncasrch1o5" path="res://assets/textures/ModularFoodTextures/skewer.png" id="24_y68oh"]
+[ext_resource type="Texture2D" uid="uid://bwwunprw0fs3h" path="res://assets/textures/ModularFoodTextures/meatdiced.png" id="25_aoygb"]
+[ext_resource type="Texture2D" uid="uid://l1d15b8140ve" path="res://assets/textures/ModularFoodTextures/Chive.png" id="26_ecmb4"]
+[ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="27_ke1tl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -5199,10 +5203,24 @@ face_vertex_data = {
 "vertex_index": SubResource("Resource_ax7ug")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r32f0"]
+albedo_texture = ExtResource("24_y68oh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohea6"]
+albedo_texture = ExtResource("25_aoygb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07xei"]
+transparency = 1
+albedo_color = Color(0.85104823, 0.85104823, 0.85104823, 0.6509804)
+albedo_texture = ExtResource("26_ecmb4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2se1"]
+albedo_texture = ExtResource("27_ke1tl")
+
 [node name="MovementLab" type="Node3D" unique_id=102214623]
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("6_xeajp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98321354, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 86.437675, 0)
 mouse_sensitivity = 0.003
 controller_sensitivity = 3.0
 move_speed = 3.5
@@ -6225,7 +6243,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.794401, 0)
 [node name="BaseND2" parent="." unique_id=886936261 instance=ExtResource("22_b5eod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1890461, 6.409541, 0)
 
-[node name="pCylinder1" parent="." unique_id=1107721231 instance=ExtResource("23_qwprg")]
-transform = Transform3D(217.745, 0, 0, 0, 217.745, 0, 0, 0, 217.745, -5.421845, -0.7579305, 0)
+[node name="MeatSkewerMeal" type="MeshInstance3D" parent="." unique_id=2036447773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3956733, 1.056986, -3.7428966)
+mesh = ExtResource("23_voqab")
+surface_material_override/0 = SubResource("StandardMaterial3D_r32f0")
+surface_material_override/1 = SubResource("StandardMaterial3D_ohea6")
+surface_material_override/2 = SubResource("StandardMaterial3D_07xei")
+surface_material_override/3 = SubResource("StandardMaterial3D_l2se1")
 
 [editable path="SmartDoughBaby"]

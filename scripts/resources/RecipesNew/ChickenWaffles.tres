@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://d2jd0n7r10g58"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_xxghg"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_284d2"]
+
+[resource]
+script = ExtResource("2_284d2")
+recipe_name = "Chicken & Waffles"
+recipe_station = 2
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"
