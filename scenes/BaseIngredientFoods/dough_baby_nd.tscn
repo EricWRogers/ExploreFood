@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://d212mcpils118" path="res://fp_scenes/ingredients/base_ingredient_ND.tscn" id="1_v88xe"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_168qo"]
+[ext_resource type="Texture2D" uid="uid://ykl8iqt1j86p" path="res://fp_scenes/kitchen/textures/DoughBabyPixart.png" id="2_ir2bk"]
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="2_wc4cq"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_ir2bk"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="5_168qo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_168qo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m80qa"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_168qo")
@@ -67,10 +68,10 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc4cq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cylkd"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_168qo")
+next_pass = SubResource("ShaderMaterial_m80qa")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -91,6 +92,7 @@ radius = 0.5600586
 
 [node name="BaseND" unique_id=175947415 instance=ExtResource("1_v88xe")]
 food_name = "Dough Baby"
+icon = ExtResource("2_ir2bk")
 id = 2
 color = Color(1, 0.84705883, 0.6901961, 1)
 inventory_icon_FOV = 27.0
@@ -100,7 +102,7 @@ cross_section = ExtResource("2_wc4cq")
 
 [node name="DeformableMeshInstance3D" parent="." index="0" unique_id=2069674105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1156039, 0)
-material_overlay = SubResource("ShaderMaterial_wc4cq")
+material_overlay = SubResource("ShaderMaterial_cylkd")
 mesh = ExtResource("5_168qo")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=670592487]

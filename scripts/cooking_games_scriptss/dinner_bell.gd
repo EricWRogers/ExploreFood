@@ -1,6 +1,9 @@
 extends StaticBody3D
 signal rush_button_hit
 
+@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var overlay := mesh_instance.material_overlay as ShaderMaterial
+@onready var next_pass := overlay.next_pass as ShaderMaterial
 
 var player_close = false;
 func _process(delta: float) -> void:

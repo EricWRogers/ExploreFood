@@ -2,9 +2,92 @@
 
 [ext_resource type="Script" uid="uid://cj7r6t66ev3s5" path="res://scripts/cooking_games_scriptss/dinner_bell.gd" id="1_0momx"]
 [ext_resource type="ArrayMesh" uid="uid://mr7isaiwtos2" path="res://assets/models/Bagel.obj" id="2_fx23v"]
-[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="4_xeys2"]
+[ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_tcbet"]
+[ext_resource type="Texture2D" uid="uid://dhmkkwqfmu1v" path="res://assets/BreadWorld/Textures/StoneTexture.png" id="3_xeys2"]
+[ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_1nuid"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/ui/InteractUI.tscn" id="4_xeys2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwj7j"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_tcbet")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="Shader" id="Shader_7ygjy"]
+code = "shader_type spatial;
+//render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+uniform vec2 overlay_uv_scale = vec2(1.0, 1.0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+// --- new ---
+uniform sampler2D overlay_texture : source_color;
+uniform float blend : hint_range(0.0, 1.0) = 0.0;  // 0 = first result, 1 = overlay only
+uniform float burnt : hint_range(0.0, 1.0) = 0.0;  // 0 = no burn, 1 = fully tinted by burnt_color
+uniform vec3 burnt_color : source_color = vec3(0.25, 0.15, 0.1);
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    // first result (your original output)
+    vec3 first_col = mix(tex_col, stripe_col, transparency);
+
+    // second texture, darkened by the burn color
+    vec3 overlay_col = texture(overlay_texture, uv * overlay_uv_scale).rgb;
+    vec3 burnt_col = overlay_col * burnt_color;          // multiply = darken/tint
+    vec3 second_col = mix(overlay_col, burnt_col, burnt);
+
+    ALBEDO = mix(first_col, second_col, blend);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huw21"]
+resource_local_to_scene = true
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_mwj7j")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(2.201223, 1.206774, 0.27648303, 1)
+shader_parameter/color_two = Color(3.194369, 0.73039263, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/mesh_texture = ExtResource("3_xeys2")
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("4_1nuid")
+shader_parameter/blend = 0.0
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21yr6"]
 albedo_color = Color(0.830141, 0.87192494, 0.88971734, 1)
@@ -24,6 +107,7 @@ shape = SubResource("SphereShape3D_gtwna")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=951788138]
 transform = Transform3D(0.7, 0, 0, 0, 1.25, 0, 0, 0, 0.7, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_huw21")
 mesh = ExtResource("2_fx23v")
 surface_material_override/0 = SubResource("StandardMaterial3D_21yr6")
 
