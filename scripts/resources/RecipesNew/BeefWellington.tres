@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_dt8ws"]
 [ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="2_w4413"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_yi8er"]
-[ext_resource type="Texture2D" uid="uid://cjo4afftrm8od" path="res://fp_scenes/kitchen/textures/MeatSkewerPixart.png" id="3_4j7f6"]
+[ext_resource type="Texture2D" uid="uid://gvv2p8f260gt" path="res://fp_scenes/kitchen/textures/BeefWellingtonTex.png" id="3_4j7f6"]
 [ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="3_w4413"]
 [ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="4_owyaq"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="5_owyaq"]
+[ext_resource type="PackedScene" uid="uid://o0gfgdmnqmmx" path="res://scenes/BaseIngredientFoods/mold_shroom.tscn" id="6_jo8mm"]
 
 [resource]
 script = ExtResource("2_yi8er")
 recipe_name = "Beef Wellington"
-recipe_ingredients = Array[PackedScene]([ExtResource("3_w4413"), ExtResource("4_owyaq")])
+recipe_ingredients = Array[PackedScene]([ExtResource("3_w4413"), ExtResource("4_owyaq"), ExtResource("6_jo8mm")])
 recipe_station = 2
 recipe_station_tex = ExtResource("5_owyaq")
 product = ExtResource("2_w4413")
