@@ -42,6 +42,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_rvj33")
 Button/styles/pressed = SubResource("StyleBoxFlat_6xqmx")
 
 [node name="RecipeUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("ui_label", "ui_icon", "ui_button", "ui_station", "ui_flow")]
+process_mode = 2
 offset_right = 187.0
 offset_bottom = 155.0
 theme_override_constants/margin_left = 12

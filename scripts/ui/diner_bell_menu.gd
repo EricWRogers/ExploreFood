@@ -5,18 +5,16 @@ extends Control
 @onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
 @export var test_recipe_array: Array[Resource]
 
-
 @export var recipe_UI_node: PackedScene
 @export var recipes_container: GridContainer
 @export var confirm_button: Button
 
 @export_group("Min and max selection")
 @export var count_selected: Label
-@export var min_selectable_recipes: int 
-@export var max_selectable_recipes: int 
+@export var min_selectable_recipes: int
+@export var max_selectable_recipes: int
 var num_selected_recipes: int = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/BeefWellington.tres"))
 	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/GrilledCheese.tres"))
@@ -24,8 +22,9 @@ func _ready() -> void:
 	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MushroomStew.tres"))
 	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/Buttered_Rolls.tres"))
 	confirm_button.visible = false
+	confirm_button.pressed.connect(confirm_recipes)
 	Manager.player_selected_recipes.clear()
-	
+
 	#remove placeholder children from grid
 	if (recipes_container.get_child_count() > 0):
 		for n in recipes_container.get_children():
@@ -33,11 +32,11 @@ func _ready() -> void:
 			n.queue_free()
 
 	#spawn recipe ui node for every unlocked recipe (stored in manager)
-	for recipe in test_recipe_array: #made for testing
-	#for recipe in Manager.player_unlocked_recipes:
+	#for recipe in test_recipe_array: #made for testing
+	for recipe in Manager.player_unlocked_recipes:
 		var current_recipe_node: Node
 		current_recipe_node = recipe_UI_node.instantiate()
-		
+
 		# set recipe data #
 		current_recipe_node.ui_recipe = recipe
 		current_recipe_node.ui_label.text = recipe.recipe_name
@@ -49,43 +48,43 @@ func _ready() -> void:
 			var item_pull = item.instantiate()
 			if item_pull.icon != null:
 				ingredient_tex.texture = item_pull.icon
-		
+		# REMOVED: node_toggled.connect(confirm_recipes)
+
 		# add recipe as child of container #
 		recipes_container.add_child(current_recipe_node)
-		
+
 		# signal that listens for button press #
 		current_recipe_node.node_toggled.connect(on_node_toggled)
-		
 
 
 func on_node_toggled(toggled_on: bool, ui_recipe: Recipe):
 	if (toggled_on):
-		
+
 		# dont allow selection after max #
 		if (num_selected_recipes >= max_selectable_recipes):
 			return
-		
+
 		Manager.player_selected_recipes.append(ui_recipe)
-		
+
 		num_selected_recipes += 1
 		#print("node toggled on!")
 	else:
 		num_selected_recipes -= 1
 		Manager.player_selected_recipes.erase(ui_recipe)
 		#print("node toggled off!")
-	
+
 
 func _process(_delta: float) -> void:
-	
+
 	# updating selection count UI #
 	count_selected.text = str(num_selected_recipes) + "/" + str(max_selectable_recipes)
-	
+
 	# showing confirmation button #
 	if (num_selected_recipes >= min_selectable_recipes):
 		confirm_button.visible = true
 	else:
 		confirm_button.visible = false
-	
+
 	# preventing selection past maximum #
 	if (num_selected_recipes >= max_selectable_recipes):
 		for n in recipes_container.get_children():
@@ -95,3 +94,14 @@ func _process(_delta: float) -> void:
 		for n in recipes_container.get_children():
 			if (n.ui_button.button_pressed == false):
 				n.ui_button.disabled = false
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
+
+func confirm_recipes():
+	get_tree().paused = false
+	print(Manager.player_selected_recipes)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	queue_free()
+	#get_tree().paused = true
