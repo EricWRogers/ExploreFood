@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bdhw54uqyqcem"]
+
+[ext_resource type="Script" uid="uid://bfah1evra7frs" path="res://scripts/environment/level_time_tracker.gd" id="1_yty27"]
+
+[node name="LevelTimeTracker" type="Node3D" unique_id=1615522022]
+script = ExtResource("1_yty27")
+
+[node name="Timer" type="Timer" parent="." unique_id=1059123700]
+
+[node name="Control" type="Control" parent="." unique_id=1824632398]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=1463456681]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_right = 47.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "PlaceHolder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

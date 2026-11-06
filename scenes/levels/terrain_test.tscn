@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5tytxpsnvjbu" path="res://scripts/level_manager/Level.gd" id="1_6dgx5"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_bdps2"]
+[ext_resource type="PackedScene" uid="uid://bdhw54uqyqcem" path="res://scenes/scenes_assets/level_time_tracker.tscn" id="2_0xy2e"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_o5ppf"]
 [ext_resource type="Script" uid="uid://22l7ysgniux3" path="res://addons/MarchingSquaresTerrain/algorithm/grass/marching_squares_grass_planter.gd" id="3_s745a"]
 [ext_resource type="Shader" uid="uid://demmeojd71r43" path="res://assets/shaders/skyplus.gdshader" id="5_o5ppf"]
@@ -100,6 +101,8 @@ albedo_texture = ExtResource("18_15qdo")
 
 [node name="TerrainTest" type="Node3D" unique_id=1350188859]
 script = ExtResource("1_6dgx5")
+
+[node name="LevelTimeTracker" parent="." unique_id=1615522022 instance=ExtResource("2_0xy2e")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785643732]
 transform = Transform3D(1, 0, 0, 0, -0.3438254, 0.9390336, 0, -0.9390336, -0.3438254, 0, 76.32601, -88.96426)
@@ -821,3 +824,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7627095, 0.80417514, 0.873
 
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="food_entered" from="Portal" to="LevelTimeTracker" method="_on_portal_food_entered"]

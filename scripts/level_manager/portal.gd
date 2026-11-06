@@ -1,5 +1,5 @@
 extends Area3D
-
+signal food_entered
 @export_group("Level Change")
 ##detects the current level that the portal is in
 var current_level: Node 
@@ -64,3 +64,4 @@ func _on_body_entered(body: Node3D) -> void:
 	if (!in_kitchen && (body is BaseIngredient or body is BaseIngredientND or body is BaseItem)):
 		Manager.collected_food.append(body.scene_file_path)
 		body.queue_free()
+		food_entered.emit()
