@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://btdvnsmd1dtkq" path="res://scenes/scenes_assets/kitchenAssets/collected_food_spawner.tscn" id="19_6ynox"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
 [ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="19_mrweq"]
+[ext_resource type="PackedScene" uid="uid://djqsq1nbsg0o4" path="res://scenes/levels/testScenes/Tutorial_box.tscn" id="21_mrweq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
 
@@ -1029,5 +1030,8 @@ recipe = ExtResource("19_mrweq")
 
 [node name="CollectedFoodSpawner" parent="." unique_id=1379722093 instance=ExtResource("19_6ynox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.525276, 4.3827314, -1.840997)
+
+[node name="TutorialBox" parent="." unique_id=1586097658 instance=ExtResource("21_mrweq")]
+z_index = 100
 
 [connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]
