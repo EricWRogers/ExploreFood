@@ -40,6 +40,7 @@ enum State{
 }
 
 var current_state : State = State.SEAT
+var drinks_gotten : int = 1
 
 ## preferences ?
 
@@ -230,6 +231,10 @@ func set_order():
 func _on_area_3d_body_entered(body: Node3D) -> void:
 
 	if (body is BaseIngredient or body is BaseIngredientND or body is BaseItem) and current_state == State.ORDER:
+		if(body is BaseItem and body.id == 0):
+			timer.start(timer.time_left + (angry_time / drinks_gotten))
+			body.queue_free()
+			return
 		satisfaction_time = timer.time_left
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
