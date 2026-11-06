@@ -32,6 +32,9 @@
 [ext_resource type="Script" uid="uid://bhuc7rxf1scgv" path="res://fp_scenes/kitchen/scripts/station_slots.gd" id="30_7csqp"]
 [ext_resource type="FontFile" uid="uid://c5hhpp72h517l" path="res://assets/fonts/CsAristonStitchedRegularDemo-lx3MX.otf" id="31_4rl1r"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="32_8jgw0"]
+[ext_resource type="AudioStream" uid="uid://bvrjd7wlk7ltj" path="res://assets/sounds/SFX/90_Player_Movement_SFX/32_Jump_05.wav" id="33_0it3a"]
+[ext_resource type="AudioStream" uid="uid://cnw2fa3raqkvf" path="res://assets/sounds/SFX/birdsounds.mp3" id="34_0it3a"]
+[ext_resource type="AudioStream" uid="uid://6583le2olv8n" path="res://assets/sounds/SFX/90_Player_Movement_SFX/78_Flying_02.wav" id="35_im504"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uh5i4"]
 albedo_texture = ExtResource("4_485h3")
@@ -368,63 +371,51 @@ _data = {
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_17ier")
-mouse_sensitivity = null
-controller_sensitivity = null
-move_speed = null
-sprint_speed = null
-acceleration = null
-rotation_speed = null
-cliff_hang_rot = null
 air_control = 32.0
-crouch_speed = null
-_current_input_device = null
 jump_impulse = 18.0
 jump_buffer_time = 0.2
-coyote_time = null
 apex_gravity_multiplier = 0.45
 fall_gravity_multiplier = 1.3
-jump_cut_multiplier = null
-max_hotbar_slots = null
 current_recipe = ExtResource("2_qkycv")
 
 [node name="Doremi" parent="." unique_id=718992324 instance=ExtResource("2_17ier")]
 unique_name_in_owner = true
 
-[node name="Skeleton3D" parent="Doremi" index="2" unique_id=249346581]
-bones/1/rotation = Quaternion(0.12738384, 0.0537147, -0.011930051, 0.99032617)
-bones/2/rotation = Quaternion(0.020267565, 0.069987, 0.00062567234, 0.99734175)
-bones/3/rotation = Quaternion(-0.14513546, -0.04157589, -0.0085565755, 0.9885009)
-bones/30/rotation = Quaternion(-0.41565403, 0.8694457, 0.25919873, -0.06412443)
-bones/33/rotation = Quaternion(-0.2575691, 0.96045965, -0.039247785, 0.098158576)
-bones/34/rotation = Quaternion(-0.018555947, -0.17074826, -0.0014039534, 0.985139)
-bones/36/rotation = Quaternion(0.2777313, 0.9594218, -0.029909145, -0.03847934)
-bones/37/rotation = Quaternion(-0.1019523, 0.13308349, -0.004142363, 0.9858384)
-bones/39/rotation = Quaternion(0.30511722, 0.827024, -0.39104053, -0.26461706)
-bones/40/rotation = Quaternion(-0.04143722, -0.1677877, 0.23169918, 0.9573118)
-bones/42/rotation = Quaternion(0.042449042, 0.97381616, 0.12069398, 0.18791799)
-bones/44/rotation = Quaternion(0.10237815, 0.26714936, 0.031285115, 0.9576906)
-bones/46/rotation = Quaternion(-0.0011969527, -0.5752807, -0.066046484, 0.81528443)
-bones/47/rotation = Quaternion(-0.000115823656, -0.11422538, -0.0010715721, 0.9934543)
-bones/50/rotation = Quaternion(0.11268802, 0.34475145, -0.0050572217, 0.9318918)
-bones/52/rotation = Quaternion(0.0070656706, -0.62357163, -0.01987093, 0.78148174)
+[node name="Skeleton3D" parent="Doremi" index="2" unique_id=1984714896]
+bones/1/rotation = Quaternion(0.21052246, 0.05293519, -0.019716328, 0.9759557)
+bones/2/rotation = Quaternion(0.05069177, 0.069911346, 0.0015650409, 0.99626327)
+bones/3/rotation = Quaternion(-0.24342771, -0.04075374, -0.014351333, 0.9689563)
+bones/30/rotation = Quaternion(-0.42829698, 0.879643, 0.20115864, -0.04821968)
+bones/33/rotation = Quaternion(-0.25941098, 0.96515155, -0.005336292, 0.03405993)
+bones/34/rotation = Quaternion(-0.003134463, -0.14786346, -0.0021735453, 0.9890005)
+bones/36/rotation = Quaternion(0.27756292, 0.960645, -0.0058095814, 0.009284157)
+bones/37/rotation = Quaternion(-0.05944545, 0.066467114, -0.010011131, 0.995966)
+bones/39/rotation = Quaternion(0.2730188, 0.7384163, -0.50267726, -0.3570963)
+bones/40/rotation = Quaternion(-0.026554545, -0.2128421, 0.27601612, 0.93691427)
+bones/42/rotation = Quaternion(0.07015395, 0.9596854, 0.19946644, 0.18519118)
+bones/44/rotation = Quaternion(0.17534359, 0.2357777, 0.025410574, 0.95551974)
+bones/46/rotation = Quaternion(-0.0017400272, -0.551284, -0.08631644, 0.8298388)
+bones/47/rotation = Quaternion(-0.0002491999, -0.118695915, -0.0022834635, 0.9929281)
+bones/50/rotation = Quaternion(0.1921547, 0.36297208, -0.011099793, 0.91170424)
+bones/52/rotation = Quaternion(0.009894538, -0.6290101, -0.023442693, 0.77698064)
 
-[node name="LeftHandSwitch" parent="Doremi/Skeleton3D" index="0" unique_id=1305192764]
-transform = Transform3D(0.42660394, 0.15033749, 0.8918562, -0.25614214, -0.92563456, 0.27855277, 0.8674102, -0.3472737, -0.35637167, 0.36175758, 0.97846526, 0.17481759)
+[node name="LeftHandSwitch" parent="Doremi/Skeleton3D" index="0" unique_id=557512922]
+transform = Transform3D(0.6134457, 0.06704551, 0.78688574, -0.2561421, -0.92563456, 0.27855256, 0.74704456, -0.3724314, -0.5506534, 0.39493105, 0.97846514, 0.08702172)
 
-[node name="RightHandSwitch" parent="Doremi/Skeleton3D" index="1" unique_id=2020589730]
-transform = Transform3D(0.12350233, 0.4228544, -0.89774233, -0.27726245, 0.88334316, 0.37792912, 0.9528234, 0.202235, 0.2263366, -0.19824915, 0.96258587, 0.3393144)
+[node name="RightHandSwitch" parent="Doremi/Skeleton3D" index="1" unique_id=1645727210]
+transform = Transform3D(0.33786455, 0.4578681, -0.82231647, -0.27726233, 0.8833431, 0.37792924, 0.89942914, 0.10030839, 0.4253999, -0.11270153, 0.96258587, 0.375077)
 
 [node name="BoneAttachment3D" parent="Doremi/Skeleton3D" index="8" unique_id=256746129]
-transform = Transform3D(-0.009944512, 0.9672621, -0.2535847, 0.99923193, 4.4703484e-08, -0.039185457, -0.0379026, -0.25377962, -0.9665192, 4.5248957e-17, 0.9054074, -0.009680547)
+transform = Transform3D(-0.016196432, 0.91058314, -0.4130085, 0.99923193, 1.4901161e-08, -0.0391856, -0.035681732, -0.41332597, -0.9098838, 4.5248957e-17, 0.9054074, -0.009680547)
 
 [node name="ItemAttachment" parent="Doremi/Skeleton3D" index="9" unique_id=1868256466]
-transform = Transform3D(0.1450223, 0.5576148, -0.81733364, -0.4407573, 0.77598447, 0.45119974, 0.8858337, 0.2948116, 0.35830784, -0.18059021, 0.9229416, 0.47555345)
+transform = Transform3D(0.34351507, 0.610211, -0.7138907, -0.4407572, 0.7759844, 0.45119986, 0.829295, 0.15965839, 0.5355172, -0.064392105, 0.9229416, 0.50368154)
 
 [node name="FoodHoldPnt" type="Marker3D" parent="Doremi/Skeleton3D/ItemAttachment" index="0" unique_id=1652267701]
 transform = Transform3D(-0.6365215, -0.47818747, 0.60512584, 0.7364522, -0.14379522, 0.6610306, -0.22908232, 0.86640614, 0.44369105, -0.14255366, 0.22152954, -0.20731908)
 
 [node name="LeftMitten" type="BoneAttachment3D" parent="Doremi/Skeleton3D" index="10" unique_id=63624531]
-transform = Transform3D(0.35636628, 0.21542975, 0.9091715, -0.4166996, -0.83428246, 0.36101788, 0.8362803, -0.50750613, -0.20754072, 0.42275524, 0.94184095, 0.29884365)
+transform = Transform3D(0.5379545, 0.0938198, 0.83773667, -0.41669956, -0.8342825, 0.36101764, 0.7327799, -0.54329556, -0.40971136, 0.48264417, 0.9418408, 0.19383737)
 bone_name = "Left_Hand_JNT"
 bone_idx = 16
 
@@ -434,7 +425,7 @@ mesh = ExtResource("3_id8l0")
 surface_material_override/0 = SubResource("StandardMaterial3D_uh5i4")
 
 [node name="RightMitten" type="BoneAttachment3D" parent="Doremi/Skeleton3D" index="11" unique_id=1696412400]
-transform = Transform3D(0.1450223, 0.5576148, -0.81733364, -0.4407573, 0.77598447, 0.45119974, 0.8858337, 0.2948116, 0.35830784, -0.18059021, 0.9229416, 0.47555345)
+transform = Transform3D(0.34351507, 0.610211, -0.7138907, -0.4407572, 0.7759844, 0.45119986, 0.829295, 0.15965839, 0.5355172, -0.064392105, 0.9229416, 0.50368154)
 bone_name = "Right_Hand_JNT"
 bone_idx = 25
 
@@ -443,35 +434,35 @@ transform = Transform3D(0.01952465, -0.037799146, 0.9990949, 0.9327628, 0.360462
 mesh = ExtResource("5_i0hg5")
 surface_material_override/0 = SubResource("StandardMaterial3D_lh423")
 
-[node name="Hip_CTL" parent="Doremi/Main_CTL/Hip_GRP" parent_id_path=PackedInt32Array(718992324, 1157720065) index="0" unique_id=120332706]
-transform = Transform3D(0.9672617, 0, 0.2537794, 0, 1, 0, -0.2537794, 0, 0.9672617, 2.2386894e-17, 0.009139786, 0.052626178)
+[node name="Hip_CTL" parent="Doremi/Main_CTL/Hip_GRP" parent_id_path=PackedInt32Array(718992324, 1793095545) index="0" unique_id=1590494904]
+transform = Transform3D(0.9105828, 0, 0.41332573, 0, 1, 0, -0.41332573, 0, 0.9105828, 2.2386894e-17, 0.009139786, 0.052626178)
 
-[node name="Upper_Body_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP" parent_id_path=PackedInt32Array(718992324, 1451018616) index="0" unique_id=1697864372]
-transform = Transform3D(0.9991776, 0, 0.040546127, 0, 1, 0, -0.040546127, 0, 0.9991776, -1.201803e-16, 0.43945494, -0.03489469)
+[node name="Upper_Body_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP" parent_id_path=PackedInt32Array(718992324, 2018521357) index="0" unique_id=1538097702]
+transform = Transform3D(0.99485564, 0, 0.101301305, 0, 1, 0, -0.101301305, 0, 0.99485564, -1.201803e-16, 0.43945494, -0.03489469)
 
-[node name="Head_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/Head_GRP" parent_id_path=PackedInt32Array(718992324, 525423101) index="0" unique_id=317075139]
-transform = Transform3D(0.9577245, 0, -0.28768516, 0, 1, 0, 0.28768516, 0, 0.9577245, 1.650837e-16, 0.52560127, -0.026171017)
+[node name="Head_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/Head_GRP" parent_id_path=PackedInt32Array(718992324, 765381191) index="0" unique_id=2099358035]
+transform = Transform3D(0.88107353, 0, -0.4729783, 0, 1, 0, 0.4729783, 0, 0.88107353, 1.650837e-16, 0.52560127, -0.026171017)
 
-[node name="LeftArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP" parent_id_path=PackedInt32Array(718992324, 1153381033) index="0" unique_id=959621457]
-transform = Transform3D(0.9825492, 0.1842676, -0.025329577, -0.18600038, 0.9733957, -0.1338038, 0, 0.13618018, 0.99068344, 0.12581336, 0.4668367, -0.03489469)
+[node name="LeftArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP" parent_id_path=PackedInt32Array(718992324, 317712067) index="0" unique_id=1546349037]
+transform = Transform3D(0.98254913, 0.18591908, -0.005498396, -0.18600039, 0.9821197, -0.029045343, -4.6566107e-10, 0.029561197, 0.9995623, 0.12581336, 0.4668367, -0.03489469)
 
-[node name="LeftElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL" index="0" unique_id=2092919325]
-transform = Transform3D(0.9167624, 0.26060346, 0.30270725, -0.20566279, 0.9576368, -0.20157905, -0.34241578, 0.12254453, 0.93152225, 0.12992233, -0.13955688, -0.018965255)
+[node name="LeftElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL" index="0" unique_id=208538469]
+transform = Transform3D(0.9535587, 0.25931203, 0.15323867, -0.23397993, 0.9580867, -0.16529588, -0.18967915, 0.12176462, 0.97426623, 0.12992233, -0.13955688, -0.018965255)
 
-[node name="RightHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL/LeftWristFKCTL/RightHand_GRP" parent_id_path=PackedInt32Array(718992324, 349451663) index="0" unique_id=1940619600]
-transform = Transform3D(0.99012554, 0.14013964, -0.0034662539, -0.14009592, 0.99007994, 0.010673109, 0.0049275984, -0.010082112, 0.9999365, 0, 0, 0)
+[node name="RightHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL/LeftWristFKCTL/RightHand_GRP" parent_id_path=PackedInt32Array(718992324, 1400558560) index="0" unique_id=662565292]
+transform = Transform3D(0.99012715, 0.14013383, -0.0032253037, -0.14009598, 0.9900876, 0.009931115, 0.004585022, -0.009381217, 0.999945, 0, 0, 0)
 
-[node name="RightArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP" parent_id_path=PackedInt32Array(718992324, 579733746) index="0" unique_id=2067215212]
-transform = Transform3D(0.975121, -0.2184571, -0.03761165, 0.22167121, 0.96098214, 0.1654526, -1.7881386e-07, -0.16967382, 0.98550004, -0.12581299, 0.46684045, -0.03489466)
+[node name="RightArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP" parent_id_path=PackedInt32Array(718992324, 1213398549) index="0" unique_id=337250702]
+transform = Transform3D(0.9750088, -0.22209413, -0.0055721174, 0.22216398, 0.9747022, 0.02445546, -2.5890756e-07, -0.025082223, 0.9996851, -0.12581299, 0.46684045, -0.03489466)
 
-[node name="RightElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL" index="0" unique_id=26909785]
-transform = Transform3D(0.9351313, -0.21991281, 0.27778903, 0.20694275, 0.9754299, 0.075564325, -0.28758147, -0.013176147, 0.9576651, -0.12992302, -0.13956001, -0.018965272)
+[node name="RightElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL" index="0" unique_id=361144270]
+transform = Transform3D(0.9493229, -0.21897723, 0.22546381, 0.2100841, 0.9756498, 0.06301456, -0.2337726, -0.012454811, 0.97221106, -0.12992302, -0.13956001, -0.018965272)
 
-[node name="LeftHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL/RightElbowFKCTL/RightWristFKCTL/LeftHand_GRP" parent_id_path=PackedInt32Array(718992324, 664330235) index="0" unique_id=2012065586]
-transform = Transform3D(0.9531423, -0.2961803, 0.061616402, 0.2919988, 0.95395577, 0.068592526, -0.07909507, -0.047386535, 0.99573994, -0.48488703, 0.8745018, -0.043338943)
+[node name="LeftHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL/RightElbowFKCTL/RightWristFKCTL/LeftHand_GRP" parent_id_path=PackedInt32Array(718992324, 797866020) index="0" unique_id=1522072668]
+transform = Transform3D(0.9535921, -0.2956891, 0.05682838, 0.29213428, 0.9542836, 0.06324716, -0.0729319, -0.04371049, 0.99637836, -0.48488703, 0.8745018, -0.043338943)
 
-[node name="Right_Foot_CTL" parent="Doremi/Main_CTL/Right_Foot_GRP" parent_id_path=PackedInt32Array(718992324, 297274460) index="0" unique_id=1954573902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0007301424, 0, -0.052965403)
+[node name="Right_Foot_CTL" parent="Doremi/Main_CTL/Right_Foot_GRP" parent_id_path=PackedInt32Array(718992324, 2109722140) index="0" unique_id=1776456195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019571004, 0, -0.052965403)
 
 [node name="CliffEdgeDetect" type="RayCast3D" parent="Doremi" unique_id=237375630]
 unique_name_in_owner = true
@@ -1878,6 +1869,15 @@ grow_vertical = 2
 [node name="HeldItem" type="AnimationPlayer" parent="." unique_id=797850097]
 libraries/ = SubResource("AnimationLibrary_id8l0")
 speed_scale = 3.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=1943064701]
+stream = ExtResource("33_0it3a")
+
+[node name="IdleSFX" type="AudioStreamPlayer" parent="." unique_id=49358893]
+stream = ExtResource("34_0it3a")
+
+[node name="Sprint" type="AudioStreamPlayer" parent="." unique_id=141029873]
+stream = ExtResource("35_im504")
 
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="body_entered" from="Doremi/ItemDetect" to="." method="_on_item_detect_body_entered"]
