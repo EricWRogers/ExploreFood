@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://drc5hkuplaq6t"]
 
 [ext_resource type="ArrayMesh" uid="uid://deir0icas1cf2" path="res://assets/models/DinerBoothCorner.obj" id="1_hpabu"]
+[ext_resource type="Texture2D" uid="uid://blg8i6r0nqtqg" path="res://assets/textures/Diner Textures/DinerBoothBlue_Mat.png" id="1_iri5s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pms4b"]
+albedo_texture = ExtResource("1_iri5s")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mps0"]
 size = Vector3(3.2243347, 0.683136, 1.1849976)
@@ -17,6 +21,7 @@ size = Vector3(0.47875977, 1.0561523, 2.8044434)
 [node name="CornerBooth" type="StaticBody3D" unique_id=402515083]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1545374428]
+material_override = SubResource("StandardMaterial3D_pms4b")
 mesh = ExtResource("1_hpabu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1581210529]

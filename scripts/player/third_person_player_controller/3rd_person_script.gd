@@ -84,6 +84,11 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 @onready var food_hold_pnt: Marker3D = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt
 @onready var held_item: AnimationPlayer = $HeldItem
 
+#Sound Effects
+@onready var jumpSFX: AudioStreamPlayer = $Jump
+@onready var idle_sfx: AudioStreamPlayer = $IdleSFX
+@onready var sprintSFX: AudioStreamPlayer = $Sprint
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -503,6 +508,7 @@ func _physics_process(delta: float) -> void:
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 		jump_was_cut = false
+		jumpSFX.play()
 
 		not_moving = false
 		$IdleBreak.stop()
@@ -603,6 +609,7 @@ func _physics_process(delta: float) -> void:
 			elif ground_speed > 0.1:
 				_skin._walk()
 				_play_held_item_appear()
+				sprintSFX.play()
 			else:
 				if !not_moving:
 					not_moving = true
@@ -615,9 +622,11 @@ func _physics_process(delta: float) -> void:
 ## idle break
 func _on_idle_break_timeout() -> void:
 	if not_moving and !balancing_cliff_edge:
+		idle_sfx.play()
 		breaking_idle = true
 		_skin._idle_break()
 		_play_held_item_put_away()
+		
 
 ## clumsy cliff idle break
 func _on_cliff_timeout() -> void:

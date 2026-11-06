@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="2_wc4cq"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_ir2bk"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="5_168qo"]
+[ext_resource type="AudioStream" uid="uid://d31yp27ait3tr" path="res://assets/sounds/SFX/yippeesparkle.mp3" id="7_ir2bk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m80qa"]
 resource_local_to_scene = true
@@ -108,3 +109,6 @@ mesh = ExtResource("5_168qo")
 [node name="CollisionShape3D" parent="." index="1" unique_id=670592487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08179128, 0.16871333, -0.05750084)
 shape = SubResource("CapsuleShape3D_168qo")
+
+[node name="Yippee" type="AudioStreamPlayer3D" parent="." index="6" unique_id=338200852]
+stream = ExtResource("7_ir2bk")
