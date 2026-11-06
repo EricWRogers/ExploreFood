@@ -17,4 +17,5 @@ recipe_station = 2
 recipe_station_tex = ExtResource("5_owyaq")
 product = ExtResource("2_w4413")
 recipe_icon = ExtResource("3_4j7f6")
+id = 100
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

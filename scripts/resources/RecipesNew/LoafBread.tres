@@ -11,4 +11,5 @@ recipe_name = "Baked Roll"
 recipe_station = 2
 recipe_station_tex = ExtResource("3_ii5gf")
 recipe_icon = ExtResource("2_ii5gf")
+id = 103
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

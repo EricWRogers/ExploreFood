@@ -93,7 +93,7 @@ func _become_dropped():
 func _become_held(pnt):
 	yippee.play()
 	set_collision_layer_value(2, false)
-	$Reaxctivate.stop()
+	$Reactivate.stop()
 	_held = true
 	contact_monitor = false
 	#set_collision_layer_value(2, false)

@@ -25,7 +25,7 @@ var my_succulent_meal
 var my_order
 var right_food : bool = true
 var order_distance = 1
-var angry_time = 15.0
+var angry_time = 45.0
 var satisfaction_time
 var tray
 var good_time = ["Amazing", "So good", "Delicious","Yum-yum"]
@@ -220,15 +220,16 @@ func set_exit(new_exit: Object):
 	my_exit = new_exit
 
 func set_order():
-	my_order = Manager.player_unlocked_recipes.pick_random().product.instantiate()
-	$Bubble/Bubble2.texture = my_order.icon
+	my_order = Manager.player_unlocked_recipes.pick_random()
+	$Bubble/Bubble2.texture = my_order.recipe_icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
 	$Bubble/Label.hide()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	print(body.name)
 
-	if (body is BaseIngredient or body is base_meal) and current_state == State.ORDER:
+	if (body is BaseIngredient or body is BaseIngredientND or body is BaseItem) and current_state == State.ORDER:
 		satisfaction_time = timer.time_left
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
