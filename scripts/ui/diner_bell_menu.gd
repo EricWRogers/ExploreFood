@@ -9,6 +9,7 @@ signal start_button_hit
 @export var recipe_UI_node: PackedScene
 @export var recipes_container: GridContainer
 @export var confirm_button: Button
+@export var max_customers_label: Label
 
 @export_group("Min and max selection")
 @export var count_selected: Label
@@ -17,23 +18,21 @@ signal start_button_hit
 var num_selected_recipes: int = 0
 
 func _ready() -> void:
-	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/BeefWellington.tres"))
-	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/GrilledCheese.tres"))
-	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
-	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MushroomStew.tres"))
-	#Manager.player_unlocked_recipes.append(load("res://scripts/resources/Buttered_Rolls.tres"))
+	
+	# setup variables #
 	confirm_button.visible = false
 	confirm_button.pressed.connect(confirm_recipes)
 	Manager.player_selected_recipes.clear()
+	max_customers_label.text = str(Manager.max_customers) + " customers will be dining with us today!"
 
-	#remove placeholder children from grid
+	# remove placeholder children from grid #
 	if (recipes_container.get_child_count() > 0):
 		for n in recipes_container.get_children():
 			recipes_container.remove_child(n)
 			n.queue_free()
 
-	#spawn recipe ui node for every unlocked recipe (stored in manager)
-	#for recipe in test_recipe_array: #made for testing
+	# spawn recipe ui node for every unlocked recipe (stored in manager) #
+	#for recipe in test_recipe_array: # <-- made for testing
 	for recipe in Manager.player_unlocked_recipes:
 		var current_recipe_node: Node
 		current_recipe_node = recipe_UI_node.instantiate()

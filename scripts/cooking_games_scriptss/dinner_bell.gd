@@ -2,6 +2,7 @@ extends StaticBody3D
 signal rush_button_hit
 
 @export var bell_menu: PackedScene
+var canvas_layer: CanvasLayer
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial
@@ -34,7 +35,7 @@ func _process(_delta: float) -> void:
 		Manager.player_selected_recipes.clear()
 		get_tree().paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		queue_free()
+		canvas_layer.queue_free()
 	
 
 func _focus_obtain():
@@ -83,7 +84,7 @@ func open_menu():
 		i_hit_da_button = true
 		
 		# spawn canvas layer and bell menu #
-		var canvas_layer: CanvasLayer = CanvasLayer.new()
+		canvas_layer = CanvasLayer.new()
 		var spawn_bell_menu: Node
 		spawn_bell_menu = bell_menu.instantiate()
 		spawn_bell_menu.start_button_hit.connect(start_rush_hour)

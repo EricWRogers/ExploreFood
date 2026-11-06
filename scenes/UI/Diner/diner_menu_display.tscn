@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bowc4ooppdkek"]
 
+[ext_resource type="Script" uid="uid://cdkce4ifi1w8h" path="res://scripts/ui/diner_menu_display.gd" id="1_5wcy5"]
 [ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/UI/Diner/recipe_ui_node.tscn" id="1_n86j1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uouuo"]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5wcy5")
 
 [node name="Panel" type="Panel" parent="." unique_id=1076410733]
 layout_mode = 1

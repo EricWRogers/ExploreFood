@@ -16,7 +16,7 @@ const OLD_MAN_CUSTOMER = preload("uid://lrjofho5ggcq")
 const CHICKEN_AND_WAFFLE = preload("uid://bh7bxo4knjirp")
 #Testing
 var is_rush_hour : bool = false
-var max_customers : int
+
 
 
 var customer_spots = []
@@ -34,7 +34,7 @@ var customer_pool = [ALIEN_CUSTOMER, LITTLE_ALIEN_CUSTOMER,
 func _ready(): 
 	add_new_customer.connect(new_customer)
 	customer_spots = customer_points.get_children()
-	max_customers = customer_spots.size() / 2
+	Manager.max_customers = customer_spots.size() / 2
 	#start_rush_hour()
 
 
@@ -66,7 +66,7 @@ func new_customer(): #ignore
 
 func start_rush_hour():
 	is_rush_hour = true
-	for i in range(max_customers):
+	for i in range(Manager.max_customers):
 		spawn_customer()
 		await get_tree().create_timer(1.0).timeout
 		
