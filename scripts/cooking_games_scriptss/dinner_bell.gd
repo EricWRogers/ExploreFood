@@ -7,20 +7,36 @@ signal rush_button_hit
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
+var menu_opened: bool
 var i_hit_da_button : bool = false
 
 var _currently_at := false
 var player_close = false;
 
+func _input(event):
+	if event.is_action_pressed("Exit"):
+		print("exit pressed!")
+		i_hit_da_button = false
+
 func _ready() -> void:
 	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
+	menu_opened = false
 
 func _process(_delta: float) -> void:
 	if player_close and Input.is_action_just_pressed("Interact"):
-		print("opening menu through process...")
 		open_menu()
 		#rush_button_hit.emit()
+		
+	# escape menu #
+	if (Input.is_action_just_pressed("Exit")):
+		print("exit pressed!")
+		i_hit_da_button = false
+		Manager.player_selected_recipes.clear()
+		get_tree().paused = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		queue_free()
 	
+
 func _focus_obtain():
 	if _currently_at:
 		return
@@ -61,8 +77,11 @@ func start_rush_hour():
 
 func open_menu():
 	print("menu opened!")
+	
 	if !i_hit_da_button:
+		print("opening menu")
 		i_hit_da_button = true
+		
 		# spawn canvas layer and bell menu #
 		var canvas_layer: CanvasLayer = CanvasLayer.new()
 		var spawn_bell_menu: Node
@@ -71,11 +90,13 @@ func open_menu():
 		add_child(canvas_layer)
 		canvas_layer.add_child(spawn_bell_menu)
 		canvas_layer.layer = 99
+		
+		# pause time and unfreeze mouse #
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().paused = true
 	else:
 		start_rush_hour()
 		i_hit_da_button = false
-	# pause time and unfreeze mouse #
+	
 	
 	

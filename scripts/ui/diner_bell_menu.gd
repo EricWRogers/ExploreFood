@@ -76,7 +76,7 @@ func on_node_toggled(toggled_on: bool, ui_recipe: Recipe):
 
 
 func _process(_delta: float) -> void:
-
+	
 	# updating selection count UI #
 	count_selected.text = str(num_selected_recipes) + "/" + str(max_selectable_recipes)
 
