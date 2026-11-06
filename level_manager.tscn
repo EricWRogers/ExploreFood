@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dodm11ohml1rt" path="res://scenes/levels/testScenes/start_menu.tscn" id="3_s60hn"]
 [ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="4_k1abw"]
 
-[node name="LevelManager" type="Node" unique_id=2118240317]
+[node name="LevelManager" type="Node" unique_id=2118240317 node_paths=PackedStringArray("loading_screen", "loading_screen_timer")]
 script = ExtResource("1_mnhan")
 starting_scene = "res://scenes/levels/diner_hub.tscn"
+loading_screen = NodePath("LoadingScreen")
+loading_screen_timer = NodePath("Timer")
 
 [node name="SceneParent3D" type="Node3D" parent="." unique_id=736801837]
 
@@ -43,13 +45,11 @@ text = "Click the QR to be taken to the form"
 
 [node name="LoadingScreen" parent="." unique_id=1529669277 instance=ExtResource("3_5774q")]
 
-[node name="Panel" parent="LoadingScreen" index="0" unique_id=1732031707]
-visible = false
-
 [node name="Timer" type="Timer" parent="." unique_id=49514619]
 wait_time = 0.5
 
 [node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("4_k1abw")]
+visible = false
 
 [node name="LinkButton" type="LinkButton" parent="." unique_id=801633891]
 z_index = 4096
@@ -57,7 +57,8 @@ offset_right = 357.0
 offset_bottom = 361.0
 uri = "https://docs.google.com/forms/d/e/1FAIpQLSe4_9GyTZwKKLl2U5JimMSOO5SJ3Mwe0WyAtMBAnpkaJkdfGg/viewform?usp=dialog"
 
-[connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_loading_screen_start_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_loading_screen_timer_timeout"]
 
 [editable path="LoadingScreen"]
