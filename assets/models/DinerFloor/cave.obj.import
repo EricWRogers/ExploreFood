@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dupr8x56ce7g6"
+path="res://.godot/imported/cave.obj-f491be31a61cd7716738b510289618ae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cave.obj-f491be31a61cd7716738b510289618ae.mesh"]
+
+source_file="res://assets/models/DinerFloor/cave.obj"
+dest_files=["res://.godot/imported/cave.obj-f491be31a61cd7716738b510289618ae.mesh", "res://.godot/imported/cave.obj-f491be31a61cd7716738b510289618ae.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.01, 0.01, 0.01)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

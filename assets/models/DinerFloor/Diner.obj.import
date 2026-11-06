@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bi0435qxit5h1"
+path="res://.godot/imported/Diner.obj-b1c5a7bbb833ce31960a9d956c4f4cfd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Diner.obj-b1c5a7bbb833ce31960a9d956c4f4cfd.mesh"]
+
+source_file="res://assets/models/DinerFloor/Diner.obj"
+dest_files=["res://.godot/imported/Diner.obj-b1c5a7bbb833ce31960a9d956c4f4cfd.mesh", "res://.godot/imported/Diner.obj-b1c5a7bbb833ce31960a9d956c4f4cfd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
