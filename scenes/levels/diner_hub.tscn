@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://ca3wt84embtsi" path="res://assets/textures/Wheat_Texture/Wheat04.png" id="30_8srqi"]
 [ext_resource type="Texture2D" uid="uid://cv62bgfnipoeh" path="res://assets/textures/Wheat_Texture/Wheat05.png" id="31_0aqf5"]
 [ext_resource type="Texture2D" uid="uid://byt4qwurpcuuo" path="res://assets/textures/Wheat_Texture/Wheat06.png" id="32_544im"]
+[ext_resource type="PackedScene" uid="uid://bcn8vs8u5vvcc" path="res://scenes/scenes_assets/cupStation.tscn" id="37_544im"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
@@ -1642,6 +1643,9 @@ texture = ExtResource("31_0aqf5")
 transform = Transform3D(-0.1971649, 0, -0.024301454, 0, 0.234, 0, 0.039076727, 0, -0.12261498, 27.217468, 0.54017305, 19.777763)
 billboard = 2
 texture = ExtResource("32_544im")
+
+[node name="CupPile" parent="." unique_id=632690488 instance=ExtResource("37_544im")]
+transform = Transform3D(0.54, 0, 0, 0, 0.54, 0, 0, 0, 0.54, 17.519182, 1.0849483, 5.9396043)
 
 [connection signal="body_entered" from="Portals/Portal2" to="Portals/Portal2" method="_on_body_entered"]
 [connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]

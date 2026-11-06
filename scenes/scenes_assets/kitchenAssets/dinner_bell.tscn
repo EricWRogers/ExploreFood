@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cj7r6t66ev3s5" path="res://scripts/cooking_games_scriptss/dinner_bell.gd" id="1_0momx"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_tcbet"]
-[ext_resource type="PackedScene" uid="uid://njehgw3a3x0g" path="res://scenes/UI/Diner/diner_bell_menu.tscn" id="2_xeys2"]
+[ext_resource type="PackedScene" uid="uid://njehgw3a3x0g" path="res://scenes/ui/Diner/diner_bell_menu.tscn" id="2_xeys2"]
 [ext_resource type="Texture2D" uid="uid://dhmkkwqfmu1v" path="res://assets/BreadWorld/Textures/StoneTexture.png" id="3_xeys2"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_1nuid"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="6_tcbet"]
@@ -91,11 +91,6 @@ shader_parameter/blend = 0.0
 shader_parameter/burnt = 0.0
 shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21yr6"]
-albedo_color = Color(0.58021986, 0.74672115, 0.81687987, 1)
-metallic = 1.0
-roughness = 0.5
-
 [node name="DinnerBell" type="StaticBody3D" unique_id=1442131147 groups=["Station"]]
 process_mode = 3
 collision_mask = 15
@@ -110,7 +105,6 @@ shape = SubResource("SphereShape3D_gtwna")
 transform = Transform3D(0.16614145, 0, 0, 0, 0.16614145, 0, 0, 0, 0.16614145, -0.07737678, 0, 0)
 material_overlay = SubResource("ShaderMaterial_huw21")
 mesh = ExtResource("6_xeys2")
-surface_material_override/0 = SubResource("StandardMaterial3D_21yr6")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=883533380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74794734, 0)
