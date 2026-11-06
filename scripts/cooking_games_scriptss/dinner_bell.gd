@@ -14,22 +14,19 @@ var i_hit_da_button : bool = false
 var _currently_at := false
 var player_close = false;
 
-func _input(event):
-	if event.is_action_pressed("Exit"):
-		print("exit pressed!")
-		i_hit_da_button = false
-
 func _ready() -> void:
-	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
+	if (Manager.player_unlocked_recipes.size() == 0):
+		Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
+	
 	menu_opened = false
 
 func _process(_delta: float) -> void:
-	if player_close and Input.is_action_just_pressed("Interact"):
+	if player_close and Input.is_action_just_pressed("Interact"): #how does this trigger from interact when interact is E??? WTF???
 		open_menu()
 		#rush_button_hit.emit()
-		
+	
 	# escape menu #
-	if (Input.is_action_just_pressed("Exit")):
+	if (i_hit_da_button && Input.is_action_just_pressed("Exit")):
 		print("exit pressed!")
 		i_hit_da_button = false
 		Manager.player_selected_recipes.clear()

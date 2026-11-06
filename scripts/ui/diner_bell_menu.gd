@@ -1,9 +1,10 @@
 extends Control
 
 signal start_button_hit
-##for testing only\
 
 @onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
+
+##for testing only
 @export var test_recipe_array: Array[Resource]
 
 @export var recipe_UI_node: PackedScene

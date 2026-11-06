@@ -160,17 +160,27 @@ func load_scene(_new_scene: String):
 #func on_starting_level(_level): #emits signal from text box
 	#print("diner loaded!")
 	#current_level = _level
-	##current_level = get_child(1)
-	###when the signal "level changed" is emitted, the function "start_loading" is called
+	#current_level = get_child(1)
+	#when the signal "level changed" is emitted, the function "start_loading" is called
 	#current_level.connect("level_changed", Callable(self, "start_loading"))
 #
+
+##
+## start this function before loading a new level
 #func start_loading(level):
-	#$LoadingScreen.play_in()
+	#$LoadingScreen.play_in() 
 	#to_go = level
-	#
+
+
 #func exit_loading():
 	#$LoadingScreen.play_out()
-#
+
+##
+## once animation is finished, call level change
+#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#if anim_name == "LoadSceenTransition":
+		#_handle_level_change(to_go)
+
 #func _handle_level_change(current_level_name: String):
 	#var next_level
 	#var next_level_name
@@ -215,8 +225,3 @@ func load_scene(_new_scene: String):
 			#exit_loading()
 			#scene_switch_setter = true
 			#$Timer.stop()
-#
-#
-#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	#if anim_name == "LoadSceenTransition":
-		#_handle_level_change(to_go)

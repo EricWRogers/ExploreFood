@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="2_axn4y"]
 [ext_resource type="PackedScene" uid="uid://dupg4kim35k5f" path="res://scenes/scenes_assets/kitchenAssets/diner_table.tscn" id="3_3gldf"]
-[ext_resource type="Script" uid="uid://ggr454jnd0kk" path="res://scripts/test_scripts/temp_portal_manager.gd" id="3_6ynox"]
 [ext_resource type="Script" uid="uid://uwvsyq3knpxl" path="res://scripts/level_manager/portal.gd" id="3_8srqi"]
 [ext_resource type="PackedScene" uid="uid://djj1xomc5ek77" path="res://scenes/scenes_assets/kitchenAssets/dinner_bell.tscn" id="3_64sq4"]
 [ext_resource type="ArrayMesh" uid="uid://dtsinnldfr10f" path="res://assets/models/portalframe.obj" id="4_0aqf5"]
@@ -355,8 +354,6 @@ _data = {
 &"unlock": SubResource("Animation_sy41e")
 }
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvkke"]
 albedo_color = Color(0.26970002, 0.74291503, 0.93, 1)
 metallic = 1.0
@@ -400,6 +397,8 @@ blend_mode = 1
 albedo_color = Color(0.92549175, 0.00011262596, 0.7440698, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_grxcb"]
 size = Vector3(14.930603, 2.0229492, 22.341125)
@@ -457,7 +456,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7130246, 0, -1.9)
 _current_input_device = "keyboard_mouse"
 
 [node name="Portals" type="Node3D" parent="." unique_id=51422246]
-script = ExtResource("3_6ynox")
 
 [node name="Portal2" type="Area3D" parent="Portals" unique_id=638575099]
 transform = Transform3D(0.06594482, 0, 0.99782324, 0, 1, 0, -0.99782324, 0, 0.06594482, 28.618616, -0.38896847, 18.453112)
@@ -492,13 +490,6 @@ omni_attenuation = -0.167
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Portals/Portal2" unique_id=1595874575]
 libraries/ = SubResource("AnimationLibrary_2sh1c")
-
-[node name="KitchenStructure" type="CSGCombiner3D" parent="." unique_id=1142513212]
-use_collision = true
-
-[node name="Ceiling2" type="MeshInstance3D" parent="KitchenStructure" unique_id=1077539361]
-transform = Transform3D(5.8273606, 1.7484552e-07, 0, 1.0188878e-06, -0.99999994, -7.4106475e-07, -8.9074005e-14, 8.742277e-08, -8.476792, 15.3, 7.310505, -1.65)
-mesh = SubResource("PlaneMesh_6xqmx")
 
 [node name="KitchenProps" type="Node3D" parent="." unique_id=1103485876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.499999, 0, 0)
@@ -985,6 +976,10 @@ shape = SubResource("BoxShape3D_grxcb")
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 13.644766, 8.011475, -4.1300836)
 shape = SubResource("BoxShape3D_grxcb")
 
+[node name="Ceiling2" type="MeshInstance3D" parent="NavigationRegion3D/DinerStructure" unique_id=1077539361]
+transform = Transform3D(5.8273606, 1.7484552e-07, 0, 1.0188878e-06, -0.99999994, -7.4106475e-07, -8.9074005e-14, 8.742277e-08, -8.476792, 15.3, 7.310505, -1.65)
+mesh = SubResource("PlaneMesh_6xqmx")
+
 [node name="DinerProps" type="Node3D" parent="NavigationRegion3D" unique_id=412483644]
 
 [node name="DinnerBell" parent="NavigationRegion3D/DinerProps" unique_id=1442131147 instance=ExtResource("3_64sq4")]
@@ -1414,12 +1409,12 @@ recipe = ExtResource("19_mrweq")
 [node name="CollectedFoodSpawner" parent="." unique_id=1379722093 instance=ExtResource("19_6ynox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.525276, 4.3827314, -1.840997)
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1980993731]
+[node name="Diner" type="StaticBody3D" parent="." unique_id=1980993731]
 
-[node name="Diner" type="MeshInstance3D" parent="StaticBody3D3" unique_id=1649730152]
+[node name="DinerMesh" type="MeshInstance3D" parent="Diner" unique_id=1649730152]
 mesh = ExtResource("17_fmo2d")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=1221230375]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Diner" unique_id=1221230375]
 shape = SubResource("ConcavePolygonShape3D_nwjeg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1675311652]
