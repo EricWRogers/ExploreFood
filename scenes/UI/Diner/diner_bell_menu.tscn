@@ -17,6 +17,15 @@ content_margin_right = 36.0
 content_margin_bottom = 26.0
 bg_color = Color(0.476, 0.629, 0.68, 0.92156863)
 
+[sub_resource type="LabelSettings" id="LabelSettings_klsck"]
+font = ExtResource("9_rksqi")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_rksqi"]
+font = ExtResource("9_rksqi")
+font_size = 22
+font_color = Color(0.9398327, 0.96651393, 0.9566625, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llqqx"]
 bg_color = Color(0.8556, 0.91016, 0.93, 1)
 corner_radius_top_left = 4
@@ -52,15 +61,33 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_4ho7q")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_emm6w")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_1q30t")
 
-[sub_resource type="LabelSettings" id="LabelSettings_klsck"]
-font = ExtResource("9_rksqi")
-font_size = 24
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xqmx"]
+bg_color = Color(1, 1, 1, 0.8039216)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q026u"]
+bg_color = Color(0.27391362, 0.6560162, 0.753617, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmpmc"]
+bg_color = Color(0.97052866, 0.9782112, 0.9804098, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_6xqmx"]
 font = ExtResource("9_rksqi")
 font_size = 28
+font_color = Color(0, 0, 0, 1)
 
-[node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "count_selected")]
+[node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "max_customers_label", "count_selected")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -71,9 +98,10 @@ grow_vertical = 2
 script = ExtResource("1_1q30t")
 test_recipe_array = Array[Resource]([ExtResource("2_xe5kk"), ExtResource("3_rksqi"), ExtResource("4_knljf"), ExtResource("5_xoo1w"), ExtResource("6_eg5hv"), ExtResource("7_8tt6f")])
 recipe_UI_node = ExtResource("1_j0idh")
-recipes_container = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer")
-confirm_button = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button")
-count_selected = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Counter")
+recipes_container = NodePath("MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer")
+confirm_button = NodePath("MarginContainer/PanelContainer/VBoxContainer/MarginContainer/Button")
+max_customers_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/Customers")
+count_selected = NodePath("MarginContainer/PanelContainer/VBoxContainer/TextHBoxContainer/Counter")
 min_selectable_recipes = 2
 max_selectable_recipes = 2
 
@@ -92,89 +120,94 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_klsck")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1671995728]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1671995728]
 layout_mode = 2
 theme_override_constants/separation = 26
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=873990667]
-layout_mode = 2
-size_flags_vertical = 3
-theme = SubResource("Theme_1q30t")
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer" unique_id=591586703]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=107405190]
+[node name="TextHBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=107405190]
 layout_mode = 2
 theme_override_constants/separation = 142
 
-[node name="Tip" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1877418692]
+[node name="Tip" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TextHBoxContainer" unique_id=1877418692]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Choose what's on the Menu for Service"
+text = "Choose what's on the Menu for Service!"
 label_settings = SubResource("LabelSettings_klsck")
 
-[node name="Counter" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1221667158]
+[node name="Counter" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TextHBoxContainer" unique_id=1221667158]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "0/2"
 label_settings = SubResource("LabelSettings_klsck")
 horizontal_alignment = 2
 
-[node name="RecipeGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1336015711]
+[node name="Customers" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=477583587]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "XX customers will be dining with us today!"
+label_settings = SubResource("LabelSettings_rksqi")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=873990667]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_1q30t")
+horizontal_scroll_mode = 0
+
+[node name="RecipeGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1336015711]
 layout_mode = 2
 columns = 3
 
-[node name="RecipeUINode" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1984261646 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode2" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=881061591 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode3" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=580048650 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode4" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=163344188 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode5" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1434982441 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode6" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=140872315 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode6" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=140872315 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode7" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1664066635 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode7" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1664066635 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode8" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1419979783 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode8" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1419979783 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode9" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1410587517 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode9" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1410587517 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode10" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=298936412 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode10" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=298936412 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode11" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1346809390 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode11" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1346809390 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="RecipeUINode12" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer" unique_id=1714129838 instance=ExtResource("1_j0idh")]
+[node name="RecipeUINode12" parent="MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/RecipeGridContainer" unique_id=1714129838 instance=ExtResource("1_j0idh")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=1719260829]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1719260829]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/margin_left = 26
 theme_override_constants/margin_right = 26
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer" unique_id=82555440]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=82555440]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_6xqmx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q026u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xmpmc")
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button" unique_id=882227960]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/Button" unique_id=882227960]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,4 +219,4 @@ label_settings = SubResource("LabelSettings_6xqmx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -57,13 +57,13 @@ func pickup_spec():
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property($CollectCamPivot, "rotation:y", $CollectCamPivot.rotation.y - TAU, 2)
-	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0)
+	#tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0)
 	tween.tween_property($CollectCamPivot/CollectCam, "fov", 50, 0.2)
 	tween.tween_property($CollectCamPivot/CollectCam, "fov", 65, 0.1)
 	tween.tween_property($CollectCamPivot/CollectCam, "fov", 55, 0.05)
 	tween.tween_property($CollectCamPivot/CollectCam, "fov", 60, 0.05)
-	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0.05)
-	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", 0, 0.5)
+	#tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0.05)
+	#tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", 0, 0.5)
 
 func _footstep():
 	get_parent().footstep()
