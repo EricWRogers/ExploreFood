@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_3gpa0"]
 [ext_resource type="ArrayMesh" uid="uid://fbx1v0ncnfpn" path="res://assets/models/PuffMushroom.obj" id="5_5xydb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gpa0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xydb"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_orv12")
@@ -68,10 +68,10 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb1n6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gpa0"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_3gpa0")
+next_pass = SubResource("ShaderMaterial_5xydb")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -92,6 +92,7 @@ freeze = true
 food_name = "Mold Shroom"
 icon = ExtResource("2_5xydb")
 rarity_level = 1.0
+id = 1
 color = Color(0.38431373, 0.46666667, 0.43529412, 1)
 inventory_icon_FOV = 15.0
 resize = Vector3(0.5, 0.5, 0.5)
@@ -100,5 +101,5 @@ cross_section = ExtResource("3_orv12")
 
 [node name="DeformableMeshInstance3D" parent="." index="0" unique_id=2069674105]
 transform = Transform3D(4.22, 0, 0, 0, 4.22, 0, 0, 0, 4.22, 0, -0.56321037, 0)
-material_overlay = SubResource("ShaderMaterial_nb1n6")
+material_overlay = SubResource("ShaderMaterial_3gpa0")
 mesh = ExtResource("5_5xydb")

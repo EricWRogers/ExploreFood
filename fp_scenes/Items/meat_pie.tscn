@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_3qbxw"]
 [ext_resource type="ArrayMesh" uid="uid://ctp44ue7u40la" path="res://assets/models/MeatPocketSauce.obj" id="5_yu5u3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jd13g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ipxg"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0ipxg")
@@ -67,10 +67,10 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hon7m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yu5u3"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_jd13g")
+next_pass = SubResource("ShaderMaterial_0ipxg")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -95,9 +95,10 @@ item_name = "Meat Pie"
 resize = Vector3(0.2, 0.2, 0.2)
 player_held_offset = Vector3(-0.1, 0, 0.2)
 can_be_picked_up = true
+id = 100
 
 [node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
-material_overlay = SubResource("ShaderMaterial_hon7m")
+material_overlay = SubResource("ShaderMaterial_yu5u3")
 mesh = ExtResource("5_yu5u3")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=996006703]

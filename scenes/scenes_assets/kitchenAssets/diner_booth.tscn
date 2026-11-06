@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ca88apmavlnpp"]
+
+[ext_resource type="Texture2D" uid="uid://bwq1u03qe1q7n" path="res://assets/textures/Diner Textures/DinerBoothStraightBlue_Mat.png" id="1_tthbk"]
+[ext_resource type="ArrayMesh" uid="uid://cyppet3dp52va" path="res://assets/models/DinerBooth.obj" id="2_v61tu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ss74y"]
+cull_mode = 2
+albedo_texture = ExtResource("1_tthbk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdy4q"]
+size = Vector3(2.0396118, 0.67541504, 1.1929932)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mps0"]
+size = Vector3(2, 1, 0.5)
+
+[node name="DinerBooth" type="StaticBody3D" unique_id=1547329130]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=128622734]
+material_override = SubResource("StandardMaterial3D_ss74y")
+mesh = ExtResource("2_v61tu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1411390108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0069885254, 0.27509892, -0.00018310547)
+shape = SubResource("BoxShape3D_qdy4q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1898124710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1000001, -0.35)
+shape = SubResource("BoxShape3D_0mps0")

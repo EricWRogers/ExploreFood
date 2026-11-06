@@ -18,6 +18,7 @@ class_name BaseItem
 @export var upright : bool = false
 @export var player_held_offset : Vector3
 @export var can_be_picked_up : bool = false
+@export var id: int
 
 @onready var mesh_instance: MeshInstance3D = $Cuttingboard
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial

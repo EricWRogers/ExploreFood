@@ -13,4 +13,5 @@ recipe_ingredients = Array[PackedScene]([ExtResource("3_a0xsc")])
 recipe_station = 2
 recipe_station_tex = ExtResource("3_r3ooh")
 recipe_icon = ExtResource("2_oyii5")
+id = 102
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
