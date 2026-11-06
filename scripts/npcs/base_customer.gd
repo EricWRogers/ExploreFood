@@ -57,6 +57,7 @@ var relationship: int = 0
 
 # change color #
 func _ready() -> void:
+	angry_time = randf_range(angry_time, 60.0)
 	#var customer_mat = customer_mesh.get_surface_override_material(0)
 	#customer_mat = customer_mat.duplicate()
 	#customer_mat.albedo_color = colors.pick_random()
@@ -248,7 +249,16 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			right_food = false
 		change_state(State.EAT)
 		
-
+func get_out():
+	change_state(State.LEAVE)
+	timer.stop()
+	$Bubble.show()
+	$Bubble/Bubble2.hide()
+	$Bubble/Label.show()
+	$Bubble/Label.text = bad_time.pick_random()
+	$Bubble.modulate = Color(1.0, 0.68, 0.68, .7)
+	$AnimatedSprite3D.frame = 2
+	upset_sfx.play()
 
 func _on_timer_timeout() -> void:
 	timer.stop()
