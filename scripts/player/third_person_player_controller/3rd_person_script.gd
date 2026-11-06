@@ -70,6 +70,7 @@ var total_viewers := 1
 var held_item_appeared := false
 var is_holding := false
 var in_station := false
+var special_pickup := false
 var current_station : StaticBody3D
 @export var current_recipe : Resource
 const GRAB_GROUPS := ["Ingredient", "Item"]
@@ -86,11 +87,13 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 
 #Sound Effects
 @onready var jumpSFX: AudioStreamPlayer = $Jump
-@onready var idle_sfx: AudioStreamPlayer = $IdleSFX
+#@onready var idle_sfx: AudioStreamPlayer = $IdleSFX
 #@onready var sprintSFX: AudioStreamPlayer = $Sprint
 
 
 func _ready() -> void:
+	CameraManager.player_cam = $CameraPivot/SpringArm3D/PlayerCam
+	CameraManager.collect_cam = $Doremi/CollectCamPivot/CollectCam
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_gravity_retain = _gravity
 	max_spring_length = shadow.spring_length
@@ -165,6 +168,8 @@ func update_hotbar_eligibility():
 func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
+	if special_pickup:
+		return
 	if not can_move and current_station:
 		if Input.is_action_pressed("Interact") and current_station.valid_dish:
 			$CanvasLayer/MarginContainer3/Panel/TextureProgressBar.value += 0.8
@@ -363,6 +368,9 @@ func unfocus_all():
 ## supposed to get the floor mat but i dont know if this works
 func footstep() -> void: $SoundsLib.get_surface_play_footsteps(%ClimbedUpDetect)
 func _physics_process(delta: float) -> void:
+	if special_pickup:
+		velocity = Vector3.ZERO
+		return
 	if not can_move:
 		velocity = Vector3.ZERO
 		move_and_slide()
@@ -731,3 +739,24 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 		display_cook_button(false)
 		current_station.start_cooking_time()
 		current_station.rip_away()
+
+func pickup_special() -> void:
+	if special_pickup:
+		return
+	CameraManager.switch_to_collect()
+	special_pickup = true
+	velocity = Vector3.ZERO
+	not_moving = false
+	$IdleBreak.stop()
+	$Cliff.stop()
+	balancing_cliff_edge = false
+	breaking_idle = false
+	_play_held_item_put_away()
+	_skin.pickup_spec()
+	$CollectSpec.start()
+
+
+
+func _on_collect_spec_timeout() -> void:
+	special_pickup = false
+	CameraManager.switch_to_regular()

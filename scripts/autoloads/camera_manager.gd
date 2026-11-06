@@ -1,28 +1,24 @@
 extends Node
 
-#@onready var regular_camera: Camera3D = $Camera3D
-#@onready var phantom_camera: PhantomCamera3D = $PhantomCamera3D
+var oven_cam
+var player_cam
+var collect_cam
 
+func _activate(name):
+	reset()
+	match name:
+		"PlayerCam":
+			player_cam.priority = 1
+		"OvenCam":
+			oven_cam.priority = 1
+		"CollectCam":
+			collect_cam.priority = 1
 
-func switch_to_regular():
-	for cam in get_tree().get_nodes_in_group("Camera"):
-		if cam.name != "Player":
-			cam.set_priority(0)
-		else:
-			cam.set_priority(1)
-	#regular_camera.make_current()
-func switch_to_oven():
-	for cam in get_tree().get_nodes_in_group("Camera"):
-		if cam.name != "Oven":
-			cam.set_priority(0)
-		else:
-			cam.set_priority(1)
+func reset():
+	oven_cam.priority = 0
+	player_cam.priority = 0
+	collect_cam.priority = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	switch_to_regular()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func switch_to_regular(): _activate("PlayerCam")
+func switch_to_oven(): _activate("OvenCam")
+func switch_to_collect(): _activate("CollectCam")

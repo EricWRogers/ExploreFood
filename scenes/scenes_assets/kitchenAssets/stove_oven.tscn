@@ -230,8 +230,6 @@ size = Vector3(0.7558594, 0.76901245, 0.763916)
 
 [sub_resource type="Resource" id="Resource_cffq7"]
 script = ExtResource("11_h77cv")
-duration = 0.6
-transition = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lg1c5"]
 viewport_path = NodePath("SubViewport")
@@ -289,11 +287,10 @@ no_depth_test = true
 render_priority = 75
 texture = ExtResource("9_nq02n")
 
-[node name="Oven" type="Node3D" parent="." unique_id=2096494294 groups=["Camera"]]
+[node name="OvenCam" type="Node3D" parent="." unique_id=2096494294 groups=["Camera"]]
 transform = Transform3D(0.5714286, -4.3141664e-08, 2.4767676e-08, 2.4977938e-08, 0.4948717, 0.28571433, -4.3020265e-08, -0.28571433, 0.4948717, 1.3180681e-07, 0.73020875, 0.87291706)
 script = ExtResource("10_0tq11")
 tween_resource = SubResource("Resource_cffq7")
-tween_on_load = false
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=445175409]

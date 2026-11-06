@@ -36,7 +36,7 @@ class_name BaseIngredientND
 #@export var cook_group: CookGroup
 ##easier way to access all tags on ingredient at once
 @onready var food_tags: Array = [food_group, flavor_profile]
-@onready var arrow: Node3D = %CenterPivot
+#@onready var arrow: Node3D = %CenterPivot
 #@export_subgroup("Depreciated")
 #@export var category : Manager.FoodType
 #@export var flavor : Manager.FlavorType

@@ -4,6 +4,8 @@ var state_machine = AnimationNodeStateMachinePlayback
 @onready var anim_tree = %AnimationTree
 @onready var mult: Node3D = %mult
 @onready var item_attachment: BoneAttachment3D = %ItemAttachment
+#var is_shaking : bool = false
+#var shake_amt : Vector2 = Vector2.ZERO
 
 var is_holding = false
 # Called when the node enters the scene tree for the first time.
@@ -49,6 +51,19 @@ func _cliff_hang():
 	state_machine.travel("moveset_cliff_hang")
 func _cliff_climb():
 	state_machine.travel("moveset_cliff_climbing")
+func pickup_spec():
+	state_machine.start("CollectItem")
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property($CollectCamPivot, "rotation:y", $CollectCamPivot.rotation.y - TAU, 2)
+	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0)
+	tween.tween_property($CollectCamPivot/CollectCam, "fov", 50, 0.2)
+	tween.tween_property($CollectCamPivot/CollectCam, "fov", 65, 0.1)
+	tween.tween_property($CollectCamPivot/CollectCam, "fov", 55, 0.05)
+	tween.tween_property($CollectCamPivot/CollectCam, "fov", 60, 0.05)
+	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0.05)
+	tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", 0, 0.5)
 
 func _footstep():
 	get_parent().footstep()

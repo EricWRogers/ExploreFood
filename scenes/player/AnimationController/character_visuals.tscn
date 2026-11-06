@@ -13,12 +13,9 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_485h3"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="8_6lln1"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_wt4bb"]
-[ext_resource type="FontFile" uid="uid://jp1inm1yu75h" path="res://assets/fonts/MerchantCopy-GOXq.ttf" id="11_4chnm"]
 [ext_resource type="Texture2D" uid="uid://f58bkp3aipom" path="res://fp_scenes/kitchen/textures/ArrowPixart.png" id="13_yuxw8"]
 [ext_resource type="Texture2D" uid="uid://mm54qpuourwu" path="res://fp_scenes/inputs/General/keyboard_arrow_left.png" id="14_qaipp"]
-[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="14_qkycv"]
 [ext_resource type="Texture2D" uid="uid://bihice7qwmvnv" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_arrows_horizontal_outline.png" id="15_rqptv"]
-[ext_resource type="Texture2D" uid="uid://ykl8iqt1j86p" path="res://fp_scenes/kitchen/textures/DoughBabyPixart.png" id="15_yuxw8"]
 [ext_resource type="Texture2D" uid="uid://b07kiycebt32w" path="res://fp_scenes/inputs/General/keyboard_arrow_right.png" id="16_85moq"]
 [ext_resource type="Texture2D" uid="uid://cc6i755aulecm" path="res://fp_scenes/inputs/General/keyboard_plus_.png" id="17_l8n1f"]
 [ext_resource type="Texture2D" uid="uid://bryvdvkcy8jtn" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_arrows_vertical_outline.png" id="18_12ap1"]
@@ -27,8 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://wwvm0dhak5y6" path="res://fp_scenes/inputs/General/generic_stick_horizontal.png" id="19_67r70"]
 [ext_resource type="Texture2D" uid="uid://cm714tgdo26nk" path="res://fp_scenes/inputs/General/keyboard_minus_.png" id="19_ai5nd"]
 [ext_resource type="Texture2D" uid="uid://du7bwq2gl164y" path="res://fp_scenes/inputs/General/generic_stick_vertical.png" id="20_67r70"]
-[ext_resource type="Texture2D" uid="uid://cjo4afftrm8od" path="res://fp_scenes/kitchen/textures/MeatSkewerPixart.png" id="25_7csqp"]
-[ext_resource type="Texture2D" uid="uid://pamy1qgd64x7" path="res://fp_scenes/kitchen/textures/MeatBall.png" id="29_4rl1r"]
 [ext_resource type="Script" uid="uid://bhuc7rxf1scgv" path="res://fp_scenes/kitchen/scripts/station_slots.gd" id="30_7csqp"]
 [ext_resource type="FontFile" uid="uid://c5hhpp72h517l" path="res://assets/fonts/CsAristonStitchedRegularDemo-lx3MX.otf" id="31_4rl1r"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="32_8jgw0"]
@@ -196,25 +191,6 @@ corner_radius_top_left = 13
 corner_radius_top_right = 13
 corner_radius_bottom_right = 13
 corner_radius_bottom_left = 13
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_485h3"]
-bg_color = Color(0.73, 0.73, 0.73, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
-bg_color = Color(0.5, 0.5, 0.5, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.29, 0.29, 0.29, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rl1r"]
 corner_radius_top_left = 19
@@ -390,88 +366,128 @@ current_recipe = ExtResource("2_qkycv")
 unique_name_in_owner = true
 
 [node name="Skeleton3D" parent="Doremi" index="2" unique_id=249346581]
-bones/1/rotation = Quaternion(0.009441382, 0.054157294, -0.00088422943, 0.9984875)
-bones/2/rotation = Quaternion(-0.02240454, 0.06998382, -0.0006916912, 0.99729633)
-bones/3/rotation = Quaternion(-0.005119221, -0.0420218, -0.00030181263, 0.99910355)
-bones/30/rotation = Quaternion(-0.36534303, 0.86026585, 0.3246944, -0.14505464)
-bones/31/rotation = Quaternion(0.057146333, -0.03346742, -0.098007195, 0.99297976)
-bones/33/rotation = Quaternion(-0.25784534, 0.9606532, -0.038089283, 0.09597121)
-bones/34/rotation = Quaternion(0.016345514, -0.121133335, -0.0029363674, 0.9924973)
-bones/36/rotation = Quaternion(0.27774712, 0.95962125, -0.02797975, -0.034653228)
-bones/37/rotation = Quaternion(-0.07756531, 0.0963699, 0.006234504, 0.99229914)
-bones/39/rotation = Quaternion(0.35628152, 0.86935323, -0.30671266, -0.15236774)
-bones/40/rotation = Quaternion(-0.05713107, -0.06183214, 0.12641944, 0.98839825)
-bones/42/rotation = Quaternion(0.003146221, 0.9818414, 0.008945548, 0.18946663)
-bones/44/rotation = Quaternion(-0.003959412, 0.3076911, 0.038484577, 0.9506995)
-bones/46/rotation = Quaternion(-0.0012629853, -0.60246235, -0.04202456, 0.7970393)
-bones/47/rotation = Quaternion(-8.011443e-05, -0.11558557, -0.00074213324, 0.9932973)
-bones/50/rotation = Quaternion(0.0040070675, 0.31439546, 0.00094788824, 0.94928324)
-bones/52/rotation = Quaternion(0.004011555, -0.609643, -0.004457135, 0.7926535)
+bones/0/position = Vector3(0, 0.7440195, 0.014309559)
+bones/0/rotation = Quaternion(0.70518285, 0.70518285, -0.052125875, 0.052125875)
+bones/1/rotation = Quaternion(0.1936828, 0.053125046, -0.018139297, 0.9794569)
+bones/2/rotation = Quaternion(0.044494472, 0.06993199, 0.0013737102, 0.996558)
+bones/3/rotation = Quaternion(-0.22356367, -0.04095498, -0.013180206, 0.9737394)
+bones/12/rotation = Quaternion(0.32057056, 0.8902406, 0.22059286, 0.23673844)
+bones/13/rotation = Quaternion(-0.33901975, -0.22232847, -0.42327264, 0.81023216)
+bones/14/rotation = Quaternion(0.03798335, 0.026958378, -0.023915598, 0.9986283)
+bones/15/rotation = Quaternion(-0.35209215, -0.06316602, -0.025287572, 0.9334891)
+bones/21/rotation = Quaternion(-0.3205407, 0.89021754, -0.22068134, 0.23678312)
+bones/22/rotation = Quaternion(0.05169449, -0.33501148, 0.3240315, 0.88323194)
+bones/23/rotation = Quaternion(-0.02024793, 0.050101396, 0.0141000375, 0.9984393)
+bones/24/rotation = Quaternion(0.58028823, -0.09422515, 0.045597136, 0.807656)
+bones/30/rotation = Quaternion(-0.42599782, 0.8778319, 0.21288529, -0.051155727)
+bones/31/rotation = Quaternion(0.044612132, 0.062541515, -0.0013033838, 0.99704397)
+bones/33/rotation = Quaternion(-0.25990477, 0.9642997, 0.033028554, -0.038533773)
+bones/34/rotation = Quaternion(0.048326153, -0.07242535, -0.004472171, 0.9961924)
+bones/35/rotation = Quaternion(-0.020179803, 0.05200429, 0.022472622, 0.99819005)
+bones/36/rotation = Quaternion(0.2764168, 0.9587178, 0.021431971, 0.0632032)
+bones/37/rotation = Quaternion(-0.002039935, -0.028967407, -0.012767582, 0.9994968)
+bones/38/rotation = Quaternion(0.03798335, 0.026958378, -0.023915598, 0.9986283)
+bones/39/rotation = Quaternion(0.2801146, 0.7637042, -0.47445375, -0.3364306)
+bones/40/rotation = Quaternion(-0.029534582, -0.20499271, 0.26831836, 0.94080347)
+bones/42/rotation = Quaternion(0.06454234, 0.96312815, 0.1835111, 0.18585554)
+bones/44/rotation = Quaternion(0.1605674, 0.2423301, 0.026587952, 0.9564451)
+bones/46/rotation = Quaternion(-0.001445722, -0.5564763, -0.082020566, 0.826804)
+bones/47/rotation = Quaternion(-0.00021948612, -0.117746435, -0.0020153073, 0.9930417)
+bones/50/rotation = Quaternion(0.17396757, 0.35991424, -0.010950656, 0.9165573)
+bones/52/rotation = Quaternion(0.011606346, -0.62843835, -0.022766933, 0.77743965)
+bones/53/rotation = Quaternion(4.5428533e-05, -0.11447755, 0.00042145414, 0.9934258)
 
 [node name="LeftHandSwitch" parent="Doremi/Skeleton3D" index="0" unique_id=1305192764]
-transform = Transform3D(0.12920499, 0.25279537, 0.9588536, -0.2561421, -0.92563456, 0.27855262, 0.9579653, -0.2815932, -0.05484523, 0.2835541, 0.97846514, 0.28008437)
+transform = Transform3D(0.57770044, 0.08445501, 0.81186783, -0.25614187, -0.9256345, 0.27855274, 0.77501845, -0.36887327, -0.513107, 0.38983062, 0.9784653, 0.10550553)
 
 [node name="RightHandSwitch" parent="Doremi/Skeleton3D" index="1" unique_id=2020589730]
-transform = Transform3D(-0.18533354, 0.33679184, -0.9231589, -0.27726227, 0.8833431, 0.3779292, 0.94274956, 0.32600015, -0.070333496, -0.29970634, 0.96258587, 0.25831458)
+transform = Transform3D(0.29526964, 0.45265424, -0.84137976, -0.27726212, 0.8833432, 0.37792915, 0.9142982, 0.12169176, 0.38632834, -0.13076463, 0.96258587, 0.3694131)
 
 [node name="BoneAttachment3D" parent="Doremi/Skeleton3D" index="8" unique_id=256746129]
-transform = Transform3D(-0.0007431444, 0.9998202, -0.018949978, 0.99923193, 7.450581e-09, -0.03918559, -0.03917855, -0.018964544, -0.9990522, 4.5248957e-17, 0.9054074, -0.009680547)
+transform = Transform3D(-0.014954504, 0.92431587, -0.38133517, 0.99923193, 1.3783574e-07, -0.03918571, -0.036219932, -0.38162827, -0.923606, 4.5248957e-17, 0.9054074, -0.009680547)
 
 [node name="ItemAttachment" parent="Doremi/Skeleton3D" index="9" unique_id=1868256466]
-transform = Transform3D(-0.1436624, 0.43519688, -0.8887994, -0.44075713, 0.7759844, 0.45119983, 0.8860553, 0.4565652, 0.0803363, -0.32620618, 0.9229416, 0.39311326)
+transform = Transform3D(0.3042063, 0.6020431, -0.73824286, -0.440757, 0.7759845, 0.45119983, 0.8445066, 0.18812786, 0.5014141, -0.08854562, 0.9229417, 0.50014365)
 
 [node name="FoodHoldPnt" type="Marker3D" parent="Doremi/Skeleton3D/ItemAttachment" index="0" unique_id=1652267701]
 transform = Transform3D(-0.6365215, -0.47818747, 0.60512584, 0.7364522, -0.14379522, 0.6610306, -0.22908232, 0.86640614, 0.44369105, -0.14255366, 0.22152954, -0.20731908)
 
 [node name="LeftMitten" type="BoneAttachment3D" parent="Doremi/Skeleton3D" index="10" unique_id=63624531]
-transform = Transform3D(0.07248111, 0.3653829, 0.92803097, -0.41669956, -0.8342825, 0.3610177, 0.9061503, -0.41287717, 0.09178505, 0.3020284, 0.9418408, 0.4170584)
+transform = Transform3D(0.50296205, 0.11922075, 0.8560464, -0.41669932, -0.83428246, 0.36101785, 0.75722575, -0.53829217, -0.36993322, 0.47243273, 0.94184107, 0.21632102)
 bone_name = "Left_Hand_JNT"
 bone_idx = 16
 
 [node name="RightMitten" type="MeshInstance3D" parent="Doremi/Skeleton3D/LeftMitten" unique_id=1192229935]
 transform = Transform3D(-0.2169949, -0.22666125, 0.94949424, 0.8135104, -0.57960343, 0.04755585, 0.5395508, 0.78274226, 0.3101622, -0.10217661, -0.089963615, 0.16180989)
+visible = false
 mesh = ExtResource("3_id8l0")
 surface_material_override/0 = SubResource("StandardMaterial3D_uh5i4")
 
 [node name="RightMitten" type="BoneAttachment3D" parent="Doremi/Skeleton3D" index="11" unique_id=1696412400]
-transform = Transform3D(-0.1436624, 0.43519688, -0.8887994, -0.44075713, 0.7759844, 0.45119983, 0.8860553, 0.4565652, 0.0803363, -0.32620618, 0.9229416, 0.39311326)
+transform = Transform3D(0.3042063, 0.6020431, -0.73824286, -0.440757, 0.7759845, 0.45119983, 0.8445066, 0.18812786, 0.5014141, -0.08854562, 0.9229417, 0.50014365)
 bone_name = "Right_Hand_JNT"
 bone_idx = 25
 
 [node name="LeftMitten2" type="MeshInstance3D" parent="Doremi/Skeleton3D/RightMitten" unique_id=897716972]
 transform = Transform3D(0.01952465, -0.037799146, 0.9990949, 0.9327628, 0.3604629, -0.0045907274, -0.3599634, 0.93200785, 0.042295594, -0.09751102, 0.05927974, 0.1468459)
+visible = false
 mesh = ExtResource("5_i0hg5")
 surface_material_override/0 = SubResource("StandardMaterial3D_lh423")
 
+[node name="Main_CTL" parent="Doremi" index="3" unique_id=611147142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Hip_CTL" parent="Doremi/Main_CTL/Hip_GRP" parent_id_path=PackedInt32Array(718992324, 1157720065) index="0" unique_id=120332706]
-transform = Transform3D(0.99981976, 0, 0.018964538, 0, 1, 0, -0.018964538, 0, 0.99981976, 2.2386894e-17, 0.009139786, 0.052626178)
+transform = Transform3D(0.9243155, 0, 0.381628, 0, 1, 0, -0.381628, 0, 0.9243155, 2.2386894e-17, 0.009139786, 0.052626178)
+
+[node name="Spine_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP" parent_id_path=PackedInt32Array(718992324, 1680202454) index="0" unique_id=39599543]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 1.2680176e-16, 0.16138794, -0.0239901)
 
 [node name="Upper_Body_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP" parent_id_path=PackedInt32Array(718992324, 1451018616) index="0" unique_id=1697864372]
-transform = Transform3D(0.998995, 0, -0.04481911, 0, 1, 0, 0.04481911, 0, 0.998995, -1.201803e-16, 0.43945494, -0.03489469)
+transform = Transform3D(0.9960366, 0, 0.088943034, 0, 1, 0, -0.088943034, 0, 0.9960366, -1.201803e-16, 0.43945494, -0.03489469)
 
 [node name="Head_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/Head_GRP" parent_id_path=PackedInt32Array(718992324, 525423101) index="0" unique_id=317075139]
-transform = Transform3D(0.9999469, 0, -0.010256478, 0, 1, 0, 0.010256478, 0, 0.9999469, 1.650837e-16, 0.52560127, -0.026171017)
+transform = Transform3D(0.8996905, 0, -0.43652654, 0, 1, 0, 0.43652654, 0, 0.8996905, 1.650837e-16, 0.52560127, -0.026171017)
 
 [node name="LeftArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP" parent_id_path=PackedInt32Array(718992324, 1153381033) index="0" unique_id=959621457]
-transform = Transform3D(0.98254913, 0.18447815, -0.023747751, -0.1860004, 0.97450787, -0.12544776, -1.8626443e-09, 0.12767576, 0.9918154, 0.12581336, 0.4668367, -0.03489469)
+transform = Transform3D(0.9825491, 0.18522471, 0.01696863, -0.18600038, 0.97845155, 0.089637, 1.862644e-09, -0.09122898, 0.99582916, 0.12581336, 0.4668367, -0.03489469)
 
 [node name="LeftElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL" index="0" unique_id=2092919325]
-transform = Transform3D(0.94651127, 0.23379037, 0.22239022, -0.19563998, 0.9638941, -0.18064469, -0.2565936, 0.12747392, 0.9580759, 0.12992233, -0.13955688, -0.018965255)
+transform = Transform3D(0.9670257, 0.24770911, -0.0591633, -0.25271785, 0.962092, -0.10252723, 0.031523615, 0.11409818, 0.9929687, 0.12992233, -0.13955688, -0.018965255)
+
+[node name="LeftWristFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL" index="0" unique_id=183565313]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.12973283, -0.08710343, 0.018965255)
 
 [node name="RightHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL/LeftWristFKCTL/RightHand_GRP" parent_id_path=PackedInt32Array(718992324, 349451663) index="0" unique_id=1940619600]
-transform = Transform3D(0.9901238, 0.14014518, -0.0036885974, -0.14009565, 0.9900723, 0.011357812, 0.005243725, -0.010728887, 0.9999281, 0, 0, 0)
+transform = Transform3D(0.9901286, 0.14012814, -0.0029536306, -0.14009638, 0.9900955, 0.009094539, 0.004198781, -0.008590976, 0.99995357, 0, 0, 0)
 
 [node name="RightArmFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP" parent_id_path=PackedInt32Array(718992324, 579733746) index="0" unique_id=2067215212]
-transform = Transform3D(0.9752046, -0.21827866, -0.036462426, 0.22130309, 0.961877, 0.16067675, 5.9604613e-08, -0.16476204, 0.98633313, -0.12581299, 0.46684045, -0.03489466)
+transform = Transform3D(0.97490937, -0.22044648, 0.030883932, 0.22259933, 0.9654811, -0.13525817, -6.649639e-07, 0.13873927, 0.9903286, -0.12581299, 0.46684045, -0.03489466)
 
 [node name="RightElbowFKCTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL" index="0" unique_id=26909785]
-transform = Transform3D(0.96239585, -0.21840328, 0.16153301, 0.21297649, 0.97575605, 0.050396197, -0.1686236, -0.014098367, 0.98557925, -0.12992302, -0.13956001, -0.018965272)
+transform = Transform3D(0.975024, -0.216657, 0.04884671, 0.2157739, 0.9761774, 0.02274366, -0.05261066, -0.011635775, 0.9985467, -0.12992302, -0.13956001, -0.018965272)
 
 [node name="LeftHand_CTL" parent="Doremi/Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL/RightElbowFKCTL/RightWristFKCTL/LeftHand_GRP" parent_id_path=PackedInt32Array(718992324, 664330235) index="0" unique_id=2012065586]
-transform = Transform3D(0.95275015, -0.29660547, 0.06551112, 0.29187623, 0.95367044, 0.07294341, -0.08411144, -0.050375722, 0.995182, -0.48488703, 0.8745018, -0.043338943)
+transform = Transform3D(0.95398843, -0.29525766, 0.05222999, 0.29225633, 0.95457214, 0.058117088, -0.06701681, -0.040178508, 0.9969423, -0.48488703, 0.8745018, -0.043338943)
+
+[node name="Left_Knee_CTL" parent="Doremi/Main_CTL" index="3" unique_id=907881602]
+transform = Transform3D(0, 0.068173595, 0, 0, 0, -0.068173595, -0.068173595, 0, 0, 0.1909836, 0.38386112, 0.29823923)
+
+[node name="Left_Foot_CTL" parent="Doremi/Main_CTL/Left_Foot_GRP" parent_id_path=PackedInt32Array(718992324, 1441811164) index="0" unique_id=976044136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035044078, 3.1086245e-17, -0.052965403)
+
+[node name="Left_Swivel_Pivot" parent="Doremi/Main_CTL/Left_Foot_GRP/Left_Foot_CTL/Left_Ankle_Pivot/Left_Toe_Tip_Pivot" parent_id_path=PackedInt32Array(718992324, 377537435) index="0" unique_id=1550709386]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="Right_Foot_CTL" parent="Doremi/Main_CTL/Right_Foot_GRP" parent_id_path=PackedInt32Array(718992324, 297274460) index="0" unique_id=1954573902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00033247308, 0, -0.052965403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0036666512, 0, -0.052965403)
+
+[node name="Right_Swivel_Pivot" parent="Doremi/Main_CTL/Right_Foot_GRP/Right_Foot_CTL/Right_Ankle_Pivot/Right_Toe_Tip_Pivot" parent_id_path=PackedInt32Array(718992324, 2058989604) index="0" unique_id=284516790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollectCam" parent="Doremi/CollectCamPivot" parent_id_path=PackedInt32Array(718992324, 908296144) index="0" unique_id=37723952]
+transform = Transform3D(0.7047727, 0.27162117, 0.65537566, -1.4901161e-08, 0.92380196, -0.3828706, -0.7094332, 0.26983678, 0.65107036, 1.2486923, 0.4741407, 1.2404892)
+tween_on_load = false
 
 [node name="CliffEdgeDetect" type="RayCast3D" parent="Doremi" unique_id=237375630]
 unique_name_in_owner = true
@@ -551,9 +567,9 @@ process_physics_priority = 300
 script = ExtResource("6_485h3")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="Player" type="Node3D" parent="CameraPivot/SpringArm3D" unique_id=1176179857 groups=["Camera"]]
+[node name="PlayerCam" type="Node3D" parent="CameraPivot/SpringArm3D" unique_id=1176179857 groups=["Camera"]]
 script = ExtResource("8_6lln1")
-priority = 1
+priority = 2
 tween_resource = SubResource("Resource_g7g4t")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
@@ -1264,176 +1280,6 @@ stretch_mode = 5
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Ticket" type="MarginContainer" parent="CanvasLayer/Tickets" unique_id=2110482791]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Tickets/Ticket" unique_id=137260297]
-custom_minimum_size = Vector2(190, 361.04)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_485h3")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel" unique_id=39199727]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer" unique_id=1637852066]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Name" type="Label" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=492988908]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
-theme_override_colors/font_outline_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("11_4chnm")
-theme_override_font_sizes/font_size = 26
-text = "Beef Wellington"
-
-[node name="GrilledCheese" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=567217197]
-layout_mode = 2
-theme_override_constants/margin_top = -29
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/GrilledCheese" unique_id=1083883519]
-z_index = 1
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("25_7csqp")
-stretch_mode = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/GrilledCheese" unique_id=2143189143]
-layout_mode = 2
-theme_override_constants/margin_left = 34
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 34
-theme_override_constants/margin_bottom = 3
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/GrilledCheese/MarginContainer" unique_id=1889598507]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
-
-[node name="Arrow" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=893272144]
-layout_mode = 2
-theme_override_constants/margin_top = -57
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow" unique_id=2005992699]
-modulate = Color(0.85882354, 0.22352941, 0.22352941, 1)
-z_index = 4
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("13_yuxw8")
-stretch_mode = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow" unique_id=73633100]
-layout_mode = 2
-theme_override_constants/margin_top = 31
-
-[node name="Name2" type="Label" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow/MarginContainer" unique_id=1190692215]
-visible = false
-z_index = 5
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
-theme_override_colors/font_outline_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("11_4chnm")
-theme_override_font_sizes/font_size = 20
-text = "Oven"
-
-[node name="Oven" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=1859240231]
-layout_mode = 2
-theme_override_constants/margin_top = -45
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Oven" unique_id=1311786037]
-z_index = 2
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("14_qkycv")
-stretch_mode = 4
-
-[node name="Arrow2" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=456426874]
-layout_mode = 2
-theme_override_constants/margin_top = -61
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow2" unique_id=2136981286]
-modulate = Color(0.86, 0.2236, 0.2236, 1)
-z_index = 1
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("13_yuxw8")
-stretch_mode = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow2" unique_id=583212783]
-layout_mode = 2
-
-[node name="Name2" type="Label" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/Arrow2/MarginContainer" unique_id=939032125]
-visible = false
-z_index = 5
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
-theme_override_colors/font_outline_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("11_4chnm")
-theme_override_font_sizes/font_size = 20
-text = "Oven"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer" unique_id=1505762032]
-layout_mode = 2
-theme_override_constants/margin_top = 14
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1562353761]
-layout_mode = 2
-theme_override_constants/separation = -22
-
-[node name="Ingredient1" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1970813257]
-layout_mode = 2
-theme_override_constants/margin_top = -61
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Ingredient1" unique_id=1980753215]
-z_index = 1
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("15_yuxw8")
-stretch_mode = 4
-
-[node name="Ingredient2" type="MarginContainer" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=993906476]
-layout_mode = 2
-theme_override_constants/margin_top = -61
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Tickets/Ticket/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Ingredient2" unique_id=1676292801]
-z_index = 1
-texture_filter = 3
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("29_4rl1r")
-stretch_mode = 4
-
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer" unique_id=1039740676]
 anchors_preset = 7
 anchor_left = 0.5
@@ -1883,6 +1729,10 @@ speed_scale = 3.0
 stream = SubResource("AudioStreamRandomizer_hhq03")
 volume_db = -11.385
 
+[node name="CollectSpec" type="Timer" parent="." unique_id=1081231522]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="Doremi/CliffDetection/DistanceCheck" to="." method="_on_distance_check_body_entered"]
 [connection signal="body_entered" from="Doremi/ItemDetect" to="." method="_on_item_detect_body_entered"]
 [connection signal="body_exited" from="Doremi/ItemDetect" to="." method="_on_item_detect_body_exited"]
@@ -1892,5 +1742,6 @@ volume_db = -11.385
 [connection signal="update_held" from="CanvasLayer/MarginContainer/Hotbar" to="." method="_on_hotbar_update_held"]
 [connection signal="value_changed" from="CanvasLayer/MarginContainer3/Panel/TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer3/Panel2/StartCooking" to="." method="_on_start_cooking_button_down"]
+[connection signal="timeout" from="CollectSpec" to="." method="_on_collect_spec_timeout"]
 
 [editable path="Doremi"]

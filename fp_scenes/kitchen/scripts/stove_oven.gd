@@ -19,7 +19,8 @@ var to_be_made : PackedScene
 var dish
 @export var cook_time : int
 
-
+func _ready() -> void:
+	CameraManager.oven_cam = $OvenCam
 func _focus_obtain():
 	if currently_cooking:
 		return
