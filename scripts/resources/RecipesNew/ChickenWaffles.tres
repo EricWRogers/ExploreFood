@@ -11,4 +11,5 @@ recipe_name = "Chicken & Waffles"
 recipe_station = 2
 recipe_station_tex = ExtResource("3_lqrd4")
 recipe_icon = ExtResource("2_lqrd4")
+id = 101
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

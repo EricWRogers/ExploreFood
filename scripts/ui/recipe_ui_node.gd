@@ -5,6 +5,7 @@ extends MarginContainer
 @export var ui_button: Button
 @export var ui_station: TextureRect
 @export var ui_flow: FlowContainer
+@export var ui_recipe: Recipe
 signal node_selected
 signal node_toggled
 
@@ -16,4 +17,4 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_toggled(toggled_on: bool) -> void:
-	node_toggled.emit(toggled_on)
+	node_toggled.emit(toggled_on, ui_recipe)
