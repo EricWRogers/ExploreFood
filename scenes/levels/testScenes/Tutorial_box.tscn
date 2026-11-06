@@ -42,13 +42,16 @@ offset_bottom = 554.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_s7ugy")
 theme_override_font_sizes/font_size = 35
-text = "Talk to The Boss to get your first task. 
+text = "Find Recipes and Ingredients hidden
+throughout to cook for guests. Give
+them Water and Speedy service.
 
-Use the Kitchen to cook food"
+Talk to The Boss to get your first task. "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="hold button" type="TextureRect" parent="." unique_id=502475640]
+self_modulate = Color(0.9913335, 0.48000002, 1, 1)
 layout_mode = 0
 offset_left = 247.0
 offset_top = 504.0
