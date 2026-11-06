@@ -61,6 +61,6 @@ func _on_body_entered(body: Node3D) -> void:
 		Manager.level_manager.call_deferred("change_scene", new_level_path, current_level, change_mode) #GlobalLevel.level_manager.change_mode.DELETE
 	
 	# food goes through portal - add to collected food array #
-	if (!in_kitchen && body.has_method("im_food")):
+	if (!in_kitchen && (body is BaseIngredient or body is BaseIngredientND or body is BaseItem)):
 		Manager.collected_food.append(body.scene_file_path)
 		body.queue_free()

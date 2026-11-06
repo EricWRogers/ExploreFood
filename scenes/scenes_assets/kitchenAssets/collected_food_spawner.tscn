@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://btdvnsmd1dtkq"]
+
+[ext_resource type="Script" uid="uid://bfxw1l3tn52jp" path="res://scripts/cooking_games_scriptss/collected_food_spawner.gd" id="1_7aiod"]
+
+[node name="CollectedFoodSpawner" type="Node3D" unique_id=1379722093]
+script = ExtResource("1_7aiod")
