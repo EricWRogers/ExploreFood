@@ -52,6 +52,7 @@ func _cliff_hang():
 func _cliff_climb():
 	state_machine.travel("moveset_cliff_climbing")
 func pickup_spec():
+	$Skeleton3D/BoneAttachment3D2/MeshInstance3D.show()
 	state_machine.start("CollectItem")
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
@@ -64,7 +65,8 @@ func pickup_spec():
 	tween.tween_property($CollectCamPivot/CollectCam, "fov", 60, 0.05)
 	#tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", .5, 0.05)
 	#tween.tween_property($CollectCamPivot/CollectCam, "noise:frequency", 0, 0.5)
-
+func put_away_recipe():
+	$Skeleton3D/BoneAttachment3D2/MeshInstance3D.hide()
 func _footstep():
 	get_parent().footstep()
 

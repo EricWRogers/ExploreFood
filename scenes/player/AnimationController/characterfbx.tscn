@@ -7,9 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bi7wxp8lxy1fr" path="res://scenes/player/AnimationController/mult.tscn" id="3_rkl36"]
 [ext_resource type="Texture2D" uid="uid://cyer30s4lr1gu" path="res://assets/models/3rdPersonController/Mesh/Doremi_0.png" id="3_valgm"]
 [ext_resource type="Animation" uid="uid://v5x68g6hmd6m" path="res://assets/models/3rdPersonController/Animations/curl_break.res" id="4_rkl36"]
+[ext_resource type="Texture2D" uid="uid://dbeirkvfckgt8" path="res://assets/textures/Scroll_Mat.png" id="5_8n1cm"]
 [ext_resource type="Animation" uid="uid://b06c6iwtutwpy" path="res://assets/models/3rdPersonController/Animations/cliff_climbing.res" id="5_8x2vo"]
 [ext_resource type="Animation" uid="uid://s012s3q1ass6" path="res://assets/models/3rdPersonController/Animations/fall_freeze_frame.res" id="5_valgm"]
+[ext_resource type="ArrayMesh" uid="uid://okpkxsy1xg7t" path="res://assets/models/MiscellaneousDinerandKitchenItems/Scroll.obj" id="6_3jaoa"]
 [ext_resource type="Animation" uid="uid://57g7x4fnp4og" path="res://assets/models/3rdPersonController/Animations/idle.res" id="6_ci0k3"]
+[ext_resource type="Shader" uid="uid://dh7eg01t2x70" path="res://assets/shaders/shinebright.gdshader" id="7_3jaoa"]
 [ext_resource type="Animation" uid="uid://bow7ohkw7svsp" path="res://assets/models/3rdPersonController/Animations/crouch_stand.res" id="7_8x2vo"]
 [ext_resource type="Animation" uid="uid://dch7k18bjmw1u" path="res://assets/models/3rdPersonController/Animations/idle_break.res" id="7_awxxe"]
 [ext_resource type="Animation" uid="uid://dy1c0ncfkj5py" path="res://assets/models/3rdPersonController/Animations/collect_special.res" id="7_pm6so"]
@@ -31,6 +34,178 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci0k3"]
 albedo_texture = ExtResource("3_valgm")
+
+[sub_resource type="Shader" id="Shader_r115i"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d271v"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_r115i")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("5_8n1cm")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_rmpwg"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.5) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4a8mk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_d271v")
+shader = SubResource("Shader_rmpwg")
+shader_parameter/outline_width = 0.1790000085025
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="Shader" id="Shader_6pri2"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oyuny"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4a8mk")
+shader = SubResource("Shader_6pri2")
+shader_parameter/outline_width = 0.0330000015675
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfllm"]
+albedo_texture = ExtResource("5_8n1cm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icah2"]
+albedo_texture = ExtResource("5_8n1cm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wht6"]
+albedo_texture = ExtResource("5_8n1cm")
+
+[sub_resource type="Gradient" id="Gradient_d271v"]
+offsets = PackedFloat32Array(0, 0.38671875, 1)
+colors = PackedColorArray(1, 0.6, 0, 0.13333334, 1, 0.80366665, 0.38, 0.03137255, 1, 0.81, 0.39999998, 0.02745098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3yjkh"]
+gradient = SubResource("Gradient_d271v")
+fill_from = Vector2(0, 0.99759614)
+fill_to = Vector2(0.46394232, 0.6370192)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmpwg"]
+render_priority = -128
+shader = ExtResource("7_3jaoa")
+shader_parameter/pixelation = Vector2(300, 300)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture2D_3yjkh")
+shader_parameter/spread = 0.35700001625898004
+shader_parameter/size = 0.3750000653125001
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 16.0
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = 0.5
+shader_parameter/core_intensity = 1.0
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46qji"]
+render_priority = -10
+next_pass = SubResource("ShaderMaterial_rmpwg")
+transparency = 1
+depth_test = 1
+albedo_color = Color(1, 1, 1, 0)
+ao_light_affect = 0.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_oyuny"]
+material = SubResource("StandardMaterial3D_46qji")
+size = Vector2(1.83, 2.13)
 
 [sub_resource type="Animation" id="Animation_l6kvb"]
 length = 0.001
@@ -903,12 +1078,14 @@ metadata/_custom_type_script = "uid://cuffvge5ad4aa"
 script = ExtResource("2_ppl5p")
 
 [node name="Skeleton3D" parent="." index="2" unique_id=249346581]
+bones/0/position = Vector3(1.7524154e-18, 0.74401957, -0.014309559)
+bones/0/rotation = Quaternion(-0.05212588, 0.05212588, -0.70518285, -0.70518285)
 bones/1/position = Vector3(0.16316125, 4.5248957e-17, 2.7755576e-17)
-bones/1/rotation = Quaternion(-0.065485686, 0.05404238, 0.006132985, 0.99637014)
+bones/1/rotation = Quaternion(0.15623972, 0.14588128, -0.015727328, 0.9767602)
 bones/2/position = Vector3(0.2782808, -6.571438e-17, -4.0939474e-16)
-bones/2/rotation = Quaternion(-0.049434118, 0.069915734, -0.0015261793, 0.99632615)
+bones/2/rotation = Quaternion(0.006346319, 0.06850501, -0.20556131, 0.97622305)
 bones/3/position = Vector3(0.08658685, -6.894056e-17, -2.7755576e-17)
-bones/3/rotation = Quaternion(0.08385198, -0.04187387, 0.0049436237, 0.99558574)
+bones/3/rotation = Quaternion(0.3245051, -0.10840672, -0.035860945, 0.9389667)
 bones/4/position = Vector3(0.38825858, -2.0707048e-16, 1.3183898e-16)
 bones/4/rotation = Quaternion(0, -0.008426069, -8.515749e-18, 0.9999645)
 bones/5/position = Vector3(0.019628264, -1.4451431e-17, 4.0766002e-17)
@@ -922,63 +1099,65 @@ bones/9/rotation = Quaternion(1.2325952e-32, 0, -6.162976e-33, 1)
 bones/10/rotation = Quaternion(0.22106862, 0.9500058, -0.16864496, 0.14204402)
 bones/11/position = Vector3(0.25707337, 5.551115e-16, 3.330669e-16)
 bones/11/rotation = Quaternion(-3.081488e-33, 3.081488e-33, 6.938894e-18, 1)
-bones/12/rotation = Quaternion(0.32057056, 0.8902406, 0.22059286, 0.23673844)
-bones/13/rotation = Quaternion(-0.33901975, -0.22232847, -0.42327264, 0.81023216)
+bones/12/rotation = Quaternion(0.65575147, 0.6870385, 0.23714948, 0.2042753)
+bones/13/rotation = Quaternion(-0.0574906, -0.049179032, 0.11377004, 0.99062246)
+bones/14/rotation = Quaternion(-0.43883187, -0.37181398, -0.2892033, 0.7652074)
 bones/15/position = Vector3(0.12351586, 5.551115e-16, 5.551115e-17)
-bones/15/rotation = Quaternion(-0.35209215, -0.06316602, -0.025287572, 0.9334891)
+bones/15/rotation = Quaternion(-0.7179022, 0.115131274, 0.20989518, 0.653686)
 bones/16/position = Vector3(0.14298432, 2.220446e-16, -1.110223e-16)
 bones/17/position = Vector3(0.04119852, -8.881784e-16, 1.6653345e-16)
 bones/18/position = Vector3(0.035991546, -2.220446e-16, 0)
 bones/18/rotation = Quaternion(0, -1.0408341e-17, 1.2143064e-17, 1)
-bones/21/rotation = Quaternion(-0.3205407, 0.89021754, -0.22068134, 0.23678312)
-bones/22/rotation = Quaternion(0.05169449, -0.33501148, 0.3240315, 0.88323194)
-bones/23/rotation = Quaternion(-0.02024793, 0.050101396, 0.0141000375, 0.9984393)
+bones/21/rotation = Quaternion(-0.4469542, 0.879205, -0.083917096, 0.14208603)
+bones/22/rotation = Quaternion(0.057489723, -0.04917883, -0.113772884, 0.9906221)
+bones/23/rotation = Quaternion(-0.037983086, 0.026958387, 0.023916353, 0.9986283)
 bones/24/position = Vector3(0.12351553, -1.110223e-16, 1.110223e-16)
-bones/24/rotation = Quaternion(0.58028823, -0.09422515, 0.045597136, 0.807656)
+bones/24/rotation = Quaternion(0.05389472, -0.2960552, -0.43396407, 0.849189)
 bones/25/position = Vector3(0.1429846, -3.330669e-16, 0)
 bones/26/position = Vector3(0.04119795, 5.551115e-16, 0)
 bones/27/position = Vector3(0.03599151, 0, 1.110223e-16)
 bones/27/rotation = Quaternion(1.3877788e-17, -1.7347235e-17, -1.9081958e-17, 1)
-bones/30/rotation = Quaternion(-0.32619807, 0.8404859, 0.3702482, -0.2238185)
+bones/30/rotation = Quaternion(-0.4145034, 0.8620464, 0.26877978, -0.1132275)
 bones/30/scale = Vector3(1, 1, 1)
-bones/31/rotation = Quaternion(0.051641025, -0.12098778, -0.18536465, 0.973825)
+bones/31/rotation = Quaternion(0.05748398, -0.050466675, -0.11506124, 0.9904089)
 bones/31/scale = Vector3(1, 1, 1)
-bones/33/rotation = Quaternion(-0.25932735, 0.9639214, -0.017688453, 0.05737561)
-bones/34/rotation = Quaternion(0.047991302, -0.07546242, -0.0043565263, 0.99598354)
-bones/35/rotation = Quaternion(-0.020179803, 0.05200429, 0.022472622, 0.99819005)
-bones/36/rotation = Quaternion(0.27765453, 0.9606259, -0.010286498, 0.0004157832)
-bones/37/rotation = Quaternion(-0.032349613, 0.02924008, 0.0149676, 0.9989367)
-bones/39/rotation = Quaternion(0.4069209, 0.8670218, -0.27940455, -0.06798222)
+bones/33/rotation = Quaternion(-0.46998814, 0.8790191, 0.06976528, 0.039618805)
+bones/34/rotation = Quaternion(0.057489723, -0.04917883, -0.113772884, 0.9906221)
+bones/35/rotation = Quaternion(-0.037983086, 0.026958387, 0.023916353, 0.9986283)
+bones/36/rotation = Quaternion(0.6822706, 0.7181194, 0.120772354, 0.06500422)
+bones/37/rotation = Quaternion(-0.0574906, -0.049179032, 0.11377004, 0.99062246)
+bones/38/rotation = Quaternion(-0.4406615, -0.44527397, -0.11085071, 0.77153134)
+bones/39/rotation = Quaternion(0.30899346, 0.9415208, -0.078555025, -0.10904576)
 bones/39/scale = Vector3(1.0000001, 1, 1.0000001)
-bones/40/rotation = Quaternion(-0.044439565, 0.06326859, 0.00056983164, 0.99700654)
+bones/40/rotation = Quaternion(-0.008631335, -0.25256982, 0.3148063, 0.91489404)
 bones/40/scale = Vector3(1, 1, 1)
 bones/42/position = Vector3(0.0013027044, 2.8869877e-17, -0.05339807)
-bones/42/rotation = Quaternion(-0.021822235, 0.9797594, -0.062046565, 0.18906504)
+bones/42/rotation = Quaternion(0.053672366, 0.98273176, 0.14575812, 0.100559376)
 bones/43/position = Vector3(0.054079946, 3.2564845e-18, -5.551115e-17)
-bones/44/rotation = Quaternion(-0.07369303, 0.3307148, 0.042927314, 0.9398693)
+bones/44/rotation = Quaternion(0.1309351, 0.122852586, -0.008080628, 0.98371637)
 bones/44/scale = Vector3(1, 1, 1)
 bones/45/position = Vector3(0.2606624, -2.7755576e-17, 1.3877788e-17)
 bones/45/rotation = Quaternion(-8.607303e-18, 1.862645e-08, -3.024513e-16, 1)
 bones/45/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/46/position = Vector3(0.27313864, 8.326673e-17, -1.2490009e-16)
-bones/46/rotation = Quaternion(-0.0016560488, -0.6150714, -0.031032166, 0.7878587)
+bones/46/rotation = Quaternion(-0.31497863, -0.43815532, 0.17163827, 0.82422626)
 bones/46/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/47/position = Vector3(0.15915576, -5.551115e-17, 0)
-bones/47/rotation = Quaternion(-0.00010107702, -0.12241523, -0.0009319633, 0.9924786)
+bones/47/rotation = Quaternion(5.2381747e-05, -0.1461968, 0.0004338114, 0.9892555)
 bones/48/position = Vector3(0.0884511, -1.110223e-16, 0)
 bones/48/rotation = Quaternion(-2.4641411e-16, -0.05651051, -2.063869e-17, 0.998402)
 bones/49/position = Vector3(0.041561637, 2.7755576e-17, 0)
 bones/49/rotation = Quaternion(-5.007418e-32, 0, -4.9303807e-32, 1)
-bones/50/rotation = Quaternion(-0.06284776, 0.2924014, 0.0041726413, 0.9542192)
+bones/50/rotation = Quaternion(-0.19711936, 0.31532434, -0.29425475, 0.880414)
 bones/50/scale = Vector3(1, 1, 0.99999994)
 bones/51/position = Vector3(0.26066282, 0, -1.8561541e-16)
 bones/51/rotation = Quaternion(2.5288855e-18, 2.7939674e-07, -1.630304e-16, 1)
 bones/51/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/52/position = Vector3(0.27313843, 5.551115e-17, -2.0816682e-16)
-bones/52/rotation = Quaternion(0.0025776126, -0.5970395, 0.01062032, 0.8021375)
+bones/52/rotation = Quaternion(0.41520968, -0.31930453, 0.07708561, 0.84835327)
 bones/52/scale = Vector3(0.9999999, 1, 0.99999994)
 bones/53/position = Vector3(0.15915555, 5.551115e-17, -1.9428903e-16)
-bones/53/rotation = Quaternion(4.5428533e-05, -0.11447755, 0.00042145414, 0.9934258)
+bones/53/rotation = Quaternion(0.027813472, -0.19070444, 0.11770064, 0.97416884)
 bones/54/position = Vector3(0.08845166, -5.2735594e-16, 2.7755576e-17)
 bones/54/rotation = Quaternion(-5.719033e-17, -0.056511123, -4.789985e-18, 0.998402)
 bones/55/position = Vector3(0.041561168, -9.883111e-11, -1.3877788e-17)
@@ -993,11 +1172,11 @@ bones/61/position = Vector3(0.17438415, -3.330669e-16, 1.110223e-16)
 bones/61/rotation = Quaternion(0, 1.8488927e-32, 0, 1)
 
 [node name="LeftHandSwitch" parent="Skeleton3D" index="0" unique_id=1305192764]
-transform = Transform3D(-0.06824715, 0.30476394, 0.9499794, -0.256142, -0.9256347, 0.27855265, 0.96422696, -0.22431926, 0.14123473, 0.21814078, 0.97846526, 0.33158627)
+transform = Transform3D(-0.8382784, -0.46885565, -0.27832264, 0.2948802, -0.8192104, 0.49187383, -0.45862278, 0.33025545, 0.82498264, -0.45594642, 1.4925543, -0.011971541)
 bone_idx = 15
 
 [node name="RightHandSwitch" parent="Skeleton3D" index="1" unique_id=2020589730]
-transform = Transform3D(-0.37312374, 0.2634827, -0.8895815, -0.2772621, 0.8833433, 0.37792918, 0.88538355, 0.38766173, -0.25654256, -0.34851342, 0.96258587, 0.19169448)
+transform = Transform3D(0.78003407, -0.10885867, -0.6161952, 0.17283386, -0.9089603, 0.37936735, -0.60139453, -0.40241894, -0.6902056, 0.38190427, 0.7743075, -0.14383419)
 bone_idx = 24
 
 [node name="DollyChefHigh" parent="Skeleton3D" index="2" unique_id=719776582]
@@ -1149,7 +1328,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="8" unique_id=256746129]
-transform = Transform3D(0.0051434417, 0.991348, 0.13115884, 0.999232, 6.519258e-08, -0.039185733, -0.038846716, 0.13125966, -0.99058664, 4.5248957e-17, 0.9054074, -0.009680547)
+transform = Transform3D(-0.014861239, -0.9506836, 0.3098061, 0.98916656, 0.031276803, 0.14342712, -0.14604352, 0.30858135, 0.9399196, -4.349654e-17, 0.9054075, 0.009680549)
 bone_name = "Spine_01_JNT"
 bone_idx = 1
 
@@ -1160,7 +1339,7 @@ visible = false
 
 [node name="ItemAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="9" unique_id=1868256466]
 unique_name_in_owner = true
-transform = Transform3D(-0.32079688, 0.33328888, -0.8865707, -0.440757, 0.7759846, 0.45119986, 0.838345, 0.53550583, -0.102034, -0.40186438, 0.9229417, 0.3182907)
+transform = Transform3D(0.8432054, 0.0848684, -0.53085023, 0.26889077, -0.92164594, 0.2797614, -0.4655131, -0.37863714, -0.7999573, 0.49343714, 0.79902005, -0.22982433)
 bone_name = "Right_Hand_JNT"
 bone_idx = 25
 
@@ -1168,62 +1347,83 @@ bone_idx = 25
 transform = Transform3D(0.97799224, 0.09539479, -0.18556078, -0.114079595, 0.98913336, -0.092749625, 0.17469685, 0.11187701, 0.9782467, -0.14255366, 0.22152954, -0.20731908)
 visible = false
 
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Skeleton3D" index="10" unique_id=1714141467]
+transform = Transform3D(0.8432054, 0.0848684, -0.53085023, 0.26889077, -0.92164594, 0.2797614, -0.4655131, -0.37863714, -0.7999573, 0.49343714, 0.79902005, -0.22982433)
+bone_name = "Right_Hand_JNT"
+bone_idx = 25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D2" index="0" unique_id=760751266]
+transform = Transform3D(-0.038772933, 0.005118563, -0.008394057, -0.009794622, -0.023068376, 0.031175561, -0.00085158646, 0.032274615, 0.02361407, 0.097839475, -1.0023397, -0.36165005)
+visible = false
+material_overlay = SubResource("ShaderMaterial_oyuny")
+mesh = ExtResource("6_3jaoa")
+surface_material_override/0 = SubResource("StandardMaterial3D_kfllm")
+surface_material_override/1 = SubResource("StandardMaterial3D_icah2")
+surface_material_override/2 = SubResource("StandardMaterial3D_2wht6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D2/MeshInstance3D" index="0" unique_id=119145917]
+transform = Transform3D(0.69800055, 1.7881393e-07, -1.4901161e-08, 1.4901161e-08, 0.67958426, -0.15927929, 0, 0.1592793, 0.67958456, -0.054368973, 3.4630527, 11.684824)
+mesh = SubResource("QuadMesh_oyuny")
+
+[node name="Main_CTL" parent="." index="3" unique_id=611147142]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
 [node name="Hip_CTL" parent="Main_CTL/Hip_GRP" parent_id_path=PackedInt32Array(1157720065) index="0" unique_id=120332706]
-transform = Transform3D(0.9913478, 0, -0.13125972, 0, 1, 0, 0.13125971, 0, 0.9913479, 2.2386894e-17, 0.009139786, 0.052626178)
+transform = Transform3D(0.9517474, 0.02269789, 0.30604106, 0.03163892, 0.98468924, -0.17142351, -0.30524626, 0.17283475, 0.93645746, 2.2386894e-17, 0.009139786, 0.052626178)
 
 [node name="Spine_CTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP" parent_id_path=PackedInt32Array(1680202454) index="0" unique_id=39599543]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 1.2680176e-16, 0.16138794, -0.0239901)
+transform = Transform3D(0.99999374, 0.0009941746, 0.003376006, -0.00095718686, 0.99993956, -0.010940095, -0.003386679, 0.010936796, 0.9999343, 1.2680176e-16, 0.16138794, -0.0239901)
 
 [node name="Upper_Body_CTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP" parent_id_path=PackedInt32Array(1451018616) index="0" unique_id=1697864372]
-transform = Transform3D(0.9951078, 0, -0.09879437, 0, 1, 0, 0.09879437, 0, 0.9951078, -1.201803e-16, 0.43945494, -0.03489469)
+transform = Transform3D(0.9154085, -0.40252602, 0, 0.402526, 0.91540855, 0, 0, 0, 0.99999994, -1.201803e-16, 0.43945494, -0.03489469)
 
 [node name="Head_CTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/Head_GRP" parent_id_path=PackedInt32Array(525423101) index="0" unique_id=317075139]
-transform = Transform3D(0.98588854, 0, 0.16740139, 0, 1, 0, -0.16740139, 0, 0.9858886, 1.650837e-16, 0.52560127, -0.026171017)
+transform = Transform3D(0.7868206, -0.14782046, 0.5992178, 0.059183374, 0.984491, 0.16515054, -0.6143371, -0.09448017, 0.7833664, 1.650837e-16, 0.52560127, -0.026171017)
 
 [node name="LeftArmFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP" parent_id_path=PackedInt32Array(1153381033) index="0" unique_id=959621457]
-transform = Transform3D(0.98254937, 0.18577322, -0.0091912085, -0.1860004, 0.9813492, -0.04855267, -9.313223e-10, 0.04941498, 0.9987781, 0.12581336, 0.4668367, -0.03489469)
+transform = Transform3D(0.7069619, -0.7058983, 0.043724332, 0.6859085, 0.6993897, 0.20095555, -0.17243455, -0.11207708, 0.9786238, 0.12581336, 0.4668367, -0.03489469)
 
 [node name="LeftElbowFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL" index="0" unique_id=2092919325]
-transform = Transform3D(0.9766152, 0.20381455, 0.068423934, -0.19224937, 0.97035885, -0.14643471, -0.09624133, 0.12985592, 0.9868508, 0.12992233, -0.13955688, -0.018965255)
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999997, 0.12992233, -0.13955688, -0.018965255)
 
 [node name="LeftWristFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL" index="0" unique_id=183565313]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.12973283, -0.08710343, 0.018965255)
+transform = Transform3D(0.95958734, 0.27631542, -0.05330917, 0.01663417, 0.13341005, 0.99092126, 0.28091884, -0.9517623, 0.123422325, 0.12973283, -0.08710343, 0.018965255)
 
 [node name="RightHand_CTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/LAFK_GRP/LeftArmFKCTL/LeftElbowFKCTL/LeftWristFKCTL/RightHand_GRP" parent_id_path=PackedInt32Array(349451663) index="0" unique_id=1940619600]
-transform = Transform3D(0.99012274, 0.14014946, -0.0038543844, -0.14009535, 0.9900667, 0.011868356, 0.005479443, -0.011211148, 0.9999219, 0, 0, 0)
+transform = Transform3D(0.04547592, 0.17076236, 0.984262, 0.45615172, 0.87301546, -0.17253748, -0.8887391, 0.4568192, -0.03819237, 0, 0, 0)
 
 [node name="RightArmFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP" parent_id_path=PackedInt32Array(579733746) index="0" unique_id=2067215212]
-transform = Transform3D(0.9752462, -0.22045098, -0.017208923, 0.22112165, 0.9722882, 0.075898945, 3.5390254e-08, -0.077825435, 0.9969668, -0.12581299, 0.46684045, -0.03489466)
+transform = Transform3D(0.96049166, 0.21809776, 0.17288437, -0.21464834, 0.97592676, -0.038635787, -0.17714892, 3.7252899e-09, 0.9841838, -0.12581299, 0.46684045, -0.03489466)
 
 [node name="RightElbowFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL" index="0" unique_id=26909785]
-transform = Transform3D(0.9747336, -0.21687171, 0.053485617, 0.2157069, 0.9760919, 0.026735436, -0.058005046, -0.014522715, 0.99821055, -0.12992302, -0.13956001, -0.018965272)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999999, -0.12992302, -0.13956001, -0.018965272)
 
 [node name="RightWristFKCTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL/RightElbowFKCTL" index="0" unique_id=216781066]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999998, -0.12973301, -0.087103955, 0.018965272)
 
 [node name="LeftHand_CTL" parent="Main_CTL/Hip_GRP/Hip_CTL/Spine_GRP/Spine_CTL/Upper_Body_GRP/Upper_Body_CTL/RAFK_GRP/RightArmFKCTL/RightElbowFKCTL/RightWristFKCTL/LeftHand_GRP" parent_id_path=PackedInt32Array(664330235) index="0" unique_id=2012065586]
-transform = Transform3D(0.9525061, -0.29687124, 0.06781701, 0.29180166, 0.9534926, 0.07552076, -0.08708296, -0.052144885, 0.9948352, -0.48488703, 0.8745018, -0.043338943)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, -0.48488703, 0.8745018, -0.043338943)
 
-[node name="Left_Knee_CTL" parent="Main_CTL" parent_id_path=PackedInt32Array(611147142) index="3" unique_id=907881602]
-transform = Transform3D(0, 0.068173595, 0, 0, 0, -0.068173595, -0.068173595, 0, 0, 0.1909836, 0.38386112, 0.29823923)
+[node name="Left_Knee_CTL" parent="Main_CTL" index="3" unique_id=907881602]
+transform = Transform3D(0, 0.068173595, 0, 0, 0, -0.068173595, -0.068173595, 0, 0, 0, 0, 0)
 
 [node name="Left_Foot_CTL" parent="Main_CTL/Left_Foot_GRP" parent_id_path=PackedInt32Array(1441811164) index="0" unique_id=976044136]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035044078, 3.1086245e-17, -0.052965403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Left_Ankle_Pivot" parent="Main_CTL/Left_Foot_GRP/Left_Foot_CTL" index="0" unique_id=1556461727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Left_Swivel_Pivot" parent="Main_CTL/Left_Foot_GRP/Left_Foot_CTL/Left_Ankle_Pivot/Left_Toe_Tip_Pivot" parent_id_path=PackedInt32Array(377537435) index="0" unique_id=1550709386]
-transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0, 0, 0)
+transform = Transform3D(0.70957065, 0, 0.7046341, 0, 1, 0, -0.7046341, 0, 0.70957065, -0.053097893, 0, 0.15373135)
 
 [node name="Right_Foot_CTL" parent="Main_CTL/Right_Foot_GRP" parent_id_path=PackedInt32Array(297274460) index="0" unique_id=1954573902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00014437916, 0, -0.052965403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44451576, -0.0002645686, 0.03813842)
 
 [node name="Right_Ankle_Pivot" parent="Main_CTL/Right_Foot_GRP/Right_Foot_CTL" index="0" unique_id=114417973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Right_Swivel_Pivot" parent="Main_CTL/Right_Foot_GRP/Right_Foot_CTL/Right_Ankle_Pivot/Right_Toe_Tip_Pivot" parent_id_path=PackedInt32Array(2058989604) index="0" unique_id=284516790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.97437006, 0, 0.22495106, 0, 1, 0, -0.22495106, 0, 0.97437006, -0.035879914, 0, -0.03235795)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4" unique_id=1730312879]
 libraries/ = SubResource("AnimationLibrary_a1d23")
@@ -1251,7 +1451,7 @@ parameters/moveset_walk/Blend3/blend_amount = 0.0
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="CollectCam" type="Node3D" parent="CollectCamPivot" index="0" unique_id=37723952 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(0.7047727, 0.2716212, 0.6553756, 0, 0.9238019, -0.3828707, -0.70943314, 0.26983684, 0.65107036, 1.2486923, 0.4741407, 1.2404892)
+transform = Transform3D(0.70477253, -0.42369965, 0.5690115, -4.470348e-08, 0.8020649, 0.5972368, -0.70943326, -0.42091617, 0.56527334, 1.2486923, 0.4741407, 1.2404892)
 script = ExtResource("25_l6kvb")
 look_at_mode = 2
 look_at_target = NodePath("../../Skeleton3D/DollyChefHigh/LookAt")

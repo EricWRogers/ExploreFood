@@ -458,7 +458,6 @@ material = SubResource("StandardMaterial3D_46qji")
 size = Vector2(4, 4)
 
 [node name="Chicken_And_Waffle" unique_id=1554097360 instance=ExtResource("1_t15s0")]
-collision_layer = 513
 mass = 0.4
 meal_name = "Chicken and Waffle"
 flavor_text = "A beloved southern style meal combining sweet and savory flavors."
@@ -480,11 +479,11 @@ surface_material_override/4 = SubResource("StandardMaterial3D_gk52s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16563416, 0)
 shape = SubResource("CylinderShape3D_hv2mb")
 
-[node name="Water" type="MeshInstance3D" parent="." index="3" unique_id=1791063653]
+[node name="Water" type="MeshInstance3D" parent="." index="2" unique_id=1791063653]
 transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0, 0.31751, 0)
 mesh = SubResource("CylinderMesh_o3buk")
 surface_material_override/0 = SubResource("ShaderMaterial_gubp5")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4" unique_id=1833457883]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3" unique_id=1833457883]
 transform = Transform3D(0.698, 0, 0, 0, 0.698, 0, 0, 0, 0.698, 0.11556661, 0.18228924, 0)
 mesh = SubResource("QuadMesh_lg1c5")
