@@ -259,6 +259,7 @@ func request_insert(inout):
 					to_be_deleted.erase(current_slot)
 					#print(to_be_deleted)
 func rip_away_reset():
+	to_be_deleted.clear()
 	$"../../MarginContainer2/StationSlots".hide()
 	$"../../MarginContainer2/StationSlots".reset()
 	$"../../MarginContainer2/StationSlots".slots.clear()

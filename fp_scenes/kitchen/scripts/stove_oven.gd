@@ -45,6 +45,7 @@ func _defocus():
 	next_pass.set_shader_parameter("size", 0.0)
 
 func _start_station(player):
+	valid_dish = false
 	if food_in:
 		if not player.pickup_item(dish):
 			return

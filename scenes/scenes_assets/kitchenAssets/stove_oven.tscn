@@ -318,3 +318,5 @@ transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 0, 1.0833343, 0)
 visible = false
 billboard = 1
 texture = ExtResource("13_cffq7")
+
+[connection signal="value_changed" from="SubViewport/TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

@@ -94,17 +94,40 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_gravity_retain = _gravity
 	max_spring_length = shadow.spring_length
-	if !Manager.inventory.is_empty():
+	_restore_inventory.call_deferred()
 
-		for thing in Manager.inventory:
-			if thing == null:
-				continue
-			var thing_path = thing.scene_file_path
-			var thingy = load(thing_path).instantiate()
-			get_tree().current_scene.add_child(thingy)
-			pickup_item(thingy)
-		inventory = Manager.inventory.duplicate(true)
-		
+func _restore_inventory() -> void:
+	var saved: Array = Manager.inventory.duplicate()
+	var saved_slot: int = Manager.player_current_hovered_slot
+
+	for view in get_tree().get_nodes_in_group("Viewer"):
+		if view.slot_tie >= saved.size() or saved[view.slot_tie] == null:
+			view.reset_item()
+
+	for i in saved.size():
+		var entry = saved[i]
+		var path := ""
+		if entry is String:
+			path = entry
+		elif entry is Object and is_instance_valid(entry):
+			path = entry.scene_file_path
+		if path == "":
+			continue
+		var thingy = load(path).instantiate()
+		get_tree().current_scene.add_child(thingy)
+		pickup_item(thingy, i)
+
+	if saved_slot >= 0:
+		$CanvasLayer/MarginContainer/Hotbar.select_slot(saved_slot)
+
+func _sync_manager_inventory() -> void:
+	var saved: Array = []
+	for item in inventory:
+		if item != null and is_instance_valid(item):
+			saved.append(item.scene_file_path)
+		else:
+			saved.append(null)
+	Manager.inventory = saved
 
 	
 ## attempt at making controller input auto switch (doesnt work)
@@ -143,7 +166,7 @@ func freeze_velocity():
 	velocity = Vector3.ZERO
 func _process(_delta: float) -> void:
 	if not can_move and current_station:
-		if Input.is_action_pressed("Interact") and current_station:
+		if Input.is_action_pressed("Interact") and current_station.valid_dish:
 			$CanvasLayer/MarginContainer3/Panel/TextureProgressBar.value += 0.8
 		else:
 			$CanvasLayer/MarginContainer3/Panel/TextureProgressBar.value -= 0.2
@@ -247,6 +270,7 @@ func dropthrow():
 					if inv_ndx != -1:
 						var viewer_family = get_tree().get_nodes_in_group("Viewer")
 						inventory[inv_ndx] = null
+						_sync_manager_inventory()
 						for view in viewer_family:
 							if view.slot_tie == inv_ndx:
 								view.reset_item()
@@ -260,7 +284,7 @@ func pickup_item(item: RigidBody3D, preferred_slot: int = -1) -> bool:
 		return false
 
 	inventory[target_slot] = item
-	Manager.inventory = inventory.duplicate(true)
+	_sync_manager_inventory()
 
 	$CanvasLayer/MarginContainer/Hotbar.select_slot(target_slot)
 	item._held_slot = target_slot
@@ -296,6 +320,7 @@ func delete_slot(slot: int) -> void:
 	_on_item_dropped(item)
 
 	inventory[slot] = null
+	_sync_manager_inventory()
 
 	for view in get_tree().get_nodes_in_group("Viewer"):
 		if view.slot_tie == slot:
@@ -622,7 +647,7 @@ func _physics_process(delta: float) -> void:
 ## idle break
 func _on_idle_break_timeout() -> void:
 	if not_moving and !balancing_cliff_edge:
-		idle_sfx.play()
+		#idle_sfx.play()
 		breaking_idle = true
 		_skin._idle_break()
 		_play_held_item_put_away()
