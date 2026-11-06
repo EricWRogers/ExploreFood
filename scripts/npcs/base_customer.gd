@@ -220,14 +220,13 @@ func set_exit(new_exit: Object):
 	my_exit = new_exit
 
 func set_order():
-	my_order = Manager.player_unlocked_recipes.pick_random()
+	my_order = Manager.player_selected_recipes.pick_random()
 	$Bubble/Bubble2.texture = my_order.recipe_icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
 	$Bubble/Label.hide()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body.name)
 
 	if (body is BaseIngredient or body is BaseIngredientND or body is BaseItem) and current_state == State.ORDER:
 		satisfaction_time = timer.time_left

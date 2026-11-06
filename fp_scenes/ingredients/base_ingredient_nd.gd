@@ -100,7 +100,8 @@ func _become_held(pnt):
 	set_collision_layer_value(3, false)
 	_held_point = pnt
 	freeze = true
-	if id == 2 and get_parent().name == "DoughBabyParent":
+	#if dropping doughBaby kill it
+	if id == 0 and get_parent().name == "DoughBabyParent":
 		get_parent().is_dead()
 	
 func _become_stored():

@@ -94,7 +94,6 @@ radius = 0.5600586
 [node name="BaseND" unique_id=175947415 instance=ExtResource("1_v88xe")]
 food_name = "Dough Baby"
 icon = ExtResource("2_ir2bk")
-id = 2
 color = Color(1, 0.84705883, 0.6901961, 1)
 inventory_icon_FOV = 27.0
 resize = Vector3(0.5, 0.5, 0.5)
