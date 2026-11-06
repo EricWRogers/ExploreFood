@@ -5,9 +5,12 @@ extends StaticBody3D
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
+@onready var to_be_made = preload("res://scenes/scenes_assets/filledcup.tscn")
 
 var _currently_at := false
 var player_close = false;
+var aplayer
+var filling := false
 
 func _process(_delta: float) -> void:
 	if player_close and Input.is_action_just_pressed("Interact"):
@@ -38,10 +41,42 @@ func _defocus():
 	
 	$Node3D.hide()
 func _start_station(player):
-	pass
+	if filling:
+		return
+	filling = true
+	aplayer = player
+	aplayer.hide()
+	#if player.get_held_item != null:
+		#player.get_held_item().hide()
+	if not aplayer.inventory.has(null):
+		#cup.queue_free()
+		filling = false
+		return
+	else:
+		player.current_station = self
+		player.can_move = false
+		$"../KitchenProps/Counters/FrontWallCounters/Counter_Sink/Cuttingboard".show()
+		CameraManager.switch_to_sink()
+		$"../KitchenProps/Counters/FrontWallCounters/Counter_Sink/AnimationPlayer".play("fill")
+		#CameraManager.switch_to_sink()
+		#cup.show()
+		#cup = null
+		#food_in = false
+		#$Check.hide()
+		return
 	#rush_button_hit.emit()
 
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fill":
+		give_cup()
+		$"../KitchenProps/Counters/FrontWallCounters/Counter_Sink/Cuttingboard".hide()
 
-	
-	
-	
+func give_cup():
+	aplayer.current_station = null
+	aplayer.can_move = true
+	aplayer.show()
+	CameraManager.switch_to_regular()
+	filling = false
+	var cup = to_be_made.instantiate()
+	get_tree().current_scene.add_child(cup)
+	aplayer.pickup_item(cup)
