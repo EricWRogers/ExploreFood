@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cv62bgfnipoeh" path="res://assets/textures/Wheat_Texture/Wheat05.png" id="31_0aqf5"]
 [ext_resource type="Texture2D" uid="uid://byt4qwurpcuuo" path="res://assets/textures/Wheat_Texture/Wheat06.png" id="32_544im"]
 [ext_resource type="PackedScene" uid="uid://bcn8vs8u5vvcc" path="res://scenes/scenes_assets/cupStation.tscn" id="37_544im"]
+[ext_resource type="PackedScene" uid="uid://djqsq1nbsg0o4" path="res://scenes/levels/testScenes/Tutorial_box.tscn" id="37_vu82s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
@@ -1230,7 +1231,9 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.88466746, 0.42309287, -0.1958419, -2.9802296e-08, 0.42006248, 0.9074946, 0.46622044, 0.8028317, -0.37161595, 0.36292076, 2.1149292, 0.48736048)
+
+transform = Transform3D(-0.88466734, 0.42309287, -0.19584188, -2.9802292e-08, 0.42006248, 0.90749454, 0.46622038, 0.80283165, -0.37161592, 0.36292076, 2.1149292, 0.48736048)
+
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
@@ -2297,6 +2300,8 @@ texture = ExtResource("32_544im")
 
 [node name="CupPile" parent="." unique_id=632690488 instance=ExtResource("37_544im")]
 transform = Transform3D(0.54, 0, 0, 0, 0.54, 0, 0, 0, 0.54, 17.519182, 1.0849483, 5.9396043)
+
+[node name="TutorialBox" parent="." unique_id=1586097658 instance=ExtResource("37_vu82s")]
 
 [connection signal="body_entered" from="Portals/Portal2" to="Portals/Portal2" method="_on_body_entered"]
 [connection signal="animation_finished" from="KitchenProps/Counters/FrontWallCounters/Counter_Sink/AnimationPlayer" to="CupPile" method="_on_animation_player_animation_finished"]
