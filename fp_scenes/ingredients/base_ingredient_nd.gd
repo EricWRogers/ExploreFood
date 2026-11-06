@@ -45,7 +45,6 @@ class_name BaseIngredientND
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
 #Sound effects
-@onready var yippee: AudioStreamPlayer3D = $Yippee
 
 
 @export var tooltip_offset : float
@@ -91,7 +90,6 @@ func _become_dropped():
 	
 
 func _become_held(pnt):
-	yippee.play()
 	set_collision_layer_value(2, false)
 	$Reactivate.stop()
 	_held = true
@@ -108,7 +106,7 @@ func _become_stored():
 	hide()
 func _become_visibly_held():
 	show()
-	yippee.play()
+	
 	
 func _apply_light_drop_impulse(dir):
 	apply_central_impulse(dir * 2.0)
