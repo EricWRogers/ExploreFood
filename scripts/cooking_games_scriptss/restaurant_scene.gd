@@ -54,7 +54,7 @@ func pick_rand_spot():
 func customer_done(fresh_spot : Object, customer : Object):
 	customer_spots.append(fresh_spot)
 	current_customers.erase(customer)
-	if is_rush_hour or current_customers.size() < 2:
+	if is_rush_hour:
 		spawn_customer()
 
 func new_customer(): #ignore

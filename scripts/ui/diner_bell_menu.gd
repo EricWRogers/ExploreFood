@@ -1,5 +1,6 @@
 extends Control
 
+signal start_button_hit
 ##for testing only\
 
 @onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
@@ -97,7 +98,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	pass # Replace with function body.
+	start_button_hit.emit()
 
 func confirm_recipes():
 	get_tree().paused = false
