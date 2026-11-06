@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://djqsq1nbsg0o4"]
+
+[ext_resource type="Script" uid="uid://dkytrhx3v5ixt" path="res://scenes/levels/testScenes/tutorial_box_script.gd" id="1_p0j72"]
+[ext_resource type="Texture2D" uid="uid://bpp0op3unwu35" path="res://assets/test_images/Screenshot 2026-09-07 144053.png" id="2_f8uu5"]
+[ext_resource type="FontFile" uid="uid://bq3oucg0xtp5v" path="res://assets/fonts/Chango-Regular.ttf" id="3_s7ugy"]
+[ext_resource type="Texture2D" uid="uid://kk0rgk6lt0ds" path="res://assets/ui/ui_assets/menubuttonPlay.png" id="5_jbd0g"]
+
+[node name="TutorialBox" type="Control" unique_id=1586097658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p0j72")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=919516421]
+self_modulate = Color(0.5420799, 0.48509997, 0.77, 1)
+layout_mode = 0
+offset_left = 77.0
+offset_top = 48.0
+offset_right = 1107.0
+offset_bottom = 1042.0
+texture = ExtResource("2_f8uu5")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1962587568]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 19.0
+offset_right = 1002.0
+offset_bottom = 971.0
+color = Color(0.52, 0.52, 0.52, 0.7137255)
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=538111065]
+custom_maximum_size = Vector2(1670, 925)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 75.0
+offset_right = 999.0
+offset_bottom = 554.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_s7ugy")
+theme_override_font_sizes/font_size = 35
+text = "Find Recipes and Ingredients hidden
+throughout to cook for guests. Give
+them Water and Speedy service.
+
+Talk to The Boss to get your first task. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hold button" type="TextureRect" parent="." unique_id=502475640]
+self_modulate = Color(0.9913335, 0.48000002, 1, 1)
+layout_mode = 0
+offset_left = 247.0
+offset_top = 504.0
+offset_right = 937.0
+offset_bottom = 997.0
+texture = ExtResource("5_jbd0g")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="hold button" unique_id=312345085]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 54.0
+offset_top = 12.0
+offset_right = 640.0
+offset_bottom = 459.0
+
+[node name="Label" type="Label" parent="hold button" unique_id=351045932]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 164.0
+offset_right = 581.0
+offset_bottom = 276.0
+theme_override_fonts/font = ExtResource("3_s7ugy")
+theme_override_font_sizes/font_size = 35
+text = "HOLD to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ProgressBar" type="ProgressBar" parent="hold button" unique_id=1130815128]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 254.0
+offset_right = 579.0
+offset_bottom = 288.0
+show_percentage = false
+
+[connection signal="button_down" from="hold button/Button" to="." method="button_being_held"]
+[connection signal="button_up" from="hold button/Button" to="." method="button_not_held"]

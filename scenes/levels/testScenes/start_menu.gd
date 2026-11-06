@@ -18,7 +18,7 @@ func _on_new_game_pressed() -> void:
 	started = true
 	
 	# load starting scene from level manager
-	Manager.level_manager.load_scene(Manager.level_manager.starting_scene)
+	Manager.level_manager.load_scene(Manager.level_manager.starting_scene, false)
 	print("loading scene: ", Manager.level_manager.starting_scene)
 	
 	#var load_scene = dinerLvlTest.instantiate()
@@ -46,7 +46,7 @@ func _on_button_pressed() -> void:
 	started = true
 	
 	# load starting scene from level manager
-	Manager.level_manager.load_scene(Manager.level_manager.starting_scene)
+	Manager.level_manager.load_scene(Manager.level_manager.starting_scene, false)
 	print("loading scene: ", Manager.level_manager.starting_scene)
 	$".".hide()
 

@@ -3,16 +3,184 @@
 [ext_resource type="Script" uid="uid://5sno6u0tgxae" path="res://recipe_pickup.gd" id="1_bvc5s"]
 [ext_resource type="Resource" uid="uid://buiorg1b511f7" path="res://scripts/resources/Meat_Pies.tres" id="2_7srh8"]
 [ext_resource type="Texture2D" uid="uid://bcteto12x3ndi" path="res://icon.svg" id="3_0nsg2"]
+[ext_resource type="ArrayMesh" uid="uid://okpkxsy1xg7t" path="res://assets/models/MiscellaneousDinerandKitchenItems/Scroll.obj" id="3_r115i"]
+[ext_resource type="Texture2D" uid="uid://dbeirkvfckgt8" path="res://assets/textures/Scroll_Mat.png" id="4_flgdq"]
+[ext_resource type="Shader" uid="uid://dh7eg01t2x70" path="res://assets/shaders/shinebright.gdshader" id="6_r115i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
 radius = 0.74091387
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3436"]
-albedo_color = Color(1, 0.6392157, 0, 1)
+[sub_resource type="Shader" id="Shader_r115i"]
+code = "shader_type spatial;
+render_mode unshaded;
 
-[sub_resource type="BoxMesh" id="BoxMesh_khypw"]
-material = SubResource("StandardMaterial3D_s3436")
-size = Vector3(1, 1, 0.0947876)
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+uniform sampler2D mesh_texture : source_color;
+uniform float transparency : hint_range(0.0, 1.0) = 1.0; // 1 = full effect, 0 = full texture
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 rotated_uv = rotate(uv, angle);
+    float g = stripe(rotated_uv);
+    vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+    vec3 tex_col = texture(mesh_texture, uv).rgb;
+
+    ALBEDO = mix(tex_col, stripe_col, transparency);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flgdq"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_r115i")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/mesh_texture = ExtResource("4_flgdq")
+shader_parameter/transparency = 0.0
+
+[sub_resource type="Shader" id="Shader_kq725"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.5) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4a8mk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_flgdq")
+shader = SubResource("Shader_kq725")
+shader_parameter/outline_width = 0.1330000063175
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="Shader" id="Shader_6pri2"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded, depth_draw_always;
+
+uniform float outline_width : hint_range(0.0, 0.05) = 0.01;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 rim_light_color : source_color = vec4(1.0, 0.95, 0.8, 1.0);
+uniform vec3 light_direction = vec3(1.0, 1.0, 0.0); // points toward the \"sun\"
+uniform float rim_sharpness : hint_range(1.0, 64.0) = 8.0;
+uniform float rim_intensity : hint_range(0.0, 5.0) = 2.0;
+
+varying vec3 world_normal;
+
+void vertex() {
+	VERTEX += NORMAL * outline_width;
+	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+}
+
+void fragment() {
+	vec3 light_dir = normalize(light_direction);
+	float rim = pow(max(dot(world_normal, light_dir), 0.0), rim_sharpness);
+
+	ALBEDO = mix(outline_color.rgb, rim_light_color.rgb, rim);
+	EMISSION = rim_light_color.rgb * rim * rim_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ueslg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4a8mk")
+shader = SubResource("Shader_6pri2")
+shader_parameter/outline_width = 0.0330000015675
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/rim_light_color = Color(6.1484733, 5.648668, 4.1492496, 1)
+shader_parameter/light_direction = Vector3(1, 1, 0)
+shader_parameter/rim_sharpness = 8.0
+shader_parameter/rim_intensity = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq725"]
+albedo_texture = ExtResource("4_flgdq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a8mk"]
+albedo_texture = ExtResource("4_flgdq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueslg"]
+albedo_texture = ExtResource("4_flgdq")
+
+[sub_resource type="Gradient" id="Gradient_flgdq"]
+offsets = PackedFloat32Array(0, 0.38671875, 1)
+colors = PackedColorArray(1, 0.6, 0, 0.13333334, 1, 0.80366665, 0.38, 0.03137255, 1, 0.81, 0.39999998, 0.02745098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3yjkh"]
+gradient = SubResource("Gradient_flgdq")
+fill_from = Vector2(0, 0.99759614)
+fill_to = Vector2(0.46394232, 0.6370192)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq725"]
+render_priority = -128
+shader = ExtResource("6_r115i")
+shader_parameter/pixelation = Vector2(300, 300)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture2D_3yjkh")
+shader_parameter/spread = 0.35700001625898004
+shader_parameter/size = 0.3750000653125001
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 16.0
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = 0.5
+shader_parameter/core_intensity = 1.0
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46qji"]
+render_priority = -10
+next_pass = SubResource("ShaderMaterial_kq725")
+transparency = 1
+depth_test = 1
+albedo_color = Color(1, 1, 1, 0)
+ao_light_affect = 0.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_4a8mk"]
+material = SubResource("StandardMaterial3D_46qji")
+size = Vector2(3, 3)
 
 [node name="RecipePickup" type="Node3D" unique_id=61122398]
 script = ExtResource("1_bvc5s")
@@ -25,16 +193,26 @@ collision_mask = 7
 shape = SubResource("SphereShape3D_gtwna")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1587005635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03427124)
-mesh = SubResource("BoxMesh_khypw")
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, -0.61162794, -0.03427124)
+material_overlay = SubResource("ShaderMaterial_ueslg")
+mesh = ExtResource("3_r115i")
+surface_material_override/0 = SubResource("StandardMaterial3D_kq725")
+surface_material_override/1 = SubResource("StandardMaterial3D_4a8mk")
+surface_material_override/2 = SubResource("StandardMaterial3D_ueslg")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1478015367]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23487103, 0.014264822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05038345, 0.014264822)
+visible = false
 text = "Really Cool
 Cook Book"
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=282603877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18096142, 0.031335354)
+visible = false
 texture = ExtResource("3_0nsg2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=510629680]
+transform = Transform3D(0.698, 0, 0, 0, 0.67958385, -0.15927917, 0, 0.15927917, 0.67958385, 0.045974612, -0.19285834, 0.010566592)
+mesh = SubResource("QuadMesh_4a8mk")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

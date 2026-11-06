@@ -50,8 +50,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#have to get player in update cuz level changing shenanigans
 	if player == null:
-		player = get_tree().get_first_node_in_group("Player").get_child(0)
-
+		player = get_tree().get_first_node_in_group("Player")
+		return
+	
 	distance_to_player_squared = global_position.distance_squared_to(player.global_position)
 
 	match current_state:

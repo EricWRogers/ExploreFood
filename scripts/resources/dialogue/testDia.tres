@@ -5,6 +5,6 @@
 [resource]
 resource_name = "tutorial"
 script = ExtResource("1_e65l5")
-dialogue_lines = Array[String](["Welcome to your new job!", "You've received the highest honor in the galaxy...", "being my personal chef!", "Let's get you acquainted with the kitchen first.", "Behind you are some ingredients. Make me something yummy with them!", "You have an oven for baking, and a cutting board for slicing. Good luck!"])
+dialogue_lines = Array[String](["Welcome to your new job!", "You've received the highest honor in the galaxy...", "being my personal chef!", "Why not start by going through one of the portals I've so generously given you!", "You'll be able to colloct ingredients from other world!", "Bring your ingredients back to the kitchen to cook them", "You have an oven for baking, and a cutting board for slicing. Good luck!"])
 QuestItem = "tutorial"
 metadata/_custom_type_script = "uid://dsel8rx3fee7a"

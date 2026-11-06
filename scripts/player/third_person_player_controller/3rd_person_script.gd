@@ -760,3 +760,4 @@ func pickup_special() -> void:
 func _on_collect_spec_timeout() -> void:
 	special_pickup = false
 	CameraManager.switch_to_regular()
+	_skin.put_away_recipe()

@@ -12,15 +12,16 @@ class_name LevelManager extends Node
 @export var start_menu: String = "res://scenes/levels/testScenes/start_menu.tscn"
 ##whichever scene you want to load when you start the game. I promise to one day make it not an annoying string
 @export var starting_scene: String
-
-
-
 ## example scenes you may want to load. Just copy/paste the string below: ##
 #new diner scene: res://scenes/levels/diner_hub.tscn
 #tutorial island: res://scenes/levels/terrain_3.tscn
 #old diner greybox: res://scenes/levels/testScenes/DinerLevel_test.tscn
 #movement playground: res://scenes/levels/movement_lab.tscn
 ##
+
+@export_category("Loading Screen")
+@export var loading_screen: CanvasLayer
+@export var loading_screen_timer: Timer
 
 ##store loaded scenes by path
 var scene_cache: Dictionary[String, Node] = {} 
@@ -30,7 +31,8 @@ enum change_mode {HIDE, REMOVE, DELETE, KEEP}
 @onready var scene_parent_2D: Node2D = $SceneParent2D
 @onready var scene_parent_control: Control = $SceneParentControl
 
-
+var new_scene_name: String
+var loading_screen_enabled: bool
 
 #called when script is instantiated. 
 func _init() -> void:
@@ -39,7 +41,7 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_scene(start_menu)
+	load_scene(start_menu, false)
 	
 	#print("3D scene parent: ", scene_parent_3D.name)
 	#print("2D scene parent: ", scene_parent_2D.name)
@@ -78,15 +80,18 @@ func change_scene(new_scene: String, old_scene: Node, mode: change_mode = change
 				pass
 	
 	#load new scene
-	load_scene(new_scene)
+	load_scene(new_scene, true)
+
 
 func hide_scene(_old_scene: Node):
 	_old_scene.visable = false #keeps in memory and running
+
 
 func remove_scene(_old_scene: Node):
 	var scene_parent = _old_scene.get_parent()
 	scene_parent.remove_child(_old_scene) #keeps in memory, does not run
 	#scene_parent_3D.remove_child(current_3D_scene)  
+
 
 func delete_scene(_old_scene: Node):
 	print("DELETE")
@@ -98,9 +103,29 @@ func delete_scene(_old_scene: Node):
 	
 	_old_scene.queue_free() #removes node entirely
 
-##load a new scene
-func load_scene(_new_scene: String):
+
+# determine whether to start loading screen animation or not #
+func load_scene(_new_scene: String, is_loading_screen: bool):
 	print("loading scene...")
+	new_scene_name = _new_scene
+	
+	# start loading screen animation first #
+	if (is_loading_screen):
+		loading_screen_enabled = true
+		start_loadscreen_animation()
+	else:
+		loading_screen_enabled = false
+		finish_loading_scene(new_scene_name)	
+	
+func start_loadscreen_animation(): #level
+	loading_screen.play_in() 
+	#to_go = level
+
+func _on_loading_screen_start_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "LoadSceenTransition":
+		finish_loading_scene(new_scene_name)
+
+func finish_loading_scene(_new_scene: String):
 	print("pre-load cache:", scene_cache)
 	var new_node: Node
 	
@@ -134,7 +159,21 @@ func load_scene(_new_scene: String):
 	print("post-load cache:", scene_cache, "\n")
 	#print("current scene: ", current_3D_scene.name)
 	
+	if (loading_screen_enabled):
+		loading_screen_timer.start()
 
+func _on_loading_screen_timer_timeout() -> void:
+	var current_fps = Engine.get_frames_per_second()
+	if (current_fps >= 30):
+		exit_loading()
+		$Timer.stop()
+			#scene_switch_setter = true
+	else:
+		loading_screen_timer.start()
+
+## exit animation
+func exit_loading():
+	loading_screen.play_out()
 
 ## ─────────────────────────────────────────
 ## Old script that I am temporaily keeping so I rip the loading screen code from later
@@ -157,20 +196,24 @@ func load_scene(_new_scene: String):
 	#print("current level: ", current_level)
 	#start_screen.starting_game.connect(on_starting_level)
 #
-#func on_starting_level(_level): #emits signal from text box
+#func on_starting_level(_level): #emits signal 
 	#print("diner loaded!")
 	#current_level = _level
-	##current_level = get_child(1)
-	###when the signal "level changed" is emitted, the function "start_loading" is called
+	#current_level = get_child(1)
+	#when the signal "level changed" is emitted, the function "start_loading" is called
 	#current_level.connect("level_changed", Callable(self, "start_loading"))
 #
+
+## start loading screen animation first
 #func start_loading(level):
-	#$LoadingScreen.play_in()
+	#$LoadingScreen.play_in() 
 	#to_go = level
-	#
-#func exit_loading():
-	#$LoadingScreen.play_out()
-#
+
+## once the loading screen start animation is complete, start level change
+#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	#if anim_name == "LoadSceenTransition":
+		#_handle_level_change(to_go)
+
 #func _handle_level_change(current_level_name: String):
 	#var next_level
 	#var next_level_name
@@ -205,9 +248,11 @@ func load_scene(_new_scene: String):
 	#current_level.queue_free()
 	#current_level = next_level
 	#scene_switch_setter = false
+	
+	## start timer
 	#$Timer.start()
-#
-#
+
+## on timer end, check if fps is solid, if it is, play exit animation
 #func _on_timer_timeout() -> void:
 	#if scene_switch_setter == false:
 		#var current_fps = Engine.get_frames_per_second()
@@ -215,8 +260,7 @@ func load_scene(_new_scene: String):
 			#exit_loading()
 			#scene_switch_setter = true
 			#$Timer.stop()
-#
-#
-#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	#if anim_name == "LoadSceenTransition":
-		#_handle_level_change(to_go)
+
+## exit animation
+#func exit_loading():
+	#$LoadingScreen.play_out()
