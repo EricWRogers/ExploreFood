@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://njehgw3a3x0g"]
 
 [ext_resource type="Script" uid="uid://dk6p0gg50vaxc" path="res://scripts/ui/diner_bell_menu.gd" id="1_1q30t"]
-[ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/UI/Diner/recipe_ui_node.tscn" id="1_j0idh"]
+[ext_resource type="PackedScene" uid="uid://bblxu32bt4eoa" path="res://scenes/ui/Diner/recipe_ui_node.tscn" id="1_j0idh"]
 [ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="2_xe5kk"]
 [ext_resource type="Resource" uid="uid://d2jd0n7r10g58" path="res://scripts/resources/RecipesNew/ChickenWaffles.tres" id="3_rksqi"]
 [ext_resource type="Resource" uid="uid://bql8ifvpe02p3" path="res://scripts/resources/RecipesNew/GrilledCheese.tres" id="4_knljf"]
@@ -61,6 +61,7 @@ font = ExtResource("9_rksqi")
 font_size = 28
 
 [node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "count_selected")]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +74,7 @@ recipe_UI_node = ExtResource("1_j0idh")
 recipes_container = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer")
 confirm_button = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button")
 count_selected = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Counter")
-min_selectable_recipes = 1
+min_selectable_recipes = 2
 max_selectable_recipes = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1407907163]
@@ -184,3 +185,5 @@ text = "Start Cooking!"
 label_settings = SubResource("LabelSettings_6xqmx")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -67,7 +67,8 @@ func open_menu():
 	add_child(canvas_layer)
 	canvas_layer.add_child(spawn_bell_menu)
 	canvas_layer.layer = 99
-	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().paused = true
 	# pause time and unfreeze mouse #
 	
 	

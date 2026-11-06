@@ -7,7 +7,7 @@ extends MarginContainer
 @export var ui_flow: FlowContainer
 @export var ui_recipe: Recipe
 signal node_selected
-signal node_toggled
+signal node_toggled(toggled_on: bool, ui_recipe: Recipe)
 
 func _ready() -> void:
 	pass

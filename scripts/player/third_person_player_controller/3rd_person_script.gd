@@ -87,7 +87,7 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 #Sound Effects
 @onready var jumpSFX: AudioStreamPlayer = $Jump
 @onready var idle_sfx: AudioStreamPlayer = $IdleSFX
-@onready var sprintSFX: AudioStreamPlayer = $Sprint
+#@onready var sprintSFX: AudioStreamPlayer = $Sprint
 
 
 func _ready() -> void:
@@ -609,7 +609,7 @@ func _physics_process(delta: float) -> void:
 			elif ground_speed > 0.1:
 				_skin._walk()
 				_play_held_item_appear()
-				sprintSFX.play()
+				#sprintSFX.play()
 			else:
 				if !not_moving:
 					not_moving = true
