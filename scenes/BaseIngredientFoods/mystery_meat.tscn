@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_qay1u"]
 [ext_resource type="PackedScene" uid="uid://b8vmbssge6uwi" path="res://assets/particles_effects/Explosion/Explosion.tscn" id="5_w6guw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qay1u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2htwm"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_w6guw")
@@ -68,10 +68,10 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63yl7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qay1u"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_qay1u")
+next_pass = SubResource("ShaderMaterial_2htwm")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -102,9 +102,10 @@ _surfaces = [{
 
 [node name="MysteryMeat" unique_id=175947415 instance=ExtResource("1_rl4cg")]
 icon = ExtResource("2_2htwm")
+id = 2
 
 [node name="DeformableMeshInstance3D" parent="." index="0" unique_id=1184330542]
-material_overlay = SubResource("ShaderMaterial_63yl7")
+material_overlay = SubResource("ShaderMaterial_qay1u")
 mesh = SubResource("ArrayMesh_rb8qa")
 
 [node name="Explosion" parent="." index="7" unique_id=1763558788 instance=ExtResource("5_w6guw")]

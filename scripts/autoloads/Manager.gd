@@ -45,6 +45,7 @@ var player_current_hovered_slot : int
 var current_control_device : String = "keyboardmouse"
 
 var player_unlocked_recipes = []
+var player_selected_recipes: Array[Recipe] = []
 
 ## ─────────────────────────────────────────
 ## Level Managment

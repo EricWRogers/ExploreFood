@@ -11,6 +11,7 @@ class_name Recipe extends Resource
 @export var product : PackedScene
 ##icon that shows on UI
 @export var recipe_icon: Texture2D
+@export var id : int
 
 @export_group("depreciated")
 ## depreciated. Kept to prevent old recipes from breaking
