@@ -1,10 +1,11 @@
 extends StaticBody3D
 signal rush_button_hit
 
+@export var bell_menu: PackedScene
+
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var overlay := mesh_instance.material_overlay as ShaderMaterial
 @onready var next_pass := overlay.next_pass as ShaderMaterial
-
 
 var _currently_at := false
 var player_close = false;
@@ -12,9 +13,11 @@ var player_close = false;
 func _ready() -> void:
 	Manager.player_unlocked_recipes.append(load("res://scripts/resources/RecipesNew/MeatSkewer.tres"))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_close and Input.is_action_just_pressed("Interact"):
-		rush_button_hit.emit()
+		print("opening menu through process...")
+		open_menu()
+		#rush_button_hit.emit()
 	
 func _focus_obtain():
 	if _currently_at:
@@ -42,7 +45,9 @@ func _defocus():
 	
 	$Node3D.hide()
 func _start_station(player):
-	rush_button_hit.emit()
+	print("opening menu through start station...")
+	open_menu()
+	#rush_button_hit.emit()
 
 func get_took():
 	queue_free()
@@ -51,3 +56,18 @@ func get_rolled():
 	self.freeze = false
 func start_rush_hour():
 	rush_button_hit.emit()
+
+func open_menu():
+	print("menu opened!")
+	
+	# spawn canvas layer and bell menu #
+	var canvas_layer: CanvasLayer = CanvasLayer.new()
+	var spawn_bell_menu: Node
+	spawn_bell_menu = bell_menu.instantiate()
+	add_child(canvas_layer)
+	canvas_layer.add_child(spawn_bell_menu)
+	canvas_layer.layer = 99
+	
+	# pause time and unfreeze mouse #
+	
+	

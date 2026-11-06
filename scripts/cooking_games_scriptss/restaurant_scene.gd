@@ -57,7 +57,7 @@ func customer_done(fresh_spot : Object, customer : Object):
 	if is_rush_hour or current_customers.size() < 2:
 		spawn_customer()
 
-func new_customer():
+func new_customer(): #ignore
 	spawn_customer()
 	var meal = CHICKEN_AND_WAFFLE.instantiate()
 	add_child(meal)

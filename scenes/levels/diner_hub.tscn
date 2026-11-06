@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://1t6b8uqug4od" path="res://scenes/scenes_assets/kitchenAssets/stove_oven.tscn" id="17_64sq4"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="17_ap8ml"]
 [ext_resource type="Texture2D" uid="uid://bwtasbrti8sms" path="res://fp_scenes/kitchen/textures/cutetile.png" id="18_ap8ml"]
+[ext_resource type="PackedScene" uid="uid://c48yrkgvbcb81" path="res://scenes/scenes_assets/recipe_pickup.tscn" id="18_fcuss"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
@@ -1019,5 +1020,8 @@ transform = Transform3D(-7.649493e-08, 0, -1.75, 0, 1.75, 0, 1.75, 0, -7.649493e
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.447619, -0.87045395, -1.5283544)
 mesh = SubResource("BoxMesh_fcuss")
 surface_material_override/0 = SubResource("StandardMaterial3D_6ynox")
+
+[node name="RecipePickup" parent="." unique_id=61122398 instance=ExtResource("18_fcuss")]
+transform = Transform3D(-0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, -0.64278764, 5.6, 2.2, 0)
 
 [connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]

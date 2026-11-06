@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cj7r6t66ev3s5" path="res://scripts/cooking_games_scriptss/dinner_bell.gd" id="1_0momx"]
 [ext_resource type="ArrayMesh" uid="uid://mr7isaiwtos2" path="res://assets/models/Bagel.obj" id="2_fx23v"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_tcbet"]
+[ext_resource type="PackedScene" uid="uid://njehgw3a3x0g" path="res://scenes/UI/Diner/diner_bell_menu.tscn" id="2_xeys2"]
 [ext_resource type="Texture2D" uid="uid://dhmkkwqfmu1v" path="res://assets/BreadWorld/Textures/StoneTexture.png" id="3_xeys2"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_1nuid"]
 [ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="6_tcbet"]
@@ -99,6 +100,7 @@ roughness = 0.6
 [node name="DinnerBell" type="StaticBody3D" unique_id=1442131147 groups=["Station"]]
 collision_mask = 15
 script = ExtResource("1_0momx")
+bell_menu = ExtResource("2_xeys2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=971774474]
 shape = SubResource("SphereShape3D_gtwna")
