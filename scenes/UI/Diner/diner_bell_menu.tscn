@@ -60,7 +60,7 @@ font_size = 24
 font = ExtResource("9_rksqi")
 font_size = 28
 
-[node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "count_selected")]
+[node name="DinerBellMenu" type="Control" unique_id=2132693350 node_paths=PackedStringArray("recipes_container", "confirm_button", "max_customers_label", "count_selected")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -73,6 +73,7 @@ test_recipe_array = Array[Resource]([ExtResource("2_xe5kk"), ExtResource("3_rksq
 recipe_UI_node = ExtResource("1_j0idh")
 recipes_container = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/RecipeGridContainer")
 confirm_button = NodePath("MarginContainer/PanelContainer/HBoxContainer/MarginContainer/Button")
+max_customers_label = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/Customers")
 count_selected = NodePath("MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Counter")
 min_selectable_recipes = 2
 max_selectable_recipes = 2
@@ -113,7 +114,7 @@ theme_override_constants/separation = 142
 [node name="Tip" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1877418692]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Choose what's on the Menu for Service"
+text = "Choose what's on the Menu for Service!"
 label_settings = SubResource("LabelSettings_klsck")
 
 [node name="Counter" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1221667158]
@@ -122,6 +123,12 @@ size_flags_horizontal = 8
 text = "0/2"
 label_settings = SubResource("LabelSettings_klsck")
 horizontal_alignment = 2
+
+[node name="Customers" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=477583587]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "XX customers will be dining!"
+label_settings = SubResource("LabelSettings_klsck")
 
 [node name="RecipeGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1336015711]
 layout_mode = 2

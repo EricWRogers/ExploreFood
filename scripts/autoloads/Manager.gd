@@ -44,8 +44,13 @@ var max_hotbar_slots := 6
 var player_current_hovered_slot : int
 var current_control_device : String = "keyboardmouse"
 
+## ─────────────────────────────────────────
+## Cooking and Restaurant Management
+## ─────────────────────────────────────────
+
 var player_unlocked_recipes = []
 var player_selected_recipes: Array[Recipe] = []
+var max_customers : int
 
 ## ─────────────────────────────────────────
 ## Level Managment
