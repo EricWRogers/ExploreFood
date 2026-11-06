@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bwwunprw0fs3h" path="res://assets/textures/ModularFoodTextures/meatdiced.png" id="25_aoygb"]
 [ext_resource type="Texture2D" uid="uid://l1d15b8140ve" path="res://assets/textures/ModularFoodTextures/Chive.png" id="26_ecmb4"]
 [ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="27_ke1tl"]
+[ext_resource type="PackedScene" uid="uid://ccu7ptj5owaby" path="res://fp_scenes/Items/meat_skewer.tscn" id="28_y68oh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeajp"]
 shader = ExtResource("2_5bgta")
@@ -6235,5 +6236,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r32f0")
 surface_material_override/1 = SubResource("StandardMaterial3D_ohea6")
 surface_material_override/2 = SubResource("StandardMaterial3D_07xei")
 surface_material_override/3 = SubResource("StandardMaterial3D_l2se1")
+
+[node name="BaseItem3" parent="." unique_id=143787115 instance=ExtResource("28_y68oh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0031557, -3.2320757)
 
 [editable path="SmartDoughBaby"]
