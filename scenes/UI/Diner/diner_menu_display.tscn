@@ -11,7 +11,7 @@ border_width_right = 12
 border_width_bottom = 12
 border_color = Color(0.8311134, 0.7898915, 0.78290576, 1)
 
-[node name="diner_menu_display" type="Control" unique_id=119671671]
+[node name="diner_menu_display" type="Control" unique_id=119671671 node_paths=PackedStringArray("recipes_container")]
 custom_maximum_size = Vector2(512, 688)
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +20,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5wcy5")
+recipe_UI_node = ExtResource("1_n86j1")
+recipes_container = NodePath("Panel/MarginContainer/GridContainer")
 
 [node name="Panel" type="Panel" parent="." unique_id=1076410733]
 layout_mode = 1
