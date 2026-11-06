@@ -6,7 +6,8 @@ extends Node3D
 @export var bob_duration: float = 1.0
 
 func _ready() -> void:
-	$Sprite3D.texture = recipe.product.instantiate().icon
+	$Sprite3D.texture = recipe.recipe_icon
+	print($Sprite3D.texture)
 
 	_start_rotation()
 	_start_bobbing()

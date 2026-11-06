@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="17_ap8ml"]
 [ext_resource type="Texture2D" uid="uid://bwtasbrti8sms" path="res://fp_scenes/kitchen/textures/cutetile.png" id="18_ap8ml"]
 [ext_resource type="PackedScene" uid="uid://c48yrkgvbcb81" path="res://scenes/scenes_assets/recipe_pickup.tscn" id="18_fcuss"]
+[ext_resource type="PackedScene" uid="uid://btdvnsmd1dtkq" path="res://scenes/scenes_assets/kitchenAssets/collected_food_spawner.tscn" id="19_6ynox"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
+[ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="19_mrweq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
 
@@ -1023,5 +1025,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6ynox")
 
 [node name="RecipePickup" parent="." unique_id=61122398 instance=ExtResource("18_fcuss")]
 transform = Transform3D(-0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, -0.64278764, 5.6, 2.2, 0)
+recipe = ExtResource("19_mrweq")
+
+[node name="CollectedFoodSpawner" parent="." unique_id=1379722093 instance=ExtResource("19_6ynox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.525276, 4.3827314, -1.840997)
 
 [connection signal="rush_button_hit" from="NavigationRegion3D/DinerProps/DinnerBell" to="Restaurant" method="_on_dinner_bell_rush_button_hit"]
