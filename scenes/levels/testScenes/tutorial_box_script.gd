@@ -43,7 +43,7 @@ func _process(_delta):
 
 	if holding:
 		$"hold button/ProgressBar".value += 0.75
-		print($"hold button/ProgressBar".value)
+		#print($"hold button/ProgressBar".value)
 	elif !holding:
 		$"hold button/ProgressBar".value = 0
 	#elif holding and completed:

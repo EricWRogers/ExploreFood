@@ -182,7 +182,7 @@ ao_light_affect = 0.88
 material = SubResource("StandardMaterial3D_46qji")
 size = Vector2(3, 3)
 
-[node name="RecipePickup" type="Node3D" unique_id=61122398]
+[node name="RecipePickup" type="Node3D" unique_id=61122398 groups=["Recipe_Collectable"]]
 script = ExtResource("1_bvc5s")
 recipe = ExtResource("2_7srh8")
 

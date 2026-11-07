@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b3hwo7plqv3q1"]
+
+[ext_resource type="Script" uid="uid://djoc52gli5eq2" path="res://scripts/environment/recipe_collectable_observer.gd" id="1_6fa68"]
+
+[node name="Recipe_Collectable_Observer" type="Node3D" unique_id=910457685]
+script = ExtResource("1_6fa68")

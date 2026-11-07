@@ -63,6 +63,7 @@ Viewer=""
 Item=""
 Camera=""
 Station=""
+Recipe_Collectable=""
 
 [input]
 

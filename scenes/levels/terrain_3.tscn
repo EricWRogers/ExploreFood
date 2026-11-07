@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://caepcnx4vcff7" path="res://scenes/scenes_assets/fork_collectable.tscn" id="30_rdi2u"]
 [ext_resource type="Script" uid="uid://d0flcftaktamn" path="res://scripts/environment/floor_boundary.gd" id="32_3gu2m"]
 [ext_resource type="AudioStream" uid="uid://cyp5dma1o0o4c" path="res://assets/sounds/SFX/dragon-studio-big-rock-splash-5-467472.mp3" id="33_bdcjt"]
+[ext_resource type="PackedScene" uid="uid://b3hwo7plqv3q1" path="res://scenes/tools/recipe_collectable_observer.tscn" id="34_bdcjt"]
 
 [sub_resource type="Shader" id="Shader_asdy7"]
 code = "shader_type spatial;
@@ -1297,11 +1298,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.293396, 0.6200752, -56.36
 [node name="ForkCollectable54" parent="Forks" unique_id=1741282536 instance=ExtResource("30_rdi2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.690712, 0.6200752, -55.230286)
 
-[node name="WaterFloor" type="Area3D" parent="." unique_id=1055757101 node_paths=PackedStringArray("spawn", "spawn_points")]
+[node name="WaterFloor" type="Area3D" parent="." unique_id=1055757101 node_paths=PackedStringArray("spawn_points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.23725, 29.220812)
 collision_mask = 15
 script = ExtResource("32_3gu2m")
-spawn = NodePath("")
 spawn_points = [NodePath("Marker3D"), NodePath("Marker3D32"), NodePath("Marker3D33"), NodePath("Marker3D34"), NodePath("Marker3D35"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4"), NodePath("Marker3D5"), NodePath("Marker3D6"), NodePath("Marker3D7"), NodePath("Marker3D8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterFloor" unique_id=960942023]
@@ -1354,6 +1354,8 @@ collision_mask = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterSFX" unique_id=1810218982]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5953307, 97.67889)
 shape = SubResource("WorldBoundaryShape3D_lg1c5")
+
+[node name="Recipe_Collectable_Observer" parent="." unique_id=910457685 instance=ExtResource("34_bdcjt")]
 
 [connection signal="food_entered" from="Portal" to="LevelTimeTracker" method="_on_portal_food_entered"]
 [connection signal="body_entered" from="WaterFloor" to="WaterFloor" method="_on_body_entered"]
