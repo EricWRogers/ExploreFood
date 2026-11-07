@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://c62hlkbbjjkal"]
 
 [ext_resource type="PackedScene" uid="uid://cujhfacpu3ssl" path="res://assets/npcs/BossSitting.fbx" id="1_xqhyp"]
+[ext_resource type="Texture2D" uid="uid://j6evdrh4b8c5" path="res://assets/textures/boss/IMG_5722.png" id="2_4f3x3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmyct"]
+albedo_texture = ExtResource("2_4f3x3")
 
 [node name="BossSitting" unique_id=1433496943 instance=ExtResource("1_xqhyp")]
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(751177841) index="0" unique_id=669833552]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(451034247) index="0" unique_id=1345952305]
 bones/1/position = Vector3(0, 0.0030148297, -0.00032024638)
 bones/1/rotation = Quaternion(0.030054502, 0.01203307, 0.023532746, 0.9991988)
 bones/1/scale = Vector3(1, 1.0000001, 1)
@@ -101,3 +105,18 @@ bones/35/scale = Vector3(1.0000001, 0.9999995, 0.9999999)
 bones/36/position = Vector3(-5.3797355e-10, 0.00019246865, 4.5029977e-10)
 bones/36/rotation = Quaternion(7.511953e-09, 5.9630305e-09, 5.1170637e-09, 1)
 bones/36/scale = Vector3(0.9999998, 1, 1)
+
+[node name="Hands_Feet" parent="Armature/Skeleton3D" index="0" unique_id=1194651662]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmyct")
+
+[node name="Head" parent="Armature/Skeleton3D" index="1" unique_id=741358067]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmyct")
+
+[node name="Jacket" parent="Armature/Skeleton3D" index="2" unique_id=25335577]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmyct")
+
+[node name="Pants" parent="Armature/Skeleton3D" index="3" unique_id=504404936]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmyct")
+
+[node name="Shirt" parent="Armature/Skeleton3D" index="4" unique_id=1046200868]
+surface_material_override/0 = SubResource("StandardMaterial3D_wmyct")

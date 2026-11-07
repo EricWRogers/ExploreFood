@@ -1,6 +1,31 @@
 [gd_scene format=3 uid="uid://bfuscfk6j0in8"]
 
 [ext_resource type="ArrayMesh" uid="uid://dc5vwh8ilo4be" path="res://assets/models/DinerStool.obj" id="1_rbirg"]
+[ext_resource type="Texture2D" uid="uid://b6inomqwntbyq" path="res://assets/textures/Diner Textures/DinerStoolPink_Mat.png" id="2_sw57a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekpv6"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pivn"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy4ff"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af1pb"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ckm6"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68jjv"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vur8"]
+albedo_texture = ExtResource("2_sw57a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8k65y"]
+albedo_texture = ExtResource("2_sw57a")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0mps0"]
 height = 1.6635284
@@ -9,6 +34,14 @@ height = 1.6635284
 
 [node name="Stool_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=210284472]
 mesh = ExtResource("1_rbirg")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekpv6")
+surface_material_override/1 = SubResource("StandardMaterial3D_2pivn")
+surface_material_override/2 = SubResource("StandardMaterial3D_fy4ff")
+surface_material_override/3 = SubResource("StandardMaterial3D_af1pb")
+surface_material_override/4 = SubResource("StandardMaterial3D_4ckm6")
+surface_material_override/5 = SubResource("StandardMaterial3D_68jjv")
+surface_material_override/6 = SubResource("StandardMaterial3D_8vur8")
+surface_material_override/7 = SubResource("StandardMaterial3D_8k65y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=618153137]
 transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, 0, 0.6064558, 0)
