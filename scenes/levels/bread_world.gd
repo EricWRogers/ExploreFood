@@ -11,7 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for cam in get_tree().get_nodes_in_group("Camera"):
-		if cam.name == "Player":
+		if cam.name == "PlayerCam":
 			if cam.global_position.y <= -3.59862875938416:
 				$WorldEnvironment.environment = UNDER_WATER
 			else:
