@@ -3,15 +3,19 @@ extends Control
 var holding
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	var timer:Timer = Timer.new()  #Create a timer, it will loop by default   
-	timer.wait_time = 0.1 
-	add_child(timer)
-	if holding:
-		timer.start()  #Make it start ticking  
-		#print(timer)
-	else:
-		timer.stop() #Make it stop ticking
+	if Manager.tutorial_seen == false:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		var timer:Timer = Timer.new()  #Create a timer, it will loop by default   
+		timer.wait_time = 0.1 
+		add_child(timer)
+		if holding:
+			timer.start()  #Make it start ticking  
+			#print(timer)
+		else:
+			timer.stop() #Make it stop ticking
+	elif Manager.tutorial_seen == true:
+		hide_tutorial_text()
+		
 
 #make box visible
 func show_tutorial_text():
@@ -48,6 +52,7 @@ func _process(_delta):
 
 	if $"hold button/ProgressBar".value == 100:
 		#print("Completed interacting!")
+		Manager.tutorial_seen = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		hide_tutorial_text()
 	
