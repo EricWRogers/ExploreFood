@@ -9,6 +9,7 @@ extends StaticBody3D
 
 var _currently_at := false
 var player_close = false;
+var player
 var aplayer
 var filling := false
 
@@ -43,16 +44,16 @@ func _defocus():
 func _start_station(player):
 	if filling:
 		return
-	filling = true
-	aplayer = player
-	aplayer.hide()
 	#if player.get_held_item != null:
-		#player.get_held_item().hide()
+	#player.get_held_item().hide()
+	aplayer = player
 	if not aplayer.inventory.has(null):
 		#cup.queue_free()
 		filling = false
 		return
 	else:
+		filling = true
+		aplayer.hide()
 		player.current_station = self
 		player.can_move = false
 		$"../KitchenProps/Counters/FrontWallCounters/Counter_Sink/Cuttingboard".show()

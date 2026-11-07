@@ -17,6 +17,7 @@ var currently_cooking : bool = false
 var food_in : bool = false
 var to_be_made : PackedScene
 var dish
+var player
 @export var cook_time : int
 
 func _ready() -> void:

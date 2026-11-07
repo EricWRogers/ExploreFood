@@ -203,6 +203,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cook") and station_focus != null:
 		start_station()
 		current_station = station_focus
+		#current_station.player = self
 	## checks closest items and focus/unfocus them
 	var closest : RigidBody3D = null
 	var closest_distance: float = INF

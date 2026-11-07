@@ -17,7 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 		if closest_spawn:
 			print("the closest spawn: ", closest_spawn.name)
 			body.global_position = closest_spawn.global_position
-			water_splash.play()
+			#water_splash.play()
 		#player.body
 		#body.global_position = spawn.global_position
 
@@ -34,3 +34,8 @@ func get_closest_spawn_point(target_position: Vector3) -> Node3D:
 				shortest_distance = distance
 				closest_node = spawn
 	return closest_node
+
+
+func _on_water_sfx_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		water_splash.play()
