@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bivn0lb6s02nm" path="res://scenes/levels/testScenes/end_menu_script.gd" id="1_w6q70"]
 [ext_resource type="Texture2D" uid="uid://bplfwfpwu16oa" path="res://assets/test_images/Screenshot 2026-09-07 180430.png" id="2_nufu8"]
 [ext_resource type="FontFile" uid="uid://bq3oucg0xtp5v" path="res://assets/fonts/Chango-Regular.ttf" id="3_lm32u"]
-[ext_resource type="Texture2D" uid="uid://cawerie68wxtv" path="res://assets/ui/ui_assets/qr-code5.png" id="4_qi7nr"]
+[ext_resource type="Texture2D" uid="uid://d23sm8c73lufa" path="res://assets/ui/QRCode/qr-code(6).png" id="4_w6q70"]
 [ext_resource type="Texture2D" uid="uid://kk0rgk6lt0ds" path="res://assets/ui/ui_assets/menubuttonPlay.png" id="5_2wds1"]
 
 [node name="EndMenu" type="Control" unique_id=1016334946]
@@ -53,7 +53,7 @@ offset_left = 137.0
 offset_top = 368.0
 offset_right = 805.0
 offset_bottom = 1043.0
-texture = ExtResource("4_qi7nr")
+texture = ExtResource("4_w6q70")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1922748235]

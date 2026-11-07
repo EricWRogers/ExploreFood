@@ -4,9 +4,10 @@
 [ext_resource type="FontFile" uid="uid://cq3is62qm38qe" path="res://assets/fonts/PasseroOne-Regular.ttf" id="2_2clre"]
 [ext_resource type="Texture2D" uid="uid://kk0rgk6lt0ds" path="res://assets/ui/ui_assets/menubuttonPlay.png" id="3_24yat"]
 [ext_resource type="Texture2D" uid="uid://dgoxj5ngc5udg" path="res://assets/ui/ui_assets/receiptbgMenu.png" id="4_12p7d"]
+[ext_resource type="Texture2D" uid="uid://dwlxgjvxudmih" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-11-07 011346.png" id="4_72jj3"]
 [ext_resource type="Texture2D" uid="uid://613bobul84wf" path="res://assets/ui/ui_assets/menubuttonQuit.png" id="4_jyv5n"]
-[ext_resource type="Texture2D" uid="uid://b5nauwc0ap8xf" path="res://assets/test_images/Screenshot 2026-11-05 at 6.28.48 PM.png" id="4_yimnx"]
 [ext_resource type="FontFile" uid="uid://bq3oucg0xtp5v" path="res://assets/fonts/Chango-Regular.ttf" id="6_72jj3"]
+[ext_resource type="Texture2D" uid="uid://d23sm8c73lufa" path="res://assets/ui/QRCode/qr-code(6).png" id="8_bcatj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u3gwf"]
 texture = ExtResource("3_24yat")
@@ -33,7 +34,7 @@ layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 1081.0
 mouse_filter = 2
-color = Color(0.2784314, 0, 0.1882353, 1)
+color = Color(0.42994738, 6.6420434e-06, 0.30103058, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=827626821]
 layout_mode = 1
@@ -110,7 +111,8 @@ layout_mode = 0
 offset_left = -1.0
 offset_right = 1935.0
 offset_bottom = 1080.0
-texture = ExtResource("4_yimnx")
+texture = ExtResource("4_72jj3")
+stretch_mode = 6
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=434953791]
 layout_mode = 0
@@ -263,6 +265,23 @@ visible = false
 custom_minimum_size = Vector2(420, 250)
 layout_mode = 2
 texture = ExtResource("3_24yat")
+expand_mode = 1
+
+[node name="QRCode" type="TextureRect" parent="." unique_id=1666296666]
+custom_maximum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -470.0
+offset_top = -481.0
+offset_right = -10.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_bcatj")
 expand_mode = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
