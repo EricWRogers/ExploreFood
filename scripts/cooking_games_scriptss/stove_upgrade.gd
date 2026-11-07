@@ -18,6 +18,8 @@ func _process(delta: float) -> void:
 		stove.global_rotation_degrees = Vector3(0.0, -90, 0.0)
 		stove.scale = Vector3(1.75, 1.75, 1.75)
 		bought = true
+	if bought:
+		$Node3D.hide()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
