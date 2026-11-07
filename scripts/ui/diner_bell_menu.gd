@@ -2,8 +2,7 @@ extends Control
 
 signal start_button_hit
 
-
-@onready var ingredient_texture = preload("res://scenes/UI/Diner/recipe_ingredient_flow.tscn")
+@onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
 
 ##for testing only
 @export var test_recipe_array: Array[Resource]
@@ -101,7 +100,6 @@ func _process(_delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	start_button_hit.emit()
-	# send signal to diner menu board #
 	
 
 func confirm_recipes():
