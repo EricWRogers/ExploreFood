@@ -2,6 +2,7 @@ extends Control
 
 signal start_button_hit
 
+
 @onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
 
 ##for testing only
@@ -17,6 +18,7 @@ signal start_button_hit
 @export var min_selectable_recipes: int
 @export var max_selectable_recipes: int
 var num_selected_recipes: int = 0
+
 
 func _ready() -> void:
 	
@@ -99,10 +101,11 @@ func _process(_delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	start_button_hit.emit()
+	# send signal to diner menu board #
+	
 
 func confirm_recipes():
 	get_tree().paused = false
 	print(Manager.player_selected_recipes)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	queue_free()
-	#get_tree().paused = true

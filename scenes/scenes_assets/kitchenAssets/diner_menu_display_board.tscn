@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlughvf3c235n"]
 
-[ext_resource type="PackedScene" uid="uid://dbxdj6eei8dv3" path="res://scenes/UI/Diner/diner_menu_display.tscn" id="1_s8vvk"]
+[ext_resource type="PackedScene" uid="uid://bowc4ooppdkek" path="res://scenes/UI/Diner/diner_menu_display.tscn" id="1_s8vvk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klsck"]
 size = Vector2(1, 1.125)

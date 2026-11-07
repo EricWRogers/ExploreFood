@@ -1,5 +1,7 @@
 extends StaticBody3D
+
 signal rush_button_hit
+signal menu_set()
 
 @export var bell_menu: PackedScene
 var canvas_layer: CanvasLayer
@@ -73,12 +75,12 @@ func get_rolled():
 	self.freeze = false
 func start_rush_hour():
 	rush_button_hit.emit()
+	emit_signal("menu_set")
 
 func open_menu():
 	print("menu opened!")
 	
 	if !i_hit_da_button:
-		print("opening menu")
 		i_hit_da_button = true
 		
 		# spawn canvas layer and bell menu #
