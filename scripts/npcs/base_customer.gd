@@ -226,7 +226,9 @@ func set_exit(new_exit: Object):
 
 func set_order():
 	my_order = Manager.player_selected_recipes.pick_random()
-	print(my_order.id)
+	if my_order == null:
+		current_state = State.SEAT
+		change_state(State.ORDER)
 	$Bubble/Bubble2.texture = my_order.recipe_icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
