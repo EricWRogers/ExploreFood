@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cg6ncasrch1o5" path="res://assets/textures/ModularFoodTextures/skewer.png" id="5_oxu6v"]
 [ext_resource type="Texture2D" uid="uid://bwwunprw0fs3h" path="res://assets/textures/ModularFoodTextures/meatdiced.png" id="6_6laem"]
 [ext_resource type="Texture2D" uid="uid://l1d15b8140ve" path="res://assets/textures/ModularFoodTextures/Chive.png" id="7_eohj3"]
-[ext_resource type="Material" uid="uid://bu4g4td1llngu" path="res://fp_scenes/kitchen/textures/Materials/MeatPie.tres" id="8_tgb30"]
+[ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="8_oxu6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oxu6v"]
 resource_local_to_scene = true
@@ -90,6 +90,9 @@ transparency = 1
 albedo_color = Color(0.85104823, 0.85104823, 0.85104823, 0.6509804)
 albedo_texture = ExtResource("7_eohj3")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6laem"]
+albedo_texture = ExtResource("8_oxu6v")
+
 [node name="MeatSkewer" unique_id=175947415 instance=ExtResource("1_8s1qq")]
 item_name = "Meat Skewer"
 
@@ -99,4 +102,4 @@ mesh = ExtResource("5_3gg2v")
 surface_material_override/0 = SubResource("StandardMaterial3D_hd2fj")
 surface_material_override/1 = SubResource("StandardMaterial3D_ohea6")
 surface_material_override/2 = SubResource("StandardMaterial3D_07xei")
-surface_material_override/3 = ExtResource("8_tgb30")
+surface_material_override/3 = SubResource("StandardMaterial3D_6laem")

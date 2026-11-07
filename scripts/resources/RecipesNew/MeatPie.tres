@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://b3uj85je83r08"]
+
+[ext_resource type="Script" uid="uid://bgvxr2q1wxr3m" path="res://scripts/recipe_system/recipe_ingredient.gd" id="1_2s33s"]
+[ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_88utf"]
+[ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="2_my00j"]
+[ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="2_mymus"]
+[ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="3_hyak0"]
+[ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="3_jrg46"]
+[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="5_jrg46"]
+
+[resource]
+script = ExtResource("2_88utf")
+recipe_name = "Meat Pie"
+recipe_ingredients = Array[PackedScene]([ExtResource("2_my00j"), ExtResource("3_hyak0")])
+recipe_station_tex = ExtResource("5_jrg46")
+product = ExtResource("2_mymus")
+recipe_icon = ExtResource("3_jrg46")
+metadata/_custom_type_script = "uid://c2bmq7bowk28b"

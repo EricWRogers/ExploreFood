@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ddq1rjtvwl500" path="res://fp_scenes/ingredients/base_item.tscn" id="1_mcimu"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_0ipxg"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_3qbxw"]
-[ext_resource type="Material" uid="uid://bu4g4td1llngu" path="res://fp_scenes/kitchen/textures/Materials/MeatPie.tres" id="5_0ipxg"]
+[ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="5_0ipxg"]
 [ext_resource type="ArrayMesh" uid="uid://ctp44ue7u40la" path="res://assets/models/MeatPocketSauce.obj" id="5_yu5u3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yu5u3"]
@@ -76,6 +76,9 @@ shader_parameter/overlay_texture = ExtResource("4_3qbxw")
 shader_parameter/burnt = 0.0
 shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd13g"]
+albedo_texture = ExtResource("5_0ipxg")
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0ipxg"]
 height = 0.3803711
 radius = 1.9931641
@@ -90,7 +93,7 @@ id = 100
 [node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
 material_overlay = SubResource("ShaderMaterial_3qbxw")
 mesh = ExtResource("5_yu5u3")
-surface_material_override/0 = ExtResource("5_0ipxg")
+surface_material_override/0 = SubResource("StandardMaterial3D_jd13g")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=996006703]
 transform = Transform3D(1.2539684, 0, 0, 0, 1.2539684, 0, 0, 0, 1.2539684, 0, 0.33744705, 0)
