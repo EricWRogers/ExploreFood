@@ -71,6 +71,7 @@ var held_item_appeared := false
 var is_holding := false
 var in_station := false
 var special_pickup := false
+var menu_open := false
 var current_station : StaticBody3D
 @export var current_recipe : Resource
 const GRAB_GROUPS := ["Ingredient", "Item"]
@@ -82,6 +83,7 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 @onready var shadow: SpringArm3D = $Shadow
 @onready var decal: Decal = $Shadow/Decal
 @onready var inventory_viewer = preload("res://fp_scenes/inventory/inventory_icon_maker.tscn")
+@onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
 @onready var food_hold_pnt: Marker3D = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt
 @onready var held_item: AnimationPlayer = $HeldItem
 
@@ -92,6 +94,7 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 
 
 func _ready() -> void:
+	#confirm_button.pressed.connect(confirm_recipes)
 	CameraManager.player_cam = $CameraPivot/SpringArm3D/PlayerCam
 	CameraManager.collect_cam = $Doremi/CollectCamPivot/CollectCam
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -756,9 +759,49 @@ func pickup_special() -> void:
 	_skin.pickup_spec()
 	$CollectSpec.start()
 
+func set_2_recipes():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$CanvasLayer/StoveChoice.show()
+	var index = 0
+	for recipe in Manager.player_selected_recipes:
+		var current_recipe_node: Node
+		current_recipe_node = $CanvasLayer/StoveChoice/VBoxContainer/HBoxContainer.get_child(index)
+		
+		# set recipe data #
+		current_recipe_node.ui_recipe = recipe
+		current_recipe_node.ui_label.text = recipe.recipe_name
+		current_recipe_node.ui_icon.texture = recipe.recipe_icon
+		current_recipe_node.ui_station.texture = recipe.recipe_station_tex
+		for item in recipe.recipe_ingredients:
+			var ingredient_tex = ingredient_texture.instantiate()
+			current_recipe_node.ui_flow.add_child(ingredient_tex)
+			var item_pull = item.instantiate()
+			if item_pull.icon != null:
+				ingredient_tex.texture = item_pull.icon
+		index += 1
+		
 
 
 func _on_collect_spec_timeout() -> void:
 	special_pickup = false
 	CameraManager.switch_to_regular()
 	_skin.put_away_recipe()
+
+
+
+func _on_food1_pressed() -> void:
+	$CanvasLayer/StoveChoice.hide()
+	current_station.selected_recipe = true
+	var picked = Manager.player_selected_recipes[0]
+	current_station.to_be_made = picked.product
+	current_station.recipe.assign(picked.recipe_ingredients)
+	current_station._start_station(self)
+
+
+func _on_food2_pressed() -> void:
+	$CanvasLayer/StoveChoice.hide()
+	current_station.selected_recipe = true
+	var picked = Manager.player_selected_recipes[1]
+	current_station.to_be_made = picked.product
+	current_station.recipe.assign(picked.recipe_ingredients)
+	current_station._start_station(self)

@@ -18,6 +18,7 @@ var food_in : bool = false
 var to_be_made : PackedScene
 var dish
 var player
+var selected_recipe = null
 @export var cook_time : int
 
 func _ready() -> void:
@@ -47,6 +48,8 @@ func _defocus():
 	next_pass.set_shader_parameter("size", 0.0)
 
 func _start_station(player):
+	if Manager.player_selected_recipes.size() <= 1:
+		return
 	valid_dish = false
 	if food_in:
 		if not player.pickup_item(dish):
@@ -59,13 +62,21 @@ func _start_station(player):
 			return
 	if currently_cooking:
 		return
+	if !selected_recipe:
+		player.current_station = self
+		player.set_2_recipes()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		for item in get_tree().get_nodes_in_group("Player"):
+			item.can_move = false
+			item._skin.hide()
+			item.menu_open = true
+		return
 	player.in_station = true
 	$StoveOven/Door.play("open_door")
 	_currently_at = true
 	_defocus()
 	CameraManager.switch_to_oven()
 	_player = player
-	recipe = player.current_recipe.recipe_ingredients
 	ingredient_check = recipe.duplicate()
 	station_finished = false
 	for item in get_tree().get_nodes_in_group("Player"):
@@ -75,6 +86,7 @@ func _start_station(player):
 	_player.update_hotbar_eligibility()
 	InputManager.update_hotbar()
 func rip_away():
+	selected_recipe = null
 	_player.current_station = null
 	_player.in_station = false
 	if _player.get_held_item() != null:
@@ -85,7 +97,7 @@ func rip_away():
 	CameraManager.switch_to_regular()
 	check_valid_dish()
 	_player.display_cook_button(false)
-	to_be_made = _player.current_recipe.product
+	#to_be_made = _player.current_recipe.product
 	_player = null
 	#recipe = null
 	#ingredient_check = recipe.duplicate()
