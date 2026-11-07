@@ -4,6 +4,7 @@
 
 [node name="LevelTimeTracker" type="Node3D" unique_id=1615522022]
 script = ExtResource("1_yty27")
+level_time = 90.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1059123700]
 

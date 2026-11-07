@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b4pk550gdakb4"]
+
+[ext_resource type="Script" uid="uid://u4c2eh50jfbg" path="res://scripts/cooking_games_scriptss/stove_upgrade.gd" id="1_8meam"]
+[ext_resource type="Texture2D" uid="uid://cf17xc8wa32pf" path="res://fp_scenes/inputs/mouse_keyboard/keyboard_e.png" id="2_sgcsi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
+radius = 0.90907246
+
+[node name="StoveUpgrade" type="Node3D" unique_id=1088975849]
+script = ExtResource("1_8meam")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=2004135812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2297965, 0)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=750391533]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18838966, -0.008809596)
+layers = 2
+billboard = 1
+no_depth_test = true
+render_priority = 75
+texture = ExtResource("2_sgcsi")
+
+[node name="Label3D" type="Label3D" parent="Node3D" unique_id=470953772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75115013, 0)
+billboard = 2
+text = "New Stove
+Cost 100"
+
+[node name="StoveSpawn" type="Marker3D" parent="." unique_id=370844701]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1333751937]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=976657402]
+shape = SubResource("SphereShape3D_gtwna")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -86,6 +86,7 @@ enum Stations {
 	POOP
 }
 
+var tutorial_seen = false
 
 func clear_current_bagel():
 	player.dropthrow()

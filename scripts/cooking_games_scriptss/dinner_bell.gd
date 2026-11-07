@@ -13,6 +13,7 @@ var i_hit_da_button : bool = false
 
 var _currently_at := false
 var player_close = false;
+var player
 
 func _ready() -> void:
 	if (Manager.player_unlocked_recipes.size() == 0):

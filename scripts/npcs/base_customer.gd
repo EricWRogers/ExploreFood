@@ -25,7 +25,9 @@ var my_succulent_meal
 var my_order
 var right_food : bool = true
 var order_distance = 1
-var angry_time = 45.0
+var angry_time_min = 10.0
+var angry_time_max = 20.0
+var angry_time
 var satisfaction_time
 var tray
 var good_time = ["Amazing", "So good", "Delicious","Yum-yum"]
@@ -40,6 +42,7 @@ enum State{
 }
 
 var current_state : State = State.SEAT
+var drinks_gotten : int = 1
 
 ## preferences ?
 
@@ -57,7 +60,7 @@ var relationship: int = 0
 
 # change color #
 func _ready() -> void:
-	angry_time = randf_range(angry_time, 60.0)
+	angry_time = randf_range(angry_time_min, angry_time_max)
 	#var customer_mat = customer_mesh.get_surface_override_material(0)
 	#customer_mat = customer_mat.duplicate()
 	#customer_mat.albedo_color = colors.pick_random()
@@ -148,7 +151,8 @@ func exit_state(state: State) -> void:
 		State.EAT:
 			eating_sfx.play()
 			tray.queue_free()
-			my_succulent_meal.queue_free()
+			if my_succulent_meal != null:
+				my_succulent_meal.queue_free()
 
 		State.PAY:
 			pass
@@ -222,6 +226,9 @@ func set_exit(new_exit: Object):
 
 func set_order():
 	my_order = Manager.player_selected_recipes.pick_random()
+	if my_order == null:
+		current_state = State.SEAT
+		change_state(State.ORDER)
 	$Bubble/Bubble2.texture = my_order.recipe_icon
 	$Bubble.show()
 	$Bubble/Bubble2.show()
@@ -230,7 +237,11 @@ func set_order():
 func _on_area_3d_body_entered(body: Node3D) -> void:
 
 	if (body is BaseIngredient or body is BaseIngredientND or body is BaseItem) and current_state == State.ORDER:
-		satisfaction_time = timer.time_left
+		if(body is BaseItem and body.id == 0):
+			timer.start(timer.time_left + (angry_time / drinks_gotten))
+			body.queue_free()
+			return
+		satisfaction_time = angry_time / 2
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
 		my_succulent_meal.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5

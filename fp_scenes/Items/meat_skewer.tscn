@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://ccu7ptj5owaby"]
+
+[ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="1_8s1qq"]
+[ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_3gg2v"]
+[ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_pp85o"]
+[ext_resource type="ArrayMesh" uid="uid://c1ctw7rhhxl6a" path="res://assets/Food/models/MeatSkewerMeal.obj" id="5_3gg2v"]
+[ext_resource type="Texture2D" uid="uid://cg6ncasrch1o5" path="res://assets/textures/ModularFoodTextures/skewer.png" id="5_oxu6v"]
+[ext_resource type="Texture2D" uid="uid://bwwunprw0fs3h" path="res://assets/textures/ModularFoodTextures/meatdiced.png" id="6_6laem"]
+[ext_resource type="Texture2D" uid="uid://l1d15b8140ve" path="res://assets/textures/ModularFoodTextures/Chive.png" id="7_eohj3"]
+[ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="8_oxu6v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxu6v"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_3gg2v")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="Shader" id="Shader_7ygjy"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_never;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0) = 0.1;
+uniform vec2 overlay_uv_scale = vec2(1.0, 1.0);
+
+uniform float transparency : hint_range(0.0, 1.0) = 0.0; // 0 = no stripes, 1 = fully stripes
+
+uniform sampler2D overlay_texture : source_color;
+uniform float burnt : hint_range(0.0, 1.0) = 0.0;           // 0 = no burn, 1 = full burn tint
+uniform vec3 burnt_color : source_color = vec3(0.25, 0.15, 0.1);
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+	float radians_angle = radians(rotation_angle);
+	float cos_angle = cos(radians_angle);
+	float sin_angle = sin(radians_angle);
+	mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+	return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+	return cos(uv.x * 0.0 - TIME * speed + uv.y * -line_count / 2.0);
+}
+
+void fragment() {
+	vec2 uv = UV;
+
+	// stripes
+	float g = stripe(rotate(uv, angle));
+	vec3 stripe_col = mix(color_one, color_two, smoothstep(0.0, blur, g));
+
+	// burn layer, uses the overlay texture as its pattern
+	vec3 overlay_col = texture(overlay_texture, uv * overlay_uv_scale).rgb;
+	vec3 burnt_col = overlay_col * burnt_color;
+
+	ALBEDO = mix(stripe_col, burnt_col, burnt);
+	ALPHA = max(transparency, burnt);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6laem"]
+resource_local_to_scene = true
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_oxu6v")
+shader = SubResource("Shader_7ygjy")
+shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
+shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 1.015
+shader_parameter/blur = 0.0
+shader_parameter/overlay_uv_scale = Vector2(4, 4)
+shader_parameter/transparency = 0.0
+shader_parameter/overlay_texture = ExtResource("4_pp85o")
+shader_parameter/burnt = 0.0
+shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd2fj"]
+albedo_texture = ExtResource("5_oxu6v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohea6"]
+albedo_texture = ExtResource("6_6laem")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07xei"]
+transparency = 1
+albedo_color = Color(0.85104823, 0.85104823, 0.85104823, 0.6509804)
+albedo_texture = ExtResource("7_eohj3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6laem"]
+albedo_texture = ExtResource("8_oxu6v")
+
+[node name="MeatSkewer" unique_id=175947415 instance=ExtResource("1_8s1qq")]
+item_name = "Meat Skewer"
+
+[node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
+material_overlay = SubResource("ShaderMaterial_6laem")
+mesh = ExtResource("5_3gg2v")
+surface_material_override/0 = SubResource("StandardMaterial3D_hd2fj")
+surface_material_override/1 = SubResource("StandardMaterial3D_ohea6")
+surface_material_override/2 = SubResource("StandardMaterial3D_07xei")
+surface_material_override/3 = SubResource("StandardMaterial3D_6laem")
