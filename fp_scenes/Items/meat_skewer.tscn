@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://l1d15b8140ve" path="res://assets/textures/ModularFoodTextures/Chive.png" id="7_eohj3"]
 [ext_resource type="Material" uid="uid://bu4g4td1llngu" path="res://fp_scenes/kitchen/textures/Materials/MeatPie.tres" id="8_tgb30"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7o5p4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxu6v"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_3gg2v")
@@ -62,10 +62,10 @@ void fragment() {
 	ALPHA = max(transparency, burnt);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cvin"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6laem"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_7o5p4")
+next_pass = SubResource("ShaderMaterial_oxu6v")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -90,11 +90,11 @@ transparency = 1
 albedo_color = Color(0.85104823, 0.85104823, 0.85104823, 0.6509804)
 albedo_texture = ExtResource("7_eohj3")
 
-[node name="BaseItem" unique_id=175947415 instance=ExtResource("1_8s1qq")]
+[node name="MeatSkewer" unique_id=175947415 instance=ExtResource("1_8s1qq")]
 item_name = "Meat Skewer"
 
 [node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
-material_overlay = SubResource("ShaderMaterial_2cvin")
+material_overlay = SubResource("ShaderMaterial_6laem")
 mesh = ExtResource("5_3gg2v")
 surface_material_override/0 = SubResource("StandardMaterial3D_hd2fj")
 surface_material_override/1 = SubResource("StandardMaterial3D_ohea6")
