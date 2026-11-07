@@ -25,9 +25,9 @@ var my_succulent_meal
 var my_order
 var right_food : bool = true
 var order_distance = 1
-var angry_time_min = 10.0
-var angry_time_max = 20.0
-var angry_time
+var min_wait_time = 20.0
+var max_wait_time = 40.0
+var wait_time
 var satisfaction_time
 var tray
 var good_time = ["Amazing", "So good", "Delicious","Yum-yum"]
@@ -60,7 +60,7 @@ var relationship: int = 0
 
 # change color #
 func _ready() -> void:
-	angry_time = randf_range(angry_time_min, angry_time_max)
+	wait_time = randf_range(min_wait_time, max_wait_time)
 	#var customer_mat = customer_mesh.get_surface_override_material(0)
 	#customer_mat = customer_mat.duplicate()
 	#customer_mat.albedo_color = colors.pick_random()
@@ -106,7 +106,7 @@ func enter_state(state: State) -> void:
 			timer_progress.show()
 			timer.stop()
 			set_order()
-			timer.wait_time = angry_time
+			timer.wait_time = wait_time
 			timer.start()
 			texture_progress_bar.max_value = 100.0
 			texture_progress_bar.value = 100.0
@@ -122,7 +122,7 @@ func enter_state(state: State) -> void:
 			
 			timer_progress.show()
 			timer.stop()
-			timer.wait_time = angry_time
+			timer.wait_time = wait_time
 			timer.start()
 			texture_progress_bar.max_value = 100.0
 			texture_progress_bar.value = 100.0
@@ -238,10 +238,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 	if (body is BaseIngredient or body is BaseIngredientND or body is BaseItem) and current_state == State.ORDER:
 		if(body is BaseItem and body.id == 0):
-			timer.start(timer.time_left + (angry_time / drinks_gotten))
+			timer.start(timer.time_left + (wait_time / drinks_gotten))
 			body.queue_free()
 			return
-		satisfaction_time = angry_time / 2
+		satisfaction_time = wait_time / 2
 		my_succulent_meal = body as RigidBody3D
 		my_succulent_meal.scale = Vector3.ONE * 0.5
 		my_succulent_meal.global_position = my_seat.get_child(0).global_position + Vector3.UP * 2.5

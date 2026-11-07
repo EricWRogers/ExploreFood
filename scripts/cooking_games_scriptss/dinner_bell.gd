@@ -3,7 +3,8 @@ extends StaticBody3D
 signal rush_button_hit
 signal menu_set()
 
-@export var bell_menu: PackedScene
+const DINER_BELL_MENU = preload("uid://njehgw3a3x0g")
+
 var canvas_layer: CanvasLayer
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
@@ -89,7 +90,7 @@ func open_menu():
 		# spawn canvas layer and bell menu #
 		canvas_layer = CanvasLayer.new()
 		var spawn_bell_menu: Node
-		spawn_bell_menu = bell_menu.instantiate()
+		spawn_bell_menu = DINER_BELL_MENU.instantiate()
 		spawn_bell_menu.start_button_hit.connect(start_rush_hour)
 		add_child(canvas_layer)
 		canvas_layer.add_child(spawn_bell_menu)
