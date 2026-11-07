@@ -43,9 +43,6 @@ func _defocus():
 func _start_station(player):
 	if filling:
 		return
-	filling = true
-	aplayer = player
-	aplayer.hide()
 	#if player.get_held_item != null:
 		#player.get_held_item().hide()
 	if not aplayer.inventory.has(null):
@@ -53,6 +50,9 @@ func _start_station(player):
 		filling = false
 		return
 	else:
+		filling = true
+		aplayer = player
+		aplayer.hide()
 		player.current_station = self
 		player.can_move = false
 		$"../KitchenProps/Counters/FrontWallCounters/Counter_Sink/Cuttingboard".show()
