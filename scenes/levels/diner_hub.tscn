@@ -1233,7 +1233,7 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.8846665, 0.4230927, -0.19584176, -2.9802264e-08, 0.4200623, 0.907494, 0.46621993, 0.8028313, -0.3716157, 0.36292076, 2.1149292, 0.48736048)
+transform = Transform3D(-0.8846664, 0.42309266, -0.19584174, -2.980226e-08, 0.42006227, 0.90749395, 0.46621987, 0.8028313, -0.37161568, 0.36292076, 2.1149292, 0.48736048)
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
