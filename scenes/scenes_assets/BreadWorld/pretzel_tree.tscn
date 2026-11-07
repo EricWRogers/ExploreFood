@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cnuuuuhk4hndr" path="res://assets/materials/BW_PretzelTree_Mat.png" id="2_dmv2u"]
 [ext_resource type="Material" uid="uid://b0apboa8pqf5" path="res://assets/materials/pretzel_leaves.tres" id="2_iq2g2"]
 [ext_resource type="Texture2D" uid="uid://cacf56235y82i" path="res://assets/materials/BW_PretzelTreeSalt_Mat.png" id="4_bxu6o"]
-[ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="5_bxu6o"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
+height = 10.032715
+radius = 0.65722656
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u586y"]
 albedo_texture = ExtResource("2_dmv2u")
@@ -17,6 +18,7 @@ albedo_texture = ExtResource("4_bxu6o")
 [node name="StaticBody3D" type="StaticBody3D" unique_id=673147483]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2027667586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.084646, -0.3826239)
 shape = SubResource("CylinderShape3D_klsck")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1371992551]
@@ -26,11 +28,3 @@ surface_material_override/1 = ExtResource("2_iq2g2")
 surface_material_override/2 = ExtResource("2_iq2g2")
 surface_material_override/3 = ExtResource("2_iq2g2")
 surface_material_override/4 = SubResource("StandardMaterial3D_2fxk2")
-
-[node name="MysteryMeat" parent="." unique_id=175947415 instance=ExtResource("5_bxu6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08004427, 3.3483791, 2.8031998)
-freeze = true
-
-[node name="MysteryMeat2" parent="." unique_id=1213083031 instance=ExtResource("5_bxu6o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7752528, 5.3257723, -3.4094791)
-freeze = true

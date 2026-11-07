@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://8phl16d4pfj0" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Leaves_Normal.png" id="8_luc6b"]
 [ext_resource type="Texture2D" uid="uid://c50e0c8awyerp" path="res://assets/textures/clown_tree/Tree-20260901T203847Z-1-001/Tree/ClownTree_Leaves_Roughness.png" id="9_edlky"]
 [ext_resource type="PackedScene" uid="uid://c7hhif1nwtvl7" path="res://scenes/scenes_assets/clown_mask.tscn" id="10_2yi7y"]
+[ext_resource type="ArrayMesh" uid="uid://c4rneocwvbpke" path="res://assets/models/PretzelTree/PretzelTree.obj" id="11_eeq6s"]
 [ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="12_75btq"]
+[ext_resource type="Texture2D" uid="uid://cnuuuuhk4hndr" path="res://assets/materials/BW_PretzelTree_Mat.png" id="12_keh2b"]
+[ext_resource type="Texture2D" uid="uid://b2olbamjxpl1s" path="res://assets/textures/PetzelTreeLeafTextures/HeartLeaves.png" id="13_eeq6s"]
+[ext_resource type="Texture2D" uid="uid://cacf56235y82i" path="res://assets/materials/BW_PretzelTreeSalt_Mat.png" id="14_6fnpt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
 albedo_texture = ExtResource("2_2yi7y")
@@ -29,37 +33,61 @@ normal_texture = ExtResource("8_luc6b")
 heightmap_enabled = true
 heightmap_texture = ExtResource("7_antww")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klsck"]
+albedo_color = Color(0.5583154, 0.22566134, 0.19899052, 1)
+albedo_texture = ExtResource("12_keh2b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_keh2b"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.6887719, 0.24608484, 0.36991507, 1)
+albedo_texture = ExtResource("13_eeq6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3kuc"]
+albedo_texture = ExtResource("14_6fnpt")
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_klsck"]
 height = 2.239746
-radius = 0.23339844
+radius = 0.30273438
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtwna"]
 
 [node name="Clown_Tree" type="Node3D" unique_id=1282798476]
 script = ExtResource("1_dtrys")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1445180745]
+[node name="ClownMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1445180745]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.057627678, 0, 0.097798824)
+visible = false
 mesh = ExtResource("1_06bpm")
 surface_material_override/0 = SubResource("StandardMaterial3D_6xqmx")
 surface_material_override/1 = SubResource("StandardMaterial3D_q026u")
 surface_material_override/2 = SubResource("StandardMaterial3D_6xqmx")
 
+[node name="PretzelMeshInstance" type="MeshInstance3D" parent="." unique_id=1021456407]
+mesh = ExtResource("11_eeq6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_klsck")
+surface_material_override/1 = SubResource("StandardMaterial3D_keh2b")
+surface_material_override/2 = SubResource("StandardMaterial3D_keh2b")
+surface_material_override/3 = SubResource("StandardMaterial3D_keh2b")
+surface_material_override/4 = SubResource("StandardMaterial3D_u3kuc")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=424341458]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.39249325)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1478362741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.130109, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07106602, 1.130109, 0)
 shape = SubResource("CylinderShape3D_klsck")
 
 [node name="ClownMask" parent="." unique_id=1976793568 instance=ExtResource("10_2yi7y")]
-transform = Transform3D(-0.9994281, 0.015623547, 0.029987052, 0.013159505, 0.99665344, -0.08067757, -0.031147137, -0.08023682, -0.9962891, 0.08018583, 3.0536993, -1.7613547)
+transform = Transform3D(-0.9994281, 0.015623546, 0.02998705, -0.008161087, 0.7491725, -0.6623249, -0.032813314, -0.6621909, -0.7486165, 0.08018583, 3.1181931, -2.7516925)
 
 [node name="ClownMask2" parent="." unique_id=195324556 instance=ExtResource("10_2yi7y")]
-transform = Transform3D(0.6148066, 0.29520142, 0.7313472, 0.037296757, 0.91538805, -0.40084115, -0.78779536, 0.27371672, 0.5517766, 0.6285994, 2.9921212, 0.26441455)
+transform = Transform3D(0.62775254, 0.36744472, 0.6862294, 0.12334112, 0.82348436, -0.55376905, -0.7685787, 0.4322704, 0.4716235, 0.22211125, 3.4112499, 3.6588042)
 
 [node name="ClownMask3" parent="." unique_id=69236649 instance=ExtResource("10_2yi7y")]
-transform = Transform3D(-0.4520756, -0.70069474, -0.5519551, 0.24254057, 0.49891907, -0.8320177, 0.8583714, -0.51000667, -0.05560234, -1.7462672, 3.417725, -0.1828529)
+transform = Transform3D(-0.4520756, -0.70069474, -0.5519551, 0.24254057, 0.49891907, -0.8320177, 0.8583714, -0.51000667, -0.05560234, -1.7462672, 4.8551106, 0.94702876)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1439687423]
 collision_layer = 6
@@ -70,15 +98,15 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 shape = SubResource("SphereShape3D_gtwna")
 
 [node name="MysteryMeat" parent="." unique_id=175947415 instance=ExtResource("12_75btq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.2443302, -2.253939)
+transform = Transform3D(0.5, 0, 0, 0, 0.39999625, 0.300005, 0, -0.300005, 0.39999625, 0, 2.975141, -3.2601368)
 freeze = true
 
 [node name="MysteryMeat2" parent="." unique_id=557406398 instance=ExtResource("12_75btq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.1039062, 3.0876513, -0.28912243)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.1039062, 4.525037, 0.84075916)
 freeze = true
 
 [node name="MysteryMeat3" parent="." unique_id=1796395542 instance=ExtResource("12_75btq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.0015656, 2.8891344, 0.5296323)
+transform = Transform3D(0.49814442, 0.04234929, -0.007659778, -0.04303643, 0.49019077, -0.08866153, 0, 0.08899179, 0.49201673, 0.58090746, 3.2311523, 3.9014575)
 freeze = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
