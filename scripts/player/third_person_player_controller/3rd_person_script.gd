@@ -83,7 +83,7 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 @onready var shadow: SpringArm3D = $Shadow
 @onready var decal: Decal = $Shadow/Decal
 @onready var inventory_viewer = preload("res://fp_scenes/inventory/inventory_icon_maker.tscn")
-@onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
+@onready var ingredient_texture = preload("res://scenes/UI/Diner/recipe_ingredient_flow.tscn")
 @onready var food_hold_pnt: Marker3D = $Doremi/Skeleton3D/ItemAttachment/FoodHoldPnt
 @onready var held_item: AnimationPlayer = $HeldItem
 
