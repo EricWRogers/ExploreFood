@@ -236,7 +236,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="StaticBody3D2" type="StaticBody3D" unique_id=1565598496 groups=["Station"]]
 script = ExtResource("1_38i88")
-cook_time = 30
+cook_time = 5
 
 [node name="StoveOven" type="Node3D" parent="." unique_id=1051010450]
 

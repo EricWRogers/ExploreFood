@@ -85,6 +85,7 @@ albedo_texture = ExtResource("6_jjcj3")
 
 [node name="BaseItem" unique_id=175947415 instance=ExtResource("1_cjx3y")]
 item_name = "Beef Wellington"
+id = 100
 
 [node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
 material_overlay = SubResource("ShaderMaterial_6u3e4")
