@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://bcn8vs8u5vvcc" path="res://scenes/scenes_assets/cupStation.tscn" id="37_544im"]
 [ext_resource type="PackedScene" uid="uid://djqsq1nbsg0o4" path="res://scenes/levels/testScenes/Tutorial_box.tscn" id="37_vu82s"]
 [ext_resource type="PackedScene" uid="uid://b4pk550gdakb4" path="res://scenes/scenes_assets/kitchenAssets/stove_upgrade.tscn" id="46_mbjbv"]
+[ext_resource type="PackedScene" uid="uid://blrahey2ux1v7" path="res://scenes/scenes_assets/kitchenAssets/tip_jar.tscn" id="47_i6s7y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
 size = Vector3(4.5620117, 4.1798096, 1.0251465)
@@ -1232,7 +1233,7 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.8846666, 0.4230927, -0.19584179, -2.9802269e-08, 0.42006233, 0.9074941, 0.46622002, 0.80283135, -0.37161574, 0.36292076, 2.1149292, 0.48736048)
+transform = Transform3D(-0.8846665, 0.4230927, -0.19584176, -2.9802264e-08, 0.4200623, 0.907494, 0.46621993, 0.8028313, -0.3716157, 0.36292076, 2.1149292, 0.48736048)
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
@@ -2307,6 +2308,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.113304, 0.0040462017, -4.8
 
 [node name="StoveUpgrade2" parent="." unique_id=983999191 instance=ExtResource("46_mbjbv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.113304, 0.0040462017, -2.913396)
+
+[node name="TipJar" parent="." unique_id=835479530 instance=ExtResource("47_i6s7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.804814, 1.6286134, 6.0326877)
 
 [connection signal="body_entered" from="Portals/Portal2" to="Portals/Portal2" method="_on_body_entered"]
 [connection signal="animation_finished" from="KitchenProps/Counters/FrontWallCounters/Counter_Sink/AnimationPlayer" to="CupPile" method="_on_animation_player_animation_finished"]
