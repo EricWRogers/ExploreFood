@@ -1,7 +1,7 @@
 extends Control
 
 #Manager.player_selected_recipes
-@onready var ingredient_texture = preload("res://scenes/ui/Diner/recipe_ingredient_flow.tscn")
+@onready var ingredient_texture = preload("res://scenes/UI/Diner/recipe_ingredient_flow.tscn")
 @export var recipe_UI_node: PackedScene
 @export var recipes_container: GridContainer
 
