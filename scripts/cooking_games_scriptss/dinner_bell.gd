@@ -11,7 +11,8 @@ var canvas_layer: CanvasLayer
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
 var menu_opened: bool
-var i_hit_da_button : bool = false
+var already_hit_button : bool = false
+
 
 var _currently_at := false
 var player_close = false;
@@ -29,9 +30,10 @@ func _process(_delta: float) -> void:
 		#rush_button_hit.emit()
 	
 	# escape menu #
-	if (i_hit_da_button && Input.is_action_just_pressed("Exit")):
+	if (menu_opened && Input.is_action_just_pressed("Exit")):
 		print("exit pressed!")
-		i_hit_da_button = false
+		menu_opened = false
+		already_hit_button = false
 		Manager.player_selected_recipes.clear()
 		get_tree().paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -74,15 +76,16 @@ func get_took():
 func get_rolled():
 	self.freeze = false
 func start_rush_hour():
+	menu_opened = false
 	rush_button_hit.emit()
 	emit_signal("menu_set")
 
 func open_menu():
 	print("menu opened!")
 	
-	if !i_hit_da_button:
-		i_hit_da_button = true
-		
+	if !already_hit_button:
+		already_hit_button = true
+		menu_opened = true
 		# spawn canvas layer and bell menu #
 		canvas_layer = CanvasLayer.new()
 		var spawn_bell_menu: Node
@@ -97,7 +100,7 @@ func open_menu():
 		get_tree().paused = true
 	else:
 		start_rush_hour()
-		i_hit_da_button = false
+		already_hit_button = false
 	
 	
 	
