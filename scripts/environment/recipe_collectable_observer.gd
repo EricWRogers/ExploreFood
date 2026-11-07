@@ -6,6 +6,12 @@ var recipe_collectables: Array
 func _ready() -> void:
 	recipe_collectables = get_tree().get_nodes_in_group("Recipe_Collectable")
 	print("recipes in this scene: ", recipe_collectables)
+	
+	for c in recipe_collectables:
+		for r in Manager.player_unlocked_recipes:
+			if (c.recipe == r):
+				print("duplicate recipe spotted")
+				c.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
