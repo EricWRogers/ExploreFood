@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://tvddeyblf7u3" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-11-06 133333.png" id="4_544im"]
 [ext_resource type="Material" uid="uid://h5sgosxvarw3" path="res://assets/materials/Diner_greybox_cyan.tres" id="5_3gldf"]
 [ext_resource type="Texture2D" uid="uid://brinr1yhpxbw4" path="res://assets/textures/portalframetex.png" id="5_544im"]
-[ext_resource type="Texture2D" uid="uid://b6nraai7wmg0d" path="res://assets/textures/temp/refs.png" id="5_jjp07"]
 [ext_resource type="ArrayMesh" uid="uid://cafrci4rpyba7" path="res://assets/models/portalmesh.obj" id="6_vu82s"]
 [ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="7_64sq4"]
 [ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="11_6ynox"]
@@ -49,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://b3hwo7plqv3q1" path="res://scenes/tools/recipe_collectable_observer.tscn" id="48_650hs"]
 [ext_resource type="PackedScene" uid="uid://dlughvf3c235n" path="res://scenes/scenes_assets/kitchenAssets/diner_menu_display_board.tscn" id="48_asqbi"]
 [ext_resource type="Texture2D" uid="uid://d23sm8c73lufa" path="res://assets/ui/QRCode/qr-code(6).png" id="49_pt2od"]
+[ext_resource type="Texture2D" uid="uid://cpgf21nlqvu5y" path="res://assets/skyboxes/blue_nebulae_1.png" id="50_pt2od"]
 [ext_resource type="FontFile" uid="uid://cq3is62qm38qe" path="res://assets/fonts/PasseroOne-Regular.ttf" id="50_tegs6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
@@ -990,27 +990,6 @@ _data = {
 &"fill": SubResource("Animation_mbjbv")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fcuss"]
-sky_top_color = Color(0.039599974, 0.011999998, 0.15, 1)
-sky_horizon_color = Color(0.09677773, 0.05356831, 0.18822289, 1)
-sky_curve = 0.15528998
-sky_cover_modulate = Color(0.8561711, 0.36567345, 0.40122676, 1)
-ground_bottom_color = Color(0.038133297, 0.002199998, 0.11, 1)
-ground_horizon_color = Color(0.09803922, 0.05490196, 0.1882353, 1)
-ground_curve = 0.024622854
-
-[sub_resource type="Sky" id="Sky_ap8ml"]
-sky_material = SubResource("ProceduralSkyMaterial_fcuss")
-
-[sub_resource type="Environment" id="Environment_klsck"]
-background_mode = 2
-sky = SubResource("Sky_ap8ml")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xqmx"]
-albedo_texture = ExtResource("5_jjp07")
-
-[sub_resource type="QuadMesh" id="QuadMesh_klsck"]
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6ynox"]
 height = 1.85
 radius = 1.5
@@ -1021,13 +1000,20 @@ polygons = [PackedInt32Array(0, 4, 1), PackedInt32Array(1, 4, 2), PackedInt32Arr
 cell_height = 0.5
 agent_radius = 0.3
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
+[sub_resource type="BoxMesh" id="BoxMesh_q026u"]
+size = Vector3(15.3, 0.6, 34.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbb1e"]
 albedo_color = Color(0.9389899, 0.9131483, 0.8943177, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_grxcb"]
 size = Vector3(14.930603, 2.0229492, 22.341125)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tegs6"]
+size = Vector3(12, 0.7, 17.7)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6xqmx"]
+size = Vector2(2, 2.02)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3xqr"]
 albedo_color = Color(0.27058825, 0.7411765, 0.92941177, 1)
@@ -1110,19 +1096,61 @@ emission_texture = SubResource("ViewportTexture_tkcfy")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q026u"]
 transparency = 1
-blend_mode = 4
-albedo_color = Color(1, 0.3019608, 1, 0.85490197)
+cull_mode = 2
+albedo_color = Color(1, 0.19999999, 0.72, 0.2509804)
+emission_enabled = true
+emission = Color(0.68819255, 0.23341271, 0.44691068, 1)
+emission_energy_multiplier = 0.2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q026u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbg3v"]
 albedo_texture = ExtResource("49_pt2od")
 
+[sub_resource type="Gradient" id="Gradient_pt2od"]
+offsets = PackedFloat32Array(0, 0.1525, 0.86, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.05936593, 0.08838884, 0.10359009, 1, 0.880615, 0.8463316, 0.84461236, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7klhb"]
+gradient = SubResource("Gradient_pt2od")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lsxjv"]
+panorama = ExtResource("50_pt2od")
+energy_multiplier = 2.14
+
+[sub_resource type="Sky" id="Sky_ap8ml"]
+sky_material = SubResource("PanoramaSkyMaterial_lsxjv")
+
+[sub_resource type="Environment" id="Environment_klsck"]
+background_mode = 2
+sky = SubResource("Sky_ap8ml")
+sky_rotation = Vector3(0.87266463, 1.9058995, 0.41887903)
+ambient_light_source = 3
+ambient_light_color = Color(0.030799998, 0.035246667, 0.04, 1)
+ambient_light_sky_contribution = 0.45
+ambient_light_energy = 2.4
+tonemap_mode = 2
+tonemap_exposure = 1.2
+tonemap_white = 1.2
+ssao_radius = 3.9
+ssao_power = 1.0980641
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.2940141, 0.3251032, 0.36613947, 1)
+volumetric_fog_sky_affect = 0.125
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_saturation = 1.1
+adjustment_color_correction = SubResource("GradientTexture1D_7klhb")
+
 [node name="DinerHUB" type="Node3D" unique_id=1374841576]
 script = ExtResource("1_pqflc")
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("2_axn4y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7130246, 0, -1.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7130246, 0, 1.8000001)
 _current_input_device = "keyboard_mouse"
 
 [node name="Recipe_Collectable_Observer" parent="." unique_id=910457685 instance=ExtResource("48_650hs")]
@@ -1270,7 +1298,7 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.8846644, 0.42309222, -0.19584143, -2.9802194e-08, 0.42006183, 0.90749246, 0.46621886, 0.8028304, -0.37161508, 0.36292076, 2.1149292, 0.48736048)
+transform = Transform3D(-0.88466424, 0.42309216, -0.1958414, -2.9802187e-08, 0.42006177, 0.90749234, 0.46621874, 0.8028303, -0.37161502, 0.36292076, 2.1149292, 0.48736048)
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
@@ -1287,245 +1315,6 @@ libraries/ = SubResource("AnimationLibrary_i6s7y")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.160283, 0, 5.8086953)
 
 [node name="RightWallCounters" type="Node3D" parent="KitchenProps/Counters" unique_id=431922436]
-
-[node name="Lights" type="Node3D" parent="." unique_id=420649548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=211693041]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.250001, 4.1500006, 0.39999992)
-omni_range = 5.5
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=114421829]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.250001, 4.1500006, -3.1)
-omni_range = 5.55
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=1283902975]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, -7.45)
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=395258632]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 0.20000029)
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=971941023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3500001, 8)
-
-[node name="Environment" type="Node3D" parent="." unique_id=1750316730]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1561483125]
-environment = SubResource("Environment_klsck")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=185782905]
-transform = Transform3D(0.2025586, 0.91371083, -0.352282, 0.49877596, 0.21331733, 0.8400707, 0.84272933, -0.34587312, -0.41252762, -11.86, 14.9, -8.94)
-light_color = Color(0.79, 0.78078336, 0.711, 1)
-light_energy = 1.4
-light_angular_distance = 5.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Environment" unique_id=1970678639]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 0)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_angle = 110.17
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Environment" unique_id=676023841]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, -5.100069)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_angle = 110.17
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="Environment" unique_id=1416292385]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, -11.618085)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_angle = 110.17
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="Environment" unique_id=2090444725]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 6.809806)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_angle = 110.17
-
-[node name="SpotLight3D5" type="SpotLight3D" parent="Environment" unique_id=714502746]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 7.102349, 12.055601)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_angle = 110.17
-
-[node name="SpotLight3D6" type="SpotLight3D" parent="Environment" unique_id=1704886802]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 0)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_attenuation = 0.69
-spot_angle = 110.17
-
-[node name="SpotLight3D16" type="SpotLight3D" parent="Environment" unique_id=780281893]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -6.1509724)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_attenuation = 0.69
-spot_angle = 110.17
-
-[node name="SpotLight3D17" type="SpotLight3D" parent="Environment" unique_id=2106154901]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 3.4786797)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_attenuation = 0.69
-spot_angle = 110.17
-
-[node name="SpotLight3D18" type="SpotLight3D" parent="Environment" unique_id=477125969]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, -1.2323861)
-light_energy = 2.178
-light_indirect_energy = 2.227
-spot_range = 9.065
-spot_attenuation = 0.69
-spot_angle = 110.17
-
-[node name="SpotLight3D19" type="SpotLight3D" parent="Environment" unique_id=1919115604]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, -6.1509724)
-light_energy = 4.534
-light_indirect_energy = 2.227
-spot_range = 13.636
-spot_attenuation = 0.69
-spot_angle = 47.775154
-
-[node name="SpotLight3D20" type="SpotLight3D" parent="Environment" unique_id=1941625604]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 7.102349, 3.4786797)
-light_energy = 4.534
-light_indirect_energy = 2.227
-spot_range = 13.636
-spot_attenuation = 0.69
-spot_angle = 47.775154
-
-[node name="SpotLight3D21" type="SpotLight3D" parent="Environment" unique_id=143330598]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, -1.2323861)
-light_energy = 4.534
-light_indirect_energy = 2.227
-spot_range = 13.636
-spot_attenuation = 0.69
-spot_angle = 180.0
-
-[node name="SpotLight3D22" type="SpotLight3D" parent="Environment" unique_id=1911751916]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, -6.1509724)
-light_energy = 4.534
-light_indirect_energy = 2.227
-spot_range = 13.636
-spot_attenuation = 0.69
-spot_angle = 180.0
-
-[node name="SpotLight3D23" type="SpotLight3D" parent="Environment" unique_id=1789554442]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 7.102349, 3.4786797)
-light_energy = 0.0
-light_indirect_energy = 2.227
-spot_range = 13.636
-spot_attenuation = 0.69
-spot_angle = 180.0
-
-[node name="SpotLight3D24" type="SpotLight3D" parent="Environment" unique_id=161023553]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, -1.2323861)
-light_energy = 0.0
-light_indirect_energy = 2.227
-spot_range = 18.054
-spot_attenuation = 0.74
-spot_angle = 180.0
-
-[node name="SpotLight3D25" type="SpotLight3D" parent="Environment" unique_id=421937198]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, -6.1509724)
-light_energy = 0.0
-light_indirect_energy = 2.227
-spot_range = 18.054
-spot_attenuation = 0.74
-spot_angle = 180.0
-
-[node name="SpotLight3D26" type="SpotLight3D" parent="Environment" unique_id=177735017]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 7.102348, 3.4786797)
-light_energy = 0.0
-light_indirect_energy = 2.227
-spot_range = 18.054
-spot_attenuation = 0.74
-spot_angle = 180.0
-
-[node name="SpotLight3D7" type="SpotLight3D" parent="Environment" unique_id=1858753505]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -5.100069)
-light_energy = 0.0
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 42.240498
-
-[node name="SpotLight3D8" type="SpotLight3D" parent="Environment" unique_id=2004112457]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, -11.618085)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 14.680274
-spot_angle = 39.766647
-
-[node name="SpotLight3D9" type="SpotLight3D" parent="Environment" unique_id=622161408]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 6.809806)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 44.347496
-
-[node name="SpotLight3D10" type="SpotLight3D" parent="Environment" unique_id=48185761]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 7.102349, 12.055601)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 46.602196
-
-[node name="SpotLight3D11" type="SpotLight3D" parent="Environment" unique_id=1613820834]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 0)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 47.775154
-
-[node name="SpotLight3D12" type="SpotLight3D" parent="Environment" unique_id=2119512432]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, -5.100069)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 42.240498
-
-[node name="SpotLight3D13" type="SpotLight3D" parent="Environment" unique_id=2098853389]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, -11.618085)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 39.374996
-
-[node name="SpotLight3D14" type="SpotLight3D" parent="Environment" unique_id=1229930749]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 6.809806)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 44.347496
-
-[node name="SpotLight3D15" type="SpotLight3D" parent="Environment" unique_id=1264699337]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 7.102349, 12.055601)
-light_energy = 4.779
-light_indirect_energy = 2.227
-spot_range = 13.292403
-spot_angle = 46.602196
-
-[node name="refs" type="Node3D" parent="." unique_id=1867599300]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6, 0, 0)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="refs" unique_id=2081946825]
-transform = Transform3D(-40, 0, -1.7484552e-06, 0, 20, 0, 3.4969112e-06, 0, -19.999996, 3.9415268e-06, 8.63, 36.54001)
-material_override = SubResource("StandardMaterial3D_6xqmx")
-mesh = SubResource("QuadMesh_klsck")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="refs" unique_id=1921042581]
-transform = Transform3D(7.788288e-06, 0, 19.999996, 0, 20, 0, -40, 0, 3.8941434e-06, -33.629997, 8.63, 2.3199997)
-material_override = SubResource("StandardMaterial3D_6xqmx")
-mesh = SubResource("QuadMesh_klsck")
 
 [node name="BossNPC" parent="." unique_id=1095072558 instance=ExtResource("19_fcuss")]
 transform = Transform3D(-0.06480038, 0, 0.19185188, 0, 0.20249996, 0, -0.19185188, 0, -0.06480038, 1.504416, -0.7085993, 5.5136256)
@@ -1604,14 +1393,19 @@ navigation_mesh = SubResource("NavigationMesh_gtwna")
 
 [node name="Ceiling" type="StaticBody3D" parent="NavigationRegion3D" unique_id=902829217]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ceiling" unique_id=281257448]
-transform = Transform3D(-7.5680003, -8.742277e-08, 0, 6.616156e-07, -1, 0, 0, 0, 16.95814, 2.25, 7.310505, 0)
-mesh = SubResource("PlaneMesh_6xqmx")
+[node name="Ceiling1" type="MeshInstance3D" parent="NavigationRegion3D/Ceiling" unique_id=801413406]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 2.3006349, 7.870108, -0.1468272)
+mesh = SubResource("BoxMesh_q026u")
 surface_material_override/0 = SubResource("StandardMaterial3D_fbb1e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ceiling" unique_id=1033158452]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 2.299408, 8.011475, -0.49591064)
 shape = SubResource("BoxShape3D_grxcb")
+
+[node name="Ceiling2" type="MeshInstance3D" parent="NavigationRegion3D/Ceiling" unique_id=348773893]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 15.450634, 7.920108, -1.5468268)
+mesh = SubResource("BoxMesh_tegs6")
+surface_material_override/0 = SubResource("StandardMaterial3D_fbb1e")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Ceiling" unique_id=614673767]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 13.644766, 8.011475, -4.1300836)
@@ -2216,6 +2010,460 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.1,
 text = "Employees Must Wash Hands"
 font = ExtResource("50_tegs6")
 font_size = 46
+
+[node name="Lights" type="Node3D" parent="." unique_id=420649548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2500001, 0)
+
+[node name="DinerCeilingLights" type="Node3D" parent="Lights" unique_id=392350070]
+visible = false
+
+[node name="DinerLight" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=223589772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.8999999, 11.3)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight" unique_id=2041154944]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight" unique_id=642727586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="DinerLight2" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=701304314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.8999999, 4.1)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight2" unique_id=640386635]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight2" unique_id=2143683714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="DinerLight3" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=1529504671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.8999999, -3.5)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight3" unique_id=774784279]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight3" unique_id=344516985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="DinerLight4" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=1166356798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.8999999, -11.6)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight4" unique_id=1463144198]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight4" unique_id=1100778718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="DinerLight5" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=190417241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2000003, 1.8999999, -12.1)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight5" unique_id=943763834]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight5" unique_id=705758758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="DinerLight6" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=711806950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2000003, 1.9999999, 11.8)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/DinerLight6" unique_id=1861176833]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 46.0
+spot_angle_attenuation = 0.28573322
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/DinerLight6" unique_id=1822000257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 3.4
+omni_range = 5.8
+omni_attenuation = 1.8
+
+[node name="CounterDinerLight" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=595605217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 2.1000001, 3.6000001)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight" unique_id=629742548]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 9.4
+spot_attenuation = 1.75
+spot_angle = 40.0
+spot_angle_attenuation = 0.552
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight" unique_id=1492397384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+light_energy = 2.4
+omni_range = 4.8
+omni_attenuation = 2.0
+
+[node name="CounterDinerLight2" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=2064087476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 3.2000003, -1.5999999)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight2" unique_id=1576273124]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 7.5000005, -3.8743025e-08)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 18.0
+spot_attenuation = 1.75
+spot_angle = 42.98
+spot_angle_attenuation = 0.552
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight2" unique_id=1967445662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+light_energy = 2.4
+omni_range = 4.8
+omni_attenuation = 2.0
+
+[node name="CounterDinerLight3" type="Node3D" parent="Lights/DinerCeilingLights" unique_id=2045192907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 2.1000001, -6.7999997)
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight3" unique_id=1550007462]
+transform = Transform3D(1, 0, 0, 0, 2.9802326e-08, 1, 0, -1, 2.9802326e-08, 0, 8.8, 0)
+light_color = Color(0.9961106, 0.99727684, 0.9980559, 1)
+light_energy = 4.2
+spot_range = 9.4
+spot_attenuation = 1.75
+spot_angle = 40.0
+spot_angle_attenuation = 0.552
+
+[node name="OmniLight" type="OmniLight3D" parent="Lights/DinerCeilingLights/CounterDinerLight3" unique_id=1278728722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+light_energy = 2.4
+omni_range = 4.8
+omni_attenuation = 2.0
+
+[node name="OLDDinerLights" type="Node3D" parent="Lights" unique_id=2096279309]
+
+[node name="SpotLight3D20" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1941625604]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 7.2051353, 8.352349, 3.4786797)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 47.775154
+
+[node name="SpotLight3D27" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1970678639]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 8.352349, 0)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=676023841]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 8.352349, -5.100069)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1416292385]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 8.352349, -11.618085)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=2090444725]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 8.352349, 6.809806)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=714502746]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -0.8764541, 8.352349, 12.055601)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_angle = 110.17
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1704886802]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, 0)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D16" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=780281893]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, -6.1509724)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D17" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=2106154901]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, 3.4786797)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D19" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1919115604]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 7.605136, 8.352349, -6.1509724)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 47.775154
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=1858753505]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, -5.100069)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 42.240498
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=2004112457]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, -11.618085)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 14.680274
+spot_angle = 39.766647
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=622161408]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, 6.809806)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 44.347496
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Lights/OLDDinerLights" unique_id=48185761]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 6.2477007, 8.352349, 12.055601)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 46.602196
+
+[node name="KitchenCeilingLights" type="Node3D" parent="Lights" unique_id=2054320872]
+
+[node name="SpotLight3D18" type="SpotLight3D" parent="Lights/KitchenCeilingLights" unique_id=1240053976]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 11.405136, 8.052349, -1.7323861)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 7.8
+spot_attenuation = 2.0
+spot_angle = 26.0
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Lights/KitchenCeilingLights" unique_id=621464683]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.154496, 6.952349, -1.4000001)
+light_energy = 5.0
+spot_range = 14.0
+spot_attenuation = 2.0
+spot_angle = 64.0
+spot_angle_attenuation = 0.6372803
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Lights/KitchenCeilingLights" unique_id=554061229]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.154496, 6.952349, 5)
+light_energy = 5.0
+spot_range = 11.335
+spot_attenuation = 2.0
+spot_angle = 64.0
+spot_angle_attenuation = 0.6372803
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="Lights/KitchenCeilingLights" unique_id=105880606]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.154496, 6.9523497, -6.8)
+light_energy = 5.0
+spot_range = 11.335
+spot_attenuation = 2.0
+spot_angle = 64.0
+spot_angle_attenuation = 0.6372803
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/KitchenCeilingLights" unique_id=1358865214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 4.6, -4.4)
+light_energy = 2.4
+omni_range = 10.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights/KitchenCeilingLights" unique_id=510714410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 4.6, 2.5000002)
+light_energy = 2.4
+omni_range = 10.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights/KitchenCeilingLights" unique_id=1737308735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.900002, 4.6, -1.4999998)
+light_energy = 2.4
+omni_range = 10.0
+omni_attenuation = 2.0
+
+[node name="OLDKitchenLights" type="Node3D" parent="Lights" unique_id=1554367965]
+visible = false
+
+[node name="SpotLight3D18" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=477125969]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 9.805136, 8.352349, -1.2323861)
+light_energy = 2.178
+light_indirect_energy = 2.227
+spot_range = 9.065
+spot_attenuation = 0.69
+spot_angle = 110.17
+
+[node name="SpotLight3D21" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=143330598]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 8.352349, -1.2323861)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D22" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=1911751916]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 8.352349, -6.1509724)
+light_energy = 4.534
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D23" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=1789554442]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 13.1897, 8.352349, 3.4786797)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 13.636
+spot_attenuation = 0.69
+spot_angle = 180.0
+
+[node name="SpotLight3D24" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=161023553]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 8.352348, -1.2323861)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D25" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=421937198]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 8.352348, -6.1509724)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D26" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=177735017]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 17.39109, 8.352348, 3.4786797)
+light_energy = 0.0
+light_indirect_energy = 2.227
+spot_range = 18.054
+spot_attenuation = 0.74
+spot_angle = 180.0
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=1613820834]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 8.352349, 0)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 47.775154
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=2119512432]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 8.352349, -5.100069)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 42.240498
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=2098853389]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 8.352349, -11.618085)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 39.374996
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=1229930749]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 8.352349, 6.809806)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 44.347496
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="Lights/OLDKitchenLights" unique_id=1264699337]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 15.054497, 8.352349, 12.055601)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 13.292403
+spot_angle = 46.602196
+
+[node name="Environment" type="Node3D" parent="." unique_id=1750316730]
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="Environment" unique_id=1414841787]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 18.354496, 7.4023495, 15.255601)
+light_energy = 4.779
+light_indirect_energy = 2.227
+spot_range = 9.400001
+spot_angle = 39.30486
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1561483125]
+environment = SubResource("Environment_klsck")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=185782905]
+transform = Transform3D(-0.738626, 0.21420647, -0.63917696, -0.020747177, 0.94049877, 0.3391632, 0.67379606, 0.26377591, -0.6902327, -2.3600001, 5.500001, -8.94)
+light_color = Color(0.68235296, 0.62352943, 0.73333335, 1)
+light_energy = 0.4
+shadow_enabled = true
+shadow_bias = 0.25
+directional_shadow_max_distance = 50.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Environment" unique_id=1385817604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.65, 5.799999, 18.25)
+size = Vector3(32.7, 18, 20.9)
+interior = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="Environment" unique_id=1811504507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2999983, 3.6499996, -0.35000038)
+size = Vector3(15.6, 9.5, 34.100002)
+interior = true
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="Environment" unique_id=1068872202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.649998, 3.4499998, -1.3500023)
+size = Vector3(13.7, 8.7, 19.5)
+interior = true
 
 [connection signal="body_entered" from="Portals/Portal2" to="Portals/Portal2" method="_on_body_entered"]
 [connection signal="animation_finished" from="KitchenProps/Counters/FrontWallCounters/Counter_Sink/AnimationPlayer" to="CupPile" method="_on_animation_player_animation_finished"]
