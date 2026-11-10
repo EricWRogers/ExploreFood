@@ -17,8 +17,6 @@ const FOOD_TRAY = preload("uid://cwtpfule1qklh")
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var is_paying: bool = false
-var is_eating: bool = true
 var my_seat : Object
 var my_exit: Object
 var my_succulent_meal
@@ -130,6 +128,14 @@ func enter_state(state: State) -> void:
 			pass
 			
 		State.PAY:
+			tip_sfx.play()
+			var tip = int(satisfaction_time)
+			timer.stop()
+		
+			for money in range(tip):
+				Manager.money +=1
+				await get_tree().create_timer(1.0).timeout
+			change_state(State.LEAVE)
 			pass
 			
 		State.LEAVE:
@@ -187,16 +193,7 @@ func state_eat(_delta:float):
 		
 
 func state_pay(_delta: float) -> void:
-	if !is_paying:
-		is_paying = true
-		tip_sfx.play()
-		var tip = int(satisfaction_time)
-		timer.stop()
-		
-		for money in range(tip):
-			Manager.money +=1
-			await get_tree().create_timer(1.0).timeout
-		change_state(State.LEAVE)
+	pass
 
 func state_leave(_delta : float):
 	if global_position.distance_squared_to(my_exit.global_position) < 1.0:
