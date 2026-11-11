@@ -17,11 +17,11 @@ albedo_texture = ExtResource("2_g645d")
 
 [node name="PlayerRigStrangeTastes" unique_id=1517707414 instance=ExtResource("1_je2xj")]
 
-[node name="Body" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="0" unique_id=1604262912]
+[node name="Body" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(364161476) index="0" unique_id=1137838355]
 material_override = SubResource("StandardMaterial3D_oyr5b")
 
-[node name="Hair" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="1" unique_id=1625226553]
+[node name="Hair" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(364161476) index="1" unique_id=507134180]
 material_override = SubResource("StandardMaterial3D_tcwkd")
 
-[node name="Hat" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(1393408497) index="2" unique_id=2143356753]
+[node name="Hat" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(364161476) index="2" unique_id=416741469]
 material_override = SubResource("StandardMaterial3D_2m5xl")
