@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://d3uw7elp15qti"]
+
+[ext_resource type="Texture2D" uid="uid://cx3efvr40f7tn" path="res://assets/textures/BreadWorldTextures/BWBarrel_Mat.png" id="1_l5ui3"]
+[ext_resource type="Texture2D" uid="uid://lq66gli8k4bs" path="res://assets/textures/BreadWorldTextures/BWBarrelMetallic_Mat.png" id="2_eye61"]
+[ext_resource type="ArrayMesh" uid="uid://c4u2fw2mks73a" path="res://assets/models/MiscellaneousBarnItems/Barrel.obj" id="3_jwqo7"]
+[ext_resource type="Texture2D" uid="uid://cf5xmfmg3kihr" path="res://assets/textures/BreadWorldTextures/BWShovel_Mat.png" id="4_5n2rf"]
+[ext_resource type="Texture2D" uid="uid://bxlwdmqqcwadi" path="res://assets/textures/BreadWorldTextures/BWShovelMetallic_Mat.png" id="5_e6vqs"]
+[ext_resource type="ArrayMesh" uid="uid://7cxvxrm23erd" path="res://assets/models/MiscellaneousBarnItems/Shovel.obj" id="6_0qom3"]
+[ext_resource type="Texture2D" uid="uid://bgppi53giyp8c" path="res://assets/textures/BreadWorldTextures/BWScyth_Mat.png" id="7_ql4l7"]
+[ext_resource type="Texture2D" uid="uid://b2hrfmqoqae4y" path="res://assets/textures/BreadWorldTextures/BWScythMetallic_Mat.png" id="8_yroe8"]
+[ext_resource type="ArrayMesh" uid="uid://oe4wbrwxi6ye" path="res://assets/models/MiscellaneousBarnItems/Scythe.obj" id="9_8es3j"]
+[ext_resource type="Texture2D" uid="uid://bragudri3vtdu" path="res://assets/textures/BreadWorldTextures/BWRake_Mat.png" id="10_lxs2d"]
+[ext_resource type="ArrayMesh" uid="uid://bnj5grmbtfi30" path="res://assets/models/MiscellaneousBarnItems/Rake.obj" id="11_hrep3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_corwu"]
+albedo_texture = ExtResource("1_l5ui3")
+metallic = 1.0
+metallic_texture = ExtResource("2_eye61")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrag3"]
+albedo_texture = ExtResource("4_5n2rf")
+metallic = 1.0
+metallic_texture = ExtResource("5_e6vqs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4b3t"]
+albedo_texture = ExtResource("7_ql4l7")
+metallic = 1.0
+metallic_texture = ExtResource("8_yroe8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyjml"]
+albedo_texture = ExtResource("10_lxs2d")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qdy4q"]
+height = 1.9000001
+radius = 1.0
+
+[node name="BW_Barrel" type="StaticBody3D" unique_id=1369818442]
+
+[node name="Barrel_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=612678564]
+material_override = SubResource("StandardMaterial3D_corwu")
+mesh = ExtResource("3_jwqo7")
+
+[node name="Shovel" type="MeshInstance3D" parent="." unique_id=1581828836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14835641, 0, 0.25114286)
+material_override = SubResource("StandardMaterial3D_jrag3")
+mesh = ExtResource("6_0qom3")
+
+[node name="Scythe" type="MeshInstance3D" parent="." unique_id=1151136590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26521122, 0.02983725, 0.08637446)
+material_override = SubResource("StandardMaterial3D_v4b3t")
+mesh = ExtResource("9_8es3j")
+
+[node name="Rake" type="MeshInstance3D" parent="." unique_id=510215705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20542526, 0.11517501, 0.12472296)
+material_override = SubResource("StandardMaterial3D_gyjml")
+mesh = ExtResource("11_hrep3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2068763330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.95, 0)
+shape = SubResource("CylinderShape3D_qdy4q")
