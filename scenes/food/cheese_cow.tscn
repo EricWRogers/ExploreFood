@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d274cggjh6pt1"]
+
+[ext_resource type="Texture2D" uid="uid://bs5bqnvi5bail" path="res://assets/textures/BreadWorldTextures/BWCheeseCow_Mat.png" id="1_odf3e"]
+[ext_resource type="ArrayMesh" uid="uid://tvo43rk4rds0" path="res://assets/models/CheeseCow/CheeseCow.obj" id="2_ekr48"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mps0"]
+albedo_texture = ExtResource("1_odf3e")
+
+[node name="CheeseCow" type="StaticBody3D" unique_id=1431021431]
+
+[node name="Cow_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1165082832]
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0mps0")
+mesh = ExtResource("2_ekr48")
