@@ -72,6 +72,7 @@ func _start_station(player):
 			item.menu_open = true
 		return
 	player.in_station = true
+	player.can_pause  =false
 	$StoveOven/Door.play("open_door")
 	_currently_at = true
 	_defocus()
@@ -89,6 +90,7 @@ func rip_away():
 	selected_recipe = null
 	_player.current_station = null
 	_player.in_station = false
+	_player.can_pause = true
 	if _player.get_held_item() != null:
 		_player.get_held_item().show()
 	$StoveOven/Door.play("close_door")

@@ -32,6 +32,7 @@ func _process(_delta: float) -> void:
 	
 	# escape menu #
 	if (menu_opened && Input.is_action_just_pressed("Exit")):
+		Manager.player.can_pause = true
 		print("exit pressed!")
 		menu_opened = false
 		already_hit_button = false
@@ -77,6 +78,7 @@ func get_took():
 func get_rolled():
 	self.freeze = false
 func start_rush_hour():
+	Manager.player.can_pause = true
 	menu_opened = false
 	rush_button_hit.emit()
 	emit_signal("menu_set")
@@ -85,6 +87,7 @@ func open_menu():
 	print("menu opened!")
 	
 	if !already_hit_button:
+		Manager.player.can_pause = false
 		already_hit_button = true
 		menu_opened = true
 		# spawn canvas layer and bell menu #

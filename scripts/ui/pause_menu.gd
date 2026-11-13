@@ -1,39 +1,28 @@
 extends Control
 
+@onready var holder: Control = $Holder
 
 
-var lock_mouse : bool = true
+var paused : bool = false;
 
-func _on_node_status_changed(new_state: bool) -> void:
-	lock_mouse = new_state
 	
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func _input(event):
-	if event.is_action_pressed("Pause"):
-		if $Holder.visible == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			$Holder.visible = true
-			get_tree().paused = true
+	if event.is_action_pressed("Exit") and Manager.player.can_pause:
+		paused = !paused
+		if paused:
+			if holder != null:
+				get_tree().paused = true
+				holder.visible = true
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
-			get_tree().paused = false
-			$Holder.visible = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			if holder != null:
+				get_tree().paused = false
+				holder.visible = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
-	if Input.is_action_pressed("Exit"):
-		lock_mouse = !lock_mouse
-		if lock_mouse:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false

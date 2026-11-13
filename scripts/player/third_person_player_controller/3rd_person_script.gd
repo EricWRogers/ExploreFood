@@ -72,6 +72,7 @@ var is_holding := false
 var in_station := false
 var special_pickup := false
 var menu_open := false
+var can_pause = true
 var current_station : StaticBody3D
 @export var current_recipe : Resource
 const GRAB_GROUPS := ["Ingredient", "Item"]
@@ -95,6 +96,7 @@ const GRAB_GROUPS := ["Ingredient", "Item"]
 
 func _ready() -> void:
 	#confirm_button.pressed.connect(confirm_recipes)
+	Manager.player = self
 	CameraManager.player_cam = $CameraPivot/SpringArm3D/PlayerCam
 	CameraManager.collect_cam = $Doremi/CollectCamPivot/CollectCam
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
