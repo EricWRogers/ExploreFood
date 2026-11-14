@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ducx13b0gekbj"]
+
+[ext_resource type="Script" uid="uid://1wr5pyfo2cnw" path="res://scenes/ui/path_2d.gd" id="1_2rohx"]
+
+[sub_resource type="Curve2D" id="Curve2D_xrowv"]
+_data = {
+"points": PackedVector2Array(-100.636116, -0.5960845, 120, 0, 0, 0, -120, 0, 123.62718, 1.4902109, 0, 0)
+}
+point_count = 2
+
+[node name="PathOne" type="Path2D" unique_id=1110031658]
+z_index = 4096
+curve = SubResource("Curve2D_xrowv")
+script = ExtResource("1_2rohx")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1102908580]
+z_index = 4096
+default_color = Color(0.6509804, 0, 0, 1)

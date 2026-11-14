@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://3ihs0g3publy" path="res://fp_scenes/kitchen/textures/GrilledCheesePixart.png" id="2_oyii5"]
 [ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="3_a0xsc"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_r3ooh"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="5_a0xsc"]
 
 [resource]
 script = ExtResource("2_771ec")
@@ -14,4 +15,5 @@ recipe_station = 2
 recipe_station_tex = ExtResource("3_r3ooh")
 recipe_icon = ExtResource("2_oyii5")
 id = 102
+screenshot = ExtResource("5_a0xsc")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

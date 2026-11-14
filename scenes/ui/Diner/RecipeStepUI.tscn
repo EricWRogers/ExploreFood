@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://cdrjspys6n4o2"]
+
+[ext_resource type="Script" uid="uid://dxuomvbh17a70" path="res://scenes/ui/Diner/recipe_step_ui.gd" id="1_av3vt"]
+[ext_resource type="Texture2D" uid="uid://pamy1qgd64x7" path="res://fp_scenes/kitchen/textures/MeatBall.png" id="2_av3vt"]
+[ext_resource type="Texture2D" uid="uid://b07kiycebt32w" path="res://fp_scenes/inputs/General/keyboard_arrow_right.png" id="3_ijlbl"]
+[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="4_00nea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klsck"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8743918, 0.7475096, 0.65973437, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.96862745, 0.9529412, 0.92941177, 1)
+border_blend = true
+shadow_color = Color(0.05324839, 0.11778284, 0.17007864, 0.4627451)
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[node name="RecipeUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("arrow_1", "arrow_2", "arrow_pnt", "input", "station", "output")]
+process_mode = 3
+custom_minimum_size = Vector2(316, 101)
+offset_right = 316.0
+offset_bottom = 101.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_av3vt")
+arrow_1 = NodePath("PanelContainer/VBoxContainer/IconMargin3")
+arrow_2 = NodePath("PanelContainer/VBoxContainer/IconMargin4")
+arrow_pnt = NodePath("PanelContainer/VBoxContainer/ArrowPnt")
+input = NodePath("PanelContainer/VBoxContainer/IconMargin/Input")
+station = NodePath("PanelContainer/VBoxContainer/IconMargin2/Station")
+output = NodePath("PanelContainer/VBoxContainer/IconMargin5/Output")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1730541968]
+custom_minimum_size = Vector2(316, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_klsck")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1003784308]
+layout_mode = 2
+
+[node name="IconMargin" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1181788343]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.6, 1.6)
+
+[node name="Input" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin" unique_id=1184664040]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("2_av3vt")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="IconMargin3" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1134208210]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Arrow" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin3" unique_id=387372375]
+modulate = Color(0.65, 0, 0, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+texture = ExtResource("3_ijlbl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IconMargin2" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1204492962]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Station" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin2" unique_id=1311307745]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.4, 1.4)
+texture = ExtResource("4_00nea")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="IconMargin4" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1073695278]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Arrow2" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin4" unique_id=2103660604]
+modulate = Color(0.65, 0, 0, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+texture = ExtResource("3_ijlbl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IconMargin5" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=605020174]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.6, 1.6)
+
+[node name="Output" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin5" unique_id=727944226]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("2_av3vt")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="ArrowPnt" type="Control" parent="PanelContainer/VBoxContainer" unique_id=946369306]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true

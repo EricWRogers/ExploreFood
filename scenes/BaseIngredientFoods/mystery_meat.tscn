@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pamy1qgd64x7" path="res://fp_scenes/kitchen/textures/MeatBall.png" id="2_2htwm"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_w6guw"]
 [ext_resource type="Texture2D" uid="uid://cjlu80r32ho4o" path="res://assets/textures/steak.png" id="3_2htwm"]
+[ext_resource type="Texture2D" uid="uid://dwdtjc5xu5m6f" path="res://assets/ui/cook_book/screenshots/MeatBallScreenshot.png" id="3_qay1u"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_qay1u"]
 [ext_resource type="PackedScene" uid="uid://b8vmbssge6uwi" path="res://assets/particles_effects/Explosion/Explosion.tscn" id="5_w6guw"]
 
@@ -101,7 +102,15 @@ _surfaces = [{
 }]
 
 [node name="MysteryMeat" unique_id=175947415 instance=ExtResource("1_rl4cg")]
+ingredient_name = "Meat Ball"
 icon = ExtResource("2_2htwm")
+flavor = "Sour"
+family = "Meat"
+rarity = "Common"
+where_to_find = "Grows out of Joker Fronds on the Joker Tree when they bloom. Will explode if approached brazenly."
+flavor_text = "It's not bloody at all"
+description = "This meat will explode if you approach too suddenly. It is referred to as 'meat' but it grows on trees. Is it a fruit or is the tree a living creature?"
+screenshot = ExtResource("3_qay1u")
 id = 2
 
 [node name="DeformableMeshInstance3D" parent="." index="0" unique_id=1184330542]

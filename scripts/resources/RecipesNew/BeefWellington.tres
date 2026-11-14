@@ -8,14 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="4_owyaq"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="5_owyaq"]
 [ext_resource type="PackedScene" uid="uid://o0gfgdmnqmmx" path="res://scenes/BaseIngredientFoods/mold_shroom.tscn" id="6_jo8mm"]
+[ext_resource type="Texture2D" uid="uid://ev8dddt3a35s" path="res://fp_scenes/kitchen/textures/MeatBallGrilled.png" id="7_d2ik5"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="8_ahuv3"]
+[ext_resource type="Texture2D" uid="uid://xc6j1gkhdd2g" path="res://fp_scenes/kitchen/textures/MoldShroomMinced.png" id="8_g4s0w"]
 
 [resource]
 script = ExtResource("2_yi8er")
 recipe_name = "Beef Wellington"
 recipe_ingredients = Array[PackedScene]([ExtResource("3_w4413"), ExtResource("4_owyaq"), ExtResource("6_jo8mm")])
-recipe_station = 2
+recipe_outputs = Array[Texture2D]([ExtResource("7_d2ik5"), null, ExtResource("8_g4s0w")])
+recipe_steps = Array[int]([1, 4, 0])
+final_recipe_station = 2
 recipe_station_tex = ExtResource("5_owyaq")
 product = ExtResource("2_jo8mm")
 recipe_icon = ExtResource("3_4j7f6")
 id = 100
+screenshot = ExtResource("8_ahuv3")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

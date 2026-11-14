@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_168qo"]
 [ext_resource type="Texture2D" uid="uid://ykl8iqt1j86p" path="res://fp_scenes/kitchen/textures/DoughBabyPixart.png" id="2_ir2bk"]
 [ext_resource type="Texture2D" uid="uid://c3gn0p6f07d6o" path="res://assets/textures/DoughBabyTex.png" id="2_wc4cq"]
+[ext_resource type="Texture2D" uid="uid://tvddeyblf7u3" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-11-06 133333.png" id="3_m80qa"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_ir2bk"]
 [ext_resource type="ArrayMesh" uid="uid://bv6dtcipq8e1i" path="res://assets/models/DoughBabyFixed_02.obj" id="5_168qo"]
 [ext_resource type="AudioStream" uid="uid://d31yp27ait3tr" path="res://assets/sounds/SFX/yippeesparkle.mp3" id="7_ir2bk"]
@@ -92,8 +93,15 @@ shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 radius = 0.5600586
 
 [node name="BaseND" unique_id=175947415 instance=ExtResource("1_v88xe")]
-food_name = "Dough Baby"
+ingredient_name = "Dough Dough"
 icon = ExtResource("2_ir2bk")
+flavor = "Mild"
+family = "Grain"
+rarity = "Common"
+where_to_find = "Found in low altitudes plains or near beaches. They are very skittish."
+flavor_text = "Morally grey"
+description = "Dough Doughs love to dance around in groups. Once mature they do not taste any good at all."
+screenshot = ExtResource("3_m80qa")
 color = Color(1, 0.84705883, 0.6901961, 1)
 inventory_icon_FOV = 27.0
 resize = Vector3(0.5, 0.5, 0.5)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmf2twi64fxm5" path="res://fp_scenes/kitchen/textures/ButteredRoll.png" id="3_mlyas"]
 [ext_resource type="PackedScene" uid="uid://bkqoug123dsqn" path="res://scenes/BaseIngredientFoods/dough_baby_nd.tscn" id="4_2uhd8"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="5_gmxdg"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="6_gmxdg"]
 
 [sub_resource type="Resource" id="Resource_qlyjg"]
 resource_name = "Rolls"
@@ -28,5 +29,6 @@ recipe_station = 2
 recipe_station_tex = ExtResource("5_gmxdg")
 product = ExtResource("2_2uhd8")
 recipe_icon = ExtResource("3_mlyas")
+screenshot = ExtResource("6_gmxdg")
 food_group_array = Array[ExtResource("1_p2osy")]([SubResource("Resource_qlyjg"), SubResource("Resource_lnb88")])
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

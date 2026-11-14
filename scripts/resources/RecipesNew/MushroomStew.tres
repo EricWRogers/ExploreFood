@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_qhsmu"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_df54x"]
 [ext_resource type="PackedScene" uid="uid://o0gfgdmnqmmx" path="res://scenes/BaseIngredientFoods/mold_shroom.tscn" id="3_x58x5"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="5_exf38"]
 
 [resource]
 script = ExtResource("2_qhsmu")
@@ -14,4 +15,5 @@ recipe_station = 2
 recipe_station_tex = ExtResource("3_df54x")
 recipe_icon = ExtResource("2_df54x")
 id = 106
+screenshot = ExtResource("5_exf38")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

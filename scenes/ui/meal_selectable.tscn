@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://kdojkkxie035"]
+
+[ext_resource type="Script" uid="uid://bcg4h7odbwcr3" path="res://scenes/ui/meal_selectable.gd" id="1_fvj3e"]
+[ext_resource type="Texture2D" uid="uid://cmf2twi64fxm5" path="res://fp_scenes/kitchen/textures/ButteredRoll.png" id="2_fvj3e"]
+[ext_resource type="Script" uid="uid://csd7edsy511ij" path="res://scripts/ui/recipe_book_select.gd" id="3_oi2of"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08ovd"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0.50980395)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.6313726, 0.20784314, 0.20784314, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1fh7"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.43, 0.43, 0.43, 0.3882353)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="IngredientSelectable" type="MarginContainer" unique_id=1776331571]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_fvj3e")
+
+[node name="Panel" type="Panel" parent="." unique_id=79558121]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1622656036]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1802303721]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("2_fvj3e")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1685519572]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=359482323 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("3_oi2of")
+hover_target = NodePath("../..")
+
+[connection signal="button_down" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_pressed"]

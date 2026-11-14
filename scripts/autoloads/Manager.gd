@@ -1,44 +1,13 @@
 extends Node
 
-const BUTTERFROG_ICON = preload("uid://mgt6d08sqs17")
-const DOUGH_BABY_ICON_NEW = preload("uid://bmqi2bed8i6o6")
-const DROPLET_ICON = preload("uid://bbdqiesd6h5st")
-const MEAT_BALL = preload("uid://dtnfe788cdn0k")
-const TERRY_ICON = preload("uid://c4mrqsstnqfjk")
-const WAFFLE_ICON = preload("uid://bapm1ifqtscdd")
-
-
-#signal scene_change
-
-var currently_held_food
-var holding = false
-var current_slot
-var inventory = []
-var player_hold
-var currently_held_bagel
-var sandwich_mode
-var player
-var money : int = 0
 var recipe_book
-var kitchen_tut = 0
-var level_1_tut = 0
-var kitchen
-var breakfast_unlocked = false
-var belly = 100
-var food_in_pot = []
-var assemblerui
-var current_assembler
-var held_sandwich
-var collected_food = []
-var showed_sell = false
-var the_asker
-var askers_request = []
-var current_customers = 0
-var waffledimension = false
+var collected_food : Array
+var money : int
+var inventory : Array
+var player
 
-## ─────────────────────────────────────────
-## All this shit above is sloppy goopy so whatever i write under here is good and awesome :P
-## ─────────────────────────────────────────
+var encountered_ingredients : Array = ["res://scenes/BaseIngredientFoods/mystery_meat.tscn"]
+var encountered_meals : Array = ["res://scripts/resources/RecipesNew/BeefWellington.tres"]
 
 var max_hotbar_slots := 6
 var player_current_hovered_slot : int
@@ -83,14 +52,11 @@ enum Stations {
 	CUTTING_BOARD,
 	PAN_GRILL,
 	OVEN,
-	POOP
+	ROLLING_PIN,
+	NONE,
 }
 
 var tutorial_seen = false
-
-func clear_current_bagel():
-	player.dropthrow()
-	player.update_slots(current_slot)
 
 enum FlavorType {
 	SWEET,

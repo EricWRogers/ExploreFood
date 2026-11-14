@@ -6,6 +6,7 @@ extends MarginContainer
 @export var ui_station: TextureRect
 @export var ui_flow: FlowContainer
 @export var ui_recipe: Recipe
+@export var arrow_pnt: Control
 signal node_selected
 signal node_toggled(toggled_on: bool, ui_recipe: Recipe)
 

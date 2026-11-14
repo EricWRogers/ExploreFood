@@ -1,16 +1,6 @@
 extends Button
 
-@export var info_to_pull : String
 @export var hover_target : Control
-@export var sandwich : bool = false
-@export var flat_piece : Texture2D
-
-func _on_pressed() -> void:
-	if sandwich:
-		$"../../../../../../..".update_sandwich(flat_piece, info_to_pull)
-		return
-	$"../../../../../../../..".set_info(info_to_pull)
-
 
 func _on_mouse_entered() -> void:
 	hover_target.pivot_offset_ratio = Vector2(0.5, 0.5)

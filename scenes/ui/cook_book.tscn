@@ -10,15 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://ddihlr66icrp" path="res://assets/ui/cook_book/cookbookimagesnag.png" id="6_egu8v"]
 [ext_resource type="Texture2D" uid="uid://brxx5uhxm4mcs" path="res://assets/ui/cook_book/ControlsIcon.png" id="6_rlj6j"]
 [ext_resource type="FontFile" uid="uid://b6w3yuubac02m" path="res://assets/fonts/THEJOURNALFONT-DEMOVERSION.ttf" id="8_ruawa"]
-[ext_resource type="Script" uid="uid://csd7edsy511ij" path="res://scripts/ui/recipe_book_select.gd" id="9_6o6sm"]
-[ext_resource type="Texture2D" uid="uid://c4mrqsstnqfjk" path="res://assets/ui/item_icons/terry_icon.png" id="9_08ovd"]
-[ext_resource type="Texture2D" uid="uid://bapm1ifqtscdd" path="res://assets/ui/item_icons/waffle_icon.png" id="10_xrowv"]
-[ext_resource type="Texture2D" uid="uid://mgt6d08sqs17" path="res://assets/ui/item_icons/butterfrog_icon.png" id="11_l74o7"]
-[ext_resource type="Texture2D" uid="uid://bbdqiesd6h5st" path="res://assets/ui/item_icons/droplet_icon.png" id="12_uwfyn"]
-[ext_resource type="Texture2D" uid="uid://dtnfe788cdn0k" path="res://assets/ui/item_icons/MeatBall.png" id="14_2smgm"]
-[ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="15_2smgm"]
-[ext_resource type="Texture2D" uid="uid://slncfheyw6j6" path="res://assets/ui/item_icons/chickenwaffleicon.png" id="15_uwfyn"]
-[ext_resource type="Texture2D" uid="uid://hasmpkgrtwk" path="res://assets/ui/item_icons/meat_pockets.png" id="16_6o6sm"]
 [ext_resource type="Texture2D" uid="uid://bnf0qmj5i6ofl" path="res://assets/ui/cook_book/TornPage.png" id="20_rlj6j"]
 [ext_resource type="FontFile" uid="uid://c4sng3tmqix43" path="res://assets/fonts/Pencilant Script.otf" id="21_djyhv"]
 
@@ -30,16 +21,16 @@ shader_parameter/blur = 0.0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2smgm"]
 load_path = "res://.godot/imported/cookbookhalf.png-21f1bad2b7eb426d5b09d8f79791185d.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
-bg_color = Color(0.21066046, 0.63313186, 0.48795038, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbjl"]
+bg_color = Color(0.63, 0.20789999, 0.20789999, 1)
 corner_radius_top_left = 50
 corner_radius_bottom_left = 50
 shadow_color = Color(0.67, 0.67, 0.67, 0.6)
 shadow_size = 3
 shadow_offset = Vector2(1, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfbjl"]
-bg_color = Color(0.63, 0.20789999, 0.20789999, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg1c5"]
+bg_color = Color(0.21066046, 0.63313186, 0.48795038, 1)
 corner_radius_top_left = 50
 corner_radius_bottom_left = 50
 shadow_color = Color(0.67, 0.67, 0.67, 0.6)
@@ -58,46 +49,6 @@ shadow_offset = Vector2(1, 0)
 bg_color = Color(0.45, 0.39802498, 0.30149996, 1)
 shadow_size = 9
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08ovd"]
-bg_color = Color(0.78, 0.72072, 0.6318, 0.50980395)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.21419998, 0.63, 0.48447004, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1fh7"]
-bg_color = Color(0.78, 0.72072, 0.6318, 0)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.43, 0.43, 0.43, 0.3882353)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-expand_margin_left = 8.0
-expand_margin_top = 8.0
-expand_margin_right = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o6sm"]
-bg_color = Color(0.78, 0.72072, 0.6318, 0.50980395)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.6313726, 0.20784314, 0.20784314, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-
 [sub_resource type="Animation" id="Animation_2smgm"]
 resource_name = "Appear"
 length = 0.6
@@ -111,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.32987678, 1),
 "update": 0,
-"values": [Vector2(187, 1106), Vector2(187, 0)]
+"values": [Vector2(187, 1106), Vector2(0, -71)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -175,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.34151012, 0.32987678),
 "update": 0,
-"values": [Vector2(187, 0), Vector2(187, 1106)]
+"values": [Vector2(0, -71), Vector2(187, 1106)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -296,10 +247,10 @@ _data = {
 &"RESET": SubResource("Animation_rlj6j")
 }
 
-[node name="CookBook" type="CanvasLayer" unique_id=1270549682 node_paths=PackedStringArray("icons")]
+[node name="CookBook" type="CanvasLayer" unique_id=1270549682]
 layer = 4
 script = ExtResource("1_egu8v")
-icons = [NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/terry"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/waffle"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/butter"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/babytear"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/doughbaby"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/meatball"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/chknandwaffles"), NodePath("MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/meatpocket")]
+ingredients = Array[String](["res://scenes/BaseIngredientFoods/dough_baby_nd.tscn", "res://scenes/BaseIngredientFoods/mystery_meat.tscn", "res://scenes/BaseIngredientFoods/mold_shroom.tscn", "res://scenes/BaseIngredientFoods/waffle_pad.tscn", "res://scripts/resources/RecipesNew/BeefWellington.tres", "res://scripts/resources/RecipesNew/GrilledCheese.tres"])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1604830917]
 material = SubResource("ShaderMaterial_lg1c5")
@@ -311,28 +262,29 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1543322469]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -773.0
-offset_top = 639.0
-offset_right = 773.0
-offset_bottom = 1719.0012
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 187.0
+offset_top = 1179.0
+offset_right = 186.99976
+offset_bottom = 1321.0007
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.74, 0.74)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 142
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=849406922]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = -1560
+theme_override_constants/separation = -1949
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1468685567]
-custom_minimum_size = Vector2(1546, 1080)
+custom_minimum_size = Vector2(1900, 1080)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -342,16 +294,51 @@ expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1859756151]
 layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = -420.0005
+offset_right = 131.5
+offset_bottom = 116.99951
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=1808915866]
+layout_mode = 2
+
+[node name="Food" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1317246487]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rfbjl")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1287666369]
+modulate = Color(1, 1, 1, 0.7254902)
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_13kyx")
+expand_mode = 3
+
+[node name="Tab2" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = -1447
-theme_override_constants/margin_top = 109
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=1808915866]
-layout_mode = 2
 
 [node name="Ingredients" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=991465202]
 custom_minimum_size = Vector2(130.78, 140)
@@ -389,41 +376,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Food" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1317246487]
-custom_minimum_size = Vector2(130.78, 140)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rfbjl")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1287666369]
-modulate = Color(1, 1, 1, 0.7254902)
-custom_minimum_size = Vector2(73.6, 133.18)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.25926
-offset_right = 36.25926
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_13kyx")
-expand_mode = 3
-
-[node name="Tab2" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Controls" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=401584573]
+visible = false
 custom_minimum_size = Vector2(130.78, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -457,15 +411,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1630519373]
+[node name="IngInformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1630519373]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 122.0
-offset_top = 77.0
-offset_right = 733.0
-offset_bottom = 968.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.046000004
+anchor_right = 0.48400003
+anchor_bottom = 0.92200005
+offset_left = 27.899994
+offset_top = 27.319996
+offset_right = -17.100037
+offset_bottom = -25.76056
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel" unique_id=690782536]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel" unique_id=690782536]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -473,11 +433,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=653273307]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=653273307]
 layout_mode = 2
 theme_override_constants/margin_top = 7
 
-[node name="TabType" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer" unique_id=162489530]
+[node name="TabType" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/MarginContainer" unique_id=162489530]
 custom_minimum_size = Vector2(611, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21176471, 0.6313726, 0.4862745, 1)
@@ -488,7 +448,7 @@ text = "Ingredient"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=1917745939]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=1917745939]
 custom_minimum_size = Vector2(611, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -499,7 +459,7 @@ text = "Undiscovered"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=2082094503]
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=2082094503]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -507,7 +467,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
 
-[node name="Screenshot" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel" unique_id=198498266]
+[node name="Screenshot" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel" unique_id=198498266]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -527,7 +487,7 @@ texture = ExtResource("5_60ewy")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot" unique_id=84097503]
+[node name="NoImage" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=84097503]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -537,7 +497,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/ColorRect" unique_id=722756911]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot/NoImage" unique_id=722756911]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -552,7 +512,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -220
 
-[node name="?" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/ColorRect/VBoxContainer" unique_id=272178380]
+[node name="?" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot/NoImage/VBoxContainer" unique_id=272178380]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -562,7 +522,7 @@ text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1887211587]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1887211587]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -573,7 +533,7 @@ grow_vertical = 0
 theme_override_constants/margin_left = -7
 theme_override_constants/margin_bottom = -7
 
-[node name="PhotoTab" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer" unique_id=1194407458]
+[node name="PhotoTab" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer" unique_id=1194407458]
 modulate = Color(0.6509804, 0.827451, 1, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -581,7 +541,7 @@ texture = ExtResource("6_egu8v")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1045431024]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1045431024]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -592,7 +552,7 @@ grow_horizontal = 0
 theme_override_constants/margin_top = -7
 theme_override_constants/margin_right = -7
 
-[node name="PhotoTab2" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer2" unique_id=1715602018]
+[node name="PhotoTab2" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer2" unique_id=1715602018]
 modulate = Color(0.6509804, 0.827451, 1, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -602,15 +562,15 @@ stretch_mode = 5
 flip_h = true
 flip_v = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=823718451]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=823718451]
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer2" unique_id=1922705107]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/MarginContainer2" unique_id=1922705107]
 layout_mode = 2
 theme_override_constants/separation = -83
 
-[node name="Flavor" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1296333417]
+[node name="Flavor" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1296333417]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.71, 0.32186663, 0.14199999, 1)
@@ -621,7 +581,7 @@ text = "Sweet flavor"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Family" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1215799113]
+[node name="Family" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1215799113]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.40947998, 0.58, 0.2146, 1)
@@ -632,31 +592,231 @@ text = "Egg family"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=518543843]
+[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=518543843]
 custom_minimum_size = Vector2(611, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
 theme_override_fonts/font = ExtResource("8_ruawa")
 theme_override_font_sizes/font_size = 32
 text = "This bird is known to bite the heads off anything that comes near"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Location" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/InformationPanel/VBoxContainer" unique_id=1349084805]
+[node name="Location" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer" unique_id=1349084805]
 z_index = 5
 custom_minimum_size = Vector2(611, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.265, 0.53, 0.50791657, 1)
 theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
 theme_override_fonts/font = ExtResource("8_ruawa")
 theme_override_font_sizes/font_size = 32
 text = "found at high altitudes"
+autowrap_mode = 2
+
+[node name="MealInformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1097421460]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.046000004
+anchor_right = 0.48400003
+anchor_bottom = 0.92200005
+offset_left = 27.899994
+offset_top = 27.319996
+offset_right = -17.100037
+offset_bottom = -25.76056
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel" unique_id=1045910481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer" unique_id=1791646770]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="TabType" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/MarginContainer" unique_id=711839125]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6313726, 0.20784314, 0.20784314, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 45
+text = "Recipes"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer" unique_id=930574073]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 86
+text = "Undiscovered"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer" unique_id=879994676]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="Screenshot" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel" unique_id=1888187030]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_60ewy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NoImage" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=722773393]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot/NoImage" unique_id=1700337662]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -14.0
+offset_right = 20.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -220
+
+[node name="?" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot/NoImage/VBoxContainer" unique_id=1399296500]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 90
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=39444690]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 100.0
+grow_vertical = 0
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_bottom = -7
+
+[node name="PhotoTab" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer" unique_id=901330587]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1408506059]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+
+[node name="PhotoTab2" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer2" unique_id=805011249]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+flip_v = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer" unique_id=1370882668]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/MarginContainer2" unique_id=1568461529]
+layout_mode = 2
+theme_override_constants/separation = -83
+
+[node name="Flavor" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1363014211]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.71, 0.32186663, 0.14199999, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("8_ruawa")
+theme_override_font_sizes/font_size = 38
+text = "Sweet flavor"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/MealInformationPanel/VBoxContainer" unique_id=664793161]
+visible = false
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("8_ruawa")
+theme_override_font_sizes/font_size = 32
+text = "This bird is known to bite the heads off anything that comes near"
+autowrap_mode = 2
+
+[node name="NoIngredientsUnlocked" type="Label" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=413604167]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_top = 76.0
+offset_right = -998.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.51, 0.45288, 0.3468, 1)
+theme_override_fonts/font = ExtResource("8_ruawa")
+theme_override_font_sizes/font_size = 34
+text = "You haven't found anything yet.."
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=905952231]
-custom_minimum_size = Vector2(1546, 1080)
+custom_minimum_size = Vector2(1900, 1080)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -664,340 +824,62 @@ mouse_filter = 2
 texture = SubResource("CompressedTexture2D_2smgm")
 expand_mode = 1
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="InformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2" unique_id=793023966]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 812.0
-offset_top = 77.0
-offset_right = 1423.0
-offset_bottom = 968.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51600003
+anchor_top = 0.048
+anchor_right = 0.94000006
+anchor_bottom = 0.91700006
+offset_left = 1.0999146
+offset_top = -4.84
+offset_right = -1.5001221
+offset_bottom = 6.6399536
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="CornerCover" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel" unique_id=870436070]
 layout_mode = 0
-offset_left = 492.0
-offset_top = 779.0
-offset_right = 608.0
-offset_bottom = 886.0
+offset_left = 630.0
+offset_top = 807.0
+offset_right = 763.44
+offset_bottom = 914.0
 color = Color(0.98039216, 0.9607843, 0.93333334, 1)
 
 [node name="CornerCover2" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel" unique_id=1311718442]
 layout_mode = 0
-offset_left = -674.0
-offset_top = 779.0
-offset_right = -558.0
-offset_bottom = 886.0
+offset_left = -779.5
+offset_top = 807.0
+offset_right = -640.0
+offset_bottom = 914.0
 color = Color(0.98039216, 0.9607843, 0.93333334, 1)
 
-[node name="Ingredients" type="FlowContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel" unique_id=512736308]
-z_index = 5
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel" unique_id=20277209]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+theme_override_constants/margin_left = 38
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 49
+theme_override_constants/margin_bottom = 41
 
-[node name="EntryButton" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=2066142950]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=214463022]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=1374764393]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="terry" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=1831939826]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("9_08ovd")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton" unique_id=1161852974]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer" unique_id=1508525077 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "terry"
-hover_target = NodePath("../..")
-
-[node name="EntryButton2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=877613319]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=1239832606]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=460722812]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="waffle" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=2015323101]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("10_xrowv")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2" unique_id=667043949]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer" unique_id=1107217243 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "waffle"
-hover_target = NodePath("../..")
-
-[node name="EntryButton3" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=2012694779]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=1351088647]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=837993035]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="butter" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=1415115159]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("11_l74o7")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3" unique_id=247619384]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer" unique_id=1466265964 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "butter"
-hover_target = NodePath("../..")
-
-[node name="EntryButton4" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=854756128]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=649976695]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=272740730]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="babytear" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=569019870]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("12_uwfyn")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4" unique_id=494313049]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer" unique_id=1860202297 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "babytear"
-hover_target = NodePath("../..")
-
-[node name="EntryButton5" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=286788636]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=1538018011]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=670370673]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="doughbaby" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=802761477]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("15_2smgm")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5" unique_id=455095692]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer" unique_id=1225285567 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "doughbaby"
-hover_target = NodePath("../..")
-
-[node name="EntryButton6" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients" unique_id=2006902066]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=417453212]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=788418047]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="meatball" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=555652153]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("14_2smgm")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6" unique_id=221365108]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer" unique_id=119511207 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "meatball"
-hover_target = NodePath("../..")
-
-[node name="Meals" type="FlowContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel" unique_id=529661613]
+[node name="Ingredients" type="FlowContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer" unique_id=512736308]
 visible = false
 z_index = 5
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 alignment = 1
 
-[node name="EntryButton" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals" unique_id=101307331]
+[node name="Meals" type="FlowContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer" unique_id=529661613]
+z_index = 5
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton" unique_id=1133950031]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6o6sm")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton" unique_id=1749303007]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="chknandwaffles" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton" unique_id=1582315698]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("15_uwfyn")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton" unique_id=1126286246]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer" unique_id=184989292 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "chknandwaffles"
-hover_target = NodePath("../..")
-
-[node name="EntryButton2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals" unique_id=1802989982]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2" unique_id=1585189130]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6o6sm")
-
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2" unique_id=1300511335]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
-
-[node name="meatpocket" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2" unique_id=1959636929]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-texture = ExtResource("16_6o6sm")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2" unique_id=332440993]
-layout_mode = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_top = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -8
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer" unique_id=1607718119 node_paths=PackedStringArray("hover_target")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("9_6o6sm")
-info_to_pull = "meatpocket"
-hover_target = NodePath("../..")
+alignment = 1
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer" unique_id=1636565068]
 texture_filter = 3
@@ -1010,6 +892,7 @@ expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1471187997]
 libraries/ = SubResource("AnimationLibrary_djyhv")
+autoplay = &"Appear"
 
 [node name="TornPage" type="Sprite2D" parent="." unique_id=1555629561]
 visible = false
@@ -1038,46 +921,7 @@ Press TAB to view this cook book again
 P.S. Throw as much food through that portal as you can!"
 autowrap_mode = 3
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab1" to="." method="_on_tab_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food/Tab2" to="." method="_on_tab_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab1" to="." method="_on_tab_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls/Tab3" to="." method="_on_tab_3_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton2/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton3/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton4/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton5/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Ingredients/EntryButton6/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton/MarginContainer/Button" method="_on_pressed"]
-[connection signal="button_down" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" method="_on_button_down"]
-[connection signal="button_up" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" method="_on_button_up"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" method="_on_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" to="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/Meals/EntryButton2/MarginContainer/Button" method="_on_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -5,9 +5,15 @@ class_name BaseIngredientND
 @onready var grilled = preload("res://fp_scenes/kitchen/textures/GrilledTexture.png")
 
 @export_group("Base Info")
-@export var food_name : String
+@export var ingredient_name : String
 @export var icon : Texture2D
+@export var flavor : String
+@export var family : String
+@export var rarity : String
+@export_multiline var where_to_find : String
 @export var flavor_text : String
+@export_multiline var description : String
+@export var screenshot : Texture2D
 
 ##determines spawn rate between 0 and 1. a value of 1 will always spawn and a value of 0 will never spawn
 @export_group("Metadata")
@@ -99,6 +105,9 @@ func _become_held(pnt):
 	_held_point = pnt
 	freeze = true
 	#if dropping doughBaby kill it
+	if not Manager.encountered_ingredients.has(self.scene_file_path):
+		Manager.encountered_ingredients.append(self.scene_file_path)
+		print(Manager.encountered_ingredients)
 	if id == 0 and get_parent().name == "DoughBabyParent":
 		get_parent().is_dead()
 	

@@ -2,12 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b2jrmnwpvpx02" path="res://fp_scenes/Items/meat_pie.tscn" id="1_cjx3y"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_5ugy1"]
+[ext_resource type="Texture2D" uid="uid://gvv2p8f260gt" path="res://fp_scenes/kitchen/textures/BeefWellingtonTex.png" id="2_6u3e4"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="3_aafek"]
 [ext_resource type="ArrayMesh" uid="uid://4cp472kkvryd" path="res://assets/Food/models/BeefWellingtonPlate.obj" id="4_0xhjb"]
 [ext_resource type="Texture2D" uid="uid://btx16nsqa00s4" path="res://assets/textures/MeatPiesTexture.png" id="5_6u3e4"]
 [ext_resource type="Texture2D" uid="uid://ky044tcs1oes" path="res://assets/textures/BeefWellingtonTexture.png" id="6_jjcj3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xhjb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjcj3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_5ugy1")
@@ -60,10 +61,10 @@ void fragment() {
 	ALPHA = max(transparency, burnt);
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u3e4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_batvp"]
 resource_local_to_scene = true
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_0xhjb")
+next_pass = SubResource("ShaderMaterial_jjcj3")
 shader = SubResource("Shader_7ygjy")
 shader_parameter/color_one = Color(1.753959, 0, 0.058110673, 1)
 shader_parameter/color_two = Color(1.6197081, 0.53498405, 0, 1)
@@ -85,10 +86,11 @@ albedo_texture = ExtResource("6_jjcj3")
 
 [node name="BaseItem" unique_id=175947415 instance=ExtResource("1_cjx3y")]
 item_name = "Beef Wellington"
+icon = ExtResource("2_6u3e4")
 id = 100
 
 [node name="Cuttingboard" parent="." index="0" unique_id=2110321351]
-material_overlay = SubResource("ShaderMaterial_6u3e4")
+material_overlay = SubResource("ShaderMaterial_batvp")
 mesh = ExtResource("4_0xhjb")
 surface_material_override/0 = SubResource("StandardMaterial3D_batvp")
 surface_material_override/1 = SubResource("StandardMaterial3D_3qbnl")

@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://chm1wjnpil25m"]
+
+[ext_resource type="Script" uid="uid://cslekuj753rnk" path="res://scenes/ui/Diner/final_step_ui.gd" id="1_82pyd"]
+[ext_resource type="Texture2D" uid="uid://pamy1qgd64x7" path="res://fp_scenes/kitchen/textures/MeatBall.png" id="2_n7ge5"]
+[ext_resource type="Texture2D" uid="uid://b07kiycebt32w" path="res://fp_scenes/inputs/General/keyboard_arrow_right.png" id="3_pdp6t"]
+[ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="4_ag4ay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klsck"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8743918, 0.7475096, 0.65973437, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.96862745, 0.9529412, 0.92941177, 1)
+border_blend = true
+shadow_color = Color(0.05324839, 0.11778284, 0.17007864, 0.4627451)
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[node name="FinalUINode" type="MarginContainer" unique_id=1984261646 node_paths=PackedStringArray("connection", "station", "output")]
+process_mode = 3
+offset_right = 234.0
+offset_bottom = 120.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_82pyd")
+connection = NodePath("IconMargin3/Arrow/ArrowConnection")
+station = NodePath("PanelContainer/VBoxContainer/IconMargin2/Station")
+output = NodePath("PanelContainer/VBoxContainer/IconMargin5/Output")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1730541968]
+custom_minimum_size = Vector2(202, 101)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_klsck")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1003784308]
+layout_mode = 2
+
+[node name="IconMargin2" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1204492962]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Station" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin2" unique_id=1311307745]
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.4, 1.4)
+texture = ExtResource("4_ag4ay")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="IconMargin4" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1073695278]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Arrow2" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin4" unique_id=2103660604]
+modulate = Color(0.65, 0, 0, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+texture = ExtResource("3_pdp6t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IconMargin5" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=605020174]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.6, 1.6)
+
+[node name="Output" type="TextureRect" parent="PanelContainer/VBoxContainer/IconMargin5" unique_id=727944226]
+z_index = 1
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("2_n7ge5")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="ArrowPnt" type="Control" parent="PanelContainer/VBoxContainer" unique_id=946369306]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+
+[node name="IconMargin3" type="MarginContainer" parent="." unique_id=1836133909]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(-116.465, 2)
+offset_transform_scale = Vector2(0.5, 0.5)
+
+[node name="Arrow" type="TextureRect" parent="IconMargin3" unique_id=572900827]
+modulate = Color(0.65, 0, 0, 1)
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(15.23, -3.91)
+offset_transform_scale = Vector2(2, 2)
+texture = ExtResource("3_pdp6t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArrowConnection" type="Control" parent="IconMargin3/Arrow" unique_id=874985185]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_right = -124.0
+grow_horizontal = 2
+grow_vertical = 2

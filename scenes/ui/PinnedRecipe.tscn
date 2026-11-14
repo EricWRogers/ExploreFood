@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dclapdxijuqwy"]
+
+[ext_resource type="Script" uid="uid://ctbj5vm2ebm1d" path="res://scenes/ui/pinned_recipe.gd" id="1_pg6r5"]
+[ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="2_e1owu"]
+[ext_resource type="PackedScene" uid="uid://chm1wjnpil25m" path="res://scenes/ui/Diner/FinalStepUI.tscn" id="3_n1d8d"]
+
+[node name="PinnedRecipe" type="HBoxContainer" unique_id=1281260165]
+script = ExtResource("1_pg6r5")
+recipe = ExtResource("2_e1owu")
+
+[node name="RecipeNodesContainer" type="VBoxContainer" parent="." unique_id=1221371045]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -8
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=537403648]
+layout_mode = 2
+theme_override_constants/margin_left = 82
+
+[node name="FinalUINode" parent="." unique_id=1428984989 instance=ExtResource("3_n1d8d")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Lines" type="CanvasLayer" parent="." unique_id=584479248]
+layer = 6

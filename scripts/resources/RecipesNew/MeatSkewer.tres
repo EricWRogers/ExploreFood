@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccu7ptj5owaby" path="res://fp_scenes/Items/meat_skewer.tscn" id="2_ufctj"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_u681t"]
 [ext_resource type="PackedScene" uid="uid://b37m3mjgdnqws" path="res://scenes/BaseIngredientFoods/mystery_meat.tscn" id="3_ufctj"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="6_grbtb"]
 
 [resource]
 script = ExtResource("2_i34e1")
@@ -15,4 +16,5 @@ recipe_station_tex = ExtResource("3_u681t")
 product = ExtResource("2_ufctj")
 recipe_icon = ExtResource("2_ch8os")
 id = 105
+screenshot = ExtResource("6_grbtb")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"

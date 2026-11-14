@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d212mcpils118" path="res://fp_scenes/ingredients/base_ingredient_ND.tscn" id="1_dbpbm"]
 [ext_resource type="Texture2D" uid="uid://b46132lmxodlp" path="res://fp_scenes/kitchen/textures/MoldShroom.png" id="2_5xydb"]
 [ext_resource type="Shader" uid="uid://cljilo0n6clkd" path="res://assets/shaders/hover_outline.gdshader" id="2_orv12"]
+[ext_resource type="Texture2D" uid="uid://tvddeyblf7u3" path="res://assets/ui/cook_book/screenshots/Screenshot 2026-11-06 133333.png" id="3_3gpa0"]
 [ext_resource type="Texture2D" uid="uid://8hw4qsdtavnl" path="res://assets/textures/BreadWorldTextures/PuffMushroom_Mat.png" id="3_orv12"]
 [ext_resource type="Texture2D" uid="uid://dj2gadjhaa5fb" path="res://fp_scenes/kitchen/textures/GrilledTexture.png" id="4_3gpa0"]
 [ext_resource type="ArrayMesh" uid="uid://fbx1v0ncnfpn" path="res://assets/models/PuffMushroom.obj" id="5_5xydb"]
@@ -89,8 +90,15 @@ shader_parameter/burnt_color = Color(0.66, 0.39600003, 0.264, 1)
 
 [node name="BaseND" unique_id=175947415 instance=ExtResource("1_dbpbm")]
 freeze = true
-food_name = "Mold Shroom"
+ingredient_name = "Mold Shroom"
 icon = ExtResource("2_5xydb")
+flavor = "Umami"
+family = "Mushroom"
+rarity = "Common"
+where_to_find = "Found growing near salt pillars in the Bread Dimension. Does not like to grow near water."
+flavor_text = "Surprisingly rich flavor"
+description = "It attracts mold and the mold it attracts can never be removed or cooked away. It is a symbiotic relationship."
+screenshot = ExtResource("3_3gpa0")
 rarity_level = 1.0
 id = 1
 color = Color(0.38431373, 0.46666667, 0.43529412, 1)

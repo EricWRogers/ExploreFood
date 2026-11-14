@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmqi2bed8i6o6" path="res://assets/ui/item_icons/DoughBabyIconNew.png" id="2_ii5gf"]
 [ext_resource type="Script" uid="uid://c2bmq7bowk28b" path="res://scripts/recipe_system/Recipe.gd" id="2_or187"]
 [ext_resource type="Texture2D" uid="uid://dbd3kphby5u0d" path="res://fp_scenes/kitchen/textures/StovePixart.png" id="3_ii5gf"]
+[ext_resource type="Texture2D" uid="uid://0lo17o31p5ib" path="res://assets/ui/cook_book/screenshots/WaffleScreenshot.png" id="4_87bw0"]
 
 [resource]
 script = ExtResource("2_or187")
@@ -12,4 +13,5 @@ recipe_station = 2
 recipe_station_tex = ExtResource("3_ii5gf")
 recipe_icon = ExtResource("2_ii5gf")
 id = 103
+screenshot = ExtResource("4_87bw0")
 metadata/_custom_type_script = "uid://c2bmq7bowk28b"
