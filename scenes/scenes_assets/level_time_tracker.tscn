@@ -4,3 +4,22 @@
 
 [node name="LevelTimeTracker" type="Node3D" unique_id=1615522022]
 script = ExtResource("1_yty27")
+
+[node name="Control" type="Control" parent="." unique_id=2043567304]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=166742976]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1718.0
+offset_right = 1870.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "06:00"
+horizontal_alignment = 1
+vertical_alignment = 1
