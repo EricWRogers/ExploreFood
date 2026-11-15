@@ -36,6 +36,7 @@ class_name BaseIngredient
 @export var cross_section : Texture2D
 #@export var texture : Texture2D
 @export var mat_uv_scale : Vector2
+@export var spoil_time: float = 300.0
 
 @export_group("Food Groups")
 @export var food_group: FoodGroup
@@ -52,6 +53,7 @@ class_name BaseIngredient
 @onready var next_pass := overlay.next_pass as ShaderMaterial
 
 @export var tooltip_offset : float
+
 ##type of food that an ingredient is. Must always have a value
 enum FoodGroup {
 	BREAD,
@@ -79,11 +81,14 @@ var last_dir : Vector3
 var can_be_cooked : bool = true
 var current_station : Node3D
 var is_pan_grilled : bool = false
+var has_been_grabbed = false
+var original_color : Color
 
 func _become_dropped():
 	_held = false
 	contact_monitor = true
 	_held_point = null
+	has_been_grabbed = true
 	scale = resize
 	set_collision_layer_value(2, true)
 	freeze = false
@@ -146,6 +151,7 @@ func _ready() -> void:
 	arrow.top_level = true
 	old_scale = scale
 	overlay.set_shader_parameter("mesh_texture", material)
+	original_color = color
 	#print("Overlay: ", overlay)
 	#print("Next pass: ", overlay.next_pass)
 	#print("Next pass is ShaderMaterial: ", overlay.next_pass is ShaderMaterial)
@@ -221,6 +227,14 @@ func _process(_delta: float) -> void:
 		global_rotation = _held_point.global_rotation
 		scale = _held_point.scale - old_scale
 		scale = clamp(scale, Vector3(0.001, 0.001, 0.001), Vector3(5.0, 5.0, 5.0))
+	#SPOIL COUNTER. Change to green when someone who understands how the shader is made
+	if !_held and has_been_grabbed:
+		spoil_time -= _delta
+		var spoil_amount = 1.0 - (spoil_time / 300.0)
+		spoil_amount = clamp(spoil_amount, 0.0, 1.0)
+		color = original_color.lerp(Color.GREEN, spoil_amount)
+		if spoil_time <= 0.0:
+			queue_free()
 	$Node3D.global_position = global_position
 	$Node3D.global_position.y = $Node3D.global_position.y + tooltip_offset
 	arrow.global_position = global_position
