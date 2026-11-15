@@ -1,37 +1,44 @@
 extends Node3D
 
-const new_level_path = "res://scenes/levels/diner_hub.tscn"
-@onready var timer: Timer = $Timer
-@onready var timer_label: Label = $Control/Label
-@export var level_time : float = 60
-@export var add_time : float = 5.0
+signal day_finished
 
+@export var world_environment: WorldEnvironment
+@export var directional_light: DirectionalLight3D
 
-# Called when the node enters the scene tree for the first time.
+@export var day_length: float = 180.0
+
 func _ready() -> void:
-	timer.wait_time = level_time
-	timer.start()
+	start_day()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Control/Label.text = "Time: " + ("%.2f" % timer.time_left)
+	print(world_environment.environment.adjustment_brightness)
+func start_day() -> void:
+	var tween = create_tween()
 
+	tween.set_parallel(true)
 
-func _on_timer_timeout() -> void:
-	Manager.level_manager.call_deferred("change_scene", new_level_path, self.get_owner(), Manager.level_manager.change_mode.DELETE)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	
+	tween.tween_property(
+		world_environment.environment,
+		"adjustment_brightness",
+		0.3,
+		day_length
+	)
 
+	tween.tween_property(
+		directional_light,
+		"light_energy",
+		0.0,
+		day_length
+	)
+	
+	# Emit halfway through
+	#tween.tween_interval(90.0)
+	#tween.tween_callback(func(): day_finished.emit())
+	
+	tween.finished.connect(_on_day_finished)
 
-var label_tween: Tween
-
-func _on_portal_food_entered() -> void:
-	timer.start(timer.time_left + add_time)
-
-	if label_tween and label_tween.is_running():
-		label_tween.kill()
-
-	timer_label.scale = Vector2(1.0, 1.0)
-
-	label_tween = create_tween()
-	label_tween.tween_property(timer_label, "scale", Vector2(1.4, 1.4), 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	label_tween.tween_property(timer_label, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+func _on_day_finished() -> void:
+	day_finished.emit()

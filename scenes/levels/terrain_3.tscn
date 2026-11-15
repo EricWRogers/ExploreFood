@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciy6tm3k3i2my" path="res://scenes/levels/bread_world.gd" id="1_hls6b"]
 [ext_resource type="Script" uid="uid://cddg1xr5hye1d" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain.gd" id="1_phe0q"]
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_qgerq"]
+[ext_resource type="PackedScene" uid="uid://bdhw54uqyqcem" path="res://scenes/scenes_assets/level_time_tracker.tscn" id="2_8oy3b"]
 [ext_resource type="PackedScene" uid="uid://ccbkmljv57hvp" path="res://scenes/scenes_assets/portal.tscn" id="2_db7ae"]
 [ext_resource type="PackedScene" uid="uid://de16mu71m0w67" path="res://scenes/scenes_assets/BreadWorld/pretzel_barn.tscn" id="2_o0k7j"]
 [ext_resource type="Script" uid="uid://cql4d8s5t5xcx" path="res://addons/MarchingSquaresTerrain/algorithm/terrain/marching_squares_terrain_chunk.gd" id="2_vjxv4"]
@@ -612,6 +613,10 @@ size = Vector3(32.985107, 0.068359375, 34.398743)
 
 [node name="Terrain3" type="Node3D" unique_id=1382931693]
 script = ExtResource("1_hls6b")
+
+[node name="LevelTimeTracker" parent="." unique_id=1615522022 node_paths=PackedStringArray("world_environment", "directional_light") instance=ExtResource("2_8oy3b")]
+world_environment = NodePath("../WorldEnvironment")
+directional_light = NodePath("../DirectionalLight3D")
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("1_qgerq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.529667, 8.619691, 32.700035)
