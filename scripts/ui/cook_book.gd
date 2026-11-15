@@ -3,10 +3,13 @@ extends CanvasLayer
 const INGREDIENT_SELECTABLE = preload("uid://dhyn80ecousau")
 const MEAL_SELECTABLE = preload("uid://kdojkkxie035")
 const PINNED_RECIPE = preload("uid://dclapdxijuqwy")
+const NPC_SELECTABLE = preload("uid://b4wsvxec3gk83")
+
 
 
 @onready var ingredients_flow_container: FlowContainer = $MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/Ingredients
 @onready var meals_flow_container: FlowContainer = $MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/Meals
+@onready var npcs_flow_container: FlowContainer = $MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/NPCs
 
 
 @onready var name_of: Label = $MarginContainer/HBoxContainer/TextureRect/IngInformationPanel/VBoxContainer/Name
@@ -18,6 +21,9 @@ const PINNED_RECIPE = preload("uid://dclapdxijuqwy")
 
 @export var ingredients : Array[String]
 @export var meals : Array[String]
+@export var npcs : Array[String]
+@export var collectables : Array[String]
+@export var gadgets : Array[String]
 
 var tab_set = 1
 var opened_amnt = 0
@@ -29,6 +35,16 @@ func spawn_slots():
 	#print(tab_set, "YO")
 	reset_information()
 	# if the player selects other worlds or filters spawn all even locked
+	for slot in npcs:
+		var new_slot = NPC_SELECTABLE.instantiate()
+		var slot_information = load(slot)
+		new_slot.icon_show = slot_information.icon
+		new_slot.name_of = slot_information.name_of
+		npcs_flow_container.add_child(new_slot)
+		if Manager.encountered_meals.has(slot):
+			new_slot.become_active()
+		new_slot.display_icon()
+		#slot_information.queue_free()
 	for slot in ingredients:
 		var slot_string = str(slot)
 		if slot_string.ends_with("tres"):
@@ -105,11 +121,15 @@ func reset_information():
 		child.queue_free()
 	for child in meals_flow_container.get_children():
 		child.queue_free()
+	for child in npcs_flow_container.get_children():
+		child.queue_free()
 	$MarginContainer/HBoxContainer/TextureRect/IngInformationPanel.hide()
 	$MarginContainer/HBoxContainer/TextureRect/NoIngredientsUnlocked.show()
 	$MarginContainer/HBoxContainer/TextureRect/MealInformationPanel.hide()
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/Ingredients.hide()
 	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/Meals.hide()
+	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/NPCs.hide()
+	$MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel.hide()
 func appear():
 	spawn_slots()
 	$AnimationPlayer.play("Appear")
@@ -254,3 +274,16 @@ func _on_tab_2_pressed() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Appear":
 		spawn_slots()
+
+
+func _on_tab_5_pressed() -> void:
+	if tab_set == 2:
+		return
+	tab_set = 2
+	#reset_information()
+	spawn_slots()
+	#$TornPage.hide()
+	#$Label.hide()
+	#set_info("terry")
+	#tab_set = 0
+	$MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer/NPCs.show()

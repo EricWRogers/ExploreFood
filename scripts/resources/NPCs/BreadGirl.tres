@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseNpc" format=3 uid="uid://cnmtd1naissy8"]
+
+[ext_resource type="Script" uid="uid://dhabfvcb7pwti" path="res://scripts/resources/NPCs/base_npc.gd" id="1_acxxk"]
+[ext_resource type="Texture2D" uid="uid://ykmj5o5k8kod" path="res://assets/ui/cook_book/BreadChildPortrait.png" id="1_rp1lx"]
+
+[resource]
+script = ExtResource("1_acxxk")
+name_of = "Bread Girl"
+icon = ExtResource("1_rp1lx")
+metadata/_custom_type_script = "uid://dhabfvcb7pwti"

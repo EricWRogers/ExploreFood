@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://b4wsvxec3gk83"]
+
+[ext_resource type="Script" uid="uid://b4pfw5l6cv6rt" path="res://scenes/ui/npc_selectable.gd" id="1_xvev7"]
+[ext_resource type="FontFile" uid="uid://sqqlj7uvuugf" path="res://assets/fonts/MerchantCopyDoublesize-jE7R.ttf" id="2_ctlsy"]
+[ext_resource type="Script" uid="uid://csd7edsy511ij" path="res://scripts/ui/recipe_book_select.gd" id="3_1nere"]
+[ext_resource type="Texture2D" uid="uid://8f1sc62xswfn" path="res://assets/ui/cook_book/NPCbarunder.png" id="3_y6ckw"]
+[ext_resource type="Texture2D" uid="uid://c1bklac67h63s" path="res://assets/ui/cook_book/NPCbarover.png" id="4_6wvyy"]
+[ext_resource type="Texture2D" uid="uid://cmm4umrwfawma" path="res://assets/ui/cook_book/NPCbarfill.png" id="5_cr0wp"]
+[ext_resource type="Texture2D" uid="uid://ykmj5o5k8kod" path="res://assets/ui/cook_book/BreadChildPortrait.png" id="6_xxq7g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08ovd"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0.50980395)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.9607843, 0.5568628, 0.6431373, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1fh7"]
+bg_color = Color(0.78, 0.72072, 0.6318, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.43, 0.43, 0.43, 0.3882353)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="IngredientSelectable" type="MarginContainer" unique_id=1776331571]
+custom_minimum_size = Vector2(688, 172)
+offset_right = 688.0
+offset_bottom = 172.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_xvev7")
+
+[node name="Panel" type="Panel" parent="." unique_id=79558121]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_08ovd")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1622656036]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1fh7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2" unique_id=772905913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -24
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel2/VBoxContainer" unique_id=1577668450]
+layout_mode = 2
+theme_override_constants/margin_left = 151
+theme_override_constants/margin_top = 21
+
+[node name="Title" type="Label" parent="Panel2/VBoxContainer/MarginContainer2" unique_id=1559655473]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ctlsy")
+theme_override_font_sizes/font_size = 22
+text = "Bread Girl"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2/VBoxContainer" unique_id=1187415575]
+layout_mode = 2
+theme_override_constants/margin_top = -26
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Panel2/VBoxContainer/MarginContainer" unique_id=903300475]
+texture_filter = 3
+custom_minimum_size = Vector2(440, 70.96)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1100, 160.315)
+offset_transform_scale = Vector2(4, 4)
+texture_under = ExtResource("3_y6ckw")
+texture_over = ExtResource("4_6wvyy")
+texture_progress = ExtResource("5_cr0wp")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel2" unique_id=54363086]
+layout_mode = 0
+theme_override_constants/margin_left = 554
+theme_override_constants/margin_top = 72
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2" unique_id=1679334655]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ctlsy")
+theme_override_font_sizes/font_size = 22
+text = "Lvl:1"
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1802303721]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 3
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_xxq7g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1685519572]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=359482323 node_paths=PackedStringArray("hover_target")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("3_1nere")
+hover_target = NodePath("../..")
+
+[connection signal="button_down" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_button_down"]
+[connection signal="button_up" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_button_up"]
+[connection signal="mouse_entered" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_pressed"]

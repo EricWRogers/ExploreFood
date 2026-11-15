@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseNpc" format=3 uid="uid://dceekhu88hy6a"]
+
+[ext_resource type="Script" uid="uid://dhabfvcb7pwti" path="res://scripts/resources/NPCs/base_npc.gd" id="1_8ryrj"]
+[ext_resource type="Texture2D" uid="uid://b6eh4hrkl00ej" path="res://assets/ui/cook_book/BreadUppiePortrait.png" id="1_xavw5"]
+
+[resource]
+script = ExtResource("1_8ryrj")
+name_of = "Bread Dog"
+icon = ExtResource("1_xavw5")
+metadata/_custom_type_script = "uid://dhabfvcb7pwti"

@@ -9,7 +9,7 @@ const RECIPE_PATH = preload("uid://ducx13b0gekbj")
 @export var recipe : Resource
 
 var Station_Icons = {
-	Manager.Stations.CUTTING_BOARD: preload("res://fp_scenes/kitchen/textures/StovePixart.png"),
+	Manager.Stations.CUTTING_BOARD: preload("res://fp_scenes/kitchen/textures/CuttingBoardPixart.png"),
 	Manager.Stations.PAN_GRILL: preload("res://fp_scenes/kitchen/textures/StovePixart.png"),
 	Manager.Stations.OVEN: preload("res://fp_scenes/kitchen/textures/StovePixart.png"),
 	Manager.Stations.ROLLING_PIN: preload("res://fp_scenes/kitchen/textures/StovePixart.png"),
@@ -34,6 +34,8 @@ func contruct_recipe():
 	final_ui_node.output.texture = recipe.recipe_icon
 	increment = 0
 	for item in reference.recipe_ingredients:
+		await get_tree().process_frame
+		await get_tree().process_frame
 		await get_tree().process_frame
 		#await get_tree().process_frame
 		#await get_tree().process_frame

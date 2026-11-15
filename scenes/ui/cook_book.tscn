@@ -7,9 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://j2xx8sxtwmqs" path="res://assets/ui/cook_book/mealIcon.png" id="3_13kyx"]
 [ext_resource type="FontFile" uid="uid://c5hhpp72h517l" path="res://assets/fonts/CsAristonStitchedRegularDemo-lx3MX.otf" id="4_rfbjl"]
 [ext_resource type="Texture2D" uid="uid://cv6hpg4p3hk6k" path="res://assets/ui/cook_book/screenshots/TerryScreenshot.png" id="5_60ewy"]
+[ext_resource type="Texture2D" uid="uid://wt3adm6fued0" path="res://assets/ui/cook_book/PropsIcon.png" id="5_yiewq"]
 [ext_resource type="Texture2D" uid="uid://ddihlr66icrp" path="res://assets/ui/cook_book/cookbookimagesnag.png" id="6_egu8v"]
-[ext_resource type="Texture2D" uid="uid://brxx5uhxm4mcs" path="res://assets/ui/cook_book/ControlsIcon.png" id="6_rlj6j"]
+[ext_resource type="Texture2D" uid="uid://dxqpp2dv4ngmf" path="res://assets/ui/cook_book/CollectablesIcon.png" id="6_xrowv"]
+[ext_resource type="Texture2D" uid="uid://dovsl611eupsv" path="res://assets/ui/cook_book/RelationShipsIcon.png" id="7_l74o7"]
 [ext_resource type="FontFile" uid="uid://b6w3yuubac02m" path="res://assets/fonts/THEJOURNALFONT-DEMOVERSION.ttf" id="8_ruawa"]
+[ext_resource type="Texture2D" uid="uid://bxnvk02rv0gr6" path="res://assets/ui/cook_book/GadgetsIcon.png" id="8_uwfyn"]
 [ext_resource type="Texture2D" uid="uid://bnf0qmj5i6ofl" path="res://assets/ui/cook_book/TornPage.png" id="20_rlj6j"]
 [ext_resource type="FontFile" uid="uid://c4sng3tmqix43" path="res://assets/fonts/Pencilant Script.otf" id="21_djyhv"]
 
@@ -38,7 +41,31 @@ shadow_size = 3
 shadow_offset = Vector2(1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djyhv"]
-bg_color = Color(0.69, 0.48990002, 0.48990002, 1)
+bg_color = Color(0.21079999, 0.59954, 0.62, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o6sm"]
+bg_color = Color(0.96, 0.80127996, 0.36479998, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2smgm"]
+bg_color = Color(0.96, 0.5568, 0.64416, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.67, 0.67, 0.67, 0.6)
+shadow_size = 3
+shadow_offset = Vector2(1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlj6j"]
+bg_color = Color(0.56, 0.6113334, 1, 1)
 corner_radius_top_left = 50
 corner_radius_bottom_left = 50
 shadow_color = Color(0.67, 0.67, 0.67, 0.6)
@@ -251,6 +278,7 @@ _data = {
 layer = 4
 script = ExtResource("1_egu8v")
 ingredients = Array[String](["res://scenes/BaseIngredientFoods/dough_baby_nd.tscn", "res://scenes/BaseIngredientFoods/mystery_meat.tscn", "res://scenes/BaseIngredientFoods/mold_shroom.tscn", "res://scenes/BaseIngredientFoods/waffle_pad.tscn", "res://scripts/resources/RecipesNew/BeefWellington.tres", "res://scripts/resources/RecipesNew/GrilledCheese.tres"])
+npcs = Array[String](["res://scripts/resources/NPCs/BreadDog.tres", "res://scripts/resources/NPCs/BreadGirl.tres"])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1604830917]
 material = SubResource("ShaderMaterial_lg1c5")
@@ -268,7 +296,7 @@ anchor_bottom = 1.0
 offset_left = 187.0
 offset_top = 1179.0
 offset_right = 186.99976
-offset_bottom = 1321.0007
+offset_bottom = 1321.0005
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.74, 0.74)
@@ -297,10 +325,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 0.5
-offset_top = -420.0005
-offset_right = 131.5
-offset_bottom = 116.99951
+offset_top = -430.0
+offset_right = 131.0
+offset_bottom = 430.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=1808915866]
@@ -316,6 +343,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rfbjl")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1287666369]
 modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
 custom_minimum_size = Vector2(73.6, 133.18)
 layout_mode = 1
 anchors_preset = 8
@@ -330,8 +358,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_13kyx")
 expand_mode = 3
+stretch_mode = 5
 
-[node name="Tab2" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
+[node name="Tab1" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food" unique_id=1540593013]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -350,6 +379,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lg1c5")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients" unique_id=1322205845]
 modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
 custom_minimum_size = Vector2(3.71, 133.295)
 layout_mode = 1
 anchors_preset = 8
@@ -366,8 +396,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_13kyx")
 expand_mode = 3
+stretch_mode = 5
 
-[node name="Tab1" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients" unique_id=1358552808]
+[node name="Tab0" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients" unique_id=1358552808]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -376,8 +407,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Controls" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=401584573]
-visible = false
+[node name="Props" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=401584573]
 custom_minimum_size = Vector2(130.78, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -385,8 +415,9 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_djyhv")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls" unique_id=119686942]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Props" unique_id=119686942]
 modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
 custom_minimum_size = Vector2(73.6, 133.18)
 layout_mode = 1
 anchors_preset = 8
@@ -399,11 +430,124 @@ offset_right = 36.25926
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_rlj6j")
+texture = ExtResource("5_yiewq")
 expand_mode = 3
+stretch_mode = 5
 
-[node name="Tab3" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls" unique_id=1988806198]
+[node name="Tab3" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Props" unique_id=1988806198]
 self_modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Collectables" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=16597960]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6o6sm")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Collectables" unique_id=1979748766]
+modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_xrowv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Tab4" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Collectables" unique_id=1620077313]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Relationships" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=245952818]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2smgm")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Relationships" unique_id=2120686193]
+modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_l74o7")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Tab5" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Relationships" unique_id=1753204992]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gadgets" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1354511142]
+custom_minimum_size = Vector2(130.78, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlj6j")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Gadgets" unique_id=2111903725]
+modulate = Color(1, 1, 1, 0.7254902)
+texture_filter = 3
+custom_minimum_size = Vector2(73.6, 133.18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.25926
+offset_right = 36.25926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_uwfyn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Tab6" type="Button" parent="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Gadgets" unique_id=1896069607]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -616,6 +760,7 @@ text = "found at high altitudes"
 autowrap_mode = 2
 
 [node name="MealInformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1097421460]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -796,6 +941,187 @@ theme_override_font_sizes/font_size = 32
 text = "This bird is known to bite the heads off anything that comes near"
 autowrap_mode = 2
 
+[node name="NPCInformationPanel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1252552368]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.046000004
+anchor_right = 0.48400003
+anchor_bottom = 0.92200005
+offset_left = 27.899994
+offset_top = 27.319996
+offset_right = -17.100037
+offset_bottom = -25.76056
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel" unique_id=717910326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer" unique_id=712244692]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="TabType" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/MarginContainer" unique_id=1357758144]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6313726, 0.20784314, 0.20784314, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 45
+text = "Recipes"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer" unique_id=660141812]
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_rfbjl")
+theme_override_font_sizes/font_size = 86
+text = "Undiscovered"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer" unique_id=1276329247]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6g1ex")
+
+[node name="Screenshot" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel" unique_id=998518812]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_60ewy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NoImage" type="ColorRect" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1617288720]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot/NoImage" unique_id=599023068]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -14.0
+offset_right = 20.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -220
+
+[node name="?" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot/NoImage/VBoxContainer" unique_id=1966614721]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 90
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=827280730]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 100.0
+grow_vertical = 0
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_bottom = -7
+
+[node name="PhotoTab" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer" unique_id=1261254055]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot" unique_id=1386670514]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+
+[node name="PhotoTab2" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/Panel/Screenshot/MarginContainer2" unique_id=574020796]
+modulate = Color(0.6509804, 0.827451, 1, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("6_egu8v")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+flip_v = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer" unique_id=1230131488]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/MarginContainer2" unique_id=1394220532]
+layout_mode = 2
+theme_override_constants/separation = -83
+
+[node name="Flavor" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=787825891]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.71, 0.32186663, 0.14199999, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("8_ruawa")
+theme_override_font_sizes/font_size = 38
+text = "Sweet flavor"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer/TextureRect/NPCInformationPanel/VBoxContainer" unique_id=525751648]
+visible = false
+custom_minimum_size = Vector2(611, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.15299998, 0.37574998, 0.45, 1)
+theme_override_fonts/font = ExtResource("8_ruawa")
+theme_override_font_sizes/font_size = 32
+text = "This bird is known to bite the heads off anything that comes near"
+autowrap_mode = 2
+
 [node name="NoIngredientsUnlocked" type="Label" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=413604167]
 layout_mode = 1
 anchors_preset = 15
@@ -881,6 +1207,11 @@ z_index = 5
 layout_mode = 2
 alignment = 1
 
+[node name="NPCs" type="FlowContainer" parent="MarginContainer/HBoxContainer/TextureRect2/InformationPanel/MarginContainer" unique_id=1699637753]
+z_index = 5
+layout_mode = 2
+alignment = 1
+
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer" unique_id=1636565068]
 texture_filter = 3
 custom_minimum_size = Vector2(81.02, 1080)
@@ -921,7 +1252,10 @@ Press TAB to view this cook book again
 P.S. Throw as much food through that portal as you can!"
 autowrap_mode = 3
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food/Tab2" to="." method="_on_tab_2_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab1" to="." method="_on_tab_1_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Controls/Tab3" to="." method="_on_tab_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Food/Tab1" to="." method="_on_tab_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Ingredients/Tab0" to="." method="_on_tab_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Props/Tab3" to="." method="_on_tab_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Collectables/Tab4" to="." method="_on_tab_3_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Relationships/Tab5" to="." method="_on_tab_5_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureRect/MarginContainer/VBoxContainer/Gadgets/Tab6" to="." method="_on_tab_3_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
