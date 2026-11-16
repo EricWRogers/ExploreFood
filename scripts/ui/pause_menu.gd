@@ -24,6 +24,8 @@ func _input(event):
 				holder.visible = false
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
+func _ready() -> void:
+	holder.hide()
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
