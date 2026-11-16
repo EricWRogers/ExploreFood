@@ -1,6 +1,7 @@
 extends Control
 
-@onready var holder: Control = $Holder
+#@onready var holder: Control = $Holder
+@export var holder: Control
 
 
 var paused : bool = false;

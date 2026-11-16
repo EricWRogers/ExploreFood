@@ -1,5 +1,6 @@
 extends Control
 
+const PROGRESS_SPEED = 75
 var holding
 
 func _ready() -> void:
@@ -39,10 +40,10 @@ func button_not_held():
 	holding = false
 	#print(" not hold")
 	
-func _process(_delta):
+func _process(delta):
 
 	if holding:
-		$"hold button/ProgressBar".value += 0.75
+		$"hold button/ProgressBar".value += PROGRESS_SPEED * delta
 		#print($"hold button/ProgressBar".value)
 	elif !holding:
 		$"hold button/ProgressBar".value = 0

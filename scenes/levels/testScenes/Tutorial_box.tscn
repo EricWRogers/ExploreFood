@@ -62,11 +62,12 @@ expand_mode = 1
 
 [node name="Button" type="Button" parent="hold button" unique_id=312345085]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 54.0
-offset_top = 12.0
-offset_right = 640.0
-offset_bottom = 459.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="hold button" unique_id=351045932]
 layout_mode = 0
