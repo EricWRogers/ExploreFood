@@ -3,11 +3,7 @@ extends Control
 #@onready var holder: Control = $Holder
 @export var holder: Control
 
-
 var paused : bool = false;
-
-	
-
 
 
 func _input(event):
@@ -23,9 +19,7 @@ func _input(event):
 				get_tree().paused = false
 				holder.visible = false
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			
-func _ready() -> void:
-	holder.hide()
+
 
 func _on_resume_pressed() -> void:
 	get_tree().paused = false
