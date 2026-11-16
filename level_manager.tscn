@@ -58,7 +58,7 @@ offset_bottom = 361.0
 uri = "https://docs.google.com/forms/d/e/1FAIpQLSe4_9GyTZwKKLl2U5JimMSOO5SJ3Mwe0WyAtMBAnpkaJkdfGg/viewform?usp=dialog"
 
 [connection signal="animation_finished" from="LoadingScreen/AnimationPlayer" to="." method="_on_loading_screen_start_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_loading_screen_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="LoadingScreen"]
