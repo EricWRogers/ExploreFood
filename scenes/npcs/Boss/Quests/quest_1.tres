@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cx087rck4tv5q"]
+
+[ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="1_a8ojt"]
+[ext_resource type="PackedScene" uid="uid://ccu7ptj5owaby" path="res://fp_scenes/Items/meat_skewer.tscn" id="1_qlmau"]
+
+[resource]
+script = ExtResource("1_a8ojt")
+start_quest = Array[String](["Welcome to your new job! ", "You must be honored to work here!", "Let's start simple. Make me a meat skewer."])
+reminder = Array[String](["Are you intimidated by my magnificent kitchen?", "Well, don't be!", "We're just going to start with a simple meal, a meat skewer."])
+pass_quest = Array[String](["Ho ho! Perfect!"])
+fail_quest = Array[String](["No no no, this won't do.", "Remember, what I want is a meat skewer!"])
+quest_item = ExtResource("1_qlmau")
+metadata/_custom_type_script = "uid://vmtpxl3pipgr"

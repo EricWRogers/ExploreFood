@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://0iqorsjigg6c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6xqmx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
+
+[node name="BaseNPC" type="Node3D" unique_id=1699445498]
+
+[node name="NPCMeshInstance" type="MeshInstance3D" parent="." unique_id=1154726264]
+mesh = SubResource("CapsuleMesh_6xqmx")
+
+[node name="NPCCollision" type="StaticBody3D" parent="." unique_id=1095886388]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCCollision" unique_id=1937053326]
+shape = SubResource("CapsuleShape3D_klsck")

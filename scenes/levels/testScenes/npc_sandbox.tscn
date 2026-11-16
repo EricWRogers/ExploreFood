@@ -1,23 +1,16 @@
 [gd_scene format=3 uid="uid://dshpelnsl3c1r"]
 
-[ext_resource type="PackedScene" uid="uid://dxq0yjgxvl4hj" path="res://scenes/player/player.tscn" id="1_bhq4y"]
+[ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_bhq4y"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="2_oxr57"]
-[ext_resource type="PackedScene" uid="uid://dne5ekn0yh2r7" path="res://scenes/scenes_assets/quest_table.tscn" id="3_w2cx6"]
-[ext_resource type="PackedScene" uid="uid://c4x3b2qfdxqw1" path="res://scenes/meals/meat_pies.tscn" id="8_6h4kx"]
-[ext_resource type="PackedScene" uid="uid://bh7bxo4knjirp" path="res://scenes/meals/chicken_and_waffle.tscn" id="9_rbr8a"]
-[ext_resource type="PackedScene" uid="uid://d0wydojwq4x66" path="res://scenes/UI/cook_book.tscn" id="10_rbr8a"]
 
 [sub_resource type="Environment" id="Environment_klsck"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q4by1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrn6j"]
-albedo_color = Color(0.4, 0.22352941, 0.11764706, 1)
+albedo_color = Color(0.8151529, 0.821932, 0.8235603, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6xqmx"]
-size = Vector3(20.032291, 1, 12.905388)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_klsck"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6xqmx"]
 
 [node name="NpcSandbox" type="Node3D" unique_id=155629050]
 
@@ -25,40 +18,22 @@ size = Vector3(20.032291, 1, 12.905388)
 environment = SubResource("Environment_klsck")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1111187967]
-transform = Transform3D(0.37037277, 0.6707125, -0.6426265, 0.22462934, 0.6066206, 0.7625963, 0.9013133, -0.4267977, 0.074014045, 0, 6.8409815, 0)
-light_color = Color(0.78274935, 0.8406308, 1, 1)
+transform = Transform3D(0.32907233, 0.94311774, 0.047334973, -0.3064702, 0.059251353, 0.9500345, 0.8931896, -0.32713673, 0.30853543, 0, 9.720664, 0)
+light_color = Color(0.85037404, 0.8390559, 0.847699, 1)
 sky_mode = 1
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=99016071]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=771988535]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 12.945347, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("PlaneMesh_q4by1")
 surface_material_override/0 = SubResource("StandardMaterial3D_jrn6j")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=197515703]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.028850555, -0.97983813, 0.016990662)
-shape = SubResource("BoxShape3D_6xqmx")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=76042639]
+shape = SubResource("WorldBoundaryShape3D_6xqmx")
 
-[node name="Wall" type="StaticBody3D" parent="." unique_id=704765003]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -12.89515)
+[node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("1_bhq4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.553809)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=2032628984]
-shape = SubResource("WorldBoundaryShape3D_klsck")
-
-[node name="Player" parent="." unique_id=1723867934 instance=ExtResource("1_bhq4y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6104536)
-
-[node name="Big_Boss_NPC" parent="." unique_id=1095072558 instance=ExtResource("2_oxr57")]
-transform = Transform3D(1, 0, 0, 0, 0.9958831, -0.09064681, 0, 0.09064681, 0.9958831, 0, 3.3869982, -27.815382)
-
-[node name="QuestTable" parent="." unique_id=1570142438 instance=ExtResource("3_w2cx6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.531899, 0.53432226, -4.7885303)
-
-[node name="Meat_Pies" parent="." unique_id=1546410034 instance=ExtResource("8_6h4kx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278784, 0, 3.3634844)
-
-[node name="Chicken_And_Waffle" parent="." unique_id=1554097360 instance=ExtResource("9_rbr8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4962606, 0, 3.1045036)
-
-[node name="CookBook" parent="." unique_id=1270549682 instance=ExtResource("10_rbr8a")]
+[node name="BossNPC" parent="." unique_id=1095072558 instance=ExtResource("2_oxr57")]
+transform = Transform3D(-0.1755064, 0, -0.09590363, 0, 0.2, 0, 0.09590363, 0, -0.1755064, 4.1814604, -0.5104284, -5.0388174)

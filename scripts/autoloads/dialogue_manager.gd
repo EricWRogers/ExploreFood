@@ -1,5 +1,12 @@
 extends Node
 
+###
+## this script is in charge of displaying dialogue lines. Does not care what the dialogue is.
+###
+
+signal freeze_player()
+signal unfreeze_player()
+
 @onready var text_box_scene = preload("uid://c6oge8t8wu2ag") #text_box.tscn
 
 var dialogue_lines : Array[String] = []
@@ -9,15 +16,8 @@ var text_box_position: Vector2
 var is_dialogue_active = false
 var can_advance_line = false
 var quest: String
-
-signal freeze_player()
-signal unfreeze_player()
-
 var current_tree_index: int
 
-func _ready() -> void:
-	pass
-	#print("Yes, I see the dialogue manager")
 
 func _process(_delta):	
 	#progresses down the dialogue lines 
@@ -25,7 +25,7 @@ func _process(_delta):
 		text_box.queue_free()
 		current_line_index += 1
 		
-		#end dialogue
+		# end dialogue
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			current_line_index = 0
@@ -35,15 +35,16 @@ func _process(_delta):
 			#unfreeze player 
 			unfreeze_player.emit()
 			return
-		#new textbox
+		# continue dialogue - new textbox
 		else:
 			show_text_box()
+	
 	#skip dialogue
 	elif (Input.is_action_just_pressed("Interact") && is_dialogue_active):
 			text_box.skip_text_type()
 
-#dialogue starts here. Method called from npc dialogue
-func start_dialogue(lines: Array[String], quest_item: String, dialogue_tree_index: int):
+## dialogue starts here. Method called from npc dialogue
+func start_dialogue(lines: Array[String], quest_item: String = "", dialogue_tree_index: int = 0):
 	if is_dialogue_active:
 		return
 	
@@ -59,7 +60,7 @@ func start_dialogue(lines: Array[String], quest_item: String, dialogue_tree_inde
 	is_dialogue_active = true
 
 
-#spawns and handles textbox
+## spawns and handles textbox
 func show_text_box(): 
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(on_text_box_finished_displaying)
@@ -70,23 +71,13 @@ func show_text_box():
 	
 	can_advance_line = false
 
+
 func on_text_box_finished_displaying(): #emits signal from text box
 	can_advance_line = true
+
 
 #creates a new quest
 func _give_quest():
 	print("quest given!")
 	Manager.current_quest_item = quest
 	print("Quest item assigned: ", Manager.current_quest_item)
-
-#for Caleb
-func _line_check():
-	if (current_tree_index == 0 and current_line_index == 5):
-		Manager.kitchen.showmeat()
-	if (current_tree_index == 0 and current_line_index == 4):
-		Manager.kitchen.showsell()
-	if (current_tree_index == 2 and current_line_index == 2):
-		Manager.kitchen.showwaffle()
-		Manager.breakfast_unlocked = true
-	else:
-		pass
