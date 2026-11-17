@@ -1,4 +1,4 @@
-extends Node
+class_name NPC extends Node
 
 ###
 ## this script is in charge of tracking what quests need to be given to the player and what dialogue needs to be outputted
@@ -21,11 +21,6 @@ var is_talking: bool
 
 #UI
 @onready var interact_ui: Node3D = $InteractUI
-
-@export_category("spawns for tutorial")
-@export var ingredient1: PackedScene
-@export var ingredient2: PackedScene
-
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Interact")):

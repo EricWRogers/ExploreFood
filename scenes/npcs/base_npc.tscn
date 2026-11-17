@@ -1,15 +1,22 @@
 [gd_scene format=3 uid="uid://0iqorsjigg6c"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6xqmx"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
+[ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="1_65blf"]
+[ext_resource type="Script" uid="uid://bnms2klpopprq" path="res://scripts/dialogue/npc_dialogue.gd" id="1_vy5f6"]
 
 [node name="BaseNPC" type="Node3D" unique_id=1699445498]
-
-[node name="NPCMeshInstance" type="MeshInstance3D" parent="." unique_id=1154726264]
-mesh = SubResource("CapsuleMesh_6xqmx")
+script = ExtResource("1_vy5f6")
 
 [node name="NPCCollision" type="StaticBody3D" parent="." unique_id=1095886388]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCCollision" unique_id=1937053326]
-shape = SubResource("CapsuleShape3D_klsck")
+[node name="DialogueArea" type="Area3D" parent="." unique_id=1818193302]
+collision_mask = 5
+
+[node name="QuestAcceptArea" type="Area3D" parent="." unique_id=1568096764]
+collision_mask = 3
+
+[node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("1_65blf")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[connection signal="body_entered" from="DialogueArea" to="." method="_on_dialogue_area_body_entered"]
+[connection signal="body_exited" from="DialogueArea" to="." method="_on_dialogue_area_body_exited"]
+[connection signal="body_entered" from="QuestAcceptArea" to="." method="_on_quest_accept_area_body_entered"]

@@ -32,10 +32,12 @@ var is_portal_2: bool = true
 ## ─────────────────────────────────────────
 ## Dialogue, Tutorial and Quests 
 ## ─────────────────────────────────────────
-@export var current_quest_item : String
-var dialogue_tree_index : int = 0
-var is_tut_over: bool = false
 
+
+
+## ─────────────────────────────────────────
+## Inventory
+## ─────────────────────────────────────────
 var slot1
 var slot2
 var slot3

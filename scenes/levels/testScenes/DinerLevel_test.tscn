@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8c5v0wmg6ghn" path="res://scenes/scenes_assets/kitchenAssets/Oven.tscn" id="7_7hvat"]
 [ext_resource type="PackedScene" uid="uid://s4nc7cnwdfwf" path="res://scenes/scenes_assets/kitchenAssets/kitchen_fridge.tscn" id="8_b22uh"]
 [ext_resource type="PackedScene" uid="uid://cqbf61752c7lu" path="res://scenes/scenes_assets/kitchenAssets/Scriptless_Oven.tscn" id="8_piak7"]
-[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="9_amfce"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/Boss/boss_NPC.tscn" id="9_amfce"]
 [ext_resource type="PackedScene" uid="uid://cel2u71811rgo" path="res://scenes/scenes_assets/kitchenAssets/counter_sink.tscn" id="9_d0w18"]
 [ext_resource type="PackedScene" uid="uid://syaombh4sk5s" path="res://scenes/scenes_assets/plate.tscn" id="9_piak7"]
 [ext_resource type="PackedScene" uid="uid://1fk3womvmyn" path="res://scenes/scenes_assets/kitchenAssets/counter_left.tscn" id="10_d0w18"]

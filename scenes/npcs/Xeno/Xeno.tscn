@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c18dbvj3b5ncq"]
+
+[ext_resource type="PackedScene" uid="uid://0iqorsjigg6c" path="res://scenes/npcs/base_npc.tscn" id="1_6lv0f"]
+[ext_resource type="Texture2D" uid="uid://qnl202ow78la" path="res://assets/2DCustomerSprites/AlienDogSpriteSheet.png" id="2_rmehm"]
+[ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="2_s4616"]
+[ext_resource type="Resource" uid="uid://cnvyq6hns85rk" path="res://scenes/npcs/Xeno/Quests/quest_1.tres" id="3_yfu32"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
+radius = 0.9003906
+height = 2.7714844
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xqmx"]
+radius = 1.7554643
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
+radius = 1.8608398
+height = 3.7216797
+
+[node name="BaseNPC" unique_id=1699445498 instance=ExtResource("1_6lv0f")]
+quests = Array[ExtResource("2_s4616")]([ExtResource("3_yfu32")])
+completion_text = Array[String](["YOU ARE SO AWESOME! I;M SO HAPPY :DD"])
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="0" unique_id=2021127031]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.21867669, 1.357861, 0)
+texture = ExtResource("2_rmehm")
+region_enabled = true
+region_rect = Rect2(1040, 130, 606, 677)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCCollision" parent_id_path=PackedInt32Array(1095886388) index="0" unique_id=1541838330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4216225, 0)
+shape = SubResource("CapsuleShape3D_klsck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueArea" parent_id_path=PackedInt32Array(1818193302) index="0" unique_id=712621292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.849103, 1.446305)
+shape = SubResource("SphereShape3D_6xqmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuestAcceptArea" parent_id_path=PackedInt32Array(1568096764) index="0" unique_id=2000282124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8798246, 0.7625091)
+shape = SubResource("CapsuleShape3D_q026u")
+
+[node name="InteractUI" parent="." index="4" unique_id=2022474363]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.0743191, 0)

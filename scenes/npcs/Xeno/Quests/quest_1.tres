@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cnvyq6hns85rk"]
+
+[ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="1_uxhxa"]
+
+[resource]
+script = ExtResource("1_uxhxa")
+start_quest = Array[String](["I'M SO HUNGRY!!!!", "I WANT A MEAT STICK! PLEASE!!!", "PLEEEAAAAASSEEEEE!!!!!"])
+reminder = Array[String](["MEAT STCIK! PLEAAASSSEEEE!!!!"])
+pass_quest = Array[String](["YES!! YUMMMM!!!!!!", "THANK YOU! I LOVE YOU!!!"])
+fail_quest = Array[String](["NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!! :((("])
+quest_item = "res://fp_scenes/Items/meat_skewer.tscn"
+metadata/_custom_type_script = "uid://vmtpxl3pipgr"

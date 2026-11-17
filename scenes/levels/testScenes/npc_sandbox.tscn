@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dshpelnsl3c1r"]
 
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_bhq4y"]
-[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="2_oxr57"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/Boss/boss_NPC.tscn" id="2_oxr57"]
+[ext_resource type="PackedScene" uid="uid://c18dbvj3b5ncq" path="res://scenes/npcs/Xeno/Xeno.tscn" id="2_xjj6k"]
 [ext_resource type="PackedScene" uid="uid://dseipnt2xdlyn" path="res://fp_scenes/Items/beef_wellington.tscn" id="3_jrn6j"]
 [ext_resource type="PackedScene" uid="uid://ccu7ptj5owaby" path="res://fp_scenes/Items/meat_skewer.tscn" id="4_sxvw4"]
 
@@ -36,6 +37,9 @@ shape = SubResource("WorldBoundaryShape3D_6xqmx")
 
 [node name="Player3D" parent="." unique_id=1594877716 instance=ExtResource("1_bhq4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.553809)
+
+[node name="BaseNPC" parent="." unique_id=1699445498 instance=ExtResource("2_xjj6k")]
+transform = Transform3D(-0.02394291, 0, -0.9997133, 0, 1, 0, 0.9997133, 0, -0.02394291, 6.9486637, 0, -10.899743)
 
 [node name="BossNPC" parent="." unique_id=1095072558 instance=ExtResource("2_oxr57")]
 transform = Transform3D(-0.1755064, 0, -0.09590363, 0, 0.2, 0, 0.09590363, 0, -0.1755064, 4.1814604, -0.5104284, -5.0388174)

@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="17_pt2od"]
 [ext_resource type="PackedScene" uid="uid://c48yrkgvbcb81" path="res://scenes/scenes_assets/recipe_pickup.tscn" id="18_fcuss"]
 [ext_resource type="PackedScene" uid="uid://btdvnsmd1dtkq" path="res://scenes/scenes_assets/kitchenAssets/collected_food_spawner.tscn" id="19_6ynox"]
-[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="19_fcuss"]
+[ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/Boss/boss_NPC.tscn" id="19_fcuss"]
 [ext_resource type="Resource" uid="uid://by44jdf8c7y22" path="res://scripts/resources/RecipesNew/BeefWellington.tres" id="19_mrweq"]
 [ext_resource type="ArrayMesh" uid="uid://dupr8x56ce7g6" path="res://assets/models/DinerFloor/cave.obj" id="22_vknda"]
 [ext_resource type="PackedScene" uid="uid://c2ej1h8uweivt" path="res://scenes/scenes_assets/StonePillar.tscn" id="23_s5sks"]
@@ -1307,14 +1307,12 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.8846639, 0.42309204, -0.19584136, -2.9802175e-08, 0.42006168, 0.90749216, 0.46621856, 0.8028301, -0.37161496, 0.36292076, 2.1149292, 0.48736048)
+transform = Transform3D(-0.8846637, 0.423092, -0.19584134, -2.980217e-08, 0.42006162, 0.90749204, 0.46621847, 0.80283004, -0.3716149, 0.36292076, 2.1149292, 0.48736048)
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
 tween_resource = SubResource("Resource_jch2d")
 tween_on_load = false
-align_transform_with_view = Callable()
-align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1639098632]
