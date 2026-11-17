@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dq7bt0g1vkl8o" path="res://scenes/player/AnimationController/character_visuals.tscn" id="1_bhq4y"]
 [ext_resource type="PackedScene" uid="uid://bbnhogt13fhib" path="res://scenes/npcs/boss_NPC.tscn" id="2_oxr57"]
+[ext_resource type="PackedScene" uid="uid://dseipnt2xdlyn" path="res://fp_scenes/Items/beef_wellington.tscn" id="3_jrn6j"]
+[ext_resource type="PackedScene" uid="uid://ccu7ptj5owaby" path="res://fp_scenes/Items/meat_skewer.tscn" id="4_sxvw4"]
 
 [sub_resource type="Environment" id="Environment_klsck"]
 
@@ -37,3 +39,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.553809)
 
 [node name="BossNPC" parent="." unique_id=1095072558 instance=ExtResource("2_oxr57")]
 transform = Transform3D(-0.1755064, 0, -0.09590363, 0, 0.2, 0, 0.09590363, 0, -0.1755064, 4.1814604, -0.5104284, -5.0388174)
+
+[node name="BaseItem" parent="." unique_id=175947415 instance=ExtResource("3_jrn6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4368639, 0, -2.4166536)
+
+[node name="BaseItem2" parent="." unique_id=966689883 instance=ExtResource("3_jrn6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.258039, 0, -6.2210193)
+
+[node name="MeatSkewer" parent="." unique_id=1312728534 instance=ExtResource("4_sxvw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.791579, 0, -0.5217514)
+
+[node name="MeatSkewer2" parent="." unique_id=607188053 instance=ExtResource("4_sxvw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6162615, 0, -4.1830683)

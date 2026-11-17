@@ -14,4 +14,4 @@ class_name Quest extends Resource
 @export var fail_quest: Array[String]
 
 ## item that the NPC is requesting
-@export var quest_item: PackedScene
+@export var quest_item: String

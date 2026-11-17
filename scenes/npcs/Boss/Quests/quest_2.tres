@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dct3vkdopuy0x"]
+
+[ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="1_v1st0"]
+
+[resource]
+script = ExtResource("1_v1st0")
+start_quest = Array[String](["I believe that you're ready for something greater.", "This time, make me a beef wellington!"])
+reminder = Array[String](["Don't tell me you've forgotten!", "My beef wellington!", "Get to it!"])
+pass_quest = Array[String](["oh yes, scrumptious.", "I knew you wouldnt let me down!"])
+fail_quest = Array[String](["ugh, no. That's not what I asked for.", "My beef wellington!", "Get to it!"])
+quest_item = "res://fp_scenes/Items/beef_wellington.tscn"
+metadata/_custom_type_script = "uid://vmtpxl3pipgr"

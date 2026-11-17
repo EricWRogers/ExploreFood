@@ -29,10 +29,6 @@ func _process(_delta):
 		if current_line_index >= dialogue_lines.size():
 			is_dialogue_active = false
 			current_line_index = 0
-			#set new quest if applicable
-			if (quest != ""):
-				_give_quest()
-			#unfreeze player 
 			unfreeze_player.emit()
 			return
 		# continue dialogue - new textbox
@@ -44,18 +40,15 @@ func _process(_delta):
 			text_box.skip_text_type()
 
 ## dialogue starts here. Method called from npc dialogue
-func start_dialogue(lines: Array[String], quest_item: String = "", dialogue_tree_index: int = 0):
+func start_dialogue(lines: Array[String]):
 	if is_dialogue_active:
 		return
 	
-	current_tree_index = dialogue_tree_index
-	
-	#freeze player 
+	# freeze player - currently doesnt work
 	freeze_player.emit()
 	
 	#print(lines)
 	dialogue_lines = lines
-	quest = quest_item
 	show_text_box()
 	is_dialogue_active = true
 
@@ -74,10 +67,3 @@ func show_text_box():
 
 func on_text_box_finished_displaying(): #emits signal from text box
 	can_advance_line = true
-
-
-#creates a new quest
-func _give_quest():
-	print("quest given!")
-	Manager.current_quest_item = quest
-	print("Quest item assigned: ", Manager.current_quest_item)

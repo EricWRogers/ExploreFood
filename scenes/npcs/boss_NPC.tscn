@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="7_435hl"]
 [ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="7_us053"]
 [ext_resource type="Resource" uid="uid://cx087rck4tv5q" path="res://scenes/npcs/Boss/Quests/quest_1.tres" id="8_3v0fb"]
+[ext_resource type="Resource" uid="uid://dct3vkdopuy0x" path="res://scenes/npcs/Boss/Quests/quest_2.tres" id="8_435hl"]
 [ext_resource type="PackedScene" uid="uid://c62hlkbbjjkal" path="res://scenes/npcs/boss_sitting.tscn" id="8_ldtws"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q026u"]
@@ -16,8 +17,8 @@ radius = 0.99658203
 height = 1.9931641
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xqmx"]
-radius = 0.68688965
-height = 1.3737793
+radius = 0.87109375
+height = 1.8568115
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klsck"]
 radius = 4.6376953
@@ -26,7 +27,7 @@ height = 22.117554
 [node name="BossNPC" type="Node3D" unique_id=1095072558]
 script = ExtResource("1_2i7oy")
 dialogue_tree = Array[ExtResource("2_whkwm")]([ExtResource("3_l08ym"), ExtResource("4_wbtbd"), ExtResource("5_720kh"), ExtResource("6_pa3ns")])
-quests = Array[ExtResource("7_435hl")]([ExtResource("8_3v0fb")])
+quests = Array[ExtResource("7_435hl")]([ExtResource("8_3v0fb"), ExtResource("8_435hl")])
 completion_text = Array[String](["I have nothing else to ask for.", "You've truly been an exceptional employee.", "Now go forth! Help others!"])
 
 [node name="BossDialogueArea" type="Area3D" parent="." unique_id=1359091874]
@@ -38,9 +39,11 @@ transform = Transform3D(9.999999, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e
 shape = SubResource("CapsuleShape3D_q026u")
 
 [node name="QuestAcceptArea" type="Area3D" parent="." unique_id=1735599278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.185175, 11.990383)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QuestAcceptArea" unique_id=558096585]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 15.6928215, 6.8720636)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 2.4151611, 0)
 shape = SubResource("CapsuleShape3D_6xqmx")
 
 [node name="InteractUI" parent="." unique_id=2022474363 instance=ExtResource("7_us053")]
@@ -57,3 +60,4 @@ shape = SubResource("CapsuleShape3D_klsck")
 
 [connection signal="body_entered" from="BossDialogueArea" to="." method="_on_dialogue_area_body_entered"]
 [connection signal="body_exited" from="BossDialogueArea" to="." method="_on_dialogue_area_body_exited"]
+[connection signal="body_entered" from="QuestAcceptArea" to="." method="_on_quest_accept_area_body_entered"]
