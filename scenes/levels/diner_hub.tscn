@@ -1243,7 +1243,7 @@ material = ExtResource("5_3gldf")
 [node name="Appliances" type="Node3D" parent="KitchenProps" unique_id=935749787]
 
 [node name="Kitchen_Fridge" parent="KitchenProps/Appliances" unique_id=542894939 instance=ExtResource("11_6ynox")]
-transform = Transform3D(0.55, 0, 3.5527137e-15, 0, 0.55, 0, -3.5527137e-15, 0, 0.55, -1.4286919, 0, -9.400001)
+transform = Transform3D(0.7103272, 0, 4.588344e-15, 0, 0.7103272, 0, -4.588344e-15, 0, 0.7103272, -1.4286919, 0, -9.327035)
 collision_mask = 5
 
 [node name="Counters" type="Node3D" parent="KitchenProps" unique_id=460153613]
@@ -1307,12 +1307,14 @@ mesh = SubResource("CylinderMesh_pqflc")
 surface_material_override/0 = SubResource("ShaderMaterial_i6s7y")
 
 [node name="SinkCam" type="Node3D" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1206244 node_paths=PackedStringArray("look_at_target") groups=["Camera"]]
-transform = Transform3D(-0.8846637, 0.423092, -0.19584134, -2.980217e-08, 0.42006162, 0.90749204, 0.46621847, 0.80283004, -0.3716149, 0.36292076, 2.1149292, 0.48736048)
+transform = Transform3D(-0.8846636, 0.42309198, -0.19584133, -2.9802166e-08, 0.4200616, 0.907492, 0.4662184, 0.80283, -0.37161487, 0.36292076, 2.1149292, 0.48736048)
 script = ExtResource("16_650hs")
 look_at_mode = 2
 look_at_target = NodePath("../Cuttingboard")
 tween_resource = SubResource("Resource_jch2d")
 tween_on_load = false
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="KitchenProps/Counters/FrontWallCounters/Counter_Sink" unique_id=1639098632]

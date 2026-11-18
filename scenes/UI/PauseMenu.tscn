@@ -16,6 +16,7 @@ holder = NodePath("Holder")
 
 [node name="Holder" type="Control" parent="." unique_id=527211229]
 visible = false
+z_index = 99
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

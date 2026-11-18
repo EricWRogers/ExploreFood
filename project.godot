@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 Manager="*uid://bjr5b12cf4cru"
 DialogueManager="*uid://bl2apitv64di7"
-PauseMenu="*uid://cxpyqdm2553yb"
+PauseMenu="*uid://wsg88toudkyf"
 CyclopsAutoload="*uid://4siqre3jhe80"
 ForkCollectableVisual="*uid://dv8efstm83wou"
 InputManager="*uid://bxpef1g6bexd8"
