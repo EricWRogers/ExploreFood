@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://bbnhogt13fhib"]
 
 [ext_resource type="Script" uid="uid://bnms2klpopprq" path="res://scripts/dialogue/npc_dialogue.gd" id="1_2i7oy"]
-[ext_resource type="Script" uid="uid://dsel8rx3fee7a" path="res://scripts/dialogue/dialogue_resource.gd" id="2_whkwm"]
-[ext_resource type="Resource" uid="uid://bcfig0tge7q1u" path="res://scripts/resources/dialogue/testDia.tres" id="3_l08ym"]
-[ext_resource type="Resource" uid="uid://c757vrkq8ux22" path="res://scripts/resources/dialogue/testDia1.tres" id="4_wbtbd"]
-[ext_resource type="Resource" uid="uid://b7bn8ouwgdbyi" path="res://scripts/resources/dialogue/testDia_PassQuest.tres" id="5_720kh"]
-[ext_resource type="Resource" uid="uid://hrb6cte5xt1s" path="res://scripts/resources/dialogue/testDia_FailQuest.tres" id="6_pa3ns"]
+[ext_resource type="Resource" uid="uid://dbxs586j2oqhq" path="res://scripts/resources/NPCs/boss.tres" id="2_oyecv"]
 [ext_resource type="Script" uid="uid://vmtpxl3pipgr" path="res://scripts/dialogue/quest.gd" id="7_435hl"]
 [ext_resource type="PackedScene" uid="uid://333pj70unbrb" path="res://scenes/UI/InteractUI.tscn" id="7_us053"]
 [ext_resource type="Resource" uid="uid://cx087rck4tv5q" path="res://scenes/npcs/Boss/Quests/quest_1.tres" id="8_3v0fb"]
@@ -26,7 +22,7 @@ height = 22.117554
 
 [node name="BossNPC" type="Node3D" unique_id=1095072558]
 script = ExtResource("1_2i7oy")
-dialogue_tree = Array[ExtResource("2_whkwm")]([ExtResource("3_l08ym"), ExtResource("4_wbtbd"), ExtResource("5_720kh"), ExtResource("6_pa3ns")])
+npc_resource = ExtResource("2_oyecv")
 quests = Array[ExtResource("7_435hl")]([ExtResource("8_3v0fb"), ExtResource("8_435hl")])
 completion_text = Array[String](["I have nothing else to ask for.", "You've truly been an exceptional employee.", "Now go forth! Help others!"])
 

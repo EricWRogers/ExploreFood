@@ -4,16 +4,20 @@ class_name NPC extends Node
 ## this script is in charge of tracking what quests need to be given to the player and what dialogue needs to be outputted
 ###
 
+#save data
+@export var npc_resource: BaseNpc
+static var data: BaseNpc
+
 #quests
 @export var quests: Array[Quest] = []
 @export var completion_text: Array[String]
 
-var current_quest: Quest
-var is_quest_given: bool = false
-var current_quest_index: int = 0
+@onready var current_quest: Quest
+@onready var current_quest_index: int
+@onready var is_quest_given: bool
 
 #friendship
-var friendship: int = 0
+@onready var friendship: int
 
 #dialogue activation
 var is_in_range: bool
@@ -21,6 +25,7 @@ var is_talking: bool
 
 #UI
 @onready var interact_ui: Node3D = $InteractUI
+
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Interact")):
@@ -31,6 +36,20 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	if (npc_resource == null):
+		printerr("ERROR: NPC is missing data resource!")
+		return
+	
+	if (data == null):
+		data = npc_resource
+	
+	load_npc_data()
+	
+	#print("current quest = ", current_quest)
+	#print("current quest index = ", current_quest_index)
+	#print("is quest given? = ", is_quest_given)
+	#print("friendship = ", friendship)
+	
 	interact_ui.hide()
 	is_talking = false
 
@@ -52,6 +71,7 @@ func start_quest():
 	current_quest = quests[current_quest_index]
 	is_quest_given = true
 	DialogueManager.start_dialogue(current_quest.start_quest)
+	save_npc_data()
 
 
 ## turn in quest
@@ -67,7 +87,20 @@ func serve_dish(dish_name: String):
 	friendship += 1
 	current_quest_index += 1
 	is_quest_given = false
+	save_npc_data()
 
+
+func save_npc_data():
+	data.current_quest = current_quest
+	data.current_quest_index = current_quest_index
+	data.is_quest_given = is_quest_given
+	data.friendship = friendship
+
+func load_npc_data():
+	current_quest = data.current_quest
+	current_quest_index = data.current_quest_index
+	is_quest_given = data.is_quest_given
+	friendship = data.friendship
 
 ## player entering dialogue area
 func _on_dialogue_area_body_entered(body: Node3D) -> void:
@@ -87,7 +120,7 @@ func _on_dialogue_area_body_exited(body: Node3D) -> void:
 
 
 func _on_quest_accept_area_body_entered(body: Node3D) -> void:
-	if (is_quest_given && body.is_in_group("Item")):
+	if (data.is_quest_given && body.is_in_group("Item")):
 		#print("body: ", body.scene_file_path)
 		serve_dish(body.scene_file_path)
 		body.queue_free()

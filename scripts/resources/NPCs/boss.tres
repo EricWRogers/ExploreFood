@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseNpc" format=3 uid="uid://dbxs586j2oqhq"]
+
+[ext_resource type="Script" uid="uid://dhabfvcb7pwti" path="res://scripts/resources/NPCs/base_npc.gd" id="1_m2yby"]
+
+[resource]
+script = ExtResource("1_m2yby")
+name_of = "Boss"
+metadata/_custom_type_script = "uid://dhabfvcb7pwti"
