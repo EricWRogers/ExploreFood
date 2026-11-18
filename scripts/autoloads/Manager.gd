@@ -46,6 +46,9 @@ var slotb1
 var slotb2
 var slotb3
 
+## collectables
+var current_amount_portal_frag
+
 ## ─────────────────────────────────────────
 ## Cook Sys
 ## ─────────────────────────────────────────
