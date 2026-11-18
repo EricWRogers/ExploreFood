@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cafrci4rpyba7" path="res://assets/models/portalmesh.obj" id="3_pkwh0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ojr3"]
-size = Vector3(4.5620117, 4.1798096, 1.0251465)
+size = Vector3(4.5620117, 6.780365, 1.0251465)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4itmh"]
 albedo_texture = ExtResource("2_bv86l")
@@ -332,7 +332,7 @@ new_level_path = "res://scenes/levels/diner_hub.tscn"
 active = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1121464066]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1539183, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.454196, 0)
 shape = SubResource("BoxShape3D_8ojr3")
 
 [node name="Portalframe" type="MeshInstance3D" parent="." unique_id=34904202]
