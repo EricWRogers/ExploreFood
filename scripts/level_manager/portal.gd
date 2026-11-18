@@ -45,7 +45,10 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		# check new level string validity #
 	if body.is_in_group("Player"):
-		print("IT WORK")
+		if in_kitchen:
+			var leftovers = get_tree().get_nodes_in_group("Ingredient")
+			for food in leftovers:
+				Manager.collected_food.append("res://scenes/BaseIngredientFoods/RottenFood.tscn")
 		if (new_level_path == "" || new_level_path == " " || new_level_path == null):
 			printerr("Portal %s new_level_path is null. Make sure you fill write the level path in the inspector!" % self.name)
 			return
